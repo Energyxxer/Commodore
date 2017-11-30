@@ -21,6 +21,12 @@ import com.energyxxer.commodore.nbt.TagCompound;
 import com.energyxxer.commodore.nbt.TagInt;
 import com.energyxxer.commodore.nbt.TagShort;
 import com.energyxxer.commodore.nbt.TagString;
+import com.energyxxer.commodore.score.operations.LocalScore;
+import com.energyxxer.commodore.score.ObjectiveManager;
+import com.energyxxer.commodore.score.operations.ScoreAdd;
+import com.energyxxer.commodore.score.operations.ScoreGet;
+import com.energyxxer.commodore.score.operations.ScoreHolderOperation;
+import com.energyxxer.commodore.score.operations.ScoreSet;
 import com.energyxxer.commodore.selector.NBTArgument;
 import com.energyxxer.commodore.selector.Selector;
 import com.energyxxer.commodore.selector.TagArgument;
@@ -36,6 +42,7 @@ public class CommandTest {
     public static void main(String[] args) {
         Function function = new Function("test:function");
 
+        ObjectiveManager objMgr = new ObjectiveManager();
 
         Entity entity0 = new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES));
         entity0.getSelector().addArguments(new TypeArgument("bat"), new TagArgument("a"), new TagArgument("!b"));
@@ -95,6 +102,16 @@ public class CommandTest {
         DataCommand datacmd = new DataCommand(entity0, "BatFlags", 1);
         function.append(datacmd);
         //System.out.println("datacmd = " + datacmd.getRawCommand());
+
+        LocalScore score = new LocalScore(objMgr.get("test"), entity0.getScoreManager());
+
+        ScoreHolderOperation op0 = new ScoreSet(score, 5);
+        ScoreHolderOperation op1 = new ScoreAdd(score, -2);
+        ScoreHolderOperation op2 = new ScoreGet(score);
+
+        function.append(op2);
+        function.append(op1);
+        function.append(op0);
 
         System.out.println(function.getContent());
     }

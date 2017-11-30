@@ -13,4 +13,5 @@ public interface Command extends FunctionWriter {
     default String toFunctionContent(Function function) {
         return getRawCommand(function.getSender());
     }
+
 }

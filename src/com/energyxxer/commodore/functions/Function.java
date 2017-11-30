@@ -32,6 +32,7 @@ public class Function {
 
     public void append(Collection<FunctionWriter> writers) {
         this.content.addAll(writers);
+        writers.forEach(FunctionWriter::onAppend);
     }
 
     public String getContent() {
