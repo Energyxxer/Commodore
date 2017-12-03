@@ -1,45 +1,22 @@
 package com.energyxxer.commodore;
 
-import com.energyxxer.commodore.block.Block;
-import com.energyxxer.commodore.block.Blockstate;
-import com.energyxxer.commodore.commands.DataCommand;
-import com.energyxxer.commodore.commands.ExecuteCommand;
-import com.energyxxer.commodore.commands.SayCommand;
-import com.energyxxer.commodore.commands.SetblockCommand;
-import com.energyxxer.commodore.commands.TagCommand;
-import com.energyxxer.commodore.commands.TellrawCommand;
-import com.energyxxer.commodore.commands.execute.ExecuteAsEntity;
-import com.energyxxer.commodore.coordinates.Coordinate;
-import com.energyxxer.commodore.coordinates.CoordinateSet;
-import com.energyxxer.commodore.coordinates.ExecuteAlignment;
-import com.energyxxer.commodore.coordinates.ExecuteAtEntity;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.functions.Function;
-import com.energyxxer.commodore.nbt.TagByte;
-import com.energyxxer.commodore.nbt.TagCompound;
-import com.energyxxer.commodore.nbt.TagInt;
-import com.energyxxer.commodore.nbt.TagShort;
-import com.energyxxer.commodore.nbt.TagString;
-import com.energyxxer.commodore.score.operations.LocalScore;
+import com.energyxxer.commodore.functions.FunctionHeaderComment;
 import com.energyxxer.commodore.score.ObjectiveManager;
-import com.energyxxer.commodore.score.operations.ScoreAdd;
+import com.energyxxer.commodore.score.operations.LocalScore;
 import com.energyxxer.commodore.score.operations.ScoreGet;
-import com.energyxxer.commodore.score.operations.ScoreHolderOperation;
+import com.energyxxer.commodore.score.operations.ScorePlayersOperation;
 import com.energyxxer.commodore.score.operations.ScoreSet;
-import com.energyxxer.commodore.selector.NBTArgument;
+import com.energyxxer.commodore.score.operations.ScoreboardManipulation;
 import com.energyxxer.commodore.selector.Selector;
 import com.energyxxer.commodore.selector.TagArgument;
 import com.energyxxer.commodore.selector.TypeArgument;
-import com.energyxxer.commodore.textcomponents.ListTextComponent;
-import com.energyxxer.commodore.textcomponents.StringTextComponent;
-import com.energyxxer.commodore.textcomponents.TextColor;
-import com.energyxxer.commodore.textcomponents.TextStyle;
-import com.energyxxer.commodore.textcomponents.events.HoverEvent;
-import com.energyxxer.commodore.types.BlockType;
 
 public class CommandTest {
     public static void main(String[] args) {
+        /*
         Function function = new Function("test:function");
 
         ObjectiveManager objMgr = new ObjectiveManager();
@@ -101,18 +78,36 @@ public class CommandTest {
 
         DataCommand datacmd = new DataCommand(entity0, "BatFlags", 1);
         function.append(datacmd);
-        //System.out.println("datacmd = " + datacmd.getRawCommand());
+        //System.out.println("datacmd = " + datacmd.getRawCommand());*/
 
-        LocalScore score = new LocalScore(objMgr.get("test"), entity0.getScoreManager());
+        Function function = new Function("test:scores");
 
-        ScoreHolderOperation op0 = new ScoreSet(score, 5);
-        ScoreHolderOperation op1 = new ScoreAdd(score, -2);
-        ScoreHolderOperation op2 = new ScoreGet(score);
+        ObjectiveManager objMgr = new ObjectiveManager();
 
-        function.append(op2);
-        function.append(op1);
+        Entity entity = new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES));
+        entity.getSelector().addArguments(new TypeArgument("bat"), new TagArgument("a"), new TagArgument("!b"));
+
+        function.append(new FunctionHeaderComment("SCOREBOARD ACCESS OPTIMIZATION"));
+
+        LocalScore a = new LocalScore(objMgr.get("A"), entity.getScoreManager());
+        LocalScore b = new LocalScore(objMgr.get("B"), entity.getScoreManager());
+
+        ScoreboardManipulation op0 = new ScoreSet(a, 5);
+        ScoreboardManipulation op1 = new ScorePlayersOperation(b, ScorePlayersOperation.Operation.ASSIGN, a);
+        //ScoreboardManipulation op2 = new ScoreSet(b, 3);
+        ScoreboardManipulation op3 = new ScoreGet(b);
+
         function.append(op0);
+        function.append(op1);
+        //function.append(op2);
+        function.append(op3);
+
+        a.getAccessLog().resolve();
+        b.getAccessLog().resolve();
 
         System.out.println(function.getContent());
+
+        System.out.println(a.getAccessLog());
+        System.out.println(b.getAccessLog());
     }
 }

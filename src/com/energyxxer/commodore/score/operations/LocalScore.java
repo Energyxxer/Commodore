@@ -9,6 +9,8 @@ public class LocalScore {
     private Objective objective;
     private ScoreManager parent;
 
+    private ScoreAccessLog accessLog = new ScoreAccessLog(this);
+
     private ArrayList<ScoreHolderOperation> operationBuffer = new ArrayList<>();
 
     public LocalScore(Objective objective, ScoreManager parent) {
@@ -34,5 +36,17 @@ public class LocalScore {
 
     public ScoreManager getParent() {
         return parent;
+    }
+
+    public ScoreAccessLog getAccessLog() {
+        return accessLog;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "objective=" + objective +
+                ", holder=" + parent.getHolder() +
+                '}';
     }
 }

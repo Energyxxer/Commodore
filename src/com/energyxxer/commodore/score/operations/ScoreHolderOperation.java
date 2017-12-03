@@ -3,6 +3,7 @@ package com.energyxxer.commodore.score.operations;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.functions.FunctionWriter;
 
+@Deprecated
 public abstract class ScoreHolderOperation implements FunctionWriter {
 
     public enum AccessType {

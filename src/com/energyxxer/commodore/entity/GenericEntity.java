@@ -20,4 +20,9 @@ public class GenericEntity implements Entity {
     public ScoreManager getScoreManager() {
         return scoreManager;
     }
+
+    @Override
+    public String toString() {
+        return selector.toString();
+    }
 }

@@ -13,9 +13,15 @@ public class Objective {
     Objective(String name, String type) {
         if(name.length() > MAX_NAME_LENGTH) throw new IllegalArgumentException("Objective name '" + name + "' exceeds the limit of " + MAX_NAME_LENGTH + " characters");
         this.name = name;
+        this.type = type;
     }
 
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return name + (!type.equals("dummy") ? " ("+type+")" : "");
     }
 }

@@ -3,12 +3,14 @@ package com.energyxxer.commodore.score.operations;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functions.Function;
 
-public class ScoreSet extends ScoreHolderOperation {
+public class ScoreSet extends ScoreboardManipulation {
 
+    private LocalScore score;
     private int value;
 
     public ScoreSet(LocalScore score, int value) {
-        super(AccessType.OVERWRITE, score);
+        super(new ScoreboardAccess(score, ScoreboardAccess.AccessType.WRITE));
+        this.score = score;
         this.value = value;
     }
 
