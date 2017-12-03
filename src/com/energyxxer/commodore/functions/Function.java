@@ -9,15 +9,21 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class Function {
+    private final FunctionManager parent;
+
     private String name;
     private ArrayList<FunctionWriter> content = new ArrayList<>();
     private Entity sender;
 
-    public Function(String name) {
-        this(name, new GenericEntity(new Selector(Selector.BaseSelector.SENDER)));
+    private boolean contentResolved = false;
+    private String resolvedContent = null;
+
+    Function(FunctionManager parent, String name) {
+        this(parent, name, new GenericEntity(new Selector(Selector.BaseSelector.SENDER)));
     }
 
-    public Function(String name, Entity sender) {
+    Function(FunctionManager parent, String name, Entity sender) {
+        this.parent = parent;
         this.name = name;
         this.sender = sender;
     }
@@ -33,21 +39,32 @@ public class Function {
     public void append(Collection<FunctionWriter> writers) {
         this.content.addAll(writers);
         writers.forEach(FunctionWriter::onAppend);
+        contentResolved = false;
     }
 
-    public String getContent() {
-        StringBuilder sb = new StringBuilder("# ");
-        sb.append(name);
-        sb.append('\n');
+    public String getName() {
+        return name;
+    }
 
-        for(FunctionWriter writer : content) {
-            String content = writer.toFunctionContent(this);
-            if(content != null) {
-                sb.append(content);
-                sb.append('\n');
+    public FunctionManager getParent() {
+        return parent;
+    }
+
+    public String getResolvedContent() {
+        if(!contentResolved) {
+            StringBuilder sb = new StringBuilder("# ");
+            sb.append(name);
+            sb.append('\n');
+
+            for(FunctionWriter writer : content) {
+                String content = writer.toFunctionContent(this);
+                if(content != null) {
+                    sb.append(content);
+                    sb.append('\n');
+                }
             }
+            resolvedContent = sb.toString();
         }
-
-        return sb.toString();
+        return resolvedContent;
     }
 }

@@ -4,6 +4,7 @@ import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.functions.FunctionHeaderComment;
+import com.energyxxer.commodore.project.CommandModule;
 import com.energyxxer.commodore.score.ObjectiveManager;
 import com.energyxxer.commodore.score.operations.LocalScore;
 import com.energyxxer.commodore.score.operations.ScoreGet;
@@ -14,7 +15,7 @@ import com.energyxxer.commodore.selector.Selector;
 import com.energyxxer.commodore.selector.TagArgument;
 import com.energyxxer.commodore.selector.TypeArgument;
 
-public class CommandTest {
+public final class CommandTest {
     public static void main(String[] args) {
         /*
         Function function = new Function("test:function");
@@ -80,9 +81,10 @@ public class CommandTest {
         function.append(datacmd);
         //System.out.println("datacmd = " + datacmd.getRawCommand());*/
 
-        Function function = new Function("test:scores");
+        CommandModule module = new CommandModule("Commodore Test","ct");
+        ObjectiveManager objMgr = module.getObjectiveManager();
 
-        ObjectiveManager objMgr = new ObjectiveManager();
+        Function function = module.getFunctionManager().get("test:scores");
 
         Entity entity = new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES));
         entity.getSelector().addArguments(new TypeArgument("bat"), new TagArgument("a"), new TagArgument("!b"));
@@ -102,10 +104,9 @@ public class CommandTest {
         //function.append(op2);
         function.append(op3);
 
-        a.getAccessLog().resolve();
-        b.getAccessLog().resolve();
+        module.compile();
 
-        System.out.println(function.getContent());
+        System.out.println(function.getResolvedContent());
 
         System.out.println(a.getAccessLog());
         System.out.println(b.getAccessLog());

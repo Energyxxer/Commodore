@@ -12,6 +12,8 @@ public class LocalScore {
     public LocalScore(Objective objective, ScoreManager parent) {
         this.objective = objective;
         this.parent = parent;
+
+        objective.getParent().registerLocalScore(this);
     }
 
     public Objective getObjective() {
