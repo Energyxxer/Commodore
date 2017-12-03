@@ -2,17 +2,14 @@ package com.energyxxer.commodore.score.operations;
 
 public class ScoreboardAccess {
 
-
-
     public enum AccessType {
         READ, WRITE;
     }
 
-
-
     public enum AccessResolution {
         UNRESOLVED, IN_PROCESS, USED, UNUSED;
     }
+
     private final LocalScore score;
     private final AccessType type;
 

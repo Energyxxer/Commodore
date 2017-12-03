@@ -68,4 +68,5 @@ public class ScoreAccessLog {
         sb.append("----------------------------------");
         return sb.toString();
     }
+
 }
