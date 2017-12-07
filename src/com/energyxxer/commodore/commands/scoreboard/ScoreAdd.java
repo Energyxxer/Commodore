@@ -1,7 +1,9 @@
-package com.energyxxer.commodore.score.operations;
+package com.energyxxer.commodore.commands.scoreboard;
 
 import com.energyxxer.commodore.CommandUtils;
-import com.energyxxer.commodore.functions.Function;
+import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.score.LocalScore;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
 
 public class ScoreAdd extends ScoreboardManipulation {
 
@@ -18,7 +20,7 @@ public class ScoreAdd extends ScoreboardManipulation {
     }
 
     @Override
-    public String getOperationContent(Function function) {
-        return "scoreboard players " + ((delta < 0) ? "remove" : "add") + " " + CommandUtils.getRawReference(score.getParent().getHolder(), function.getSender()) + " " + score.getObjective().getName() + " " + Math.abs(delta);
+    public String getOperationContent(Entity sender) {
+        return "scoreboard players " + ((delta < 0) ? "remove" : "add") + " " + CommandUtils.getRawReference(score.getParent().getHolder(), sender) + " " + score.getObjective().getName() + " " + Math.abs(delta);
     }
 }

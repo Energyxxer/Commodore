@@ -1,7 +1,6 @@
-package com.energyxxer.commodore.score.operations;
+package com.energyxxer.commodore.score;
 
-import com.energyxxer.commodore.score.Objective;
-import com.energyxxer.commodore.score.ScoreManager;
+import com.energyxxer.commodore.score.access.ScoreAccessLog;
 
 public class LocalScore {
     private Objective objective;

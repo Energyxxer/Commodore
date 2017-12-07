@@ -1,4 +1,6 @@
-package com.energyxxer.commodore.score.operations;
+package com.energyxxer.commodore.score.access;
+
+import com.energyxxer.commodore.score.LocalScore;
 
 public class ScoreboardAccess {
 

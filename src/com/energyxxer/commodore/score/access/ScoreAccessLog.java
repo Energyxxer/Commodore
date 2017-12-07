@@ -1,4 +1,7 @@
-package com.energyxxer.commodore.score.operations;
+package com.energyxxer.commodore.score.access;
+
+import com.energyxxer.commodore.score.LocalScore;
+import com.energyxxer.commodore.commands.scoreboard.ScoreboardManipulation;
 
 import java.util.ArrayList;
 
@@ -12,11 +15,11 @@ public class ScoreAccessLog {
         this.parent = parent;
     }
 
-    void filterManipulation(ScoreboardManipulation manipulation) {
+    public void filterManipulation(ScoreboardManipulation manipulation) {
         manipulation.getAccesses().forEach(this::filterAccess);
     }
 
-    void filterAccess(ScoreboardAccess access) {
+    private void filterAccess(ScoreboardAccess access) {
         if(access.getScore() == parent && !history.contains(access)) history.add(access);
     }
 

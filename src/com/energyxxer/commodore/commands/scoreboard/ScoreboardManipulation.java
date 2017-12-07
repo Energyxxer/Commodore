@@ -1,13 +1,14 @@
-package com.energyxxer.commodore.score.operations;
+package com.energyxxer.commodore.commands.scoreboard;
 
-import com.energyxxer.commodore.functions.Function;
-import com.energyxxer.commodore.functions.FunctionWriter;
+import com.energyxxer.commodore.Command;
+import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-public abstract class ScoreboardManipulation implements FunctionWriter {
+public abstract class ScoreboardManipulation implements Command {
 
     private ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
 
@@ -39,11 +40,11 @@ public abstract class ScoreboardManipulation implements FunctionWriter {
         return true;
     }
 
-    public abstract String getOperationContent(Function function);
+    public abstract String getOperationContent(Entity sender);
 
     @Override
-    public String toFunctionContent(Function function) {
-        return (isUsed()) ? getOperationContent(function) : "# [ REMOVED ]";
+    public String getRawCommand(Entity sender) {
+        return (isUsed()) ? getOperationContent(sender) : "# [ REMOVED ]";
     }
 
     @Override
