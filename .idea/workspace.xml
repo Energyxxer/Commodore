@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4748290-07e4-4f66-a1b0-dbbd9f36cabc" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/LocalScore.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/LocalScore.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScoreAccessLog.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/access/ScoreAccessLog.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScoreAdd.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreAdd.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScoreGet.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreGet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScorePlayersOperation.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScorePlayersOperation.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScoreSet.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreSet.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScoreboardAccess.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/access/ScoreboardAccess.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScoreboardManipulation.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreboardManipulation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/ObjectiveManager.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/ObjectiveManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/ScoreTextComponent.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/ScoreTextComponent.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CommandTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CommandTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="80" column="33" lean-forward="true" selection-start-line="80" selection-start-column="33" selection-end-line="80" selection-end-column="33" />
+            <state relative-caret-position="198">
+              <caret line="108" column="139" lean-forward="false" selection-start-line="108" selection-start-column="139" selection-end-line="108" selection-end-column="139" />
               <folding />
             </state>
           </provider>
@@ -54,18 +46,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-6">
               <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataRemoveCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataRemoveCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,7 +79,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScoreboardManipulation.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScoreboardManipulation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreboardManipulation.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="510">
@@ -112,12 +92,48 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="LocalScore.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/score/LocalScore.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/Command.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScoreGet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreGet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="16" column="51" lean-forward="false" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+              <folding>
+                <element signature="e#523#524#0" expanded="true" />
+                <element signature="e#568#569#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScoreTextComponent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/ScoreTextComponent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="25" column="91" lean-forward="false" selection-start-line="25" selection-start-column="91" selection-end-line="25" selection-end-column="91" />
+              <folding>
+                <element signature="e#282#283#0" expanded="true" />
+                <element signature="e#316#317#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -158,7 +174,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/energyxxer/mctech/types/ItemType.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/mctech/types/EffectType.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/mctech/commands/KillCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/mctech/commands/EffectCommand.java" />
@@ -201,7 +216,6 @@
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataGetCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataRemoveCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataMergeCommand.java" />
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScoreAccessLog.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/score/access/ScoreAccessLog.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreAdd.java" />
@@ -209,6 +223,8 @@
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreSet.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScorePlayersOperation.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreboardManipulation.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/ScoreTextComponent.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" />
       </list>
     </option>
   </component>
@@ -326,6 +342,15 @@
               <item name="commodore" type="462c0819:PsiDirectoryNode" />
               <item name="score" type="462c0819:PsiDirectoryNode" />
               <item name="access" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Commodore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Commodore" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="energyxxer" type="462c0819:PsiDirectoryNode" />
+              <item name="commodore" type="462c0819:PsiDirectoryNode" />
+              <item name="textcomponents" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -534,7 +559,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512659515924</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Turned ScoreboardManipulation into commands">
+      <created>1512660443707</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1512660443708</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -549,7 +581,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32935917" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32935917" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -583,7 +615,9 @@
     <MESSAGE value="Added CommandModule" />
     <MESSAGE value="A revolutionary new Function toString (sorry)" />
     <MESSAGE value="Split DataCommand into three subclasses" />
-    <option name="LAST_COMMIT_MESSAGE" value="Split DataCommand into three subclasses" />
+    <MESSAGE value="Turned ScoreboardManipulation into commands" />
+    <MESSAGE value="Made ScoreTextComponent utilize LocalScore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made ScoreTextComponent utilize LocalScore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -592,13 +626,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/execute/ExecuteModifier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="21" lean-forward="false" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/execute/ExecuteAsEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -792,16 +819,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/score/LocalScore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="15" column="55" lean-forward="false" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/score/Objective.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -927,39 +944,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="80" column="33" lean-forward="true" selection-start-line="80" selection-start-column="33" selection-end-line="80" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreAdd.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <marker date="1512660377167" expanded="true" signature="422:735" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/score/access/ScoreAccessLog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreGet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="51" lean-forward="false" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
-          <folding>
-            <element signature="e#523#524#0" expanded="true" />
-            <element signature="e#568#569#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -982,11 +972,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/score/access/ScoreAccessLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/Command.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="6" column="20" lean-forward="true" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreGet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" column="51" lean-forward="false" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+          <folding>
+            <element signature="e#523#524#0" expanded="true" />
+            <element signature="e#568#569#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -998,6 +1007,33 @@
             <element signature="e#1507#1508#0" expanded="true" />
             <element signature="e#1588#1589#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/score/LocalScore.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="6" column="26" lean-forward="true" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/ScoreTextComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="25" column="91" lean-forward="false" selection-start-line="25" selection-start-column="91" selection-end-line="25" selection-end-column="91" />
+          <folding>
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#316#317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="108" column="139" lean-forward="false" selection-start-line="108" selection-start-column="139" selection-end-line="108" selection-end-column="139" />
+          <folding />
         </state>
       </provider>
     </entry>

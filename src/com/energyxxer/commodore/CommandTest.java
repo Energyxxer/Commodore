@@ -1,19 +1,21 @@
 package com.energyxxer.commodore;
 
+import com.energyxxer.commodore.commands.TellrawCommand;
+import com.energyxxer.commodore.commands.scoreboard.ScoreGet;
+import com.energyxxer.commodore.commands.scoreboard.ScorePlayersOperation;
+import com.energyxxer.commodore.commands.scoreboard.ScoreSet;
+import com.energyxxer.commodore.commands.scoreboard.ScoreboardManipulation;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.functions.FunctionHeaderComment;
 import com.energyxxer.commodore.project.CommandModule;
-import com.energyxxer.commodore.score.ObjectiveManager;
 import com.energyxxer.commodore.score.LocalScore;
-import com.energyxxer.commodore.commands.scoreboard.ScoreGet;
-import com.energyxxer.commodore.commands.scoreboard.ScorePlayersOperation;
-import com.energyxxer.commodore.commands.scoreboard.ScoreSet;
-import com.energyxxer.commodore.commands.scoreboard.ScoreboardManipulation;
+import com.energyxxer.commodore.score.ObjectiveManager;
 import com.energyxxer.commodore.selector.Selector;
 import com.energyxxer.commodore.selector.TagArgument;
 import com.energyxxer.commodore.selector.TypeArgument;
+import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
 
 public final class CommandTest {
     public static void main(String[] args) {
@@ -103,6 +105,8 @@ public final class CommandTest {
         function.append(op1);
         //function.append(op2);
         function.append(op3);
+
+        function.append(new TellrawCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new ScoreTextComponent(b)));
 
         module.compile();
 

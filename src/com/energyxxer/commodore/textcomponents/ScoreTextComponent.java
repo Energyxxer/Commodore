@@ -1,20 +1,17 @@
 package com.energyxxer.commodore.textcomponents;
 
 import com.energyxxer.commodore.CommandUtils;
-import com.energyxxer.commodore.score.ScoreHolder;
+import com.energyxxer.commodore.score.LocalScore;
 
 public class ScoreTextComponent extends TextComponent {
-    private ScoreHolder name;
-    private String objective;
+    private LocalScore score;
 
-    public ScoreTextComponent(ScoreHolder name, String objective) {
-        this.name = name;
-        this.objective = objective;
+    public ScoreTextComponent(LocalScore score) {
+        this.score = score;
     }
 
-    public ScoreTextComponent(ScoreHolder name, String objective, TextStyle style) {
-        this.name = name;
-        this.objective = objective;
+    public ScoreTextComponent(LocalScore score, TextStyle style) {
+        this.score = score;
         this.setStyle(style);
     }
 
@@ -25,8 +22,8 @@ public class ScoreTextComponent extends TextComponent {
 
     @Override
     public String toString(TextComponent parent) {
-        String escapedName = "\"" + CommandUtils.escape(name.getReference()) + "\"";
-        String escapedObjective = "\"" + CommandUtils.escape(objective) + "\"";
+        String escapedName = "\"" + CommandUtils.escape(score.getParent().getHolder().getReference()) + "\"";
+        String escapedObjective = "\"" + CommandUtils.escape(score.getObjective().getName()) + "\"";
         String baseProperties = this.getBaseProperties(parent);
         return "{\"score\":{\"name\":" +
                 escapedName +
