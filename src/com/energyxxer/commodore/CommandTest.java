@@ -106,6 +106,8 @@ public final class CommandTest {
 
         module.compile();
 
+        System.out.println(function);
+
         System.out.println(function.getResolvedContent());
 
         System.out.println(a.getAccessLog());

@@ -67,4 +67,9 @@ public class Function {
         }
         return resolvedContent;
     }
+
+    @Override
+    public String toString() {
+        return "[Function " + name + " : " + content.size() + " " + ((content.size() == 1) ? "entry" : "entries") + "]";
+    }
 }
