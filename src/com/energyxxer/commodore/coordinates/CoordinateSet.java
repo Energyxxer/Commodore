@@ -24,9 +24,13 @@ public class CoordinateSet implements ExecuteModifier {
         this(new Coordinate(type, x), new Coordinate(type, y), new Coordinate(type, z));
     }
 
+    public String getAs(Coordinate.DisplayMode mode) {
+        return x.getAs(mode) + " " + y.getAs(mode) + " " + z.getAs(mode);
+    }
+
     @Override
     public String toString() {
-        return x + " " + y + " " + z;
+        return getAs(Coordinate.DisplayMode.ENTITY_POS);
     }
 
     @Override

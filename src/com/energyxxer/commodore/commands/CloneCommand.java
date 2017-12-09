@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.Command;
+import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
 
@@ -31,7 +32,7 @@ public class CloneCommand implements Command {
     }
 
     private String getBase() {
-        return "clone " + source1 + " " + source2 + " " + destination;
+        return "clone " + source1.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + source2.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + destination.getAs(Coordinate.DisplayMode.BLOCK_POS);
     }
 
     protected String getMaskExtra() {

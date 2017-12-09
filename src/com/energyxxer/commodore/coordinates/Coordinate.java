@@ -11,6 +11,20 @@ public class Coordinate {
         }
     }
 
+    public enum DisplayMode {
+        BLOCK_POS(true), ENTITY_POS(false);
+
+        boolean truncate;
+
+        DisplayMode(boolean truncate) {
+            this.truncate = truncate;
+        }
+
+        public boolean doTruncate() {
+            return truncate;
+        }
+    }
+
     private Type type;
     private double coord;
 
@@ -47,8 +61,23 @@ public class Coordinate {
         return type == Type.ABSOLUTE || coord == 0;
     }
 
+    public String getAs(DisplayMode mode) {
+        double num = coord;
+
+        if(mode.doTruncate() && type == Type.ABSOLUTE) num = Math.floor(num);
+
+        String numStr;
+
+        if((mode.doTruncate() && type == Type.ABSOLUTE) || (num % 1 == 0 && type != Type.ABSOLUTE)) numStr = String.valueOf((int) num);
+        else numStr = String.valueOf(num);
+
+        if(num == 0 && type != Type.ABSOLUTE) numStr = "";
+
+        return type.prefix + numStr;
+    }
+
     @Override
     public String toString() {
-        return type.prefix + ((coord % 1 == 0 && type != Type.ABSOLUTE) ? ((coord != 0) ? String.valueOf((int) coord) : "") : String.valueOf(coord));
+        return getAs(DisplayMode.ENTITY_POS);
     }
 }
