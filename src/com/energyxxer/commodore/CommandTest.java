@@ -1,8 +1,15 @@
 package com.energyxxer.commodore;
 
+import com.energyxxer.commodore.block.Block;
 import com.energyxxer.commodore.commands.CloneCommand;
 import com.energyxxer.commodore.commands.CloneFilteredCommand;
 import com.energyxxer.commodore.commands.CloneMaskedCommand;
+import com.energyxxer.commodore.commands.FillCommand;
+import com.energyxxer.commodore.commands.FillDestroyCommand;
+import com.energyxxer.commodore.commands.FillHollowCommand;
+import com.energyxxer.commodore.commands.FillKeepCommand;
+import com.energyxxer.commodore.commands.FillOutlineCommand;
+import com.energyxxer.commodore.commands.FillReplaceCommand;
 import com.energyxxer.commodore.commands.TellrawCommand;
 import com.energyxxer.commodore.commands.scoreboard.ScoreGet;
 import com.energyxxer.commodore.commands.scoreboard.ScorePlayersOperation;
@@ -121,8 +128,20 @@ public final class CommandTest {
         function.append(new CloneCommand(new CoordinateSet(0.5,0.5,0.5),new CoordinateSet(2.5,2.5,2.5, Coordinate.Type.RELATIVE),new CoordinateSet(5,5,5), CloneCommand.SourceMode.FORCE));
         function.append(new CloneMaskedCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5)));
         function.append(new CloneMaskedCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5), CloneCommand.SourceMode.FORCE));
-        function.append(new CloneFilteredCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5), new BlockType("#minecraft:buttons")));
-        function.append(new CloneFilteredCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5), new BlockType("#minecraft:buttons"), CloneCommand.SourceMode.FORCE));
+        function.append(new CloneFilteredCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5), new Block(new BlockType("#minecraft:buttons"))));
+        function.append(new CloneFilteredCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5), new Block(new BlockType("#minecraft:buttons")), CloneCommand.SourceMode.FORCE));
+
+        function.append(new FunctionComment("FILL COMMANDS"));
+
+        CoordinateSet pos1 = new CoordinateSet(23, 40, -934);
+        CoordinateSet pos2 = new CoordinateSet(49, 49, -920);
+
+        function.append(new FillCommand(pos1, pos2, new Block(new BlockType("minecraft:command_block"))));
+        function.append(new FillDestroyCommand(pos1, pos2, new Block(new BlockType("minecraft:air"))));
+        function.append(new FillOutlineCommand(pos1, pos2, new Block(new BlockType("minecraft:white_concrete"))));
+        function.append(new FillHollowCommand(pos1, pos2, new Block(new BlockType("minecraft:blue_concrete"))));
+        function.append(new FillKeepCommand(pos1, pos2, new Block(new BlockType("minecraft:fire"))));
+        function.append(new FillReplaceCommand(pos1, pos2, new Block(new BlockType("minecraft:spruce_planks")), new Block(new BlockType("minecraft:oak_planks"))));
 
         module.compile();
 
