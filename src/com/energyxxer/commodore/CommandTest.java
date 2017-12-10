@@ -4,6 +4,8 @@ import com.energyxxer.commodore.block.Block;
 import com.energyxxer.commodore.commands.CloneCommand;
 import com.energyxxer.commodore.commands.CloneFilteredCommand;
 import com.energyxxer.commodore.commands.CloneMaskedCommand;
+import com.energyxxer.commodore.commands.EffectClearCommand;
+import com.energyxxer.commodore.commands.EffectGiveCommand;
 import com.energyxxer.commodore.commands.FillCommand;
 import com.energyxxer.commodore.commands.FillDestroyCommand;
 import com.energyxxer.commodore.commands.FillHollowCommand;
@@ -18,6 +20,7 @@ import com.energyxxer.commodore.commands.scoreboard.ScoreSet;
 import com.energyxxer.commodore.commands.scoreboard.ScoreboardManipulation;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
+import com.energyxxer.commodore.effect.StatusEffect;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.functions.Function;
@@ -31,6 +34,7 @@ import com.energyxxer.commodore.selector.TagArgument;
 import com.energyxxer.commodore.selector.TypeArgument;
 import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
 import com.energyxxer.commodore.types.BlockType;
+import com.energyxxer.commodore.types.EffectType;
 import com.energyxxer.commodore.types.Gamemode;
 
 public final class CommandTest {
@@ -148,6 +152,9 @@ public final class CommandTest {
         function.append(new FunctionComment("OTHERS"));
 
         function.append(new GamemodeCommand(new Gamemode("spectator"), new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
+        function.append(new EffectGiveCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new StatusEffect(new EffectType("minecraft:resistance"),100,4)));
+        function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new EffectType("minecraft:resistance")));
+        function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
 
         module.compile();
 
