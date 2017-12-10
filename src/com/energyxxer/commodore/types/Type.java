@@ -25,9 +25,13 @@ public abstract class Type {
         }
     }
 
+    public boolean useNamespace() {
+        return true;
+    }
+
     @Override
     public String toString() {
-        return namespace + ':' + id;
+        return ((useNamespace()) ? (namespace + ':') : "") + id;
     }
 
     @Override
@@ -37,7 +41,7 @@ public abstract class Type {
 
         Type otherType = (Type) o;
 
-        return namespace.equals(otherType.namespace) && id.equals(otherType.id);
+        return (!useNamespace() || namespace.equals(otherType.namespace)) && id.equals(otherType.id);
     }
 
     @Override

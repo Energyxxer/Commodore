@@ -10,6 +10,7 @@ import com.energyxxer.commodore.commands.FillHollowCommand;
 import com.energyxxer.commodore.commands.FillKeepCommand;
 import com.energyxxer.commodore.commands.FillOutlineCommand;
 import com.energyxxer.commodore.commands.FillReplaceCommand;
+import com.energyxxer.commodore.commands.GamemodeCommand;
 import com.energyxxer.commodore.commands.TellrawCommand;
 import com.energyxxer.commodore.commands.scoreboard.ScoreGet;
 import com.energyxxer.commodore.commands.scoreboard.ScorePlayersOperation;
@@ -30,6 +31,7 @@ import com.energyxxer.commodore.selector.TagArgument;
 import com.energyxxer.commodore.selector.TypeArgument;
 import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
 import com.energyxxer.commodore.types.BlockType;
+import com.energyxxer.commodore.types.Gamemode;
 
 public final class CommandTest {
     public static void main(String[] args) {
@@ -142,6 +144,10 @@ public final class CommandTest {
         function.append(new FillHollowCommand(pos1, pos2, new Block(new BlockType("minecraft:blue_concrete"))));
         function.append(new FillKeepCommand(pos1, pos2, new Block(new BlockType("minecraft:fire"))));
         function.append(new FillReplaceCommand(pos1, pos2, new Block(new BlockType("minecraft:spruce_planks")), new Block(new BlockType("minecraft:oak_planks"))));
+
+        function.append(new FunctionComment("OTHERS"));
+
+        function.append(new GamemodeCommand(new Gamemode("spectator"), new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
 
         module.compile();
 
