@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4748290-07e4-4f66-a1b0-dbbd9f36cabc" name="Default" comment="Added DifficultyCommand">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/SetWorldSpawnCommand.java" />
+    <list default="true" id="c4748290-07e4-4f66-a1b0-dbbd9f36cabc" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/SpawnpointCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -57,7 +57,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SetWorldSpawnCommand.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SetWorldSpawnCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/SetWorldSpawnCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
@@ -65,6 +65,18 @@
               <folding>
                 <element signature="e#387#388#0" expanded="true" />
                 <element signature="e#417#418#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpawnpointCommand.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/SpawnpointCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="19" column="112" lean-forward="true" selection-start-line="19" selection-start-column="112" selection-end-line="19" selection-end-column="112" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -128,20 +140,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FillCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/FillCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#632#633#0" expanded="true" />
-                <element signature="e#657#658#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Command.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/Command.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -188,7 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScoreHistory.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScoreAdd.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScoreGet.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScoreSet.java" />
@@ -239,6 +236,7 @@
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DefaultGamemodeCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultyCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/SetWorldSpawnCommand.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/SpawnpointCommand.java" />
       </list>
     </option>
   </component>
@@ -630,7 +628,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512865469014</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added SetWorldSpawnCommand">
+      <created>1512865648047</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1512865648048</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -690,7 +695,8 @@
     <MESSAGE value="Added GamemodeCommand" />
     <MESSAGE value="Added DefaultGamemodeCommand" />
     <MESSAGE value="Added DifficultyCommand" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added DifficultyCommand" />
+    <MESSAGE value="Added SetWorldSpawnCommand" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added SetWorldSpawnCommand" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -699,13 +705,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionWriter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="30" lean-forward="false" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_111/src.zip!/java/util/Arrays.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
@@ -1219,6 +1218,16 @@
           <folding>
             <element signature="e#387#388#0" expanded="true" />
             <element signature="e#417#418#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/SpawnpointCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="19" column="112" lean-forward="true" selection-start-line="19" selection-start-column="112" selection-end-line="19" selection-end-column="112" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
