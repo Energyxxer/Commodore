@@ -14,7 +14,11 @@ import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.functions.FunctionComment;
 import com.energyxxer.commodore.functions.FunctionHeaderComment;
+import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.module.CommandModule;
+import com.energyxxer.commodore.nbt.TagByte;
+import com.energyxxer.commodore.nbt.TagCompound;
+import com.energyxxer.commodore.nbt.TagShort;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.ObjectiveManager;
 import com.energyxxer.commodore.selector.AdvancementArgument;
@@ -28,6 +32,7 @@ import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
 import com.energyxxer.commodore.types.BlockType;
 import com.energyxxer.commodore.types.EffectType;
 import com.energyxxer.commodore.types.Gamemode;
+import com.energyxxer.commodore.types.ItemType;
 
 public final class CommandTest {
     public static void main(String[] args) {
@@ -117,6 +122,8 @@ public final class CommandTest {
         function.append(new AdvancementCommand(AdvancementCommand.Action.GRANT, player, AdvancementCommand.Limit.ONLY, "bar"));
 
         function.append(new ExperienceSetCommand(player, 5, ExperienceCommand.Unit.LEVELS));
+
+        function.append(new GiveCommand(player, new Item(new ItemType("minecraft:diamond_sword"),new TagCompound(new TagByte("Unbreakable",1),new TagShort("Damage",4))), 3));
 
         function.append(new FunctionHeaderComment("SCOREBOARD ACCESS OPTIMIZATION"));
 

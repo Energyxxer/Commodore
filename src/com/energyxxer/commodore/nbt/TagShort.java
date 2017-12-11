@@ -3,13 +3,13 @@ package com.energyxxer.commodore.nbt;
 public class TagShort extends NBTTag {
     private short value;
 
-    public TagShort(short value) {
+    public TagShort(int value) {
         this("", value);
     }
 
-    public TagShort(String name, short value) {
+    public TagShort(String name, int value) {
         super(name);
-        this.value = value;
+        this.value = (short) value;
     }
 
     @Override

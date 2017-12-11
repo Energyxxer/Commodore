@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4748290-07e4-4f66-a1b0-dbbd9f36cabc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GameruleCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GameruleQueryCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GameruleSetCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GiveCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/TagShort.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/TagShort.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,14 +20,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CommandTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CommandTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="118" column="92" lean-forward="false" selection-start-line="118" selection-start-column="92" selection-end-line="118" selection-end-column="92" />
+            <state relative-caret-position="282">
+              <caret line="126" column="0" lean-forward="true" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TagShort.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/TagShort.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -55,7 +65,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameruleQueryCommand.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameruleQueryCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GameruleQueryCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
@@ -70,29 +80,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataPackEnableCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackEnableCommand.java">
+      <file leaf-file-name="GiveCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GiveCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+            <state relative-caret-position="408">
+              <caret line="24" column="100" lean-forward="false" selection-start-line="24" selection-start-column="100" selection-end-line="24" selection-end-column="100" />
               <folding>
-                <element signature="e#328#329#0" expanded="true" />
-                <element signature="e#390#391#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DataPackDisableCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackDisableCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
-              <folding>
-                <element signature="e#228#229#0" expanded="true" />
-                <element signature="e#260#261#0" expanded="true" />
-                <element signature="e#324#325#0" expanded="true" />
-                <element signature="e#373#374#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#346#347#0" expanded="true" />
+                <element signature="e#383#384#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -174,8 +170,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/FunctionCommand.java" />
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/CloneReplaceCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/CloneMaskedCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/coordinates/CoordinateSet.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/CloneCommand.java" />
@@ -221,10 +215,12 @@
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/ExperienceQueryCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/ExperienceAddCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/ExperienceSetCommand.java" />
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GameruleCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GameruleSetCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GameruleQueryCommand.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GiveCommand.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/TagShort.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" />
       </list>
     </option>
   </component>
@@ -815,7 +811,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513026578302</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Added GameruleCommand and variants">
+      <created>1513026704285</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1513026704285</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -830,7 +833,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32873806" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32873806" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -857,7 +860,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added CommandModule" />
     <MESSAGE value="A revolutionary new Function toString (sorry)" />
     <MESSAGE value="Split DataCommand into three subclasses" />
     <MESSAGE value="Turned ScoreboardManipulation into commands" />
@@ -882,7 +884,8 @@
     <MESSAGE value="Added DifficultyQueryCommand" />
     <MESSAGE value="Added DataPackCommand and variants" />
     <MESSAGE value="Added ExperienceCommand and variants" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added ExperienceCommand and variants" />
+    <MESSAGE value="Added GameruleCommand and variants" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added GameruleCommand and variants" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -891,27 +894,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/FillReplaceCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="37" lean-forward="true" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/FillDestroyCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#286#287#0" expanded="false" />
-            <element signature="e#326#327#0" expanded="false" />
-            <element signature="e#379#380#0" expanded="false" />
-            <element signature="e#412#413#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/FillKeepCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1323,16 +1305,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="118" column="92" lean-forward="false" selection-start-line="118" selection-start-column="92" selection-end-line="118" selection-end-column="92" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GameruleCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1361,6 +1333,36 @@
             <element signature="e#272#273#0" expanded="true" />
             <element signature="e#336#337#0" expanded="true" />
             <element signature="e#381#382#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GiveCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="100" lean-forward="false" selection-start-line="24" selection-start-column="100" selection-end-line="24" selection-end-column="100" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#346#347#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/TagShort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="27" lean-forward="false" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="126" column="0" lean-forward="true" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
