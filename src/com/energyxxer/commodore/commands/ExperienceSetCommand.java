@@ -16,6 +16,6 @@ public class ExperienceSetCommand extends ExperienceCommand {
 
     @Override
     public String getRawCommand(Entity sender) {
-        return "experience set " + player.getSelectorAs(sender) + " " + amount + " " + unit.toString().toLowerCase();
+        return "xp set " + player.getSelectorAs(sender) + " " + amount + " " + unit.toString().toLowerCase();
     }
 }
