@@ -28,6 +28,18 @@ public class CoordinateSet implements ExecuteModifier {
         return x.getAs(mode) + " " + y.getAs(mode) + " " + z.getAs(mode);
     }
 
+    public Coordinate getX() {
+        return x;
+    }
+
+    public Coordinate getY() {
+        return y;
+    }
+
+    public Coordinate getZ() {
+        return z;
+    }
+
     @Override
     public String toString() {
         return getAs(Coordinate.DisplayMode.ENTITY_POS);
