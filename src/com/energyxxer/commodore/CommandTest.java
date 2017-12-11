@@ -116,6 +116,8 @@ public final class CommandTest {
 
         function.append(new AdvancementCommand(AdvancementCommand.Action.GRANT, player, AdvancementCommand.Limit.ONLY, "bar"));
 
+        function.append(new ExperienceSetCommand(player, 5, ExperienceCommand.Unit.LEVELS));
+
         function.append(new FunctionHeaderComment("SCOREBOARD ACCESS OPTIMIZATION"));
 
         LocalScore a = new LocalScore(objMgr.get("A"), entity.getScoreManager());
