@@ -1,6 +1,6 @@
 package com.energyxxer.commodore.functions;
 
-import com.energyxxer.commodore.project.CommandModule;
+import com.energyxxer.commodore.module.CommandModule;
 
 import java.util.HashMap;
 

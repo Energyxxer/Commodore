@@ -1,15 +1,17 @@
 package com.energyxxer.commodore.selector;
 
-public class SelectorNumberArgument {
-    private Integer min;
-    private Integer max;
+import com.energyxxer.commodore.CommandUtils;
 
-    public SelectorNumberArgument(Integer min, Integer max) {
+public class SelectorNumberArgument<T extends Number> {
+    private T min;
+    private T max;
+
+    public SelectorNumberArgument(T min, T max) {
         this.min = min;
         this.max = max;
     }
 
-    public SelectorNumberArgument(int value) {
+    public SelectorNumberArgument(T value) {
         this.min = value;
         this.max = value;
     }
@@ -17,9 +19,9 @@ public class SelectorNumberArgument {
     @Override
     public String toString() {
         if(min != null && max != null && min.equals(max)) {
-            return String.valueOf(min);
+            return CommandUtils.toString(min.doubleValue());
         } else {
-            return ((min != null) ? ""+min : "") + ".." + ((max != null) ? ""+max : "");
+            return ((min != null) ? CommandUtils.toString(min.doubleValue()) : "") + ".." + ((max != null) ? "" + CommandUtils.toString(max.doubleValue()) : "");
         }
     }
 }

@@ -8,8 +8,22 @@ public final class CommandUtils {
     public static final String DEFAULT_NAMESPACE = "minecraft";
     public static final String NAMESPACE_ID_SEPARATOR = ":";
 
+    private static final String ALPHANUMERIC_CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_";
+
     public static String escape(String str) {
         return str.replace("\\","\\\\").replace("\"","\\\"");
+    }
+
+    public static String escapeIfNecessary(String str) {
+        if(!needsEscaping(str)) return str;
+        else return "\"" + escape(str) + "\"";
+    }
+
+    public static boolean needsEscaping(String str) {
+        for(char c : str.toCharArray()) {
+            if(!ALPHANUMERIC_CHARACTERS.contains(c+"")) return false;
+        }
+        return true;
     }
 
     public static String toString(double num) {

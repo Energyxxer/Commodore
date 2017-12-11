@@ -1,6 +1,6 @@
 package com.energyxxer.commodore.score;
 
-import com.energyxxer.commodore.project.CommandModule;
+import com.energyxxer.commodore.module.CommandModule;
 
 import java.util.ArrayList;
 import java.util.HashMap;

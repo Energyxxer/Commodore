@@ -1,4 +1,4 @@
-package com.energyxxer.commodore.project;
+package com.energyxxer.commodore.module;
 
 import com.energyxxer.commodore.functions.FunctionManager;
 import com.energyxxer.commodore.score.ObjectiveManager;

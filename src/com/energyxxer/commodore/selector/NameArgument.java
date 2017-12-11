@@ -2,22 +2,22 @@ package com.energyxxer.commodore.selector;
 
 import com.energyxxer.commodore.CommandUtils;
 
-public class TagArgument implements SelectorArgument {
-    private String tag;
+public class NameArgument implements SelectorArgument {
+    private String name;
     private boolean negated;
 
-    public TagArgument(String tag) {
-        if(tag.startsWith("!")) {
-            this.tag = tag.substring(1);
+    public NameArgument(String name) {
+        if(name.startsWith("!")) {
+            this.name = name.substring(1);
             this.negated = true;
         } else {
-            this.tag = tag;
+            this.name = name;
             this.negated = false;
         }
     }
 
-    public String getTag() {
-        return tag;
+    public String getName() {
+        return name;
     }
 
     public boolean isNegated() {
@@ -26,7 +26,7 @@ public class TagArgument implements SelectorArgument {
 
     @Override
     public String getArgumentString() {
-        return "tag=" + (negated ? "!" : "") + CommandUtils.escapeIfNecessary(tag);
+        return "name=" + (negated ? "!" : "") + CommandUtils.escapeIfNecessary(name);
     }
 
     @Override

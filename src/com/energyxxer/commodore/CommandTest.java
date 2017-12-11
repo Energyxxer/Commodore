@@ -26,7 +26,7 @@ import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.functions.FunctionComment;
 import com.energyxxer.commodore.functions.FunctionHeaderComment;
-import com.energyxxer.commodore.project.CommandModule;
+import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.ObjectiveManager;
 import com.energyxxer.commodore.selector.Selector;

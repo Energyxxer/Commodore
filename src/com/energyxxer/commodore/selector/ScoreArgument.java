@@ -6,9 +6,9 @@ import java.util.Map;
 
 public class ScoreArgument implements SelectorArgument {
 
-    private HashMap<String, SelectorNumberArgument> scores = new HashMap<>();
+    private HashMap<String, SelectorNumberArgument<Integer>> scores = new HashMap<>();
 
-    public ScoreArgument(HashMap<String, SelectorNumberArgument> scores) {
+    public ScoreArgument(HashMap<String, SelectorNumberArgument<Integer>> scores) {
         this.scores = scores;
     }
 
@@ -19,9 +19,9 @@ public class ScoreArgument implements SelectorArgument {
     @Override
     public String getArgumentString() {
         StringBuilder sb = new StringBuilder("score={");
-        Iterator<Map.Entry<String, SelectorNumberArgument>> it = this.scores.entrySet().iterator();
+        Iterator<Map.Entry<String, SelectorNumberArgument<Integer>>> it = this.scores.entrySet().iterator();
         while(it.hasNext()) {
-            Map.Entry<String, SelectorNumberArgument> entry = it.next();
+            Map.Entry<String, SelectorNumberArgument<Integer>> entry = it.next();
 
             sb.append(entry.getKey());
             sb.append('=');
