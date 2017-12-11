@@ -12,10 +12,10 @@ public class AdvancementCommand implements Command {
     public enum Limit {
         EVERYTHING(false), FROM(true), ONLY(true), THROUGH(true), UNTIL(true);
 
-        private final boolean takeAdvancement;
+        private final boolean takesAdvancement;
 
-        Limit(boolean takeAdvancement) {
-            this.takeAdvancement = takeAdvancement;
+        Limit(boolean takesAdvancement) {
+            this.takesAdvancement = takesAdvancement;
         }
     }
 
@@ -26,7 +26,7 @@ public class AdvancementCommand implements Command {
 
     public AdvancementCommand(Action action, Entity player, Limit limit) {
         this(action, player, limit, null);
-        if(limit.takeAdvancement) throw new IllegalArgumentException("Limit '" + limit + "' requires an advancement parameter");
+        if(limit.takesAdvancement) throw new IllegalArgumentException("Limit '" + limit + "' requires an advancement parameter");
     }
 
     public AdvancementCommand(Action action, Entity player, Limit limit, String advancement) {
@@ -34,11 +34,11 @@ public class AdvancementCommand implements Command {
         this.player = player;
         this.limit = limit;
         this.advancement = advancement;
-        if(advancement != null && !limit.takeAdvancement) System.out.println("[Commodore] [NOTICE] Limit '" + limit + "' doesn't require an advancement parameter, yet '" + advancement + "' was passed");
+        if(advancement != null && !limit.takesAdvancement) System.out.println("[Commodore] [NOTICE] Limit '" + limit + "' doesn't require an advancement parameter, yet '" + advancement + "' was passed");
     }
 
     @Override
     public String getRawCommand(Entity sender) {
-        return "advancement " + action.toString().toLowerCase() + " " + player.getSelectorAs(sender) + " " + limit.toString().toLowerCase() + ((limit.takeAdvancement) ? " " + advancement : "");
+        return "advancement " + action.toString().toLowerCase() + " " + player.getSelectorAs(sender) + " " + limit.toString().toLowerCase() + ((limit.takesAdvancement) ? " " + advancement : "");
     }
 }

@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4748290-07e4-4f66-a1b0-dbbd9f36cabc" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultyQueryCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultySetCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackDisableCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackEnableCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultyCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultyCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/AdvancementCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/AdvancementCommand.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,18 +21,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CommandTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="116" column="127" lean-forward="false" selection-start-line="116" selection-start-column="127" selection-end-line="116" selection-end-column="127" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AdvancementCriterionEntry.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCriterionEntry.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -73,39 +62,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Item.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/item/Item.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClearCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/ClearCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="110" lean-forward="false" selection-start-line="24" selection-start-column="110" selection-end-line="24" selection-end-column="110" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#351#352#0" expanded="true" />
-                <element signature="e#389#390#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AdvancementCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/AdvancementCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="41" column="139" lean-forward="false" selection-start-line="41" selection-start-column="139" selection-end-line="41" selection-end-column="139" />
+            <state relative-caret-position="466">
+              <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#432#433#0" expanded="true" />
-                <element signature="e#494#495#0" expanded="true" />
+                <element signature="e#434#435#0" expanded="true" />
+                <element signature="e#498#499#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,7 +100,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DifficultySetCommand.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DifficultySetCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultySetCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
@@ -144,6 +109,44 @@
                 <element signature="e#404#405#0" expanded="true" />
                 <element signature="e#453#454#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataPackEnableCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackEnableCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+              <folding>
+                <element signature="e#328#329#0" expanded="true" />
+                <element signature="e#390#391#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataPackDisableCommand.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackDisableCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+              <folding>
+                <element signature="e#228#229#0" expanded="true" />
+                <element signature="e#260#261#0" expanded="true" />
+                <element signature="e#324#325#0" expanded="true" />
+                <element signature="e#373#374#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataPackCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -184,9 +187,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataRemoveCommand.java" />
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataMergeCommand.java" />
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScoreAccessLog.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/score/access/ScoreAccessLog.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreAdd.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreGet.java" />
@@ -231,10 +231,13 @@
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/ClearCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/AdvancementGrantCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" />
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/AdvancementCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultyQueryCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultyCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultySetCommand.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackCommand.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackEnableCommand.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/AdvancementCommand.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackDisableCommand.java" />
       </list>
     </option>
   </component>
@@ -803,7 +806,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513024673614</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Added DifficultyQueryCommand">
+      <created>1513024803332</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1513024803332</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -845,7 +855,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Basic score usage optimization in functions" />
     <MESSAGE value="Score usage optimization across separate LocalScores" />
     <MESSAGE value="Removed deprecated optimization system" />
     <MESSAGE value="Added CommandModule" />
@@ -870,7 +879,8 @@
     <MESSAGE value="Added advancements selector argument" />
     <MESSAGE value="Added ClearCommand" />
     <MESSAGE value="Added AdvancementCommand" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added AdvancementCommand" />
+    <MESSAGE value="Added DifficultyQueryCommand" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added DifficultyQueryCommand" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -879,27 +889,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreboardManipulation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="46" column="68" lean-forward="false" selection-start-line="46" selection-start-column="68" selection-end-line="46" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/score/LocalScore.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="26" lean-forward="false" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/ScoreTextComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="25" column="91" lean-forward="false" selection-start-line="25" selection-start-column="91" selection-end-line="25" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/CloneReplaceCommand.java" />
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/CloneMaskedCommand.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1277,42 +1266,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/AdvancementArgument.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#962#963#0" expanded="true" />
-            <element signature="e#990#991#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/AdvancementCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="41" column="139" lean-forward="false" selection-start-line="41" selection-start-column="139" selection-end-line="41" selection-end-column="139" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#432#433#0" expanded="true" />
-            <element signature="e#494#495#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultyQueryCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="62" lean-forward="false" selection-start-line="5" selection-start-column="62" selection-end-line="5" selection-end-column="62" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#258#259#0" expanded="true" />
-            <element signature="e#293#294#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultyCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1328,6 +1281,74 @@
           <folding>
             <element signature="e#404#405#0" expanded="true" />
             <element signature="e#453#454#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultyQueryCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="62" lean-forward="false" selection-start-line="5" selection-start-column="62" selection-end-line="5" selection-end-column="62" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#258#259#0" expanded="true" />
+            <element signature="e#293#294#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/AdvancementArgument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#962#963#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/AdvancementCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="28" column="22" lean-forward="false" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#434#435#0" expanded="true" />
+            <element signature="e#498#499#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackEnableCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding>
+            <element signature="e#328#329#0" expanded="true" />
+            <element signature="e#390#391#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackDisableCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+          <folding>
+            <element signature="e#228#229#0" expanded="true" />
+            <element signature="e#260#261#0" expanded="true" />
+            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
           </folding>
         </state>
       </provider>
