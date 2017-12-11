@@ -29,10 +29,7 @@ import com.energyxxer.commodore.selector.advancement.AdvancementCompletionEntry;
 import com.energyxxer.commodore.selector.advancement.AdvancementCriterionEntry;
 import com.energyxxer.commodore.selector.advancement.AdvancementCriterionGroupEntry;
 import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
-import com.energyxxer.commodore.types.BlockType;
-import com.energyxxer.commodore.types.EffectType;
-import com.energyxxer.commodore.types.Gamemode;
-import com.energyxxer.commodore.types.ItemType;
+import com.energyxxer.commodore.types.*;
 
 public final class CommandTest {
     public static void main(String[] args) {
@@ -139,6 +136,8 @@ public final class CommandTest {
         function.append(new StopSoundCommand(player, PlaySoundCommand.Source.MASTER));
         function.append(new StopSoundCommand(player));
         function.append(new StopSoundCommand(player, null, "minecraft:ambient.cave"));
+
+        function.append(new SummonCommand(new EntityType("minecraft:bat"), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new TagCompound(new TagByte("Glowing",1))));
 
         function.append(new FunctionHeaderComment("SCOREBOARD ACCESS OPTIMIZATION"));
 
