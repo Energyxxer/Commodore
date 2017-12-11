@@ -1,19 +1,7 @@
 package com.energyxxer.commodore;
 
 import com.energyxxer.commodore.block.Block;
-import com.energyxxer.commodore.commands.CloneCommand;
-import com.energyxxer.commodore.commands.CloneFilteredCommand;
-import com.energyxxer.commodore.commands.CloneMaskedCommand;
-import com.energyxxer.commodore.commands.EffectClearCommand;
-import com.energyxxer.commodore.commands.EffectGiveCommand;
-import com.energyxxer.commodore.commands.FillCommand;
-import com.energyxxer.commodore.commands.FillDestroyCommand;
-import com.energyxxer.commodore.commands.FillHollowCommand;
-import com.energyxxer.commodore.commands.FillKeepCommand;
-import com.energyxxer.commodore.commands.FillOutlineCommand;
-import com.energyxxer.commodore.commands.FillReplaceCommand;
-import com.energyxxer.commodore.commands.GamemodeCommand;
-import com.energyxxer.commodore.commands.TellrawCommand;
+import com.energyxxer.commodore.commands.*;
 import com.energyxxer.commodore.commands.scoreboard.ScoreGet;
 import com.energyxxer.commodore.commands.scoreboard.ScorePlayersOperation;
 import com.energyxxer.commodore.commands.scoreboard.ScoreSet;
@@ -29,9 +17,13 @@ import com.energyxxer.commodore.functions.FunctionHeaderComment;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.ObjectiveManager;
+import com.energyxxer.commodore.selector.AdvancementArgument;
 import com.energyxxer.commodore.selector.Selector;
 import com.energyxxer.commodore.selector.TagArgument;
 import com.energyxxer.commodore.selector.TypeArgument;
+import com.energyxxer.commodore.selector.advancement.AdvancementCompletionEntry;
+import com.energyxxer.commodore.selector.advancement.AdvancementCriterionEntry;
+import com.energyxxer.commodore.selector.advancement.AdvancementCriterionGroupEntry;
 import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
 import com.energyxxer.commodore.types.BlockType;
 import com.energyxxer.commodore.types.EffectType;
@@ -111,6 +103,17 @@ public final class CommandTest {
         Entity entity = new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES));
         entity.getSelector().addArguments(new TypeArgument("bat"), new TagArgument("a"), new TagArgument("!b"));
 
+        Selector playerSelector = new Selector(Selector.BaseSelector.ALL_PLAYERS);
+        AdvancementArgument advArg = new AdvancementArgument();
+        advArg.addEntry(new AdvancementCompletionEntry("foo",true));
+        advArg.addEntry(new AdvancementCompletionEntry("bar",false));
+        AdvancementCriterionGroupEntry criterionGroup = new AdvancementCriterionGroupEntry("custom:something");
+        criterionGroup.addCriterion(new AdvancementCriterionEntry("criterion",true));
+        advArg.addEntry(criterionGroup);
+        playerSelector.addArguments(advArg);
+
+        Entity player = new GenericEntity(playerSelector);
+
         function.append(new FunctionHeaderComment("SCOREBOARD ACCESS OPTIMIZATION"));
 
         LocalScore a = new LocalScore(objMgr.get("A"), entity.getScoreManager());
@@ -126,7 +129,7 @@ public final class CommandTest {
         //function.append(op2);
         function.append(op3);
 
-        function.append(new TellrawCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new ScoreTextComponent(b)));
+        function.append(new TellrawCommand(player, new ScoreTextComponent(b)));
 
         function.append(new FunctionComment("CLONE COMMANDS"));
 

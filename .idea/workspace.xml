@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c4748290-07e4-4f66-a1b0-dbbd9f36cabc" name="Default" comment="">
+    <list default="true" id="c4748290-07e4-4f66-a1b0-dbbd9f36cabc" name="Default" comment="Added advancement">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/AdvancementArgument.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementArgumentEntry.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCompletionEntry.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCriterionEntry.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCriterionGroupEntry.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreAdd.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreAdd.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/TagList.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/TagList.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,16 +21,18 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="CommandTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1020">
-              <caret line="95" column="29" lean-forward="false" selection-start-line="95" selection-start-column="29" selection-end-line="95" selection-end-column="29" />
+            <state relative-caret-position="490">
+              <caret line="131" column="49" lean-forward="false" selection-start-line="131" selection-start-column="49" selection-end-line="131" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <marker date="1513014062451" expanded="true" signature="2181:9432" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -41,7 +50,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Coordinate.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Coordinate.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/coordinates/Coordinate.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
@@ -51,104 +60,75 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TitleCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/TitleCommand.java">
+      <file leaf-file-name="ScoreArgument.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/ScoreArgument.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
-              <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TitleTimesCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/TitleTimesCommand.java">
+      <file leaf-file-name="AdvancementArgumentEntry.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementArgumentEntry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="51" lean-forward="false" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FunctionManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="19" column="46" lean-forward="false" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1513014062451" expanded="false" signature="314:325" ph=" { " />
-                <marker date="1513014062451" expanded="false" signature="344:350" ph=" }" />
-                <marker date="1513014062451" expanded="true" signature="389:512" ph="{...}" />
-                <marker date="1513014062451" expanded="false" signature="554:565" ph=" { " />
-                <marker date="1513014062451" expanded="false" signature="600:606" ph=" }" />
-                <marker date="1513014062451" expanded="true" signature="648:809" ph="{...}" />
-                <marker date="1513014062451" expanded="true" signature="857:991" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Function.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/functions/Function.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="51">
+              <caret line="3" column="31" lean-forward="false" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ObjectiveManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/score/ObjectiveManager.java">
+      <file leaf-file-name="AdvancementCriterionEntry.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCriterionEntry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="47" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
+            <state relative-caret-position="238">
+              <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1513014062467" expanded="false" signature="412:423" ph=" { " />
-                <marker date="1513014062467" expanded="false" signature="442:448" ph=" }" />
-                <marker date="1513014062467" expanded="true" signature="488:613" ph="{...}" />
-                <marker date="1513014062467" expanded="true" signature="655:666" ph=" { " />
-                <marker date="1513014062467" expanded="true" signature="702:708" ph=" }" />
-                <marker date="1513014062467" expanded="true" signature="751:914" ph="{...}" />
-                <marker date="1513014062467" expanded="true" signature="970:1139" ph="{...}" />
-                <marker date="1513014062467" expanded="false" signature="1187:1198" ph=" { " />
-                <marker date="1513014062467" expanded="false" signature="1232:1238" ph=" }" />
-                <marker date="1513014062467" expanded="true" signature="1300:1446" ph="{...}" />
-                <marker date="1513014062467" expanded="false" signature="1483:1494" ph=" { " />
-                <marker date="1513014062467" expanded="false" signature="1507:1513" ph=" }" />
-                <marker date="1513014062467" expanded="true" signature="1567:1578" ph=" { " />
-                <marker date="1513014062467" expanded="true" signature="1638:1644" ph=" }" />
-                <marker date="1513014062467" expanded="true" signature="1681:1692" ph=" { " />
-                <marker date="1513014062467" expanded="true" signature="1747:1753" ph=" }" />
-                <marker date="1513014062467" expanded="true" signature="1798:1940" ph="{...}" />
+                <element signature="e#403#404#0" expanded="true" />
+                <element signature="e#453#454#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FunctionHeaderComment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionHeaderComment.java">
+      <file leaf-file-name="AdvancementCriterionGroupEntry.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCriterionGroupEntry.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#395#396#0" expanded="true" />
+                <element signature="e#449#450#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdvancementCompletionEntry.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCompletionEntry.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="45" lean-forward="true" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+              <folding>
+                <element signature="e#413#414#0" expanded="true" />
+                <element signature="e#465#466#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdvancementArgument.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/AdvancementArgument.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+              <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
               <folding>
-                <element signature="e#157#158#0" expanded="true" />
-                <element signature="e#185#186#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#962#963#0" expanded="true" />
+                <element signature="e#990#991#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -190,11 +170,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionHeaderComment.java" />
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/ScoreboardAccess.java" />
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/score/Objective.java" />
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/score/operations/LocalScore.java" />
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/score/ObjectiveManager.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionManager.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/project/CommandModule.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/functions/Function.java" />
@@ -236,10 +211,15 @@
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/EffectGiveCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/EffectClearCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/effect/StatusEffect.java" />
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/TitleCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/TitleTimesCommand.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/TitleShowCommand.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementArgumentEntry.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCriterionEntry.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCriterionGroupEntry.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCompletionEntry.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/AdvancementArgument.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
@@ -249,6 +229,22 @@
     <option name="y" value="13" />
     <option name="width" value="1370" />
     <option name="height" value="744" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Android</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -282,6 +278,11 @@
             <path>
               <item name="Commodore" type="b2602c69:ProjectViewProjectNode" />
               <item name="Commodore" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Commodore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Commodore" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -297,6 +298,21 @@
               <item name="commodore" type="462c0819:PsiDirectoryNode" />
               <item name="coordinates" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Commodore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Commodore" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="commodore" type="462c0819:PsiDirectoryNode" />
+              <item name="selector" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Commodore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Commodore" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="commodore" type="462c0819:PsiDirectoryNode" />
+              <item name="selector" type="462c0819:PsiDirectoryNode" />
+              <item name="advancement" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -305,9 +321,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
     <property name="project.structure.last.edited" value="Problems" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
@@ -739,7 +755,14 @@
       <option name="project" value="LOCAL" />
       <updated>1512994339636</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Updated .gitignore">
+      <created>1513020141587</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1513020141587</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -748,17 +771,19 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.50292826" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32873806" sideWeight="0.49707174" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767764" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -769,10 +794,8 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32935917" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="584" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -803,7 +826,8 @@
     <MESSAGE value="Added SpawnpointCommand" />
     <MESSAGE value="Added TitleCommand and TitleTimesCommand" />
     <MESSAGE value="Made TitleCommand a superclass of TitleShowCommand and TitleTimesCommand" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made TitleCommand a superclass of TitleShowCommand and TitleTimesCommand" />
+    <MESSAGE value="Updated .gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated .gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -812,91 +836,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="46" lean-forward="false" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1513014062451" expanded="false" signature="314:325" ph=" { " />
-            <marker date="1513014062451" expanded="false" signature="344:350" ph=" }" />
-            <marker date="1513014062451" expanded="true" signature="389:512" ph="{...}" />
-            <marker date="1513014062451" expanded="false" signature="554:565" ph=" { " />
-            <marker date="1513014062451" expanded="false" signature="600:606" ph=" }" />
-            <marker date="1513014062451" expanded="true" signature="648:809" ph="{...}" />
-            <marker date="1513014062451" expanded="true" signature="857:991" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/score/ObjectiveManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="47" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="47" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1513014062467" expanded="false" signature="412:423" ph=" { " />
-            <marker date="1513014062467" expanded="false" signature="442:448" ph=" }" />
-            <marker date="1513014062467" expanded="true" signature="488:613" ph="{...}" />
-            <marker date="1513014062467" expanded="true" signature="655:666" ph=" { " />
-            <marker date="1513014062467" expanded="true" signature="702:708" ph=" }" />
-            <marker date="1513014062467" expanded="true" signature="751:914" ph="{...}" />
-            <marker date="1513014062467" expanded="true" signature="970:1139" ph="{...}" />
-            <marker date="1513014062467" expanded="false" signature="1187:1198" ph=" { " />
-            <marker date="1513014062467" expanded="false" signature="1232:1238" ph=" }" />
-            <marker date="1513014062467" expanded="true" signature="1300:1446" ph="{...}" />
-            <marker date="1513014062467" expanded="false" signature="1483:1494" ph=" { " />
-            <marker date="1513014062467" expanded="false" signature="1507:1513" ph=" }" />
-            <marker date="1513014062467" expanded="true" signature="1567:1578" ph=" { " />
-            <marker date="1513014062467" expanded="true" signature="1638:1644" ph=" }" />
-            <marker date="1513014062467" expanded="true" signature="1681:1692" ph=" { " />
-            <marker date="1513014062467" expanded="true" signature="1747:1753" ph=" }" />
-            <marker date="1513014062467" expanded="true" signature="1798:1940" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/project/CommandModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="19" column="5" lean-forward="false" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionComment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionHeaderComment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="e#157#158#0" expanded="true" />
-            <element signature="e#185#186#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/functions/Function.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataRemoveCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataGetCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1202,23 +1141,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="95" column="29" lean-forward="false" selection-start-line="95" selection-start-column="29" selection-end-line="95" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1513014062451" expanded="true" signature="2181:9432" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/TitleTimesCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="5" column="51" lean-forward="false" selection-start-line="5" selection-start-column="51" selection-end-line="5" selection-end-column="51" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1241,10 +1169,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/SelectorArgument.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="8" lean-forward="false" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/ScoreArgument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1254,6 +1190,78 @@
         <state relative-caret-position="459">
           <caret line="35" column="25" lean-forward="true" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementArgumentEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="31" lean-forward="false" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCriterionEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="42" selection-end-line="14" selection-end-column="42" />
+          <folding>
+            <element signature="e#403#404#0" expanded="true" />
+            <element signature="e#453#454#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCompletionEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="45" lean-forward="true" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+          <folding>
+            <element signature="e#413#414#0" expanded="true" />
+            <element signature="e#465#466#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCriterionGroupEntry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#395#396#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="490">
+          <caret line="131" column="49" lean-forward="false" selection-start-line="131" selection-start-column="49" selection-end-line="131" selection-end-column="49" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="30" lean-forward="true" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/selector/AdvancementArgument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#962#963#0" expanded="true" />
+            <element signature="e#990#991#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
