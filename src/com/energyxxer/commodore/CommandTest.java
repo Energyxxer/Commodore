@@ -144,6 +144,11 @@ public final class CommandTest {
         function.append(new TeleportToCoordsCommand(player, new CoordinateSet(0, 0, 2, Coordinate.Type.LOCAL), new Rotation(12.5, 0, RotationUnit.Type.RELATIVE)));
         function.append(new TeleportToEntityCommand(entity, player));
 
+        function.append(new ExecuteCommand(new TriggerCommand("t")));
+        function.append(new ExecuteCommand(new TriggerCommand("t", TriggerCommand.Action.ADD, 5)));
+        function.append(new ExecuteCommand(new TriggerCommand("t", TriggerCommand.Action.SET, 1)));
+        function.append(new ExecuteCommand(new TriggerCommand("t", TriggerCommand.Action.ADD, 1)));
+
         function.append(new FunctionHeaderComment("SCOREBOARD ACCESS OPTIMIZATION"));
 
         LocalScore a = new LocalScore(objMgr.get("A"), entity.getScoreManager());
