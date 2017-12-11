@@ -19,6 +19,8 @@ import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.nbt.TagByte;
 import com.energyxxer.commodore.nbt.TagCompound;
 import com.energyxxer.commodore.nbt.TagShort;
+import com.energyxxer.commodore.rotation.Rotation;
+import com.energyxxer.commodore.rotation.RotationUnit;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.ObjectiveManager;
 import com.energyxxer.commodore.selector.AdvancementArgument;
@@ -138,6 +140,9 @@ public final class CommandTest {
         function.append(new StopSoundCommand(player, null, "minecraft:ambient.cave"));
 
         function.append(new SummonCommand(new EntityType("minecraft:bat"), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new TagCompound(new TagByte("Glowing",1))));
+
+        function.append(new TeleportToCoordsCommand(player, new CoordinateSet(0, 0, 2, Coordinate.Type.LOCAL), new Rotation(12.5, 0, RotationUnit.Type.RELATIVE)));
+        function.append(new TeleportToEntityCommand(entity, player));
 
         function.append(new FunctionHeaderComment("SCOREBOARD ACCESS OPTIMIZATION"));
 
