@@ -135,6 +135,11 @@ public final class CommandTest {
 
         function.append(new SpreadPlayersCommand(player, new CoordinateSet(5, 0, 5), 3.2, 53.2, false));
 
+        function.append(new StopSoundCommand(player, PlaySoundCommand.Source.MASTER, "minecraft:ambient.cave"));
+        function.append(new StopSoundCommand(player, PlaySoundCommand.Source.MASTER));
+        function.append(new StopSoundCommand(player));
+        function.append(new StopSoundCommand(player, null, "minecraft:ambient.cave"));
+
         function.append(new FunctionHeaderComment("SCOREBOARD ACCESS OPTIMIZATION"));
 
         LocalScore a = new LocalScore(objMgr.get("A"), entity.getScoreManager());
