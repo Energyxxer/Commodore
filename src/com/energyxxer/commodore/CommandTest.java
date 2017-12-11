@@ -114,6 +114,8 @@ public final class CommandTest {
 
         Entity player = new GenericEntity(playerSelector);
 
+        function.append(new AdvancementCommand(AdvancementCommand.Action.GRANT, player, AdvancementCommand.Limit.ONLY, "bar"));
+
         function.append(new FunctionHeaderComment("SCOREBOARD ACCESS OPTIMIZATION"));
 
         LocalScore a = new LocalScore(objMgr.get("A"), entity.getScoreManager());
