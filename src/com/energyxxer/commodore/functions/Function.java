@@ -11,7 +11,8 @@ import java.util.Collection;
 public class Function {
     private final FunctionManager parent;
 
-    private String name;
+    private String namespace;
+    private String path;
     private ArrayList<FunctionWriter> content = new ArrayList<>();
     private Entity sender;
 
@@ -24,8 +25,10 @@ public class Function {
 
     Function(FunctionManager parent, String name, Entity sender) {
         this.parent = parent;
-        this.name = name;
         this.sender = sender;
+
+        this.namespace = name.substring(0, name.indexOf(':'));
+        this.path = name.substring(name.indexOf(':')+1);
     }
 
     public Entity getSender() {
@@ -42,8 +45,16 @@ public class Function {
         contentResolved = false;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return namespace + ':' + path;
+    }
+
+    public String getNamespace() {
+        return namespace;
+    }
+
+    public String getPath() {
+        return path;
     }
 
     public FunctionManager getParent() {
@@ -53,7 +64,7 @@ public class Function {
     public String getResolvedContent() {
         if(!contentResolved) {
             StringBuilder sb = new StringBuilder("# ");
-            sb.append(name);
+            sb.append(getFullName());
             sb.append('\n');
 
             for(FunctionWriter writer : content) {
@@ -70,6 +81,6 @@ public class Function {
 
     @Override
     public String toString() {
-        return "[Function " + name + " : " + content.size() + " " + ((content.size() == 1) ? "entry" : "entries") + "]";
+        return "[Function " + getFullName() + " : " + content.size() + " " + ((content.size() == 1) ? "entry" : "entries") + "]";
     }
 }

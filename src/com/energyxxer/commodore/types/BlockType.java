@@ -8,4 +8,9 @@ public class BlockType extends Type {
     public BlockType(String raw) {
         super(raw);
     }
+
+    @Override
+    public boolean isConcrete() {
+        return true;
+    }
 }

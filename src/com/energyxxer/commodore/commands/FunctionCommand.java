@@ -13,6 +13,6 @@ public class FunctionCommand implements Command {
 
     @Override
     public String getRawCommand(Entity sender) {
-        return "function " + function.getName();
+        return "function " + function.getFullName();
     }
 }

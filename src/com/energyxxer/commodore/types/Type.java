@@ -5,11 +5,11 @@ import static com.energyxxer.commodore.CommandUtils.NAMESPACE_ID_SEPARATOR;
 
 public abstract class Type {
     private String namespace;
-    private String id;
+    private String name;
 
-    public Type(String namespace, String id) {
+    public Type(String namespace, String name) {
         this.namespace = namespace;
-        this.id = id;
+        this.name = name;
     }
 
     public Type(String raw) {
@@ -18,10 +18,10 @@ public abstract class Type {
         if(separatorIndex >= 0) {
             this.namespace = raw.substring(0, separatorIndex);
             if(this.namespace.length() == 0) this.namespace = DEFAULT_NAMESPACE;
-            this.id = raw.substring(separatorIndex + 1);
+            this.name = raw.substring(separatorIndex + 1);
         } else {
             this.namespace = DEFAULT_NAMESPACE;
-            this.id = raw;
+            this.name = raw;
         }
     }
 
@@ -29,9 +29,11 @@ public abstract class Type {
         return true;
     }
 
+    public abstract boolean isConcrete();
+
     @Override
     public String toString() {
-        return ((useNamespace()) ? (namespace + ':') : "") + id;
+        return ((useNamespace()) ? (namespace + ':') : "") + name;
     }
 
     @Override
@@ -41,13 +43,13 @@ public abstract class Type {
 
         Type otherType = (Type) o;
 
-        return (!useNamespace() || namespace.equals(otherType.namespace)) && id.equals(otherType.id);
+        return (!useNamespace() || namespace.equals(otherType.namespace)) && name.equals(otherType.name);
     }
 
     @Override
     public int hashCode() {
         int result = namespace.hashCode();
-        result = 31 * result + id.hashCode();
+        result = 31 * result + name.hashCode();
         return result;
     }
 }

@@ -8,4 +8,9 @@ public class ItemType extends Type {
     public ItemType(String raw) {
         super(raw);
     }
+
+    @Override
+    public boolean isConcrete() {
+        return true;
+    }
 }

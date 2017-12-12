@@ -7,4 +7,9 @@ public class EntityType extends Type {
     public EntityType(String raw) {
         super(raw);
     }
+
+    @Override
+    public boolean isConcrete() {
+        return true;
+    }
 }

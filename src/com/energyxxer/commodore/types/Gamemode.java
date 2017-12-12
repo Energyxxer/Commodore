@@ -9,4 +9,9 @@ public class Gamemode extends Type {
     public boolean useNamespace() {
         return false;
     }
+
+    @Override
+    public boolean isConcrete() {
+        return true;
+    }
 }

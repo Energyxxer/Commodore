@@ -2,6 +2,7 @@ package com.energyxxer.commodore.module;
 
 import com.energyxxer.commodore.functions.FunctionManager;
 import com.energyxxer.commodore.score.ObjectiveManager;
+import com.energyxxer.commodore.tags.TagManager;
 
 public class CommandModule {
 
@@ -10,6 +11,7 @@ public class CommandModule {
 
     private ObjectiveManager objMgr;
     private FunctionManager fncMgr;
+    private TagManager tagMgr;
 
     public CommandModule(String name, String prefix) {
         this.name = name;
