@@ -208,6 +208,8 @@ public final class CommandTest {
         function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new EffectType("minecraft:resistance")));
         function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
 
+        function.append(new FunctionCommand(module.getFunctionManager().create("test:some_other_function")));
+
         function.append(new FunctionHeaderComment(buttons.getJSONContent().split("\n")));
 
         module.compile();

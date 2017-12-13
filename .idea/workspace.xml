@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4748290-07e4-4f66-a1b0-dbbd9f36cabc" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/TagInstantiator.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/module/CommandModule.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/module/CommandModule.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/BlockTag.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/BlockTag.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/FunctionTag.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/FunctionTag.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/ItemTag.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/ItemTag.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/Tag.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/Tag.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/TagGroup.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/TagGroup.java" />
-      <change beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/TagManager.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/TagManager.java" />
+      <change beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/FunctionCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/FunctionCommand.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,10 +22,25 @@
       <file leaf-file-name="CommandTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="708">
-              <caret line="210" column="89" lean-forward="false" selection-start-line="210" selection-start-column="89" selection-end-line="210" selection-end-column="89" />
+            <state relative-caret-position="555">
+              <caret line="210" column="39" lean-forward="true" selection-start-line="210" selection-start-column="39" selection-end-line="210" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FunctionCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/FunctionCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+              <folding>
+                <element signature="e#380#381#0" expanded="true" />
+                <element signature="e#444#445#0" expanded="true" />
+                <element signature="e#503#504#0" expanded="true" />
+                <element signature="e#545#546#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -203,7 +210,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCompletionEntry.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/AdvancementArgument.java" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/ClearCommand.java" />
@@ -254,6 +260,7 @@
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/FunctionTag.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/ItemTag.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/FunctionCommand.java" />
       </list>
     </option>
   </component>
@@ -319,6 +326,20 @@
               <item name="Commodore" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="commodore" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Commodore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Commodore" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="commodore" type="462c0819:PsiDirectoryNode" />
+              <item name="block" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Commodore" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Commodore" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="commodore" type="462c0819:PsiDirectoryNode" />
+              <item name="commands" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Commodore" type="b2602c69:ProjectViewProjectNode" />
@@ -951,7 +972,14 @@
       <option name="project" value="LOCAL" />
       <updated>1513030827478</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Finished TagGroup and TagManager">
+      <created>1513123534980</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1513123534980</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -972,6 +1000,7 @@
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947916" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32717392" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -984,7 +1013,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" x="92" y="92" width="1182" height="584" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32767764" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -993,7 +1021,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Added SetWorldSpawnCommand" />
     <MESSAGE value="Added SpawnpointCommand" />
     <MESSAGE value="Added TitleCommand and TitleTimesCommand" />
     <MESSAGE value="Made TitleCommand a superclass of TitleShowCommand and TitleTimesCommand" />
@@ -1018,7 +1045,8 @@
     <MESSAGE value="Added TriggerCommand" />
     <MESSAGE value="Added WeatherCommand" />
     <MESSAGE value="Made ExperienceCommands use alias 'xp'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made ExperienceCommands use alias 'xp'" />
+    <MESSAGE value="Finished TagGroup and TagManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished TagGroup and TagManager" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1027,17 +1055,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultySetCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="60" lean-forward="false" selection-start-line="5" selection-start-column="60" selection-end-line="5" selection-end-column="60" />
-          <folding>
-            <element signature="e#404#405#0" expanded="false" />
-            <element signature="e#453#454#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -1566,10 +1583,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/FunctionCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="20" column="24" lean-forward="false" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+          <folding>
+            <element signature="e#380#381#0" expanded="true" />
+            <element signature="e#444#445#0" expanded="true" />
+            <element signature="e#503#504#0" expanded="true" />
+            <element signature="e#545#546#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="210" column="89" lean-forward="false" selection-start-line="210" selection-start-column="89" selection-end-line="210" selection-end-column="89" />
+        <state relative-caret-position="555">
+          <caret line="210" column="39" lean-forward="true" selection-start-line="210" selection-start-column="39" selection-end-line="210" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
