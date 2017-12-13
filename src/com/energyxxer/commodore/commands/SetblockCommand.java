@@ -13,6 +13,8 @@ public class SetblockCommand implements Command {
     public SetblockCommand(CoordinateSet pos, Block block) {
         this.pos = pos;
         this.block = block;
+
+        if(!block.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual blocks");
     }
 
     @Override

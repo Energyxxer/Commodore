@@ -26,6 +26,10 @@ public class Block {
         this.nbt = nbt;
     }
 
+    public boolean isConcrete() {
+        return type.isConcrete();
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(type.toString());

@@ -195,6 +195,7 @@ public final class CommandTest {
         CoordinateSet pos2 = new CoordinateSet(49, 49, -920);
 
         function.append(new FillCommand(pos1, pos2, new Block(new BlockType("minecraft:command_block"))));
+        function.append(new FillCommand(pos1, pos2, new Block(new BlockType("minecraft:command_block"))));
         function.append(new FillDestroyCommand(pos1, pos2, new Block(new BlockType("minecraft:air"))));
         function.append(new FillOutlineCommand(pos1, pos2, new Block(new BlockType("minecraft:white_concrete"))));
         function.append(new FillHollowCommand(pos1, pos2, new Block(new BlockType("minecraft:blue_concrete"))));

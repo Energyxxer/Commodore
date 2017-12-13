@@ -18,6 +18,8 @@ public class GiveCommand implements Command {
         this.player = player;
         this.item = item;
         this.count = count;
+
+        if(!item.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual items");
     }
 
     @Override
