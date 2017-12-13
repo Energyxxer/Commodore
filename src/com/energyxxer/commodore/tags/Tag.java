@@ -46,18 +46,6 @@ public interface Tag<T extends Type> {
         return sb.toString();
     }
 
-    default void addValue(T value) {
-        this.getValues().add(value);
-    }
-
-    default void addValues(Collection<T> values) {
-        this.getValues().addAll(values);
-    }
-
-    default void addValues(T... values) {
-        this.addValues(Arrays.asList(values));
-    }
-
     OverridePolicy getOverridePolicy();
     void setOverridePolicy(OverridePolicy newPolicy);
 }

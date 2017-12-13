@@ -19,6 +19,7 @@ public class CommandModule {
 
         this.objMgr = new ObjectiveManager(this);
         this.fncMgr = new FunctionManager(this);
+        this.tagMgr = new TagManager(this, "test");
     }
 
     public String getName() {
@@ -44,5 +45,9 @@ public class CommandModule {
     @Override
     public String toString() {
         return "Module [" + name + "]";
+    }
+
+    public TagManager getTagManager() {
+        return tagMgr;
     }
 }

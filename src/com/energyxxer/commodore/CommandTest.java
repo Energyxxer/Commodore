@@ -30,6 +30,7 @@ import com.energyxxer.commodore.selector.TypeArgument;
 import com.energyxxer.commodore.selector.advancement.AdvancementCompletionEntry;
 import com.energyxxer.commodore.selector.advancement.AdvancementCriterionEntry;
 import com.energyxxer.commodore.selector.advancement.AdvancementCriterionGroupEntry;
+import com.energyxxer.commodore.tags.BlockTag;
 import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
 import com.energyxxer.commodore.types.*;
 
@@ -171,12 +172,22 @@ public final class CommandTest {
 
         function.append(new FunctionComment("CLONE COMMANDS"));
 
+
+        BlockTag buttons = module.getTagManager().getBlockGroup().createNew("buttons");
+        buttons.addValue(new BlockType("minecraft:stone_button"));
+        buttons.addValue(new BlockType("minecraft:oak_button"));
+        buttons.addValue(new BlockType("minecraft:spruce_button"));
+        buttons.addValue(new BlockType("minecraft:birch_button"));
+        buttons.addValue(new BlockType("minecraft:jungle_button"));
+        buttons.addValue(new BlockType("minecraft:acacia_button"));
+        buttons.addValue(new BlockType("minecraft:dark_oak_button"));
+
         function.append(new CloneCommand(new CoordinateSet(0,0,0, Coordinate.Type.RELATIVE),new CoordinateSet(2,2,2, Coordinate.Type.RELATIVE),new CoordinateSet(5,5,5)));
         function.append(new CloneCommand(new CoordinateSet(0.5,0.5,0.5),new CoordinateSet(2.5,2.5,2.5, Coordinate.Type.RELATIVE),new CoordinateSet(5,5,5), CloneCommand.SourceMode.FORCE));
         function.append(new CloneMaskedCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5)));
         function.append(new CloneMaskedCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5), CloneCommand.SourceMode.FORCE));
-        function.append(new CloneFilteredCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5), new Block(new BlockType("#minecraft:buttons"))));
-        function.append(new CloneFilteredCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5), new Block(new BlockType("#minecraft:buttons")), CloneCommand.SourceMode.FORCE));
+        function.append(new CloneFilteredCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5), new Block(buttons)));
+        function.append(new CloneFilteredCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5), new Block(buttons), CloneCommand.SourceMode.FORCE));
 
         function.append(new FunctionComment("FILL COMMANDS"));
 
@@ -196,6 +207,8 @@ public final class CommandTest {
         function.append(new EffectGiveCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new StatusEffect(new EffectType("minecraft:resistance"),100,4)));
         function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new EffectType("minecraft:resistance")));
         function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
+
+        function.append(new FunctionHeaderComment(buttons.getJSONContent().split("\n")));
 
         module.compile();
 
