@@ -33,9 +33,10 @@ public abstract class ScoreboardManipulation implements Command {
     }
 
     public boolean isUsed() {
-        for(ScoreboardAccess access : accesses) {
-            if(access.getResolution() == ScoreboardAccess.AccessResolution.UNRESOLVED) throw new IllegalStateException("This ScoreboardManipulation has unresolved access: " + this);
-            if(access.getResolution() == ScoreboardAccess.AccessResolution.UNUSED) return false;
+        for (ScoreboardAccess access : accesses) {
+            if (access.getResolution() == ScoreboardAccess.AccessResolution.UNRESOLVED)
+                throw new IllegalStateException("This ScoreboardManipulation has unresolved access: " + this);
+            if (access.getResolution() == ScoreboardAccess.AccessResolution.UNUSED) return false;
         }
         return true;
     }
