@@ -34,4 +34,9 @@ public class ExecuteCommand implements Command {
         sb.append(chainedCommand.getRawCommand(sender));
         return sb.toString();
     }
+
+    @Override
+    public void onAppend() {
+        chainedCommand.onAppend();
+    }
 }

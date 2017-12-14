@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.score;
 
+import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.score.access.ScoreAccessLog;
 
 public class LocalScore {
@@ -7,6 +8,10 @@ public class LocalScore {
     private ScoreManager parent;
 
     private ScoreAccessLog accessLog = new ScoreAccessLog(this);
+
+    public LocalScore(Objective objective, Entity entity) {
+        this(objective, entity.getScoreManager());
+    }
 
     public LocalScore(Objective objective, ScoreManager parent) {
         this.objective = objective;

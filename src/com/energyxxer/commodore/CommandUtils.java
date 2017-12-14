@@ -24,9 +24,9 @@ public final class CommandUtils {
 
     public static boolean needsEscaping(String str) {
         for(char c : str.toCharArray()) {
-            if(!ALPHANUMERIC_CHARACTERS.contains(c + "")) return false;
+            if(!ALPHANUMERIC_CHARACTERS.contains(c + "")) return true;
         }
-        return true;
+        return false;
     }
 
     public static String getRawReference(ScoreHolder scoreHolder, Entity sender) {

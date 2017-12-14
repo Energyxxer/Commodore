@@ -134,8 +134,10 @@ public final class CommandTest {
 
         Function function = module.getNamespace("test").getFunctionManager().get("scores");
 
+        EntityType bat = module.getNamespace("minecraft").getTypeManager().entity.create("bat");
+
         Entity entity = new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES));
-        entity.getSelector().addArguments(new TypeArgument("bat"), new TagArgument("a"), new TagArgument("!b"));
+        entity.getSelector().addArguments(new TypeArgument(bat), new TagArgument("a"), new TagArgument("!b"));
 
         Selector playerSelector = new Selector(Selector.BaseSelector.ALL_PLAYERS);
         AdvancementArgument advArg = new AdvancementArgument();
@@ -170,8 +172,6 @@ public final class CommandTest {
         function.append(new StopSoundCommand(player, PlaySoundCommand.Source.MASTER));
         function.append(new StopSoundCommand(player));
         function.append(new StopSoundCommand(player, null, "minecraft:ambient.cave"));
-
-        EntityType bat = module.getNamespace("minecraft").getTypeManager().entity.create("bat");
 
         function.append(new SummonCommand(bat, new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new TagCompound(new TagByte("Glowing", 1))));
 

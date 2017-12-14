@@ -43,6 +43,11 @@ public class Selector {
         this.base = base;
     }
 
+    public Selector(BaseSelector base, SelectorArgument... arguments) {
+        this(base);
+        this.addArguments(arguments);
+    }
+
     public void addArguments(SelectorArgument... arguments) {
         this.args.addAll(Arrays.asList(arguments));
     }

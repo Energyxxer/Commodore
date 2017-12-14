@@ -1,20 +1,21 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.types.EntityType;
+
 public class TypeArgument implements SelectorArgument {
-    private String type;
+    private EntityType type;
     private boolean negated;
 
-    public TypeArgument(String type) {
-        if(type.startsWith("!")) {
-            this.type = type.substring(1);
-            this.negated = true;
-        } else {
-            this.type = type;
-            this.negated = false;
-        }
+    public TypeArgument(EntityType type) {
+        this(type, false);
     }
 
-    public String getType() {
+    public TypeArgument(EntityType type, boolean negated) {
+        this.type = type;
+        this.negated = negated;
+    }
+
+    public EntityType getType() {
         return type;
     }
 
@@ -29,7 +30,7 @@ public class TypeArgument implements SelectorArgument {
 
     @Override
     public boolean isRepeatable() {
-        return false;
+        return true;
     }
 
     @Override
