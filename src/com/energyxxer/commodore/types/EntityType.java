@@ -1,11 +1,10 @@
 package com.energyxxer.commodore.types;
 
+import com.energyxxer.commodore.module.Namespace;
+
 public class EntityType extends Type {
-    public EntityType(String namespace, String id) {
+    protected EntityType(Namespace namespace, String id) {
         super(namespace, id);
-    }
-    public EntityType(String raw) {
-        super(raw);
     }
 
     @Override

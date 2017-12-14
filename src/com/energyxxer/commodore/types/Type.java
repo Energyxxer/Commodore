@@ -1,28 +1,14 @@
 package com.energyxxer.commodore.types;
 
-import static com.energyxxer.commodore.CommandUtils.DEFAULT_NAMESPACE;
-import static com.energyxxer.commodore.CommandUtils.NAMESPACE_ID_SEPARATOR;
+import com.energyxxer.commodore.module.Namespace;
 
 public abstract class Type {
-    private String namespace;
+    private Namespace namespace;
     private String name;
 
-    public Type(String namespace, String name) {
+    public Type(Namespace namespace, String name) {
         this.namespace = namespace;
         this.name = name;
-    }
-
-    public Type(String raw) {
-        int separatorIndex = raw.indexOf(NAMESPACE_ID_SEPARATOR);
-
-        if(separatorIndex >= 0) {
-            this.namespace = raw.substring(0, separatorIndex);
-            if(this.namespace.length() == 0) this.namespace = DEFAULT_NAMESPACE;
-            this.name = raw.substring(separatorIndex + 1);
-        } else {
-            this.namespace = DEFAULT_NAMESPACE;
-            this.name = raw;
-        }
     }
 
     public boolean useNamespace() {
@@ -33,7 +19,7 @@ public abstract class Type {
 
     @Override
     public String toString() {
-        return ((useNamespace()) ? (namespace + ':') : "") + name;
+        return ((useNamespace()) ? (namespace.toString() + ':') : "") + name;
     }
 
     @Override

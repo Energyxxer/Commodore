@@ -2,6 +2,7 @@ package com.energyxxer.commodore.functions;
 
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.entity.GenericEntity;
+import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.selector.Selector;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.Collection;
 public class Function {
     private final FunctionManager parent;
 
-    private String namespace;
+    private Namespace namespace;
     private String path;
     private ArrayList<FunctionWriter> content = new ArrayList<>();
     private Entity sender;
@@ -19,16 +20,16 @@ public class Function {
     private boolean contentResolved = false;
     private String resolvedContent = null;
 
-    Function(FunctionManager parent, String name) {
-        this(parent, name, new GenericEntity(new Selector(Selector.BaseSelector.SENDER)));
+    Function(FunctionManager parent, Namespace namespace, String path) {
+        this(parent, namespace, path, new GenericEntity(new Selector(Selector.BaseSelector.SENDER)));
     }
 
-    Function(FunctionManager parent, String name, Entity sender) {
+    Function(FunctionManager parent, Namespace namespace, String path, Entity sender) {
         this.parent = parent;
         this.sender = sender;
 
-        this.namespace = name.substring(0, name.indexOf(':'));
-        this.path = name.substring(name.indexOf(':')+1);
+        this.namespace = namespace;
+        this.path = path;
     }
 
     public Entity getSender() {
@@ -46,10 +47,10 @@ public class Function {
     }
 
     public String getFullName() {
-        return namespace + ':' + path;
+        return namespace.toString() + ':' + path;
     }
 
-    public String getNamespace() {
+    public Namespace getNamespace() {
         return namespace;
     }
 

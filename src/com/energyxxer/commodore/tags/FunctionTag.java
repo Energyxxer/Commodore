@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.tags;
 
+import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.FunctionReference;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class FunctionTag extends FunctionReference implements Tag {
 
     public static final TagInstantiator<FunctionTag> INSTANTIATOR = FunctionTag::new;
 
-    FunctionTag(String namespace, String id) {
+    FunctionTag(Namespace namespace, String id) {
         super(namespace, id);
     }
 

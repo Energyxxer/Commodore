@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.types;
 
 import com.energyxxer.commodore.functions.Function;
+import com.energyxxer.commodore.module.Namespace;
 
 public class FunctionReference extends Type {
 
@@ -11,7 +12,7 @@ public class FunctionReference extends Type {
         this.function = function;
     }
 
-    protected FunctionReference(String namespace, String path) {
+    protected FunctionReference(Namespace namespace, String path) {
         super(namespace, path);
     }
 

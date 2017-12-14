@@ -1,11 +1,10 @@
 package com.energyxxer.commodore.types;
 
+import com.energyxxer.commodore.module.Namespace;
+
 public class EffectType extends Type {
-    public EffectType(String namespace, String id) {
+    protected EffectType(Namespace namespace, String id) {
         super(namespace, id);
-    }
-    public EffectType(String raw) {
-        super(raw);
     }
 
     @Override

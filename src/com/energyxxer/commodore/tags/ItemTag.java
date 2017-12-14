@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.tags;
 
+import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.ItemType;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class ItemTag extends ItemType implements Tag {
 
     public static final TagInstantiator<ItemTag> INSTANTIATOR = ItemTag::new;
 
-    ItemTag(String namespace, String id) {
+    ItemTag(Namespace namespace, String id) {
         super(namespace, id);
     }
 

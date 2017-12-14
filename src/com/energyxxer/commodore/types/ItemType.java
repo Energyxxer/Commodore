@@ -1,12 +1,10 @@
 package com.energyxxer.commodore.types;
 
-public class ItemType extends Type {
-    public ItemType(String namespace, String id) {
-        super(namespace, id);
-    }
+import com.energyxxer.commodore.module.Namespace;
 
-    public ItemType(String raw) {
-        super(raw);
+public class ItemType extends Type {
+    protected ItemType(Namespace namespace, String id) {
+        super(namespace, id);
     }
 
     @Override

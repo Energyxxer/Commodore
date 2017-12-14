@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.tags;
 
+import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.BlockType;
 
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ public class BlockTag extends BlockType implements Tag {
 
     public static final TagInstantiator<BlockTag> INSTANTIATOR = BlockTag::new;
 
-    BlockTag(String namespace, String id) {
+    BlockTag(Namespace namespace, String id) {
         super(namespace, id);
     }
 

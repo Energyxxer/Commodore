@@ -103,7 +103,7 @@ public final class CommandTest {
         CommandModule module = new CommandModule("Commodore Test","ct");
         ObjectiveManager objMgr = module.getObjectiveManager();
 
-        Function function = module.getFunctionManager().get("test:scores");
+        Function function = module.getNamespace("test").getFunctionManager().get("scores");
 
         Entity entity = new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES));
         entity.getSelector().addArguments(new TypeArgument("bat"), new TagArgument("a"), new TagArgument("!b"));
@@ -122,8 +122,10 @@ public final class CommandTest {
         function.append(new AdvancementCommand(AdvancementCommand.Action.GRANT, player, AdvancementCommand.Limit.ONLY, "bar"));
 
         function.append(new ExperienceSetCommand(player, 5, ExperienceCommand.Unit.LEVELS));
+        
+        ItemType diamondSword = module.getNamespace("minecraft").getTypeManager().item.create("diamond_sword");
 
-        function.append(new GiveCommand(player, new Item(new ItemType("minecraft:diamond_sword"),new TagCompound(new TagByte("Unbreakable",1),new TagShort("Damage",4))), 3));
+        function.append(new GiveCommand(player, new Item(diamondSword, new TagCompound(new TagByte("Unbreakable",1),new TagShort("Damage",4))), 3));
 
         function.append(new PlaySoundCommand("minecraft:ambient.cave", PlaySoundCommand.Source.MASTER, player));
         function.append(new PlaySoundCommand("minecraft:ambient.cave", PlaySoundCommand.Source.MASTER, player, new CoordinateSet(500, 87, 500)));
@@ -140,7 +142,9 @@ public final class CommandTest {
         function.append(new StopSoundCommand(player));
         function.append(new StopSoundCommand(player, null, "minecraft:ambient.cave"));
 
-        function.append(new SummonCommand(new EntityType("minecraft:bat"), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new TagCompound(new TagByte("Glowing",1))));
+        EntityType bat = module.getNamespace("minecraft").getTypeManager().entity.create("bat");
+        
+        function.append(new SummonCommand(bat, new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new TagCompound(new TagByte("Glowing",1))));
 
         function.append(new TeleportToCoordsCommand(player, new CoordinateSet(0, 0, 2, Coordinate.Type.LOCAL), new Rotation(12.5, 0, RotationUnit.Type.RELATIVE)));
         function.append(new TeleportToEntityCommand(entity, player));
@@ -172,15 +176,14 @@ public final class CommandTest {
 
         function.append(new FunctionComment("CLONE COMMANDS"));
 
-
-        BlockTag buttons = module.getTagManager().getBlockGroup().createNew("buttons");
-        buttons.addValue(new BlockType("minecraft:stone_button"));
-        buttons.addValue(new BlockType("minecraft:oak_button"));
-        buttons.addValue(new BlockType("minecraft:spruce_button"));
-        buttons.addValue(new BlockType("minecraft:birch_button"));
-        buttons.addValue(new BlockType("minecraft:jungle_button"));
-        buttons.addValue(new BlockType("minecraft:acacia_button"));
-        buttons.addValue(new BlockType("minecraft:dark_oak_button"));
+        BlockTag buttons = module.minecraft.getTagManager().getBlockGroup().createNew("buttons");
+        buttons.addValue(module.minecraft.getTypeManager().block.create("stone_button"));
+        buttons.addValue(module.minecraft.getTypeManager().block.create("oak_button"));
+        buttons.addValue(module.minecraft.getTypeManager().block.create("spruce_button"));
+        buttons.addValue(module.minecraft.getTypeManager().block.create("birch_button"));
+        buttons.addValue(module.minecraft.getTypeManager().block.create("jungle_button"));
+        buttons.addValue(module.minecraft.getTypeManager().block.create("acacia_button"));
+        buttons.addValue(module.minecraft.getTypeManager().block.create("dark_oak_button"));
 
         function.append(new CloneCommand(new CoordinateSet(0,0,0, Coordinate.Type.RELATIVE),new CoordinateSet(2,2,2, Coordinate.Type.RELATIVE),new CoordinateSet(5,5,5)));
         function.append(new CloneCommand(new CoordinateSet(0.5,0.5,0.5),new CoordinateSet(2.5,2.5,2.5, Coordinate.Type.RELATIVE),new CoordinateSet(5,5,5), CloneCommand.SourceMode.FORCE));
@@ -194,22 +197,22 @@ public final class CommandTest {
         CoordinateSet pos1 = new CoordinateSet(23, 40, -934);
         CoordinateSet pos2 = new CoordinateSet(49, 49, -920);
 
-        function.append(new FillCommand(pos1, pos2, new Block(new BlockType("minecraft:command_block"))));
-        function.append(new FillCommand(pos1, pos2, new Block(new BlockType("minecraft:command_block"))));
-        function.append(new FillDestroyCommand(pos1, pos2, new Block(new BlockType("minecraft:air"))));
-        function.append(new FillOutlineCommand(pos1, pos2, new Block(new BlockType("minecraft:white_concrete"))));
-        function.append(new FillHollowCommand(pos1, pos2, new Block(new BlockType("minecraft:blue_concrete"))));
-        function.append(new FillKeepCommand(pos1, pos2, new Block(new BlockType("minecraft:fire"))));
-        function.append(new FillReplaceCommand(pos1, pos2, new Block(new BlockType("minecraft:spruce_planks")), new Block(new BlockType("minecraft:oak_planks"))));
+        function.append(new FillCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.create("command_block"))));
+        function.append(new FillCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.create("command_block"))));
+        function.append(new FillDestroyCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.create("air"))));
+        function.append(new FillOutlineCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.create("white_concrete"))));
+        function.append(new FillHollowCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.create("blue_concrete"))));
+        function.append(new FillKeepCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.create("fire"))));
+        function.append(new FillReplaceCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.create("spruce_planks")), new Block(module.minecraft.getTypeManager().block.create("oak_planks"))));
 
         function.append(new FunctionComment("OTHERS"));
 
         function.append(new GamemodeCommand(new Gamemode("spectator"), new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
-        function.append(new EffectGiveCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new StatusEffect(new EffectType("minecraft:resistance"),100,4)));
-        function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new EffectType("minecraft:resistance")));
+        function.append(new EffectGiveCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new StatusEffect(module.minecraft.getTypeManager().effect.create("resistance"),100,4)));
+        function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), module.minecraft.getTypeManager().effect.create("resistance")));
         function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
 
-        function.append(new FunctionCommand(module.getFunctionManager().create("test:some_other_function")));
+        function.append(new FunctionCommand(module.getNamespace("test").getFunctionManager().create("some_other_function")));
 
         function.append(new FunctionHeaderComment(buttons.getJSONContent().split("\n")));
 

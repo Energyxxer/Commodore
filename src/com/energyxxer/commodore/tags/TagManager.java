@@ -1,19 +1,16 @@
 package com.energyxxer.commodore.tags;
 
-import com.energyxxer.commodore.module.CommandModule;
+import com.energyxxer.commodore.module.Namespace;
 
 public class TagManager {
 
-    private CommandModule owner;
-
-    private String namespace;
+    private Namespace namespace;
 
     private TagGroup<BlockTag> blockTags;
     private TagGroup<ItemTag> itemTags;
     private TagGroup<FunctionTag> functionTags;
 
-    public TagManager(CommandModule owner, String namespace) {
-        this.owner = owner;
+    public TagManager(Namespace namespace) {
         this.namespace = namespace;
 
         this.blockTags = new TagGroup<>(namespace, "blocks", BlockTag.INSTANTIATOR);
@@ -21,7 +18,7 @@ public class TagManager {
         this.functionTags = new TagGroup<>(namespace, "functions", FunctionTag.INSTANTIATOR);
     }
 
-    public String getNamespace() {
+    public Namespace getNamespace() {
         return namespace;
     }
 

@@ -1,8 +1,8 @@
 package com.energyxxer.commodore.module;
 
-import com.energyxxer.commodore.functions.FunctionManager;
 import com.energyxxer.commodore.score.ObjectiveManager;
-import com.energyxxer.commodore.tags.TagManager;
+
+import java.util.HashMap;
 
 public class CommandModule {
 
@@ -10,16 +10,17 @@ public class CommandModule {
     private String prefix;
 
     private ObjectiveManager objMgr;
-    private FunctionManager fncMgr;
-    private TagManager tagMgr;
+
+    private HashMap<String, Namespace> namespaces = new HashMap<>();
+    public final Namespace minecraft;
 
     public CommandModule(String name, String prefix) {
         this.name = name;
         this.prefix = prefix;
 
         this.objMgr = new ObjectiveManager(this);
-        this.fncMgr = new FunctionManager(this);
-        this.tagMgr = new TagManager(this, "test");
+
+        this.minecraft = getNamespace("minecraft");
     }
 
     public String getName() {
@@ -34,20 +35,25 @@ public class CommandModule {
         return objMgr;
     }
 
-    public FunctionManager getFunctionManager() {
-        return fncMgr;
-    }
-
     public void compile() {
         objMgr.resolveAccessLogs();
+    }
+
+    public Namespace getNamespace(String name) {
+        Namespace alreadyExisting = namespaces.get(name);
+        if(alreadyExisting != null) return alreadyExisting;
+
+        Namespace newNamespace = new Namespace(this, name);
+        namespaces.put(name, newNamespace);
+        return newNamespace;
+    }
+
+    public boolean namespaceExists(String name) {
+        return namespaces.containsKey(name);
     }
 
     @Override
     public String toString() {
         return "Module [" + name + "]";
-    }
-
-    public TagManager getTagManager() {
-        return tagMgr;
     }
 }

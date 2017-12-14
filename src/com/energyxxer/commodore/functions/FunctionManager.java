@@ -1,17 +1,17 @@
 package com.energyxxer.commodore.functions;
 
-import com.energyxxer.commodore.module.CommandModule;
+import com.energyxxer.commodore.module.Namespace;
 
 import java.util.HashMap;
 
 public class FunctionManager {
 
-    private final CommandModule owner;
+    private final Namespace namespace;
 
     private HashMap<String, Function> functions = new HashMap<>();
 
-    public FunctionManager(CommandModule owner) {
-        this.owner = owner;
+    public FunctionManager(Namespace namespace) {
+        this.namespace = namespace;
     }
 
     public Function get(String name) {
@@ -30,7 +30,7 @@ public class FunctionManager {
     }
 
     private Function forceCreate(String name) {
-        Function newFunction = new Function(this, name);
+        Function newFunction = new Function(this, namespace, name);
         functions.put(name, newFunction);
         return newFunction;
     }

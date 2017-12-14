@@ -1,12 +1,10 @@
 package com.energyxxer.commodore.types;
 
-public class BlockType extends Type {
-    public BlockType(String namespace, String id) {
-        super(namespace, id);
-    }
+import com.energyxxer.commodore.module.Namespace;
 
-    public BlockType(String raw) {
-        super(raw);
+public class BlockType extends Type {
+    protected BlockType(Namespace namespace, String id) {
+        super(namespace, id);
     }
 
     @Override
