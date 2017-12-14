@@ -14,7 +14,7 @@ public class SetblockCommand implements Command {
         this.pos = pos;
         this.block = block;
 
-        if (!block.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual blocks");
+        if(!block.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual blocks");
     }
 
     @Override

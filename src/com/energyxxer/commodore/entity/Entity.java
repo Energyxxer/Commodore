@@ -8,7 +8,7 @@ public interface Entity extends CommandExecutor, ScoreHolder {
     Selector getSelector();
 
     default Selector getSelectorAs(Entity executor) {
-        if (executor == this) return new Selector(Selector.BaseSelector.SENDER);
+        if(executor == this) return new Selector(Selector.BaseSelector.SENDER);
         else return getSelector();
     }
 

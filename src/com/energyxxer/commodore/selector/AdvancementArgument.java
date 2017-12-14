@@ -23,9 +23,9 @@ public class AdvancementArgument implements SelectorArgument {
 
         Iterator<AdvancementArgumentEntry> it = entries.iterator();
 
-        while (it.hasNext()) {
+        while(it.hasNext()) {
             sb.append(it.next().getArgumentString());
-            if (it.hasNext()) sb.append(',');
+            if(it.hasNext()) sb.append(',');
         }
 
         sb.append('}');

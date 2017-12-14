@@ -27,15 +27,15 @@ public interface Tag<T extends Type> {
 
         Iterator<T> it = getValues().iterator();
 
-        while (it.hasNext()) {
+        while(it.hasNext()) {
             sb.append("\n\t\t\"");
             sb.append(CommandUtils.escape(it.next().toString()));
             sb.append("\"");
-            if (it.hasNext()) sb.append(",");
+            if(it.hasNext()) sb.append(",");
         }
 
         sb.append("\n\t]");
-        if (this.getOverridePolicy() != OverridePolicy.DEFAULT_POLICY) {
+        if(this.getOverridePolicy() != OverridePolicy.DEFAULT_POLICY) {
             sb.append(",\n\t\"replace\": ");
             sb.append(this.getOverridePolicy().valueBool);
             sb.append('"');

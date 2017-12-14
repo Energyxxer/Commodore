@@ -25,7 +25,7 @@ public class FunctionManager {
     }
 
     public Function create(String name) {
-        if (!contains(name)) return forceCreate(name);
+        if(!contains(name)) return forceCreate(name);
         throw new IllegalArgumentException("A function by the name '" + name + "' already exists");
     }
 

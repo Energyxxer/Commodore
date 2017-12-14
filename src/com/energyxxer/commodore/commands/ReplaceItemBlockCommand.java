@@ -22,7 +22,7 @@ public class ReplaceItemBlockCommand extends ReplaceItemCommand {
         this.item = item;
         this.count = count;
 
-        if (!item.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual items");
+        if(!item.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual items");
     }
 
     @Override

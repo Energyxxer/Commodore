@@ -17,9 +17,9 @@ public class Blockstate {
     public static Blockstate parseRaw(String raw) {
         String[] states = raw.split(",");
         Blockstate blockstate = new Blockstate();
-        for (String state : states) {
+        for(String state : states) {
             String[] pair = state.split("=");
-            if (pair.length != 2)
+            if(pair.length != 2)
                 throw new IllegalArgumentException("Illegal format at '" + state + "' state for raw blockstate '" + raw + "'");
             blockstate.put(pair[0], pair[1]);
         }
@@ -31,13 +31,13 @@ public class Blockstate {
         StringBuilder sb = new StringBuilder();
 
         Iterator<Map.Entry<String, String>> it = map.entrySet().iterator();
-        while (it.hasNext()) {
+        while(it.hasNext()) {
             Map.Entry<String, String> entry = it.next();
 
             sb.append(entry.getKey());
             sb.append('=');
             sb.append(entry.getValue());
-            if (it.hasNext()) sb.append(',');
+            if(it.hasNext()) sb.append(',');
         }
 
         return sb.toString();
@@ -45,8 +45,8 @@ public class Blockstate {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
 
         Blockstate that = (Blockstate) o;
 

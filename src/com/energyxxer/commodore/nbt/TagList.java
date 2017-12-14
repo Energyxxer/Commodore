@@ -39,7 +39,7 @@ public class TagList extends NBTTag {
     }
 
     public void add(NBTTag tag) {
-        if (content.isEmpty() || content.get(0).getType().equals(tag.getType())) {
+        if(content.isEmpty() || content.get(0).getType().equals(tag.getType())) {
             content.add(tag);
         } else {
             throw new IllegalArgumentException("Unable to addCriterion tag of type " + tag.getType() + " to list of type " + content.get(0).getType() + "; Tag: " + tag);
@@ -56,10 +56,10 @@ public class TagList extends NBTTag {
         StringBuilder sb = new StringBuilder("[");
 
         Iterator<NBTTag> it = content.iterator();
-        while (it.hasNext()) {
+        while(it.hasNext()) {
             NBTTag tag = it.next();
             sb.append(tag.toHeadlessString());
-            if (it.hasNext()) sb.append(',');
+            if(it.hasNext()) sb.append(',');
         }
         sb.append(']');
 

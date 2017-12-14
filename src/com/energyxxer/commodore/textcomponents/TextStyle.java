@@ -63,7 +63,7 @@ public class TextStyle {
     }
 
     public byte getMaskForParent(TextStyle parentStyle) {
-        if (parentStyle == null) parentStyle = EMPTY_STYLE;
+        if(parentStyle == null) parentStyle = EMPTY_STYLE;
         return (byte) ((parentStyle.mask | this.mask) & (parentStyle.flags ^ this.flags));
     }
 
@@ -76,21 +76,21 @@ public class TextStyle {
         int mask = getMaskForParent(parentStyle);
         ArrayList<String> properties = new ArrayList<>();
 
-        if (color != null && (parentStyle == null || color != parentStyle.color)) {
+        if(color != null && (parentStyle == null || color != parentStyle.color)) {
             properties.add("\"color\":\"" + color.name().toLowerCase() + "\"");
         }
-        if ((mask & BOLD) != 0) properties.add("\"bold\":" + String.valueOf(getBoolean(BOLD)));
-        if ((mask & ITALIC) != 0) properties.add("\"italic\":" + String.valueOf(getBoolean(ITALIC)));
-        if ((mask & UNDERLINE) != 0) properties.add("\"underline\":" + String.valueOf(getBoolean(UNDERLINE)));
-        if ((mask & STRIKETHROUGH) != 0)
+        if((mask & BOLD) != 0) properties.add("\"bold\":" + String.valueOf(getBoolean(BOLD)));
+        if((mask & ITALIC) != 0) properties.add("\"italic\":" + String.valueOf(getBoolean(ITALIC)));
+        if((mask & UNDERLINE) != 0) properties.add("\"underline\":" + String.valueOf(getBoolean(UNDERLINE)));
+        if((mask & STRIKETHROUGH) != 0)
             properties.add("\"strikethrough\":" + String.valueOf(getBoolean(STRIKETHROUGH)));
-        if ((mask & OBFUSCATED) != 0) properties.add("\"obfuscated\":" + String.valueOf(getBoolean(OBFUSCATED)));
+        if((mask & OBFUSCATED) != 0) properties.add("\"obfuscated\":" + String.valueOf(getBoolean(OBFUSCATED)));
 
         StringBuilder sb = new StringBuilder();
         Iterator<String> it = properties.iterator();
-        while (it.hasNext()) {
+        while(it.hasNext()) {
             sb.append(it.next());
-            if (it.hasNext()) sb.append(',');
+            if(it.hasNext()) sb.append(',');
         }
 
         return (sb.length() != 0) ? sb.toString() : null;
@@ -102,12 +102,12 @@ public class TextStyle {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if(this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
 
         TextStyle textStyle = (TextStyle) o;
 
-        if (flags != textStyle.flags) return false;
+        if(flags != textStyle.flags) return false;
         return color == textStyle.color;
     }
 

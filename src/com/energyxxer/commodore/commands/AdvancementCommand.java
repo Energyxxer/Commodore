@@ -26,7 +26,7 @@ public class AdvancementCommand implements Command {
 
     public AdvancementCommand(Action action, Entity player, Limit limit) {
         this(action, player, limit, null);
-        if (limit.takesAdvancement)
+        if(limit.takesAdvancement)
             throw new IllegalArgumentException("Limit '" + limit + "' requires an advancement parameter");
     }
 
@@ -35,7 +35,7 @@ public class AdvancementCommand implements Command {
         this.player = player;
         this.limit = limit;
         this.advancement = advancement;
-        if (advancement != null && !limit.takesAdvancement)
+        if(advancement != null && !limit.takesAdvancement)
             System.out.println("[Commodore] [NOTICE] Limit '" + limit + "' doesn't require an advancement parameter, yet '" + advancement + "' was passed");
     }
 

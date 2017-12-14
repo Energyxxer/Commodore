@@ -41,7 +41,7 @@ public class CommandModule {
 
     public Namespace getNamespace(String name) {
         Namespace alreadyExisting = namespaces.get(name);
-        if (alreadyExisting != null) return alreadyExisting;
+        if(alreadyExisting != null) return alreadyExisting;
 
         Namespace newNamespace = new Namespace(this, name);
         namespaces.put(name, newNamespace);

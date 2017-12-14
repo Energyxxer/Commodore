@@ -20,31 +20,31 @@ public class ScoreAccessLog {
     }
 
     private void filterAccess(ScoreboardAccess access) {
-        if (access.getScore() == parent && !history.contains(access)) history.add(access);
+        if(access.getScore() == parent && !history.contains(access)) history.add(access);
     }
 
     public void resolve() {
         boolean used = false;
-        for (int i = history.size() - 1; i >= 0; i--) {
+        for(int i = history.size() - 1; i >= 0; i--) {
             ScoreboardAccess access = history.get(i);
             ScoreboardAccess dependency = access.getDependency();
-            if (access.getResolution() != ScoreboardAccess.AccessResolution.UNRESOLVED) continue;
-            if (dependency != null) {
-                if (dependency.getResolution() == ScoreboardAccess.AccessResolution.UNRESOLVED) {
+            if(access.getResolution() != ScoreboardAccess.AccessResolution.UNRESOLVED) continue;
+            if(dependency != null) {
+                if(dependency.getResolution() == ScoreboardAccess.AccessResolution.UNRESOLVED) {
                     access.setResolution(ScoreboardAccess.AccessResolution.IN_PROCESS);
                     dependency.getScore().getAccessLog().resolve();
                 }
-                if (dependency.getResolution() == ScoreboardAccess.AccessResolution.UNRESOLVED)
+                if(dependency.getResolution() == ScoreboardAccess.AccessResolution.UNRESOLVED)
                     throw new RuntimeException("wtf dependency unresolved after resolve called");
-                if (dependency.getResolution() == ScoreboardAccess.AccessResolution.IN_PROCESS)
+                if(dependency.getResolution() == ScoreboardAccess.AccessResolution.IN_PROCESS)
                     throw new RuntimeException("wtf dependency in process after resolve called");
                 access.setResolution(dependency.getResolution());
                 used = access.getType() == ScoreboardAccess.AccessType.READ;
-            } else if (access.getType() == ScoreboardAccess.AccessType.WRITE) {
-                if (used) access.setResolution(ScoreboardAccess.AccessResolution.USED);
+            } else if(access.getType() == ScoreboardAccess.AccessType.WRITE) {
+                if(used) access.setResolution(ScoreboardAccess.AccessResolution.USED);
                 else access.setResolution(ScoreboardAccess.AccessResolution.UNUSED);
                 used = false;
-            } else if (access.getType() == ScoreboardAccess.AccessType.READ) {
+            } else if(access.getType() == ScoreboardAccess.AccessType.READ) {
                 access.setResolution(ScoreboardAccess.AccessResolution.USED);
                 used = true;
             }
@@ -61,7 +61,7 @@ public class ScoreAccessLog {
         history.forEach(a -> {
             sb.append(a.getType());
             sb.append(" ");
-            if (a.getDependency() != null) {
+            if(a.getDependency() != null) {
                 sb.append("⫘ (");
                 sb.append(a.getDependency());
                 sb.append(") ");

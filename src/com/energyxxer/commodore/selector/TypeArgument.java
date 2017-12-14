@@ -5,7 +5,7 @@ public class TypeArgument implements SelectorArgument {
     private boolean negated;
 
     public TypeArgument(String type) {
-        if (type.startsWith("!")) {
+        if(type.startsWith("!")) {
             this.type = type.substring(1);
             this.negated = true;
         } else {

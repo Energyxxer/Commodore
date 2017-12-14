@@ -51,13 +51,13 @@ public class Selector {
     public String toString() {
         StringBuilder sb = new StringBuilder("@");
         sb.append(base.getHeader());
-        if (!args.isEmpty()) {
+        if(!args.isEmpty()) {
             sb.append('[');
             Iterator<SelectorArgument> it = args.iterator();
-            while (it.hasNext()) {
+            while(it.hasNext()) {
                 SelectorArgument arg = it.next();
                 sb.append(arg.getArgumentString());
-                if (it.hasNext()) sb.append(',');
+                if(it.hasNext()) sb.append(',');
             }
             sb.append(']');
         }

@@ -18,7 +18,7 @@ public class SelectorNumberArgument<T extends Number> {
 
     @Override
     public String toString() {
-        if (min != null && max != null && min.equals(max)) {
+        if(min != null && max != null && min.equals(max)) {
             return CommandUtils.toString(min.doubleValue());
         } else {
             return ((min != null) ? CommandUtils.toString(min.doubleValue()) : "") + ".." + ((max != null) ? "" + CommandUtils.toString(max.doubleValue()) : "");

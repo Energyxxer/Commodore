@@ -20,13 +20,13 @@ public class ScoreArgument implements SelectorArgument {
     public String getArgumentString() {
         StringBuilder sb = new StringBuilder("score={");
         Iterator<Map.Entry<String, SelectorNumberArgument<Integer>>> it = this.scores.entrySet().iterator();
-        while (it.hasNext()) {
+        while(it.hasNext()) {
             Map.Entry<String, SelectorNumberArgument<Integer>> entry = it.next();
 
             sb.append(entry.getKey());
             sb.append('=');
             sb.append(entry.getValue());
-            if (it.hasNext()) sb.append(',');
+            if(it.hasNext()) sb.append(',');
         }
         sb.append("}");
         return sb.toString();

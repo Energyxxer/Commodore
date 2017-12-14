@@ -52,10 +52,10 @@ public class TagCompound extends NBTTag {
         StringBuilder sb = new StringBuilder("{");
 
         Iterator<NBTTag> it = content.iterator();
-        while (it.hasNext()) {
+        while(it.hasNext()) {
             NBTTag tag = it.next();
             sb.append(tag.toString());
-            if (it.hasNext()) sb.append(',');
+            if(it.hasNext()) sb.append(',');
         }
         sb.append('}');
 

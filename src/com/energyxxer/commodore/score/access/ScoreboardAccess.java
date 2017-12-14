@@ -10,7 +10,7 @@ public class ScoreboardAccess {
         this.dependency = dependency;
 
         //In theory this should never be an issue considering dependencies are final.
-        if (dependency != null && dependency.getDependency() == this)
+        if(dependency != null && dependency.getDependency() == this)
             throw new IllegalArgumentException("Cyclical scoreboard access dependency is not allowed");
     }
 

@@ -12,7 +12,7 @@ public class Objective {
     }
 
     Objective(ObjectiveManager parent, String name, String type) {
-        if (name.length() > MAX_NAME_LENGTH)
+        if(name.length() > MAX_NAME_LENGTH)
             throw new IllegalArgumentException("Objective name '" + name + "' exceeds the limit of " + MAX_NAME_LENGTH + " characters");
         this.parent = parent;
         this.name = name;

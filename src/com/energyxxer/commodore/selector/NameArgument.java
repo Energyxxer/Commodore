@@ -7,7 +7,7 @@ public class NameArgument implements SelectorArgument {
     private boolean negated;
 
     public NameArgument(String name) {
-        if (name.startsWith("!")) {
+        if(name.startsWith("!")) {
             this.name = name.substring(1);
             this.negated = true;
         } else {

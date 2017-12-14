@@ -16,19 +16,19 @@ public abstract class TextComponent {
     }
 
     public void setStyle(TextStyle style) {
-        if (!supportsProperties())
+        if(!supportsProperties())
             throw new UnsupportedOperationException(this.getClass().getName() + " does not support text properties");
         this.style = style;
     }
 
     public void addEvent(TextEvent event) {
-        if (!supportsProperties())
+        if(!supportsProperties())
             throw new UnsupportedOperationException(this.getClass().getName() + " does not support text properties");
         this.events.add(event);
     }
 
     public void addEvents(Collection<TextEvent> events) {
-        if (events != null) events.forEach(this::addEvent);
+        if(events != null) events.forEach(this::addEvent);
     }
 
     public void addEvents(TextEvent... events) {
@@ -44,20 +44,20 @@ public abstract class TextComponent {
     }
 
     protected String getBaseProperties(TextComponent parent) {
-        if (!supportsProperties()) return null;
+        if(!supportsProperties()) return null;
 
         ArrayList<String> properties = new ArrayList<>();
         String styleString = style.toString(parent != null ? parent.getStyle() : null);
-        if (styleString != null) properties.add(styleString);
+        if(styleString != null) properties.add(styleString);
         events.forEach(e -> properties.add(e.toString()));
 
-        if (properties.isEmpty()) return null;
+        if(properties.isEmpty()) return null;
 
         StringBuilder sb = new StringBuilder();
         Iterator<String> it = properties.iterator();
-        while (it.hasNext()) {
+        while(it.hasNext()) {
             sb.append(it.next());
-            if (it.hasNext()) sb.append(',');
+            if(it.hasNext()) sb.append(',');
         }
         return sb.toString();
     }

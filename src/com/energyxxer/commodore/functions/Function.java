@@ -63,14 +63,14 @@ public class Function {
     }
 
     public String getResolvedContent() {
-        if (!contentResolved) {
+        if(!contentResolved) {
             StringBuilder sb = new StringBuilder("# ");
             sb.append(getFullName());
             sb.append('\n');
 
-            for (FunctionWriter writer : content) {
+            for(FunctionWriter writer : content) {
                 String content = writer.toFunctionContent(this);
-                if (content != null) {
+                if(content != null) {
                     sb.append(content);
                     sb.append('\n');
                 }
