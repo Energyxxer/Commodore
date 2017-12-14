@@ -7,7 +7,7 @@ public class TagArgument implements SelectorArgument {
     private boolean negated;
 
     public TagArgument(String tag) {
-        if(tag.startsWith("!")) {
+        if (tag.startsWith("!")) {
             this.tag = tag.substring(1);
             this.negated = true;
         } else {

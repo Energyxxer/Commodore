@@ -1,7 +1,34 @@
 package com.energyxxer.commodore;
 
 import com.energyxxer.commodore.block.Block;
-import com.energyxxer.commodore.commands.*;
+import com.energyxxer.commodore.commands.AdvancementCommand;
+import com.energyxxer.commodore.commands.CloneCommand;
+import com.energyxxer.commodore.commands.CloneFilteredCommand;
+import com.energyxxer.commodore.commands.CloneMaskedCommand;
+import com.energyxxer.commodore.commands.EffectClearCommand;
+import com.energyxxer.commodore.commands.EffectGiveCommand;
+import com.energyxxer.commodore.commands.ExecuteCommand;
+import com.energyxxer.commodore.commands.ExperienceCommand;
+import com.energyxxer.commodore.commands.ExperienceSetCommand;
+import com.energyxxer.commodore.commands.FillCommand;
+import com.energyxxer.commodore.commands.FillDestroyCommand;
+import com.energyxxer.commodore.commands.FillHollowCommand;
+import com.energyxxer.commodore.commands.FillKeepCommand;
+import com.energyxxer.commodore.commands.FillOutlineCommand;
+import com.energyxxer.commodore.commands.FillReplaceCommand;
+import com.energyxxer.commodore.commands.FunctionCommand;
+import com.energyxxer.commodore.commands.GamemodeCommand;
+import com.energyxxer.commodore.commands.GiveCommand;
+import com.energyxxer.commodore.commands.PlaySoundCommand;
+import com.energyxxer.commodore.commands.RecipeCommand;
+import com.energyxxer.commodore.commands.SpreadPlayersCommand;
+import com.energyxxer.commodore.commands.StopSoundCommand;
+import com.energyxxer.commodore.commands.SummonCommand;
+import com.energyxxer.commodore.commands.TeleportToCoordsCommand;
+import com.energyxxer.commodore.commands.TeleportToEntityCommand;
+import com.energyxxer.commodore.commands.TellrawCommand;
+import com.energyxxer.commodore.commands.TriggerCommand;
+import com.energyxxer.commodore.commands.WeatherCommand;
 import com.energyxxer.commodore.commands.scoreboard.ScoreGet;
 import com.energyxxer.commodore.commands.scoreboard.ScorePlayersOperation;
 import com.energyxxer.commodore.commands.scoreboard.ScoreSet;
@@ -32,7 +59,9 @@ import com.energyxxer.commodore.selector.advancement.AdvancementCriterionEntry;
 import com.energyxxer.commodore.selector.advancement.AdvancementCriterionGroupEntry;
 import com.energyxxer.commodore.tags.BlockTag;
 import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
-import com.energyxxer.commodore.types.*;
+import com.energyxxer.commodore.types.EntityType;
+import com.energyxxer.commodore.types.Gamemode;
+import com.energyxxer.commodore.types.ItemType;
 
 public final class CommandTest {
     public static void main(String[] args) {
@@ -100,7 +129,7 @@ public final class CommandTest {
         function.append(datacmd);
         //System.out.println("datacmd = " + datacmd.getRawCommand());*/
 
-        CommandModule module = new CommandModule("Commodore Test","ct");
+        CommandModule module = new CommandModule("Commodore Test", "ct");
         ObjectiveManager objMgr = module.getObjectiveManager();
 
         Function function = module.getNamespace("test").getFunctionManager().get("scores");
@@ -110,10 +139,10 @@ public final class CommandTest {
 
         Selector playerSelector = new Selector(Selector.BaseSelector.ALL_PLAYERS);
         AdvancementArgument advArg = new AdvancementArgument();
-        advArg.addEntry(new AdvancementCompletionEntry("foo",true));
-        advArg.addEntry(new AdvancementCompletionEntry("bar",false));
+        advArg.addEntry(new AdvancementCompletionEntry("foo", true));
+        advArg.addEntry(new AdvancementCompletionEntry("bar", false));
         AdvancementCriterionGroupEntry criterionGroup = new AdvancementCriterionGroupEntry("custom:something");
-        criterionGroup.addCriterion(new AdvancementCriterionEntry("criterion",true));
+        criterionGroup.addCriterion(new AdvancementCriterionEntry("criterion", true));
         advArg.addEntry(criterionGroup);
         playerSelector.addArguments(advArg);
 
@@ -122,10 +151,10 @@ public final class CommandTest {
         function.append(new AdvancementCommand(AdvancementCommand.Action.GRANT, player, AdvancementCommand.Limit.ONLY, "bar"));
 
         function.append(new ExperienceSetCommand(player, 5, ExperienceCommand.Unit.LEVELS));
-        
+
         ItemType diamondSword = module.getNamespace("minecraft").getTypeManager().item.create("diamond_sword");
 
-        function.append(new GiveCommand(player, new Item(diamondSword, new TagCompound(new TagByte("Unbreakable",1),new TagShort("Damage",4))), 3));
+        function.append(new GiveCommand(player, new Item(diamondSword, new TagCompound(new TagByte("Unbreakable", 1), new TagShort("Damage", 4))), 3));
 
         function.append(new PlaySoundCommand("minecraft:ambient.cave", PlaySoundCommand.Source.MASTER, player));
         function.append(new PlaySoundCommand("minecraft:ambient.cave", PlaySoundCommand.Source.MASTER, player, new CoordinateSet(500, 87, 500)));
@@ -143,8 +172,8 @@ public final class CommandTest {
         function.append(new StopSoundCommand(player, null, "minecraft:ambient.cave"));
 
         EntityType bat = module.getNamespace("minecraft").getTypeManager().entity.create("bat");
-        
-        function.append(new SummonCommand(bat, new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new TagCompound(new TagByte("Glowing",1))));
+
+        function.append(new SummonCommand(bat, new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new TagCompound(new TagByte("Glowing", 1))));
 
         function.append(new TeleportToCoordsCommand(player, new CoordinateSet(0, 0, 2, Coordinate.Type.LOCAL), new Rotation(12.5, 0, RotationUnit.Type.RELATIVE)));
         function.append(new TeleportToEntityCommand(entity, player));
@@ -185,12 +214,12 @@ public final class CommandTest {
         buttons.addValue(module.minecraft.getTypeManager().block.create("acacia_button"));
         buttons.addValue(module.minecraft.getTypeManager().block.create("dark_oak_button"));
 
-        function.append(new CloneCommand(new CoordinateSet(0,0,0, Coordinate.Type.RELATIVE),new CoordinateSet(2,2,2, Coordinate.Type.RELATIVE),new CoordinateSet(5,5,5)));
-        function.append(new CloneCommand(new CoordinateSet(0.5,0.5,0.5),new CoordinateSet(2.5,2.5,2.5, Coordinate.Type.RELATIVE),new CoordinateSet(5,5,5), CloneCommand.SourceMode.FORCE));
-        function.append(new CloneMaskedCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5)));
-        function.append(new CloneMaskedCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5), CloneCommand.SourceMode.FORCE));
-        function.append(new CloneFilteredCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5), new Block(buttons)));
-        function.append(new CloneFilteredCommand(new CoordinateSet(0,0,0),new CoordinateSet(2,2,2),new CoordinateSet(5,5,5), new Block(buttons), CloneCommand.SourceMode.FORCE));
+        function.append(new CloneCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new CoordinateSet(2, 2, 2, Coordinate.Type.RELATIVE), new CoordinateSet(5, 5, 5)));
+        function.append(new CloneCommand(new CoordinateSet(0.5, 0.5, 0.5), new CoordinateSet(2.5, 2.5, 2.5, Coordinate.Type.RELATIVE), new CoordinateSet(5, 5, 5), CloneCommand.SourceMode.FORCE));
+        function.append(new CloneMaskedCommand(new CoordinateSet(0, 0, 0), new CoordinateSet(2, 2, 2), new CoordinateSet(5, 5, 5)));
+        function.append(new CloneMaskedCommand(new CoordinateSet(0, 0, 0), new CoordinateSet(2, 2, 2), new CoordinateSet(5, 5, 5), CloneCommand.SourceMode.FORCE));
+        function.append(new CloneFilteredCommand(new CoordinateSet(0, 0, 0), new CoordinateSet(2, 2, 2), new CoordinateSet(5, 5, 5), new Block(buttons)));
+        function.append(new CloneFilteredCommand(new CoordinateSet(0, 0, 0), new CoordinateSet(2, 2, 2), new CoordinateSet(5, 5, 5), new Block(buttons), CloneCommand.SourceMode.FORCE));
 
         function.append(new FunctionComment("FILL COMMANDS"));
 
@@ -208,7 +237,7 @@ public final class CommandTest {
         function.append(new FunctionComment("OTHERS"));
 
         function.append(new GamemodeCommand(new Gamemode("spectator"), new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
-        function.append(new EffectGiveCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new StatusEffect(module.minecraft.getTypeManager().effect.create("resistance"),100,4)));
+        function.append(new EffectGiveCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new StatusEffect(module.minecraft.getTypeManager().effect.create("resistance"), 100, 4)));
         function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), module.minecraft.getTypeManager().effect.create("resistance")));
         function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
 

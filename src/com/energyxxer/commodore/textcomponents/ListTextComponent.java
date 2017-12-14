@@ -20,14 +20,14 @@ public class ListTextComponent extends TextComponent {
 
     @Override
     public String toString(TextComponent parent) {
-        if(children.isEmpty()) return "[]";
+        if (children.isEmpty()) return "[]";
 
         StringBuilder sb = new StringBuilder("[");
 
         TextComponent listHeader = children.get(0);
         sb.append(listHeader.toString(parent));
 
-        for(int i = 1; i < children.size(); i++) {
+        for (int i = 1; i < children.size(); i++) {
             sb.append(',');
             sb.append(children.get(i).toString(listHeader));
         }

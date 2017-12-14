@@ -7,7 +7,7 @@ import static com.energyxxer.commodore.effect.StatusEffect.ParticleVisibility.VI
 
 public class StatusEffect {
 
-    public static final int DEFAULT_DURATION = 30*20;
+    public static final int DEFAULT_DURATION = 30 * 20;
     public static final int DEFAULT_AMPLIFIER = 0;
     public static final ParticleVisibility DEFAULT_VISIBILITY = VISIBLE;
 
@@ -21,7 +21,7 @@ public class StatusEffect {
     private ParticleVisibility visibility;
 
     public StatusEffect(EffectType effect) {
-        this(effect, 30*20);
+        this(effect, 30 * 20);
     }
 
     public StatusEffect(EffectType effect, int duration) {
@@ -73,6 +73,6 @@ public class StatusEffect {
 
     @Override
     public String toString() {
-        return effect.toString() + " " + (duration/20) + " " + amplifier + ((visibility == HIDDEN) ? " true" : "");
+        return effect.toString() + " " + (duration / 20) + " " + amplifier + ((visibility == HIDDEN) ? " true" : "");
     }
 }

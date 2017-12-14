@@ -6,6 +6,8 @@ public interface ExecuteModifier {
     SubCommandResult getSubCommand(Entity sender);
 
     boolean isIdempotent();
+
     boolean isSignificant();
+
     boolean isAbsolute();
 }

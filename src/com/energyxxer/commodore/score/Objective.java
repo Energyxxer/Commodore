@@ -12,7 +12,8 @@ public class Objective {
     }
 
     Objective(ObjectiveManager parent, String name, String type) {
-        if(name.length() > MAX_NAME_LENGTH) throw new IllegalArgumentException("Objective name '" + name + "' exceeds the limit of " + MAX_NAME_LENGTH + " characters");
+        if (name.length() > MAX_NAME_LENGTH)
+            throw new IllegalArgumentException("Objective name '" + name + "' exceeds the limit of " + MAX_NAME_LENGTH + " characters");
         this.parent = parent;
         this.name = name;
         this.type = type;
@@ -32,6 +33,6 @@ public class Objective {
 
     @Override
     public String toString() {
-        return name + (!type.equals("dummy") ? " ("+type+")" : "");
+        return name + (!type.equals("dummy") ? " (" + type + ")" : "");
     }
 }

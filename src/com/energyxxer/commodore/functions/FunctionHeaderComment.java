@@ -12,7 +12,7 @@ public class FunctionHeaderComment extends FunctionComment {
         sb.append('\n');
         sb.append("#\n");
 
-        for(String line : lines) {
+        for (String line : lines) {
             sb.append("# ");
             sb.append(line);
             sb.append('\n');

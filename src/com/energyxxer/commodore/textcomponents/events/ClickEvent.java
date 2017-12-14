@@ -6,7 +6,9 @@ import com.energyxxer.commodore.textcomponents.TextEvent;
 public class ClickEvent extends TextEvent {
     public enum Action {
         RUN_COMMAND, SUGGEST_COMMAND, OPEN_URL
-    };
+    }
+
+    ;
 
     private Action action;
     private String value;

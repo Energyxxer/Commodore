@@ -54,12 +54,12 @@ public class PlaySoundCommand implements Command {
                         " " + location +
                                 ((maxVolume != -1) ?
                                         " " + maxVolume +
-                                        ((pitch != -1) ?
-                                                " " + pitch +
-                                                ((minVolume != -1) ?
-                                                        " " + minVolume
+                                                ((pitch != -1) ?
+                                                        " " + pitch +
+                                                                ((minVolume != -1) ?
+                                                                        " " + minVolume
+                                                                        : "")
                                                         : "")
-                                                : "")
                                         : "")
                         : "");
     }

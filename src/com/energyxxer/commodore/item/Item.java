@@ -23,7 +23,7 @@ public class Item {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder(type.toString());
-        if(nbt != null) sb.append(nbt.toHeadlessString());
+        if (nbt != null) sb.append(nbt.toHeadlessString());
         return sb.toString();
     }
 }

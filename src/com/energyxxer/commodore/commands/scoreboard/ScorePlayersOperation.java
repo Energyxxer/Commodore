@@ -40,7 +40,7 @@ public class ScorePlayersOperation extends ScoreboardManipulation {
         this.operation = operation;
         this.source = source;
 
-        if(operation.isTargetRead()) {
+        if (operation.isTargetRead()) {
             ScoreboardAccess access1 = new ScoreboardAccess(source, ScoreboardAccess.AccessType.READ);
             ScoreboardAccess access2 = new ScoreboardAccess(target, ScoreboardAccess.AccessType.READ, access1);
             ScoreboardAccess access3 = new ScoreboardAccess(target, ScoreboardAccess.AccessType.WRITE, access2);

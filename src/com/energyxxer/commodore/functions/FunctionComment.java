@@ -20,10 +20,10 @@ public class FunctionComment implements FunctionWriter {
         StringBuilder sb = new StringBuilder();
 
         Iterator<String> it = lines.iterator();
-        while(it.hasNext()) {
+        while (it.hasNext()) {
             sb.append("# ");
             sb.append(it.next());
-            if(it.hasNext()) sb.append('\n');
+            if (it.hasNext()) sb.append('\n');
         }
         return sb.toString();
     }

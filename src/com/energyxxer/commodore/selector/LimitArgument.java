@@ -4,7 +4,7 @@ public class LimitArgument implements SelectorArgument {
     private int limit;
 
     public LimitArgument(int limit) {
-        if(limit <= 0) throw new IllegalArgumentException("Limit must be greater than zero: " + limit);
+        if (limit <= 0) throw new IllegalArgumentException("Limit must be greater than zero: " + limit);
         this.limit = limit;
     }
 

@@ -64,14 +64,15 @@ public class Coordinate {
     public String getAs(DisplayMode mode) {
         double num = coord;
 
-        if(mode.doTruncate() && type == Type.ABSOLUTE) num = Math.floor(num);
+        if (mode.doTruncate() && type == Type.ABSOLUTE) num = Math.floor(num);
 
         String numStr;
 
-        if((mode.doTruncate() && type == Type.ABSOLUTE) || (num % 1 == 0 && type != Type.ABSOLUTE)) numStr = String.valueOf((int) num);
+        if ((mode.doTruncate() && type == Type.ABSOLUTE) || (num % 1 == 0 && type != Type.ABSOLUTE))
+            numStr = String.valueOf((int) num);
         else numStr = String.valueOf(num);
 
-        if(num == 0 && type != Type.ABSOLUTE) numStr = "";
+        if (num == 0 && type != Type.ABSOLUTE) numStr = "";
 
         return type.prefix + numStr;
     }

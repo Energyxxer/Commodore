@@ -21,7 +21,8 @@ public class DataPackEnableCommand extends DataPackCommand {
     public DataPackEnableCommand(String pack, Order order) {
         this(pack, order, null);
 
-        if(order.takesSecondPack) throw new IllegalArgumentException("Order '" + order + "' requires a second datapack parameter");
+        if (order.takesSecondPack)
+            throw new IllegalArgumentException("Order '" + order + "' requires a second datapack parameter");
     }
 
     public DataPackEnableCommand(String pack, Order order, String secondPack) {
@@ -29,7 +30,8 @@ public class DataPackEnableCommand extends DataPackCommand {
         this.order = order;
         this.secondPack = secondPack;
 
-        if(secondPack != null && !order.takesSecondPack) System.out.println("[Commodore] [NOTICE] Order '" + order + "' doesn't require a second datapack parameter, yet '" + secondPack + "' was passed");
+        if (secondPack != null && !order.takesSecondPack)
+            System.out.println("[Commodore] [NOTICE] Order '" + order + "' doesn't require a second datapack parameter, yet '" + secondPack + "' was passed");
     }
 
     @Override

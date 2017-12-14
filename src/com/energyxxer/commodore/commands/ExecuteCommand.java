@@ -24,11 +24,11 @@ public class ExecuteCommand implements Command {
     public String getRawCommand(Entity sender) {
         StringBuilder sb = new StringBuilder("execute ");
 
-        for(ExecuteModifier modifier : modifiers) {
+        for (ExecuteModifier modifier : modifiers) {
             SubCommandResult result = modifier.getSubCommand(sender);
             sb.append(result.getSubCommand());
             sb.append(' ');
-            if(result.getNewSender() != null) sender = result.getNewSender();
+            if (result.getNewSender() != null) sender = result.getNewSender();
         }
         sb.append("run ");
         sb.append(chainedCommand.getRawCommand(sender));

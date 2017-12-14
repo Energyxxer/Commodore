@@ -25,9 +25,9 @@ public class StringTextComponent extends TextComponent {
         String baseProperties = this.getBaseProperties(parent);
         return (baseProperties == null) ? escapedText :
                 "{\"text\":" +
-                escapedText +
-                "," +
-                baseProperties +
-                '}';
+                        escapedText +
+                        "," +
+                        baseProperties +
+                        '}';
     }
 }

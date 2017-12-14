@@ -2,11 +2,64 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4748290-07e4-4f66-a1b0-dbbd9f36cabc" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/User.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/User.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreboardManipulation.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreboardManipulation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/access/ScoreboardAccess.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/access/ScoreboardAccess.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/Command.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/Command.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandUtils.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/CommandUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/block/Block.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/block/Block.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/block/Blockstate.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/block/Blockstate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/AdvancementCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/AdvancementCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackEnableCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DataPackEnableCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultyQueryCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultyQueryCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/ExecuteCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/ExecuteCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/FillCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/FillCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GiveCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/GiveCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/PlaySoundCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/PlaySoundCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/ReplaceItemBlockCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/ReplaceItemBlockCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/ReplaceItemEntityCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/ReplaceItemEntityCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/SetblockCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/SetblockCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/TitleShowCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/TitleShowCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/TitleTimesCommand.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/TitleTimesCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/execute/ExecuteModifier.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/execute/ExecuteModifier.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScorePlayersOperation.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScorePlayersOperation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/coordinates/Coordinate.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/coordinates/Coordinate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/coordinates/CoordinateSet.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/coordinates/CoordinateSet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/coordinates/ExecuteAlignment.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/coordinates/ExecuteAlignment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/coordinates/ExecuteAtEntity.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/coordinates/ExecuteAtEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/effect/StatusEffect.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/effect/StatusEffect.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/entity/Entity.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/entity/Entity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/functions/Function.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/functions/Function.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionComment.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionComment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionHeaderComment.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionHeaderComment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionManager.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionWriter.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/functions/FunctionWriter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/item/Item.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/item/Item.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/module/CommandModule.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/module/CommandModule.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/NBTTag.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/NBTTag.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/TagCompound.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/TagCompound.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/TagList.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/TagList.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/TagString.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/nbt/TagString.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/Objective.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/Objective.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/ObjectiveManager.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/ObjectiveManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/access/ScoreAccessLog.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/score/access/ScoreAccessLog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/AdvancementArgument.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/AdvancementArgument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/LimitArgument.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/LimitArgument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/NameArgument.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/NameArgument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/ScoreArgument.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/ScoreArgument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/Selector.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/Selector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/SelectorNumberArgument.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/SelectorNumberArgument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/TagArgument.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/TagArgument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/TypeArgument.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/TypeArgument.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCriterionGroupEntry.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/selector/advancement/AdvancementCriterionGroupEntry.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/BlockTag.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/BlockTag.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/Tag.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/Tag.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/ListTextComponent.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/ListTextComponent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/StringTextComponent.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/StringTextComponent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/TextComponent.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/TextComponent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/TextStyle.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/TextStyle.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/events/ClickEvent.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/textcomponents/events/ClickEvent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/types/Difficulty.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/types/Difficulty.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/energyxxer/commodore/types/TypeManager.java" afterPath="$PROJECT_DIR$/src/com/energyxxer/commodore/types/TypeManager.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,33 +71,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CommandTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CommandTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="218" column="18" lean-forward="true" selection-start-line="218" selection-start-column="18" selection-end-line="218" selection-end-column="18" />
+            <state relative-caret-position="1407">
+              <caret line="214" column="7" lean-forward="false" selection-start-line="214" selection-start-column="7" selection-end-line="214" selection-end-column="7" />
               <folding>
-                <marker date="1513259186336" expanded="true" signature="13672:13901" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Namespace.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/module/Namespace.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="45" lean-forward="false" selection-start-line="20" selection-start-column="45" selection-end-line="20" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#700#701#0" expanded="true" />
-                <element signature="e#727#728#0" expanded="true" />
-                <element signature="e#778#779#0" expanded="true" />
-                <element signature="e#807#808#0" expanded="true" />
-                <element signature="e#848#849#0" expanded="true" />
-                <element signature="e#877#878#0" expanded="true" />
-                <element signature="e#920#921#0" expanded="true" />
-                <element signature="e#950#951#0" expanded="true" />
+                <marker date="1513261245661" expanded="true" signature="15437:15666" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -59,8 +92,8 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#805#806#0" expanded="true" />
                 <element signature="e#847#848#0" expanded="true" />
-                <element signature="e#1206#1207#0" expanded="true" />
-                <element signature="e#1257#1258#0" expanded="true" />
+                <element signature="e#1207#1208#0" expanded="true" />
+                <element signature="e#1258#1259#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -70,12 +103,12 @@
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/score/ObjectiveManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="58" column="42" lean-forward="true" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+              <caret line="58" column="42" lean-forward="false" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
               <folding>
-                <element signature="e#1568#1569#0" expanded="true" />
-                <element signature="e#1643#1644#0" expanded="true" />
-                <element signature="e#1682#1683#0" expanded="true" />
-                <element signature="e#1752#1753#0" expanded="true" />
+                <element signature="e#1570#1571#0" expanded="true" />
+                <element signature="e#1646#1647#0" expanded="true" />
+                <element signature="e#1685#1686#0" expanded="true" />
+                <element signature="e#1755#1756#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -85,7 +118,7 @@
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/score/LocalScore.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="134">
-              <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+              <caret line="25" column="19" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
               <folding>
                 <element signature="e#638#639#0" expanded="true" />
                 <element signature="e#670#671#0" expanded="true" />
@@ -104,11 +137,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScoreboardManipulation.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ScoreboardManipulation.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreboardManipulation.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+              <caret line="34" column="29" lean-forward="false" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
               <folding>
                 <element signature="e#1651#1652#0" expanded="true" />
                 <element signature="e#1742#1743#0" expanded="true" />
@@ -117,22 +150,50 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EntityType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/types/EntityType.java">
+      <file leaf-file-name="BlockTag.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/tags/BlockTag.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+            <state relative-caret-position="646">
+              <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#535#536#0" expanded="true" />
+                <element signature="e#571#572#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GenericEntity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/entity/GenericEntity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gamemode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/types/Gamemode.java">
+      <file leaf-file-name="TagGroup.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/tags/TagGroup.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
-              <folding />
+            <state relative-caret-position="136">
+              <caret line="8" column="29" lean-forward="true" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FunctionReference.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/types/FunctionReference.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -206,7 +267,6 @@
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/types/Difficulty.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/Tag.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/TagGroup.java" />
-        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/BlockTag.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/types/Type.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/TagManager.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/FunctionTag.java" />
@@ -227,6 +287,7 @@
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/module/Namespace.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/score/access/ScoreboardAccess.java" />
         <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreboardManipulation.java" />
+        <option value="$PROJECT_DIR$/src/com/energyxxer/commodore/tags/BlockTag.java" />
       </list>
     </option>
   </component>
@@ -354,6 +415,7 @@
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -806,12 +868,18 @@
       <option name="project" value="LOCAL" />
       <updated>1513259452175</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Code reformatted (first test)">
+      <created>1513261061555</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1513261061555</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -848,8 +916,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="Updated package to new name" />
-    <MESSAGE value="Basic score usage optimization in functions" />
     <MESSAGE value="Score usage optimization across separate LocalScores" />
     <MESSAGE value="Removed deprecated optimization system" />
     <MESSAGE value="Added CommandModule" />
@@ -873,7 +939,12 @@
     <MESSAGE value="Updated workspace.xml" />
     <MESSAGE value="Added data pack tags" />
     <MESSAGE value="Implemented namespace management" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented namespace management" />
+    <MESSAGE value="Code reformatted (first test)" />
+    <MESSAGE value="Code reformatted (whole project)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Code reformatted (whole project)" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -882,17 +953,13 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/KillCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/DifficultyCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="16" column="41" lean-forward="false" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -921,6 +988,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="9" column="66" lean-forward="false" selection-start-line="9" selection-start-column="66" selection-end-line="9" selection-end-column="66" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+            <element signature="e#539#540#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -928,6 +1000,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="56" lean-forward="false" selection-start-line="4" selection-start-column="56" selection-end-line="4" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -949,28 +1022,28 @@
           <caret line="75" column="53" lean-forward="false" selection-start-line="75" selection-start-column="53" selection-end-line="75" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#735#736#0" expanded="false" />
-            <element signature="e#770#771#0" expanded="false" />
-            <element signature="e#830#831#0" expanded="false" />
-            <element signature="e#871#872#0" expanded="false" />
-            <element signature="e#946#947#0" expanded="false" />
-            <element signature="e#1004#1005#0" expanded="false" />
-            <element signature="e#1291#1292#0" expanded="false" />
-            <element signature="e#1320#1321#0" expanded="false" />
-            <element signature="e#1368#1369#0" expanded="false" />
-            <element signature="e#1404#1405#0" expanded="false" />
-            <element signature="e#1436#1437#0" expanded="false" />
-            <element signature="e#1467#1468#0" expanded="false" />
-            <element signature="e#1512#1513#0" expanded="false" />
-            <element signature="e#1552#1553#0" expanded="false" />
-            <element signature="e#1585#1586#0" expanded="false" />
-            <element signature="e#1617#1618#0" expanded="false" />
-            <element signature="e#1664#1665#0" expanded="false" />
-            <element signature="e#1706#1707#0" expanded="false" />
-            <element signature="e#1755#1756#0" expanded="false" />
-            <element signature="e#1788#1789#0" expanded="false" />
-            <element signature="e#1852#1853#0" expanded="false" />
-            <element signature="e#1896#1897#0" expanded="false" />
+            <element signature="e#737#738#0" expanded="false" />
+            <element signature="e#774#775#0" expanded="false" />
+            <element signature="e#834#835#0" expanded="false" />
+            <element signature="e#875#876#0" expanded="false" />
+            <element signature="e#950#951#0" expanded="false" />
+            <element signature="e#1008#1009#0" expanded="false" />
+            <element signature="e#1295#1296#0" expanded="false" />
+            <element signature="e#1324#1325#0" expanded="false" />
+            <element signature="e#1372#1373#0" expanded="false" />
+            <element signature="e#1408#1409#0" expanded="false" />
+            <element signature="e#1440#1441#0" expanded="false" />
+            <element signature="e#1471#1472#0" expanded="false" />
+            <element signature="e#1516#1517#0" expanded="false" />
+            <element signature="e#1556#1557#0" expanded="false" />
+            <element signature="e#1589#1590#0" expanded="false" />
+            <element signature="e#1621#1622#0" expanded="false" />
+            <element signature="e#1668#1669#0" expanded="false" />
+            <element signature="e#1710#1711#0" expanded="false" />
+            <element signature="e#1759#1760#0" expanded="false" />
+            <element signature="e#1792#1793#0" expanded="false" />
+            <element signature="e#1856#1857#0" expanded="false" />
+            <element signature="e#1900#1901#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1117,10 +1190,10 @@
         <state relative-caret-position="391">
           <caret line="29" column="5" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
           <folding>
-            <element signature="e#624#625#0" expanded="false" />
-            <element signature="e#716#717#0" expanded="false" />
-            <element signature="e#840#841#0" expanded="false" />
-            <element signature="e#882#883#0" expanded="false" />
+            <element signature="e#625#626#0" expanded="false" />
+            <element signature="e#717#718#0" expanded="false" />
+            <element signature="e#841#842#0" expanded="false" />
+            <element signature="e#883#884#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1130,8 +1203,8 @@
         <state relative-caret-position="425">
           <caret line="29" column="5" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
           <folding>
-            <element signature="e#613#614#0" expanded="false" />
-            <element signature="e#703#704#0" expanded="false" />
+            <element signature="e#614#615#0" expanded="false" />
+            <element signature="e#704#705#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1152,9 +1225,9 @@
         <state relative-caret-position="436">
           <caret line="48" column="5" lean-forward="false" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#485#486#0" expanded="true" />
-            <element signature="e#535#536#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#431#432#0" expanded="true" />
+            <element signature="e#481#482#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1192,12 +1265,12 @@
         <state relative-caret-position="152">
           <caret line="14" column="68" lean-forward="false" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
           <folding>
-            <element signature="e#572#573#0" expanded="true" />
-            <element signature="e#608#609#0" expanded="true" />
-            <element signature="e#677#678#0" expanded="true" />
-            <element signature="e#706#707#0" expanded="true" />
-            <element signature="e#769#770#0" expanded="true" />
-            <element signature="e#798#799#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="false" />
+            <element signature="e#608#609#0" expanded="false" />
+            <element signature="e#677#678#0" expanded="false" />
+            <element signature="e#706#707#0" expanded="false" />
+            <element signature="e#769#770#0" expanded="false" />
+            <element signature="e#798#799#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1207,16 +1280,6 @@
         <state relative-caret-position="119">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/tags/TagGroup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="35" lean-forward="true" selection-start-line="20" selection-start-column="35" selection-end-line="20" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1233,8 +1296,8 @@
         <state relative-caret-position="187">
           <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
           <folding>
-            <element signature="e#277#278#0" expanded="true" />
-            <element signature="e#304#305#0" expanded="true" />
+            <element signature="e#276#277#0" expanded="true" />
+            <element signature="e#303#304#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1293,18 +1356,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/tags/BlockTag.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="17" column="9" lean-forward="true" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#536#537#0" expanded="true" />
-            <element signature="e#572#573#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/tags/ItemTag.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
@@ -1324,20 +1375,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/types/FunctionReference.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/types/EntityType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="14" lean-forward="true" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+          <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
           <folding />
         </state>
       </provider>
@@ -1345,7 +1386,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/types/Gamemode.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
-          <caret line="3" column="4" lean-forward="true" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+          <caret line="3" column="4" lean-forward="false" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1368,16 +1409,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="218" column="18" lean-forward="true" selection-start-line="218" selection-start-column="18" selection-end-line="218" selection-end-column="18" />
-          <folding>
-            <marker date="1513259186336" expanded="true" signature="13672:13901" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/module/CommandModule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="151">
@@ -1386,8 +1417,8 @@
             <element signature="imports" expanded="true" />
             <element signature="e#805#806#0" expanded="true" />
             <element signature="e#847#848#0" expanded="true" />
-            <element signature="e#1206#1207#0" expanded="true" />
-            <element signature="e#1257#1258#0" expanded="true" />
+            <element signature="e#1207#1208#0" expanded="true" />
+            <element signature="e#1258#1259#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1395,12 +1426,12 @@
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/score/ObjectiveManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="58" column="42" lean-forward="true" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
+          <caret line="58" column="42" lean-forward="false" selection-start-line="58" selection-start-column="42" selection-end-line="58" selection-end-column="42" />
           <folding>
-            <element signature="e#1568#1569#0" expanded="true" />
-            <element signature="e#1643#1644#0" expanded="true" />
-            <element signature="e#1682#1683#0" expanded="true" />
-            <element signature="e#1752#1753#0" expanded="true" />
+            <element signature="e#1570#1571#0" expanded="true" />
+            <element signature="e#1646#1647#0" expanded="true" />
+            <element signature="e#1685#1686#0" expanded="true" />
+            <element signature="e#1755#1756#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1408,7 +1439,7 @@
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/score/LocalScore.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
-          <caret line="25" column="19" lean-forward="true" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+          <caret line="25" column="19" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
           <folding>
             <element signature="e#638#639#0" expanded="true" />
             <element signature="e#670#671#0" expanded="true" />
@@ -1438,10 +1469,60 @@
     <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/commands/scoreboard/ScoreboardManipulation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+          <caret line="34" column="29" lean-forward="false" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
           <folding>
             <element signature="e#1651#1652#0" expanded="true" />
             <element signature="e#1742#1743#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/tags/BlockTag.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#535#536#0" expanded="true" />
+            <element signature="e#571#572#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/entity/GenericEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/tags/TagGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="29" lean-forward="true" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/types/FunctionReference.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="11" lean-forward="false" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/energyxxer/commodore/CommandTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1407">
+          <caret line="214" column="7" lean-forward="false" selection-start-line="214" selection-start-column="7" selection-end-line="214" selection-end-column="7" />
+          <folding>
+            <marker date="1513261245661" expanded="true" signature="15437:15666" ph="{...}" />
           </folding>
         </state>
       </provider>

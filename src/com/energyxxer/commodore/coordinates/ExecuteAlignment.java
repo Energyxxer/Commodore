@@ -1,8 +1,8 @@
 package com.energyxxer.commodore.coordinates;
 
-import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.commands.execute.ExecuteModifier;
 import com.energyxxer.commodore.commands.execute.SubCommandResult;
+import com.energyxxer.commodore.entity.Entity;
 
 public class ExecuteAlignment implements ExecuteModifier {
     private boolean x = false;

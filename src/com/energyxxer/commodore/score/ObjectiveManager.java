@@ -28,12 +28,12 @@ public class ObjectiveManager {
     }
 
     public Objective create(String name) {
-        if(!contains(name)) return forceCreate(name);
+        if (!contains(name)) return forceCreate(name);
         throw new IllegalArgumentException("An objective by the name '" + name + "' already exists");
     }
 
     public Objective create(String name, String type) {
-        if(!contains(name)) return forceCreate(name, type);
+        if (!contains(name)) return forceCreate(name, type);
         throw new IllegalArgumentException("An objective by the name '" + name + "' already exists");
     }
 
@@ -52,7 +52,7 @@ public class ObjectiveManager {
     }
 
     public void registerLocalScore(LocalScore score) {
-        if(!localScoreLog.contains(score)) localScoreLog.add(score);
+        if (!localScoreLog.contains(score)) localScoreLog.add(score);
     }
 
     public void resolveAccessLogs() {

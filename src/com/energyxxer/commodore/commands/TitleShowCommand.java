@@ -3,7 +3,7 @@ package com.energyxxer.commodore.commands;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.textcomponents.TextComponent;
 
-public class TitleShowCommand extends TitleCommand{
+public class TitleShowCommand extends TitleCommand {
     public enum Display {
         TITLE, SUBTITLE, ACTIONBAR
     }

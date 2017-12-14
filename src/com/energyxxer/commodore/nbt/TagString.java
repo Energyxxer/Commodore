@@ -19,7 +19,7 @@ public class TagString extends NBTTag {
 
     @Override
     public String toHeadlessString() {
-        return '"' + value.replace("\\","\\\\").replace("\"","\\\"") + '"';
+        return '"' + value.replace("\\", "\\\\").replace("\"", "\\\"") + '"';
     }
 
     @Override

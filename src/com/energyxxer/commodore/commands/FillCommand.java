@@ -17,7 +17,7 @@ public class FillCommand implements Command {
         this.pos1 = pos1;
         this.pos2 = pos2;
         this.block = block;
-        if(!block.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual blocks");
+        if (!block.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual blocks");
     }
 
     protected String getMaskExtra() {

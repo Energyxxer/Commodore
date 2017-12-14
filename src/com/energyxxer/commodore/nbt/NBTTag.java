@@ -14,16 +14,16 @@ public abstract class NBTTag {
     public String toHeaderString() {
         boolean needsQuotes = false;
 
-        for(char c : name.toCharArray()) {
-            if(!ALLOWED_NAME_CHARACTERS.contains(""+c)) {
+        for (char c : name.toCharArray()) {
+            if (!ALLOWED_NAME_CHARACTERS.contains("" + c)) {
                 needsQuotes = true;
                 break;
             }
         }
 
-        if(needsQuotes) {
+        if (needsQuotes) {
             StringBuilder sb = new StringBuilder("\"");
-            sb.append(name.replace("\\","\\\\").replace("\"","\\\""));
+            sb.append(name.replace("\\", "\\\\").replace("\"", "\\\""));
             sb.append("\"");
             return sb.toString();
         } else return name;
