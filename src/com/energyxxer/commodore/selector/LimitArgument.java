@@ -17,4 +17,9 @@ public class LimitArgument implements SelectorArgument {
     public boolean isRepeatable() {
         return false;
     }
+
+    @Override
+    public LimitArgument clone() {
+        return new LimitArgument(limit);
+    }
 }

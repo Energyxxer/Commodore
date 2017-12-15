@@ -70,4 +70,11 @@ public class TagList extends NBTTag {
     public String toString() {
         return this.toHeaderString() + ":" + this.toHeadlessString();
     }
+
+    @Override
+    public TagList clone() {
+        TagList copy = new TagList(name);
+        content.forEach(t -> copy.add(t.clone()));
+        return copy;
+    }
 }

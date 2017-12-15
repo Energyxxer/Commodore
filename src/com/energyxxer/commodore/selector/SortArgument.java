@@ -20,4 +20,9 @@ public class SortArgument implements SelectorArgument {
     public boolean isRepeatable() {
         return false;
     }
+
+    @Override
+    public SortArgument clone() {
+        return new SortArgument(type);
+    }
 }

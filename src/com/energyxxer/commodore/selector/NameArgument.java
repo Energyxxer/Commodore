@@ -16,6 +16,11 @@ public class NameArgument implements SelectorArgument {
         }
     }
 
+    public NameArgument(String name, boolean negated) {
+        this.name = name;
+        this.negated = negated;
+    }
+
     public String getName() {
         return name;
     }
@@ -37,5 +42,10 @@ public class NameArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public NameArgument clone() {
+        return new NameArgument(name, negated);
     }
 }

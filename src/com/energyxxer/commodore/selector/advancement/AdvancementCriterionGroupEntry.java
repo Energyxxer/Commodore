@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.selector.advancement;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,8 +15,16 @@ public class AdvancementCriterionGroupEntry implements AdvancementArgumentEntry 
         this.advancementName = advancementName;
     }
 
-    public boolean addCriterion(AdvancementCriterionEntry advancementCriterionEntry) {
-        return criteria.add(advancementCriterionEntry);
+    public void addCriterion(AdvancementCriterionEntry criterion) {
+        criteria.add(criterion);
+    }
+
+    public void addCriteria(AdvancementCriterionEntry... criteria) {
+        addCriteria(Arrays.asList(criteria));
+    }
+
+    public void addCriteria(Collection<AdvancementCriterionEntry> criteria) {
+        this.criteria.addAll(criteria);
     }
 
     @Override
@@ -33,5 +43,12 @@ public class AdvancementCriterionGroupEntry implements AdvancementArgumentEntry 
         sb.append('}');
 
         return sb.toString();
+    }
+
+    @Override
+    public AdvancementCriterionGroupEntry clone() {
+        AdvancementCriterionGroupEntry copy = new AdvancementCriterionGroupEntry(advancementName);
+        this.criteria.forEach(c -> copy.addCriterion(c.clone()));
+        return copy;
     }
 }

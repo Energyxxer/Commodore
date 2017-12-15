@@ -16,6 +16,11 @@ public class TagArgument implements SelectorArgument {
         }
     }
 
+    public TagArgument(String tag, boolean negated) {
+        this.tag = tag;
+        this.negated = negated;
+    }
+
     public String getTag() {
         return tag;
     }
@@ -37,5 +42,10 @@ public class TagArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public TagArgument clone() {
+        return new TagArgument(tag, negated);
     }
 }

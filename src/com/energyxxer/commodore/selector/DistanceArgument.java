@@ -17,4 +17,9 @@ public class DistanceArgument implements SelectorArgument {
     public boolean isRepeatable() {
         return false;
     }
+
+    @Override
+    public DistanceArgument clone() {
+        return new DistanceArgument(distance.clone());
+    }
 }

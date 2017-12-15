@@ -17,4 +17,9 @@ public class ZArgument implements SelectorArgument {
     public boolean isRepeatable() {
         return false;
     }
+
+    @Override
+    public ZArgument clone() {
+        return new ZArgument(value.clone());
+    }
 }

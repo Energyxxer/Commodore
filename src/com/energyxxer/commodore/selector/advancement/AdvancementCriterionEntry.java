@@ -14,4 +14,9 @@ public class AdvancementCriterionEntry implements AdvancementArgumentEntry {
     public String getArgumentString() {
         return criterionName + "=" + value;
     }
+
+    @Override
+    public AdvancementCriterionEntry clone() {
+        return new AdvancementCriterionEntry(criterionName, value);
+    }
 }

@@ -32,4 +32,6 @@ public abstract class NBTTag {
     public abstract String toHeadlessString();
 
     public abstract String toString();
+
+    public abstract NBTTag clone();
 }

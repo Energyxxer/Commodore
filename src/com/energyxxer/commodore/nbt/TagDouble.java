@@ -26,4 +26,9 @@ public class TagDouble extends NBTTag {
     public String toString() {
         return this.toHeaderString() + ":" + this.toHeadlessString();
     }
+
+    @Override
+    public TagDouble clone() {
+        return new TagDouble(name, value);
+    }
 }

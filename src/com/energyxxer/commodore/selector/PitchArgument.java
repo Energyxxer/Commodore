@@ -17,4 +17,9 @@ public class PitchArgument implements SelectorArgument {
     public boolean isRepeatable() {
         return false;
     }
+
+    @Override
+    public PitchArgument clone() {
+        return new PitchArgument(value.clone());
+    }
 }

@@ -25,4 +25,9 @@ public class GamemodeArgument implements SelectorArgument {
     public boolean isRepeatable() {
         return true;
     }
+
+    @Override
+    public GamemodeArgument clone() {
+        return new GamemodeArgument(gamemode, negated);
+    }
 }

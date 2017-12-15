@@ -1,3 +1,4 @@
+
 package com.energyxxer.commodore.selector;
 
 public class YArgument implements SelectorArgument {
@@ -16,5 +17,10 @@ public class YArgument implements SelectorArgument {
     @Override
     public boolean isRepeatable() {
         return false;
+    }
+
+    @Override
+    public YArgument clone() {
+        return new YArgument(value.clone());
     }
 }

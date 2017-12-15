@@ -34,4 +34,9 @@ public class TagByte extends NBTTag {
     public String toString() {
         return this.toHeaderString() + ":" + this.toHeadlessString();
     }
+
+    @Override
+    public TagByte clone() {
+        return new TagByte(name, value);
+    }
 }

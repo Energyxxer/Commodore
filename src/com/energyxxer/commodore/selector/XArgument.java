@@ -17,4 +17,9 @@ public class XArgument implements SelectorArgument {
     public boolean isRepeatable() {
         return false;
     }
+
+    @Override
+    public XArgument clone() {
+        return new XArgument(value.clone());
+    }
 }

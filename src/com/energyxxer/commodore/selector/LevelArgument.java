@@ -17,4 +17,9 @@ public class LevelArgument implements SelectorArgument {
     public boolean isRepeatable() {
         return false;
     }
+
+    @Override
+    public LevelArgument clone() {
+        return new LevelArgument(value.clone());
+    }
 }

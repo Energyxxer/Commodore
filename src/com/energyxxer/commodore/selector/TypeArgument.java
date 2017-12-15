@@ -37,4 +37,9 @@ public class TypeArgument implements SelectorArgument {
     public String toString() {
         return getArgumentString();
     }
+
+    @Override
+    public TypeArgument clone() {
+        return new TypeArgument(type, negated);
+    }
 }

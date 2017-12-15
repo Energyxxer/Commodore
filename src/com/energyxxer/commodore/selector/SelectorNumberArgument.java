@@ -2,7 +2,7 @@ package com.energyxxer.commodore.selector;
 
 import com.energyxxer.commodore.CommandUtils;
 
-public class SelectorNumberArgument<T extends Number> {
+public class SelectorNumberArgument<T extends Number> implements Cloneable {
     private T min;
     private T max;
 
@@ -23,5 +23,10 @@ public class SelectorNumberArgument<T extends Number> {
         } else {
             return ((min != null) ? CommandUtils.toString(min.doubleValue()) : "") + ".." + ((max != null) ? "" + CommandUtils.toString(max.doubleValue()) : "");
         }
+    }
+
+    @Override
+    public SelectorNumberArgument<T> clone() {
+        return new SelectorNumberArgument<T>(min, max);
     }
 }

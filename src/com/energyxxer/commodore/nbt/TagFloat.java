@@ -26,4 +26,9 @@ public class TagFloat extends NBTTag {
     public String toString() {
         return this.toHeaderString() + ":" + this.toHeadlessString();
     }
+
+    @Override
+    public TagFloat clone() {
+        return new TagFloat(name, value);
+    }
 }

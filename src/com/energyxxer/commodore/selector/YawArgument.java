@@ -17,4 +17,9 @@ public class YawArgument implements SelectorArgument {
     public boolean isRepeatable() {
         return false;
     }
+
+    @Override
+    public YawArgument clone() {
+        return new YawArgument(value.clone());
+    }
 }

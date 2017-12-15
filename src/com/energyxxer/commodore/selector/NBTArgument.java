@@ -24,4 +24,9 @@ public class NBTArgument implements SelectorArgument {
     public boolean isRepeatable() {
         return true;
     }
+
+    @Override
+    public NBTArgument clone() {
+        return new NBTArgument(nbt.clone(), negated);
+    }
 }

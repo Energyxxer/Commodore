@@ -14,4 +14,9 @@ public class AdvancementCompletionEntry implements AdvancementArgumentEntry {
     public String getArgumentString() {
         return advancementName + "=" + value;
     }
+
+    @Override
+    public AdvancementCompletionEntry clone() {
+        return new AdvancementCompletionEntry(advancementName, value);
+    }
 }

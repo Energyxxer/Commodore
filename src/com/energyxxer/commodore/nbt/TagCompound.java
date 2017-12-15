@@ -66,4 +66,11 @@ public class TagCompound extends NBTTag {
     public String toString() {
         return this.toHeaderString() + ":" + this.toHeadlessString();
     }
+
+    @Override
+    public TagCompound clone() {
+        TagCompound copy = new TagCompound(name);
+        content.forEach(t -> copy.add(t.clone()));
+        return copy;
+    }
 }

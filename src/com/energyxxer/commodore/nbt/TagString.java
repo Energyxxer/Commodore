@@ -26,4 +26,9 @@ public class TagString extends NBTTag {
     public String toString() {
         return this.toHeaderString() + ":" + this.toHeadlessString();
     }
+
+    @Override
+    public TagString clone() {
+        return new TagString(name, value);
+    }
 }

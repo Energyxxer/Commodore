@@ -37,4 +37,11 @@ public class ScoreArgument implements SelectorArgument {
     public boolean isRepeatable() {
         return false;
     }
+
+    @Override
+    public ScoreArgument clone() {
+        ScoreArgument copy = new ScoreArgument();
+        scores.forEach((k, v) -> copy.put(k, v.clone()));
+        return copy;
+    }
 }
