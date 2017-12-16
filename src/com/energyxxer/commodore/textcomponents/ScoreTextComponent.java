@@ -22,7 +22,7 @@ public class ScoreTextComponent extends TextComponent {
 
     @Override
     public String toString(TextComponent parent) {
-        String escapedName = "\"" + CommandUtils.escape(score.getParent().getHolder().getReference()) + "\"";
+        String escapedName = "\"" + CommandUtils.escape(score.getHolder().getReference()) + "\"";
         String escapedObjective = "\"" + CommandUtils.escape(score.getObjective().getName()) + "\"";
         String baseProperties = this.getBaseProperties(parent);
         return "{\"score\":{\"name\":" +

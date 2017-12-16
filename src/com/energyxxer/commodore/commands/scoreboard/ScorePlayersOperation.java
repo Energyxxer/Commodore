@@ -55,13 +55,13 @@ public class ScorePlayersOperation extends ScoreboardManipulation {
     @Override
     public String getOperationContent(Entity sender) {
         return "scoreboard players operation " +
-                CommandUtils.getRawReference(target.getParent().getHolder(), sender) +
+                CommandUtils.getRawReference(target.getHolder(), sender) +
                 " " +
                 target.getObjective().getName() +
                 " " +
                 operation.getShorthand() +
                 " " +
-                CommandUtils.getRawReference(source.getParent().getHolder(), sender) +
+                CommandUtils.getRawReference(source.getHolder(), sender) +
                 " " +
                 source.getObjective().getName();
     }

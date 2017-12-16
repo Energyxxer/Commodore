@@ -1,21 +1,16 @@
 package com.energyxxer.commodore.score;
 
-import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.score.access.ScoreAccessLog;
 
 public class LocalScore {
     private Objective objective;
-    private ScoreManager parent;
+    private ScoreHolder holder;
 
     private ScoreAccessLog accessLog = new ScoreAccessLog(this);
 
-    public LocalScore(Objective objective, Entity entity) {
-        this(objective, entity.getScoreManager());
-    }
-
-    public LocalScore(Objective objective, ScoreManager parent) {
+    public LocalScore(Objective objective, ScoreHolder holder) {
         this.objective = objective;
-        this.parent = parent;
+        this.holder = holder;
 
         objective.getParent().registerLocalScore(this);
     }
@@ -24,8 +19,8 @@ public class LocalScore {
         return objective;
     }
 
-    public ScoreManager getParent() {
-        return parent;
+    public ScoreHolder getHolder() {
+        return holder;
     }
 
     public ScoreAccessLog getAccessLog() {
@@ -36,7 +31,7 @@ public class LocalScore {
     public String toString() {
         return "{" +
                 "objective=" + objective +
-                ", holder=" + parent.getHolder() +
+                ", holder=" + holder +
                 '}';
     }
 }

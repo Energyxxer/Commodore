@@ -21,6 +21,6 @@ public class ScoreAdd extends ScoreboardManipulation {
 
     @Override
     public String getOperationContent(Entity sender) {
-        return "scoreboard players " + ((delta < 0) ? "remove" : "add") + " " + CommandUtils.getRawReference(score.getParent().getHolder(), sender) + " " + score.getObjective().getName() + " " + Math.abs(delta);
+        return "scoreboard players " + ((delta < 0) ? "remove" : "add") + " " + CommandUtils.getRawReference(score.getHolder(), sender) + " " + score.getObjective().getName() + " " + Math.abs(delta);
     }
 }

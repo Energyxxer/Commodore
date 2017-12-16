@@ -188,8 +188,8 @@ public final class CommandTest {
 
         function.append(new FunctionHeaderComment("SCOREBOARD ACCESS OPTIMIZATION"));
 
-        LocalScore a = new LocalScore(objMgr.get("A"), entity.getScoreManager());
-        LocalScore b = new LocalScore(objMgr.get("B"), entity.getScoreManager());
+        LocalScore a = new LocalScore(objMgr.get("A"), entity);
+        LocalScore b = new LocalScore(objMgr.get("B"), entity);
 
         ScoreboardManipulation op0 = new ScoreSet(a, 5);
         ScoreboardManipulation op1 = new ScorePlayersOperation(b, ScorePlayersOperation.Operation.ASSIGN, a);

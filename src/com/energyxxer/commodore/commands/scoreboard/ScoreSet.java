@@ -18,6 +18,6 @@ public class ScoreSet extends ScoreboardManipulation {
 
     @Override
     public String getOperationContent(Entity sender) {
-        return "scoreboard players set " + CommandUtils.getRawReference(score.getParent().getHolder(), sender) + " " + score.getObjective().getName() + " " + value;
+        return "scoreboard players set " + CommandUtils.getRawReference(score.getHolder(), sender) + " " + score.getObjective().getName() + " " + value;
     }
 }
