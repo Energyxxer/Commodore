@@ -49,6 +49,7 @@ import com.energyxxer.commodore.nbt.TagShort;
 import com.energyxxer.commodore.rotation.Rotation;
 import com.energyxxer.commodore.rotation.RotationUnit;
 import com.energyxxer.commodore.score.LocalScore;
+import com.energyxxer.commodore.score.Objective;
 import com.energyxxer.commodore.score.ObjectiveManager;
 import com.energyxxer.commodore.selector.AdvancementArgument;
 import com.energyxxer.commodore.selector.Selector;
@@ -178,10 +179,12 @@ public final class CommandTest {
         function.append(new TeleportToCoordsCommand(player, new CoordinateSet(0, 0, 2, Coordinate.Type.LOCAL), new Rotation(12.5, 0, RotationUnit.Type.RELATIVE)));
         function.append(new TeleportToEntityCommand(entity, player));
 
-        function.append(new ExecuteCommand(new TriggerCommand("t")));
-        function.append(new ExecuteCommand(new TriggerCommand("t", TriggerCommand.Action.ADD, 5)));
-        function.append(new ExecuteCommand(new TriggerCommand("t", TriggerCommand.Action.SET, 1)));
-        function.append(new ExecuteCommand(new TriggerCommand("t", TriggerCommand.Action.ADD, 1)));
+        Objective t = module.getObjectiveManager().create("t", "trigger");
+
+        function.append(new ExecuteCommand(new TriggerCommand(t)));
+        function.append(new ExecuteCommand(new TriggerCommand(t, TriggerCommand.Action.ADD, 5)));
+        function.append(new ExecuteCommand(new TriggerCommand(t, TriggerCommand.Action.SET, 1)));
+        function.append(new ExecuteCommand(new TriggerCommand(t, TriggerCommand.Action.ADD, 1)));
 
         function.append(new WeatherCommand(WeatherCommand.Mode.RAIN, 10));
         function.append(new WeatherCommand(WeatherCommand.Mode.CLEAR, 300));
