@@ -4,7 +4,7 @@ import com.energyxxer.commodore.commands.execute.CommandExecutor;
 import com.energyxxer.commodore.score.ScoreHolder;
 import com.energyxxer.commodore.selector.Selector;
 
-public interface Entity extends CommandExecutor, ScoreHolder {
+public interface Entity extends CommandExecutor, ScoreHolder, Cloneable {
     Selector getSelector();
 
     default Selector getSelectorAs(Entity executor) {
@@ -16,4 +16,6 @@ public interface Entity extends CommandExecutor, ScoreHolder {
     default String getReference() {
         return getSelector().toString();
     }
+
+    Entity clone();
 }

@@ -4,6 +4,11 @@ import com.energyxxer.commodore.score.LocalScore;
 
 public class ScoreboardAccess {
 
+    private final LocalScore score;
+    private final AccessType type;
+    private final ScoreboardAccess dependency;
+    private AccessResolution resolution = AccessResolution.UNRESOLVED;
+
     public ScoreboardAccess(LocalScore score, AccessType type, ScoreboardAccess dependency) {
         this.score = score;
         this.type = type;
@@ -11,18 +16,11 @@ public class ScoreboardAccess {
 
         //In theory this should never be an issue considering dependencies are final.
         if(dependency != null && dependency.getDependency() == this)
-            throw new IllegalArgumentException("Cyclical scoreboard access dependency is not allowed");
+            throw new IllegalArgumentException("Cyclical scoreboard access dependency is not allowed. Also how tf did you do that?");
     }
-
     public enum AccessType {
-        READ, WRITE
+        READ, WRITE;
     }
-
-    private final LocalScore score;
-    private final AccessType type;
-
-    private final ScoreboardAccess dependency;
-    private AccessResolution resolution = AccessResolution.UNRESOLVED;
 
     public ScoreboardAccess(LocalScore score, AccessType type) {
         this(score, type, null);

@@ -16,6 +16,7 @@ import com.energyxxer.commodore.nbt.TagList;
 import com.energyxxer.commodore.nbt.TagShort;
 import com.energyxxer.commodore.nbt.TagString;
 import com.energyxxer.commodore.score.LocalScore;
+import com.energyxxer.commodore.score.MacroScoreHolder;
 import com.energyxxer.commodore.score.Objective;
 import com.energyxxer.commodore.selector.DistanceArgument;
 import com.energyxxer.commodore.selector.NBTArgument;
@@ -73,29 +74,41 @@ public class EnhancedHoes {
             }
         }
 
-        Entity allCrops = new GenericEntity(new Selector(ALL_ENTITIES, new TagArgument("crop")));
-        Entity allSelfCrops = new GenericEntity(new Selector(ALL_ENTITIES, new TagArgument("selfcrop")));
+        MacroScoreHolder cropsMacro = new MacroScoreHolder("All Crops");
+        MacroScoreHolder selfCropsMacro = new MacroScoreHolder("Self Crops");
+
+        Selector allCropsSelector = new Selector(ALL_ENTITIES, new TypeArgument(itemEntityType), new TagArgument("crop"));
+        Selector selfCropsSelector = new Selector(ALL_ENTITIES, new TypeArgument(itemEntityType), new TagArgument("self_crop"));
+
+        Entity allCrops = new GenericEntity(allCropsSelector);
+        Entity allSelfCrops = new GenericEntity(selfCropsSelector);
 
         tick.append(new TagCommand(TagCommand.Action.ADD, allSelfCrops, "crop"));
 
         tick.append(new FunctionComment("Prevent item frames from duplicating crops"));
         {
-            ExecuteCommand exec = new ExecuteCommand(new TagCommand(TagCommand.Action.REMOVE, new GenericEntity(new Selector(ALL_ENTITIES, new TagArgument("crop"), new DistanceArgument(new SelectorNumberArgument<>(null, 1.0)))), "crop"));
+            Entity nearbyCrops = allCrops.clone();
+            nearbyCrops.getSelector().addArguments(new DistanceArgument(new SelectorNumberArgument<>(null, 1.0)));
+
+            ExecuteCommand exec = new ExecuteCommand(new TagCommand(TagCommand.Action.REMOVE, nearbyCrops, "crop"));
             exec.addModifier(new ExecuteAtEntity(new GenericEntity(new Selector(ALL_ENTITIES, new TypeArgument(minecraft.getTypeManager().entity.create("item_frame"))))));
             tick.append(exec);
         }
 
         tick.append(new FunctionComment("Prevent duplication of premature harvests"));
         {
-            Entity nearbyCrops = new GenericEntity(new Selector(ALL_ENTITIES, new TagArgument("crop"), new DistanceArgument(new SelectorNumberArgument<>(null, 1.0))));
+            Entity nearbyCrops = allSelfCrops.clone();
+            nearbyCrops.getSelector().addArguments(new DistanceArgument(new SelectorNumberArgument<>(null, 1.0)));
             ExecuteCommand exec = new ExecuteCommand(new ScoreAdd(new LocalScore(crowd, nearbyCrops), 1));
-            exec.addModifier(new ExecuteAtEntity(allCrops));
+            exec.addModifier(new ExecuteAtEntity(allSelfCrops));
             tick.append(exec);
         }
         {
             ScoreArgument scores = new ScoreArgument();
             scores.put(crowd, new SelectorNumberArgument<>(1));
-            tick.append(new DataMergeCommand(new GenericEntity(new Selector(ALL_ENTITIES, new TagArgument("crop"), scores)), new TagCompound(new TagList("Tags"))));
+            Entity loneCrops = allSelfCrops.clone();
+            loneCrops.getSelector().addArguments(scores);
+            tick.append(new DataMergeCommand(loneCrops, new TagCompound(new TagList("Tags"))));
         }
 
         module.compile();

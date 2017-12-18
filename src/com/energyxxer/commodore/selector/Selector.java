@@ -70,7 +70,7 @@ public class Selector implements Cloneable {
     }
 
     @Override
-    protected Selector clone() {
+    public Selector clone() {
         Selector copy = new Selector(base);
         args.forEach(a -> copy.addArguments(a.clone()));
         return copy;

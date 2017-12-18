@@ -18,4 +18,9 @@ public class GenericEntity implements Entity {
     public String toString() {
         return selector.toString();
     }
+
+    @Override
+    public GenericEntity clone() {
+        return new GenericEntity(selector.clone());
+    }
 }
