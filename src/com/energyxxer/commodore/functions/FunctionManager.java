@@ -20,6 +20,10 @@ public class FunctionManager {
         return (existing != null) ? existing : forceCreate(name);
     }
 
+    public void resolveAccessLogs() {
+        functions.values().forEach(f -> f.getAccessLog().resolve());
+    }
+
     public boolean contains(String name) {
         return functions.containsKey(name);
     }

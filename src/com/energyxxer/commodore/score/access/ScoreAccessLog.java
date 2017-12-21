@@ -1,17 +1,21 @@
 package com.energyxxer.commodore.score.access;
 
 import com.energyxxer.commodore.commands.scoreboard.ScoreboardManipulation;
-import com.energyxxer.commodore.score.LocalScore;
+import com.energyxxer.commodore.functions.Function;
 
 import java.util.ArrayList;
 
 public class ScoreAccessLog {
 
-    private final LocalScore parent;
+    /*
+    * TODO: Make this function-by-function, instead of local-score-by-local-score
+    * */
 
-    private ArrayList<ScoreboardAccess> history = new ArrayList<>();
+    private final Function parent;
 
-    public ScoreAccessLog(LocalScore parent) {
+    private ArrayList<ScoreboardAccess> log = new ArrayList<>();
+
+    public ScoreAccessLog(Function parent) {
         this.parent = parent;
     }
 
@@ -20,19 +24,24 @@ public class ScoreAccessLog {
     }
 
     private void filterAccess(ScoreboardAccess access) {
-        if(access.getScore() == parent && !history.contains(access)) history.add(access);
+        if(!log.contains(access)) log.add(access);
     }
 
     public void resolve() {
         boolean used = false;
-        for(int i = history.size() - 1; i >= 0; i--) {
-            ScoreboardAccess access = history.get(i);
+        for(int i = log.size() - 1; i >= 0; i--) {
+            ScoreboardAccess access = log.get(i);
             ScoreboardAccess dependency = access.getDependency();
             if(access.getResolution() != ScoreboardAccess.AccessResolution.UNRESOLVED) continue;
             if(dependency != null) {
                 if(dependency.getResolution() == ScoreboardAccess.AccessResolution.UNRESOLVED) {
                     access.setResolution(ScoreboardAccess.AccessResolution.IN_PROCESS);
-                    dependency.getScore().getAccessLog().resolve();
+
+                    Function dependencyFunction = dependency.getParent().getFunction();
+                    if(dependencyFunction == null)
+                        throw new IllegalStateException("Dependency for access '" + access + " is not appended to a function");
+
+                    dependencyFunction.getAccessLog().resolve();
                 }
                 if(dependency.getResolution() == ScoreboardAccess.AccessResolution.UNRESOLVED)
                     throw new RuntimeException("wtf dependency unresolved after resolve called");
@@ -58,7 +67,7 @@ public class ScoreAccessLog {
         sb.append(parent);
         sb.append(" : Access Log");
         sb.append(" --------------\n");
-        history.forEach(a -> {
+        log.forEach(a -> {
             sb.append(a.getType());
             sb.append(" ");
             if(a.getDependency() != null) {

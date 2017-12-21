@@ -36,7 +36,7 @@ public class CommandModule {
     }
 
     public void compile() {
-        objMgr.resolveAccessLogs();
+        namespaces.values().forEach(Namespace::compile);
     }
 
     public Namespace getNamespace(String name) {

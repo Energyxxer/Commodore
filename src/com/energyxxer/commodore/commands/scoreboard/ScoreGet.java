@@ -9,8 +9,9 @@ public class ScoreGet extends ScoreboardManipulation {
     private LocalScore score;
 
     public ScoreGet(LocalScore score) {
-        super(new ScoreboardAccess(score, ScoreboardAccess.AccessType.READ));
         this.score = score;
+
+        this.addAccesses(new ScoreboardAccess(this, score, ScoreboardAccess.AccessType.READ));
     }
 
     @Override

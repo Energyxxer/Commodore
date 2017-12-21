@@ -14,8 +14,8 @@ public class ScoreAdd extends ScoreboardManipulation {
         this.score = score;
         this.delta = delta;
 
-        ScoreboardAccess access1 = new ScoreboardAccess(score, ScoreboardAccess.AccessType.READ);
-        ScoreboardAccess access2 = new ScoreboardAccess(score, ScoreboardAccess.AccessType.WRITE, access1);
+        ScoreboardAccess access1 = new ScoreboardAccess(this, score, ScoreboardAccess.AccessType.READ);
+        ScoreboardAccess access2 = new ScoreboardAccess(this, score, ScoreboardAccess.AccessType.WRITE, access1);
         this.addAccesses(access1, access2);
     }
 

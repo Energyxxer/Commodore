@@ -196,12 +196,12 @@ public final class CommandTest {
 
         ScoreboardManipulation op0 = new ScoreSet(a, 5);
         ScoreboardManipulation op1 = new ScorePlayersOperation(b, ScorePlayersOperation.Operation.ASSIGN, a);
-        //ScoreboardManipulation op2 = new ScoreSet(b, 3);
+        ScoreboardManipulation op2 = new ScoreSet(b, 3);
         ScoreboardManipulation op3 = new ScoreGet(b);
 
         function.append(op0);
         function.append(op1);
-        //function.append(op2);
+        function.append(op2);
         function.append(op3);
 
         function.append(new TellrawCommand(player, new ScoreTextComponent(b)));
@@ -254,7 +254,7 @@ public final class CommandTest {
 
         System.out.println(function.getResolvedContent());
 
-        System.out.println(a.getAccessLog());
-        System.out.println(b.getAccessLog());
+        //System.out.println(a.getAccessLog());
+        //System.out.println(b.getAccessLog());
     }
 }

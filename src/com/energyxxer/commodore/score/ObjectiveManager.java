@@ -33,16 +33,16 @@ public class ObjectiveManager {
     }
 
     public Objective create(String name, String type) {
-        if(!contains(name)) return forceCreate(name, type);
+        if(!contains(name)) return forceCreate(name, type, false);
         throw new IllegalArgumentException("An objective by the name '" + name + "' already exists");
     }
 
     private Objective forceCreate(String name) {
-        return forceCreate(name, "dummy");
+        return forceCreate(name, "dummy", false);
     }
 
-    private Objective forceCreate(String name, String type) {
-        Objective newObjective = new Objective(this, name, type);
+    private Objective forceCreate(String name, String type, boolean field) {
+        Objective newObjective = new Objective(this, name, type, field);
         objectives.put(name, newObjective);
         return newObjective;
     }
@@ -53,10 +53,6 @@ public class ObjectiveManager {
 
     public void registerLocalScore(LocalScore score) {
         if(!localScoreLog.contains(score)) localScoreLog.add(score);
-    }
-
-    public void resolveAccessLogs() {
-        localScoreLog.forEach(s -> s.getAccessLog().resolve());
     }
 
     @Override

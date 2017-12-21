@@ -4,6 +4,7 @@ import com.energyxxer.commodore.Command;
 import com.energyxxer.commodore.commands.execute.ExecuteModifier;
 import com.energyxxer.commodore.commands.execute.SubCommandResult;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.functions.Function;
 
 import java.util.ArrayList;
 
@@ -36,7 +37,7 @@ public class ExecuteCommand implements Command {
     }
 
     @Override
-    public void onAppend() {
-        chainedCommand.onAppend();
+    public void onAppend(Function function) {
+        chainedCommand.onAppend(function);
     }
 }

@@ -21,6 +21,10 @@ public class Namespace {
         this.typeMgr = new TypeManager(this);
     }
 
+    public void compile() {
+        fncMgr.resolveAccessLogs();
+    }
+
     @Override
     public String toString() {
         return name;

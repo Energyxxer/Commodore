@@ -2,6 +2,7 @@ package com.energyxxer.commodore.commands.scoreboard;
 
 import com.energyxxer.commodore.Command;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ import java.util.Collection;
 
 public abstract class ScoreboardManipulation implements Command {
 
+    private Function function = null;
     private ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
 
     protected ScoreboardManipulation(ScoreboardAccess... accesses) {
@@ -43,13 +45,18 @@ public abstract class ScoreboardManipulation implements Command {
 
     public abstract String getOperationContent(Entity sender);
 
+    public Function getFunction() {
+        return function;
+    }
+
     @Override
     public String getRawCommand(Entity sender) {
         return (isUsed()) ? getOperationContent(sender) : "# [ REMOVED ]";
     }
 
     @Override
-    public void onAppend() {
-        accesses.forEach(a -> a.getScore().getAccessLog().filterManipulation(this));
+    public void onAppend(Function function) {
+        this.function = function;
+        function.getAccessLog().filterManipulation(this);
     }
 }

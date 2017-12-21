@@ -1,7 +1,5 @@
 package com.energyxxer.commodore.score;
 
-import com.energyxxer.commodore.score.access.ScoreAccessLog;
-
 import java.util.ArrayList;
 
 public class LocalScore {
@@ -9,8 +7,6 @@ public class LocalScore {
     private ScoreHolder holder;
 
     private ArrayList<MacroScoreHolder> macroHolders = new ArrayList<>();
-
-    private ScoreAccessLog accessLog = new ScoreAccessLog(this);
 
     public LocalScore(Objective objective, ScoreHolder holder) {
         this.objective = objective;
@@ -25,10 +21,6 @@ public class LocalScore {
 
     public ScoreHolder getHolder() {
         return holder;
-    }
-
-    public ScoreAccessLog getAccessLog() {
-        return accessLog;
     }
 
     @Override

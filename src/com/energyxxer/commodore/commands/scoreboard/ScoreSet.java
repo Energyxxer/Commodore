@@ -11,9 +11,10 @@ public class ScoreSet extends ScoreboardManipulation {
     private int value;
 
     public ScoreSet(LocalScore score, int value) {
-        super(new ScoreboardAccess(score, ScoreboardAccess.AccessType.WRITE));
         this.score = score;
         this.value = value;
+
+        this.addAccesses(new ScoreboardAccess(this, score, ScoreboardAccess.AccessType.WRITE));
     }
 
     @Override

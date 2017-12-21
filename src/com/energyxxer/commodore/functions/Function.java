@@ -3,6 +3,7 @@ package com.energyxxer.commodore.functions;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.score.access.ScoreAccessLog;
 import com.energyxxer.commodore.selector.Selector;
 
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ public class Function {
 
     private boolean contentResolved = false;
     private String resolvedContent = null;
+
+    private ScoreAccessLog accessLog = new ScoreAccessLog(this);
 
     Function(FunctionManager parent, Namespace namespace, String path) {
         this(parent, namespace, path, new GenericEntity(new Selector(Selector.BaseSelector.SENDER)));
@@ -42,7 +45,7 @@ public class Function {
 
     public void append(Collection<FunctionWriter> writers) {
         this.content.addAll(writers);
-        writers.forEach(FunctionWriter::onAppend);
+        writers.forEach(w -> w.onAppend(this));
         contentResolved = false;
     }
 
@@ -78,6 +81,10 @@ public class Function {
             resolvedContent = sb.toString();
         }
         return resolvedContent;
+    }
+
+    public ScoreAccessLog getAccessLog() {
+        return accessLog;
     }
 
     @Override

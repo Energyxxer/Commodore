@@ -41,13 +41,13 @@ public class ScorePlayersOperation extends ScoreboardManipulation {
         this.source = source;
 
         if(operation.isTargetRead()) {
-            ScoreboardAccess access1 = new ScoreboardAccess(source, ScoreboardAccess.AccessType.READ);
-            ScoreboardAccess access2 = new ScoreboardAccess(target, ScoreboardAccess.AccessType.READ, access1);
-            ScoreboardAccess access3 = new ScoreboardAccess(target, ScoreboardAccess.AccessType.WRITE, access2);
+            ScoreboardAccess access1 = new ScoreboardAccess(this, source, ScoreboardAccess.AccessType.READ);
+            ScoreboardAccess access2 = new ScoreboardAccess(this, target, ScoreboardAccess.AccessType.READ, access1);
+            ScoreboardAccess access3 = new ScoreboardAccess(this, target, ScoreboardAccess.AccessType.WRITE, access2);
             this.addAccesses(access1, access2, access3);
         } else {
-            ScoreboardAccess access2 = new ScoreboardAccess(target, ScoreboardAccess.AccessType.WRITE);
-            ScoreboardAccess access1 = new ScoreboardAccess(source, ScoreboardAccess.AccessType.READ, access2);
+            ScoreboardAccess access2 = new ScoreboardAccess(this, target, ScoreboardAccess.AccessType.WRITE);
+            ScoreboardAccess access1 = new ScoreboardAccess(this, source, ScoreboardAccess.AccessType.READ, access2);
             this.addAccesses(access1, access2);
         }
     }
