@@ -19,7 +19,7 @@ public class ScoreboardAccess {
 
         //In theory this should never be an issue considering dependencies are final.
         if(dependency != null && dependency.getDependency() == this)
-            throw new IllegalArgumentException("Cyclical scoreboard access dependency is not allowed. Also how tf did you do that?");
+            throw new IllegalArgumentException("Cyclical scoreboard access dependency is not allowed. Also how tf did you do that? Report please.");
     }
 
     public ScoreboardAccess(ScoreboardManipulation parent, LocalScore score, AccessType type) {
