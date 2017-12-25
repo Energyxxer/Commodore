@@ -80,8 +80,11 @@ public class EnhancedHoes {
         Selector allCropsSelector = new Selector(ALL_ENTITIES, new TypeArgument(itemEntityType), new TagArgument("crop"));
         Selector selfCropsSelector = new Selector(ALL_ENTITIES, new TypeArgument(itemEntityType), new TagArgument("self_crop"));
 
-        Entity allCrops = new GenericEntity(allCropsSelector);
-        Entity allSelfCrops = new GenericEntity(selfCropsSelector);
+        GenericEntity allCrops = new GenericEntity(allCropsSelector);
+        GenericEntity allSelfCrops = new GenericEntity(selfCropsSelector);
+
+        allCrops.addMacroHolder(cropsMacro);
+        allSelfCrops.addMacroHolders(cropsMacro, selfCropsMacro);
 
         tick.append(new TagCommand(TagCommand.Action.ADD, allSelfCrops, "crop"));
 

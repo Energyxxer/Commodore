@@ -6,8 +6,6 @@ public class LocalScore {
     private Objective objective;
     private ScoreHolder holder;
 
-    private ArrayList<MacroScoreHolder> macroHolders = new ArrayList<>();
-
     public LocalScore(Objective objective, ScoreHolder holder) {
         this.objective = objective;
         this.holder = holder;
@@ -21,6 +19,12 @@ public class LocalScore {
 
     public ScoreHolder getHolder() {
         return holder;
+    }
+
+    public ArrayList<MacroScore> getMacroScores() {
+        ArrayList<MacroScore> list = new ArrayList<>();
+        holder.getMacroHolders().forEach(h -> list.add(new MacroScore(h, objective)));
+        return list;
     }
 
     @Override

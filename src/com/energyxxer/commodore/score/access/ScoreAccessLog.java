@@ -1,15 +1,13 @@
 package com.energyxxer.commodore.score.access;
 
-import com.energyxxer.commodore.commands.scoreboard.ScoreboardManipulation;
+import com.energyxxer.commodore.Command;
 import com.energyxxer.commodore.functions.Function;
+import com.energyxxer.commodore.score.LocalScore;
+import com.energyxxer.commodore.score.MacroScore;
 
 import java.util.ArrayList;
 
 public class ScoreAccessLog {
-
-    /*
-    * TODO: Make this function-by-function, instead of local-score-by-local-score
-    * */
 
     private final Function parent;
 
@@ -19,25 +17,29 @@ public class ScoreAccessLog {
         this.parent = parent;
     }
 
-    public void filterManipulation(ScoreboardManipulation manipulation) {
-        manipulation.getAccesses().forEach(this::filterAccess);
+    public void filterCommand(Command command) {
+        command.getScoreboardAccesses().forEach(this::filterAccess);
     }
 
-    private void filterAccess(ScoreboardAccess access) {
+    public void filterAccess(ScoreboardAccess access) {
         if(!log.contains(access)) log.add(access);
     }
 
     public void resolve() {
-        boolean used = false;
+
+        MacroScoreAccessLog macroLog = new MacroScoreAccessLog();
+
         for(int i = log.size() - 1; i >= 0; i--) {
             ScoreboardAccess access = log.get(i);
             ScoreboardAccess dependency = access.getDependency();
+
             if(access.getResolution() != ScoreboardAccess.AccessResolution.UNRESOLVED) continue;
+
             if(dependency != null) {
                 if(dependency.getResolution() == ScoreboardAccess.AccessResolution.UNRESOLVED) {
                     access.setResolution(ScoreboardAccess.AccessResolution.IN_PROCESS);
 
-                    Function dependencyFunction = dependency.getParent().getFunction();
+                    Function dependencyFunction = dependency.getFunction();
                     if(dependencyFunction == null)
                         throw new IllegalStateException("Dependency for access '" + access + " is not appended to a function");
 
@@ -48,14 +50,18 @@ public class ScoreAccessLog {
                 if(dependency.getResolution() == ScoreboardAccess.AccessResolution.IN_PROCESS)
                     throw new RuntimeException("wtf dependency in process after resolve called");
                 access.setResolution(dependency.getResolution());
-                used = access.getType() == ScoreboardAccess.AccessType.READ;
+                if(access.getType() == ScoreboardAccess.AccessType.READ && access.getResolution() == ScoreboardAccess.AccessResolution.USED) {
+                    macroLog.addUsed(access.getScore());
+                } else {
+                    macroLog.removeUsed(access.getScore());
+                }
             } else if(access.getType() == ScoreboardAccess.AccessType.WRITE) {
-                if(used) access.setResolution(ScoreboardAccess.AccessResolution.USED);
+                if(macroLog.isUsed(access.getScore())) access.setResolution(ScoreboardAccess.AccessResolution.USED);
                 else access.setResolution(ScoreboardAccess.AccessResolution.UNUSED);
-                used = false;
+                macroLog.removeUsed(access.getScore());
             } else if(access.getType() == ScoreboardAccess.AccessType.READ) {
                 access.setResolution(ScoreboardAccess.AccessResolution.USED);
-                used = true;
+                macroLog.addUsed(access.getScore());
             }
         }
     }
@@ -83,4 +89,25 @@ public class ScoreAccessLog {
         return sb.toString();
     }
 
+}
+
+class MacroScoreAccessLog {
+    ArrayList<MacroScore> usedMacroScores = new ArrayList<>();
+
+    void addUsed(LocalScore score) {
+        score.getMacroScores().forEach(s -> {
+            if(!usedMacroScores.contains(s)) usedMacroScores.add(s);
+        });
+    }
+
+    void removeUsed(LocalScore score) {
+        usedMacroScores.removeAll(score.getMacroScores());
+    }
+
+    boolean isUsed(LocalScore score) {
+        for(MacroScore macro : score.getMacroScores()) {
+            if(usedMacroScores.contains(macro)) return true;
+        }
+        return false;
+    }
 }

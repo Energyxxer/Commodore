@@ -1,18 +1,17 @@
 package com.energyxxer.commodore.score.access;
 
-import com.energyxxer.commodore.commands.scoreboard.ScoreboardManipulation;
+import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.score.LocalScore;
 
 public class ScoreboardAccess {
 
-    private final ScoreboardManipulation parent;
     private final LocalScore score;
     private final AccessType type;
     private final ScoreboardAccess dependency;
+    private Function function;
     private AccessResolution resolution = AccessResolution.UNRESOLVED;
 
-    public ScoreboardAccess(ScoreboardManipulation parent, LocalScore score, AccessType type, ScoreboardAccess dependency) {
-        this.parent = parent;
+    public ScoreboardAccess(LocalScore score, AccessType type, ScoreboardAccess dependency) {
         this.score = score;
         this.type = type;
         this.dependency = dependency;
@@ -22,16 +21,16 @@ public class ScoreboardAccess {
             throw new IllegalArgumentException("Cyclical scoreboard access dependency is not allowed. Also how tf did you do that? Report please.");
     }
 
-    public ScoreboardAccess(ScoreboardManipulation parent, LocalScore score, AccessType type) {
-        this(parent, score, type, null);
+    public ScoreboardAccess(LocalScore score, AccessType type) {
+        this(score, type, null);
     }
 
-    public ScoreboardManipulation getParent() {
-        return parent;
+    public Function getFunction() {
+        return function;
     }
 
-    public enum AccessResolution {
-        UNRESOLVED, IN_PROCESS, USED, UNUSED
+    public void setFunction(Function function) {
+        this.function = function;
     }
 
     public LocalScore getScore() {
@@ -52,6 +51,10 @@ public class ScoreboardAccess {
 
     void setResolution(AccessResolution resolution) {
         this.resolution = resolution;
+    }
+
+    public enum AccessResolution {
+        UNRESOLVED, IN_PROCESS, USED, UNUSED
     }
 
     public enum AccessType {

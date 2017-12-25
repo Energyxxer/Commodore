@@ -1,21 +1,32 @@
 package com.energyxxer.commodore.commands.scoreboard;
 
+import com.energyxxer.commodore.Command;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 
-public class ScoreGet extends ScoreboardManipulation {
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class ScoreGet implements Command {
 
     private LocalScore score;
+
+    private ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
 
     public ScoreGet(LocalScore score) {
         this.score = score;
 
-        this.addAccesses(new ScoreboardAccess(this, score, ScoreboardAccess.AccessType.READ));
+        accesses.add(new ScoreboardAccess(score, ScoreboardAccess.AccessType.READ));
     }
 
     @Override
-    public String getOperationContent(Entity sender) {
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return accesses;
+    }
+
+    @Override
+    public String getRawCommand(Entity sender) {
         return "# use score " + score;
     }
 }

@@ -29,10 +29,10 @@ import com.energyxxer.commodore.commands.TeleportToEntityCommand;
 import com.energyxxer.commodore.commands.TellrawCommand;
 import com.energyxxer.commodore.commands.TriggerCommand;
 import com.energyxxer.commodore.commands.WeatherCommand;
+import com.energyxxer.commodore.commands.scoreboard.ScoreAdd;
 import com.energyxxer.commodore.commands.scoreboard.ScoreGet;
 import com.energyxxer.commodore.commands.scoreboard.ScorePlayersOperation;
 import com.energyxxer.commodore.commands.scoreboard.ScoreSet;
-import com.energyxxer.commodore.commands.scoreboard.ScoreboardManipulation;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.effect.StatusEffect;
@@ -194,15 +194,10 @@ public final class CommandTest {
         LocalScore a = new LocalScore(objMgr.get("A"), entity);
         LocalScore b = new LocalScore(objMgr.get("B"), entity);
 
-        ScoreboardManipulation op0 = new ScoreSet(a, 5);
-        ScoreboardManipulation op1 = new ScorePlayersOperation(b, ScorePlayersOperation.Operation.ASSIGN, a);
-        ScoreboardManipulation op2 = new ScoreSet(b, 3);
-        ScoreboardManipulation op3 = new ScoreGet(b);
-
-        function.append(op0);
-        function.append(op1);
-        function.append(op2);
-        function.append(op3);
+        function.append(new ScoreSet(a, 5));
+        function.append(new ScorePlayersOperation(b, ScorePlayersOperation.Operation.ASSIGN, a));
+        function.append(new ScoreAdd(b, 3));
+        function.append(new ScoreGet(b));
 
         function.append(new TellrawCommand(player, new ScoreTextComponent(b)));
 

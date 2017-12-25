@@ -37,7 +37,13 @@ public class ExecuteCommand implements Command {
     }
 
     @Override
+    public boolean isUsed() {
+        return Command.super.isUsed() && chainedCommand.isUsed();
+    }
+
+    @Override
     public void onAppend(Function function) {
+        Command.super.onAppend(function);
         chainedCommand.onAppend(function);
     }
 }
