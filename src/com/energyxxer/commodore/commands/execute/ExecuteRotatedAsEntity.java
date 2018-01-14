@@ -1,20 +1,18 @@
-package com.energyxxer.commodore.coordinates;
+package com.energyxxer.commodore.commands.execute;
 
-import com.energyxxer.commodore.commands.execute.ExecuteModifier;
-import com.energyxxer.commodore.commands.execute.SubCommandResult;
 import com.energyxxer.commodore.entity.Entity;
 
-public class ExecuteAtEntity implements ExecuteModifier {
+public class ExecuteRotatedAsEntity implements ExecuteModifier {
 
     private Entity entity;
 
-    public ExecuteAtEntity(Entity entity) {
+    public ExecuteRotatedAsEntity(Entity entity) {
         this.entity = entity;
     }
 
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("at " + entity.getSelectorAs(sender));
+        return new SubCommandResult("rotated as " + entity.getSelectorAs(sender));
     }
 
     @Override
@@ -29,6 +27,6 @@ public class ExecuteAtEntity implements ExecuteModifier {
 
     @Override
     public boolean isAbsolute() {
-        return true;
+        return false;
     }
 }

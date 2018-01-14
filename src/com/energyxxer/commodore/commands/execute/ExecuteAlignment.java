@@ -1,7 +1,5 @@
-package com.energyxxer.commodore.coordinates;
+package com.energyxxer.commodore.commands.execute;
 
-import com.energyxxer.commodore.commands.execute.ExecuteModifier;
-import com.energyxxer.commodore.commands.execute.SubCommandResult;
 import com.energyxxer.commodore.entity.Entity;
 
 public class ExecuteAlignment implements ExecuteModifier {

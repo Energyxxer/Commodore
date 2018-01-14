@@ -1,6 +1,10 @@
 package com.energyxxer.commodore.rotation;
 
-public class Rotation {
+import com.energyxxer.commodore.commands.execute.ExecuteModifier;
+import com.energyxxer.commodore.commands.execute.SubCommandResult;
+import com.energyxxer.commodore.entity.Entity;
+
+public class Rotation implements ExecuteModifier {
 
     private RotationUnit yaw; //y-rot
     private RotationUnit pitch; //x-rot
@@ -22,5 +26,25 @@ public class Rotation {
     @Override
     public String toString() {
         return yaw + " " + pitch;
+    }
+
+    @Override
+    public SubCommandResult getSubCommand(Entity sender) {
+        return new SubCommandResult("rotated " + yaw + " " + pitch);
+    }
+
+    @Override
+    public boolean isIdempotent() {
+        return yaw.isIdempotent() && pitch.isIdempotent();
+    }
+
+    @Override
+    public boolean isSignificant() {
+        return yaw.isSignificant() || pitch.isSignificant();
+    }
+
+    @Override
+    public boolean isAbsolute() {
+        return yaw.isAbsolute() && pitch.isAbsolute();
     }
 }

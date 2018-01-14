@@ -1,0 +1,33 @@
+package com.energyxxer.commodore.commands.execute;
+
+import com.energyxxer.commodore.coordinates.Coordinate;
+import com.energyxxer.commodore.coordinates.CoordinateSet;
+import com.energyxxer.commodore.entity.Entity;
+
+public class ExecuteFacingBlock implements ExecuteModifier {
+    private CoordinateSet pos;
+
+    public ExecuteFacingBlock(CoordinateSet pos) {
+        this.pos = pos;
+    }
+
+    @Override
+    public SubCommandResult getSubCommand(Entity sender) {
+        return new SubCommandResult("facing " + pos.getAs(Coordinate.DisplayMode.ENTITY_POS));
+    }
+
+    @Override
+    public boolean isIdempotent() {
+        return pos.isIdempotent();
+    }
+
+    @Override
+    public boolean isSignificant() {
+        return pos.isSignificant();
+    }
+
+    @Override
+    public boolean isAbsolute() {
+        return pos.isAbsolute();
+    }
+}

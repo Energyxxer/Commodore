@@ -27,11 +27,15 @@ public class RotationUnit {
     }
 
     public boolean isIdempotent() {
-        return type == Type.ABSOLUTE;
+        return isAbsolute();
     }
 
     public boolean isSignificant() {
         return type == Type.ABSOLUTE || value != 0;
+    }
+
+    public boolean isAbsolute() {
+        return type == Type.ABSOLUTE;
     }
 
     @Override

@@ -47,7 +47,7 @@ public class CoordinateSet implements ExecuteModifier {
 
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("offset " + this.toString());
+        return new SubCommandResult("positioned " + this.toString());
     }
 
     @Override

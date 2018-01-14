@@ -42,7 +42,7 @@ public class TagList extends NBTTag {
         if(content.isEmpty() || content.get(0).getType().equals(tag.getType())) {
             content.add(tag);
         } else {
-            throw new IllegalArgumentException("Unable to addCriterion tag of type " + tag.getType() + " to list of type " + content.get(0).getType() + "; Tag: " + tag);
+            throw new IllegalArgumentException("Unable to addCriterion tag of blockType " + tag.getType() + " to list of blockType " + content.get(0).getType() + "; Tag: " + tag);
         }
     }
 
