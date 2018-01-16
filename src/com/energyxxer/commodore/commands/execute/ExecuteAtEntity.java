@@ -2,6 +2,8 @@ package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.entity.Entity;
 
+import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.*;
+
 public class ExecuteAtEntity implements ExecuteModifier {
 
     private Entity entity;
@@ -12,7 +14,7 @@ public class ExecuteAtEntity implements ExecuteModifier {
 
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("at " + entity.getSelectorAs(sender));
+        return new SubCommandResult("at " + entity.getSelectorAs(sender), X, Y, Z, YAW, PITCH, DIMENSION);
     }
 
     @Override

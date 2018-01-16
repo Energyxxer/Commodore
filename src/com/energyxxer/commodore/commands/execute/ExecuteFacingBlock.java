@@ -4,6 +4,9 @@ import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
 
+import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.PITCH;
+import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.YAW;
+
 public class ExecuteFacingBlock implements ExecuteModifier {
     private CoordinateSet pos;
 
@@ -13,7 +16,7 @@ public class ExecuteFacingBlock implements ExecuteModifier {
 
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("facing " + pos.getAs(Coordinate.DisplayMode.ENTITY_POS));
+        return new SubCommandResult("facing " + pos.getAs(Coordinate.DisplayMode.ENTITY_POS), YAW, PITCH);
     }
 
     @Override

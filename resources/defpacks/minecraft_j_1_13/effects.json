@@ -1,0 +1,83 @@
+{
+  "minecraft:absorption": {
+    "type": "positive"
+  },
+  "minecraft:blindness": {
+    "type": "negative"
+  },
+  "minecraft:fire_resistance": {
+    "type": "positive"
+  },
+  "minecraft:glowing": {
+    "type": "negative"
+  },
+  "minecraft:haste": {
+    "type": "positive"
+  },
+  "minecraft:health_boost": {
+    "type": "positive"
+  },
+  "minecraft:hunger": {
+    "type": "negative"
+  },
+  "minecraft:instant_damage": {
+    "type": "instant"
+  },
+  "minecraft:instant_health": {
+    "type": "instant"
+  },
+  "minecraft:invisibility": {
+    "type": "positive"
+  },
+  "minecraft:jump_boost": {
+    "type": "positive"
+  },
+  "minecraft:levitation": {
+    "type": "negative"
+  },
+  "minecraft:luck": {
+    "type": "positive"
+  },
+  "minecraft:mining_fatigue": {
+    "type": "negative"
+  },
+  "minecraft:nausea": {
+    "type": "negative"
+  },
+  "minecraft:night_vision": {
+    "type": "positive"
+  },
+  "minecraft:poison": {
+    "type": "negative"
+  },
+  "minecraft:regeneration": {
+    "type": "positive"
+  },
+  "minecraft:resistance": {
+    "type": "positive"
+  },
+  "minecraft:saturation": {
+    "type": "positive"
+  },
+  "minecraft:slowness": {
+    "type": "negative"
+  },
+  "minecraft:speed": {
+    "type": "positive"
+  },
+  "minecraft:strength": {
+    "type": "positive"
+  },
+  "minecraft:unluck": {
+    "type": "negative"
+  },
+  "minecraft:water_breathing": {
+    "type": "positive"
+  },
+  "minecraft:weakness": {
+    "type": "negative"
+  },
+  "minecraft:wither": {
+    "type": "negative"
+  }
+}

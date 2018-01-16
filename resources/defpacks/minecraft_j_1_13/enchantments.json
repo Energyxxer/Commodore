@@ -1,0 +1,99 @@
+{
+  "protection": {
+    "id": 0
+  },
+  "fire_protection": {
+    "id": 1
+  },
+  "feather_falling": {
+    "id": 2
+  },
+  "blast_protection": {
+    "id": 3
+  },
+  "projectile_protection": {
+    "id": 4
+  },
+  "respiration": {
+    "id": 5
+  },
+  "aqua_affinity": {
+    "id": 6
+  },
+  "thorns": {
+    "id": 7
+  },
+  "depth_strider": {
+    "id": 8
+  },
+  "frost_walker": {
+    "id": 9,
+    "treasure": true
+  },
+  "curse_of_binding": {
+    "id": 10,
+    "treasure": true,
+    "curse": true
+  },
+  "sharpness": {
+    "id": 16
+  },
+  "smite": {
+    "id": 17
+  },
+  "bane_of_arthropods": {
+    "id": 18
+  },
+  "knockback": {
+    "id": 19
+  },
+  "fire_aspect": {
+    "id": 20
+  },
+  "looting": {
+    "id": 21
+  },
+  "sweeping_edge": {
+    "id": 22
+  },
+  "efficiency": {
+    "id": 32
+  },
+  "silk_touch": {
+    "id": 33
+  },
+  "unbreaking": {
+    "id": 34
+  },
+  "fortune": {
+    "id": 35
+  },
+  "power": {
+    "id": 48
+  },
+  "punch": {
+    "id": 49
+  },
+  "flame": {
+    "id": 50
+  },
+  "infinity": {
+    "id": 51
+  },
+  "luck_of_the_sea": {
+    "id": 61,
+    "treasure": true
+  },
+  "lure": {
+    "id": 62
+  },
+  "mending": {
+    "id": 70,
+    "treasure": true
+  },
+  "curse_of_vanishing": {
+    "id": 71,
+    "treasure": true,
+    "curse": true
+  }
+}

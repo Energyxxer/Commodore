@@ -2,6 +2,9 @@ package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.entity.Entity;
 
+import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.PITCH;
+import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.YAW;
+
 public class ExecuteFacingEntity implements ExecuteModifier {
     private Entity entity;
     private EntityAnchor anchor;
@@ -17,7 +20,7 @@ public class ExecuteFacingEntity implements ExecuteModifier {
 
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("facing entity " + entity.getSelectorAs(sender) + " " + anchor.toString().toLowerCase());
+        return new SubCommandResult("facing entity " + entity.getSelectorAs(sender) + " " + anchor.toString().toLowerCase(), YAW, PITCH);
     }
 
     @Override

@@ -4,6 +4,8 @@ import com.energyxxer.commodore.commands.execute.ExecuteModifier;
 import com.energyxxer.commodore.commands.execute.SubCommandResult;
 import com.energyxxer.commodore.entity.Entity;
 
+import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.*;
+
 public class CoordinateSet implements ExecuteModifier {
 
     private Coordinate x;
@@ -47,7 +49,7 @@ public class CoordinateSet implements ExecuteModifier {
 
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("positioned " + this.toString());
+        return new SubCommandResult("positioned " + this.toString(), X, Y, Z);
     }
 
     @Override

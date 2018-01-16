@@ -2,6 +2,10 @@ package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.entity.Entity;
 
+import java.util.ArrayList;
+
+import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.*;
+
 public class ExecuteAlignment implements ExecuteModifier {
     private boolean x = false;
     private boolean y = false;
@@ -15,7 +19,11 @@ public class ExecuteAlignment implements ExecuteModifier {
 
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("align " + ((x) ? "x" : "") + ((y) ? "y" : "") + ((z) ? "z" : ""));
+        ArrayList<SubCommandResult.ExecutionChange> changes = new ArrayList<>();
+        if(x) changes.add(X);
+        if(y) changes.add(Y);
+        if(z) changes.add(Z);
+        return new SubCommandResult("align " + ((x) ? "x" : "") + ((y) ? "y" : "") + ((z) ? "z" : ""), null, changes);
     }
 
     @Override
