@@ -1,8 +1,8 @@
-package com.energyxxer.commodore.typepacks;
+package com.energyxxer.commodore.defpacks;
 
 import com.energyxxer.commodore.module.CommandModule;
 
-public abstract class DefinitionPack {
+public class DefinitionPack {
 
     private String name;
     private DefinitionPackInitializer initializer;
@@ -12,7 +12,9 @@ public abstract class DefinitionPack {
         this.initializer = initializer;
     }
 
-    public abstract void initialize(CommandModule module);
+    public void initialize(CommandModule module) {
+
+    }
 
     @Override
     public String toString() {

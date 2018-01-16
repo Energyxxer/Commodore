@@ -1,4 +1,4 @@
-package com.energyxxer.commodore.typepacks;
+package com.energyxxer.commodore.defpacks;
 
 import com.energyxxer.commodore.module.CommandModule;
 

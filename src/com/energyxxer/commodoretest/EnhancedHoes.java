@@ -43,7 +43,7 @@ public class EnhancedHoes {
         Objective crowd = module.getObjectiveManager().create("crowd");
 
         Namespace minecraft = module.minecraft;
-        EntityType itemEntityType = minecraft.getTypeManager().entity.create("item");
+        EntityType itemEntityType = minecraft.getTypeManager().entity.get("item");
 
         Namespace namespace = module.getNamespace(module.getPrefix());
 
@@ -88,7 +88,7 @@ public class EnhancedHoes {
             nearbyCrops.getSelector().addArguments(new DistanceArgument(new SelectorNumberArgument<>(null, 1.0)));
 
             ExecuteCommand exec = new ExecuteCommand(new TagCommand(TagCommand.Action.REMOVE, nearbyCrops, "crop"));
-            exec.addModifier(new ExecuteAtEntity(new GenericEntity(new Selector(ALL_ENTITIES, new TypeArgument(minecraft.getTypeManager().entity.create("item_frame"))))));
+            exec.addModifier(new ExecuteAtEntity(new GenericEntity(new Selector(ALL_ENTITIES, new TypeArgument(minecraft.getTypeManager().entity.get("item_frame"))))));
             tick.append(exec);
         }
 
