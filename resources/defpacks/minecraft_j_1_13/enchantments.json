@@ -1,97 +1,97 @@
 {
-  "protection": {
+  "minecraft:protection": {
     "id": 0
   },
-  "fire_protection": {
+  "minecraft:fire_protection": {
     "id": 1
   },
-  "feather_falling": {
+  "minecraft:feather_falling": {
     "id": 2
   },
-  "blast_protection": {
+  "minecraft:blast_protection": {
     "id": 3
   },
-  "projectile_protection": {
+  "minecraft:projectile_protection": {
     "id": 4
   },
-  "respiration": {
+  "minecraft:respiration": {
     "id": 5
   },
-  "aqua_affinity": {
+  "minecraft:aqua_affinity": {
     "id": 6
   },
-  "thorns": {
+  "minecraft:thorns": {
     "id": 7
   },
-  "depth_strider": {
+  "minecraft:depth_strider": {
     "id": 8
   },
-  "frost_walker": {
+  "minecraft:frost_walker": {
     "id": 9,
     "treasure": true
   },
-  "curse_of_binding": {
+  "minecraft:curse_of_binding": {
     "id": 10,
     "treasure": true,
     "curse": true
   },
-  "sharpness": {
+  "minecraft:sharpness": {
     "id": 16
   },
-  "smite": {
+  "minecraft:smite": {
     "id": 17
   },
-  "bane_of_arthropods": {
+  "minecraft:bane_of_arthropods": {
     "id": 18
   },
-  "knockback": {
+  "minecraft:knockback": {
     "id": 19
   },
-  "fire_aspect": {
+  "minecraft:fire_aspect": {
     "id": 20
   },
-  "looting": {
+  "minecraft:looting": {
     "id": 21
   },
-  "sweeping_edge": {
+  "minecraft:sweeping_edge": {
     "id": 22
   },
-  "efficiency": {
+  "minecraft:efficiency": {
     "id": 32
   },
-  "silk_touch": {
+  "minecraft:silk_touch": {
     "id": 33
   },
-  "unbreaking": {
+  "minecraft:unbreaking": {
     "id": 34
   },
-  "fortune": {
+  "minecraft:fortune": {
     "id": 35
   },
-  "power": {
+  "minecraft:power": {
     "id": 48
   },
-  "punch": {
+  "minecraft:punch": {
     "id": 49
   },
-  "flame": {
+  "minecraft:flame": {
     "id": 50
   },
-  "infinity": {
+  "minecraft:infinity": {
     "id": 51
   },
-  "luck_of_the_sea": {
+  "minecraft:luck_of_the_sea": {
     "id": 61,
     "treasure": true
   },
-  "lure": {
+  "minecraft:lure": {
     "id": 62
   },
-  "mending": {
+  "minecraft:mending": {
     "id": 70,
     "treasure": true
   },
-  "curse_of_vanishing": {
+  "minecraft:curse_of_vanishing": {
     "id": 71,
     "treasure": true,
     "curse": true
