@@ -3,17 +3,18 @@ package com.energyxxer.commodore.commands;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.nbt.path.NBTPath;
 
 public class DataRemoveCommand extends DataCommand {
 
-    private String path;
+    private NBTPath path;
 
-    public DataRemoveCommand(Entity entity, String path) {
+    public DataRemoveCommand(Entity entity, NBTPath path) {
         super(entity);
         this.path = path;
     }
 
-    public DataRemoveCommand(CoordinateSet pos, String path) {
+    public DataRemoveCommand(CoordinateSet pos, NBTPath path) {
         super(pos);
         this.path = path;
     }

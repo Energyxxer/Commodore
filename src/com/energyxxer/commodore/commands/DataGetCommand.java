@@ -3,27 +3,28 @@ package com.energyxxer.commodore.commands;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.nbt.path.NBTPath;
 
 public class DataGetCommand extends DataCommand {
 
-    private String path;
+    private NBTPath path;
     private double scale = 1;
 
-    public DataGetCommand(Entity entity, String path) {
+    public DataGetCommand(Entity entity, NBTPath path) {
         this(entity, path, 1);
     }
 
-    public DataGetCommand(Entity entity, String path, double scale) {
+    public DataGetCommand(Entity entity, NBTPath path, double scale) {
         super(entity);
         this.path = path;
         this.scale = scale;
     }
 
-    public DataGetCommand(CoordinateSet pos, String path) {
+    public DataGetCommand(CoordinateSet pos, NBTPath path) {
         this(pos, path, 1);
     }
 
-    public DataGetCommand(CoordinateSet pos, String path, double scale) {
+    public DataGetCommand(CoordinateSet pos, NBTPath path, double scale) {
         super(pos);
         this.path = path;
         this.scale = scale;

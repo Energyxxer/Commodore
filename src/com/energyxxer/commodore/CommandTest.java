@@ -1,34 +1,8 @@
 package com.energyxxer.commodore;
 
 import com.energyxxer.commodore.block.Block;
-import com.energyxxer.commodore.commands.AdvancementCommand;
-import com.energyxxer.commodore.commands.CloneCommand;
-import com.energyxxer.commodore.commands.CloneFilteredCommand;
-import com.energyxxer.commodore.commands.CloneMaskedCommand;
-import com.energyxxer.commodore.commands.EffectClearCommand;
-import com.energyxxer.commodore.commands.EffectGiveCommand;
-import com.energyxxer.commodore.commands.ExecuteCommand;
-import com.energyxxer.commodore.commands.ExperienceCommand;
-import com.energyxxer.commodore.commands.ExperienceSetCommand;
-import com.energyxxer.commodore.commands.FillCommand;
-import com.energyxxer.commodore.commands.FillDestroyCommand;
-import com.energyxxer.commodore.commands.FillHollowCommand;
-import com.energyxxer.commodore.commands.FillKeepCommand;
-import com.energyxxer.commodore.commands.FillOutlineCommand;
-import com.energyxxer.commodore.commands.FillReplaceCommand;
-import com.energyxxer.commodore.commands.FunctionCommand;
-import com.energyxxer.commodore.commands.GamemodeCommand;
-import com.energyxxer.commodore.commands.GiveCommand;
-import com.energyxxer.commodore.commands.PlaySoundCommand;
-import com.energyxxer.commodore.commands.RecipeCommand;
-import com.energyxxer.commodore.commands.SpreadPlayersCommand;
-import com.energyxxer.commodore.commands.StopSoundCommand;
-import com.energyxxer.commodore.commands.SummonCommand;
-import com.energyxxer.commodore.commands.TeleportToCoordsCommand;
-import com.energyxxer.commodore.commands.TeleportToEntityCommand;
-import com.energyxxer.commodore.commands.TellrawCommand;
-import com.energyxxer.commodore.commands.TriggerCommand;
-import com.energyxxer.commodore.commands.WeatherCommand;
+import com.energyxxer.commodore.commands.*;
+import com.energyxxer.commodore.commands.execute.ExecuteCommand;
 import com.energyxxer.commodore.commands.scoreboard.ScoreAdd;
 import com.energyxxer.commodore.commands.scoreboard.ScoreGet;
 import com.energyxxer.commodore.commands.scoreboard.ScorePlayersOperation;
@@ -46,6 +20,7 @@ import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.nbt.TagByte;
 import com.energyxxer.commodore.nbt.TagCompound;
 import com.energyxxer.commodore.nbt.TagShort;
+import com.energyxxer.commodore.nbt.path.NBTPath;
 import com.energyxxer.commodore.rotation.Rotation;
 import com.energyxxer.commodore.rotation.RotationUnit;
 import com.energyxxer.commodore.score.LocalScore;
@@ -248,6 +223,10 @@ public final class CommandTest {
         System.out.println(function);
 
         System.out.println(function.getResolvedContent());
+
+        System.out.println(new NBTPath("Inventory", new NBTPath(0, new NBTPath("tag", new NBTPath("display", new NBTPath("Lore"))))));
+        System.out.println(new NBTPath("Inventory", new NBTPath(0, new NBTPath("tag", new NBTPath("display", new NBTPath("Lore", new NBTPath(0)))))));
+
 
         //System.out.println(a.getAccessLog());
         //System.out.println(b.getAccessLog());

@@ -1,9 +1,9 @@
 package com.energyxxer.commodoretest;
 
 import com.energyxxer.commodore.commands.DataMergeCommand;
-import com.energyxxer.commodore.commands.ExecuteCommand;
 import com.energyxxer.commodore.commands.TagCommand;
 import com.energyxxer.commodore.commands.execute.ExecuteAtEntity;
+import com.energyxxer.commodore.commands.execute.ExecuteCommand;
 import com.energyxxer.commodore.commands.scoreboard.ScoreAdd;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.entity.GenericEntity;
