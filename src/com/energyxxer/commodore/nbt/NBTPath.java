@@ -1,4 +1,4 @@
-package com.energyxxer.commodore.nbt.path;
+package com.energyxxer.commodore.nbt;
 
 public class NBTPath {
 

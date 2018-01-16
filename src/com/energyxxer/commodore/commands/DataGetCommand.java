@@ -3,7 +3,7 @@ package com.energyxxer.commodore.commands;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
-import com.energyxxer.commodore.nbt.path.NBTPath;
+import com.energyxxer.commodore.nbt.NBTPath;
 
 public class DataGetCommand extends DataCommand {
 
