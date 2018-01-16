@@ -19,8 +19,10 @@ import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.MacroScoreHolder;
 import com.energyxxer.commodore.score.Objective;
 import com.energyxxer.commodore.selector.*;
+import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.types.EntityType;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +39,7 @@ public class EnhancedHoes {
 
     public static void main(String[] args) {
         CommandModule module = new CommandModule("Enhanced Hoes", "eh");
+        StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
 
         Objective count = module.getObjectiveManager().create("count");
         Objective tier = module.getObjectiveManager().create("tier");
@@ -108,7 +111,7 @@ public class EnhancedHoes {
             tick.append(new DataMergeCommand(loneCrops, new TagCompound(new TagList("Tags"))));
         }
 
-        module.compile();
+        module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"));
 
         System.out.println(tick.getResolvedContent());
     }

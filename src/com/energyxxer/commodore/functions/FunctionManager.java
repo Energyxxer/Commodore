@@ -2,6 +2,7 @@ package com.energyxxer.commodore.functions;
 
 import com.energyxxer.commodore.module.Namespace;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 public class FunctionManager {
@@ -37,5 +38,9 @@ public class FunctionManager {
         Function newFunction = new Function(this, namespace, name);
         functions.put(name, newFunction);
         return newFunction;
+    }
+
+    public Collection<Function> getAll() {
+        return functions.values();
     }
 }

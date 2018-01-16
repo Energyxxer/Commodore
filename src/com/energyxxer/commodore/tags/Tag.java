@@ -45,6 +45,8 @@ public interface Tag<T extends Type> {
         return sb.toString();
     }
 
+    String getName();
+
     OverridePolicy getOverridePolicy();
 
     void setOverridePolicy(OverridePolicy newPolicy);

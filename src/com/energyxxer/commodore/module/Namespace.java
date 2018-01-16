@@ -6,7 +6,7 @@ import com.energyxxer.commodore.types.TypeManager;
 
 public class Namespace {
     private final CommandModule owner;
-    private final String name;
+    final String name;
 
     private FunctionManager fncMgr;
     private TagManager tagMgr;
@@ -27,6 +27,10 @@ public class Namespace {
 
     @Override
     public String toString() {
+        return name;
+    }
+
+    public String getName() {
         return name;
     }
 

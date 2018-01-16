@@ -35,6 +35,10 @@ public abstract class Type {
         return (!useNamespace() || namespace.equals(otherType.namespace)) && name.equals(otherType.name);
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void putProperty(String key, String value) {
         properties.put(key, value);
     }

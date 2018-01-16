@@ -35,9 +35,13 @@ import com.energyxxer.commodore.selector.advancement.AdvancementCriterionEntry;
 import com.energyxxer.commodore.selector.advancement.AdvancementCriterionGroupEntry;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.tags.BlockTag;
+import com.energyxxer.commodore.tags.FunctionTag;
 import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
 import com.energyxxer.commodore.types.EntityType;
+import com.energyxxer.commodore.types.FunctionReference;
 import com.energyxxer.commodore.types.ItemType;
+
+import java.io.File;
 
 public final class CommandTest {
     public static void main(String[] args) {
@@ -105,7 +109,7 @@ public final class CommandTest {
         function.append(datacmd);
         //System.out.println("datacmd = " + datacmd.getRawCommand());*/
 
-        CommandModule module = new CommandModule("Commodore Test", "ct");
+        CommandModule module = new CommandModule("Commodore Test", "A simple Commodore test project", "ct");
         StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
         ObjectiveManager objMgr = module.getObjectiveManager();
 
@@ -135,7 +139,7 @@ public final class CommandTest {
 
         function.append(new GiveCommand(player, new Item(diamondSword, new TagCompound(new TagByte("Unbreakable", 1), new TagShort("Damage", 4))), 3));
 
-        function.append(new SummonCommand(module.minecraft.getTypeManager().entity.get("player")));
+        //function.append(new SummonCommand(module.minecraft.getTypeManager().entity.get("player")));
 
         function.append(new PlaySoundCommand("minecraft:ambient.cave", PlaySoundCommand.Source.MASTER, player));
         function.append(new PlaySoundCommand("minecraft:ambient.cave", PlaySoundCommand.Source.MASTER, player, new CoordinateSet(500, 87, 500)));
@@ -190,6 +194,9 @@ public final class CommandTest {
         buttons.addValue(module.minecraft.getTypeManager().block.get("acacia_button"));
         buttons.addValue(module.minecraft.getTypeManager().block.get("dark_oak_button"));
 
+        FunctionTag tick = module.minecraft.getTagManager().getFunctionGroup().createNew("tick");
+        tick.addValue(new FunctionReference(function));
+
         function.append(new CloneCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new CoordinateSet(2, 2, 2, Coordinate.Type.RELATIVE), new CoordinateSet(5, 5, 5)));
         function.append(new CloneCommand(new CoordinateSet(0.5, 0.5, 0.5), new CoordinateSet(2.5, 2.5, 2.5, Coordinate.Type.RELATIVE), new CoordinateSet(5, 5, 5), CloneCommand.SourceMode.FORCE));
         function.append(new CloneMaskedCommand(new CoordinateSet(0, 0, 0), new CoordinateSet(2, 2, 2), new CoordinateSet(5, 5, 5)));
@@ -221,7 +228,7 @@ public final class CommandTest {
 
         function.append(new FunctionHeaderComment(buttons.getJSONContent().split("\n")));
 
-        module.compile();
+        module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"));
 
         System.out.println(function);
 

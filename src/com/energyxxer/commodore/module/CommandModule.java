@@ -2,25 +2,37 @@ package com.energyxxer.commodore.module;
 
 import com.energyxxer.commodore.score.ObjectiveManager;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class CommandModule {
 
-    private String name;
-    private String prefix;
+    String name;
+    String description;
+    String prefix;
 
     private ObjectiveManager objMgr;
 
-    private HashMap<String, Namespace> namespaces = new HashMap<>();
+    HashMap<String, Namespace> namespaces = new HashMap<>();
     public final Namespace minecraft;
 
     public CommandModule(String name, String prefix) {
+        this(name, null, prefix);
+    }
+
+    public CommandModule(String name, String description, String prefix) {
         this.name = name;
+        this.description = description;
         this.prefix = prefix;
 
         this.objMgr = new ObjectiveManager(this);
 
         this.minecraft = getNamespace("minecraft");
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public String getName() {
@@ -31,12 +43,23 @@ public class CommandModule {
         return prefix;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public ObjectiveManager getObjectiveManager() {
         return objMgr;
     }
 
-    public void compile() {
+    public void compile(File directory) {
         namespaces.values().forEach(Namespace::compile);
+
+
+        try {
+            new ModulePackGenerator(this, directory);
+        } catch(IOException x) {
+            x.printStackTrace();
+        }
     }
 
     public Namespace getNamespace(String name) {
