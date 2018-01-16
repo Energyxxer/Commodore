@@ -1,0 +1,11 @@
+{
+  "overworld": {
+    "id": 0
+  },
+  "the_nether": {
+    "id": -1
+  },
+  "the_end": {
+    "id": 1
+  }
+}

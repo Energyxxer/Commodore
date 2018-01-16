@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.types;
 
-public class Difficulty extends Type {
-    public Difficulty(String name) {
+public class GamemodeType extends Type {
+    protected GamemodeType(String name) {
         super(null, name);
     }
 

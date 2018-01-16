@@ -36,7 +36,6 @@ import com.energyxxer.commodore.selector.advancement.AdvancementCriterionGroupEn
 import com.energyxxer.commodore.tags.BlockTag;
 import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
 import com.energyxxer.commodore.types.EntityType;
-import com.energyxxer.commodore.types.Gamemode;
 import com.energyxxer.commodore.types.ItemType;
 
 public final class CommandTest {
@@ -209,7 +208,7 @@ public final class CommandTest {
 
         function.append(new FunctionComment("OTHERS"));
 
-        function.append(new GamemodeCommand(new Gamemode("spectator"), new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
+        function.append(new GamemodeCommand(module.minecraft.getTypeManager().gamemode.create("spectator"), new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
         function.append(new EffectGiveCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new StatusEffect(module.minecraft.getTypeManager().effect.create("resistance"), 100, 4)));
         function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), module.minecraft.getTypeManager().effect.create("resistance")));
         function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));

@@ -1,0 +1,134 @@
+{
+  "minecraft:ambient_entity_effect": {
+    "type": "tinted"
+  },
+  "minecraft:angry_villager": {
+    "type": "normal"
+  },
+  "minecraft:barrier": {
+    "type": "normal"
+  },
+  "minecraft:block": {
+    "type": "block"
+  },
+  "minecraft:bubble": {
+    "type": "normal"
+  },
+  "minecraft:cloud": {
+    "type": "normal"
+  },
+  "minecraft:crit": {
+    "type": "normal"
+  },
+  "minecraft:damage_indicator": {
+    "type": "normal"
+  },
+  "minecraft:dragon_breath": {
+    "type": "normal"
+  },
+  "minecraft:dripping_lava": {
+    "type": "normal"
+  },
+  "minecraft:dripping_water": {
+    "type": "normal"
+  },
+  "minecraft:dust": {
+    "type": "tinted"
+  },
+  "minecraft:effect": {
+    "type": "tinted"
+  },
+  "minecraft:elder_guardian": {
+    "type": "fixed"
+  },
+  "minecraft:enchanted_hit": {
+    "type": "normal"
+  },
+  "minecraft:enchant": {
+    "type": "normal"
+  },
+  "minecraft:end_rod": {
+    "type": "normal"
+  },
+  "minecraft:entity_effect": {
+    "type": "tinted"
+  },
+  "minecraft:explosion_emitter": {
+    "type": "normal"
+  },
+  "minecraft:explosion": {
+    "type": "normal"
+  },
+  "minecraft:falling_dust": {
+    "type": "block"
+  },
+  "minecraft:firework": {
+    "type": "tinted"
+  },
+  "minecraft:fishing": {
+    "type": "normal"
+  },
+  "minecraft:flame": {
+    "type": "normal"
+  },
+  "minecraft:happy_villager": {
+    "type": "normal"
+  },
+  "minecraft:heart": {
+    "type": "normal"
+  },
+  "minecraft:instant_effect": {
+    "type": "tinted"
+  },
+  "minecraft:item": {
+    "type": "item"
+  },
+  "minecraft:item_slime": {
+    "type": "normal"
+  },
+  "minecraft:item_snowball": {
+    "type": "normal"
+  },
+  "minecraft:large_smoke": {
+    "type": "normal"
+  },
+  "minecraft:lava": {
+    "type": "normal"
+  },
+  "minecraft:mycelium": {
+    "type": "normal"
+  },
+  "minecraft:note": {
+    "type": "tinted"
+  },
+  "minecraft:poof": {
+    "type": "normal"
+  },
+  "minecraft:portal": {
+    "type": "normal"
+  },
+  "minecraft:rain": {
+    "type": "normal"
+  },
+  "minecraft:smoke": {
+    "type": "normal"
+  },
+  "minecraft:spit": {
+    "type": "normal"
+  },
+  "minecraft:sweep_attack": {
+    "type": "normal"
+  },
+  "minecraft:totem_of_undying": {
+    "type": "normal"
+  },
+  "minecraft:underwater": {
+    "type": "normal"
+  },
+  "minecraft:splash": {
+    "type": "normal"
+  },
+  "minecraft:witch": {
+    "type": "normal"
+  }
+}

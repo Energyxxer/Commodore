@@ -1,13 +1,13 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
-import com.energyxxer.commodore.types.Difficulty;
+import com.energyxxer.commodore.types.DifficultyType;
 
 public class DifficultySetCommand extends DifficultyCommand {
 
-    private Difficulty difficulty;
+    private DifficultyType difficulty;
 
-    public DifficultySetCommand(Difficulty difficulty) {
+    public DifficultySetCommand(DifficultyType difficulty) {
         this.difficulty = difficulty;
     }
 

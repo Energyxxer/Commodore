@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.types;
 
 public class DimensionType extends Type {
-    public DimensionType(String name) {
+    protected DimensionType(String name) {
         super(null, name);
     }
 

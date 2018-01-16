@@ -1,17 +1,17 @@
 package com.energyxxer.commodore.selector;
 
-import com.energyxxer.commodore.types.Gamemode;
+import com.energyxxer.commodore.types.GamemodeType;
 
 public class GamemodeArgument implements SelectorArgument {
 
-    private Gamemode gamemode;
+    private GamemodeType gamemode;
     private boolean negated;
 
-    public GamemodeArgument(Gamemode gamemode) {
+    public GamemodeArgument(GamemodeType gamemode) {
         this(gamemode, false);
     }
 
-    public GamemodeArgument(Gamemode gamemode, boolean negated) {
+    public GamemodeArgument(GamemodeType gamemode, boolean negated) {
         this.gamemode = gamemode;
         this.negated = negated;
     }

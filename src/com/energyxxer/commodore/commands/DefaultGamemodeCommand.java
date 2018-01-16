@@ -2,13 +2,13 @@ package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.Command;
 import com.energyxxer.commodore.entity.Entity;
-import com.energyxxer.commodore.types.Gamemode;
+import com.energyxxer.commodore.types.GamemodeType;
 
 public class DefaultGamemodeCommand implements Command {
 
-    private Gamemode gamemode;
+    private GamemodeType gamemode;
 
-    public DefaultGamemodeCommand(Gamemode gamemode) {
+    public DefaultGamemodeCommand(GamemodeType gamemode) {
         this.gamemode = gamemode;
     }
 
