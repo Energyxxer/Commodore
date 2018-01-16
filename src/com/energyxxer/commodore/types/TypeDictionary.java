@@ -32,4 +32,13 @@ public class TypeDictionary<T extends Type> {
         if(existing != null) return existing;
         throw new TypeNotFoundException("'" + name + "' does not exist as '" + category + "' in the '" + namespace + "' namespace");
     }
+
+    @Override
+    public String toString() {
+        return "TypeDictionary{" +
+                "namespace=" + namespace +
+                ", category='" + category + '\'' +
+                ", types=" + types.values() +
+                '}';
+    }
 }

@@ -2,9 +2,12 @@ package com.energyxxer.commodore.types;
 
 import com.energyxxer.commodore.module.Namespace;
 
+import java.util.HashMap;
+
 public abstract class Type {
     private Namespace namespace;
     private String name;
+    private HashMap<String, String> properties = new HashMap<>();
 
     public Type(Namespace namespace, String name) {
         this.namespace = namespace;
@@ -30,6 +33,18 @@ public abstract class Type {
         Type otherType = (Type) o;
 
         return (!useNamespace() || namespace.equals(otherType.namespace)) && name.equals(otherType.name);
+    }
+
+    public void putProperty(String key, String value) {
+        properties.put(key, value);
+    }
+
+    public void putProperties(HashMap<String, String> properties) {
+        this.properties.putAll(properties);
+    }
+
+    public String getProperty(String key) {
+        return properties.get(key);
     }
 
     @Override

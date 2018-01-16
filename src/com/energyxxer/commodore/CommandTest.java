@@ -33,6 +33,7 @@ import com.energyxxer.commodore.selector.TypeArgument;
 import com.energyxxer.commodore.selector.advancement.AdvancementCompletionEntry;
 import com.energyxxer.commodore.selector.advancement.AdvancementCriterionEntry;
 import com.energyxxer.commodore.selector.advancement.AdvancementCriterionGroupEntry;
+import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.tags.BlockTag;
 import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
 import com.energyxxer.commodore.types.EntityType;
@@ -105,6 +106,7 @@ public final class CommandTest {
         //System.out.println("datacmd = " + datacmd.getRawCommand());*/
 
         CommandModule module = new CommandModule("Commodore Test", "ct");
+        StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
         ObjectiveManager objMgr = module.getObjectiveManager();
 
         Function function = module.getNamespace("test").getFunctionManager().create("scores");
@@ -132,6 +134,8 @@ public final class CommandTest {
         ItemType diamondSword = module.getNamespace("minecraft").getTypeManager().item.get("diamond_sword");
 
         function.append(new GiveCommand(player, new Item(diamondSword, new TagCompound(new TagByte("Unbreakable", 1), new TagShort("Damage", 4))), 3));
+
+        function.append(new SummonCommand(module.minecraft.getTypeManager().entity.get("player")));
 
         function.append(new PlaySoundCommand("minecraft:ambient.cave", PlaySoundCommand.Source.MASTER, player));
         function.append(new PlaySoundCommand("minecraft:ambient.cave", PlaySoundCommand.Source.MASTER, player, new CoordinateSet(500, 87, 500)));
@@ -226,6 +230,7 @@ public final class CommandTest {
         System.out.println(new NBTPath("Inventory", new NBTPath(0, new NBTPath("tag", new NBTPath("display", new NBTPath("Lore"))))));
         System.out.println(new NBTPath("Inventory", new NBTPath(0, new NBTPath("tag", new NBTPath("display", new NBTPath("Lore", new NBTPath(0)))))));
 
+        System.out.println(module.minecraft.getTypeManager().block);
 
         //System.out.println(a.getAccessLog());
         //System.out.println(b.getAccessLog());

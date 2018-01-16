@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.Command;
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
 
@@ -53,11 +54,11 @@ public class PlaySoundCommand implements Command {
                 ((location != null) ?
                         " " + location +
                                 ((maxVolume != -1) ?
-                                        " " + maxVolume +
+                                        " " + CommandUtils.toString(maxVolume) +
                                                 ((pitch != -1) ?
-                                                        " " + pitch +
+                                                        " " + CommandUtils.toString(pitch) +
                                                                 ((minVolume != -1) ?
-                                                                        " " + minVolume
+                                                                        " " + CommandUtils.toString(minVolume)
                                                                         : "")
                                                         : "")
                                         : "")

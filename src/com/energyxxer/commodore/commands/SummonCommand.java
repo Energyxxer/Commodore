@@ -24,6 +24,8 @@ public class SummonCommand implements Command {
         this.type = type;
         this.pos = pos;
         this.data = data;
+
+        if(!type.getProperty("spawnable").equals("true")) throw new IllegalArgumentException("Entity '" + type + "' is not a valid spawnable entity");
     }
 
     @Override

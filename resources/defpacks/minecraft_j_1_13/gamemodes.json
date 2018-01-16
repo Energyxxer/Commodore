@@ -1,0 +1,14 @@
+{
+  "survival": {
+    "id": 0
+  },
+  "creative": {
+    "id": 1
+  },
+  "adventure": {
+    "id": 2
+  },
+  "spectator": {
+    "id": 3
+  }
+}
