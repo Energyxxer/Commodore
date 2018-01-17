@@ -17,6 +17,7 @@ import com.energyxxer.commodore.functions.FunctionComment;
 import com.energyxxer.commodore.functions.FunctionHeaderComment;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.module.CommandModule;
+import com.energyxxer.commodore.module.ModulePackGenerator;
 import com.energyxxer.commodore.nbt.NBTPath;
 import com.energyxxer.commodore.nbt.TagByte;
 import com.energyxxer.commodore.nbt.TagCompound;
@@ -194,9 +195,6 @@ public final class CommandTest {
         buttons.addValue(module.minecraft.getTypeManager().block.get("acacia_button"));
         buttons.addValue(module.minecraft.getTypeManager().block.get("dark_oak_button"));
 
-        FunctionTag tick = module.minecraft.getTagManager().getFunctionGroup().createNew("tick");
-        tick.addValue(new FunctionReference(function));
-
         function.append(new CloneCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new CoordinateSet(2, 2, 2, Coordinate.Type.RELATIVE), new CoordinateSet(5, 5, 5)));
         function.append(new CloneCommand(new CoordinateSet(0.5, 0.5, 0.5), new CoordinateSet(2.5, 2.5, 2.5, Coordinate.Type.RELATIVE), new CoordinateSet(5, 5, 5), CloneCommand.SourceMode.FORCE));
         function.append(new CloneMaskedCommand(new CoordinateSet(0, 0, 0), new CoordinateSet(2, 2, 2), new CoordinateSet(5, 5, 5)));
@@ -224,11 +222,16 @@ public final class CommandTest {
         function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), module.minecraft.getTypeManager().effect.get("resistance")));
         function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
 
-        function.append(new FunctionCommand(module.getNamespace("test").getFunctionManager().create("some_other_function")));
+        Function otherFunction = module.getNamespace("test").getFunctionManager().create("some_other_function");
+        otherFunction.append(new PlaySoundCommand("minecraft:block.note.harp", PlaySoundCommand.Source.MASTER, new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new CoordinateSet(0,0,0), 1, 1, 1));
+        function.append(new FunctionCommand(otherFunction));
+
+        FunctionTag tick = module.minecraft.getTagManager().getFunctionGroup().createNew("tick");
+        tick.addValue(new FunctionReference(otherFunction));
 
         function.append(new FunctionHeaderComment(buttons.getJSONContent().split("\n")));
 
-        module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"));
+        module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.ZIP);
 
         System.out.println(function);
 

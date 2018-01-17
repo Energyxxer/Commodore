@@ -10,6 +10,7 @@ import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.functions.FunctionComment;
 import com.energyxxer.commodore.module.CommandModule;
+import com.energyxxer.commodore.module.ModulePackGenerator;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.nbt.TagCompound;
 import com.energyxxer.commodore.nbt.TagList;
@@ -111,7 +112,7 @@ public class EnhancedHoes {
             tick.append(new DataMergeCommand(loneCrops, new TagCompound(new TagList("Tags"))));
         }
 
-        module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"));
+        module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 
         System.out.println(tick.getResolvedContent());
     }

@@ -51,12 +51,12 @@ public class CommandModule {
         return objMgr;
     }
 
-    public void compile(File directory) {
+    public void compile(File directory, ModulePackGenerator.OutputType outputType) {
         namespaces.values().forEach(Namespace::compile);
 
 
         try {
-            new ModulePackGenerator(this, directory);
+            new ModulePackGenerator(this, directory, outputType);
         } catch(IOException x) {
             x.printStackTrace();
         }
