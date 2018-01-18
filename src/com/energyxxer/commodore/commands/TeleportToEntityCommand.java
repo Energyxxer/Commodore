@@ -10,6 +10,8 @@ public class TeleportToEntityCommand extends TeleportCommand {
     public TeleportToEntityCommand(Entity entity, Entity destination) {
         this.entity = entity;
         this.destination = destination;
+
+        if(destination.getLimit() < 0 || destination.getLimit() > 1) throw new IllegalArgumentException("Only one entity is allowed as destination, but passed entity (" + destination + ") allows for more than one.");
     }
 
     @Override

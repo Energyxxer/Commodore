@@ -18,6 +18,11 @@ public class GenericEntity implements Entity {
     }
 
     @Override
+    public int getLimit() {
+        return selector.getLimit();
+    }
+
+    @Override
     public Selector getSelector() {
         return selector;
     }

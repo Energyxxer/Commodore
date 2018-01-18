@@ -6,14 +6,14 @@ import java.util.Iterator;
 
 public class Selector implements Cloneable {
     public enum BaseSelector {
-        ALL_PLAYERS("a", SortArgument.SortType.NEAREST), NEAREST_PLAYER("p", SortArgument.SortType.NEAREST, 1), RANDOM_PLAYER("r", SortArgument.SortType.RANDOM), ALL_ENTITIES("e", SortArgument.SortType.ARBITRARY), SENDER("s", SortArgument.SortType.ARBITRARY, 1);
+        ALL_PLAYERS("a", SortArgument.SortType.NEAREST), NEAREST_PLAYER("p", SortArgument.SortType.NEAREST, 1), RANDOM_PLAYER("r", SortArgument.SortType.RANDOM, 1), ALL_ENTITIES("e", SortArgument.SortType.ARBITRARY), SENDER("s", SortArgument.SortType.ARBITRARY, 1);
 
         private String header;
         private SortArgument.SortType defaultSort;
         private int limit;
 
         BaseSelector(String header, SortArgument.SortType defaultSort) {
-            this(header, defaultSort, 0);
+            this(header, defaultSort, -1);
         }
 
         BaseSelector(String header, SortArgument.SortType defaultSort, int limit) {

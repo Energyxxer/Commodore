@@ -17,5 +17,7 @@ public interface Entity extends CommandExecutor, ScoreHolder, Cloneable {
         return getSelector().toString();
     }
 
+    int getLimit();
+
     Entity clone();
 }

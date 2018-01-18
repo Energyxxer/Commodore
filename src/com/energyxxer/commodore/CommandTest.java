@@ -27,10 +27,7 @@ import com.energyxxer.commodore.rotation.RotationUnit;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.Objective;
 import com.energyxxer.commodore.score.ObjectiveManager;
-import com.energyxxer.commodore.selector.AdvancementArgument;
-import com.energyxxer.commodore.selector.Selector;
-import com.energyxxer.commodore.selector.TagArgument;
-import com.energyxxer.commodore.selector.TypeArgument;
+import com.energyxxer.commodore.selector.*;
 import com.energyxxer.commodore.selector.advancement.AdvancementCompletionEntry;
 import com.energyxxer.commodore.selector.advancement.AdvancementCriterionEntry;
 import com.energyxxer.commodore.selector.advancement.AdvancementCriterionGroupEntry;
@@ -160,7 +157,10 @@ public final class CommandTest {
         function.append(new SummonCommand(bat, new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new TagCompound(new TagByte("Glowing", 1))));
 
         function.append(new TeleportToCoordsCommand(player, new CoordinateSet(0, 0, 2, Coordinate.Type.LOCAL), new Rotation(12.5, 0, RotationUnit.Type.RELATIVE)));
-        function.append(new TeleportToEntityCommand(entity, player));
+        Selector singlePlayerSelector = player.getSelector().clone();
+        singlePlayerSelector.addArguments(new LimitArgument(1));
+        Entity singlePlayer = new GenericEntity(singlePlayerSelector);
+        function.append(new TeleportToEntityCommand(entity, singlePlayer));
 
         Objective t = module.getObjectiveManager().create("t", "trigger");
 
