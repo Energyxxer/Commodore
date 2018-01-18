@@ -69,6 +69,21 @@ public class Selector implements Cloneable {
         return sb.toString();
     }
 
+    private int getLimitArgument() {
+        for(SelectorArgument arg : args) {
+            if(arg instanceof LimitArgument) return ((LimitArgument) arg).getLimit();
+        }
+        return -1;
+    }
+
+    public int getLimit() {
+        int implicitLimit = base.limit;
+        int explicitLimit = getLimitArgument();
+        if(implicitLimit < 0) return explicitLimit;
+        if(explicitLimit < 0) return implicitLimit;
+        return Math.min(implicitLimit, explicitLimit);
+    }
+
     @Override
     public Selector clone() {
         Selector copy = new Selector(base);

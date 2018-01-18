@@ -43,16 +43,18 @@ public class ModulePackGenerator {
         rootPath = directory.getAbsolutePath() + File.separator + module.name + (outputType == ZIP ? ".zip" : "");
         rootFile = new File(rootPath);
         if(rootFile.isDirectory() && !rootFile.exists()) rootFile.mkdirs();
-        if(outputType == ZIP) zipStream = new ZipOutputStream(new FileOutputStream(rootFile));
+        if(outputType == ZIP) {
+            zipStream = new ZipOutputStream(new FileOutputStream(rootFile));
+        }
 
         createPackMcmeta();
 
         for(Namespace namespace : module.namespaces.values()) {
-            String namespacePath = "data" + File.separator + namespace.name;
+            String namespacePath = "data/" + namespace.name;
 
             for(Function func : namespace.getFunctionManager().getAll()) {
                 String functionPath = func.getFilePath();
-                String fileName = namespacePath + File.separator + "functions" + File.separator + functionPath + ".mcfunction";
+                String fileName = namespacePath + "/functions/" + functionPath + ".mcfunction";
 
                 createFile(fileName, func.getResolvedContent());
             }
@@ -63,8 +65,8 @@ public class ModulePackGenerator {
 
             for(TagGroup<?> group : groups) {
                 for(Tag tag : group.getAll()) {
-                    String directoryPath = namespacePath + File.separator + "tags" + File.separator + group.getGroupName();
-                    String fileName = directoryPath + File.separator + tag.getName() + ".json";
+                    String directoryPath = namespacePath + "/tags/" + group.getGroupName();
+                    String fileName = directoryPath + "/" + tag.getName() + ".json";
 
                     createFile(fileName, tag.getJSONContent());
                 }
@@ -93,7 +95,7 @@ public class ModulePackGenerator {
             zipStream.write(data, 0, data.length);
             zipStream.closeEntry();
         } else {
-            File file = new File(rootPath + File.separator + path);
+            File file = new File(rootPath + File.separator + path.replace("/", File.separator));
             file.getParentFile().mkdirs();
             file.createNewFile();
 

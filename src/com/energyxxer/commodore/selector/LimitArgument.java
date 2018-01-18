@@ -22,4 +22,8 @@ public class LimitArgument implements SelectorArgument {
     public LimitArgument clone() {
         return new LimitArgument(limit);
     }
+
+    public int getLimit() {
+        return limit;
+    }
 }
