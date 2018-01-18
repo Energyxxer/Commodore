@@ -173,6 +173,12 @@
     "living": false,
     "hostile": false
   },
+  "minecraft:fishing_bobber": {
+    "spawnable": false,
+    "targetable": true,
+    "living": false,
+    "hostile": false
+  },
   "minecraft:furnace_minecart": {
     "spawnable": true,
     "targetable": true,
