@@ -1,4 +1,4 @@
-package com.energyxxer.commodore;
+package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.functions.Function;

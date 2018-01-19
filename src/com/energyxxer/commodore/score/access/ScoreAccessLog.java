@@ -1,6 +1,6 @@
 package com.energyxxer.commodore.score.access;
 
-import com.energyxxer.commodore.Command;
+import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.MacroScore;

@@ -1,6 +1,6 @@
 package com.energyxxer.commodore.commands.scoreboard;
 
-import com.energyxxer.commodore.Command;
+import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.score.LocalScore;

@@ -1,6 +1,6 @@
 package com.energyxxer.commodore.commands.execute;
 
-import com.energyxxer.commodore.Command;
+import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.functions.Function;
 
