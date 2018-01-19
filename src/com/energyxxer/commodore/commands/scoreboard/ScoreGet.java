@@ -17,7 +17,7 @@ public class ScoreGet implements Command {
     public ScoreGet(LocalScore score) {
         this.score = score;
 
-        accesses.add(new ScoreboardAccess(score, ScoreboardAccess.AccessType.READ));
+        accesses.add(new ScoreboardAccess(score.getMacroScores(), ScoreboardAccess.AccessType.READ));
     }
 
     @Override

@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.entity;
 
+import com.energyxxer.commodore.score.MacroScore;
 import com.energyxxer.commodore.score.MacroScoreHolder;
+import com.energyxxer.commodore.score.Objective;
 import com.energyxxer.commodore.selector.Selector;
 
 import java.util.ArrayList;
@@ -47,6 +49,17 @@ public class GenericEntity implements Entity {
 
     public void addMacroHolders(Collection<MacroScoreHolder> macros) {
         macros.forEach(this::addMacroHolder);
+    }
+
+    @Override
+    public Collection<MacroScore> getMacroScoresAccessed() {
+        ArrayList<MacroScore> scores = new ArrayList<>();
+        for(MacroScoreHolder holder : getMacroHolders()) {
+            for(Objective objective : selector.getObjectivesRead()) {
+                scores.add(new MacroScore(holder, objective));
+            }
+        }
+        return scores;
     }
 
     @Override

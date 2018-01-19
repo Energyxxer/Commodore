@@ -1,28 +1,29 @@
 package com.energyxxer.commodore.score.access;
 
 import com.energyxxer.commodore.functions.Function;
-import com.energyxxer.commodore.score.LocalScore;
+import com.energyxxer.commodore.score.MacroScore;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
 
 public class ScoreboardAccess {
 
-    private final LocalScore score;
+    private final Collection<MacroScore> scores;
     private final AccessType type;
-    private final ScoreboardAccess dependency;
+    private final Collection<ScoreboardAccess> dependencies;
     private Function function;
     private AccessResolution resolution = AccessResolution.UNRESOLVED;
 
-    public ScoreboardAccess(LocalScore score, AccessType type, ScoreboardAccess dependency) {
-        this.score = score;
-        this.type = type;
-        this.dependency = dependency;
-
-        //In theory this should never be an issue considering dependencies are final.
-        if(dependency != null && dependency.getDependency() == this)
-            throw new IllegalArgumentException("Cyclical scoreboard access dependency is not allowed. Also how tf did you do that? Report please.");
+    public ScoreboardAccess(Collection<MacroScore> scores, AccessType type, ScoreboardAccess... dependencies) {
+        this(scores, type, Arrays.asList(dependencies));
     }
 
-    public ScoreboardAccess(LocalScore score, AccessType type) {
-        this(score, type, null);
+    public ScoreboardAccess(Collection<MacroScore> scores, AccessType type, Collection<ScoreboardAccess> dependencies) {
+        this.scores = new ArrayList<>(scores);
+        this.type = type;
+        this.dependencies = (dependencies != null) ? new ArrayList<>(dependencies) : Collections.emptyList();
     }
 
     public Function getFunction() {
@@ -33,16 +34,16 @@ public class ScoreboardAccess {
         this.function = function;
     }
 
-    public LocalScore getScore() {
-        return score;
+    public Collection<MacroScore> getScores() {
+        return scores;
     }
 
     public AccessType getType() {
         return type;
     }
 
-    public ScoreboardAccess getDependency() {
-        return dependency;
+    public Collection<ScoreboardAccess> getDependencies() {
+        return dependencies;
     }
 
     public AccessResolution getResolution() {
@@ -63,6 +64,6 @@ public class ScoreboardAccess {
 
     @Override
     public String toString() {
-        return "" + type + " " + score + ((dependency != null) ? "⫘ (" + dependency + ")" : "");
+        return "" + type + " " + scores + ((dependencies != null) ? "⫘ (" + dependencies + ")" : "");
     }
 }

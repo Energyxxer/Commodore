@@ -1,9 +1,8 @@
 package com.energyxxer.commodore.selector;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import com.energyxxer.commodore.score.Objective;
+
+import java.util.*;
 
 public class Selector implements Cloneable {
     public enum BaseSelector {
@@ -97,6 +96,18 @@ public class Selector implements Cloneable {
         if(implicitLimit < 0) return explicitLimit;
         if(explicitLimit < 0) return implicitLimit;
         return Math.min(implicitLimit, explicitLimit);
+    }
+
+    public Collection<Objective> getObjectivesRead() {
+        ArrayList<Objective> objectives = new ArrayList<>();
+        for(SelectorArgument arg : args) {
+            if(arg instanceof ScoreArgument) {
+                for(Objective obj : ((ScoreArgument) arg).getObjectivesRead()) {
+                    if(!objectives.contains(obj)) objectives.add(obj);
+                }
+            }
+        }
+        return objectives;
     }
 
     public boolean isPlayer() {

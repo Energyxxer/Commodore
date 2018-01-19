@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.score;
 
+import java.util.Objects;
+
 public class Objective {
     private final ObjectiveManager parent;
     private String name;
@@ -44,6 +46,21 @@ public class Objective {
 
     public ObjectiveManager getParent() {
         return parent;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Objective objective = (Objective) o;
+        return Objects.equals(parent, objective.parent) &&
+                Objects.equals(name, objective.name) &&
+                Objects.equals(type, objective.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(parent, name, type);
     }
 
     @Override

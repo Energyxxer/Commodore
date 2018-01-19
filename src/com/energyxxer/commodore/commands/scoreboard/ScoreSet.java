@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.commands.scoreboard;
 
-import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
@@ -20,7 +20,7 @@ public class ScoreSet implements Command {
         this.score = score;
         this.value = value;
 
-        this.accesses.add(new ScoreboardAccess(score, ScoreboardAccess.AccessType.WRITE));
+        this.accesses.add(new ScoreboardAccess(score.getMacroScores(), ScoreboardAccess.AccessType.WRITE));
     }
 
     @Override

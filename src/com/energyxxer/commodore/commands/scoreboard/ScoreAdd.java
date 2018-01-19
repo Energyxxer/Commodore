@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.commands.scoreboard;
 
-import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
@@ -20,8 +20,8 @@ public class ScoreAdd implements Command {
         this.score = score;
         this.delta = delta;
 
-        ScoreboardAccess access2 = new ScoreboardAccess(score, ScoreboardAccess.AccessType.WRITE);
-        ScoreboardAccess access1 = new ScoreboardAccess(score, ScoreboardAccess.AccessType.READ, access2);
+        ScoreboardAccess access2 = new ScoreboardAccess(score.getMacroScores(), ScoreboardAccess.AccessType.WRITE);
+        ScoreboardAccess access1 = new ScoreboardAccess(score.getMacroScores(), ScoreboardAccess.AccessType.READ, access2);
         accesses.add(access1);
         accesses.add(access2);
     }

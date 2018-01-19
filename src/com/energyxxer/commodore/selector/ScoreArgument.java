@@ -2,9 +2,7 @@ package com.energyxxer.commodore.selector;
 
 import com.energyxxer.commodore.score.Objective;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 public class ScoreArgument implements SelectorArgument {
 
@@ -31,6 +29,14 @@ public class ScoreArgument implements SelectorArgument {
         }
         sb.append("}");
         return sb.toString();
+    }
+
+    public Collection<Objective> getObjectivesRead() {
+        ArrayList<Objective> objectives = new ArrayList<>();
+        for(Objective obj : scores.keySet()) {
+            if(!objectives.contains(obj)) objectives.add(obj);
+        }
+        return objectives;
     }
 
     @Override
