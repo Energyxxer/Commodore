@@ -22,6 +22,7 @@ import com.energyxxer.commodore.nbt.NBTPath;
 import com.energyxxer.commodore.nbt.TagByte;
 import com.energyxxer.commodore.nbt.TagCompound;
 import com.energyxxer.commodore.nbt.TagShort;
+import com.energyxxer.commodore.particles.Particle;
 import com.energyxxer.commodore.rotation.Rotation;
 import com.energyxxer.commodore.rotation.RotationUnit;
 import com.energyxxer.commodore.score.LocalScore;
@@ -38,6 +39,7 @@ import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
 import com.energyxxer.commodore.types.EntityType;
 import com.energyxxer.commodore.types.FunctionReference;
 import com.energyxxer.commodore.types.ItemType;
+import com.energyxxer.commodore.util.Delta;
 
 import java.io.File;
 
@@ -231,7 +233,16 @@ public final class CommandTest {
 
         function.append(new FunctionHeaderComment(buttons.getJSONContent().split("\n")));
 
-        module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.ZIP);
+        otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit"))));
+        otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL)));
+        otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new Delta(2, 2, 2)));
+        otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new Delta(2, 2, 2), 0, 10));
+        otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new Delta(2, 2, 2), 0, 10, false));
+        otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new Delta(2, 2, 2), 0, 10, true));
+        otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new Delta(2, 2, 2), 0, 10, false, player));
+        //otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new Delta(2, 2, 2), 0, 10, false, entity));
+
+        module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 
         System.out.println(function);
 

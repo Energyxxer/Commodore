@@ -58,7 +58,7 @@ public class Coordinate {
     }
 
     public boolean isSignificant() {
-        return type == Type.ABSOLUTE || coord != 0;
+        return type != Type.RELATIVE || coord != 0;
     }
 
     public String getAs(DisplayMode mode) {

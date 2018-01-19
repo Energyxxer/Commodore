@@ -3,23 +3,27 @@ package com.energyxxer.commodore.selector;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 
 public class Selector implements Cloneable {
     public enum BaseSelector {
-        ALL_PLAYERS("a", SortArgument.SortType.NEAREST), NEAREST_PLAYER("p", SortArgument.SortType.NEAREST, 1), RANDOM_PLAYER("r", SortArgument.SortType.RANDOM, 1), ALL_ENTITIES("e", SortArgument.SortType.ARBITRARY), SENDER("s", SortArgument.SortType.ARBITRARY, 1);
+        ALL_PLAYERS("a", SortArgument.SortType.NEAREST, -1, true),
+        NEAREST_PLAYER("p", SortArgument.SortType.NEAREST, 1, true),
+        RANDOM_PLAYER("r", SortArgument.SortType.RANDOM, 1, true),
+        ALL_ENTITIES("e", SortArgument.SortType.ARBITRARY, -1, false),
+        SENDER("s", SortArgument.SortType.ARBITRARY, 1, true);
 
         private String header;
+
         private SortArgument.SortType defaultSort;
         private int limit;
+        private boolean player;
 
-        BaseSelector(String header, SortArgument.SortType defaultSort) {
-            this(header, defaultSort, -1);
-        }
-
-        BaseSelector(String header, SortArgument.SortType defaultSort, int limit) {
+        BaseSelector(String header, SortArgument.SortType defaultSort, int limit, boolean player) {
             this.header = header;
             this.defaultSort = defaultSort;
             this.limit = limit;
+            this.player = player;
         }
 
         public String getHeader() {
@@ -33,8 +37,11 @@ public class Selector implements Cloneable {
         public int getLimit() {
             return limit;
         }
-    }
 
+        public boolean isPlayer() {
+            return player;
+        }
+    }
     private BaseSelector base;
 
     private ArrayList<SelectorArgument> args = new ArrayList<>();
@@ -76,12 +83,33 @@ public class Selector implements Cloneable {
         return -1;
     }
 
+    private List<TypeArgument> getTypeArguments() {
+        ArrayList<TypeArgument> typeArgs = new ArrayList<>();
+        for(SelectorArgument arg : args) {
+            if(arg instanceof TypeArgument) typeArgs.add((TypeArgument) arg);
+        }
+        return typeArgs;
+    }
+
     public int getLimit() {
         int implicitLimit = base.limit;
         int explicitLimit = getLimitArgument();
         if(implicitLimit < 0) return explicitLimit;
         if(explicitLimit < 0) return implicitLimit;
         return Math.min(implicitLimit, explicitLimit);
+    }
+
+    public boolean isPlayer() {
+        List<TypeArgument> typeArgs = getTypeArguments();
+        boolean player = base.player;
+
+        for(TypeArgument type : typeArgs) {
+            if(!type.getType().getName().equals("minecraft:player") || type.isNegated()) {
+                return false;
+            }
+        }
+
+        return base.player;
     }
 
     @Override

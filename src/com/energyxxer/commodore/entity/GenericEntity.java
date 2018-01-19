@@ -53,4 +53,9 @@ public class GenericEntity implements Entity {
     public Collection<MacroScoreHolder> getMacroHolders() {
         return macroHolders;
     }
+
+    @Override
+    public boolean isPlayer() {
+        return selector.isPlayer();
+    }
 }

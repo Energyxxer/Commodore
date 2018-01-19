@@ -20,4 +20,6 @@ public interface Entity extends CommandExecutor, ScoreHolder, Cloneable {
     int getLimit();
 
     Entity clone();
+
+    boolean isPlayer();
 }

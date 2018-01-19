@@ -1,134 +1,134 @@
 {
   "minecraft:ambient_entity_effect": {
-    "type": "tinted"
+    "argument": "none"
   },
   "minecraft:angry_villager": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:barrier": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:block": {
-    "type": "block"
+    "argument": "block"
   },
   "minecraft:bubble": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:cloud": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:crit": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:damage_indicator": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:dragon_breath": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:dripping_lava": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:dripping_water": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:dust": {
-    "type": "tinted"
+    "argument": "color-int"
   },
   "minecraft:effect": {
-    "type": "tinted"
+    "argument": "none"
   },
   "minecraft:elder_guardian": {
-    "type": "fixed"
+    "argument": "none"
   },
   "minecraft:enchanted_hit": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:enchant": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:end_rod": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:entity_effect": {
-    "type": "tinted"
+    "argument": "none"
   },
   "minecraft:explosion_emitter": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:explosion": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:falling_dust": {
-    "type": "block"
+    "argument": "block"
   },
   "minecraft:firework": {
-    "type": "tinted"
+    "argument": "none"
   },
   "minecraft:fishing": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:flame": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:happy_villager": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:heart": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:instant_effect": {
-    "type": "tinted"
+    "argument": "none"
   },
   "minecraft:item": {
-    "type": "item"
+    "argument": "item"
   },
   "minecraft:item_slime": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:item_snowball": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:large_smoke": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:lava": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:mycelium": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:note": {
-    "type": "tinted"
+    "argument": "none"
   },
   "minecraft:poof": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:portal": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:rain": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:smoke": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:spit": {
-    "type": "normal"
-  },
-  "minecraft:sweep_attack": {
-    "type": "normal"
-  },
-  "minecraft:totem_of_undying": {
-    "type": "normal"
-  },
-  "minecraft:underwater": {
-    "type": "normal"
+    "argument": "none"
   },
   "minecraft:splash": {
-    "type": "normal"
+    "argument": "none"
+  },
+  "minecraft:sweep_attack": {
+    "argument": "none"
+  },
+  "minecraft:totem_of_undying": {
+    "argument": "none"
+  },
+  "minecraft:underwater": {
+    "argument": "none"
   },
   "minecraft:witch": {
-    "type": "normal"
+    "argument": "none"
   }
 }
