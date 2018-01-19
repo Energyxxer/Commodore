@@ -3,6 +3,9 @@ package com.energyxxer.commodore;
 import com.energyxxer.commodore.block.Block;
 import com.energyxxer.commodore.commands.*;
 import com.energyxxer.commodore.commands.execute.ExecuteCommand;
+import com.energyxxer.commodore.commands.execute.ExecuteStoreBlock;
+import com.energyxxer.commodore.commands.execute.ExecuteStoreEntity;
+import com.energyxxer.commodore.commands.execute.ExecuteStoreScore;
 import com.energyxxer.commodore.commands.scoreboard.ScoreAdd;
 import com.energyxxer.commodore.commands.scoreboard.ScoreGet;
 import com.energyxxer.commodore.commands.scoreboard.ScorePlayersOperation;
@@ -18,10 +21,7 @@ import com.energyxxer.commodore.functions.FunctionHeaderComment;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.ModulePackGenerator;
-import com.energyxxer.commodore.nbt.NBTPath;
-import com.energyxxer.commodore.nbt.TagByte;
-import com.energyxxer.commodore.nbt.TagCompound;
-import com.energyxxer.commodore.nbt.TagShort;
+import com.energyxxer.commodore.nbt.*;
 import com.energyxxer.commodore.particles.Particle;
 import com.energyxxer.commodore.rotation.Rotation;
 import com.energyxxer.commodore.rotation.RotationUnit;
@@ -185,6 +185,13 @@ public final class CommandTest {
         function.append(new ScoreGet(b));
 
         function.append(new TellrawCommand(player, new ScoreTextComponent(b)));
+
+        ExecuteCommand exec = new ExecuteCommand(new TimeQueryCommand(TimeQueryCommand.TimeCounter.DAY));
+        exec.addModifier(new ExecuteStoreScore(a));
+        exec.addModifier(new ExecuteStoreEntity(singlePlayer, new NBTPath("Position",new NBTPath(1)), NumericNBTType.DOUBLE));
+        exec.addModifier(new ExecuteStoreBlock(new CoordinateSet(0, 3, 0), new NBTPath("Position",new NBTPath(1)), NumericNBTType.DOUBLE));
+
+        function.append(exec);
 
         function.append(new FunctionComment("CLONE COMMANDS"));
 
