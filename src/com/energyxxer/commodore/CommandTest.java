@@ -2,10 +2,7 @@ package com.energyxxer.commodore;
 
 import com.energyxxer.commodore.block.Block;
 import com.energyxxer.commodore.commands.*;
-import com.energyxxer.commodore.commands.execute.ExecuteCommand;
-import com.energyxxer.commodore.commands.execute.ExecuteStoreBlock;
-import com.energyxxer.commodore.commands.execute.ExecuteStoreEntity;
-import com.energyxxer.commodore.commands.execute.ExecuteStoreScore;
+import com.energyxxer.commodore.commands.execute.*;
 import com.energyxxer.commodore.commands.scoreboard.ScoreAdd;
 import com.energyxxer.commodore.commands.scoreboard.ScoreGet;
 import com.energyxxer.commodore.commands.scoreboard.ScorePlayersOperation;
@@ -26,6 +23,7 @@ import com.energyxxer.commodore.particles.Particle;
 import com.energyxxer.commodore.rotation.Rotation;
 import com.energyxxer.commodore.rotation.RotationUnit;
 import com.energyxxer.commodore.score.LocalScore;
+import com.energyxxer.commodore.score.MacroScoreHolder;
 import com.energyxxer.commodore.score.Objective;
 import com.energyxxer.commodore.score.ObjectiveManager;
 import com.energyxxer.commodore.selector.*;
@@ -235,6 +233,25 @@ public final class CommandTest {
         otherFunction.append(new PlaySoundCommand("minecraft:block.note.harp", PlaySoundCommand.Source.MASTER, new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new CoordinateSet(0,0,0), 1, 1, 1));
         function.append(new FunctionCommand(otherFunction));
 
+        {
+            MacroScoreHolder testMacro = new MacroScoreHolder("Test Holder");
+
+            GenericEntity entity1 = new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS));
+            entity1.addMacroHolder(testMacro);
+
+            otherFunction.append(new ScoreSet(new LocalScore(t, entity1), 4));
+
+            ScoreArgument scoreArg = new ScoreArgument();
+            scoreArg.put(t, new SelectorNumberArgument<>(1, 5));
+            GenericEntity entity2 = new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS, scoreArg));
+            entity2.addMacroHolder(testMacro);
+
+            ExecuteCommand exec1 = new ExecuteCommand(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("bubble")), new CoordinateSet(0,0,0, Coordinate.Type.RELATIVE), new Delta(0,0,0), 0, 100, true, entity1));
+            exec1.addModifier(new ExecuteInDimension(module.minecraft.getTypeManager().dimension.get("the_end")));
+
+            otherFunction.append(exec1);
+        }
+
         FunctionTag tick = module.minecraft.getTagManager().getFunctionGroup().createNew("tick");
         tick.addValue(new FunctionReference(otherFunction));
 
@@ -260,7 +277,7 @@ public final class CommandTest {
 
         System.out.println(module.minecraft.getTypeManager().block);
 
-        //System.out.println(a.getAccessLog());
-        //System.out.println(b.getAccessLog());
+        System.out.println(function.getAccessLog());
+        System.out.println(otherFunction.getAccessLog());
     }
 }

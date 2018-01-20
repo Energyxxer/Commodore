@@ -2,6 +2,11 @@ package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.item.Item;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class ClearCommand implements Command {
 
@@ -22,5 +27,10 @@ public class ClearCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "clear " + player.getSelectorAs(sender) + " " + item + ((maxCount >= 0) ? " " + maxCount : "");
+    }
+
+    @Override @NotNull
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return new ArrayList<>(player.getScoreboardAccesses());
     }
 }

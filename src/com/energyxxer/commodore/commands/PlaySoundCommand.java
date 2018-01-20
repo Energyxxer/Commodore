@@ -3,6 +3,11 @@ package com.energyxxer.commodore.commands;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class PlaySoundCommand implements Command {
 
@@ -62,5 +67,10 @@ public class PlaySoundCommand implements Command {
                                                         : "")
                                         : "")
                         : "");
+    }
+
+    @Override @NotNull
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return new ArrayList<>(player.getScoreboardAccesses());
     }
 }

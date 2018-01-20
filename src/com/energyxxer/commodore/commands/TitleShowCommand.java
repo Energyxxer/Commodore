@@ -8,12 +8,11 @@ public class TitleShowCommand extends TitleCommand {
         TITLE, SUBTITLE, ACTIONBAR
     }
 
-    private Entity player;
     private Display display;
     private TextComponent text;
 
     public TitleShowCommand(Entity player, Display display, TextComponent text) {
-        this.player = player;
+        super(player);
         this.display = display;
         this.text = text;
     }

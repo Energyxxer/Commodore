@@ -4,6 +4,10 @@ import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.nbt.NBTPath;
 import com.energyxxer.commodore.nbt.NumericNBTType;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Collection;
 
 public class ExecuteStoreEntity extends ExecuteStore {
     private Entity entity;
@@ -35,6 +39,11 @@ public class ExecuteStoreEntity extends ExecuteStore {
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
         return new SubCommandResult(this.getStarter() + "entity " + entity.getSelectorAs(sender) + " " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.toString(scale));
+    }
+
+    @Override
+    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return entity.getScoreboardAccesses();
     }
 
     @Override

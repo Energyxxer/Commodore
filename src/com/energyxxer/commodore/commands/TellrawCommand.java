@@ -1,7 +1,12 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.textcomponents.TextComponent;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class TellrawCommand implements Command {
     private Entity player;
@@ -15,5 +20,10 @@ public class TellrawCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "tellraw " + player.getSelectorAs(sender) + " " + message;
+    }
+
+    @Override @NotNull
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return new ArrayList<>(player.getScoreboardAccesses());
     }
 }

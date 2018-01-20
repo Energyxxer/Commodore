@@ -4,7 +4,6 @@ import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.types.EffectType;
 
 public class EffectClearCommand extends EffectCommand {
-    private Entity entity;
     private EffectType type;
 
     public EffectClearCommand(Entity entity) {
@@ -12,7 +11,7 @@ public class EffectClearCommand extends EffectCommand {
     }
 
     public EffectClearCommand(Entity entity, EffectType type) {
-        this.entity = entity;
+        super(entity);
         this.type = type;
     }
 

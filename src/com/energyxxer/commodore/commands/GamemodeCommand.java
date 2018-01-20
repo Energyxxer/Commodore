@@ -1,7 +1,12 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.types.GamemodeType;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class GamemodeCommand implements Command {
 
@@ -16,5 +21,10 @@ public class GamemodeCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "gamemode " + gamemode + " " + player.getSelectorAs(sender);
+    }
+
+    @Override @NotNull
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return new ArrayList<>(player.getScoreboardAccesses());
     }
 }

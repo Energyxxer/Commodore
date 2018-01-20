@@ -1,6 +1,10 @@
 package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Collection;
 
 public class ExecuteConditionEntity extends ExecuteCondition {
     public Entity entity;
@@ -13,6 +17,11 @@ public class ExecuteConditionEntity extends ExecuteCondition {
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
         return new SubCommandResult(this.getStarter() + "entity " + entity.getSelectorAs(sender));
+    }
+
+    @Override
+    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return entity.getScoreboardAccesses();
     }
 
     @Override

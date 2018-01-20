@@ -71,7 +71,10 @@ public class GenericEntity implements Entity {
                 scores.add(new MacroScore(holder, objective));
             }
         }
-        scoreboardAccesses = Collections.singletonList(new ScoreboardAccess(scores, ScoreboardAccess.AccessType.READ));
+        if(scores.size() == 0)
+            scoreboardAccesses = Collections.emptyList();
+        else
+            scoreboardAccesses = Collections.singletonList(new ScoreboardAccess(scores, ScoreboardAccess.AccessType.READ));
     }
 
     @Override

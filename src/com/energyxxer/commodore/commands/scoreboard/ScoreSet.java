@@ -21,6 +21,10 @@ public class ScoreSet implements Command {
         this.score = score;
         this.value = value;
 
+        if(score.getHolder() instanceof Entity) {
+            accesses.addAll(((Entity) score.getHolder()).getScoreboardAccesses());
+        }
+
         this.accesses.add(new ScoreboardAccess(score.getMacroScores(), ScoreboardAccess.AccessType.WRITE));
     }
 

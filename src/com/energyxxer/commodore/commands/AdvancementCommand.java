@@ -1,6 +1,11 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class AdvancementCommand implements Command {
 
@@ -41,5 +46,10 @@ public class AdvancementCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "advancement " + action.toString().toLowerCase() + " " + player.getSelectorAs(sender) + " " + limit.toString().toLowerCase() + ((limit.takesAdvancement) ? " " + advancement : "");
+    }
+
+    @Override @NotNull
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return new ArrayList<>(player.getScoreboardAccesses());
     }
 }

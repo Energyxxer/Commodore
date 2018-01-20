@@ -1,6 +1,10 @@
 package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Collection;
 
 public class ExecuteRotatedAsEntity implements ExecuteModifier {
 
@@ -13,6 +17,11 @@ public class ExecuteRotatedAsEntity implements ExecuteModifier {
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
         return new SubCommandResult("rotated as " + entity.getSelectorAs(sender));
+    }
+
+    @Override
+    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return entity.getScoreboardAccesses();
     }
 
     @Override

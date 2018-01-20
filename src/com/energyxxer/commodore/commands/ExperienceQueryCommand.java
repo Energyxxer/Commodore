@@ -4,11 +4,10 @@ import com.energyxxer.commodore.entity.Entity;
 
 public class ExperienceQueryCommand extends ExperienceCommand {
 
-    private Entity player;
     private Unit unit;
 
     public ExperienceQueryCommand(Entity player, Unit unit) {
-        this.player = player;
+        super(player);
         this.unit = unit;
     }
 

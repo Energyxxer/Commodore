@@ -21,6 +21,10 @@ public class ScoreAdd implements Command {
         this.score = score;
         this.delta = delta;
 
+        if(score.getHolder() instanceof Entity) {
+            accesses.addAll(((Entity) score.getHolder()).getScoreboardAccesses());
+        }
+
         ScoreboardAccess access2 = new ScoreboardAccess(score.getMacroScores(), ScoreboardAccess.AccessType.WRITE);
         ScoreboardAccess access1 = new ScoreboardAccess(score.getMacroScores(), ScoreboardAccess.AccessType.READ, access2);
         accesses.add(access1);

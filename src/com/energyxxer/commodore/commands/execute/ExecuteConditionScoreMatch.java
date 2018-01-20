@@ -3,7 +3,12 @@ package com.energyxxer.commodore.commands.execute;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.score.LocalScore;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.selector.SelectorNumberArgument;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Collection;
+import java.util.Collections;
 
 public class ExecuteConditionScoreMatch extends ExecuteCondition {
 
@@ -19,6 +24,11 @@ public class ExecuteConditionScoreMatch extends ExecuteCondition {
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
         return new SubCommandResult(this.getStarter() + "score " + CommandUtils.getRawReference(target.getHolder(), sender) + " " + target.getObjective().getName() + " matches " + range.toString());
+    }
+
+    @Override
+    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return (target.getHolder() instanceof Entity) ? ((Entity) target.getHolder()).getScoreboardAccesses() : Collections.emptyList();
     }
 
     @Override

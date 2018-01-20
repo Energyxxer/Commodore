@@ -18,6 +18,10 @@ public class ScoreGet implements Command {
     public ScoreGet(LocalScore score) {
         this.score = score;
 
+        if(score.getHolder() instanceof Entity) {
+            accesses.addAll(((Entity) score.getHolder()).getScoreboardAccesses());
+        }
+
         accesses.add(new ScoreboardAccess(score.getMacroScores(), ScoreboardAccess.AccessType.READ));
     }
 

@@ -47,6 +47,13 @@ public class ScorePlayersOperation implements Command {
         this.operation = operation;
         this.source = source;
 
+        if(target.getHolder() instanceof Entity) {
+            accesses.addAll(((Entity) target.getHolder()).getScoreboardAccesses());
+        }
+        if(source.getHolder() instanceof Entity) {
+            accesses.addAll(((Entity) source.getHolder()).getScoreboardAccesses());
+        }
+
         if(operation.isTargetRead()) {
             ScoreboardAccess access1 = new ScoreboardAccess(source.getMacroScores(), ScoreboardAccess.AccessType.READ);
             ScoreboardAccess access2 = new ScoreboardAccess(target.getMacroScores(), ScoreboardAccess.AccessType.READ, access1);

@@ -5,7 +5,13 @@ import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.particles.Particle;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.util.Delta;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class ParticleCommand implements Command {
     private Particle particle;
@@ -82,5 +88,10 @@ public class ParticleCommand implements Command {
         sb.insert(0, particle);
         sb.insert(0, "particle ");
         return sb.toString().trim();
+    }
+
+    @Override @NotNull
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return (viewers != null) ? new ArrayList<>(viewers.getScoreboardAccesses()) : Collections.emptyList();
     }
 }

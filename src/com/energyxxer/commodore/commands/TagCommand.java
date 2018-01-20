@@ -1,6 +1,11 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class TagCommand implements Command {
     public enum Action {
@@ -20,5 +25,10 @@ public class TagCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "tag " + action.toString().toLowerCase() + " " + entity.getSelectorAs(sender) + " " + tag;
+    }
+
+    @Override @NotNull
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return new ArrayList<>(entity.getScoreboardAccesses());
     }
 }

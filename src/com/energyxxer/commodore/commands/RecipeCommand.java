@@ -1,6 +1,11 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class RecipeCommand implements Command {
     public enum Action {
@@ -24,5 +29,10 @@ public class RecipeCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "recipe " + action.toString().toLowerCase() + " " + player.getSelectorAs(sender) + " " + recipeName;
+    }
+
+    @Override @NotNull
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return new ArrayList<>(player.getScoreboardAccesses());
     }
 }

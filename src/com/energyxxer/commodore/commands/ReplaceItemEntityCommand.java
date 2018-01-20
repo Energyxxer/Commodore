@@ -2,6 +2,11 @@ package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.item.Item;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class ReplaceItemEntityCommand extends ReplaceItemCommand {
 
@@ -26,5 +31,10 @@ public class ReplaceItemEntityCommand extends ReplaceItemCommand {
     @Override
     public String getRawCommand(Entity sender) {
         return "replaceitem entity " + entity.getSelectorAs(sender) + " " + slot + " " + item + (count != 1 ? " " + count : "");
+    }
+
+    @Override @NotNull
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return new ArrayList<>(entity.getScoreboardAccesses());
     }
 }

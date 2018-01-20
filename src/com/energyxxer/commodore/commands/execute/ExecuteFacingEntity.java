@@ -1,6 +1,10 @@
 package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Collection;
 
 import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.PITCH;
 import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.YAW;
@@ -21,6 +25,11 @@ public class ExecuteFacingEntity implements ExecuteModifier {
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
         return new SubCommandResult("facing entity " + entity.getSelectorAs(sender) + " " + anchor.toString().toLowerCase(), YAW, PITCH);
+    }
+
+    @Override
+    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return entity.getScoreboardAccesses();
     }
 
     @Override

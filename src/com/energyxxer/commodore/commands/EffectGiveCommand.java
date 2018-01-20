@@ -4,11 +4,10 @@ import com.energyxxer.commodore.effect.StatusEffect;
 import com.energyxxer.commodore.entity.Entity;
 
 public class EffectGiveCommand extends EffectCommand {
-    private Entity entity;
     private StatusEffect effect;
 
     public EffectGiveCommand(Entity entity, StatusEffect effect) {
-        this.entity = entity;
+        super(entity);
         this.effect = effect;
     }
 

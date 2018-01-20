@@ -4,6 +4,11 @@ import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class SpreadPlayersCommand implements Command {
     private CoordinateSet center;
@@ -23,5 +28,10 @@ public class SpreadPlayersCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "spreadplayers " + center.getX().getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + center.getZ().getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + CommandUtils.toString(spreadDistance) + " " + CommandUtils.toString(maxRange) + " " + respectTeams + " " + targets.getSelectorAs(sender);
+    }
+
+    @Override @NotNull
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return new ArrayList<>(targets.getScoreboardAccesses());
     }
 }

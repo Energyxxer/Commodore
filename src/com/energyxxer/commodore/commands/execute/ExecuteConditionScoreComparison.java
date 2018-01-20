@@ -4,6 +4,11 @@ import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.commands.scoreboard.ScoreComparison;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.score.LocalScore;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
 
 public class ExecuteConditionScoreComparison extends ExecuteCondition {
 
@@ -21,6 +26,18 @@ public class ExecuteConditionScoreComparison extends ExecuteCondition {
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
         return new SubCommandResult(this.getStarter() + "score " + CommandUtils.getRawReference(target.getHolder(), sender) + " " + target.getObjective().getName() + " " + comparison.getSymbol() + " " + CommandUtils.getRawReference(source.getHolder(), sender) + " " + source.getObjective().getName());
+    }
+
+    @Override
+    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
+        ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
+        if(target.getHolder() instanceof Entity) {
+            accesses.addAll(((Entity) target.getHolder()).getScoreboardAccesses());
+        }
+        if(source.getHolder() instanceof Entity) {
+            accesses.addAll(((Entity) source.getHolder()).getScoreboardAccesses());
+        }
+        return accesses;
     }
 
     @Override
