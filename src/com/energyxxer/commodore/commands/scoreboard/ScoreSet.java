@@ -5,6 +5,7 @@ import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,7 +29,7 @@ public class ScoreSet implements Command {
         return "scoreboard players set " + CommandUtils.getRawReference(score.getHolder(), sender) + " " + score.getObjective().getName() + " " + value;
     }
 
-    @Override
+    @Override @NotNull
     public Collection<ScoreboardAccess> getScoreboardAccesses() {
         return accesses;
     }

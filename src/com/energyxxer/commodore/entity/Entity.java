@@ -1,8 +1,8 @@
 package com.energyxxer.commodore.entity;
 
 import com.energyxxer.commodore.commands.execute.CommandExecutor;
-import com.energyxxer.commodore.score.MacroScore;
 import com.energyxxer.commodore.score.ScoreHolder;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.selector.Selector;
 
 import java.util.Collection;
@@ -15,7 +15,7 @@ public interface Entity extends CommandExecutor, ScoreHolder, Cloneable {
         else return getSelector();
     }
 
-    Collection<MacroScore> getMacroScoresAccessed();
+    Collection<ScoreboardAccess> getScoreboardAccesses();
 
     @Override
     default String getReference() {

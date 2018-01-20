@@ -3,20 +3,24 @@ package com.energyxxer.commodore.entity;
 import com.energyxxer.commodore.score.MacroScore;
 import com.energyxxer.commodore.score.MacroScoreHolder;
 import com.energyxxer.commodore.score.Objective;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.selector.Selector;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 public class GenericEntity implements Entity {
     private Selector selector;
+
+    private Collection<ScoreboardAccess> scoreboardAccesses;
 
     private ArrayList<MacroScoreHolder> macroHolders = new ArrayList<>();
 
     public GenericEntity(Selector selector) {
         this.selector = selector;
-        macroHolders.add(new MacroScoreHolder("GenericEntity#" + this.hashCode() + ":" + selector));
+        addMacroHolder(new MacroScoreHolder("GE#" + this.hashCode()));
     }
 
     @Override
@@ -36,11 +40,14 @@ public class GenericEntity implements Entity {
 
     @Override
     public GenericEntity clone() {
-        return new GenericEntity(selector.clone());
+        GenericEntity copy = new GenericEntity(selector.clone());
+        copy.addMacroHolders(macroHolders);
+        return copy;
     }
 
     public void addMacroHolder(MacroScoreHolder macro) {
         this.macroHolders.add(macro);
+        scoreboardAccesses = null;
     }
 
     public void addMacroHolders(MacroScoreHolder... macros) {
@@ -52,14 +59,19 @@ public class GenericEntity implements Entity {
     }
 
     @Override
-    public Collection<MacroScore> getMacroScoresAccessed() {
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        if(scoreboardAccesses == null) createScoreboardAccesses();
+        return scoreboardAccesses;
+    }
+
+    private void createScoreboardAccesses() {
         ArrayList<MacroScore> scores = new ArrayList<>();
         for(MacroScoreHolder holder : getMacroHolders()) {
             for(Objective objective : selector.getObjectivesRead()) {
                 scores.add(new MacroScore(holder, objective));
             }
         }
-        return scores;
+        scoreboardAccesses = Collections.singletonList(new ScoreboardAccess(scores, ScoreboardAccess.AccessType.READ));
     }
 
     @Override

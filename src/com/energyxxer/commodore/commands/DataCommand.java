@@ -2,6 +2,12 @@ package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public abstract class DataCommand implements Command {
     /*
@@ -30,5 +36,10 @@ public abstract class DataCommand implements Command {
 
     public DataCommand(CoordinateSet pos) {
         this.pos = pos;
+    }
+
+    @Override @NotNull
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return (entity != null) ? new ArrayList<>(entity.getScoreboardAccesses()) : Collections.emptyList();
     }
 }

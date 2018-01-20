@@ -77,15 +77,7 @@ public class ScoreAccessLog {
         sb.append(" : Access Log");
         sb.append(" --------------\n");
         log.forEach(a -> {
-            sb.append(a.getType());
-            sb.append(" ");
-            if(a.getDependencies() != null) {
-                sb.append("⫘ (");
-                sb.append(a.getDependencies());
-                sb.append(") ");
-            }
-            sb.append("- ");
-            sb.append(a.getResolution());
+            sb.append(a);
             sb.append('\n');
         });
         sb.append("----------------------------------");

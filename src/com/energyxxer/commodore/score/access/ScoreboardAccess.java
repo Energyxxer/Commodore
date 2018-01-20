@@ -64,6 +64,6 @@ public class ScoreboardAccess {
 
     @Override
     public String toString() {
-        return "" + type + " " + scores + ((dependencies != null) ? "⫘ (" + dependencies + ")" : "");
+        return "" + type + " " + scores + ((dependencies != null) ? " ⫘ (" + dependencies + ")" : "") + " - " + resolution;
     }
 }

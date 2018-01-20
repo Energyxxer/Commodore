@@ -115,5 +115,6 @@ public class EnhancedHoes {
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 
         System.out.println(tick.getResolvedContent());
+        System.out.println(tick.getAccessLog());
     }
 }

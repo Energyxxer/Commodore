@@ -10,4 +10,9 @@ public class MacroScoreHolder {
     public MacroScoreHolder(String descriptor) {
         this.descriptor = descriptor;
     }
+
+    @Override
+    public String toString() {
+        return "$[" + descriptor + "]";
+    }
 }

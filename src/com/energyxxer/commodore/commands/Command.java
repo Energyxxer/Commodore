@@ -4,6 +4,7 @@ import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.functions.FunctionWriter;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -17,9 +18,15 @@ public interface Command extends FunctionWriter {
 
     @Override
     default String toFunctionContent(Function function) {
-        return (isUsed()) ? getRawCommand(function.getSender()) : "# [REMOVED]";
+        try {
+            return (isUsed()) ? getRawCommand(function.getSender()) : "# [REMOVED]";
+        } catch(IllegalStateException x) {
+            System.out.println(function.getAccessLog());
+            throw x;
+        }
     }
 
+    @NotNull
     default Collection<ScoreboardAccess> getScoreboardAccesses() {
         return Collections.emptyList();
     }

@@ -33,4 +33,9 @@ public class MacroScore {
         result = 31 * result + objective.hashCode();
         return result;
     }
+
+    @Override
+    public String toString() {
+        return holder + " " + objective.getName();
+    }
 }

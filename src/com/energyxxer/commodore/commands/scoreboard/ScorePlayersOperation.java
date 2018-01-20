@@ -5,6 +5,7 @@ import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -61,7 +62,7 @@ public class ScorePlayersOperation implements Command {
         }
     }
 
-    @Override
+    @Override @NotNull
     public Collection<ScoreboardAccess> getScoreboardAccesses() {
         return accesses;
     }
