@@ -45,6 +45,6 @@ public class ExecuteAtEntity implements ExecuteModifier {
 
     @Override
     public ExecutionVariableMap getModifiedExecutionVariables() {
-        return new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.Y, ExecutionVariable.Z, ExecutionVariable.YAW, ExecutionVariable.PITCH, ExecutionVariable.DIMENSION);
+        return new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.Y, ExecutionVariable.Z, ExecutionVariable.YAW, ExecutionVariable.PITCH, ExecutionVariable.DIMENSION, ExecutionVariable.COUNT);
     }
 }

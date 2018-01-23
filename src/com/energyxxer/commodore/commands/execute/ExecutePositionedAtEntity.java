@@ -20,7 +20,7 @@ public class ExecutePositionedAtEntity implements ExecuteModifier {
 
     @Override
     public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("positioned at " + entity.getSelectorAs(sender), X, Y, Z);
+        return new SubCommandResult("positioned as " + entity.getSelectorAs(sender), X, Y, Z);
     }
 
     @Override
@@ -45,6 +45,6 @@ public class ExecutePositionedAtEntity implements ExecuteModifier {
 
     @Override
     public ExecutionVariableMap getModifiedExecutionVariables() {
-        return new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.Y, ExecutionVariable.Z);
+        return new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.Y, ExecutionVariable.Z, ExecutionVariable.COUNT);
     }
 }

@@ -42,6 +42,6 @@ public class ExecuteAsEntity implements ExecuteModifier {
 
     @Override
     public ExecutionVariableMap getModifiedExecutionVariables() {
-        return new ExecutionVariableMap(ExecutionVariable.SENDER);
+        return new ExecutionVariableMap(ExecutionVariable.SENDER, ExecutionVariable.COUNT);
     }
 }
