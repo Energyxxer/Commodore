@@ -45,6 +45,8 @@ public class ExecuteAtEntity implements ExecuteModifier {
 
     @Override
     public ExecutionVariableMap getModifiedExecutionVariables() {
-        return new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.Y, ExecutionVariable.Z, ExecutionVariable.YAW, ExecutionVariable.PITCH, ExecutionVariable.DIMENSION, ExecutionVariable.COUNT);
+        ExecutionVariableMap map = new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.Y, ExecutionVariable.Z, ExecutionVariable.YAW, ExecutionVariable.PITCH, ExecutionVariable.DIMENSION);
+        if(entity.getLimit() != 1) map.setUsed(ExecutionVariable.COUNT);
+        return map;
     }
 }
