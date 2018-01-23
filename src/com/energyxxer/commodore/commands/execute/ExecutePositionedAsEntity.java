@@ -10,11 +10,11 @@ import java.util.Collection;
 
 import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.*;
 
-public class ExecutePositionedAtEntity implements ExecuteModifier {
+public class ExecutePositionedAsEntity implements ExecuteModifier {
 
     private Entity entity;
 
-    public ExecutePositionedAtEntity(Entity entity) {
+    public ExecutePositionedAsEntity(Entity entity) {
         this.entity = entity;
     }
 
@@ -45,7 +45,7 @@ public class ExecutePositionedAtEntity implements ExecuteModifier {
 
     @Override
     public ExecutionVariableMap getModifiedExecutionVariables() {
-        ExecutionVariableMap map = new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.Y, ExecutionVariable.Z);
+        ExecutionVariableMap map = new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.Y, ExecutionVariable.Z, ExecutionVariable.CONDITION);
         if(entity.getLimit() != 1) map.setUsed(ExecutionVariable.COUNT);
         return map;
     }

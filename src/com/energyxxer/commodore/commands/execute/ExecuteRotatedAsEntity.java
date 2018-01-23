@@ -43,7 +43,7 @@ public class ExecuteRotatedAsEntity implements ExecuteModifier {
 
     @Override
     public ExecutionVariableMap getModifiedExecutionVariables() {
-        ExecutionVariableMap map = new ExecutionVariableMap(ExecutionVariable.YAW, ExecutionVariable.PITCH);
+        ExecutionVariableMap map = new ExecutionVariableMap(ExecutionVariable.YAW, ExecutionVariable.PITCH, ExecutionVariable.CONDITION);
         if(entity.getLimit() != 1) map.setUsed(ExecutionVariable.COUNT);
         return map;
     }
