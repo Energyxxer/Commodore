@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
+
 public class LevelArgument implements SelectorArgument {
 
     private SelectorNumberArgument<Double> value;
@@ -21,5 +23,15 @@ public class LevelArgument implements SelectorArgument {
     @Override
     public LevelArgument clone() {
         return new LevelArgument(value.clone());
+    }
+
+    @Override
+    public String getKey() {
+        return "level";
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return null;
     }
 }

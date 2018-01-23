@@ -1,5 +1,8 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.inspection.ExecutionVariable;
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
+
 public class DistanceArgument implements SelectorArgument {
 
     private SelectorNumberArgument<Double> distance;
@@ -21,5 +24,15 @@ public class DistanceArgument implements SelectorArgument {
     @Override
     public DistanceArgument clone() {
         return new DistanceArgument(distance.clone());
+    }
+
+    @Override
+    public String getKey() {
+        return "distance";
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.Y, ExecutionVariable.Z, ExecutionVariable.DIMENSION);
     }
 }

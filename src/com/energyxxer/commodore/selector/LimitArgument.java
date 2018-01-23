@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
+
 public class LimitArgument implements SelectorArgument {
     private int limit;
 
@@ -25,5 +27,15 @@ public class LimitArgument implements SelectorArgument {
 
     public int getLimit() {
         return limit;
+    }
+
+    @Override
+    public String getKey() {
+        return "limit";
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return null;
     }
 }

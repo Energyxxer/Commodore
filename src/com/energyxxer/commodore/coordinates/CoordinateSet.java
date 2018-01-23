@@ -3,6 +3,8 @@ package com.energyxxer.commodore.coordinates;
 import com.energyxxer.commodore.commands.execute.ExecuteModifier;
 import com.energyxxer.commodore.commands.execute.SubCommandResult;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionVariable;
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.*;
 
@@ -67,5 +69,14 @@ public class CoordinateSet implements ExecuteModifier {
         return x.getType() == Coordinate.Type.ABSOLUTE &&
                 y.getType() == Coordinate.Type.ABSOLUTE &&
                 z.getType() == Coordinate.Type.ABSOLUTE;
+    }
+
+    @Override
+    public ExecutionVariableMap getModifiedExecutionVariables() {
+        ExecutionVariableMap map = new ExecutionVariableMap();
+        if(x.isSignificant()) map.setUsed(ExecutionVariable.X);
+        if(y.isSignificant()) map.setUsed(ExecutionVariable.Y);
+        if(z.isSignificant()) map.setUsed(ExecutionVariable.Z);
+        return map;
     }
 }

@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.selector;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class TagArgument implements SelectorArgument {
     private String tag;
@@ -47,5 +48,15 @@ public class TagArgument implements SelectorArgument {
     @Override
     public TagArgument clone() {
         return new TagArgument(tag, negated);
+    }
+
+    @Override
+    public String getKey() {
+        return "tag";
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return null;
     }
 }

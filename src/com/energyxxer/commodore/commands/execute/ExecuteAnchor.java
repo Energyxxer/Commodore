@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionVariable;
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class ExecuteAnchor implements ExecuteModifier {
 
@@ -28,5 +30,10 @@ public class ExecuteAnchor implements ExecuteModifier {
     @Override
     public boolean isAbsolute() {
         return true;
+    }
+
+    @Override
+    public ExecutionVariableMap getModifiedExecutionVariables() {
+        return new ExecutionVariableMap(ExecutionVariable.ANCHOR);
     }
 }

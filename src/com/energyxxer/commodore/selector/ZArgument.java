@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
+
 public class ZArgument implements SelectorArgument {
 
     private SelectorNumberArgument<Double> value;
@@ -21,5 +23,15 @@ public class ZArgument implements SelectorArgument {
     @Override
     public ZArgument clone() {
         return new ZArgument(value.clone());
+    }
+
+    @Override
+    public String getKey() {
+        return "z";
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return null;
     }
 }

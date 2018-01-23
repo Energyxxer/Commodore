@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.score.Objective;
 
 import java.util.*;
@@ -49,5 +50,15 @@ public class ScoreArgument implements SelectorArgument {
         ScoreArgument copy = new ScoreArgument();
         scores.forEach((k, v) -> copy.put(k, v.clone()));
         return copy;
+    }
+
+    @Override
+    public String getKey() {
+        return "scores";
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return null;
     }
 }

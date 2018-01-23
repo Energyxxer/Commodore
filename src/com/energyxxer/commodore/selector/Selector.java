@@ -1,8 +1,13 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.inspection.ExecutionVariable;
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.score.Objective;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 
 public class Selector implements Cloneable {
     public enum BaseSelector {
@@ -76,18 +81,10 @@ public class Selector implements Cloneable {
     }
 
     private int getLimitArgument() {
-        for(SelectorArgument arg : args) {
-            if(arg instanceof LimitArgument) return ((LimitArgument) arg).getLimit();
+        for(SelectorArgument arg : getArgumentsByKey("limit")) {
+            return ((LimitArgument) arg).getLimit();
         }
         return -1;
-    }
-
-    private List<TypeArgument> getTypeArguments() {
-        ArrayList<TypeArgument> typeArgs = new ArrayList<>();
-        for(SelectorArgument arg : args) {
-            if(arg instanceof TypeArgument) typeArgs.add((TypeArgument) arg);
-        }
-        return typeArgs;
     }
 
     public int getLimit() {
@@ -98,29 +95,69 @@ public class Selector implements Cloneable {
         return Math.min(implicitLimit, explicitLimit);
     }
 
+    public SortArgument.SortType getSorting() {
+        for(SelectorArgument arg : getArgumentsByKey("sort")) {
+            return ((SortArgument) arg).getSortType();
+        }
+        return base.defaultSort;
+    }
+
     public Collection<Objective> getObjectivesRead() {
         ArrayList<Objective> objectives = new ArrayList<>();
-        for(SelectorArgument arg : args) {
-            if(arg instanceof ScoreArgument) {
-                for(Objective obj : ((ScoreArgument) arg).getObjectivesRead()) {
-                    if(!objectives.contains(obj)) objectives.add(obj);
-                }
+        for(SelectorArgument arg : getArgumentsByKey("scores")) {
+            for(Objective obj : ((ScoreArgument) arg).getObjectivesRead()) {
+                if(!objectives.contains(obj)) objectives.add(obj);
             }
         }
         return objectives;
     }
 
-    public boolean isPlayer() {
-        List<TypeArgument> typeArgs = getTypeArguments();
-        boolean player = base.player;
+    public Collection<SelectorArgument> getArgumentsByKey(String key) {
+        ArrayList<SelectorArgument> args = new ArrayList<>();
+        for(SelectorArgument arg : this.args) {
+            if(arg.getKey().equals(key)) args.add(arg);
+        }
+        return args;
+    }
 
-        for(TypeArgument type : typeArgs) {
-            if(!type.getType().getName().equals("minecraft:player") || type.isNegated()) {
+    public boolean containsArgumentForKey(String key) {
+        for(SelectorArgument arg : args) {
+            if(arg.getKey().equals(key)) return true;
+        }
+        return false;
+    }
+
+    public boolean isPlayer() {
+        for(SelectorArgument type : getArgumentsByKey("type")) {
+            if(!((TypeArgument) type).getType().getName().equals("minecraft:player") || ((TypeArgument) type).isNegated()) {
                 return false;
             }
         }
 
         return base.player;
+    }
+
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        ExecutionVariableMap usedVariables = new ExecutionVariableMap();
+
+
+        if(getSorting().isPositionSensitive()) {
+            usedVariables.setUsed(ExecutionVariable.X);
+            usedVariables.setUsed(ExecutionVariable.Y);
+            usedVariables.setUsed(ExecutionVariable.Z);
+        }
+        if(base == BaseSelector.SENDER) usedVariables.setUsed(ExecutionVariable.SENDER);
+
+        for(SelectorArgument arg : args) {
+            usedVariables.merge(arg.getUsedExecutionVariables());
+        }
+
+        //Remove execution variables for overwritten coordinates
+        if(containsArgumentForKey("x")) usedVariables.setUsed(ExecutionVariable.X, false);
+        if(containsArgumentForKey("y")) usedVariables.setUsed(ExecutionVariable.Y, false);
+        if(containsArgumentForKey("z")) usedVariables.setUsed(ExecutionVariable.Z, false);
+
+        return usedVariables;
     }
 
     @Override

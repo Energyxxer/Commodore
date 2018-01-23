@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.types.EntityType;
 
 public class TypeArgument implements SelectorArgument {
@@ -41,5 +42,15 @@ public class TypeArgument implements SelectorArgument {
     @Override
     public TypeArgument clone() {
         return new TypeArgument(type, negated);
+    }
+
+    @Override
+    public String getKey() {
+        return "type";
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return null;
     }
 }

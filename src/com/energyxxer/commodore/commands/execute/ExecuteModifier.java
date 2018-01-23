@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
@@ -20,4 +21,8 @@ public interface ExecuteModifier {
     boolean isSignificant();
 
     boolean isAbsolute();
+
+    default ExecutionVariableMap getModifiedExecutionVariables() {
+        return null;
+    }
 }

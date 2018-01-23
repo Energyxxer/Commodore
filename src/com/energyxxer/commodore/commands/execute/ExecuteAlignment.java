@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionVariable;
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 import java.util.ArrayList;
 
@@ -39,5 +41,14 @@ public class ExecuteAlignment implements ExecuteModifier {
     @Override
     public boolean isAbsolute() {
         return false;
+    }
+
+    @Override
+    public ExecutionVariableMap getModifiedExecutionVariables() {
+        ExecutionVariableMap map = new ExecutionVariableMap();
+        if(x) map.setUsed(ExecutionVariable.X);
+        if(y) map.setUsed(ExecutionVariable.Y);
+        if(z) map.setUsed(ExecutionVariable.Z);
+        return map;
     }
 }

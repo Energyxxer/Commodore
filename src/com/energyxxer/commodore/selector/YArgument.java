@@ -1,6 +1,8 @@
 
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
+
 public class YArgument implements SelectorArgument {
 
     private SelectorNumberArgument<Double> value;
@@ -22,5 +24,15 @@ public class YArgument implements SelectorArgument {
     @Override
     public YArgument clone() {
         return new YArgument(value.clone());
+    }
+
+    @Override
+    public String getKey() {
+        return "y";
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return null;
     }
 }

@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionVariable;
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
@@ -39,5 +41,10 @@ public class ExecuteAtEntity implements ExecuteModifier {
     @Override
     public boolean isAbsolute() {
         return true;
+    }
+
+    @Override
+    public ExecutionVariableMap getModifiedExecutionVariables() {
+        return new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.Y, ExecutionVariable.Z, ExecutionVariable.YAW, ExecutionVariable.PITCH, ExecutionVariable.DIMENSION);
     }
 }

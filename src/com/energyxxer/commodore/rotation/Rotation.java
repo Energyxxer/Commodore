@@ -3,6 +3,8 @@ package com.energyxxer.commodore.rotation;
 import com.energyxxer.commodore.commands.execute.ExecuteModifier;
 import com.energyxxer.commodore.commands.execute.SubCommandResult;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionVariable;
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class Rotation implements ExecuteModifier {
 
@@ -46,5 +48,13 @@ public class Rotation implements ExecuteModifier {
     @Override
     public boolean isAbsolute() {
         return yaw.isAbsolute() && pitch.isAbsolute();
+    }
+
+    @Override
+    public ExecutionVariableMap getModifiedExecutionVariables() {
+        ExecutionVariableMap map = new ExecutionVariableMap();
+        if(yaw.isSignificant()) map.setUsed(ExecutionVariable.YAW);
+        if(pitch.isSignificant()) map.setUsed(ExecutionVariable.PITCH);
+        return map;
     }
 }

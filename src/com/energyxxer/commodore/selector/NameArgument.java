@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.selector;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class NameArgument implements SelectorArgument {
     private String name;
@@ -47,5 +48,15 @@ public class NameArgument implements SelectorArgument {
     @Override
     public NameArgument clone() {
         return new NameArgument(name, negated);
+    }
+
+    @Override
+    public String getKey() {
+        return "name";
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return null;
     }
 }

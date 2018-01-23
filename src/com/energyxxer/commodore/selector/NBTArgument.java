@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.nbt.TagCompound;
 
 public class NBTArgument implements SelectorArgument {
@@ -28,5 +29,15 @@ public class NBTArgument implements SelectorArgument {
     @Override
     public NBTArgument clone() {
         return new NBTArgument(nbt.clone(), negated);
+    }
+
+    @Override
+    public String getKey() {
+        return "nbt";
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return null;
     }
 }

@@ -3,6 +3,8 @@ package com.energyxxer.commodore.commands.execute;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionVariable;
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.PITCH;
 import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.YAW;
@@ -32,5 +34,10 @@ public class ExecuteFacingBlock implements ExecuteModifier {
     @Override
     public boolean isAbsolute() {
         return pos.isAbsolute();
+    }
+
+    @Override
+    public ExecutionVariableMap getModifiedExecutionVariables() {
+        return new ExecutionVariableMap(ExecutionVariable.YAW, ExecutionVariable.PITCH);
     }
 }

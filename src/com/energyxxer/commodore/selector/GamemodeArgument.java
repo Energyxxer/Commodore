@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.types.GamemodeType;
 
 public class GamemodeArgument implements SelectorArgument {
@@ -29,5 +30,15 @@ public class GamemodeArgument implements SelectorArgument {
     @Override
     public GamemodeArgument clone() {
         return new GamemodeArgument(gamemode, negated);
+    }
+
+    @Override
+    public String getKey() {
+        return "gamemode";
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return null;
     }
 }

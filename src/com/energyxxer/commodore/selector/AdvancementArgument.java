@@ -1,12 +1,9 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.selector.advancement.AdvancementArgumentEntry;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class AdvancementArgument implements SelectorArgument {
 
@@ -53,5 +50,15 @@ public class AdvancementArgument implements SelectorArgument {
         AdvancementArgument copy = new AdvancementArgument();
         this.entries.forEach(e -> copy.addEntry(e.clone()));
         return copy;
+    }
+
+    @Override
+    public String getKey() {
+        return "advancement";
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return null;
     }
 }
