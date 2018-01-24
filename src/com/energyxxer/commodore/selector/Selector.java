@@ -19,7 +19,7 @@ public class Selector implements Cloneable {
      * */
 
     public enum BaseSelector {
-        ALL_PLAYERS("a", SortArgument.SortType.NEAREST, -1, true),
+        ALL_PLAYERS("a", SortArgument.SortType.ARBITRARY, -1, true),
         NEAREST_PLAYER("p", SortArgument.SortType.NEAREST, 1, true),
         RANDOM_PLAYER("r", SortArgument.SortType.RANDOM, 1, true),
         ALL_ENTITIES("e", SortArgument.SortType.ARBITRARY, -1, false),
