@@ -70,4 +70,10 @@ public class SortArgument implements SelectorArgument {
         }
         throw new IllegalArgumentException("Expected string at: " + str);
     }
+
+    @Override
+    public boolean isCompatibleWith(Selector selector) {
+        if(selector.getBase() == Selector.BaseSelector.SENDER) throw new IllegalArgumentException("Sort is inapplicable for the " + selector.getBase() + " selector type");
+        return SelectorArgument.super.isCompatibleWith(selector);
+    }
 }

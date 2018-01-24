@@ -42,7 +42,7 @@ public class AdvancementArgument implements SelectorArgument {
 
     @Override
     public boolean isRepeatable() {
-        return false;
+        return true;
     }
 
     @Override
@@ -54,7 +54,7 @@ public class AdvancementArgument implements SelectorArgument {
 
     @Override
     public String getKey() {
-        return "advancement";
+        return "advancements";
     }
 
     @Override

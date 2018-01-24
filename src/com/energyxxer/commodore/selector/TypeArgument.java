@@ -4,6 +4,7 @@ import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.types.EntityType;
 
+import java.util.Collection;
 import java.util.regex.Matcher;
 
 public class TypeArgument implements SelectorArgument {
@@ -69,5 +70,18 @@ public class TypeArgument implements SelectorArgument {
             return new SelectorArgumentParseResult(group, null);
         }
         throw new IllegalArgumentException("Expected string at: " + str);
+    }
+
+    @Override
+    public boolean isCompatibleWith(Selector selector) {
+        Collection<SelectorArgument> typeArgs = selector.getArgumentsByKey(getKey());
+        for(SelectorArgument arg : typeArgs) {
+            TypeArgument that = (TypeArgument) arg;
+
+            if((!this.isNegated() && this.getType().isConcrete() && !that.isNegated() && that.getType().isConcrete() && this.getType() != that.getType()) || (this.getType() == that.getType() && this.isNegated() != that.isNegated())) throw new IllegalArgumentException("Impossible selector");
+            //this is positive concrete, that is positive concrete, not equal //NO
+            //equal in value, opposite in polarity //NO
+        }
+        return SelectorArgument.super.isCompatibleWith(selector);
     }
 }

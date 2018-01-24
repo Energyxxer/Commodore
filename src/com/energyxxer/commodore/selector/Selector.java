@@ -6,7 +6,6 @@ import com.energyxxer.commodore.score.Objective;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -17,7 +16,6 @@ public class Selector implements Cloneable {
      * Actually not a to-do but stuff to keep in mind:
      * limit on @s is invalid
      * */
-
     public enum BaseSelector {
         ALL_PLAYERS("a", SortArgument.SortType.ARBITRARY, -1, true),
         NEAREST_PLAYER("p", SortArgument.SortType.NEAREST, 1, true),
@@ -28,9 +26,9 @@ public class Selector implements Cloneable {
         private String header;
 
         private SortArgument.SortType defaultSort;
+
         private int limit;
         private boolean player;
-
         BaseSelector(String header, SortArgument.SortType defaultSort, int limit, boolean player) {
             this.header = header;
             this.defaultSort = defaultSort;
@@ -53,9 +51,9 @@ public class Selector implements Cloneable {
         public boolean isPlayer() {
             return player;
         }
+
     }
     private BaseSelector base;
-
     private ArrayList<SelectorArgument> args = new ArrayList<>();
 
     public Selector(BaseSelector base) {
@@ -68,7 +66,17 @@ public class Selector implements Cloneable {
     }
 
     public void addArguments(SelectorArgument... arguments) {
-        this.args.addAll(Arrays.asList(arguments));
+        for(SelectorArgument argument : arguments) {
+            addArgument(argument);
+        }
+    }
+
+    public void addArgument(SelectorArgument argument) {
+        try {
+            if(argument.isCompatibleWith(this)) this.args.add(argument);
+        } catch(IllegalArgumentException x) {
+            throw new IllegalArgumentException("Could not add '" + argument.getArgumentString() + "' to selector " + this + ": " + x.getMessage());
+        }
     }
 
     @Override
@@ -86,6 +94,10 @@ public class Selector implements Cloneable {
             sb.append(']');
         }
         return sb.toString();
+    }
+
+    public BaseSelector getBase() {
+        return base;
     }
 
     private int getLimitArgument() {
