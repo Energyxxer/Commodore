@@ -40,4 +40,8 @@ public class NBTArgument implements SelectorArgument {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
     }
+
+    public static SelectorArgumentParseResult parse(String str) {
+        throw new UnsupportedOperationException("NBT argument is unsupported for parsing operations");
+    }
 }

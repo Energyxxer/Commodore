@@ -279,5 +279,28 @@ public final class CommandTest {
 
         System.out.println(function.getAccessLog());
         System.out.println(otherFunction.getAccessLog());
+
+        System.out.println(Selector.parse("@s[name=\"something\",distance=..0.0001,tag=!try_ext_pwr,tag=!try_ext_ret]").toVerboseString());
+        System.out.println(Selector.parse("@e[distance=..10,limit=1,tag=!HsR_TeslaTower,type=!armor_stand]").toVerboseString());
+        System.out.println(Selector.parse("@e[type=!cow,x_rotation=5..10,tag=try_ext_thead,limit=1]").toVerboseString());
+        System.out.println(Selector.parse("@a[x=-5,y=0,z=-5,dx=10,dy=255,dz=10]").toVerboseString());
+        System.out.println(Selector.parse("@e[type=area_effect_cloud,tag=try_ext_base,sort=nearest]").toVerboseString());
+        System.out.println(Selector.parse("@s[y=-32,dy=32]").toVerboseString());
+        System.out.println(Selector.parse("@e[type=areaeffectcloud,limit=1,sort=nearest]").toVerboseString());
+        System.out.println(Selector.parse("@e[limit=1,type=slime,sort=random]").toVerboseString());
+        System.out.println(Selector.parse("@e[tag=temp,limit=1]").toVerboseString());
+        System.out.println(Selector.parse("@r[sort=furthest]").toVerboseString());
+        /*System.out.println(Selector.parse("").toVerboseString());
+        System.out.println(Selector.parse("").toVerboseString());
+        System.out.println(Selector.parse("").toVerboseString());
+        System.out.println(Selector.parse("").toVerboseString());
+        System.out.println(Selector.parse("").toVerboseString());
+        System.out.println(Selector.parse("").toVerboseString());
+        System.out.println(Selector.parse("").toVerboseString());*/
+        System.out.println(Selector.parse("@p").toVerboseString());
+        System.out.println(Selector.parse("@a").toVerboseString());
+        System.out.println(Selector.parse("@r").toVerboseString());
+        System.out.println(Selector.parse("@e").toVerboseString());
+        System.out.println(Selector.parse("@s").toVerboseString());
     }
 }

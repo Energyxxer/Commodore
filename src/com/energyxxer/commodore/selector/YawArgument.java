@@ -36,4 +36,9 @@ public class YawArgument implements SelectorArgument {
         //it only matters what the selected entities' rotation is.
         return null;
     }
+
+    public static SelectorArgumentParseResult parse(String str) {
+        SelectorNumberArgumentParseResult<Double> result = SelectorNumberArgument.parseDouble(str);
+        return new SelectorArgumentParseResult(result.raw, new YawArgument(result.result));
+    }
 }

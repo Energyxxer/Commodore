@@ -1,12 +1,15 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
+
+import java.util.regex.Matcher;
 
 public class SortArgument implements SelectorArgument {
 
     public enum SortType {
-        NEAREST(true), FARTHEST(true), RANDOM(false), ARBITRARY(false);
+        NEAREST(true), FURTHEST(true), RANDOM(false), ARBITRARY(false);
 
         private boolean positionSensitive;
 
@@ -17,8 +20,8 @@ public class SortArgument implements SelectorArgument {
         public boolean isPositionSensitive() {
             return positionSensitive;
         }
-    }
 
+    }
     private SortType type;
 
     public SortArgument(SortType type) {
@@ -52,5 +55,19 @@ public class SortArgument implements SelectorArgument {
     @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
         return (type.isPositionSensitive() ? new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.Y, ExecutionVariable.Z) : null);
+    }
+
+    public static SelectorArgumentParseResult parse(String str) {
+        Matcher delimited = CommandUtils.DELIMITED_STRING_REGEX.matcher(str);
+        if(delimited.lookingAt()) {
+            String group = delimited.group();
+            return new SelectorArgumentParseResult(group, new SortArgument(SortType.valueOf(CommandUtils.unescape(group.toUpperCase()))));
+        }
+        Matcher simple = CommandUtils.SELECTOR_STRING_REGEX.matcher(str);
+        if(simple.lookingAt()) {
+            String group = simple.group();
+            return new SelectorArgumentParseResult(group, new SortArgument(SortType.valueOf(group.toUpperCase())));
+        }
+        throw new IllegalArgumentException("Expected string at: " + str);
     }
 }

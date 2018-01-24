@@ -61,4 +61,8 @@ public class ScoreArgument implements SelectorArgument {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
     }
+
+    public static SelectorArgumentParseResult parse(String str) {
+        throw new UnsupportedOperationException("Scores argument is unsupported for parsing operations");
+    }
 }

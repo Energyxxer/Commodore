@@ -61,4 +61,8 @@ public class AdvancementArgument implements SelectorArgument {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
     }
+
+    public static SelectorArgumentParseResult parse(String str) {
+        throw new UnsupportedOperationException("Advancement argument is unsupported for parsing operations");
+    }
 }

@@ -52,14 +52,16 @@ public enum ExecutionVariable {
     ANCHOR,
     /**
      * When used, this means the command will do different things, depending on how many times it is run. Realistically,
-     * this variable is assumed to always be used.
+     * this variable is assumed to always be used. As such, there is no need to mark this as used in a usage
+     * <code>ExecutionVariableMap</code>, only in modification maps, such as those of execute sub-commands.
      * <br>
      *     When modified, this means the number of executions of the command is changed.
      * */
     COUNT,
     /**
      * When used, this means the command's execution will depend on a condition. Realistically,
-     * this variable is assumed to always be used.
+     * this variable is assumed to always be used. As such, there is no need to mark this as used in a usage
+     * <code>ExecutionVariableMap</code>, only in modification maps, such as those of execute sub-commands.
      * <br>
      *     When modified, this means the command may or may not run. This is practically the same as setting the
      *     count to zero or one, and is modified when conditions are applied, or a selector which could return no

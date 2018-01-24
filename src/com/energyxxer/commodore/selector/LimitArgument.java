@@ -1,6 +1,9 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
+
+import java.util.regex.Matcher;
 
 public class LimitArgument implements SelectorArgument {
     private int limit;
@@ -37,5 +40,14 @@ public class LimitArgument implements SelectorArgument {
     @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
+    }
+
+    public static SelectorArgumentParseResult parse(String str) {
+        Matcher matcher = CommandUtils.INT_REGEX.matcher(str);
+        if(matcher.lookingAt()) {
+            String group = matcher.group();
+            return new SelectorArgumentParseResult(group, new LimitArgument(Integer.parseInt(group)));
+        }
+        throw new IllegalArgumentException("Expected number at: " + str);
     }
 }

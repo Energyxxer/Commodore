@@ -39,16 +39,24 @@ public class ExecutionVariableMap {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("{");
+        StringBuilder sb = new StringBuilder("(");
 
-        Iterator<Map.Entry<ExecutionVariable, Boolean>> it = variables.entrySet().iterator();
-        while(it.hasNext()) {
-            Map.Entry<ExecutionVariable, Boolean> entry = it.next();
-            if(entry.getValue()) sb.append(entry.getKey());
-            if(it.hasNext()) sb.append(", ");
+        ArrayList<ExecutionVariable> markedVariables = new ArrayList<>();
+        for(ExecutionVariable variable : ExecutionVariable.values()) {
+            if(variables.get(variable)) markedVariables.add(variable);
         }
 
-        sb.append("}");
+        if(markedVariables.isEmpty()) {
+            sb.append("none");
+        } else {
+            Iterator<ExecutionVariable> it = markedVariables.iterator();
+            while(it.hasNext()) {
+                sb.append(it.next());
+                if(it.hasNext()) sb.append(", ");
+            }
+        }
+
+        sb.append(")");
 
         return sb.toString();
     }

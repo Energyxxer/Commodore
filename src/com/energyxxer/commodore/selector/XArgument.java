@@ -1,18 +1,21 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
+
+import java.util.regex.Matcher;
 
 public class XArgument implements SelectorArgument {
 
-    private SelectorNumberArgument<Double> value;
+    private double value;
 
-    public XArgument(SelectorNumberArgument<Double> value) {
+    public XArgument(double value) {
         this.value = value;
     }
 
     @Override
     public String getArgumentString() {
-        return "x=" + value;
+        return "x=" + CommandUtils.toString(value);
     }
 
     @Override
@@ -22,7 +25,7 @@ public class XArgument implements SelectorArgument {
 
     @Override
     public XArgument clone() {
-        return new XArgument(value.clone());
+        return new XArgument(value);
     }
 
     @Override
@@ -33,5 +36,14 @@ public class XArgument implements SelectorArgument {
     @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
+    }
+
+    public static SelectorArgumentParseResult parse(String str) {
+        Matcher matcher = CommandUtils.DOUBLE_REGEX.matcher(str);
+        if(matcher.lookingAt()) {
+            String group = matcher.group();
+            return new SelectorArgumentParseResult(group, new XArgument(Double.parseDouble(group)));
+        }
+        throw new IllegalArgumentException("Expected number at: " + str);
     }
 }

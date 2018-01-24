@@ -1,7 +1,10 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.types.EntityType;
+
+import java.util.regex.Matcher;
 
 public class TypeArgument implements SelectorArgument {
     private EntityType type;
@@ -52,5 +55,19 @@ public class TypeArgument implements SelectorArgument {
     @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
+    }
+
+    public static SelectorArgumentParseResult parse(String str) {
+        Matcher delimited = CommandUtils.DELIMITED_STRING_REGEX.matcher(str);
+        if(delimited.lookingAt()) {
+            String group = delimited.group();
+            return new SelectorArgumentParseResult(group, null);
+        }
+        Matcher simple = CommandUtils.SELECTOR_STRING_REGEX.matcher(str);
+        if(simple.lookingAt()) {
+            String group = simple.group();
+            return new SelectorArgumentParseResult(group, null);
+        }
+        throw new IllegalArgumentException("Expected string at: " + str);
     }
 }

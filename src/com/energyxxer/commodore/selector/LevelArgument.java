@@ -4,9 +4,9 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class LevelArgument implements SelectorArgument {
 
-    private SelectorNumberArgument<Double> value;
+    private SelectorNumberArgument<Integer> value;
 
-    public LevelArgument(SelectorNumberArgument<Double> value) {
+    public LevelArgument(SelectorNumberArgument<Integer> value) {
         this.value = value;
     }
 
@@ -33,5 +33,10 @@ public class LevelArgument implements SelectorArgument {
     @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
+    }
+
+    public static SelectorArgumentParseResult parse(String str) {
+        SelectorNumberArgumentParseResult<Integer> result = SelectorNumberArgument.parseInt(str);
+        return new SelectorArgumentParseResult(result.raw, new LevelArgument(result.result));
     }
 }

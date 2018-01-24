@@ -1,19 +1,22 @@
 package com.energyxxer.commodore.selector;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
+import java.util.regex.Matcher;
+
 public class DYArgument implements SelectorArgument {
 
-    private SelectorNumberArgument<Double> value;
+    private double value;
 
-    public DYArgument(SelectorNumberArgument<Double> value) {
+    public DYArgument(double value) {
         this.value = value;
     }
 
     @Override
     public String getArgumentString() {
-        return "dy=" + value;
+        return "dy=" + CommandUtils.toString(value);
     }
 
     @Override
@@ -23,7 +26,7 @@ public class DYArgument implements SelectorArgument {
 
     @Override
     public DYArgument clone() {
-        return new DYArgument(value.clone());
+        return new DYArgument(value);
     }
 
     @Override
@@ -34,5 +37,14 @@ public class DYArgument implements SelectorArgument {
     @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
         return new ExecutionVariableMap(ExecutionVariable.Y, ExecutionVariable.DIMENSION);
+    }
+
+    public static SelectorArgumentParseResult parse(String str) {
+        Matcher matcher = CommandUtils.DOUBLE_REGEX.matcher(str);
+        if(matcher.lookingAt()) {
+            String group = matcher.group();
+            return new SelectorArgumentParseResult(group, new DYArgument(Double.parseDouble(group)));
+        }
+        throw new IllegalArgumentException("Expected number at: " + str);
     }
 }
