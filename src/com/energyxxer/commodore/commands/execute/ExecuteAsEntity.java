@@ -16,8 +16,8 @@ public class ExecuteAsEntity implements ExecuteModifier {
     }
 
     @Override
-    public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("as " + entity.getSelectorAs(sender), entity);
+    public String getSubCommand(Entity sender) {
+        return "as " + entity.getSelectorAs(sender);
     }
 
     @Override
@@ -38,6 +38,11 @@ public class ExecuteAsEntity implements ExecuteModifier {
     @Override
     public boolean isAbsolute() {
         return false;
+    }
+
+    @Override
+    public Entity getNewSender() {
+        return entity;
     }
 
     @Override

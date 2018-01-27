@@ -13,8 +13,8 @@ public class ExecuteAnchor implements ExecuteModifier {
     }
 
     @Override
-    public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("anchored " + anchor.toString().toLowerCase());
+    public String getSubCommand(Entity sender) {
+        return "anchored " + anchor.toString().toLowerCase();
     }
 
     @Override
@@ -30,6 +30,11 @@ public class ExecuteAnchor implements ExecuteModifier {
     @Override
     public boolean isAbsolute() {
         return true;
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return new ExecutionVariableMap(ExecutionVariable.SENDER);
     }
 
     @Override

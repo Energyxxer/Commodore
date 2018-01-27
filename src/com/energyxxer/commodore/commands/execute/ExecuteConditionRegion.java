@@ -3,6 +3,7 @@ package com.energyxxer.commodore.commands.execute;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class ExecuteConditionRegion extends ExecuteCondition {
 
@@ -30,8 +31,8 @@ public class ExecuteConditionRegion extends ExecuteCondition {
     }
 
     @Override
-    public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult(this.getStarter() + "blocks " + region0.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + region1.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + template.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + policy.toString().toLowerCase());
+    public String getSubCommand(Entity sender) {
+        return this.getStarter() + "blocks " + region0.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + region1.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + template.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + policy.toString().toLowerCase();
     }
 
     @Override
@@ -47,5 +48,14 @@ public class ExecuteConditionRegion extends ExecuteCondition {
     @Override
     public boolean isAbsolute() {
         return false;
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        ExecutionVariableMap map = new ExecutionVariableMap();
+        map.merge(region0.getUsedExecutionVariables());
+        map.merge(region1.getUsedExecutionVariables());
+        map.merge(template.getUsedExecutionVariables());
+        return map;
     }
 }

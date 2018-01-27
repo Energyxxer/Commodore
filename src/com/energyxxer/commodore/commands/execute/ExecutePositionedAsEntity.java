@@ -8,8 +8,6 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 
-import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.*;
-
 public class ExecutePositionedAsEntity implements ExecuteModifier {
 
     private Entity entity;
@@ -19,8 +17,8 @@ public class ExecutePositionedAsEntity implements ExecuteModifier {
     }
 
     @Override
-    public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("positioned as " + entity.getSelectorAs(sender), X, Y, Z);
+    public String getSubCommand(Entity sender) {
+        return "positioned as " + entity.getSelectorAs(sender);
     }
 
     @Override

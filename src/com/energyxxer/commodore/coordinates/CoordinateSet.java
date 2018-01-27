@@ -1,12 +1,9 @@
 package com.energyxxer.commodore.coordinates;
 
 import com.energyxxer.commodore.commands.execute.ExecuteModifier;
-import com.energyxxer.commodore.commands.execute.SubCommandResult;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
-
-import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.*;
 
 public class CoordinateSet implements ExecuteModifier {
 
@@ -50,8 +47,8 @@ public class CoordinateSet implements ExecuteModifier {
     }
 
     @Override
-    public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("positioned " + this.toString(), X, Y, Z);
+    public String getSubCommand(Entity sender) {
+        return "positioned " + this.toString();
     }
 
     @Override
@@ -69,6 +66,15 @@ public class CoordinateSet implements ExecuteModifier {
         return x.getType() == Coordinate.Type.ABSOLUTE &&
                 y.getType() == Coordinate.Type.ABSOLUTE &&
                 z.getType() == Coordinate.Type.ABSOLUTE;
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        ExecutionVariableMap map = new ExecutionVariableMap(ExecutionVariable.DIMENSION);
+        if(x.getType() != Coordinate.Type.ABSOLUTE) map.setUsed(ExecutionVariable.X);
+        if(y.getType() != Coordinate.Type.ABSOLUTE) map.setUsed(ExecutionVariable.Y);
+        if(z.getType() != Coordinate.Type.ABSOLUTE) map.setUsed(ExecutionVariable.Z);
+        return map;
     }
 
     @Override

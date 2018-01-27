@@ -22,8 +22,8 @@ public class ExecuteConditionScoreMatch extends ExecuteCondition {
     }
 
     @Override
-    public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult(this.getStarter() + "score " + CommandUtils.getRawReference(target.getHolder(), sender) + " " + target.getObjective().getName() + " matches " + range.toString());
+    public String getSubCommand(Entity sender) {
+        return this.getStarter() + "score " + CommandUtils.getRawReference(target.getHolder(), sender) + " " + target.getObjective().getName() + " matches " + range.toString();
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.energyxxer.commodore.rotation;
 
 import com.energyxxer.commodore.commands.execute.ExecuteModifier;
-import com.energyxxer.commodore.commands.execute.SubCommandResult;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
@@ -31,8 +30,8 @@ public class Rotation implements ExecuteModifier {
     }
 
     @Override
-    public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("rotated " + yaw + " " + pitch);
+    public String getSubCommand(Entity sender) {
+        return "rotated " + yaw + " " + pitch;
     }
 
     @Override

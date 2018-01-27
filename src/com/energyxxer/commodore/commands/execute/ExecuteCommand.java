@@ -10,8 +10,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class ExecuteCommand implements Command {
-    private Command chainedCommand;
 
+    /*
+    * TODO: Instead of optimizing an execute command, make the entity return a list of execute modifiers required to target it with a new selector, to build an execute command abstractly.
+    *
+    * Instead of passing an entity as sender to Entity::getSelectorAs, pass an object of a new class, ExecutionContext
+    * */
+
+    private Command chainedCommand;
     private ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
 
     public ExecuteCommand(Command chainedCommand) {
@@ -24,13 +30,14 @@ public class ExecuteCommand implements Command {
 
     @Override
     public String getRawCommand(Entity sender) {
+        if(modifiers.isEmpty()) return chainedCommand.getRawCommand(sender);
         StringBuilder sb = new StringBuilder("execute ");
 
         for(ExecuteModifier modifier : modifiers) {
             SubCommandResult result = modifier.getSubCommand(sender);
             sb.append(result.getSubCommand());
             sb.append(' ');
-            if(result.getNewSender() != null) sender = result.getNewSender();
+            if(modifier.getNewSender() != null) sender = modifier.getNewSender();
         }
         sb.append("run ");
         sb.append(chainedCommand.getRawCommand(sender));

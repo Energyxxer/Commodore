@@ -22,8 +22,8 @@ public class ExecuteStoreScore extends ExecuteStore {
     }
 
     @Override
-    public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult(this.getStarter() + "score " + CommandUtils.getRawReference(score.getHolder(), sender) + " " + score.getObjective().getName());
+    public String getSubCommand(Entity sender) {
+        return this.getStarter() + "score " + CommandUtils.getRawReference(score.getHolder(), sender) + " " + score.getObjective().getName();
     }
 
     @Override

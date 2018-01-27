@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 public interface ExecuteModifier {
-    SubCommandResult getSubCommand(Entity sender);
+    String getSubCommand(Entity sender);
 
     @NotNull
     default Collection<ScoreboardAccess> getScoreboardAccesses() {
@@ -21,6 +21,15 @@ public interface ExecuteModifier {
     boolean isSignificant();
 
     boolean isAbsolute();
+
+    default Entity getNewSender() {
+        return null;
+    }
+
+    //TODO: Add an Entity sender argument to getUsedExecutionVariables()
+    default ExecutionVariableMap getUsedExecutionVariables() {
+        return null;
+    }
 
     default ExecutionVariableMap getModifiedExecutionVariables() {
         return null;

@@ -37,8 +37,8 @@ public class ExecuteStoreEntity extends ExecuteStore {
     }
 
     @Override
-    public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult(this.getStarter() + "entity " + entity.getSelectorAs(sender) + " " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.toString(scale));
+    public String getSubCommand(Entity sender) {
+        return this.getStarter() + "entity " + entity.getSelectorAs(sender) + " " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.toString(scale);
     }
 
     @Override

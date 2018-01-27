@@ -6,9 +6,6 @@ import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
-import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.PITCH;
-import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.YAW;
-
 public class ExecuteFacingBlock implements ExecuteModifier {
     private CoordinateSet pos;
 
@@ -17,8 +14,8 @@ public class ExecuteFacingBlock implements ExecuteModifier {
     }
 
     @Override
-    public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("facing " + pos.getAs(Coordinate.DisplayMode.ENTITY_POS), YAW, PITCH);
+    public String getSubCommand(Entity sender) {
+        return "facing " + pos.getAs(Coordinate.DisplayMode.ENTITY_POS);
     }
 
     @Override
@@ -34,6 +31,11 @@ public class ExecuteFacingBlock implements ExecuteModifier {
     @Override
     public boolean isAbsolute() {
         return pos.isAbsolute();
+    }
+
+    @Override
+    public ExecutionVariableMap getUsedExecutionVariables() {
+        return pos.getUsedExecutionVariables();
     }
 
     @Override

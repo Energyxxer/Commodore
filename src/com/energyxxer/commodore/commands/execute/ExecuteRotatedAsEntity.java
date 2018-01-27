@@ -17,8 +17,8 @@ public class ExecuteRotatedAsEntity implements ExecuteModifier {
     }
 
     @Override
-    public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("rotated as " + entity.getSelectorAs(sender));
+    public String getSubCommand(Entity sender) {
+        return "rotated as " + entity.getSelectorAs(sender);
     }
 
     @Override

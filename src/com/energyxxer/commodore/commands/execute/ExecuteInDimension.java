@@ -5,8 +5,6 @@ import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.types.DimensionType;
 
-import static com.energyxxer.commodore.commands.execute.SubCommandResult.ExecutionChange.DIMENSION;
-
 public class ExecuteInDimension implements ExecuteModifier {
     private DimensionType dimension;
 
@@ -15,8 +13,8 @@ public class ExecuteInDimension implements ExecuteModifier {
     }
 
     @Override
-    public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult("in " + dimension, DIMENSION);
+    public String getSubCommand(Entity sender) {
+        return "in " + dimension;
     }
 
     @Override

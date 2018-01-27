@@ -286,7 +286,7 @@ public final class CommandTest {
         System.out.println(Selector.parse("@a[x=-5,y=0,z=-5,dx=10,dy=255,dz=10]").toVerboseString());
         System.out.println(Selector.parse("@e[type=area_effect_cloud,tag=try_ext_base,sort=nearest]").toVerboseString());
         System.out.println(Selector.parse("@s[y=-32,dy=32]").toVerboseString());
-        System.out.println(Selector.parse("@e[type=areaeffectcloud,limit=1,sort=nearest]").toVerboseString());
+        System.out.println(Selector.parse("@e[type=area_effect_cloud,limit=1,sort=nearest]").toVerboseString());
         System.out.println(Selector.parse("@e[limit=1,type=slime,sort=random]").toVerboseString());
         System.out.println(Selector.parse("@e[tag=temp,limit=1]").toVerboseString());
         System.out.println(Selector.parse("@r[sort=furthest]").toVerboseString());

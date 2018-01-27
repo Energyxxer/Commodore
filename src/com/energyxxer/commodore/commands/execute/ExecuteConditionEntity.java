@@ -15,8 +15,8 @@ public class ExecuteConditionEntity extends ExecuteCondition {
     }
 
     @Override
-    public SubCommandResult getSubCommand(Entity sender) {
-        return new SubCommandResult(this.getStarter() + "entity " + entity.getSelectorAs(sender));
+    public String getSubCommand(Entity sender) {
+        return this.getStarter() + "entity " + entity.getSelectorAs(sender);
     }
 
     @Override
