@@ -34,8 +34,7 @@ public class ExecuteCommand implements Command {
         StringBuilder sb = new StringBuilder("execute ");
 
         for(ExecuteModifier modifier : modifiers) {
-            SubCommandResult result = modifier.getSubCommand(sender);
-            sb.append(result.getSubCommand());
+            sb.append(modifier.getSubCommand(sender));
             sb.append(' ');
             if(modifier.getNewSender() != null) sender = modifier.getNewSender();
         }

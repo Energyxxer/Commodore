@@ -31,4 +31,16 @@ public class ExecutionContext {
         }
         finalSender = originalSender;
     }
+
+    public Entity getOriginalSender() {
+        return originalSender;
+    }
+
+    public Collection<ExecuteModifier> getModifiers() {
+        return modifiers;
+    }
+
+    public Entity getFinalSender() {
+        return finalSender;
+    }
 }

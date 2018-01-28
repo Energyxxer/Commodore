@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.entity;
 
+import com.energyxxer.commodore.inspection.EntityResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.MacroScore;
 import com.energyxxer.commodore.score.MacroScoreHolder;
 import com.energyxxer.commodore.score.Objective;
@@ -31,6 +33,12 @@ public class GenericEntity implements Entity {
     @Override
     public Selector getSelector() {
         return selector;
+    }
+
+    @Override
+    public EntityResolution resolveFor(ExecutionContext context) {
+        if(context.getFinalSender() == this) return new EntityResolution(this, new Selector(Selector.BaseSelector.SENDER));
+        return new EntityResolution(this, selector);
     }
 
     @Override
