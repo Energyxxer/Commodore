@@ -2,6 +2,7 @@ package com.energyxxer.commodore.functions;
 
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.entity.GenericEntity;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.score.access.ScoreAccessLog;
 import com.energyxxer.commodore.selector.Selector;
@@ -17,7 +18,7 @@ public class Function {
     private Namespace namespace;
     private String path;
     private ArrayList<FunctionWriter> content = new ArrayList<>();
-    private Entity sender;
+    private ExecutionContext execContext;
 
     private boolean contentResolved = false;
     private String resolvedContent = null;
@@ -25,19 +26,19 @@ public class Function {
     private ScoreAccessLog accessLog = new ScoreAccessLog(this);
 
     Function(FunctionManager parent, Namespace namespace, String path) {
-        this(parent, namespace, path, new GenericEntity(new Selector(Selector.BaseSelector.SENDER)));
+        this(parent, namespace, path, new ExecutionContext(new GenericEntity(new Selector(Selector.BaseSelector.SENDER))));
     }
 
-    Function(FunctionManager parent, Namespace namespace, String path, Entity sender) {
+    Function(FunctionManager parent, Namespace namespace, String path, ExecutionContext execContext) {
         this.parent = parent;
-        this.sender = sender;
+        this.execContext = execContext;
 
         this.namespace = namespace;
         this.path = path;
     }
 
     public Entity getSender() {
-        return sender;
+        return execContext.getFinalSender();
     }
 
     public void append(FunctionWriter... writers) {
