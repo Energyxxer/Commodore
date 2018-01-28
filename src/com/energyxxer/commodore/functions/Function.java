@@ -5,6 +5,7 @@ import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.score.access.ScoreAccessLog;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.selector.Selector;
 
 import java.io.File;
@@ -91,6 +92,10 @@ public class Function {
 
     public ScoreAccessLog getAccessLog() {
         return accessLog;
+    }
+
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return accessLog.getScoreboardAccesses();
     }
 
     @Override

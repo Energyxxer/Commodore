@@ -21,5 +21,7 @@ public class FunctionReference extends Type {
         return false;
     }
 
-
+    public Function getFunction() {
+        return function;
+    }
 }

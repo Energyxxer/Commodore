@@ -6,11 +6,13 @@ import com.energyxxer.commodore.score.MacroScore;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 public class ScoreAccessLog {
 
     private final Function parent;
-
+    private boolean resolved = false;
+    private Collection<ScoreboardAccess> preAccesses = null;
     private ArrayList<ScoreboardAccess> log = new ArrayList<>();
 
     public ScoreAccessLog(Function parent) {
@@ -67,6 +69,15 @@ public class ScoreAccessLog {
                 macroLog.addUsed(access.getScores());
             }
         }
+
+        preAccesses = Collections.singletonList(new ScoreboardAccess(macroLog.getUsed(), ScoreboardAccess.AccessType.READ));
+
+        resolved = true;
+    }
+
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        if(!resolved) resolve();
+        return preAccesses;
     }
 
     @Override
@@ -104,5 +115,9 @@ class MacroScoreAccessLog {
             if(usedMacroScores.contains(score)) return true;
         }
         return false;
+    }
+
+    public Collection<MacroScore> getUsed() {
+        return new ArrayList<>(usedMacroScores);
     }
 }
