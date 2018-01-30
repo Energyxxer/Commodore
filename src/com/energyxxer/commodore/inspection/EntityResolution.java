@@ -7,7 +7,7 @@ import com.energyxxer.commodore.selector.Selector;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class EntityResolution {
+public class EntityResolution implements CommandEmbeddable {
     /**
      * The entity or entities this object attempts to resolve.
      * */
@@ -45,5 +45,9 @@ public class EntityResolution {
 
     public ArrayList<ExecuteModifier> getModifiers() {
         return modifiers;
+    }
+
+    public String toString() {
+        return selector.toString();
     }
 }

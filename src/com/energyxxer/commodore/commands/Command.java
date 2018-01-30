@@ -21,6 +21,8 @@ public interface Command extends FunctionWriter {
 
     CommandResolution resolveCommand(ExecutionContext execContext);
 
+
+    //TODO: add an execution context parameter to this function... somehow
     @Override
     default String toFunctionContent(Function function) {
         try {
