@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
@@ -18,6 +20,11 @@ public class KillCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "kill " + entity.getSelectorAs(sender);
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "kill \be0", entity);
     }
 
     @Override @NotNull

@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
@@ -22,6 +24,11 @@ public class TeleportToEntityCommand extends TeleportCommand {
     @Override
     public String getRawCommand(Entity sender) {
         return "tp " + entity.getSelectorAs(sender) + " " + destination.getSelectorAs(sender);
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "tp \be0 \be1", entity, destination);
     }
 
     @Override @NotNull

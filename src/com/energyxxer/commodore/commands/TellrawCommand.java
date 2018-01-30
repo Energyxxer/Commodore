@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.textcomponents.TextComponent;
 import org.jetbrains.annotations.NotNull;
@@ -20,6 +22,11 @@ public class TellrawCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "tellraw " + player.getSelectorAs(sender) + " " + message;
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "tellraw \be0 " + message, player);
     }
 
     @Override @NotNull

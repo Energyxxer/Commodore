@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,6 +21,11 @@ public class TellCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "tell " + player.getSelectorAs(sender) + " " + message;
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "tell \be0 " + message, player);
     }
 
     @Override @NotNull

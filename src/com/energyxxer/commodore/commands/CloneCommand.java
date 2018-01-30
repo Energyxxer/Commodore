@@ -3,6 +3,8 @@ package com.energyxxer.commodore.commands;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 
 public class CloneCommand implements Command {
 
@@ -45,5 +47,10 @@ public class CloneCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return getBase() + getMaskExtra() + getSourceModeExtra();
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, getBase() + getMaskExtra() + getSourceModeExtra());
     }
 }

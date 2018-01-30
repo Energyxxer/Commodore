@@ -3,6 +3,8 @@ package com.energyxxer.commodore.commands.scoreboard;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
@@ -31,6 +33,11 @@ public class ScoreSet implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "scoreboard players set " + CommandUtils.getRawReference(score.getHolder(), sender) + " " + score.getObjective().getName() + " " + value;
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return null;
     }
 
     @Override @NotNull

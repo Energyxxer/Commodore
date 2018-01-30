@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.textcomponents.TextComponent;
 
 public class TitleShowCommand extends TitleCommand {
@@ -20,5 +22,10 @@ public class TitleShowCommand extends TitleCommand {
     @Override
     public String getRawCommand(Entity sender) {
         return "title " + player.getSelectorAs(sender) + " " + display.toString().toLowerCase() + " " + text;
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "title \be0 " + display.toString().toLowerCase() + " " + text, player);
     }
 }

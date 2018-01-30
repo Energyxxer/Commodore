@@ -3,6 +3,8 @@ package com.energyxxer.commodore.commands.execute;
 import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.functions.Function;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
@@ -41,6 +43,11 @@ public class ExecuteCommand implements Command {
         sb.append("run ");
         sb.append(chainedCommand.getRawCommand(sender));
         return sb.toString();
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return null;
     }
 
     @Override

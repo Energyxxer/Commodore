@@ -3,6 +3,8 @@ package com.energyxxer.commodore.commands;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.functions.FunctionWriter;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
@@ -10,11 +12,14 @@ import java.util.Collection;
 import java.util.Collections;
 
 public interface Command extends FunctionWriter {
+    @Deprecated
     String getRawCommand(Entity sender);
 
     default String getRawCommand() {
         return getRawCommand(null);
     }
+
+    CommandResolution resolveCommand(ExecutionContext execContext);
 
     @Override
     default String toFunctionContent(Function function) {

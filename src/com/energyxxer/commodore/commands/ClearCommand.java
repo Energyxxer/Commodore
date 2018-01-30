@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
@@ -27,6 +29,11 @@ public class ClearCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "clear " + player.getSelectorAs(sender) + " " + item + ((maxCount >= 0) ? " " + maxCount : "");
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "clear \be0 " + item + ((maxCount >= 0) ? " " + maxCount : ""), player);
     }
 
     @Override @NotNull

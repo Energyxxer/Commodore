@@ -1,7 +1,10 @@
 package com.energyxxer.commodore.commands;
 
+import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.rotation.Rotation;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
@@ -27,6 +30,11 @@ public class TeleportToCoordsCommand extends TeleportCommand {
     @Override
     public String getRawCommand(Entity sender) {
         return "tp " + entity.getSelectorAs(sender) + " " + pos + (rotation != null ? " " + rotation : "");
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "tp \be0 " + pos.getAs(Coordinate.DisplayMode.ENTITY_POS) + (rotation != null ? " " + rotation : ""));
     }
 
     @Override @NotNull

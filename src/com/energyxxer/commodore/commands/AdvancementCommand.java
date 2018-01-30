@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
@@ -46,6 +48,11 @@ public class AdvancementCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "advancement " + action.toString().toLowerCase() + " " + player.getSelectorAs(sender) + " " + limit.toString().toLowerCase() + ((limit.takesAdvancement) ? " " + advancement : "");
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "advancement " + action.toString().toLowerCase() + " \be0 " + limit.toString().toLowerCase() + ((limit.takesAdvancement) ? " " + advancement : ""), player);
     }
 
     @Override @NotNull

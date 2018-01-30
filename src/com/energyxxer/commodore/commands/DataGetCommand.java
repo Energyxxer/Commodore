@@ -1,8 +1,10 @@
 package com.energyxxer.commodore.commands;
 
-import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.nbt.NBTPath;
 
 public class DataGetCommand extends DataCommand {
@@ -33,6 +35,12 @@ public class DataGetCommand extends DataCommand {
 
     @Override
     public String getRawCommand(Entity sender) {
-        return "data get " + (entity != null ? "entity " + CommandUtils.getRawReference(entity, sender) : "block " + pos.toString()) + " " + path + (scale != 1 ? String.valueOf(scale) : "");
+        return "data get " + (entity != null ? "entity " + entity.getSelectorAs(sender) : "block " + pos.toString()) + " " + path + (scale != 1 ? String.valueOf(scale) : "");
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        if(entity != null) return new CommandResolution(execContext, "data get entity \be0 " + path + (scale != 1 ? String.valueOf(scale) : ""), entity);
+        return new CommandResolution(execContext, "data get block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path + (scale != 1 ? String.valueOf(scale) : ""));
     }
 }

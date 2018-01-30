@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
@@ -31,6 +33,11 @@ public class ReplaceItemEntityCommand extends ReplaceItemCommand {
     @Override
     public String getRawCommand(Entity sender) {
         return "replaceitem entity " + entity.getSelectorAs(sender) + " " + slot + " " + item + (count != 1 ? " " + count : "");
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "replaceitem entity \be0 " + slot + " " + item + (count != 1 ? " " + count : ""), entity);
     }
 
     @Override @NotNull

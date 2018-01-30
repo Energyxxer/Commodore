@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 
 public class ExperienceSetCommand extends ExperienceCommand {
 
@@ -16,5 +18,10 @@ public class ExperienceSetCommand extends ExperienceCommand {
     @Override
     public String getRawCommand(Entity sender) {
         return "xp set " + player.getSelectorAs(sender) + " " + amount + " " + unit.toString().toLowerCase();
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "xp set \be0 " + amount + " " + unit.toString().toLowerCase(), player);
     }
 }

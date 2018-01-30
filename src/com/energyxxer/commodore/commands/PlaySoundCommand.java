@@ -3,6 +3,8 @@ package com.energyxxer.commodore.commands;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
@@ -67,6 +69,26 @@ public class PlaySoundCommand implements Command {
                                                         : "")
                                         : "")
                         : "");
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "playsound " +
+                sound + " " +
+                source.toString().toLowerCase() + " " +
+                "\be0" +
+                ((location != null) ?
+                        " " + location +
+                                ((maxVolume != -1) ?
+                                        " " + CommandUtils.toString(maxVolume) +
+                                                ((pitch != -1) ?
+                                                        " " + CommandUtils.toString(pitch) +
+                                                                ((minVolume != -1) ?
+                                                                        " " + CommandUtils.toString(minVolume)
+                                                                        : "")
+                                                        : "")
+                                        : "")
+                        : ""), player);
     }
 
     @Override @NotNull

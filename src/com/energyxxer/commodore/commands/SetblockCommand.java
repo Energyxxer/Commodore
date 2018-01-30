@@ -4,6 +4,8 @@ import com.energyxxer.commodore.block.Block;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 
 public class SetblockCommand implements Command {
     private CoordinateSet pos;
@@ -23,5 +25,10 @@ public class SetblockCommand implements Command {
         sb.append(' ');
         sb.append(block);
         return sb.toString();
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "setblock " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + block);
     }
 }

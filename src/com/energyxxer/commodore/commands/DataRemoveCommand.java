@@ -1,8 +1,11 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.nbt.NBTPath;
 
 public class DataRemoveCommand extends DataCommand {
@@ -22,5 +25,11 @@ public class DataRemoveCommand extends DataCommand {
     @Override
     public String getRawCommand(Entity sender) {
         return "data remove " + (entity != null ? "entity " + CommandUtils.getRawReference(entity, sender) : "block " + pos.toString()) + " " + path;
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        if(entity != null) return new CommandResolution(execContext, "data remove entity \be0 " + path, entity);
+        return new CommandResolution(execContext, "data remove block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path);
     }
 }

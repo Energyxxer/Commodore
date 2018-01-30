@@ -2,6 +2,8 @@ package com.energyxxer.commodore.commands.scoreboard;
 
 import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
@@ -33,5 +35,10 @@ public class ScoreGet implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "# use score " + score;
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "# use score " + score);
     }
 }

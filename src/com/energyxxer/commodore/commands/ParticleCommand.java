@@ -4,6 +4,8 @@ import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.particles.Particle;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.util.Delta;
@@ -88,6 +90,40 @@ public class ParticleCommand implements Command {
         sb.insert(0, particle);
         sb.insert(0, "particle ");
         return sb.toString().trim();
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        StringBuilder sb = new StringBuilder();
+        if(viewers != null) sb.insert(0, "\be0");
+        if(force) {
+            sb.insert(0, "force ");
+        } else if(sb.length() > 0) {
+            sb.insert(0, "normal ");
+        }
+        if(count != 1 || sb.length() > 0 || speed != 0 || delta != null) {
+            sb.insert(0, ' ');
+            sb.insert(0, count);
+        }
+        if(speed != 0 || sb.length() > 0 || delta != null) {
+            sb.insert(0, ' ');
+            sb.insert(0, CommandUtils.toString(speed));
+        }
+        if(delta != null || sb.length() > 0) {
+            sb.insert(0, ' ');
+            if(delta == null) sb.insert(0, "0 0 0");
+            else sb.insert(0, delta);
+        }
+        if(position != null || sb.length() > 0) {
+            sb.insert(0, ' ');
+            if(position == null) sb.insert(0, "~ ~ ~");
+            else sb.insert(0, position.getAs(Coordinate.DisplayMode.ENTITY_POS));
+        }
+        sb.insert(0, ' ');
+        sb.insert(0, particle);
+        sb.insert(0, "particle ");
+        if(viewers != null) return new CommandResolution(execContext, sb.toString().trim(), viewers);
+        return new CommandResolution(execContext, sb.toString().trim());
     }
 
     @Override @NotNull

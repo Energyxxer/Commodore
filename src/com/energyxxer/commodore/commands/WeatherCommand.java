@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 
 public class WeatherCommand implements Command {
 
@@ -25,5 +27,10 @@ public class WeatherCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "weather " + mode.toString().toLowerCase() + (duration != DEFAULT_DURATION ? " " + duration : "");
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "weather" + mode.toString().toLowerCase() + (duration != DEFAULT_DURATION ? " " + duration : ""));
     }
 }

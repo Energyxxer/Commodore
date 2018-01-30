@@ -2,6 +2,8 @@ package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandResolution;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.nbt.TagCompound;
 import com.energyxxer.commodore.types.EntityType;
 
@@ -30,5 +32,10 @@ public class SummonCommand implements Command {
     @Override
     public String getRawCommand(Entity sender) {
         return "summon " + type + (pos != null ? " " + pos + (data != null ? " " + data.toHeadlessString() : "") : "");
+    }
+
+    @Override
+    public CommandResolution resolveCommand(ExecutionContext execContext) {
+        return new CommandResolution(execContext, "summon " + type + (pos != null ? " " + pos + (data != null ? " " + data.toHeadlessString() : "") : ""));
     }
 }
