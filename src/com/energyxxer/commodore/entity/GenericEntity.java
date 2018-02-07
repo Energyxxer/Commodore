@@ -53,6 +53,7 @@ public class GenericEntity implements Entity {
         return copy;
     }
 
+    @Override
     public void addMacroHolder(MacroScoreHolder macro) {
         this.macroHolders.add(macro);
         scoreboardAccesses = null;

@@ -4,6 +4,7 @@ import com.energyxxer.commodore.commands.execute.CommandExecutor;
 import com.energyxxer.commodore.inspection.CommandEmbeddable;
 import com.energyxxer.commodore.inspection.EntityResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
+import com.energyxxer.commodore.score.MacroScoreHolder;
 import com.energyxxer.commodore.score.ScoreHolder;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.selector.Selector;
@@ -19,6 +20,8 @@ public interface Entity extends CommandExecutor, ScoreHolder, Cloneable, Command
     }
 
     EntityResolution resolveFor(ExecutionContext context);
+
+    void addMacroHolder(MacroScoreHolder macro);
 
     Collection<ScoreboardAccess> getScoreboardAccesses();
 

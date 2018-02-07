@@ -1,12 +1,10 @@
 package com.energyxxer.commodore.functions;
 
 import com.energyxxer.commodore.entity.Entity;
-import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.score.access.ScoreAccessLog;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
-import com.energyxxer.commodore.selector.Selector;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -27,15 +25,16 @@ public class Function {
     private ScoreAccessLog accessLog = new ScoreAccessLog(this);
 
     Function(FunctionManager parent, Namespace namespace, String path) {
-        this(parent, namespace, path, new ExecutionContext(new GenericEntity(new Selector(Selector.BaseSelector.SENDER))));
+        this(parent, namespace, path, null);
     }
 
-    Function(FunctionManager parent, Namespace namespace, String path, ExecutionContext execContext) {
+    Function(FunctionManager parent, Namespace namespace, String path, Entity sender) {
         this.parent = parent;
-        this.execContext = execContext;
 
         this.namespace = namespace;
         this.path = path;
+
+        this.execContext = new ExecutionContext(sender);
     }
 
     public Entity getSender() {
