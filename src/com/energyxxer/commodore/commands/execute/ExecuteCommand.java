@@ -1,7 +1,6 @@
 package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.commands.Command;
-import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
@@ -13,12 +12,6 @@ import java.util.Collection;
 
 public class ExecuteCommand implements Command {
 
-    /*
-    * TODO: Instead of optimizing an execute command, make the entity return a list of execute modifiers required to target it with a new selector, to build an execute command abstractly.
-    *
-    * Instead of passing an entity as sender to Entity::getSelectorAs, pass an object of a new class, ExecutionContext
-    * */
-
     private Command chainedCommand;
     private ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
 
@@ -28,21 +21,6 @@ public class ExecuteCommand implements Command {
 
     public void addModifier(ExecuteModifier modifier) {
         this.modifiers.add(modifier);
-    }
-
-    @Override
-    public String getRawCommand(Entity sender) {
-        if(modifiers.isEmpty()) return chainedCommand.getRawCommand(sender);
-        StringBuilder sb = new StringBuilder("execute ");
-
-        for(ExecuteModifier modifier : modifiers) {
-            sb.append(modifier.getSubCommand(sender));
-            sb.append(' ');
-            if(modifier.getNewSender() != null) sender = modifier.getNewSender();
-        }
-        sb.append("run ");
-        sb.append(chainedCommand.getRawCommand(sender));
-        return sb.toString();
     }
 
     @Override

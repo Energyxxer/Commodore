@@ -22,11 +22,6 @@ public class TeleportToEntityCommand extends TeleportCommand {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "tp " + entity.getSelectorAs(sender) + " " + destination.getSelectorAs(sender);
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "tp \be0 \be1", entity, destination);
     }

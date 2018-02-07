@@ -22,11 +22,6 @@ public class SpawnpointCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "spawnpoint " + player.getSelectorAs(sender) + " " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS);
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "spawnpoint \be0 " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS), player);
     }

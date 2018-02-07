@@ -30,11 +30,6 @@ public class StopSoundCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "stopsound " + player.getSelectorAs(sender) + (source != null ? " " + source.toString().toLowerCase() + (sound != null ? " " + sound : "") : (sound != null ? " * " + sound : ""));
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "stopsound \be0" + (source != null ? " " + source.toString().toLowerCase() + (sound != null ? " " + sound : "") : (sound != null ? " * " + sound : "")), player);
     }

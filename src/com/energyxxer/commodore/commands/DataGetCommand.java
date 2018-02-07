@@ -34,11 +34,6 @@ public class DataGetCommand extends DataCommand {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "data get " + (entity != null ? "entity " + entity.getSelectorAs(sender) : "block " + pos.toString()) + " " + path + (scale != 1 ? String.valueOf(scale) : "");
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         if(entity != null) return new CommandResolution(execContext, "data get entity \be0 " + path + (scale != 1 ? String.valueOf(scale) : ""), entity);
         return new CommandResolution(execContext, "data get block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path + (scale != 1 ? String.valueOf(scale) : ""));

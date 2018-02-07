@@ -31,11 +31,6 @@ public class ReplaceItemEntityCommand extends ReplaceItemCommand {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "replaceitem entity " + entity.getSelectorAs(sender) + " " + slot + " " + item + (count != 1 ? " " + count : "");
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "replaceitem entity \be0 " + slot + " " + item + (count != 1 ? " " + count : ""), entity);
     }

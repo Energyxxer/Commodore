@@ -1,7 +1,6 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.coordinates.CoordinateSet;
-import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.nbt.TagCompound;
@@ -27,11 +26,6 @@ public class SummonCommand implements Command {
         this.data = data;
 
         if(!type.getProperty("spawnable").equals("true")) throw new IllegalArgumentException("Entity '" + type + "' is not a valid spawnable entity");
-    }
-
-    @Override
-    public String getRawCommand(Entity sender) {
-        return "summon " + type + (pos != null ? " " + pos + (data != null ? " " + data.toHeadlessString() : "") : "");
     }
 
     @Override

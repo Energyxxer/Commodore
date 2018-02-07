@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.commands.scoreboard;
 
-import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
@@ -28,11 +27,6 @@ public class ScoreSet implements Command {
         }
 
         this.accesses.add(new ScoreboardAccess(score.getMacroScores(), ScoreboardAccess.AccessType.WRITE));
-    }
-
-    @Override
-    public String getRawCommand(Entity sender) {
-        return "scoreboard players set " + CommandUtils.getRawReference(score.getHolder(), sender) + " " + score.getObjective().getName() + " " + value;
     }
 
     @Override

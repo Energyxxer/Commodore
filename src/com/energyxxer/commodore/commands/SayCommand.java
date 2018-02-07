@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.commands;
 
-import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 
@@ -9,11 +8,6 @@ public class SayCommand implements Command {
 
     public SayCommand(String message) {
         this.message = message;
-    }
-
-    @Override
-    public String getRawCommand(Entity sender) {
-        return "say " + message;
     }
 
     @Override

@@ -46,11 +46,6 @@ public class AdvancementCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "advancement " + action.toString().toLowerCase() + " " + player.getSelectorAs(sender) + " " + limit.toString().toLowerCase() + ((limit.takesAdvancement) ? " " + advancement : "");
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "advancement " + action.toString().toLowerCase() + " \be0 " + limit.toString().toLowerCase() + ((limit.takesAdvancement) ? " " + advancement : ""), player);
     }

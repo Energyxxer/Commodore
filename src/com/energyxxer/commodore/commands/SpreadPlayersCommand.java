@@ -28,11 +28,6 @@ public class SpreadPlayersCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "spreadplayers " + center.getX().getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + center.getZ().getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + CommandUtils.toString(spreadDistance) + " " + CommandUtils.toString(maxRange) + " " + respectTeams + " " + targets.getSelectorAs(sender);
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "spreadplayers " + center.getX().getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + center.getZ().getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + CommandUtils.toString(spreadDistance) + " " + CommandUtils.toString(maxRange) + " " + respectTeams + " \be0", targets);
     }

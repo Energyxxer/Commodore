@@ -25,11 +25,6 @@ public class TagCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "tag " + action.toString().toLowerCase() + " " + entity.getSelectorAs(sender) + " " + tag;
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "tag" + action.toString().toLowerCase() + " \be0 " + tag, entity);
     }

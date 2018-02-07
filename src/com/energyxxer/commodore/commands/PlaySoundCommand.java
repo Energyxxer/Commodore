@@ -52,26 +52,6 @@ public class PlaySoundCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "playsound " +
-                sound + " " +
-                source.toString().toLowerCase() + " " +
-                player.getSelectorAs(sender) +
-                ((location != null) ?
-                        " " + location +
-                                ((maxVolume != -1) ?
-                                        " " + CommandUtils.toString(maxVolume) +
-                                                ((pitch != -1) ?
-                                                        " " + CommandUtils.toString(pitch) +
-                                                                ((minVolume != -1) ?
-                                                                        " " + CommandUtils.toString(minVolume)
-                                                                        : "")
-                                                        : "")
-                                        : "")
-                        : "");
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "playsound " +
                 sound + " " +

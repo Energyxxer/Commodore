@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.commands.scoreboard;
 
-import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
@@ -74,20 +73,6 @@ public class ScorePlayersOperation implements Command {
     @Override @NotNull
     public Collection<ScoreboardAccess> getScoreboardAccesses() {
         return accesses;
-    }
-
-    @Override
-    public String getRawCommand(Entity sender) {
-        return "scoreboard players operation " +
-                CommandUtils.getRawReference(target.getHolder(), sender) +
-                " " +
-                target.getObjective().getName() +
-                " " +
-                operation.getShorthand() +
-                " " +
-                CommandUtils.getRawReference(source.getHolder(), sender) +
-                " " +
-                source.getObjective().getName();
     }
 
     @Override

@@ -19,11 +19,6 @@ public class TellCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "tell " + player.getSelectorAs(sender) + " " + message;
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "tell \be0 " + message, player);
     }

@@ -14,11 +14,6 @@ public class EffectGiveCommand extends EffectCommand {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "effect give " + entity.getSelectorAs(sender) + " " + effect;
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "effect give \be0 " + effect, entity);
     }

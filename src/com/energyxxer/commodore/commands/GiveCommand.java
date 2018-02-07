@@ -29,11 +29,6 @@ public class GiveCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "give " + player.getSelectorAs(sender) + " " + item + (count != 1 ? " " + count : "");
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "give \be0 " + item + (count != 1 ? " " + count : ""), player);
     }

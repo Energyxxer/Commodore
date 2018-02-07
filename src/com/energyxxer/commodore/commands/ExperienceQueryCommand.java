@@ -14,11 +14,6 @@ public class ExperienceQueryCommand extends ExperienceCommand {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "xp query " + player.getSelectorAs(sender) + " " + unit.toString().toLowerCase();
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "xp query \be0 " + unit.toString().toLowerCase(), player);
     }

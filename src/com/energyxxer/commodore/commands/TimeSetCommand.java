@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.commands;
 
-import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 
@@ -22,11 +21,6 @@ public class TimeSetCommand extends TimeCommand {
 
     public TimeSetCommand(TimeOfDay time) {
         this(time.time);
-    }
-
-    @Override
-    public String getRawCommand(Entity sender) {
-        return "time set " + time;
     }
 
     @Override

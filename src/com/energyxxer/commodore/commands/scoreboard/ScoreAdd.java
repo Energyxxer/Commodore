@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.commands.scoreboard;
 
-import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
@@ -36,11 +35,6 @@ public class ScoreAdd implements Command {
     @Override @NotNull
     public Collection<ScoreboardAccess> getScoreboardAccesses() {
         return accesses;
-    }
-
-    @Override
-    public String getRawCommand(Entity sender) {
-        return "scoreboard players " + ((delta < 0) ? "remove" : "add") + " " + CommandUtils.getRawReference(score.getHolder(), sender) + " " + score.getObjective().getName() + " " + Math.abs(delta);
     }
 
     @Override

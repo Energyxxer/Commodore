@@ -33,11 +33,6 @@ public class ScoreGet implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "# use score " + score;
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "# use score " + score);
     }

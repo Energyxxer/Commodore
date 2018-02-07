@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.commands;
 
-import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 
@@ -34,11 +33,6 @@ public class DataPackEnableCommand extends DataPackCommand {
 
         if(secondPack != null && !order.takesSecondPack)
             System.out.println("[Commodore] [NOTICE] Order '" + order + "' doesn't require a second datapack parameter, yet '" + secondPack + "' was passed");
-    }
-
-    @Override
-    public String getRawCommand(Entity sender) {
-        return "datapack enable " + pack + " " + order.toString().toLowerCase() + (order.takesSecondPack ? " " + secondPack : "");
     }
 
     @Override

@@ -18,11 +18,6 @@ public class KillCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "kill " + entity.getSelectorAs(sender);
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "kill \be0", entity);
     }

@@ -60,39 +60,6 @@ public class ParticleCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        StringBuilder sb = new StringBuilder();
-        if(viewers != null) sb.insert(0, viewers.getSelectorAs(sender));
-        if(force) {
-            sb.insert(0, "force ");
-        } else if(sb.length() > 0) {
-            sb.insert(0, "normal ");
-        }
-        if(count != 1 || sb.length() > 0 || speed != 0 || delta != null) {
-            sb.insert(0, ' ');
-            sb.insert(0, count);
-        }
-        if(speed != 0 || sb.length() > 0 || delta != null) {
-            sb.insert(0, ' ');
-            sb.insert(0, CommandUtils.toString(speed));
-        }
-        if(delta != null || sb.length() > 0) {
-            sb.insert(0, ' ');
-            if(delta == null) sb.insert(0, "0 0 0");
-            else sb.insert(0, delta);
-        }
-        if(position != null || sb.length() > 0) {
-            sb.insert(0, ' ');
-            if(position == null) sb.insert(0, "~ ~ ~");
-            else sb.insert(0, position.getAs(Coordinate.DisplayMode.ENTITY_POS));
-        }
-        sb.insert(0, ' ');
-        sb.insert(0, particle);
-        sb.insert(0, "particle ");
-        return sb.toString().trim();
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         StringBuilder sb = new StringBuilder();
         if(viewers != null) sb.insert(0, "\be0");

@@ -17,11 +17,6 @@ public class TitleTimesCommand extends TitleCommand {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "title " + player.getSelectorAs(sender) + " times " + fadeIn + " " + stay + " " + fadeOut;
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "title \be0 times " + fadeIn + " " + stay + " " + fadeOut, player);
     }

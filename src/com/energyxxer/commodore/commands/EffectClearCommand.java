@@ -18,11 +18,6 @@ public class EffectClearCommand extends EffectCommand {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "effect clear " + entity.getSelectorAs(sender) + ((type != null) ? " " + type : "");
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "effect clear \be0" + ((type != null) ? " " + type : ""), entity);
     }

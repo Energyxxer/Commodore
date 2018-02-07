@@ -27,11 +27,6 @@ public class ClearCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "clear " + player.getSelectorAs(sender) + " " + item + ((maxCount >= 0) ? " " + maxCount : "");
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "clear \be0 " + item + ((maxCount >= 0) ? " " + maxCount : ""), player);
     }

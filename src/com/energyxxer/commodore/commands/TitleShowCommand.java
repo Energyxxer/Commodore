@@ -20,11 +20,6 @@ public class TitleShowCommand extends TitleCommand {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "title " + player.getSelectorAs(sender) + " " + display.toString().toLowerCase() + " " + text;
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "title \be0 " + display.toString().toLowerCase() + " " + text, player);
     }

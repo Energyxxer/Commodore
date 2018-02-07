@@ -28,11 +28,6 @@ public class TeleportToCoordsCommand extends TeleportCommand {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "tp " + entity.getSelectorAs(sender) + " " + pos + (rotation != null ? " " + rotation : "");
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "tp \be0 " + pos.getAs(Coordinate.DisplayMode.ENTITY_POS) + (rotation != null ? " " + rotation : ""), entity);
     }

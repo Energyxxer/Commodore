@@ -21,11 +21,6 @@ public class GamemodeCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "gamemode " + gamemode + " " + player.getSelectorAs(sender);
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "gamemode " + gamemode + " \be0", player);
     }

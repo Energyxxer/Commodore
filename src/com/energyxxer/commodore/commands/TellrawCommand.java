@@ -20,11 +20,6 @@ public class TellrawCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "tellraw " + player.getSelectorAs(sender) + " " + message;
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "tellraw \be0 " + message, player);
     }

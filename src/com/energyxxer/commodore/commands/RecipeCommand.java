@@ -29,11 +29,6 @@ public class RecipeCommand implements Command {
     }
 
     @Override
-    public String getRawCommand(Entity sender) {
-        return "recipe " + action.toString().toLowerCase() + " " + player.getSelectorAs(sender) + " " + recipeName;
-    }
-
-    @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "recipe " + action.toString().toLowerCase() + " \be0 " + recipeName, player);
     }

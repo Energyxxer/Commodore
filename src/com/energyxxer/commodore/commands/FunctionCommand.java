@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.commands;
 
-import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
@@ -19,11 +18,6 @@ public class FunctionCommand implements Command {
 
     public FunctionCommand(FunctionReference reference) {
         this.reference = reference;
-    }
-
-    @Override
-    public String getRawCommand(Entity sender) {
-        return "function " + reference;
     }
 
     @Override
