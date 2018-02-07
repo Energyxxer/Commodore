@@ -8,14 +8,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class EntityResolution implements CommandEmbeddable {
+
     /**
      * The entity or entities this object attempts to resolve.
      * */
     private Entity entity;
+
     /**
      * The selector used to refer to the entity at the end of the command.
      * */
     private Selector selector;
+
     /**
      * The execute modifiers required to alter the execution context in order to effectively target the entity using the
      * selector.

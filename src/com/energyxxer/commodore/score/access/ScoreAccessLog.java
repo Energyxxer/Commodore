@@ -70,7 +70,9 @@ public class ScoreAccessLog {
             }
         }
 
-        preAccesses = Collections.singletonList(new ScoreboardAccess(macroLog.getUsed(), ScoreboardAccess.AccessType.READ));
+        if(macroLog.getUsed().isEmpty()) preAccesses = Collections.emptyList();
+        else
+            preAccesses = Collections.singletonList(new ScoreboardAccess(macroLog.getUsed(), ScoreboardAccess.AccessType.READ));
 
         resolved = true;
     }

@@ -8,7 +8,11 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -36,7 +40,9 @@ public class ModulePackGenerator {
         this.module = module;
         this.outputType = outputType;
 
-        if(!directory.isDirectory() || !directory.exists()) throw new IllegalArgumentException("Expected directory, instead found file at '" + directory + "'");
+        if(!directory.exists()) directory.mkdirs();
+        if(!directory.isDirectory())
+            throw new IllegalArgumentException("Expected directory, instead found file at '" + directory + "'");
 
         this.gson = new GsonBuilder().setPrettyPrinting().create();
 

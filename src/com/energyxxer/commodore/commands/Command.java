@@ -21,7 +21,6 @@ public interface Command extends FunctionWriter {
 
     CommandResolution resolveCommand(ExecutionContext execContext);
 
-
     //TODO: add an execution context parameter to this function... somehow
     @Override
     default String toFunctionContent(Function function) {
@@ -40,8 +39,9 @@ public interface Command extends FunctionWriter {
 
     default boolean isUsed() {
         for(ScoreboardAccess access : getScoreboardAccesses()) {
-            if(access.getResolution() == ScoreboardAccess.AccessResolution.UNRESOLVED)
-                throw new IllegalStateException("This ScoreboardManipulation has unresolved access: " + this);
+            if(access.getResolution() == ScoreboardAccess.AccessResolution.UNRESOLVED) {
+                throw new IllegalStateException("This ScoreboardManipulation has unresolved access: " + access + " - in: " + this);
+            }
             if(access.getResolution() == ScoreboardAccess.AccessResolution.UNUSED) return false;
         }
         return true;
