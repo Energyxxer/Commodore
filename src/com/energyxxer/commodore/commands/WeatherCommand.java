@@ -31,6 +31,6 @@ public class WeatherCommand implements Command {
 
     @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "weather" + mode.toString().toLowerCase() + (duration != DEFAULT_DURATION ? " " + duration : ""));
+        return new CommandResolution(execContext, "weather " + mode.toString().toLowerCase() + (duration != DEFAULT_DURATION ? " " + duration : ""));
     }
 }

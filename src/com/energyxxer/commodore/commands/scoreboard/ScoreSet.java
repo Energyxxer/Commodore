@@ -37,7 +37,7 @@ public class ScoreSet implements Command {
 
     @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return null;
+        return new CommandResolution(execContext, "scoreboard players set \be0 " + score.getObjective().getName() + " " + value, score.getHolder());
     }
 
     @Override @NotNull

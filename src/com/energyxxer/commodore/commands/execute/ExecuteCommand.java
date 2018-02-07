@@ -47,7 +47,8 @@ public class ExecuteCommand implements Command {
 
     @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return null;
+        ExecutionContext chainedContext = new ExecutionContext(execContext.getFinalSender(), this.modifiers);
+        return chainedCommand.resolveCommand(chainedContext);
     }
 
     @Override

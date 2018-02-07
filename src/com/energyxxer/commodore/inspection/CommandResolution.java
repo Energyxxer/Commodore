@@ -35,6 +35,8 @@ public class CommandResolution {
 
         ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
 
+        modifiers.addAll(this.execContext.getModifiers());
+
         for(CommandEmbeddable embeddable : embeddables) {
             if(embeddable instanceof EntityResolution) {
                 modifiers.addAll(((EntityResolution) embeddable).getModifiers());

@@ -34,7 +34,7 @@ public class TeleportToCoordsCommand extends TeleportCommand {
 
     @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "tp \be0 " + pos.getAs(Coordinate.DisplayMode.ENTITY_POS) + (rotation != null ? " " + rotation : ""));
+        return new CommandResolution(execContext, "tp \be0 " + pos.getAs(Coordinate.DisplayMode.ENTITY_POS) + (rotation != null ? " " + rotation : ""), entity);
     }
 
     @Override @NotNull

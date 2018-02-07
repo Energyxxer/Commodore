@@ -19,13 +19,14 @@ public interface Command extends FunctionWriter {
         return getRawCommand(null);
     }
 
+    @NotNull
     CommandResolution resolveCommand(ExecutionContext execContext);
 
     //TODO: add an execution context parameter to this function... somehow
     @Override
     default String toFunctionContent(Function function) {
         try {
-            return (isUsed()) ? getRawCommand(function.getSender()) : "# [REMOVED]";
+            return (isUsed()) ? resolveCommand(function.getExecutionContext()).construct() : "# [REMOVED]";
         } catch(IllegalStateException x) {
             System.out.println(function.getAccessLog());
             throw x;

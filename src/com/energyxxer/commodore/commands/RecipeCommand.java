@@ -35,7 +35,7 @@ public class RecipeCommand implements Command {
 
     @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "recipe " + action.toString().toLowerCase() + " \be0 " + recipeName);
+        return new CommandResolution(execContext, "recipe " + action.toString().toLowerCase() + " \be0 " + recipeName, player);
     }
 
     @Override @NotNull

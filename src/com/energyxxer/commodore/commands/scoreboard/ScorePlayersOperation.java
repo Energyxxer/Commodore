@@ -92,6 +92,6 @@ public class ScorePlayersOperation implements Command {
 
     @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return null;
+        return new CommandResolution(execContext, "scoreboard players operation \be0 " + target.getObjective().getName() + " " + operation.getShorthand() + " \be1 " + source.getObjective().getName(), target.getHolder(), source.getHolder());
     }
 }

@@ -98,6 +98,10 @@ public class Function {
         return accessLog.getScoreboardAccesses();
     }
 
+    public ExecutionContext getExecutionContext() {
+        return execContext;
+    }
+
     @Override
     public String toString() {
         return "[Function " + getFullName() + " : " + content.size() + " " + ((content.size() == 1) ? "entry" : "entries") + "]";
