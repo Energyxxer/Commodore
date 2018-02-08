@@ -3,7 +3,7 @@ package com.energyxxer.commodore.commands.execute;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
-import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.nbt.NBTPath;
 import com.energyxxer.commodore.nbt.NumericNBTType;
 
@@ -34,8 +34,8 @@ public class ExecuteStoreBlock extends ExecuteStore {
     }
 
     @Override
-    public String getSubCommand(Entity sender) {
-        return this.getStarter() + "block " + position.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.toString(scale);
+    public SubCommandResult getSubCommand(ExecutionContext execContext) {
+        return new SubCommandResult(execContext, this.getStarter() + "block " + position.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.toString(scale));
     }
 
     @Override

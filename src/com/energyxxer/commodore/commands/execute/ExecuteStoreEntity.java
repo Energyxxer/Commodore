@@ -2,6 +2,7 @@ package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.nbt.NBTPath;
 import com.energyxxer.commodore.nbt.NumericNBTType;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
@@ -37,8 +38,8 @@ public class ExecuteStoreEntity extends ExecuteStore {
     }
 
     @Override
-    public String getSubCommand(Entity sender) {
-        return this.getStarter() + "entity " + entity.getSelectorAs(sender) + " " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.toString(scale);
+    public SubCommandResult getSubCommand(ExecutionContext execContext) {
+        return new SubCommandResult(execContext, this.getStarter() + "entity \be0 " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.toString(scale), entity);
     }
 
     @Override

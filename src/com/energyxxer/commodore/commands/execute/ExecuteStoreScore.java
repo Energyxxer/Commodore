@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.commands.execute;
 
-import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
@@ -22,8 +22,8 @@ public class ExecuteStoreScore extends ExecuteStore {
     }
 
     @Override
-    public String getSubCommand(Entity sender) {
-        return this.getStarter() + "score " + CommandUtils.getRawReference(score.getHolder(), sender) + " " + score.getObjective().getName();
+    public SubCommandResult getSubCommand(ExecutionContext execContext) {
+        return new SubCommandResult(execContext, this.getStarter() + "score \be0 " + score.getObjective().getName(), score.getHolder());
     }
 
     @Override

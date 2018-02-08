@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
@@ -15,8 +16,8 @@ public class ExecuteConditionEntity extends ExecuteCondition {
     }
 
     @Override
-    public String getSubCommand(Entity sender) {
-        return this.getStarter() + "entity " + entity.getSelectorAs(sender);
+    public SubCommandResult getSubCommand(ExecutionContext execContext) {
+        return new SubCommandResult(execContext, this.getStarter() + "entity \be0", entity);
     }
 
     @Override

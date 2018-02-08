@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.commands.execute;
 
-import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.selector.SelectorNumberArgument;
@@ -22,8 +22,8 @@ public class ExecuteConditionScoreMatch extends ExecuteCondition {
     }
 
     @Override
-    public String getSubCommand(Entity sender) {
-        return this.getStarter() + "score " + CommandUtils.getRawReference(target.getHolder(), sender) + " " + target.getObjective().getName() + " matches " + range.toString();
+    public SubCommandResult getSubCommand(ExecutionContext execContext) {
+        return new SubCommandResult(execContext, this.getStarter() + "score \be0 " + target.getObjective().getName() + " matches " + range.toString(), target.getHolder());
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
@@ -17,8 +18,8 @@ public class ExecuteRotatedAsEntity implements ExecuteModifier {
     }
 
     @Override
-    public String getSubCommand(Entity sender) {
-        return "rotated as " + entity.getSelectorAs(sender);
+    public SubCommandResult getSubCommand(ExecutionContext execContext) {
+        return new SubCommandResult(execContext, "rotated as \be0", entity);
     }
 
     @Override

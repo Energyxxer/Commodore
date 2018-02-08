@@ -2,7 +2,7 @@ package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
-import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.types.BlockType;
 
@@ -17,8 +17,8 @@ public class ExecuteConditionBlock extends ExecuteCondition {
     }
 
     @Override
-    public String getSubCommand(Entity sender) {
-        return this.getStarter() + "block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + blockType;
+    public SubCommandResult getSubCommand(ExecutionContext execContext) {
+        return new SubCommandResult(execContext, this.getStarter() + "block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + blockType);
     }
 
     @Override

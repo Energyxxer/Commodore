@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
@@ -9,7 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 public interface ExecuteModifier {
-    String getSubCommand(Entity sender);
+    SubCommandResult getSubCommand(ExecutionContext execContext);
 
     @NotNull
     default Collection<ScoreboardAccess> getScoreboardAccesses() {

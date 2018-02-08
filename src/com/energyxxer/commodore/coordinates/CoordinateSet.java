@@ -1,7 +1,8 @@
 package com.energyxxer.commodore.coordinates;
 
 import com.energyxxer.commodore.commands.execute.ExecuteModifier;
-import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.commands.execute.SubCommandResult;
+import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
@@ -47,8 +48,8 @@ public class CoordinateSet implements ExecuteModifier {
     }
 
     @Override
-    public String getSubCommand(Entity sender) {
-        return "positioned " + this.toString();
+    public SubCommandResult getSubCommand(ExecutionContext execContext) {
+        return new SubCommandResult(execContext, "positioned " + this.getAs(Coordinate.DisplayMode.ENTITY_POS));
     }
 
     @Override
