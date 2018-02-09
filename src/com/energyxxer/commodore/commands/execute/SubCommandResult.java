@@ -30,4 +30,16 @@ public class SubCommandResult {
             }
         }
     }
+
+    public ExecutionContext getExecContext() {
+        return execContext;
+    }
+
+    public String getRaw() {
+        return raw;
+    }
+
+    public ArrayList<CommandEmbeddable> getEmbeddables() {
+        return embeddables;
+    }
 }
