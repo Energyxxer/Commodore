@@ -7,7 +7,7 @@ public class Objective {
     private String name;
     private String type;
     /**
-     * Signifies whether the objective acts as a field, used to carry data from one tick to the next.
+     * Signifies whether the objective acts as a field, used to carry data from one tick or function to the next.
      * If this is true, a SET access command not followed by a GET access command at the end
      * of a function tree will not be removed.
      */
@@ -42,6 +42,10 @@ public class Objective {
 
     public String getType() {
         return type;
+    }
+
+    public boolean isField() {
+        return field;
     }
 
     public ObjectiveManager getParent() {

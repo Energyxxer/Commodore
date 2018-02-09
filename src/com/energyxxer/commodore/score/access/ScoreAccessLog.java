@@ -3,16 +3,16 @@ package com.energyxxer.commodore.score.access;
 import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.score.MacroScore;
+import com.energyxxer.commodore.score.Objective;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 
 public class ScoreAccessLog {
 
     private final Function parent;
     private boolean resolved = false;
-    private Collection<ScoreboardAccess> preAccesses = null;
+    private ArrayList<ScoreboardAccess> finalAccesses = null;
     private ArrayList<ScoreboardAccess> log = new ArrayList<>();
 
     public ScoreAccessLog(Function parent) {
@@ -37,7 +37,7 @@ public class ScoreAccessLog {
 
             if(access.getResolution() != ScoreboardAccess.AccessResolution.UNRESOLVED) continue;
 
-            if(dependencies.size() > 0) {
+            if(!dependencies.isEmpty()) {
                 for(ScoreboardAccess dependency : dependencies) {
                     if(dependency.getResolution() == ScoreboardAccess.AccessResolution.UNRESOLVED) {
                         access.setResolution(ScoreboardAccess.AccessResolution.IN_PROCESS);
@@ -61,8 +61,9 @@ public class ScoreAccessLog {
                     macroLog.removeUsed(access.getScores());
                 }
             } else if(access.getType() == ScoreboardAccess.AccessType.WRITE) {
-                if(macroLog.areAnyUsed(access.getScores())) access.setResolution(ScoreboardAccess.AccessResolution.USED);
-                else access.setResolution(ScoreboardAccess.AccessResolution.UNUSED);
+                if(macroLog.isLastFieldAccess(access.getScores()) || macroLog.areAnyUsed(access.getScores())) {
+                    access.setResolution(ScoreboardAccess.AccessResolution.USED);
+                } else access.setResolution(ScoreboardAccess.AccessResolution.UNUSED);
                 macroLog.removeUsed(access.getScores());
             } else if(access.getType() == ScoreboardAccess.AccessType.READ) {
                 access.setResolution(ScoreboardAccess.AccessResolution.USED);
@@ -70,16 +71,17 @@ public class ScoreAccessLog {
             }
         }
 
-        if(macroLog.getUsed().isEmpty()) preAccesses = Collections.emptyList();
-        else
-            preAccesses = Collections.singletonList(new ScoreboardAccess(macroLog.getUsed(), ScoreboardAccess.AccessType.READ));
+        finalAccesses = new ArrayList<>();
+        log.forEach(a -> {
+            if(a.getResolution() == ScoreboardAccess.AccessResolution.USED) finalAccesses.add(a);
+        });
 
         resolved = true;
     }
 
     public Collection<ScoreboardAccess> getScoreboardAccesses() {
         if(!resolved) resolve();
-        return preAccesses;
+        return finalAccesses;
     }
 
     @Override
@@ -101,10 +103,12 @@ public class ScoreAccessLog {
 
 class MacroScoreAccessLog {
     private ArrayList<MacroScore> usedMacroScores = new ArrayList<>();
+    private ArrayList<Objective> seenObjectives = new ArrayList<>();
 
     void addUsed(Collection<MacroScore> scores) {
         scores.forEach(s -> {
             if(!usedMacroScores.contains(s)) usedMacroScores.add(s);
+            if(!seenObjectives.contains(s.getObjective())) seenObjectives.add(s.getObjective());
         });
     }
 
@@ -121,5 +125,12 @@ class MacroScoreAccessLog {
 
     public Collection<MacroScore> getUsed() {
         return new ArrayList<>(usedMacroScores);
+    }
+
+    boolean isLastFieldAccess(Collection<MacroScore> scores) {
+        for(MacroScore score : scores) {
+            if(!score.getObjective().isField() || seenObjectives.contains(score.getObjective())) return false;
+        }
+        return true;
     }
 }

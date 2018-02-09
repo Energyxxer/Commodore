@@ -43,6 +43,10 @@ public interface Command extends FunctionWriter {
 
     @Override
     default void onAppend(Function function) {
+        this.onAppend(function, function.getExecutionContext());
+    }
+
+    default void onAppend(Function function, ExecutionContext execContext) {
         function.getAccessLog().filterCommand(this);
         getScoreboardAccesses().forEach(a -> a.setFunction(function));
     }

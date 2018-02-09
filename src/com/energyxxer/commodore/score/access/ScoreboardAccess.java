@@ -50,7 +50,7 @@ public class ScoreboardAccess {
         return resolution;
     }
 
-    void setResolution(AccessResolution resolution) {
+    public void setResolution(AccessResolution resolution) {
         this.resolution = resolution;
     }
 

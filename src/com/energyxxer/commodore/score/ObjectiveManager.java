@@ -28,12 +28,19 @@ public class ObjectiveManager {
     }
 
     public Objective create(String name) {
-        if(!contains(name)) return forceCreate(name);
-        throw new IllegalArgumentException("An objective by the name '" + name + "' already exists");
+        return create(name, "dummy");
     }
 
     public Objective create(String name, String type) {
-        if(!contains(name)) return forceCreate(name, type, false);
+        return create(name, type, false);
+    }
+
+    public Objective create(String name, boolean field) {
+        return create(name, "dummy", field);
+    }
+
+    public Objective create(String name, String type, boolean field) {
+        if(!contains(name)) return forceCreate(name, type, field);
         throw new IllegalArgumentException("An objective by the name '" + name + "' already exists");
     }
 

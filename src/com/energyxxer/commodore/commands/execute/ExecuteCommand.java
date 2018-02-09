@@ -45,8 +45,8 @@ public class ExecuteCommand implements Command {
     }
 
     @Override
-    public void onAppend(Function function) {
-        Command.super.onAppend(function);
-        chainedCommand.onAppend(function);
+    public void onAppend(Function function, ExecutionContext execContext) {
+        Command.super.onAppend(function, execContext);
+        chainedCommand.onAppend(function, new ExecutionContext(execContext.getFinalSender(), this.modifiers));
     }
 }
