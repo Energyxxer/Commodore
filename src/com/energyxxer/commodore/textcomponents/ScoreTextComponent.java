@@ -2,22 +2,35 @@ package com.energyxxer.commodore.textcomponents;
 
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.score.LocalScore;
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Collection;
+import java.util.Collections;
 
 public class ScoreTextComponent extends TextComponent {
     private LocalScore score;
+    private Collection<ScoreboardAccess> accesses;
 
     public ScoreTextComponent(LocalScore score) {
-        this.score = score;
+        this(score, null);
     }
 
     public ScoreTextComponent(LocalScore score, TextStyle style) {
         this.score = score;
         this.setStyle(style);
+
+        this.accesses = Collections.singletonList(new ScoreboardAccess(score.getMacroScores(), ScoreboardAccess.AccessType.READ));
     }
 
     @Override
     public boolean supportsProperties() {
         return true;
+    }
+
+    @Override
+    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return accesses;
     }
 
     @Override

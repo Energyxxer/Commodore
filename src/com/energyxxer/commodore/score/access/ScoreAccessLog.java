@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.score.access;
 
-import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.score.MacroScore;
 import com.energyxxer.commodore.score.Objective;
@@ -17,10 +16,6 @@ public class ScoreAccessLog {
 
     public ScoreAccessLog(Function parent) {
         this.parent = parent;
-    }
-
-    public void filterCommand(Command command) {
-        command.getScoreboardAccesses().forEach(this::filterAccess);
     }
 
     public void filterAccess(ScoreboardAccess access) {

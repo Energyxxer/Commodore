@@ -22,7 +22,7 @@ public class FunctionManager {
     }
 
     public void resolveAccessLogs() {
-        functions.values().forEach(f -> f.getAccessLog().resolve());
+        functions.values().forEach(Function::resolveAccessLogs);
     }
 
     public boolean contains(String name) {

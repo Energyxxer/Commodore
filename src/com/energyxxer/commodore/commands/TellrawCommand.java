@@ -26,6 +26,8 @@ public class TellrawCommand implements Command {
 
     @Override @NotNull
     public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return new ArrayList<>(player.getScoreboardAccesses());
+        ArrayList<ScoreboardAccess> accesses = new ArrayList<>(player.getScoreboardAccesses());
+        accesses.addAll(message.getScoreboardAccesses());
+        return accesses;
     }
 }

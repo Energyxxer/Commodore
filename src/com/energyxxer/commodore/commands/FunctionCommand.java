@@ -12,6 +12,7 @@ import java.util.Collection;
 public class FunctionCommand implements Command {
     private FunctionReference reference;
     private ExecutionContext execContext = null;
+    private Collection<ScoreboardAccess> accesses = null;
 
     public FunctionCommand(Function function) {
         this.reference = new FunctionReference(function);
@@ -32,9 +33,10 @@ public class FunctionCommand implements Command {
     public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
         if(execContext == null)
             throw new IllegalStateException("Cannot resolve scoreboard accesses for unappended function command");
-        Collection<ScoreboardAccess> rv = reference.getFunction().getScoreboardAccesses(execContext);
-        System.out.println("rv = " + rv);
-        return rv;
+        if(accesses != null) return accesses;
+        reference.getFunction().resolveAccessLogs();
+        accesses = reference.getFunction().getScoreboardAccesses(execContext);
+        return accesses;
     }
 
     @Override

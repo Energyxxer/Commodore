@@ -1,8 +1,12 @@
 package com.energyxxer.commodore.textcomponents;
 
+import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 
 public abstract class TextComponent {
@@ -16,6 +20,7 @@ public abstract class TextComponent {
     }
 
     public void setStyle(TextStyle style) {
+        if(style == null) return;
         if(!supportsProperties())
             throw new UnsupportedOperationException(this.getClass().getName() + " does not support text properties");
         this.style = style;
@@ -67,5 +72,10 @@ public abstract class TextComponent {
     @Override
     public String toString() {
         return this.toString(null);
+    }
+
+    @NotNull
+    public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return Collections.emptyList();
     }
 }

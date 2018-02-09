@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functions;
 
+import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.inspection.ExecutionContext;
@@ -24,6 +25,7 @@ public class Function {
     private ExecutionContext execContext;
     private MacroScoreHolder senderMacro;
 
+    private boolean accessesResolved = false;
     private boolean contentResolved = false;
     private String resolvedContent = null;
 
@@ -100,6 +102,20 @@ public class Function {
 
     public ScoreAccessLog getAccessLog() {
         return accessLog;
+    }
+
+    public void resolveAccessLogs() {
+        if(accessesResolved) return;
+        content.forEach(w -> {
+            if(w instanceof Command) {
+                for(ScoreboardAccess access : ((Command) w).getScoreboardAccesses()) {
+                    access.setFunction(this);
+                    accessLog.filterAccess(access);
+                }
+            }
+        });
+        accessLog.resolve();
+        accessesResolved = true;
     }
 
     public Collection<ScoreboardAccess> getScoreboardAccesses(ExecutionContext execContext) {
