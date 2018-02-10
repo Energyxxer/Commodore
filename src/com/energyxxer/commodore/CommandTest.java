@@ -154,6 +154,8 @@ public final class CommandTest {
         ObjectiveManager objMgr = module.getObjectiveManager();
         objMgr.create("return", true);
 
+        Function objectiveInit = module.getNamespace("ct").getFunctionManager().create("init_objectives");
+
         Function function = module.getNamespace("test").getFunctionManager().create("scores");
 
         EntityType bat = module.getNamespace("minecraft").getTypeManager().entity.get("bat");
@@ -311,11 +313,20 @@ public final class CommandTest {
         otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new Delta(2, 2, 2), 0, 10, false, player));
         //otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new Delta(2, 2, 2), 0, 10, false, entity));
 
+        objMgr.dumpObjectiveCreators(objectiveInit);
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 
         System.out.println(function);
-
         System.out.println(function.getResolvedContent());
+        System.out.println("[End of function]");
+
+        System.out.println(otherFunction);
+        System.out.println(otherFunction.getResolvedContent());
+        System.out.println("[End of function]");
+
+        System.out.println(objectiveInit);
+        System.out.println(objectiveInit.getResolvedContent());
+        System.out.println("[End of function]");
 
         System.out.println(new NBTPath("Inventory", new NBTPath(0, new NBTPath("tag", new NBTPath("display", new NBTPath("Lore"))))));
         System.out.println(new NBTPath("Inventory", new NBTPath(0, new NBTPath("tag", new NBTPath("display", new NBTPath("Lore", new NBTPath(0)))))));

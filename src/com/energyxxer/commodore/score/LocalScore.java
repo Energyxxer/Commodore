@@ -9,8 +9,6 @@ public class LocalScore {
     public LocalScore(Objective objective, ScoreHolder holder) {
         this.objective = objective;
         this.holder = holder;
-
-        objective.getParent().registerLocalScore(this);
     }
 
     public Objective getObjective() {

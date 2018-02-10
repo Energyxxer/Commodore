@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.score;
 
+import com.energyxxer.commodore.functions.FunctionWriter;
+
 import java.util.Objects;
 
 public class Objective {
@@ -50,6 +52,10 @@ public class Objective {
 
     public ObjectiveManager getParent() {
         return parent;
+    }
+
+    public FunctionWriter getObjectiveCreator() {
+        return f -> "scoreboard objectives add " + name + " " + type;
     }
 
     @Override

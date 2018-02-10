@@ -1,8 +1,8 @@
 package com.energyxxer.commodore.score;
 
+import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.module.CommandModule;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ObjectiveManager {
@@ -10,8 +10,6 @@ public class ObjectiveManager {
     private final CommandModule owner;
 
     private HashMap<String, Objective> objectives = new HashMap<>();
-
-    private ArrayList<LocalScore> localScoreLog = new ArrayList<>();
 
     public ObjectiveManager(CommandModule owner) {
         this.owner = owner;
@@ -58,8 +56,8 @@ public class ObjectiveManager {
         return owner;
     }
 
-    public void registerLocalScore(LocalScore score) {
-        if(!localScoreLog.contains(score)) localScoreLog.add(score);
+    public void dumpObjectiveCreators(Function function) {
+        objectives.values().forEach(o -> function.append(o.getObjectiveCreator()));
     }
 
     @Override
