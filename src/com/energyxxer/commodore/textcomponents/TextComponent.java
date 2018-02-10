@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.textcomponents;
 
+import com.energyxxer.commodore.inspection.CommandEmbeddable;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
@@ -76,6 +77,10 @@ public abstract class TextComponent {
 
     @NotNull
     public Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return Collections.emptyList();
+    }
+
+    public Collection<CommandEmbeddable> getEmbeddables() {
         return Collections.emptyList();
     }
 }

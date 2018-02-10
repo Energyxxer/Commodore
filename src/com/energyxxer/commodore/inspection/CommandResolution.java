@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.inspection;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.commands.execute.ExecuteModifier;
 import com.energyxxer.commodore.commands.execute.SubCommandResult;
 import com.energyxxer.commodore.entity.Entity;
@@ -53,7 +54,7 @@ public class CommandResolution {
                         modifiers.addAll(i, ((EntityResolution) embeddable).getModifiers());
                         i -= ((EntityResolution) embeddable).getModifiers().size() + 1;
                     }
-                    raw = raw.replace("\be" + j, embeddable.toString());
+                    raw = embed(raw, "\be" + j, embeddable.toString());
                 }
                 alreadyResolved.add(modifier);
                 resolved.put(modifier, raw);
@@ -69,6 +70,26 @@ public class CommandResolution {
         }
 
         return sb.toString();
+    }
+
+    private String embed(String raw, String pattern, String replacement) {
+        int fromIndex = 0;
+        int index;
+        while((index = raw.indexOf(pattern, fromIndex)) >= 0) {
+            int escapes = 0;
+            for(int i = index + pattern.length(); i < raw.length(); i++) {
+                if(raw.charAt(i) == '\r') escapes++;
+                else break;
+            }
+            String escapedReplacement = replacement;
+            for(int i = 0; i < escapes; i++) {
+                escapedReplacement = CommandUtils.escape(escapedReplacement);
+            }
+
+            raw = raw.substring(0, index) + escapedReplacement + raw.substring(index + pattern.length() + escapes);
+            fromIndex += escapedReplacement.length();
+        }
+        return raw;
     }
 
     public String construct() {
@@ -87,7 +108,7 @@ public class CommandResolution {
         String chainedCommand = raw;
 
         for(int i = 0; i < embeddables.size(); i++) {
-            chainedCommand = chainedCommand.replace("\be" + i, embeddables.get(i).toString());
+            chainedCommand = embed(chainedCommand, "\be" + i, embeddables.get(i).toString());
         }
 
         StringBuilder sb = new StringBuilder();

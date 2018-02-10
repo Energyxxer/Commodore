@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.textcomponents;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.inspection.CommandEmbeddable;
 import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
@@ -35,7 +36,7 @@ public class ScoreTextComponent extends TextComponent {
 
     @Override
     public String toString(TextComponent parent) {
-        String escapedName = "\"" + CommandUtils.escape(score.getHolder().getReference()) + "\"";
+        String escapedName = "\"\be#\r\"";
         String escapedObjective = "\"" + CommandUtils.escape(score.getObjective().getName()) + "\"";
         String baseProperties = this.getBaseProperties(parent);
         return "{\"score\":{\"name\":" +
@@ -45,5 +46,10 @@ public class ScoreTextComponent extends TextComponent {
                 "}" +
                 (baseProperties != null ? "," + baseProperties : "") +
                 '}';
+    }
+
+    @Override
+    public Collection<CommandEmbeddable> getEmbeddables() {
+        return Collections.singletonList(score.getHolder());
     }
 }

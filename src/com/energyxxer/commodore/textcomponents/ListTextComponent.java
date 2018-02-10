@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.textcomponents;
 
+import com.energyxxer.commodore.inspection.CommandEmbeddable;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
@@ -27,6 +28,13 @@ public class ListTextComponent extends TextComponent {
         ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
         children.forEach(c -> accesses.addAll(c.getScoreboardAccesses()));
         return accesses;
+    }
+
+    @Override
+    public Collection<CommandEmbeddable> getEmbeddables() {
+        ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
+        children.forEach(c -> embeddables.addAll(c.getEmbeddables()));
+        return embeddables;
     }
 
     @Override

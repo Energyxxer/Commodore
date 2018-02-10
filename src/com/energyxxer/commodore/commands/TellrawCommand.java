@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.inspection.CommandEmbeddable;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
@@ -21,7 +22,14 @@ public class TellrawCommand implements Command {
 
     @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "tellraw \be0 " + message, player);
+        String raw = message.toString();
+        Collection<CommandEmbeddable> embeddables = message.getEmbeddables();
+        for(int i = 1; i <= embeddables.size(); i++) {
+            raw = raw.replaceFirst("\be#", "\be" + i);
+        }
+        ArrayList<CommandEmbeddable> allEmbeddables = new ArrayList<>(embeddables);
+        allEmbeddables.add(0, player);
+        return new CommandResolution(execContext, "tellraw \be0 " + raw, allEmbeddables);
     }
 
     @Override @NotNull
