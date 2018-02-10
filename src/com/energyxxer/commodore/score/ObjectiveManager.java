@@ -10,6 +10,7 @@ public class ObjectiveManager {
     private final CommandModule owner;
 
     private HashMap<String, Objective> objectives = new HashMap<>();
+    private Function creationFunction;
 
     public ObjectiveManager(CommandModule owner) {
         this.owner = owner;
@@ -56,8 +57,18 @@ public class ObjectiveManager {
         return owner;
     }
 
-    public void dumpObjectiveCreators(Function function) {
+    private void dumpObjectiveCreators(Function function) {
         objectives.values().forEach(o -> function.append(o.getObjectiveCreator()));
+    }
+
+    public void setCreationFunction(Function creationFunction) {
+        this.creationFunction = creationFunction;
+    }
+
+    public void compile() {
+        if(creationFunction != null) {
+            dumpObjectiveCreators(creationFunction);
+        }
     }
 
     @Override

@@ -84,9 +84,15 @@ public class Function {
 
     public String getResolvedContent() {
         if(!contentResolved) {
-            StringBuilder sb = new StringBuilder("# ");
-            sb.append(getFullName());
-            sb.append('\n');
+            StringBuilder sb = new StringBuilder();
+
+            {
+                sb.append("# ");
+                sb.append("-------- ");
+                sb.append(getHeader());
+                sb.append(" --------");
+                sb.append('\n');
+            }
 
             for(FunctionWriter writer : content) {
                 String content = writer.toFunctionContent(this);
@@ -145,8 +151,12 @@ public class Function {
         return execContext;
     }
 
+    public String getHeader() {
+        return "[Function " + getFullName() + " : " + content.size() + " " + ((content.size() == 1) ? "entry" : "entries") + "]";
+    }
+
     @Override
     public String toString() {
-        return "[Function " + getFullName() + " : " + content.size() + " " + ((content.size() == 1) ? "entry" : "entries") + "]";
+        return getHeader();
     }
 }

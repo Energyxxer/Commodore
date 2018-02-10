@@ -52,8 +52,8 @@ public class CommandModule {
     }
 
     public void compile(File directory, ModulePackGenerator.OutputType outputType) {
+        objMgr.compile();
         namespaces.values().forEach(Namespace::compile);
-
 
         try {
             new ModulePackGenerator(this, directory, outputType);

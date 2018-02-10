@@ -1,40 +1,8 @@
 package com.energyxxer.commodore;
 
 import com.energyxxer.commodore.block.Block;
-import com.energyxxer.commodore.commands.AdvancementCommand;
-import com.energyxxer.commodore.commands.CloneCommand;
-import com.energyxxer.commodore.commands.CloneFilteredCommand;
-import com.energyxxer.commodore.commands.CloneMaskedCommand;
-import com.energyxxer.commodore.commands.EffectClearCommand;
-import com.energyxxer.commodore.commands.EffectGiveCommand;
-import com.energyxxer.commodore.commands.ExperienceCommand;
-import com.energyxxer.commodore.commands.ExperienceSetCommand;
-import com.energyxxer.commodore.commands.FillCommand;
-import com.energyxxer.commodore.commands.FillDestroyCommand;
-import com.energyxxer.commodore.commands.FillHollowCommand;
-import com.energyxxer.commodore.commands.FillKeepCommand;
-import com.energyxxer.commodore.commands.FillOutlineCommand;
-import com.energyxxer.commodore.commands.FillReplaceCommand;
-import com.energyxxer.commodore.commands.FunctionCommand;
-import com.energyxxer.commodore.commands.GamemodeCommand;
-import com.energyxxer.commodore.commands.GiveCommand;
-import com.energyxxer.commodore.commands.ParticleCommand;
-import com.energyxxer.commodore.commands.PlaySoundCommand;
-import com.energyxxer.commodore.commands.RecipeCommand;
-import com.energyxxer.commodore.commands.SpreadPlayersCommand;
-import com.energyxxer.commodore.commands.StopSoundCommand;
-import com.energyxxer.commodore.commands.SummonCommand;
-import com.energyxxer.commodore.commands.TeleportToCoordsCommand;
-import com.energyxxer.commodore.commands.TeleportToEntityCommand;
-import com.energyxxer.commodore.commands.TellrawCommand;
-import com.energyxxer.commodore.commands.TimeQueryCommand;
-import com.energyxxer.commodore.commands.TriggerCommand;
-import com.energyxxer.commodore.commands.WeatherCommand;
-import com.energyxxer.commodore.commands.execute.ExecuteCommand;
-import com.energyxxer.commodore.commands.execute.ExecuteInDimension;
-import com.energyxxer.commodore.commands.execute.ExecuteStoreBlock;
-import com.energyxxer.commodore.commands.execute.ExecuteStoreEntity;
-import com.energyxxer.commodore.commands.execute.ExecuteStoreScore;
+import com.energyxxer.commodore.commands.*;
+import com.energyxxer.commodore.commands.execute.*;
 import com.energyxxer.commodore.commands.scoreboard.ScoreAdd;
 import com.energyxxer.commodore.commands.scoreboard.ScoreGet;
 import com.energyxxer.commodore.commands.scoreboard.ScorePlayersOperation;
@@ -50,11 +18,7 @@ import com.energyxxer.commodore.functions.FunctionHeaderComment;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.ModulePackGenerator;
-import com.energyxxer.commodore.nbt.NBTPath;
-import com.energyxxer.commodore.nbt.NumericNBTType;
-import com.energyxxer.commodore.nbt.TagByte;
-import com.energyxxer.commodore.nbt.TagCompound;
-import com.energyxxer.commodore.nbt.TagShort;
+import com.energyxxer.commodore.nbt.*;
 import com.energyxxer.commodore.particles.Particle;
 import com.energyxxer.commodore.rotation.Rotation;
 import com.energyxxer.commodore.rotation.RotationUnit;
@@ -62,13 +26,7 @@ import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.MacroScoreHolder;
 import com.energyxxer.commodore.score.Objective;
 import com.energyxxer.commodore.score.ObjectiveManager;
-import com.energyxxer.commodore.selector.AdvancementArgument;
-import com.energyxxer.commodore.selector.LimitArgument;
-import com.energyxxer.commodore.selector.ScoreArgument;
-import com.energyxxer.commodore.selector.Selector;
-import com.energyxxer.commodore.selector.SelectorNumberArgument;
-import com.energyxxer.commodore.selector.TagArgument;
-import com.energyxxer.commodore.selector.TypeArgument;
+import com.energyxxer.commodore.selector.*;
 import com.energyxxer.commodore.selector.advancement.AdvancementCompletionEntry;
 import com.energyxxer.commodore.selector.advancement.AdvancementCriterionEntry;
 import com.energyxxer.commodore.selector.advancement.AdvancementCriterionGroupEntry;
@@ -152,9 +110,8 @@ public final class CommandTest {
         CommandModule module = new CommandModule("Commodore Test", "A simple Commodore test project", "ct");
         StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
         ObjectiveManager objMgr = module.getObjectiveManager();
+        objMgr.setCreationFunction(module.getNamespace("ct").getFunctionManager().create("init_objectives"));
         objMgr.create("return", true);
-
-        Function objectiveInit = module.getNamespace("ct").getFunctionManager().create("init_objectives");
 
         Function function = module.getNamespace("test").getFunctionManager().create("scores");
 
@@ -313,20 +270,13 @@ public final class CommandTest {
         otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new Delta(2, 2, 2), 0, 10, false, player));
         //otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new Delta(2, 2, 2), 0, 10, false, entity));
 
-        objMgr.dumpObjectiveCreators(objectiveInit);
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 
-        System.out.println(function);
         System.out.println(function.getResolvedContent());
-        System.out.println("[End of function]");
 
-        System.out.println(otherFunction);
         System.out.println(otherFunction.getResolvedContent());
-        System.out.println("[End of function]");
 
-        System.out.println(objectiveInit);
-        System.out.println(objectiveInit.getResolvedContent());
-        System.out.println("[End of function]");
+        System.out.println(module.getNamespace("ct").getFunctionManager().get("init_objectives").getResolvedContent());
 
         System.out.println(new NBTPath("Inventory", new NBTPath(0, new NBTPath("tag", new NBTPath("display", new NBTPath("Lore"))))));
         System.out.println(new NBTPath("Inventory", new NBTPath(0, new NBTPath("tag", new NBTPath("display", new NBTPath("Lore", new NBTPath(0)))))));
