@@ -19,6 +19,8 @@ public class GamemodeCommand implements Command {
     public GamemodeCommand(GamemodeType gamemode, Entity player) {
         this.gamemode = gamemode;
         this.player = player;
+
+        if(!player.isPlayer()) throw new IllegalArgumentException("Provided entity '" + player + "' includes non-player entities, expected only players");
     }
 
     @Override

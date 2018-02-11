@@ -20,6 +20,8 @@ public class SpawnpointCommand implements Command {
     public SpawnpointCommand(Entity player, CoordinateSet pos) {
         this.player = player;
         this.pos = pos;
+
+        if(!player.isPlayer()) throw new IllegalArgumentException("Provided entity '" + player + "' includes non-player entities, expected only players");
     }
 
     @Override

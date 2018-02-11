@@ -50,6 +50,8 @@ public class PlaySoundCommand implements Command {
         this.maxVolume = maxVolume;
         this.pitch = pitch;
         this.minVolume = minVolume;
+
+        if(!player.isPlayer()) throw new IllegalArgumentException("Provided entity '" + player + "' includes non-player entities, expected only players");
     }
 
     @Override
