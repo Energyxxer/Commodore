@@ -1,4 +1,4 @@
-package com.energyxxer.commodore;
+package com.energyxxer.commodoretest;
 
 import com.energyxxer.commodore.block.Block;
 import com.energyxxer.commodore.commands.advancement.AdvancementCommand;
