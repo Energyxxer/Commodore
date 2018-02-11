@@ -19,6 +19,7 @@ import com.energyxxer.commodore.commands.fill.*;
 import com.energyxxer.commodore.commands.function.FunctionCommand;
 import com.energyxxer.commodore.commands.gamemode.GamemodeCommand;
 import com.energyxxer.commodore.commands.give.GiveCommand;
+import com.energyxxer.commodore.commands.locate.LocateCommand;
 import com.energyxxer.commodore.commands.particle.ParticleCommand;
 import com.energyxxer.commodore.commands.playsound.PlaySoundCommand;
 import com.energyxxer.commodore.commands.recipe.RecipeCommand;
@@ -315,6 +316,8 @@ public final class CommandTest {
         otherFunction.append(new TeamOptionCommand(blu, TeamOptionCommand.TeamOptionKey.COLLISION_RULE, TeamOptionCommand.AppliesTo.OTHER_TEAMS));
         otherFunction.append(new TeamOptionCommand(blu, TeamOptionCommand.TeamOptionKey.FRIENDLY_FIRE, true));
         otherFunction.append(new TeamOptionCommand(blu, TeamOptionCommand.TeamOptionKey.COLOR, TextColor.GOLD));
+
+        otherFunction.append(new LocateCommand(module.minecraft.getTypeManager().structure.get("Village")));
 
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 

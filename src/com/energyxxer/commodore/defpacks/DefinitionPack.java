@@ -25,7 +25,8 @@ public class DefinitionPack {
         ENCHANTMENT((m) -> m.enchantment),
         DIFFICULTY((m) -> m.difficulty),
         DIMENSION((m) -> m.dimension),
-        GAMEMODE((m) -> m.gamemode);
+        GAMEMODE((m) -> m.gamemode),
+        STRUCTURE((m) -> m.structure);
 
         private final DictionaryPicker picker;
 
@@ -54,6 +55,7 @@ public class DefinitionPack {
         definitions.put(DIFFICULTY, new ArrayList<>());
         definitions.put(DIMENSION, new ArrayList<>());
         definitions.put(GAMEMODE, new ArrayList<>());
+        definitions.put(STRUCTURE, new ArrayList<>());
     }
 
     public void load() {
@@ -71,9 +73,10 @@ public class DefinitionPack {
         JsonObject difficulties = gson.fromJson(new InputStreamReader(DefinitionPack.class.getResourceAsStream("/defpacks/" + packDir + "/difficulties.json")), JsonObject.class);
         JsonObject dimensions = gson.fromJson(new InputStreamReader(DefinitionPack.class.getResourceAsStream("/defpacks/" + packDir + "/dimensions.json")), JsonObject.class);
         JsonObject gamemodes = gson.fromJson(new InputStreamReader(DefinitionPack.class.getResourceAsStream("/defpacks/" + packDir + "/gamemodes.json")), JsonObject.class);
+        JsonObject structures = gson.fromJson(new InputStreamReader(DefinitionPack.class.getResourceAsStream("/defpacks/" + packDir + "/structures.json")), JsonObject.class);
 
-        DefinitionCategory[] categories = {BLOCK, ITEM, EFFECT, ENTITY, PARTICLE, ENCHANTMENT, DIFFICULTY, DIMENSION, GAMEMODE};
-        JsonObject[] objects = {blocks, items, effects, entities, particles, enchantments, difficulties, dimensions, gamemodes};
+        DefinitionCategory[] categories = {BLOCK, ITEM, EFFECT, ENTITY, PARTICLE, ENCHANTMENT, DIFFICULTY, DIMENSION, GAMEMODE, STRUCTURE};
+        JsonObject[] objects = {blocks, items, effects, entities, particles, enchantments, difficulties, dimensions, gamemodes, structures};
 
         for(int i = 0; i < categories.length; i++) {
             for(Map.Entry<String, JsonElement> entry : objects[i].entrySet()) {
