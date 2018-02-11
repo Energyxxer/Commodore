@@ -57,7 +57,7 @@ public class ParticleCommand implements Command {
         this.count = count;
         this.force = force;
         this.viewers = viewers;
-        viewers.assertPlayer();
+        if(viewers != null) viewers.assertPlayer();
     }
 
     @Override

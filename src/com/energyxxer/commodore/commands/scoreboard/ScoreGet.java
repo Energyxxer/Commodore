@@ -34,6 +34,6 @@ public class ScoreGet implements Command {
 
     @Override
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "# use score " + score);
+        return new CommandResolution(execContext, "scoreboard players get \be0 " + score.getObjective(), score.getHolder());
     }
 }
