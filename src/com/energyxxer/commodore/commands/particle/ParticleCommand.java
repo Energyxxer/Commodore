@@ -57,7 +57,7 @@ public class ParticleCommand implements Command {
         this.count = count;
         this.force = force;
         this.viewers = viewers;
-        if(viewers != null && !viewers.isPlayer()) throw new IllegalArgumentException("Provided viewer entity '" + viewers + "' includes non-player entities, expected only players");
+        viewers.assertPlayer();
     }
 
     @Override

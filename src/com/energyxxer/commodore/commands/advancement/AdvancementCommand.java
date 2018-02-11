@@ -43,7 +43,7 @@ public class AdvancementCommand implements Command {
         this.limit = limit;
         this.advancement = advancement;
 
-        if(!player.isPlayer()) throw new IllegalArgumentException("Provided entity '" + player + "' includes non-player entities, expected only players");
+        player.assertPlayer();
 
         if(advancement != null && !limit.takesAdvancement)
             System.out.println("[Commodore] [NOTICE] Limit '" + limit + "' doesn't require an advancement parameter, yet '" + advancement + "' was passed");

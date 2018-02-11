@@ -28,7 +28,7 @@ public class RecipeCommand implements Command {
         this.player = player;
         this.recipeName = recipeName;
 
-        if(!player.isPlayer()) throw new IllegalArgumentException("Provided entity '" + player + "' includes non-player entities, expected only players");
+        player.assertPlayer();
     }
 
     @Override

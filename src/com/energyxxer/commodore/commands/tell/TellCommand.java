@@ -18,7 +18,7 @@ public class TellCommand implements Command {
         this.player = player;
         this.message = message;
 
-        if(!player.isPlayer()) throw new IllegalArgumentException("Provided entity '" + player + "' includes non-player entities, expected only players");
+        player.assertPlayer();
     }
 
     @Override

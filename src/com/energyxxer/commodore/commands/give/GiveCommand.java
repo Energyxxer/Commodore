@@ -26,7 +26,7 @@ public class GiveCommand implements Command {
         this.item = item;
         this.count = count;
 
-        if(!player.isPlayer()) throw new IllegalArgumentException("Provided entity '" + player + "' includes non-player entities, expected only players");
+        player.assertPlayer();
 
         if(!item.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual items");
     }

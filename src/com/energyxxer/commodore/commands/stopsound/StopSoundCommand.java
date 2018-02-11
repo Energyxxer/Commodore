@@ -30,7 +30,7 @@ public class StopSoundCommand implements Command {
         this.source = source;
         this.sound = sound;
 
-        if(!player.isPlayer()) throw new IllegalArgumentException("Provided entity '" + player + "' includes non-player entities, expected only players");
+        player.assertPlayer();
     }
 
     @Override

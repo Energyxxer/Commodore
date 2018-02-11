@@ -12,7 +12,7 @@ public class BossbarSetPlayersCommand extends BossbarSetCommand {
     public BossbarSetPlayersCommand(BossbarReference reference, Entity players) {
         super(reference);
 
-        if(!players.isPlayer()) throw new IllegalArgumentException("Provided entity '" + players + "' includes non-player entities, expected only players");
+        players.assertPlayer();
 
         this.players = players;
     }

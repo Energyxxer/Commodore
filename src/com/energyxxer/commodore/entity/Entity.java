@@ -35,4 +35,8 @@ public interface Entity extends CommandExecutor, ScoreHolder, Cloneable, Command
     Entity clone();
 
     boolean isPlayer();
+
+    default void assertPlayer() {
+        if(!isPlayer()) throw new IllegalArgumentException("Provided entity '" + this + "' includes non-player entities, expected only players");
+    }
 }

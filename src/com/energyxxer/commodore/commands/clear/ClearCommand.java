@@ -26,7 +26,7 @@ public class ClearCommand implements Command {
         this.item = item;
         this.maxCount = maxCount;
 
-        if(!player.isPlayer()) throw new IllegalArgumentException("Provided entity '" + player + "' includes non-player entities, expected only players");
+        player.assertPlayer();
     }
 
     @Override
