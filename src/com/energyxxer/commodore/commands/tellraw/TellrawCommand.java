@@ -19,6 +19,8 @@ public class TellrawCommand implements Command {
     public TellrawCommand(Entity player, TextComponent message) {
         this.player = player;
         this.message = message;
+
+        if(!player.isPlayer()) throw new IllegalArgumentException("Provided entity '" + player + "' includes non-player entities, expected only players");
     }
 
     @Override

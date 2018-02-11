@@ -2,6 +2,11 @@ package com.energyxxer.commodore;
 
 import com.energyxxer.commodore.block.Block;
 import com.energyxxer.commodore.commands.advancement.AdvancementCommand;
+import com.energyxxer.commodore.commands.bossbar.BossbarCommand;
+import com.energyxxer.commodore.commands.bossbar.BossbarCreateCommand;
+import com.energyxxer.commodore.commands.bossbar.set.BossbarSetColorCommand;
+import com.energyxxer.commodore.commands.bossbar.set.BossbarSetPlayersCommand;
+import com.energyxxer.commodore.commands.bossbar.set.BossbarSetStyleCommand;
 import com.energyxxer.commodore.commands.clone.CloneCommand;
 import com.energyxxer.commodore.commands.clone.CloneFilteredCommand;
 import com.energyxxer.commodore.commands.clone.CloneMaskedCommand;
@@ -57,6 +62,10 @@ import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.tags.BlockTag;
 import com.energyxxer.commodore.tags.FunctionTag;
 import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
+import com.energyxxer.commodore.textcomponents.StringTextComponent;
+import com.energyxxer.commodore.textcomponents.TextColor;
+import com.energyxxer.commodore.textcomponents.TextStyle;
+import com.energyxxer.commodore.types.BossbarReference;
 import com.energyxxer.commodore.types.EntityType;
 import com.energyxxer.commodore.types.FunctionReference;
 import com.energyxxer.commodore.types.ItemType;
@@ -292,6 +301,13 @@ public final class CommandTest {
         otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new Delta(2, 2, 2), 0, 10, true));
         otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new Delta(2, 2, 2), 0, 10, false, player));
         //otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new Delta(2, 2, 2), 0, 10, false, entity));
+
+        BossbarReference bb = new BossbarReference(module.minecraft, "stamina");
+
+        otherFunction.append(new BossbarCreateCommand(bb, new StringTextComponent("Stamina", new TextStyle(TextColor.WHITE))));
+        otherFunction.append(new BossbarSetColorCommand(bb, BossbarCommand.BossbarColor.BLUE));
+        otherFunction.append(new BossbarSetStyleCommand(bb, BossbarCommand.BossbarStyle.NOTCHED_6));
+        otherFunction.append(new BossbarSetPlayersCommand(bb, player));
 
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 
