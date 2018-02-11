@@ -22,14 +22,6 @@ public class CommandResolution {
         this(execContext, raw, Arrays.asList(embeddables));
     }
 
-    private void resolveEmbeddableEntities() {
-        for(int i = 0; i < embeddables.size(); i++) {
-            if(embeddables.get(i) instanceof Entity) {
-                embeddables.set(i, ((Entity) embeddables.get(i)).resolveFor(execContext));
-            }
-        }
-    }
-
     /**
      * Really weak code; prone to infinite loops if some knobhead makes two self-referencing entity/modifier pairs
      **/
@@ -89,13 +81,15 @@ public class CommandResolution {
     }
 
     public String construct() {
-        resolveEmbeddableEntities();
-
         ArrayList<ExecuteModifier> modifiers = new ArrayList<>(this.execContext.getModifiers());
 
-        for(CommandEmbeddable embeddable : embeddables) {
-            if(embeddable instanceof EntityResolution) {
-                modifiers.addAll(((EntityResolution) embeddable).getModifiers());
+        for(int i = 0; i < embeddables.size(); i++) {
+            CommandEmbeddable embeddable = embeddables.get(i);
+            if(embeddable instanceof Entity) {
+                EntityResolution resolution = ((Entity) embeddable).resolveFor(new ExecutionContext(execContext.getOriginalSender(), modifiers));
+
+                modifiers.addAll(resolution.getModifiers());
+                embeddables.set(i, resolution);
             }
         }
 
