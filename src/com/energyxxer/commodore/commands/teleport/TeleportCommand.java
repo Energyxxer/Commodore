@@ -18,8 +18,16 @@ public class TeleportCommand implements Command {
     private TeleportDestination destination;
     private TeleportFacing facing;
 
+    public TeleportCommand(TeleportDestination destination) {
+        this(null, destination);
+    }
+
     public TeleportCommand(Entity victim, TeleportDestination destination) {
         this(victim, destination, null);
+    }
+
+    public TeleportCommand(TeleportDestination destination, TeleportFacing facing) {
+        this(null, destination, facing);
     }
 
     public TeleportCommand(Entity victim, TeleportDestination destination, TeleportFacing facing) {
@@ -38,12 +46,19 @@ public class TeleportCommand implements Command {
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
-        embeddables.add(victim);
+        if(victim != null) embeddables.add(victim);
         embeddables.addAll(destination.getEmbeddables());
         if(facing != null) embeddables.addAll(facing.getEmbeddables());
 
-        String str = "tp \be# " + destination.getRaw();
-        if(facing != null) str += " " + facing.getRaw();
+        StringBuilder sb = new StringBuilder("tp ");
+        if(victim != null) sb.append("\be# ");
+        sb.append(destination.getRaw());
+        if(facing != null) {
+            sb.append(' ');
+            sb.append(facing.getRaw());
+        }
+
+        String str = sb.toString();
 
         for(int i = 0; i < embeddables.size(); i++) {
             str = str.replaceFirst("\be#","\be" + i);
