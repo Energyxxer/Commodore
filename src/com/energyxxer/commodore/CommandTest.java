@@ -37,6 +37,10 @@ import com.energyxxer.commodore.commands.tellraw.TellrawCommand;
 import com.energyxxer.commodore.commands.time.TimeQueryCommand;
 import com.energyxxer.commodore.commands.trigger.TriggerCommand;
 import com.energyxxer.commodore.commands.weather.WeatherCommand;
+import com.energyxxer.commodore.commands.worldborder.WorldBorderSetCenter;
+import com.energyxxer.commodore.commands.worldborder.WorldBorderSetDamageAmount;
+import com.energyxxer.commodore.commands.worldborder.WorldBorderSetDistance;
+import com.energyxxer.commodore.commands.worldborder.WorldBorderSetWarningDistance;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.effect.StatusEffect;
@@ -320,6 +324,12 @@ public final class CommandTest {
         otherFunction.append(new LocateCommand(module.minecraft.getTypeManager().structure.get("Village")));
 
         otherFunction.append(new EnchantCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), module.minecraft.getTypeManager().enchantment.get("looting"), 3));
+
+        otherFunction.append(new WorldBorderSetCenter(new CoordinateSet(-2000, 0, 70)));
+        otherFunction.append(new WorldBorderSetDistance(200));
+        otherFunction.append(new WorldBorderSetDistance(100, 10));
+        otherFunction.append(new WorldBorderSetWarningDistance(8));
+        otherFunction.append(new WorldBorderSetDamageAmount(2));
 
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 

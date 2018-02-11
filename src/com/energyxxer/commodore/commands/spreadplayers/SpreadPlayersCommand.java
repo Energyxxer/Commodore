@@ -30,7 +30,7 @@ public class SpreadPlayersCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "spreadplayers " + center.getX().getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + center.getZ().getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + CommandUtils.toString(spreadDistance) + " " + CommandUtils.toString(maxRange) + " " + respectTeams + " \be0", targets);
+        return new CommandResolution(execContext, "spreadplayers " + center.getXZAs(Coordinate.DisplayMode.ENTITY_POS) + " " + CommandUtils.toString(spreadDistance) + " " + CommandUtils.toString(maxRange) + " " + respectTeams + " \be0", targets);
     }
 
     @Override @NotNull

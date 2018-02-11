@@ -30,6 +30,10 @@ public class CoordinateSet implements ExecuteModifier {
         return x.getAs(mode) + " " + y.getAs(mode) + " " + z.getAs(mode);
     }
 
+    public String getXZAs(Coordinate.DisplayMode mode) {
+        return x.getAs(mode) + " " + z.getAs(mode);
+    }
+
     public Coordinate getX() {
         return x;
     }
