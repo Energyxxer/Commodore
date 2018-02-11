@@ -6,11 +6,13 @@ import com.energyxxer.commodore.score.LocalScore;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 
 public class ExecuteStoreScore extends ExecuteStore {
     private LocalScore score;
+
+    private Collection<ScoreboardAccess> accesses = null;
 
     public ExecuteStoreScore(LocalScore score) {
         this.score = score;
@@ -26,9 +28,17 @@ public class ExecuteStoreScore extends ExecuteStore {
         return new SubCommandResult(execContext, this.getStarter() + "score \be0 " + score.getObjective().getName(), score.getHolder());
     }
 
+    private void createScoreboardAccesses() {
+        if(accesses != null) return;
+        accesses = new ArrayList<>();
+        if(score.getHolder() instanceof Entity) accesses.addAll(((Entity) score.getHolder()).getScoreboardAccesses());
+        accesses.add(new ScoreboardAccess(score.getMacroScores(), ScoreboardAccess.AccessType.WRITE));
+    }
+
     @Override
     public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return (score.getHolder() instanceof Entity) ? ((Entity) score.getHolder()).getScoreboardAccesses() : Collections.emptyList();
+        if(accesses == null) createScoreboardAccesses();
+        return accesses;
     }
 
     @Override
