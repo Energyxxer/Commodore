@@ -29,6 +29,8 @@ import com.energyxxer.commodore.commands.scoreboard.ScoreSet;
 import com.energyxxer.commodore.commands.spreadplayers.SpreadPlayersCommand;
 import com.energyxxer.commodore.commands.stopsound.StopSoundCommand;
 import com.energyxxer.commodore.commands.summon.SummonCommand;
+import com.energyxxer.commodore.commands.team.TeamCreateCommand;
+import com.energyxxer.commodore.commands.team.TeamOptionCommand;
 import com.energyxxer.commodore.commands.teleport.TeleportToCoordsCommand;
 import com.energyxxer.commodore.commands.teleport.TeleportToEntityCommand;
 import com.energyxxer.commodore.commands.tellraw.TellrawCommand;
@@ -65,10 +67,7 @@ import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
 import com.energyxxer.commodore.textcomponents.StringTextComponent;
 import com.energyxxer.commodore.textcomponents.TextColor;
 import com.energyxxer.commodore.textcomponents.TextStyle;
-import com.energyxxer.commodore.types.BossbarReference;
-import com.energyxxer.commodore.types.EntityType;
-import com.energyxxer.commodore.types.FunctionReference;
-import com.energyxxer.commodore.types.ItemType;
+import com.energyxxer.commodore.types.*;
 import com.energyxxer.commodore.util.Delta;
 
 import java.io.File;
@@ -308,6 +307,14 @@ public final class CommandTest {
         otherFunction.append(new BossbarSetColorCommand(bb, BossbarCommand.BossbarColor.BLUE));
         otherFunction.append(new BossbarSetStyleCommand(bb, BossbarCommand.BossbarStyle.NOTCHED_6));
         otherFunction.append(new BossbarSetPlayersCommand(bb, player));
+
+        TeamReference blu = new TeamReference("blu");
+
+        otherFunction.append(new TeamCreateCommand(blu, "Blue Team"));
+        otherFunction.append(new TeamOptionCommand(blu, TeamOptionCommand.TeamOptionKey.DEATH_MESSAGE_VISIBILITY, TeamOptionCommand.AppliesTo.OTHER_TEAMS));
+        otherFunction.append(new TeamOptionCommand(blu, TeamOptionCommand.TeamOptionKey.COLLISION_RULE, TeamOptionCommand.AppliesTo.OTHER_TEAMS));
+        otherFunction.append(new TeamOptionCommand(blu, TeamOptionCommand.TeamOptionKey.FRIENDLY_FIRE, true));
+        otherFunction.append(new TeamOptionCommand(blu, TeamOptionCommand.TeamOptionKey.COLOR, TextColor.GOLD));
 
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 
