@@ -32,8 +32,8 @@ public class YawArgument implements SelectorArgument {
 
     @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
-        //Despite being a rotation argument, it is not affected in any way by the executing entity's rotation;
-        //it only matters what the selected entities' rotation is.
+        //Despite being a facing argument, it is not affected in any way by the executing entity's facing;
+        //it only matters what the selected entities' facing is.
         return null;
     }
 

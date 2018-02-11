@@ -30,8 +30,9 @@ import com.energyxxer.commodore.commands.stopsound.StopSoundCommand;
 import com.energyxxer.commodore.commands.summon.SummonCommand;
 import com.energyxxer.commodore.commands.team.TeamCreateCommand;
 import com.energyxxer.commodore.commands.team.TeamOptionCommand;
-import com.energyxxer.commodore.commands.teleport.TeleportToCoordsCommand;
-import com.energyxxer.commodore.commands.teleport.TeleportToEntityCommand;
+import com.energyxxer.commodore.commands.teleport.TeleportCommand;
+import com.energyxxer.commodore.commands.teleport.destination.TeleportDestination;
+import com.energyxxer.commodore.commands.teleport.facing.TeleportFacing;
 import com.energyxxer.commodore.commands.tellraw.TellrawCommand;
 import com.energyxxer.commodore.commands.time.TimeQueryCommand;
 import com.energyxxer.commodore.commands.trigger.TriggerCommand;
@@ -188,11 +189,11 @@ public final class CommandTest {
 
         function.append(new SummonCommand(bat, new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new TagCompound(new TagByte("Glowing", 1))));
 
-        function.append(new TeleportToCoordsCommand(player, new CoordinateSet(0, 0, 2, Coordinate.Type.LOCAL), new Rotation(12.5, 0, RotationUnit.Type.RELATIVE)));
+        function.append(new TeleportCommand(player, TeleportDestination.create(new CoordinateSet(0, 0, 2, Coordinate.Type.LOCAL)), TeleportFacing.create(new Rotation(12.5, 0, RotationUnit.Type.RELATIVE))));
         Selector singlePlayerSelector = player.getSelector().clone();
         singlePlayerSelector.addArguments(new LimitArgument(1));
         Entity singlePlayer = new GenericEntity(singlePlayerSelector);
-        function.append(new TeleportToEntityCommand(entity, singlePlayer));
+        function.append(new TeleportCommand(entity, TeleportDestination.create(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE)), TeleportFacing.create(singlePlayer)));
 
         Objective t = module.getObjectiveManager().create("t", "trigger");
 
