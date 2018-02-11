@@ -4,11 +4,11 @@ import com.energyxxer.commodore.module.Namespace;
 
 public class TagManager {
 
-    private Namespace namespace;
+    private final Namespace namespace;
 
-    private TagGroup<BlockTag> blockTags;
-    private TagGroup<ItemTag> itemTags;
-    private TagGroup<FunctionTag> functionTags;
+    private final TagGroup<BlockTag> blockTags;
+    private final TagGroup<ItemTag> itemTags;
+    private final TagGroup<FunctionTag> functionTags;
 
     public TagManager(Namespace namespace) {
         this.namespace = namespace;

@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.nbt;
 
 public class TagShort extends NBTTag {
-    private short value;
+    private final short value;
 
     public TagShort(int value) {
         this("", value);

@@ -12,13 +12,13 @@ import java.util.Collection;
 
 public class KillCommand implements Command {
 
-    private Entity entity;
+    private final Entity entity;
 
     public KillCommand(Entity entity) {
         this.entity = entity;
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "kill \be0", entity);
     }

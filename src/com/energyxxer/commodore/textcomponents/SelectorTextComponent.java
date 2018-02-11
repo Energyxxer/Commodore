@@ -8,7 +8,7 @@ import java.util.Collections;
 
 public class SelectorTextComponent extends TextComponent {
 
-    private Entity entity;
+    private final Entity entity;
 
     public SelectorTextComponent(Entity entity) {
         this(entity, null);

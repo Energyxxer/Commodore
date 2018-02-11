@@ -6,8 +6,8 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import java.util.regex.Matcher;
 
 public class TagArgument implements SelectorArgument {
-    private String tag;
-    private boolean negated;
+    private final String tag;
+    private final boolean negated;
 
     public TagArgument(String tag) {
         if(tag.startsWith("!")) {

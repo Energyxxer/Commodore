@@ -5,13 +5,14 @@ import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.item.Item;
+import org.jetbrains.annotations.NotNull;
 
 public class ReplaceItemBlockCommand extends ReplaceItemCommand {
 
-    private CoordinateSet pos;
-    private String slot;
-    private Item item;
-    private int count;
+    private final CoordinateSet pos;
+    private final String slot;
+    private final Item item;
+    private final int count;
 
     public ReplaceItemBlockCommand(CoordinateSet pos, String slot, Item item) {
         this(pos, slot, item, 1);
@@ -26,7 +27,7 @@ public class ReplaceItemBlockCommand extends ReplaceItemCommand {
         if(!item.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual items");
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "replaceitem block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + slot + " " + item + (count != 1 ? " " + count : ""));
     }

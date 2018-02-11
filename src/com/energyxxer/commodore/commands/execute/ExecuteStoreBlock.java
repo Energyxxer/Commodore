@@ -8,13 +8,13 @@ import com.energyxxer.commodore.nbt.NBTPath;
 import com.energyxxer.commodore.nbt.NumericNBTType;
 
 public class ExecuteStoreBlock extends ExecuteStore {
-    private CoordinateSet position;
-    private NBTPath path;
-    private NumericNBTType type;
-    private double scale;
+    private final CoordinateSet position;
+    private final NBTPath path;
+    private final NumericNBTType type;
+    private final double scale;
 
     public ExecuteStoreBlock(CoordinateSet position, NBTPath path, NumericNBTType type) {
-        this(StoreValue.getDefault(), position, path, type);
+        this(StoreValue.DEFAULT, position, path, type);
     }
 
     public ExecuteStoreBlock(StoreValue storeValue, CoordinateSet position, NBTPath path, NumericNBTType type) {
@@ -22,7 +22,7 @@ public class ExecuteStoreBlock extends ExecuteStore {
     }
 
     public ExecuteStoreBlock(CoordinateSet position, NBTPath path, NumericNBTType type, double scale) {
-        this(StoreValue.getDefault(), position, path, type, scale);
+        this(StoreValue.DEFAULT, position, path, type, scale);
     }
 
     public ExecuteStoreBlock(StoreValue storeValue, CoordinateSet position, NBTPath path, NumericNBTType type, double scale) {

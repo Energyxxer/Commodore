@@ -13,10 +13,10 @@ public class ExecuteConditionRegion extends ExecuteCondition {
 
     //If region matches the template
 
-    private CoordinateSet region0;
-    private CoordinateSet region1;
-    private CoordinateSet template;
-    private AirPolicy policy;
+    private final CoordinateSet region0;
+    private final CoordinateSet region1;
+    private final CoordinateSet template;
+    private final AirPolicy policy;
 
     public ExecuteConditionRegion(ConditionType flowController, CoordinateSet region0, CoordinateSet region1, CoordinateSet template) {
         this(flowController, region0, region1, template, AirPolicy.ALL);

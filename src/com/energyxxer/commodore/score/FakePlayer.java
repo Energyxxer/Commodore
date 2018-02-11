@@ -4,9 +4,9 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class FakePlayer implements ScoreHolder {
-    private String name;
+    private final String name;
 
-    private MacroScoreHolder macroHolder;
+    private final MacroScoreHolder macroHolder;
 
     public FakePlayer(String name) {
         this.name = name;

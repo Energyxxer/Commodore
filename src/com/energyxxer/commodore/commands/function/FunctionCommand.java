@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class FunctionCommand implements Command {
-    private FunctionReference reference;
+    private final FunctionReference reference;
     private ExecutionContext execContext = null;
     private Collection<ScoreboardAccess> accesses = null;
 
@@ -23,7 +23,7 @@ public class FunctionCommand implements Command {
         this.reference = reference;
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "function " + reference);
     }

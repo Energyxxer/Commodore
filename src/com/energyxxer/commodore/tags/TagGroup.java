@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class TagGroup<T extends Tag> {
-    private Namespace namespace;
-    private String groupName;
-    private ArrayList<T> tags = new ArrayList<>();
+    private final Namespace namespace;
+    private final String groupName;
+    private final ArrayList<T> tags = new ArrayList<>();
 
-    private TagInstantiator<T> instantiator;
+    private final TagInstantiator<T> instantiator;
 
     public TagGroup(Namespace namespace, String groupName, TagInstantiator<T> instantiator) {
         this.namespace = namespace;

@@ -4,9 +4,10 @@ import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.types.EffectType;
+import org.jetbrains.annotations.NotNull;
 
 public class EffectClearCommand extends EffectCommand {
-    private EffectType type;
+    private final EffectType type;
 
     public EffectClearCommand(Entity entity) {
         this(entity, null);
@@ -17,7 +18,7 @@ public class EffectClearCommand extends EffectCommand {
         this.type = type;
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "effect clear \be0" + ((type != null) ? " " + type : ""), entity);
     }

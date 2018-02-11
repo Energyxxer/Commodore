@@ -5,8 +5,8 @@ import com.energyxxer.commodore.types.GamemodeType;
 
 public class GamemodeArgument implements SelectorArgument {
 
-    private GamemodeType gamemode;
-    private boolean negated;
+    private final GamemodeType gamemode;
+    private final boolean negated;
 
     public GamemodeArgument(GamemodeType gamemode) {
         this(gamemode, false);

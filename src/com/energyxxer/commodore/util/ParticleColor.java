@@ -5,9 +5,9 @@ import com.energyxxer.commodore.CommandUtils;
 import java.awt.*;
 
 public class ParticleColor {
-    private double red;
-    private double green;
-    private double blue;
+    private final double red;
+    private final double green;
+    private final double blue;
 
     //If all three values are 1 or under, it's the exact color.
 

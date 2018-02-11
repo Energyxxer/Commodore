@@ -7,7 +7,7 @@ import java.util.*;
 
 public class AdvancementArgument implements SelectorArgument {
 
-    private List<AdvancementArgumentEntry> entries = new ArrayList<>();
+    private final List<AdvancementArgumentEntry> entries = new ArrayList<>();
 
     public AdvancementArgument() {
     }

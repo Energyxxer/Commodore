@@ -5,7 +5,7 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class DistanceArgument implements SelectorArgument {
 
-    private SelectorNumberArgument<Double> distance;
+    private final SelectorNumberArgument<Double> distance;
 
     public DistanceArgument(SelectorNumberArgument<Double> distance) {
         this.distance = distance;

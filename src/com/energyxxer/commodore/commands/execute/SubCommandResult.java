@@ -9,9 +9,9 @@ import java.util.Arrays;
 import java.util.Collection;
 
 public class SubCommandResult {
-    private ExecutionContext execContext;
-    private String raw;
-    private ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
+    private final ExecutionContext execContext;
+    private final String raw;
+    private final ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
 
     public SubCommandResult(ExecutionContext execContext, String raw, Collection<CommandEmbeddable> embeddables) {
         this.execContext = execContext;

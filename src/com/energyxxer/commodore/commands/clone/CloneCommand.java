@@ -5,6 +5,7 @@ import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
+import org.jetbrains.annotations.NotNull;
 
 public class CloneCommand implements Command {
 
@@ -14,12 +15,12 @@ public class CloneCommand implements Command {
         public static final SourceMode DEFAULT = NORMAL;
     }
 
-    protected CoordinateSet source1;
-    protected CoordinateSet source2;
+    protected final CoordinateSet source1;
+    protected final CoordinateSet source2;
 
-    protected CoordinateSet destination;
+    protected final CoordinateSet destination;
 
-    protected SourceMode sourceMode;
+    protected final SourceMode sourceMode;
 
     public CloneCommand(CoordinateSet source1, CoordinateSet source2, CoordinateSet destination) {
         this(source1, source2, destination, SourceMode.DEFAULT);
@@ -44,7 +45,7 @@ public class CloneCommand implements Command {
         return (sourceMode != SourceMode.DEFAULT) ? " " + sourceMode.toString().toLowerCase() : "";
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, getBase() + getMaskExtra() + getSourceModeExtra());
     }

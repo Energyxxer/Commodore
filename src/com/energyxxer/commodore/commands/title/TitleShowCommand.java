@@ -16,8 +16,8 @@ public class TitleShowCommand extends TitleCommand {
         TITLE, SUBTITLE, ACTIONBAR
     }
 
-    private Display display;
-    private TextComponent message;
+    private final Display display;
+    private final TextComponent message;
 
     public TitleShowCommand(Entity player, Display display, TextComponent message) {
         super(player);
@@ -25,7 +25,7 @@ public class TitleShowCommand extends TitleCommand {
         this.message = message;
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         String raw = message.toString();
         Collection<CommandEmbeddable> embeddables = message.getEmbeddables();

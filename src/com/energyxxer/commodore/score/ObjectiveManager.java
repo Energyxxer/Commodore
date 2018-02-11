@@ -9,7 +9,7 @@ public class ObjectiveManager {
 
     private final CommandModule owner;
 
-    private HashMap<String, Objective> objectives = new HashMap<>();
+    private final HashMap<String, Objective> objectives = new HashMap<>();
     private Function creationFunction;
 
     public ObjectiveManager(CommandModule owner) {

@@ -7,8 +7,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SelectorNumberArgument<T extends Number> implements Cloneable {
-    private T min;
-    private T max;
+    private final T min;
+    private final T max;
 
     public SelectorNumberArgument(T min, T max) {
         this.min = min;
@@ -76,8 +76,8 @@ public class SelectorNumberArgument<T extends Number> implements Cloneable {
 }
 
 class SelectorNumberArgumentParseResult<T extends Number> {
-    String raw;
-    SelectorNumberArgument<T> result;
+    final String raw;
+    final SelectorNumberArgument<T> result;
 
     public SelectorNumberArgumentParseResult(String raw, SelectorNumberArgument<T> result) {
         this.raw = raw;

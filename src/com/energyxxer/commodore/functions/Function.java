@@ -19,17 +19,17 @@ import java.util.Collection;
 public class Function {
     private final FunctionManager parent;
 
-    private Namespace namespace;
-    private String path;
-    private ArrayList<FunctionWriter> content = new ArrayList<>();
-    private ExecutionContext execContext;
-    private MacroScoreHolder senderMacro;
+    private final Namespace namespace;
+    private final String path;
+    private final ArrayList<FunctionWriter> content = new ArrayList<>();
+    private final ExecutionContext execContext;
+    private final MacroScoreHolder senderMacro;
 
     private boolean accessesResolved = false;
     private boolean contentResolved = false;
     private String resolvedContent = null;
 
-    private ScoreAccessLog accessLog = new ScoreAccessLog(this);
+    private final ScoreAccessLog accessLog = new ScoreAccessLog(this);
 
     Function(FunctionManager parent, Namespace namespace, String path) {
         this(parent, namespace, path, null);

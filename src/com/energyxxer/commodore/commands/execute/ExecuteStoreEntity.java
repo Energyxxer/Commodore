@@ -11,13 +11,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class ExecuteStoreEntity extends ExecuteStore {
-    private Entity entity;
-    private NBTPath path;
-    private NumericNBTType type;
-    private double scale;
+    private final Entity entity;
+    private final NBTPath path;
+    private final NumericNBTType type;
+    private final double scale;
 
     public ExecuteStoreEntity(Entity entity, NBTPath path, NumericNBTType type) {
-        this(StoreValue.getDefault(), entity, path, type);
+        this(StoreValue.DEFAULT, entity, path, type);
     }
 
     public ExecuteStoreEntity(StoreValue storeValue, Entity entity, NBTPath path, NumericNBTType type) {
@@ -25,7 +25,7 @@ public class ExecuteStoreEntity extends ExecuteStore {
     }
 
     public ExecuteStoreEntity(Entity entity, NBTPath path, NumericNBTType type, double scale) {
-        this(StoreValue.getDefault(), entity, path, type, scale);
+        this(StoreValue.DEFAULT, entity, path, type, scale);
     }
 
     public ExecuteStoreEntity(StoreValue storeValue, Entity entity, NBTPath path, NumericNBTType type, double scale) {

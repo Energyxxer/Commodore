@@ -1,15 +1,11 @@
 package com.energyxxer.commodore.selector.advancement;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class AdvancementCriterionGroupEntry implements AdvancementArgumentEntry {
 
-    private String advancementName;
-    private List<AdvancementCriterionEntry> criteria = new ArrayList<>();
+    private final String advancementName;
+    private final List<AdvancementCriterionEntry> criteria = new ArrayList<>();
 
     public AdvancementCriterionGroupEntry(String advancementName) {
         this.advancementName = advancementName;

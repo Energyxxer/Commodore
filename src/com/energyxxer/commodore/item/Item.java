@@ -4,8 +4,8 @@ import com.energyxxer.commodore.nbt.TagCompound;
 import com.energyxxer.commodore.types.ItemType;
 
 public class Item {
-    private ItemType type;
-    private TagCompound nbt;
+    private final ItemType type;
+    private final TagCompound nbt;
 
     public Item(ItemType type) {
         this(type, null);

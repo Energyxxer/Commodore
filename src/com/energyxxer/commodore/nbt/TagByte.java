@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.nbt;
 
 public class TagByte extends NBTTag {
-    private byte value;
+    private final byte value;
 
     public TagByte(int value) {
         this((byte) value);

@@ -5,9 +5,9 @@ import com.energyxxer.commodore.module.Namespace;
 import java.util.HashMap;
 
 public abstract class Type {
-    private Namespace namespace;
-    private String name;
-    private HashMap<String, String> properties = new HashMap<>();
+    private final Namespace namespace;
+    private final String name;
+    private final HashMap<String, String> properties = new HashMap<>();
 
     public Type(Namespace namespace, String name) {
         this.namespace = namespace;

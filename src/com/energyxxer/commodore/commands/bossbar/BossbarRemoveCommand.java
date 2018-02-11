@@ -6,7 +6,7 @@ import com.energyxxer.commodore.types.BossbarReference;
 import org.jetbrains.annotations.NotNull;
 
 public class BossbarRemoveCommand extends BossbarCommand {
-    private BossbarReference reference;
+    private final BossbarReference reference;
 
     public BossbarRemoveCommand(BossbarReference reference) {
         this.reference = reference;

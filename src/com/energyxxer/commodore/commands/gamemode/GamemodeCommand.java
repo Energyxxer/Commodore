@@ -13,8 +13,8 @@ import java.util.Collection;
 
 public class GamemodeCommand implements Command {
 
-    private GamemodeType gamemode;
-    private Entity player;
+    private final GamemodeType gamemode;
+    private final Entity player;
 
     public GamemodeCommand(GamemodeType gamemode, Entity player) {
         this.gamemode = gamemode;
@@ -23,7 +23,7 @@ public class GamemodeCommand implements Command {
         player.assertPlayer();
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "gamemode " + gamemode + " \be0", player);
     }

@@ -11,7 +11,7 @@ import java.util.Collection;
 
 public class ExecuteRotatedAsEntity implements ExecuteModifier {
 
-    private Entity entity;
+    private final Entity entity;
 
     public ExecuteRotatedAsEntity(Entity entity) {
         this.entity = entity;

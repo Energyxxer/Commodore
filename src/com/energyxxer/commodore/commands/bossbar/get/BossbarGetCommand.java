@@ -7,7 +7,7 @@ import com.energyxxer.commodore.types.BossbarReference;
 import org.jetbrains.annotations.NotNull;
 
 public abstract class BossbarGetCommand extends BossbarCommand {
-    protected BossbarReference reference;
+    protected final BossbarReference reference;
 
     public BossbarGetCommand(BossbarReference reference) {
         this.reference = reference;

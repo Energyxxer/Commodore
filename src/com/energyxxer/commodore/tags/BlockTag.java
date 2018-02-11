@@ -10,7 +10,7 @@ import java.util.Collection;
 public class BlockTag extends BlockType implements Tag {
 
     public static final TagInstantiator<BlockTag> INSTANTIATOR = BlockTag::new;
-    private ArrayList<BlockType> values = new ArrayList<>();
+    private final ArrayList<BlockType> values = new ArrayList<>();
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
 
     BlockTag(Namespace namespace, String id) {

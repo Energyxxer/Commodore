@@ -9,7 +9,7 @@ import java.util.Collection;
 
 public class FunctionTag extends FunctionReference implements Tag {
 
-    private ArrayList<FunctionReference> values = new ArrayList<>();
+    private final ArrayList<FunctionReference> values = new ArrayList<>();
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
 
     public static final TagInstantiator<FunctionTag> INSTANTIATOR = FunctionTag::new;

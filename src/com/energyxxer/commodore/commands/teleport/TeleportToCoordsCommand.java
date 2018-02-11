@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class TeleportToCoordsCommand extends TeleportCommand {
-    private Entity entity;
-    private CoordinateSet pos;
-    private Rotation rotation;
+    private final Entity entity;
+    private final CoordinateSet pos;
+    private final Rotation rotation;
 
     public TeleportToCoordsCommand(Entity entity, CoordinateSet pos) {
         this(entity, pos, null);
@@ -27,7 +27,7 @@ public class TeleportToCoordsCommand extends TeleportCommand {
         this.rotation = rotation;
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "tp \be0 " + pos.getAs(Coordinate.DisplayMode.ENTITY_POS) + (rotation != null ? " " + rotation : ""), entity);
     }

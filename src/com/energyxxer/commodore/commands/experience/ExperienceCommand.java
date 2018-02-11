@@ -14,7 +14,7 @@ public abstract class ExperienceCommand implements Command {
         POINTS, LEVELS
     }
 
-    protected Entity player;
+    protected final Entity player;
 
     public ExperienceCommand(Entity player) {
         this.player = player;

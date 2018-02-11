@@ -13,10 +13,10 @@ import java.util.Collection;
 
 public class ScoreSet implements Command {
 
-    private LocalScore score;
-    private int value;
+    private final LocalScore score;
+    private final int value;
 
-    private ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
+    private final ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
 
     public ScoreSet(LocalScore score, int value) {
         this.score = score;
@@ -29,7 +29,7 @@ public class ScoreSet implements Command {
         this.accesses.add(new ScoreboardAccess(score.getMacroScores(), ScoreboardAccess.AccessType.WRITE));
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "scoreboard players set \be0 " + score.getObjective().getName() + " " + value, score.getHolder());
     }
@@ -37,5 +37,10 @@ public class ScoreSet implements Command {
     @Override @NotNull
     public Collection<ScoreboardAccess> getScoreboardAccesses() {
         return accesses;
+    }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
     }
 }

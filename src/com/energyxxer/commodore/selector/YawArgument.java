@@ -4,7 +4,7 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class YawArgument implements SelectorArgument {
 
-    private SelectorNumberArgument<Double> value;
+    private final SelectorNumberArgument<Double> value;
 
     public YawArgument(SelectorNumberArgument<Double> value) {
         this.value = value;

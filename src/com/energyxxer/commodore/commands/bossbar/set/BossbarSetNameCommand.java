@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class BossbarSetNameCommand extends BossbarSetCommand {
-    private TextComponent name;
+    private final TextComponent name;
 
     public BossbarSetNameCommand(BossbarReference reference, TextComponent name) {
         super(reference);

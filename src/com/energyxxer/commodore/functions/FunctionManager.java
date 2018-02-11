@@ -9,7 +9,7 @@ public class FunctionManager {
 
     private final Namespace namespace;
 
-    private HashMap<String, Function> functions = new HashMap<>();
+    private final HashMap<String, Function> functions = new HashMap<>();
 
     public FunctionManager(Namespace namespace) {
         this.namespace = namespace;

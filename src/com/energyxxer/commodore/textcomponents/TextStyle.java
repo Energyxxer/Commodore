@@ -107,8 +107,7 @@ public class TextStyle {
 
         TextStyle textStyle = (TextStyle) o;
 
-        if(flags != textStyle.flags) return false;
-        return color == textStyle.color;
+        return flags == textStyle.flags && color == textStyle.color;
     }
 
     @Override

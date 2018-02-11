@@ -18,7 +18,7 @@ public enum TextColor {
     YELLOW('e'),
     WHITE('f');
 
-    private char code;
+    private final char code;
 
     TextColor(char code) {
         this.code = code;

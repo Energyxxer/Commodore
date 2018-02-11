@@ -27,17 +27,17 @@ public class DefinitionPack {
         DIMENSION((m) -> m.dimension),
         GAMEMODE((m) -> m.gamemode);
 
-        private DictionaryPicker picker;
+        private final DictionaryPicker picker;
 
         DefinitionCategory(DictionaryPicker picker) {
             this.picker = picker;
         }
     }
 
-    private String packName;
-    private String packDir;
+    private final String packName;
+    private final String packDir;
 
-    private HashMap<DefinitionCategory, ArrayList<DefinitionBlueprint>> definitions = new HashMap<>();
+    private final HashMap<DefinitionCategory, ArrayList<DefinitionBlueprint>> definitions = new HashMap<>();
 
     private boolean loaded = false;
 
@@ -111,9 +111,9 @@ public class DefinitionPack {
 }
 
 class DefinitionBlueprint {
-    String namespace;
-    String name;
-    HashMap<String, String> properties;
+    final String namespace;
+    final String name;
+    final HashMap<String, String> properties;
 
     public DefinitionBlueprint(String name) {
         this(name, null);

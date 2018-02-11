@@ -6,11 +6,11 @@ import java.util.HashMap;
 
 public class TypeDictionary<T extends Type> {
 
-    private Namespace namespace;
-    private String category;
+    private final Namespace namespace;
+    private final String category;
 
-    private HashMap<String, T> types = new HashMap<>();
-    private TypeInstantiator<T> instantiator;
+    private final HashMap<String, T> types = new HashMap<>();
+    private final TypeInstantiator<T> instantiator;
 
     public TypeDictionary(Namespace namespace, String category, TypeInstantiator<T> instantiator) {
         this.namespace = namespace;

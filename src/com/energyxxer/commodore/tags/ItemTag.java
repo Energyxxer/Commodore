@@ -9,7 +9,7 @@ import java.util.Collection;
 
 public class ItemTag extends ItemType implements Tag {
 
-    private ArrayList<ItemType> values = new ArrayList<>();
+    private final ArrayList<ItemType> values = new ArrayList<>();
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
 
     public static final TagInstantiator<ItemTag> INSTANTIATOR = ItemTag::new;

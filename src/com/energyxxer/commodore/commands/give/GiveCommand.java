@@ -13,9 +13,9 @@ import java.util.Collection;
 
 public class GiveCommand implements Command {
 
-    private Entity player;
-    private Item item;
-    private int count;
+    private final Entity player;
+    private final Item item;
+    private final int count;
 
     public GiveCommand(Entity player, Item item) {
         this(player, item, 1);
@@ -31,7 +31,7 @@ public class GiveCommand implements Command {
         if(!item.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual items");
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "give \be0 " + item + (count != 1 ? " " + count : ""), player);
     }

@@ -4,15 +4,13 @@ public abstract class ExecuteStore implements ExecuteModifier {
     public enum StoreValue {
         RESULT, SUCCESS;
 
-        public static StoreValue getDefault() {
-            return RESULT;
-        }
+        public static final StoreValue DEFAULT = RESULT;
     }
 
-    protected StoreValue storeValue;
+    protected final StoreValue storeValue;
 
     public ExecuteStore() {
-        this(StoreValue.getDefault());
+        this(StoreValue.DEFAULT);
     }
 
     public ExecuteStore(StoreValue storeValue) {

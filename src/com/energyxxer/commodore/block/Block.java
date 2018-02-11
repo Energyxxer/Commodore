@@ -4,9 +4,9 @@ import com.energyxxer.commodore.nbt.TagCompound;
 import com.energyxxer.commodore.types.BlockType;
 
 public class Block {
-    private BlockType type;
+    private final BlockType type;
     private Blockstate state;
-    private TagCompound nbt;
+    private final TagCompound nbt;
 
     public Block(BlockType type) {
         this(type, null, null);

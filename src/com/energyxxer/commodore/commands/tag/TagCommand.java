@@ -15,9 +15,9 @@ public class TagCommand implements Command {
         ADD, REMOVE
     }
 
-    private Action action;
-    private Entity entity;
-    private String tag;
+    private final Action action;
+    private final Entity entity;
+    private final String tag;
 
     public TagCommand(Action action, Entity entity, String tag) {
         this.action = action;
@@ -25,7 +25,7 @@ public class TagCommand implements Command {
         this.tag = tag;
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "tag" + action.toString().toLowerCase() + " \be0 " + tag, entity);
     }

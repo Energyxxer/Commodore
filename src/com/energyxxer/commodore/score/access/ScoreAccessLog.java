@@ -12,7 +12,7 @@ public class ScoreAccessLog {
     private final Function parent;
     private boolean resolved = false;
     private ArrayList<ScoreboardAccess> finalAccesses = null;
-    private ArrayList<ScoreboardAccess> log = new ArrayList<>();
+    private final ArrayList<ScoreboardAccess> log = new ArrayList<>();
 
     public ScoreAccessLog(Function parent) {
         this.parent = parent;
@@ -97,8 +97,8 @@ public class ScoreAccessLog {
 }
 
 class MacroScoreAccessLog {
-    private ArrayList<MacroScore> usedMacroScores = new ArrayList<>();
-    private ArrayList<Objective> seenObjectives = new ArrayList<>();
+    private final ArrayList<MacroScore> usedMacroScores = new ArrayList<>();
+    private final ArrayList<Objective> seenObjectives = new ArrayList<>();
 
     void addUsed(Collection<MacroScore> scores) {
         scores.forEach(s -> {

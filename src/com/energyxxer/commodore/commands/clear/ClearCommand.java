@@ -13,9 +13,9 @@ import java.util.Collection;
 
 public class ClearCommand implements Command {
 
-    private Entity player;
-    private Item item;
-    private int maxCount;
+    private final Entity player;
+    private final Item item;
+    private final int maxCount;
 
     public ClearCommand(Entity player, Item item) {
         this(player, item, -1);
@@ -29,7 +29,7 @@ public class ClearCommand implements Command {
         player.assertPlayer();
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "clear \be0 " + item + ((maxCount >= 0) ? " " + maxCount : ""), player);
     }

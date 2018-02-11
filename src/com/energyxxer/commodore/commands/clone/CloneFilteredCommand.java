@@ -5,7 +5,7 @@ import com.energyxxer.commodore.coordinates.CoordinateSet;
 
 public class CloneFilteredCommand extends CloneCommand {
 
-    private Block block;
+    private final Block block;
 
     public CloneFilteredCommand(CoordinateSet source1, CoordinateSet source2, CoordinateSet destination, Block block) {
         super(source1, source2, destination);

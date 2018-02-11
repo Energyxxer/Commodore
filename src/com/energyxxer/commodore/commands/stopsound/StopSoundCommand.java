@@ -13,9 +13,9 @@ import java.util.Collection;
 
 public class StopSoundCommand implements Command {
 
-    private Entity player;
-    private PlaySoundCommand.Source source;
-    private String sound;
+    private final Entity player;
+    private final PlaySoundCommand.Source source;
+    private final String sound;
 
     public StopSoundCommand(Entity player) {
         this(player, null);
@@ -33,7 +33,7 @@ public class StopSoundCommand implements Command {
         player.assertPlayer();
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "stopsound \be0" + (source != null ? " " + source.toString().toLowerCase() + (sound != null ? " " + sound : "") : (sound != null ? " * " + sound : "")), player);
     }

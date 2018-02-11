@@ -3,14 +3,12 @@ package com.energyxxer.commodore.commands.execute;
 import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
-import static com.energyxxer.commodore.commands.execute.ExecuteCondition.ConditionType.IF;
-
 public abstract class ExecuteCondition implements ExecuteModifier {
     public enum ConditionType {
         IF, UNLESS
     }
 
-    protected ConditionType type = IF;
+    protected ConditionType type;
 
     public ExecuteCondition(ConditionType type) {
         this.type = type;

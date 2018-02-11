@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.nbt;
 
 public class TagDouble extends NBTTag {
-    private double value;
+    private final double value;
 
     public TagDouble(double value) {
         this("", value);

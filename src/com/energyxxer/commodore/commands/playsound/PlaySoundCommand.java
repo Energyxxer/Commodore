@@ -18,13 +18,13 @@ public class PlaySoundCommand implements Command {
         AMBIENT, BLOCK, HOSTILE, MASTER, MUSIC, NEUTRAL, PLAYER, RECORD, VOICE, WEATHER
     }
 
-    private String sound;
-    private Source source;
-    private Entity player;
-    private CoordinateSet location;
-    private float maxVolume;
-    private float pitch;
-    private float minVolume;
+    private final String sound;
+    private final Source source;
+    private final Entity player;
+    private final CoordinateSet location;
+    private final float maxVolume;
+    private final float pitch;
+    private final float minVolume;
 
     public PlaySoundCommand(String sound, Source source, Entity player) {
         this(sound, source, player, null);
@@ -54,7 +54,7 @@ public class PlaySoundCommand implements Command {
         player.assertPlayer();
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "playsound " +
                 sound + " " +

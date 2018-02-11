@@ -23,12 +23,12 @@ public class Selector implements Cloneable {
         ALL_ENTITIES("e", SortArgument.SortType.ARBITRARY, -1, false),
         SENDER("s", SortArgument.SortType.ARBITRARY, 1, true);
 
-        private String header;
+        private final String header;
 
-        private SortArgument.SortType defaultSort;
+        private final SortArgument.SortType defaultSort;
 
-        private int limit;
-        private boolean player;
+        private final int limit;
+        private final boolean player;
         BaseSelector(String header, SortArgument.SortType defaultSort, int limit, boolean player) {
             this.header = header;
             this.defaultSort = defaultSort;
@@ -53,8 +53,8 @@ public class Selector implements Cloneable {
         }
 
     }
-    private BaseSelector base;
-    private ArrayList<SelectorArgument> args = new ArrayList<>();
+    private final BaseSelector base;
+    private final ArrayList<SelectorArgument> args = new ArrayList<>();
 
     public Selector(BaseSelector base) {
         this.base = base;
@@ -320,7 +320,7 @@ public class Selector implements Cloneable {
 
 class SelectorArgumentParseResult {
     String raw;
-    SelectorArgument arg;
+    final SelectorArgument arg;
 
     public SelectorArgumentParseResult(String raw, SelectorArgument arg) {
         this.raw = raw;

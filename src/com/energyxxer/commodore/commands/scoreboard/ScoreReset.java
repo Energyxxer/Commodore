@@ -11,12 +11,13 @@ import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class ScoreReset implements Command {
-    private Entity entity;
-    private Objective objective;
+    private final Entity entity;
+    private final Objective objective;
 
-    private ArrayList<ScoreboardAccess> accesses;
+    private final ArrayList<ScoreboardAccess> accesses;
 
     public ScoreReset() {
         this(null, null);
@@ -39,6 +40,11 @@ public class ScoreReset implements Command {
         if(entity != null && objective != null) {
             accesses.add(new ScoreboardAccess(new LocalScore(objective, entity).getMacroScores(), ScoreboardAccess.AccessType.WRITE));
         }
+    }
+
+    @Override
+    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
+        return accesses;
     }
 
     @Override

@@ -5,13 +5,11 @@ import com.energyxxer.commodore.textcomponents.TextEvent;
 
 public class ClickEvent extends TextEvent {
     public enum Action {
-        RUN_COMMAND, SUGGEST_COMMAND, OPEN_URL
+        RUN_COMMAND, SUGGEST_COMMAND, OPEN_URL;
     }
 
-    ;
-
-    private Action action;
-    private String value;
+    private final Action action;
+    private final String value;
 
     public ClickEvent(Action action, String value) {
         this.action = action;

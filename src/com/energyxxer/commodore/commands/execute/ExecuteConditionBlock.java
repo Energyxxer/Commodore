@@ -7,8 +7,8 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.types.BlockType;
 
 public class ExecuteConditionBlock extends ExecuteCondition {
-    public CoordinateSet pos;
-    public BlockType blockType;
+    public final CoordinateSet pos;
+    public final BlockType blockType;
 
     public ExecuteConditionBlock(ConditionType flowController, CoordinateSet pos, BlockType blockType) {
         super(flowController);

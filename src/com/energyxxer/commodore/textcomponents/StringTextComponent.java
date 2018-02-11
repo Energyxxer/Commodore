@@ -3,7 +3,7 @@ package com.energyxxer.commodore.textcomponents;
 import com.energyxxer.commodore.CommandUtils;
 
 public class StringTextComponent extends TextComponent {
-    private String text;
+    private final String text;
 
     public StringTextComponent(String text) {
         this.text = text;

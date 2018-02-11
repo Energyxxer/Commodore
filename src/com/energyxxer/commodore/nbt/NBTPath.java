@@ -2,8 +2,8 @@ package com.energyxxer.commodore.nbt;
 
 public class NBTPath {
 
-    private NBTPathNode node;
-    private NBTPath next;
+    private final NBTPathNode node;
+    private final NBTPath next;
 
     public NBTPath(String key) {
         this(key, null);
@@ -44,7 +44,7 @@ interface NBTPathNode {
 }
 
 class NBTPathKey implements NBTPathNode {
-    private String name;
+    private final String name;
 
     public NBTPathKey(String name) {
         this.name = name;
@@ -62,7 +62,7 @@ class NBTPathKey implements NBTPathNode {
 }
 
 class NBTPathIndex implements NBTPathNode {
-    private int index;
+    private final int index;
 
     public NBTPathIndex(int index) {
         this.index = index;

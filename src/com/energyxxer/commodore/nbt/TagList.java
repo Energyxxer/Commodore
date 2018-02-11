@@ -6,7 +6,7 @@ import java.util.Collection;
 import java.util.Iterator;
 
 public class TagList extends NBTTag {
-    private ArrayList<NBTTag> content = new ArrayList<>();
+    private final ArrayList<NBTTag> content = new ArrayList<>();
 
     public TagList() {
         this("");

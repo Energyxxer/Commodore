@@ -13,10 +13,10 @@ import java.util.Collection;
 
 public class ScoreAdd implements Command {
 
-    private LocalScore score;
-    private int delta;
+    private final LocalScore score;
+    private final int delta;
 
-    private ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
+    private final ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
 
     public ScoreAdd(LocalScore score, int delta) {
         this.score = score;
@@ -37,8 +37,13 @@ public class ScoreAdd implements Command {
         return accesses;
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "scoreboard players add \be0 " + score.getObjective().getName() + " " + delta, score.getHolder());
+    }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
     }
 }

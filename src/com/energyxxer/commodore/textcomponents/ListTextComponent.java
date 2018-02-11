@@ -9,7 +9,7 @@ import java.util.Collection;
 
 public class ListTextComponent extends TextComponent {
 
-    private ArrayList<TextComponent> children = new ArrayList<>();
+    private final ArrayList<TextComponent> children = new ArrayList<>();
 
     public ListTextComponent() {
     }

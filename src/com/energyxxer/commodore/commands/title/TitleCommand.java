@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public abstract class TitleCommand implements Command {
-    protected Entity player;
+    protected final Entity player;
 
     public TitleCommand(Entity player) {
         this.player = player;

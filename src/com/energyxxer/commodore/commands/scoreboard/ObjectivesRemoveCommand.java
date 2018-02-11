@@ -7,7 +7,7 @@ import com.energyxxer.commodore.score.Objective;
 import org.jetbrains.annotations.NotNull;
 
 public class ObjectivesRemoveCommand implements Command {
-    private Objective objective;
+    private final Objective objective;
 
     public ObjectivesRemoveCommand(Objective objective) {
         this.objective = objective;

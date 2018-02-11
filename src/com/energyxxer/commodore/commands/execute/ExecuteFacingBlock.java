@@ -7,7 +7,7 @@ import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class ExecuteFacingBlock implements ExecuteModifier {
-    private CoordinateSet pos;
+    private final CoordinateSet pos;
 
     public ExecuteFacingBlock(CoordinateSet pos) {
         this.pos = pos;

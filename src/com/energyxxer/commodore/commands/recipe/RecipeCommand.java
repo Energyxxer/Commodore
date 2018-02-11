@@ -15,9 +15,9 @@ public class RecipeCommand implements Command {
         GIVE, TAKE
     }
 
-    private Action action;
-    private Entity player;
-    private String recipeName;
+    private final Action action;
+    private final Entity player;
+    private final String recipeName;
 
     public RecipeCommand(Action action, Entity player) {
         this(action, player, "*");
@@ -31,7 +31,7 @@ public class RecipeCommand implements Command {
         player.assertPlayer();
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "recipe " + action.toString().toLowerCase() + " \be0 " + recipeName, player);
     }

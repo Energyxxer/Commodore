@@ -5,7 +5,7 @@ import com.energyxxer.commodore.coordinates.CoordinateSet;
 
 public class FillReplaceCommand extends FillCommand {
 
-    private Block replace;
+    private final Block replace;
 
     public FillReplaceCommand(CoordinateSet pos1, CoordinateSet pos2, Block block, Block replace) {
         super(pos1, pos2, block);

@@ -29,7 +29,7 @@ public class SetObjectiveDisplayCommand implements Command {
         SIDEBAR_TEAM_WHITE("sidebar.team.white"),
         SIDEBAR_TEAM_YELLOW("sidebar.team.yellow");
 
-        private String argumentKey;
+        private final String argumentKey;
 
         ScoreDisplay(String argumentKey) {
             this.argumentKey = argumentKey;
@@ -40,8 +40,8 @@ public class SetObjectiveDisplayCommand implements Command {
         }
     }
 
-    private Objective objective;
-    private ScoreDisplay slot;
+    private final Objective objective;
+    private final ScoreDisplay slot;
 
     public SetObjectiveDisplayCommand(Objective objective, ScoreDisplay slot) {
         this.objective = objective;

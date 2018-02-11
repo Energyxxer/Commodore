@@ -12,8 +12,8 @@ import java.util.Collections;
 
 public class ExecuteConditionScoreMatch extends ExecuteCondition {
 
-    private LocalScore target;
-    private SelectorNumberArgument range;
+    private final LocalScore target;
+    private final SelectorNumberArgument range;
 
     public ExecuteConditionScoreMatch(ConditionType flowController, LocalScore target, SelectorNumberArgument range) {
         super(flowController);

@@ -11,7 +11,7 @@ public interface Tag<T extends Type> {
     enum OverridePolicy {
         REPLACE(true), APPEND(false);
 
-        boolean valueBool;
+        final boolean valueBool;
 
         public static final OverridePolicy DEFAULT_POLICY = APPEND;
 

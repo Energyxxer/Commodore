@@ -11,7 +11,7 @@ public class SortArgument implements SelectorArgument {
     public enum SortType {
         NEAREST(true), FURTHEST(true), RANDOM(false), ARBITRARY(false);
 
-        private boolean positionSensitive;
+        private final boolean positionSensitive;
 
         SortType(boolean positionSensitive) {
             this.positionSensitive = positionSensitive;
@@ -22,7 +22,7 @@ public class SortArgument implements SelectorArgument {
         }
 
     }
-    private SortType type;
+    private final SortType type;
 
     public SortArgument(SortType type) {
         this.type = type;

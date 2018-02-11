@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class Blockstate {
-    private HashMap<String, String> map = new HashMap<>();
+    private final HashMap<String, String> map = new HashMap<>();
 
     public Blockstate() {
     }

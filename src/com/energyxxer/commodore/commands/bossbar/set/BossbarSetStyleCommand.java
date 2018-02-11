@@ -6,7 +6,7 @@ import com.energyxxer.commodore.types.BossbarReference;
 import org.jetbrains.annotations.NotNull;
 
 public class BossbarSetStyleCommand extends BossbarSetCommand {
-    private BossbarStyle style;
+    private final BossbarStyle style;
 
     public BossbarSetStyleCommand(BossbarReference reference, BossbarStyle style) {
         super(reference);

@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class ExecuteConditionEntity extends ExecuteCondition {
-    public Entity entity;
+    public final Entity entity;
 
     public ExecuteConditionEntity(ConditionType flowController, Entity entity) {
         super(flowController);

@@ -1,8 +1,8 @@
 package com.energyxxer.commodore.score;
 
 public class MacroScore {
-    private MacroScoreHolder holder;
-    private Objective objective;
+    private final MacroScoreHolder holder;
+    private final Objective objective;
 
     public MacroScore(MacroScoreHolder holder, Objective objective) {
         this.holder = holder;

@@ -4,7 +4,7 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class LevelArgument implements SelectorArgument {
 
-    private SelectorNumberArgument<Integer> value;
+    private final SelectorNumberArgument<Integer> value;
 
     public LevelArgument(SelectorNumberArgument<Integer> value) {
         this.value = value;

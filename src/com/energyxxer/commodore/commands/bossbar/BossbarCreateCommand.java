@@ -11,8 +11,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class BossbarCreateCommand extends BossbarCommand {
-    private BossbarReference bossbar;
-    private TextComponent name;
+    private final BossbarReference bossbar;
+    private final TextComponent name;
 
     public BossbarCreateCommand(BossbarReference bossbar) {
         this(bossbar, null);

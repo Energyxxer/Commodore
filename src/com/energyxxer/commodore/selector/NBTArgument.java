@@ -4,7 +4,7 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.nbt.TagCompound;
 
 public class NBTArgument implements SelectorArgument {
-    private TagCompound nbt;
+    private final TagCompound nbt;
     private boolean negated = false;
 
     public NBTArgument(TagCompound nbt) {

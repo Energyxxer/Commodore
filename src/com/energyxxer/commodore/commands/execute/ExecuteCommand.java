@@ -12,8 +12,8 @@ import java.util.Collection;
 
 public class ExecuteCommand implements Command {
 
-    private Command chainedCommand;
-    private ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
+    private final Command chainedCommand;
+    private final ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
 
     public ExecuteCommand(Command chainedCommand) {
         this.chainedCommand = chainedCommand;
@@ -23,7 +23,7 @@ public class ExecuteCommand implements Command {
         this.modifiers.add(modifier);
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         ExecutionContext chainedContext = new ExecutionContext(execContext.getFinalSender(), this.modifiers);
         return chainedCommand.resolveCommand(chainedContext);

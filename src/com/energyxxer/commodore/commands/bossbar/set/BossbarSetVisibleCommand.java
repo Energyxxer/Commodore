@@ -6,7 +6,7 @@ import com.energyxxer.commodore.types.BossbarReference;
 import org.jetbrains.annotations.NotNull;
 
 public class BossbarSetVisibleCommand extends BossbarSetCommand {
-    private boolean visible;
+    private final boolean visible;
 
     public BossbarSetVisibleCommand(BossbarReference reference, boolean visible) {
         super(reference);

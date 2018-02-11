@@ -11,7 +11,7 @@ import java.util.Collection;
 
 public class ExecutePositionedAsEntity implements ExecuteModifier {
 
-    private Entity entity;
+    private final Entity entity;
 
     public ExecutePositionedAsEntity(Entity entity) {
         this.entity = entity;

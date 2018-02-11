@@ -8,11 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -25,14 +21,13 @@ public class ModulePackGenerator {
     }
 
     private final CommandModule module;
-    private File directory;
 
     private String rootPath;
     private File rootFile;
 
     private Gson gson;
 
-    private OutputType outputType;
+    private final OutputType outputType;
 
     private ZipOutputStream zipStream;
 

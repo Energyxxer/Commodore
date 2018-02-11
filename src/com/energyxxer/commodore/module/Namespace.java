@@ -8,9 +8,9 @@ public class Namespace {
     private final CommandModule owner;
     final String name;
 
-    private FunctionManager fncMgr;
-    private TagManager tagMgr;
-    private TypeManager typeMgr;
+    private final FunctionManager fncMgr;
+    private final TagManager tagMgr;
+    private final TypeManager typeMgr;
 
     public Namespace(CommandModule owner, String name) {
         this.owner = owner;
@@ -28,6 +28,10 @@ public class Namespace {
     @Override
     public String toString() {
         return name;
+    }
+
+    public CommandModule getOwner() {
+        return owner;
     }
 
     public String getName() {

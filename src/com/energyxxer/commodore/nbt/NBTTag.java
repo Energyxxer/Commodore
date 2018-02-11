@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.nbt;
 
 public abstract class NBTTag {
-    protected String name;
+    protected final String name;
 
     public static final String ALLOWED_NAME_CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
 
@@ -22,10 +22,7 @@ public abstract class NBTTag {
         }
 
         if(needsQuotes) {
-            StringBuilder sb = new StringBuilder("\"");
-            sb.append(name.replace("\\", "\\\\").replace("\"", "\\\""));
-            sb.append("\"");
-            return sb.toString();
+            return "\"" + name.replace("\\", "\\\\").replace("\"", "\\\"") + "\"";
         } else return name;
     }
 

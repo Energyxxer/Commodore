@@ -7,7 +7,7 @@ import com.energyxxer.commodore.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
 public class ScoreList implements Command {
-    private Entity entity;
+    private final Entity entity;
 
     public ScoreList() {
         this(null);

@@ -14,8 +14,8 @@ import java.util.Collection;
 
 public class SpawnpointCommand implements Command {
 
-    private Entity player;
-    private CoordinateSet pos;
+    private final Entity player;
+    private final CoordinateSet pos;
 
     public SpawnpointCommand(Entity player, CoordinateSet pos) {
         this.player = player;
@@ -24,7 +24,7 @@ public class SpawnpointCommand implements Command {
         player.assertPlayer();
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "spawnpoint \be0 " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS), player);
     }

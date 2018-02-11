@@ -26,9 +26,9 @@ public class AdvancementCommand implements Command {
         }
     }
 
-    private Action action;
-    private Entity player;
-    private Limit limit;
+    private final Action action;
+    private final Entity player;
+    private final Limit limit;
     private String advancement = null;
 
     public AdvancementCommand(Action action, Entity player, Limit limit) {
@@ -49,7 +49,7 @@ public class AdvancementCommand implements Command {
             System.out.println("[Commodore] [NOTICE] Limit '" + limit + "' doesn't require an advancement parameter, yet '" + advancement + "' was passed");
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "advancement " + action.toString().toLowerCase() + " \be0 " + limit.toString().toLowerCase() + ((limit.takesAdvancement) ? " " + advancement : ""), player);
     }

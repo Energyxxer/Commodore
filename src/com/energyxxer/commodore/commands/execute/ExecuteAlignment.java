@@ -5,9 +5,9 @@ import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class ExecuteAlignment implements ExecuteModifier {
-    private boolean x = false;
-    private boolean y = false;
-    private boolean z = false;
+    private boolean x;
+    private boolean y;
+    private boolean z;
 
     public ExecuteAlignment(boolean x, boolean y, boolean z) {
         this.x = x;

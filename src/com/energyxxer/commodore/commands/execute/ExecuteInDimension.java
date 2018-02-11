@@ -6,7 +6,7 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.types.DimensionType;
 
 public class ExecuteInDimension implements ExecuteModifier {
-    private DimensionType dimension;
+    private final DimensionType dimension;
 
     public ExecuteInDimension(DimensionType dimension) {
         this.dimension = dimension;

@@ -8,8 +8,8 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class Rotation implements ExecuteModifier {
 
-    private RotationUnit yaw; //y-rot
-    private RotationUnit pitch; //x-rot
+    private final RotationUnit yaw; //y-rot
+    private final RotationUnit pitch; //x-rot
 
     public Rotation(double yaw, double pitch) {
         this(yaw, pitch, RotationUnit.Type.ABSOLUTE);

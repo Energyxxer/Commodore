@@ -2,6 +2,7 @@ package com.energyxxer.commodore.commands.datapack;
 
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
+import org.jetbrains.annotations.NotNull;
 
 public class DataPackEnableCommand extends DataPackCommand {
 
@@ -15,8 +16,8 @@ public class DataPackEnableCommand extends DataPackCommand {
         }
     }
 
-    private String pack;
-    private Order order;
+    private final String pack;
+    private final Order order;
     private String secondPack = null;
 
     public DataPackEnableCommand(String pack, Order order) {
@@ -35,7 +36,7 @@ public class DataPackEnableCommand extends DataPackCommand {
             System.out.println("[Commodore] [NOTICE] Order '" + order + "' doesn't require a second datapack parameter, yet '" + secondPack + "' was passed");
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "datapack enable " + pack + " " + order.toString().toLowerCase() + (order.takesSecondPack ? " " + secondPack : ""));
     }

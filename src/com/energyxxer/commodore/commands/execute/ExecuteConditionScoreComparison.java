@@ -12,9 +12,9 @@ import java.util.Collection;
 
 public class ExecuteConditionScoreComparison extends ExecuteCondition {
 
-    private LocalScore target;
-    private ScoreComparison comparison;
-    private LocalScore source;
+    private final LocalScore target;
+    private final ScoreComparison comparison;
+    private final LocalScore source;
 
     public ExecuteConditionScoreComparison(ConditionType flowController, LocalScore target, ScoreComparison comparison, LocalScore source) {
         super(flowController);

@@ -17,7 +17,7 @@ public final class CommandUtils {
 
     public static final Pattern DOUBLE_REGEX = Pattern.compile("-?\\d+(?:\\.\\d+)?");
     public static final Pattern INT_REGEX = Pattern.compile("-?\\d+");
-    public static final Pattern SELECTOR_STRING_REGEX = Pattern.compile("[\\w\\.!]+");
+    public static final Pattern SELECTOR_STRING_REGEX = Pattern.compile("[\\w.!]+");
     public static final Pattern DELIMITED_STRING_REGEX = Pattern.compile("(['\"]).+?((?<!\\\\)((\\\\\\\\)+)*\\1)");
 
     private CommandUtils() {

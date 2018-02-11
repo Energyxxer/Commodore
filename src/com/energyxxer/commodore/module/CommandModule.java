@@ -8,13 +8,13 @@ import java.util.HashMap;
 
 public class CommandModule {
 
-    String name;
+    final String name;
     String description;
-    String prefix;
+    final String prefix;
 
-    private ObjectiveManager objMgr;
+    private final ObjectiveManager objMgr;
 
-    HashMap<String, Namespace> namespaces = new HashMap<>();
+    final HashMap<String, Namespace> namespaces = new HashMap<>();
     public final Namespace minecraft;
 
     public CommandModule(String name, String prefix) {

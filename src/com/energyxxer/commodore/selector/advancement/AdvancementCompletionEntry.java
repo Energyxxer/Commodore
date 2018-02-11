@@ -2,8 +2,8 @@ package com.energyxxer.commodore.selector.advancement;
 
 public class AdvancementCompletionEntry implements AdvancementArgumentEntry {
 
-    private String advancementName;
-    private boolean value;
+    private final String advancementName;
+    private final boolean value;
 
     public AdvancementCompletionEntry(String advancementName, boolean value) {
         this.advancementName = advancementName;

@@ -6,10 +6,11 @@ import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.nbt.NBTPath;
+import org.jetbrains.annotations.NotNull;
 
 public class DataRemoveCommand extends DataCommand {
 
-    private NBTPath path;
+    private final NBTPath path;
 
     public DataRemoveCommand(Entity entity, NBTPath path) {
         super(entity);
@@ -21,7 +22,7 @@ public class DataRemoveCommand extends DataCommand {
         this.path = path;
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         if(entity != null) return new CommandResolution(execContext, "data remove entity \be0 " + path, entity);
         return new CommandResolution(execContext, "data remove block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path);

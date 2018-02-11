@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 
 public class DZArgument implements SelectorArgument {
 
-    private double value;
+    private final double value;
 
     public DZArgument(double value) {
         this.value = value;

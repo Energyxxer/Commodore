@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.score;
 
 public class MacroScoreHolder {
-    private String descriptor;
+    private final String descriptor;
 
     public MacroScoreHolder() {
         this("");

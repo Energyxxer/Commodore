@@ -3,7 +3,7 @@ package com.energyxxer.commodore.inspection;
 import java.util.*;
 
 public class ExecutionVariableMap {
-    private HashMap<ExecutionVariable, Boolean> variables = new HashMap<>();
+    private final HashMap<ExecutionVariable, Boolean> variables = new HashMap<>();
 
     public ExecutionVariableMap(ExecutionVariable... usedVariables) {
         List<ExecutionVariable> usedVariablesList = Arrays.asList(usedVariables);

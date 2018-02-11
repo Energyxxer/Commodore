@@ -8,9 +8,9 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class CoordinateSet implements ExecuteModifier {
 
-    private Coordinate x;
-    private Coordinate y;
-    private Coordinate z;
+    private final Coordinate x;
+    private final Coordinate y;
+    private final Coordinate z;
 
     public CoordinateSet(Coordinate x, Coordinate y, Coordinate z) {
         this.x = x;

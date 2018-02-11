@@ -7,7 +7,7 @@ import com.energyxxer.commodore.types.BossbarReference;
 import org.jetbrains.annotations.NotNull;
 
 public class BossbarSetColorCommand extends BossbarSetCommand {
-    private BossbarCommand.BossbarColor color;
+    private final BossbarCommand.BossbarColor color;
 
     public BossbarSetColorCommand(BossbarReference reference, BossbarCommand.BossbarColor color) {
         super(reference);

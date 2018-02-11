@@ -10,8 +10,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class ExecuteFacingEntity implements ExecuteModifier {
-    private Entity entity;
-    private EntityAnchor anchor;
+    private final Entity entity;
+    private final EntityAnchor anchor;
 
     public ExecuteFacingEntity(Entity entity) {
         this(entity, EntityAnchor.FEET);

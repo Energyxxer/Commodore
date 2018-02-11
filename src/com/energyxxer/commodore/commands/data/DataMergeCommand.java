@@ -6,10 +6,11 @@ import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.nbt.TagCompound;
+import org.jetbrains.annotations.NotNull;
 
 public class DataMergeCommand extends DataCommand {
 
-    private TagCompound nbt;
+    private final TagCompound nbt;
 
     public DataMergeCommand(Entity entity, TagCompound nbt) {
         super(entity);
@@ -21,7 +22,7 @@ public class DataMergeCommand extends DataCommand {
         this.nbt = nbt;
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         if(entity != null) return new CommandResolution(execContext, "data merge entity \be0 " + nbt.toHeadlessString(), entity);
         return new CommandResolution(execContext, "data merge block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + nbt.toHeadlessString());

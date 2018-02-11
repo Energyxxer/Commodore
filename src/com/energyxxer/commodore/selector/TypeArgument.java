@@ -8,8 +8,8 @@ import java.util.Collection;
 import java.util.regex.Matcher;
 
 public class TypeArgument implements SelectorArgument {
-    private EntityType type;
-    private boolean negated;
+    private final EntityType type;
+    private final boolean negated;
 
     public TypeArgument(EntityType type) {
         this(type, false);

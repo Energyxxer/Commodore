@@ -9,8 +9,8 @@ public class HoverEvent extends TextEvent {
         SHOW_TEXT, SHOW_ADVANCEMENT, SHOW_ENTITY
     }
 
-    private Action action;
-    private String value;
+    private final Action action;
+    private final String value;
 
     public HoverEvent(Action action, String value) {
         this.action = action;

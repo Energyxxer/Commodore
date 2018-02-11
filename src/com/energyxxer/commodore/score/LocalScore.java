@@ -3,8 +3,8 @@ package com.energyxxer.commodore.score;
 import java.util.ArrayList;
 
 public class LocalScore {
-    private Objective objective;
-    private ScoreHolder holder;
+    private final Objective objective;
+    private final ScoreHolder holder;
 
     public LocalScore(Objective objective, ScoreHolder holder) {
         this.objective = objective;

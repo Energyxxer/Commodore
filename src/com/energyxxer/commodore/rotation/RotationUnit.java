@@ -14,8 +14,8 @@ public class RotationUnit {
         }
     }
 
-    private Type type;
-    private double value;
+    private final Type type;
+    private final double value;
 
     public RotationUnit(double value) {
         this(Type.ABSOLUTE, value);

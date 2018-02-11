@@ -7,7 +7,7 @@ import java.util.*;
 
 public class ScoreArgument implements SelectorArgument {
 
-    private HashMap<Objective, SelectorNumberArgument<Integer>> scores = new HashMap<>();
+    private final HashMap<Objective, SelectorNumberArgument<Integer>> scores = new HashMap<>();
 
     public ScoreArgument() {
     }

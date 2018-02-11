@@ -13,9 +13,9 @@ import java.util.Collection;
 
 public class ScoreGet implements Command {
 
-    private LocalScore score;
+    private final LocalScore score;
 
-    private ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
+    private final ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
 
     public ScoreGet(LocalScore score) {
         this.score = score;
@@ -32,7 +32,7 @@ public class ScoreGet implements Command {
         return accesses;
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "scoreboard players get \be0 " + score.getObjective(), score.getHolder());
     }

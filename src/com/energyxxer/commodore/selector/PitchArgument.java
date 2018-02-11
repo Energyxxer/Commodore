@@ -4,7 +4,7 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class PitchArgument implements SelectorArgument {
 
-    private SelectorNumberArgument<Double> value;
+    private final SelectorNumberArgument<Double> value;
 
     public PitchArgument(SelectorNumberArgument<Double> value) {
         this.value = value;

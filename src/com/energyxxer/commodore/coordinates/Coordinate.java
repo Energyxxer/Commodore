@@ -14,7 +14,7 @@ public class Coordinate {
     public enum DisplayMode {
         BLOCK_POS(true), ENTITY_POS(false);
 
-        boolean truncate;
+        final boolean truncate;
 
         DisplayMode(boolean truncate) {
             this.truncate = truncate;

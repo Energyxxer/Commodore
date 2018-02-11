@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class ExecutionContext {
-    private Entity originalSender;
-    private ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
+    private final Entity originalSender;
+    private final ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
     private Entity finalSender;
 
     public ExecutionContext(Entity sender) {

@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class TellCommand implements Command {
-    private Entity player;
-    private String message;
+    private final Entity player;
+    private final String message;
 
     public TellCommand(Entity player, String message) {
         this.player = player;
@@ -21,7 +21,7 @@ public class TellCommand implements Command {
         player.assertPlayer();
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "tell \be0 " + message, player);
     }

@@ -17,7 +17,7 @@ public class TriggerCommand implements Command {
     public enum Action {
         SET(false), ADD(true);
 
-        boolean readsScore;
+        final boolean readsScore;
 
         Action(boolean readsScore) {
             this.readsScore = readsScore;
@@ -70,7 +70,7 @@ public class TriggerCommand implements Command {
         this.execContext = execContext;
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "trigger " + objective.getName() + (action != Action.ADD || amount != 1 ? " " + action.toString().toLowerCase() + " " + amount : ""));
     }

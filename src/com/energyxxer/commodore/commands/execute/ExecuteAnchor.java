@@ -6,7 +6,7 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 public class ExecuteAnchor implements ExecuteModifier {
 
-    public EntityAnchor anchor;
+    public final EntityAnchor anchor;
 
     public ExecuteAnchor(EntityAnchor anchor) {
         this.anchor = anchor;

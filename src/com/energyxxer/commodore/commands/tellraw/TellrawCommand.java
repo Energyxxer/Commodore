@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class TellrawCommand implements Command {
-    private Entity player;
-    private TextComponent message;
+    private final Entity player;
+    private final TextComponent message;
 
     public TellrawCommand(Entity player, TextComponent message) {
         this.player = player;
@@ -23,7 +23,7 @@ public class TellrawCommand implements Command {
         player.assertPlayer();
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         String raw = message.toString();
         Collection<CommandEmbeddable> embeddables = message.getEmbeddables();

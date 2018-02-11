@@ -16,8 +16,8 @@ public class ScorePlayersOperation implements Command {
     public enum Operation {
         ADD("+="), SUBTRACT("-="), MULTIPLY("*="), DIVIDE("/="), MODULO("%="), LESS_THAN("<"), GREATER_THAN(">"), ASSIGN("=", false);
 
-        private String shorthand;
-        private boolean targetRead;
+        private final String shorthand;
+        private final boolean targetRead;
 
         Operation(String shorthand) {
             this(shorthand, true);
@@ -37,11 +37,11 @@ public class ScorePlayersOperation implements Command {
         }
     }
 
-    private LocalScore target;
-    private Operation operation;
-    private LocalScore source;
+    private final LocalScore target;
+    private final Operation operation;
+    private final LocalScore source;
 
-    private ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
+    private final ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
 
     public ScorePlayersOperation(LocalScore target, Operation operation, LocalScore source) {
         this.target = target;
@@ -75,8 +75,13 @@ public class ScorePlayersOperation implements Command {
         return accesses;
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "scoreboard players operation \be0 " + target.getObjective().getName() + " " + operation.getShorthand() + " \be1 " + source.getObjective().getName(), target.getHolder(), source.getHolder());
+    }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
     }
 }

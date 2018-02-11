@@ -8,8 +8,8 @@ import com.energyxxer.commodore.util.ParticleColor;
 import java.util.ArrayList;
 
 public class Particle {
-    private ParticleType type;
-    private ArrayList<Object> arguments = new ArrayList<>();
+    private final ParticleType type;
+    private final ArrayList<Object> arguments = new ArrayList<>();
 
     public Particle(ParticleType type, Object... arguments) {
         this.type = type;

@@ -10,7 +10,7 @@ import java.util.Collection;
 
 public abstract class EffectCommand implements Command {
 
-    protected Entity entity;
+    protected final Entity entity;
 
     public EffectCommand(Entity entity) {
         this.entity = entity;

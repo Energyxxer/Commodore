@@ -6,12 +6,13 @@ import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.nbt.TagCompound;
 import com.energyxxer.commodore.types.EntityType;
+import org.jetbrains.annotations.NotNull;
 
 public class SummonCommand implements Command {
 
-    private EntityType type;
-    private CoordinateSet pos;
-    private TagCompound data;
+    private final EntityType type;
+    private final CoordinateSet pos;
+    private final TagCompound data;
 
     public SummonCommand(EntityType type) {
         this(type, null);
@@ -29,7 +30,7 @@ public class SummonCommand implements Command {
         if(!type.getProperty("spawnable").equals("true")) throw new IllegalArgumentException("Entity '" + type + "' is not a valid spawnable entity");
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "summon " + type + (pos != null ? " " + pos + (data != null ? " " + data.toHeadlessString() : "") : ""));
     }

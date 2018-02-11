@@ -5,16 +5,12 @@ import com.energyxxer.commodore.commands.execute.ExecuteModifier;
 import com.energyxxer.commodore.commands.execute.SubCommandResult;
 import com.energyxxer.commodore.entity.Entity;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import java.util.*;
 
 public class CommandResolution {
-    private ExecutionContext execContext;
-    private String raw;
-    private ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
+    private final ExecutionContext execContext;
+    private final String raw;
+    private final ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
 
     public CommandResolution(ExecutionContext execContext, String raw, Collection<CommandEmbeddable> embeddables) {
         this.execContext = execContext;
@@ -95,9 +91,7 @@ public class CommandResolution {
     public String construct() {
         resolveEmbeddableEntities();
 
-        ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
-
-        modifiers.addAll(this.execContext.getModifiers());
+        ArrayList<ExecuteModifier> modifiers = new ArrayList<>(this.execContext.getModifiers());
 
         for(CommandEmbeddable embeddable : embeddables) {
             if(embeddable instanceof EntityResolution) {

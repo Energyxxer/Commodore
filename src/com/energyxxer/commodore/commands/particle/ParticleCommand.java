@@ -17,13 +17,13 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class ParticleCommand implements Command {
-    private Particle particle;
+    private final Particle particle;
     private CoordinateSet position;
     private Delta delta;
-    private double speed;
-    private int count;
-    private boolean force;
-    private Entity viewers;
+    private final double speed;
+    private final int count;
+    private final boolean force;
+    private final Entity viewers;
 
     public ParticleCommand(Particle particle) {
         this(particle, null);
@@ -60,7 +60,7 @@ public class ParticleCommand implements Command {
         if(viewers != null) viewers.assertPlayer();
     }
 
-    @Override
+    @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         StringBuilder sb = new StringBuilder();
         if(viewers != null) sb.insert(0, "\be0");

@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.nbt;
 
 public class TagFloat extends NBTTag {
-    private float value;
+    private final float value;
 
     public TagFloat(float value) {
         this("", value);

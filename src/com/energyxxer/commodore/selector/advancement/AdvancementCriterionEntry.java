@@ -2,8 +2,8 @@ package com.energyxxer.commodore.selector.advancement;
 
 public class AdvancementCriterionEntry implements AdvancementArgumentEntry {
 
-    private String criterionName;
-    private boolean value;
+    private final String criterionName;
+    private final boolean value;
 
     public AdvancementCriterionEntry(String criterionName, boolean value) {
         this.criterionName = criterionName;

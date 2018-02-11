@@ -4,15 +4,11 @@ import com.energyxxer.commodore.inspection.CommandEmbeddable;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.*;
 
 public abstract class TextComponent {
     private TextStyle style = TextStyle.EMPTY_STYLE;
-    private ArrayList<TextEvent> events = new ArrayList<>();
+    private final ArrayList<TextEvent> events = new ArrayList<>();
 
     public abstract boolean supportsProperties();
 
@@ -22,15 +18,15 @@ public abstract class TextComponent {
 
     public void setStyle(TextStyle style) {
         if(style == null) return;
-        if(!supportsProperties())
-            throw new UnsupportedOperationException(this.getClass().getName() + " does not support text properties");
-        this.style = style;
+        if(supportsProperties()) {
+            this.style = style;
+        } else throw new UnsupportedOperationException(this.getClass().getName() + " does not support text properties");
     }
 
     public void addEvent(TextEvent event) {
-        if(!supportsProperties())
-            throw new UnsupportedOperationException(this.getClass().getName() + " does not support text properties");
-        this.events.add(event);
+        if(supportsProperties()) {
+            this.events.add(event);
+        } else throw new UnsupportedOperationException(this.getClass().getName() + " does not support text properties");
     }
 
     public void addEvents(Collection<TextEvent> events) {

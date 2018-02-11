@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.nbt;
 
 public class TagInt extends NBTTag {
-    private int value;
+    private final int value;
 
     public TagInt(int value) {
         this("", value);

@@ -14,11 +14,11 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class GenericEntity implements Entity {
-    private Selector selector;
+    private final Selector selector;
 
     private Collection<ScoreboardAccess> scoreboardAccesses;
 
-    private ArrayList<MacroScoreHolder> macroHolders = new ArrayList<>();
+    private final ArrayList<MacroScoreHolder> macroHolders = new ArrayList<>();
 
     public GenericEntity(Selector selector) {
         this.selector = selector;

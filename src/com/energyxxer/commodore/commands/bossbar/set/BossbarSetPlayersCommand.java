@@ -7,7 +7,7 @@ import com.energyxxer.commodore.types.BossbarReference;
 import org.jetbrains.annotations.NotNull;
 
 public class BossbarSetPlayersCommand extends BossbarSetCommand {
-    private Entity players;
+    private final Entity players;
 
     public BossbarSetPlayersCommand(BossbarReference reference, Entity players) {
         super(reference);

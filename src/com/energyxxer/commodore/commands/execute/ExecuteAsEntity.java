@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class ExecuteAsEntity implements ExecuteModifier {
-    private Entity entity;
+    private final Entity entity;
 
     public ExecuteAsEntity(Entity entity) {
         this.entity = entity;

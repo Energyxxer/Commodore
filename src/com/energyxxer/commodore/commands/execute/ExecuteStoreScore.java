@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class ExecuteStoreScore extends ExecuteStore {
-    private LocalScore score;
+    private final LocalScore score;
 
     private Collection<ScoreboardAccess> accesses = null;
 
