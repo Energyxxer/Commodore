@@ -1,98 +1,128 @@
 {
   "minecraft:protection": {
-    "id": 0
+    "id": 0,
+    "max_level": 4
   },
   "minecraft:fire_protection": {
-    "id": 1
+    "id": 1,
+    "max_level": 4
   },
   "minecraft:feather_falling": {
-    "id": 2
+    "id": 2,
+    "max_level": 4
   },
   "minecraft:blast_protection": {
-    "id": 3
+    "id": 3,
+    "max_level": 4
   },
   "minecraft:projectile_protection": {
-    "id": 4
+    "id": 4,
+    "max_level": 4
   },
   "minecraft:respiration": {
-    "id": 5
+    "id": 5,
+    "max_level": 3
   },
   "minecraft:aqua_affinity": {
-    "id": 6
+    "id": 6,
+    "max_level": 1
   },
   "minecraft:thorns": {
-    "id": 7
+    "id": 7,
+    "max_level": 3
   },
   "minecraft:depth_strider": {
-    "id": 8
+    "id": 8,
+    "max_level": 3
   },
   "minecraft:frost_walker": {
     "id": 9,
+    "max_level": 2,
     "treasure": true
   },
-  "minecraft:curse_of_binding": {
+  "minecraft:binding_curse": {
     "id": 10,
+    "max_level": 1,
     "treasure": true,
     "curse": true
   },
   "minecraft:sharpness": {
-    "id": 16
+    "id": 16,
+    "max_level": 5
   },
   "minecraft:smite": {
-    "id": 17
+    "id": 17,
+    "max_level": 5
   },
   "minecraft:bane_of_arthropods": {
-    "id": 18
+    "id": 18,
+    "max_level": 3
   },
   "minecraft:knockback": {
-    "id": 19
+    "id": 19,
+    "max_level": 2
   },
   "minecraft:fire_aspect": {
-    "id": 20
+    "id": 20,
+    "max_level": 2
   },
   "minecraft:looting": {
-    "id": 21
+    "id": 21,
+    "max_level": 3
   },
-  "minecraft:sweeping_edge": {
-    "id": 22
+  "minecraft:sweeping": {
+    "id": 22,
+    "max_level": 3
   },
   "minecraft:efficiency": {
-    "id": 32
+    "id": 32,
+    "max_level": 5
   },
   "minecraft:silk_touch": {
-    "id": 33
+    "id": 33,
+    "max_level": 1
   },
   "minecraft:unbreaking": {
-    "id": 34
+    "id": 34,
+    "max_level": 3
   },
   "minecraft:fortune": {
-    "id": 35
+    "id": 35,
+    "max_level": 3
   },
   "minecraft:power": {
-    "id": 48
+    "id": 48,
+    "max_level": 5
   },
   "minecraft:punch": {
-    "id": 49
+    "id": 49,
+    "max_level": 2
   },
   "minecraft:flame": {
-    "id": 50
+    "id": 50,
+    "max_level": 1
   },
   "minecraft:infinity": {
-    "id": 51
+    "id": 51,
+    "max_level": 1
   },
   "minecraft:luck_of_the_sea": {
     "id": 61,
+    "max_level": 3,
     "treasure": true
   },
   "minecraft:lure": {
-    "id": 62
+    "id": 62,
+    "max_level": 3
   },
   "minecraft:mending": {
     "id": 70,
+    "max_level": 1,
     "treasure": true
   },
-  "minecraft:curse_of_vanishing": {
+  "minecraft:vanishing_curse": {
     "id": 71,
+    "max_level": 1,
     "treasure": true,
     "curse": true
   }

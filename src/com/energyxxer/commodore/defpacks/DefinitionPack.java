@@ -122,7 +122,7 @@ class DefinitionBlueprint {
         this(name, null);
     }
 
-    public DefinitionBlueprint(String name, HashMap<String, String> properties) {
+    DefinitionBlueprint(String name, HashMap<String, String> properties) {
         if(name.contains(":")) {
             this.namespace = name.substring(0, name.indexOf(":"));
             this.name = name.substring(name.indexOf(":")+1);

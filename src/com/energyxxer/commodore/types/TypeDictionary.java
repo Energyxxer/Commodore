@@ -2,6 +2,7 @@ package com.energyxxer.commodore.types;
 
 import com.energyxxer.commodore.module.Namespace;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 public class TypeDictionary<T extends Type> {
@@ -31,6 +32,10 @@ public class TypeDictionary<T extends Type> {
         T existing = types.get(name);
         if(existing != null) return existing;
         throw new TypeNotFoundException("'" + name + "' does not exist as '" + category + "' in the '" + namespace + "' namespace");
+    }
+
+    public Collection<T> list() {
+        return types.values();
     }
 
     @Override

@@ -12,6 +12,7 @@ import com.energyxxer.commodore.commands.clone.CloneFilteredCommand;
 import com.energyxxer.commodore.commands.clone.CloneMaskedCommand;
 import com.energyxxer.commodore.commands.effect.EffectClearCommand;
 import com.energyxxer.commodore.commands.effect.EffectGiveCommand;
+import com.energyxxer.commodore.commands.enchant.EnchantCommand;
 import com.energyxxer.commodore.commands.execute.*;
 import com.energyxxer.commodore.commands.experience.ExperienceCommand;
 import com.energyxxer.commodore.commands.experience.ExperienceSetCommand;
@@ -317,6 +318,8 @@ public final class CommandTest {
 
         otherFunction.append(new LocateCommand(module.minecraft.getTypeManager().structure.get("Village")));
 
+        otherFunction.append(new EnchantCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), module.minecraft.getTypeManager().enchantment.get("looting"), 3));
+
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 
         System.out.println(function.getResolvedContent());
@@ -325,13 +328,8 @@ public final class CommandTest {
 
         System.out.println(module.getNamespace("ct").getFunctionManager().get("init_objectives").getResolvedContent());
 
-        System.out.println(new NBTPath("Inventory", new NBTPath(0, new NBTPath("tag", new NBTPath("display", new NBTPath("Lore"))))));
-        System.out.println(new NBTPath("Inventory", new NBTPath(0, new NBTPath("tag", new NBTPath("display", new NBTPath("Lore", new NBTPath(0)))))));
-
-        System.out.println(module.minecraft.getTypeManager().block);
-
-        System.out.println(function.getAccessLog());
-        System.out.println(otherFunction.getAccessLog());
+        //System.out.println(function.getAccessLog());
+        //System.out.println(otherFunction.getAccessLog());
 
         System.out.println(Selector.parse("@s[name=\"something\",distance=..0.0001,tag=!try_ext_pwr,tag=!try_ext_ret]").toVerboseString());
         System.out.println(Selector.parse("@e[distance=..10,limit=1,tag=!HsR_TeslaTower,type=!armor_stand]").toVerboseString());
