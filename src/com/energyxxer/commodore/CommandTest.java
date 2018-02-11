@@ -23,10 +23,7 @@ import com.energyxxer.commodore.commands.locate.LocateCommand;
 import com.energyxxer.commodore.commands.particle.ParticleCommand;
 import com.energyxxer.commodore.commands.playsound.PlaySoundCommand;
 import com.energyxxer.commodore.commands.recipe.RecipeCommand;
-import com.energyxxer.commodore.commands.scoreboard.ScoreAdd;
-import com.energyxxer.commodore.commands.scoreboard.ScoreGet;
-import com.energyxxer.commodore.commands.scoreboard.ScorePlayersOperation;
-import com.energyxxer.commodore.commands.scoreboard.ScoreSet;
+import com.energyxxer.commodore.commands.scoreboard.*;
 import com.energyxxer.commodore.commands.spreadplayers.SpreadPlayersCommand;
 import com.energyxxer.commodore.commands.stopsound.StopSoundCommand;
 import com.energyxxer.commodore.commands.summon.SummonCommand;
@@ -214,6 +211,7 @@ public final class CommandTest {
         function.append(new ScoreSet(a, 5));
         function.append(new ScorePlayersOperation(b, ScorePlayersOperation.Operation.ASSIGN, a));
         function.append(new ScoreAdd(b, 3));
+        function.append(new ScoreReset(entity));
         function.append(new ScoreGet(b));
 
         function.append(new TellrawCommand(player, new ScoreTextComponent(b)));

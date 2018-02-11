@@ -36,10 +36,8 @@ public class ScoreReset implements Command {
         this.objective = objective;
 
         this.accesses = new ArrayList<>();
-        //TODO: Allow for scoreboard accesses to exclude holder and objective
-        if(entity != null && objective != null) {
-            accesses.add(new ScoreboardAccess(new LocalScore(objective, entity).getMacroScores(), ScoreboardAccess.AccessType.WRITE));
-        }
+
+        accesses.add(new ScoreboardAccess(new LocalScore(objective, entity).getMacroScores(), ScoreboardAccess.AccessType.WRITE));
     }
 
     @Override
@@ -60,5 +58,10 @@ public class ScoreReset implements Command {
             sb.append(objective.getName());
         }
         return new CommandResolution(execContext, sb.toString(), embeddables);
+    }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
     }
 }

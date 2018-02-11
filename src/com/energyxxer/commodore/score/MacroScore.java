@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.score;
 
+import java.util.Objects;
+
 public class MacroScore {
     private final MacroScoreHolder holder;
     private final Objective objective;
@@ -17,25 +19,26 @@ public class MacroScore {
         return objective;
     }
 
+    public boolean matches(MacroScore other) {
+        return (this.holder == null || other.holder == null || this.holder == other.holder) && (this.objective == null || other.objective == null || this.objective == other.objective);
+    }
+
     @Override
     public boolean equals(Object o) {
-        if(this == o) return true;
-        if(o == null || getClass() != o.getClass()) return false;
-
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         MacroScore that = (MacroScore) o;
-
-        return holder.equals(that.holder) && objective.equals(that.objective);
+        return Objects.equals(holder, that.holder) &&
+                Objects.equals(objective, that.objective);
     }
 
     @Override
     public int hashCode() {
-        int result = holder.hashCode();
-        result = 31 * result + objective.hashCode();
-        return result;
+        return Objects.hash(holder, objective);
     }
 
     @Override
     public String toString() {
-        return holder + " " + objective.getName();
+        return ((holder != null) ? holder.toString() : "*") + " " + ((objective != null) ? objective.getName() : "*");
     }
 }

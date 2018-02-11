@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.score;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 public class LocalScore {
     private final Objective objective;
@@ -19,7 +21,8 @@ public class LocalScore {
         return holder;
     }
 
-    public ArrayList<MacroScore> getMacroScores() {
+    public Collection<MacroScore> getMacroScores() {
+        if(holder == null) return Collections.singletonList(new MacroScore(null, objective));
         ArrayList<MacroScore> list = new ArrayList<>();
         holder.getMacroHolders().forEach(h -> list.add(new MacroScore(h, objective)));
         return list;

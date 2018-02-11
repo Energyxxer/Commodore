@@ -103,17 +103,27 @@ class MacroScoreAccessLog {
     void addUsed(Collection<MacroScore> scores) {
         scores.forEach(s -> {
             if(!usedMacroScores.contains(s)) usedMacroScores.add(s);
-            if(!seenObjectives.contains(s.getObjective())) seenObjectives.add(s.getObjective());
+            if(s.getObjective() != null && !seenObjectives.contains(s.getObjective())) seenObjectives.add(s.getObjective());
         });
     }
 
     void removeUsed(Collection<MacroScore> scores) {
-        usedMacroScores.removeAll(scores);
+        for(MacroScore score : scores) {
+            for(int i = 0; i < usedMacroScores.size(); i++) {
+                MacroScore usedScore = usedMacroScores.get(i);
+                if(usedScore.matches(score)) {
+                    usedMacroScores.remove(i);
+                    i--;
+                }
+            }
+        }
     }
 
     boolean areAnyUsed(Collection<MacroScore> scores) {
         for(MacroScore score : scores) {
-            if(usedMacroScores.contains(score)) return true;
+            for(MacroScore usedScore : usedMacroScores) {
+                if(usedScore.matches(score)) return true;
+            }
         }
         return false;
     }
@@ -124,7 +134,7 @@ class MacroScoreAccessLog {
 
     boolean isLastFieldAccess(Collection<MacroScore> scores) {
         for(MacroScore score : scores) {
-            if(!score.getObjective().isField() || seenObjectives.contains(score.getObjective())) return false;
+            if(score.getObjective() != null && (!score.getObjective().isField() || seenObjectives.contains(score.getObjective()))) return false;
         }
         return true;
     }
