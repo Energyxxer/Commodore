@@ -31,6 +31,7 @@ public class FunctionManager {
     }
 
     public Function create(String name, boolean force) {
+        name = name.toLowerCase();
         if(!contains(name)) return forceCreate(name);
         if(!force) {
             throw new IllegalArgumentException("A function by the name '" + name + "' already exists");
