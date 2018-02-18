@@ -155,6 +155,10 @@ public class Function {
         return "[Function " + getFullName() + " : " + content.size() + " " + ((content.size() == 1) ? "entry" : "entries") + "]";
     }
 
+    public int getEntryCount() {
+        return content.size();
+    }
+
     @Override
     public String toString() {
         return getHeader();
