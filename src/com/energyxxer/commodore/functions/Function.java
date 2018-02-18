@@ -11,7 +11,6 @@ import com.energyxxer.commodore.score.access.ScoreAccessLog;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.selector.Selector;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -75,7 +74,7 @@ public class Function {
     }
 
     public String getFilePath() {
-        return path.replace(".", File.separator);
+        return path.replace(".", "/");
     }
 
     public FunctionManager getParent() {
