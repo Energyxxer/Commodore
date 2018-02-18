@@ -4,6 +4,7 @@ import com.energyxxer.commodore.module.Namespace;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 public class TypeDictionary<T extends Type> {
 
@@ -36,6 +37,12 @@ public class TypeDictionary<T extends Type> {
 
     public Collection<T> list() {
         return types.values();
+    }
+
+    public void join(TypeDictionary<T> other) {
+        for(Map.Entry<String, T> entry : other.types.entrySet()) {
+            this.types.putIfAbsent(entry.getKey(), entry.getValue());
+        }
     }
 
     @Override

@@ -33,4 +33,10 @@ public class TagManager {
     public TagGroup<FunctionTag> getFunctionGroup() {
         return functionTags;
     }
+
+    public void join(TagManager other) {
+        this.blockTags.join(other.blockTags);
+        this.itemTags.join(other.itemTags);
+        this.functionTags.join(other.functionTags);
+    }
 }

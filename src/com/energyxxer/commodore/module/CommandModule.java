@@ -5,6 +5,7 @@ import com.energyxxer.commodore.score.ObjectiveManager;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class CommandModule {
 
@@ -69,6 +70,12 @@ public class CommandModule {
         Namespace newNamespace = new Namespace(this, name);
         namespaces.put(name, newNamespace);
         return newNamespace;
+    }
+
+    public void join(CommandModule other) {
+        for(Map.Entry<String, Namespace> ns : other.namespaces.entrySet()) {
+            this.namespaces.putIfAbsent(ns.getKey(), ns.getValue().clone(this));
+        }
     }
 
     public boolean namespaceExists(String name) {

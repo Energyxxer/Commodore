@@ -4,6 +4,7 @@ import com.energyxxer.commodore.module.Namespace;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 public class FunctionManager {
 
@@ -29,18 +30,37 @@ public class FunctionManager {
         return functions.containsKey(name);
     }
 
-    public Function create(String name) {
+    public Function create(String name, boolean force) {
         if(!contains(name)) return forceCreate(name);
-        throw new IllegalArgumentException("A function by the name '" + name + "' already exists");
+        if(!force) {
+            throw new IllegalArgumentException("A function by the name '" + name + "' already exists");
+        } else {
+            int i = 1;
+            while(true) {
+                String newName = name + "#" + i;
+                if(!contains(newName)) return forceCreate(newName);
+                i++;
+            }
+        }
+    }
+
+    public Function create(String name) {
+        return create(name, false);
+    }
+
+    public Collection<Function> getAll() {
+        return functions.values();
+    }
+
+    public void join(FunctionManager other) {
+        for(Map.Entry<String, Function> entry : other.functions.entrySet()) {
+            functions.putIfAbsent(entry.getKey(), entry.getValue());
+        }
     }
 
     private Function forceCreate(String name) {
         Function newFunction = new Function(this, namespace, name);
         functions.put(name, newFunction);
         return newFunction;
-    }
-
-    public Collection<Function> getAll() {
-        return functions.values();
     }
 }

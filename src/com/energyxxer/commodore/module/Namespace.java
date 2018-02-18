@@ -49,4 +49,14 @@ public class Namespace {
     public TypeManager getTypeManager() {
         return typeMgr;
     }
+
+    public Namespace clone(CommandModule newOwner) {
+        Namespace clone = new Namespace(newOwner, name);
+
+        clone.fncMgr.join(this.fncMgr);
+        clone.tagMgr.join(this.tagMgr);
+        clone.typeMgr.join(this.typeMgr);
+
+        return clone;
+    }
 }

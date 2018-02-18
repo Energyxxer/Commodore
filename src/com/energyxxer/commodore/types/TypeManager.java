@@ -34,4 +34,7 @@ public class TypeManager {
     }
 
 
+    public void join(TypeManager other) {
+        this.block.join(other.block);
+    }
 }

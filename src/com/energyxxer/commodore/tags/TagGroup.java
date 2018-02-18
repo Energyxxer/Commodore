@@ -33,4 +33,8 @@ public class TagGroup<T extends Tag> {
     public String getGroupName() {
         return groupName;
     }
+
+    public void join(TagGroup<T> other) {
+        this.tags.addAll(other.tags);
+    }
 }
