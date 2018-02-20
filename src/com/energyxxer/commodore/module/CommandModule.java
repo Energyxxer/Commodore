@@ -9,13 +9,13 @@ import java.util.Map;
 
 public class CommandModule {
 
-    final String name;
-    String description;
-    final String prefix;
+    protected final String name;
+    protected String description;
+    protected final String prefix;
 
-    private final ObjectiveManager objMgr;
+    protected final ObjectiveManager objMgr;
 
-    final HashMap<String, Namespace> namespaces = new HashMap<>();
+    protected final HashMap<String, Namespace> namespaces = new HashMap<>();
     public final Namespace minecraft;
 
     public CommandModule(String name, String prefix) {
