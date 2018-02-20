@@ -39,4 +39,9 @@ public class DataGetCommand extends DataCommand {
         if(entity != null) return new CommandResolution(execContext, "data get entity \be0 " + path + (scale != 1 ? String.valueOf(scale) : ""), entity);
         return new CommandResolution(execContext, "data get block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path + (scale != 1 ? String.valueOf(scale) : ""));
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }

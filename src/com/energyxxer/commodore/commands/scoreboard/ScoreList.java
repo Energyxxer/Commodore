@@ -21,4 +21,9 @@ public class ScoreList implements Command {
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         return (entity != null) ? new CommandResolution(execContext, "scoreboard players list \be0", entity) : new CommandResolution(execContext, "scoreboard players list");
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }

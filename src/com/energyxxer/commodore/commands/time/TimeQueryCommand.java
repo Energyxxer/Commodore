@@ -19,4 +19,9 @@ public class TimeQueryCommand extends TimeCommand {
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "time query " + counter.toString().toLowerCase());
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }

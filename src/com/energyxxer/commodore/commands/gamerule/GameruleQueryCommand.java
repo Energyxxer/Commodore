@@ -16,4 +16,9 @@ public class GameruleQueryCommand extends GameruleCommand {
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "gamerule " + gamerule);
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }

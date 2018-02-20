@@ -10,4 +10,9 @@ public class WorldBorderGetWidth extends WorldBorderCommand {
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "worldborder get");
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }

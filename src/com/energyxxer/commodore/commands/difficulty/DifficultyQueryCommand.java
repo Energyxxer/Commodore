@@ -10,4 +10,9 @@ public class DifficultyQueryCommand extends DifficultyCommand {
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "difficulty");
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }

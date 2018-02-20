@@ -11,4 +11,9 @@ public class SeedCommand implements Command {
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "seed");
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }

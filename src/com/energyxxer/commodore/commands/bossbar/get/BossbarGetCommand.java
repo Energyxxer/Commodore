@@ -18,4 +18,9 @@ public abstract class BossbarGetCommand extends BossbarCommand {
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "bossbar get " + reference + " " + getKeyword());
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }

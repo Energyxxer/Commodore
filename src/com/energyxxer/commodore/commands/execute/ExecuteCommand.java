@@ -49,4 +49,9 @@ public class ExecuteCommand implements Command {
         Command.super.onAppend(function, execContext);
         chainedCommand.onAppend(function, new ExecutionContext(execContext.getFinalSender(), this.modifiers));
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return chainedCommand.isScoreboardManipulation();
+    }
 }

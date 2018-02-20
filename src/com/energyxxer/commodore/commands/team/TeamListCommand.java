@@ -9,4 +9,9 @@ public class TeamListCommand extends TeamCommand {
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "team list");
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }

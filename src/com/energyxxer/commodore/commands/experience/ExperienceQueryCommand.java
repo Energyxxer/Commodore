@@ -18,4 +18,9 @@ public class ExperienceQueryCommand extends ExperienceCommand {
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "xp query \be0 " + unit.toString().toLowerCase(), player);
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }

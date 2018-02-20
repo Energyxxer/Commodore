@@ -10,4 +10,9 @@ public class ObjectivesListCommand implements Command {
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "scoreboard objectives list");
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }

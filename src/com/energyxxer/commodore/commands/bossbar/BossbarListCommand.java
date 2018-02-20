@@ -9,4 +9,9 @@ public class BossbarListCommand extends BossbarCommand {
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "bossbar list");
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }

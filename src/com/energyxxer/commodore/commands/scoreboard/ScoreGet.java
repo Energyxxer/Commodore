@@ -36,4 +36,9 @@ public class ScoreGet implements Command {
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "scoreboard players get \be0 " + score.getObjective(), score.getHolder());
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }

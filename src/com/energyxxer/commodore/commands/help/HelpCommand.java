@@ -21,4 +21,9 @@ public class HelpCommand implements Command {
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "help" + ((commandPath != null) ? " " + commandPath : ""));
     }
+
+    @Override
+    public boolean isScoreboardManipulation() {
+        return true;
+    }
 }
