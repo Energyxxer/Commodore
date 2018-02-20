@@ -153,7 +153,7 @@ public final class CommandTest {
 
         EntityType bat = module.getNamespace("minecraft").getTypeManager().entity.get("bat");
 
-        Entity entity = new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES));
+        GenericEntity entity = new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES));
         entity.getSelector().addArguments(new TypeArgument(bat), new TagArgument("a"), new TagArgument("!b"));
 
         Selector playerSelector = new Selector(Selector.BaseSelector.ALL_PLAYERS);
@@ -165,7 +165,7 @@ public final class CommandTest {
         advArg.addEntry(criterionGroup);
         playerSelector.addArguments(advArg);
 
-        Entity player = new GenericEntity(playerSelector);
+        GenericEntity player = new GenericEntity(playerSelector);
 
         function.append(new AdvancementCommand(AdvancementCommand.Action.GRANT, player, AdvancementCommand.Limit.ONLY, "bar"));
 

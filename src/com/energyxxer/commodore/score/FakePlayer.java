@@ -14,11 +14,6 @@ public class FakePlayer implements ScoreHolder {
     }
 
     @Override
-    public String getReference() {
-        return name;
-    }
-
-    @Override
     public Collection<MacroScoreHolder> getMacroHolders() {
         return Collections.singletonList(macroHolder);
     }

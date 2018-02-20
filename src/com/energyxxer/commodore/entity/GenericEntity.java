@@ -30,7 +30,6 @@ public class GenericEntity implements Entity {
         return selector.getLimit();
     }
 
-    @Override
     public Selector getSelector() {
         return selector;
     }

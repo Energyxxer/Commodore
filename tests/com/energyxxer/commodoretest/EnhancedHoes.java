@@ -5,7 +5,6 @@ import com.energyxxer.commodore.commands.execute.ExecuteAtEntity;
 import com.energyxxer.commodore.commands.execute.ExecuteCommand;
 import com.energyxxer.commodore.commands.scoreboard.ScoreAdd;
 import com.energyxxer.commodore.commands.tag.TagCommand;
-import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.functions.FunctionComment;
@@ -88,7 +87,7 @@ public class EnhancedHoes {
 
         tick.append(new FunctionComment("Prevent item frames from duplicating crops"));
         {
-            Entity nearbyCrops = allCrops.clone();
+            GenericEntity nearbyCrops = allCrops.clone();
             nearbyCrops.getSelector().addArguments(new DistanceArgument(new SelectorNumberArgument<>(null, 1.0)));
 
             ExecuteCommand exec = new ExecuteCommand(new TagCommand(TagCommand.Action.REMOVE, nearbyCrops, "crop"));
@@ -98,7 +97,7 @@ public class EnhancedHoes {
 
         tick.append(new FunctionComment("Prevent duplication of premature harvests"));
         {
-            Entity nearbyCrops = allSelfCrops.clone();
+            GenericEntity nearbyCrops = allSelfCrops.clone();
             nearbyCrops.getSelector().addArguments(new DistanceArgument(new SelectorNumberArgument<>(null, 1.0)));
             ExecuteCommand exec = new ExecuteCommand(new ScoreAdd(new LocalScore(crowd, nearbyCrops), 1));
             exec.addModifier(new ExecuteAtEntity(allSelfCrops));
@@ -107,7 +106,7 @@ public class EnhancedHoes {
         {
             ScoreArgument scores = new ScoreArgument();
             scores.put(crowd, new SelectorNumberArgument<>(1));
-            Entity loneCrops = allSelfCrops.clone();
+            GenericEntity loneCrops = allSelfCrops.clone();
             loneCrops.getSelector().addArguments(scores);
             tick.append(new DataMergeCommand(loneCrops, new TagCompound(new TagList("Tags"))));
         }
