@@ -15,6 +15,9 @@ public class ObjectivesAddCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
+        if(objective.getName().length() > Objective.MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("Objective name '" + objective.getName() + "' exceeds the max length of " + Objective.MAX_NAME_LENGTH + " characters when module prefix is included");
+        }
         return new CommandResolution(execContext, "scoreboard objectives add " + objective.getName() + " " + objective.getType() + ((objective.getDisplayName() != null) ? " " + objective.getDisplayName() : ""));
     }
 }

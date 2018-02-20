@@ -40,7 +40,7 @@ public class Objective {
     }
 
     public String getName() {
-        return name;
+        return (parent.isPrefixEnabled() ? parent.getOwner().getPrefix() + "_" : "") + name;
     }
 
     public String getType() {

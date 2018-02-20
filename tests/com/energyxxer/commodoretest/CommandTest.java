@@ -145,6 +145,7 @@ public final class CommandTest {
         CommandModule module = new CommandModule("Commodore Test", "A simple Commodore test project", "ct");
         StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
         ObjectiveManager objMgr = module.getObjectiveManager();
+        objMgr.setPrefixEnabled(true);
         objMgr.setCreationFunction(module.getNamespace("ct").getFunctionManager().create("init_objectives"));
         objMgr.create("return", true);
 

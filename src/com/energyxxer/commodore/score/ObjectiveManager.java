@@ -12,6 +12,8 @@ public class ObjectiveManager {
     private final HashMap<String, Objective> objectives = new HashMap<>();
     private Function creationFunction;
 
+    private boolean usePrefix = false;
+
     public ObjectiveManager(CommandModule owner) {
         this.owner = owner;
     }
@@ -67,6 +69,14 @@ public class ObjectiveManager {
 
     public void setCreationFunction(Function creationFunction) {
         this.creationFunction = creationFunction;
+    }
+
+    public void setPrefixEnabled(boolean prefixEnabled) {
+        this.usePrefix = prefixEnabled;
+    }
+
+    public boolean isPrefixEnabled() {
+        return usePrefix;
     }
 
     public void compile() {
