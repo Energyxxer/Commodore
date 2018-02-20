@@ -8,6 +8,7 @@ public class Objective {
     private final ObjectiveManager parent;
     private String name;
     private String type;
+    private String displayName;
     /**
      * Signifies whether the objective acts as a field, used to carry data from one tick or function to the next.
      * If this is true, a SET access command not followed by a GET access command at the end
@@ -17,19 +18,19 @@ public class Objective {
 
     public static final int MAX_NAME_LENGTH = 16;
 
-    Objective(ObjectiveManager parent, String name) {
-        this(parent, name, false);
-    }
-
-    Objective(ObjectiveManager parent, String name, boolean field) {
-        this(parent, name, "dummy", field);
-    }
-
     Objective(ObjectiveManager parent, String name, String type) {
-        this(parent, name, type, false);
+        this(parent, name, type, null);
+    }
+
+    Objective(ObjectiveManager parent, String name, String type, String displayName) {
+        this(parent, name, type, displayName, false);
     }
 
     Objective(ObjectiveManager parent, String name, String type, boolean field) {
+        this(parent, name, type, null, field);
+    }
+
+    Objective(ObjectiveManager parent, String name, String type, String displayName, boolean field) {
         if(name.length() > MAX_NAME_LENGTH)
             throw new IllegalArgumentException("Objective name '" + name + "' exceeds the limit of " + MAX_NAME_LENGTH + " characters");
         this.parent = parent;
@@ -48,6 +49,10 @@ public class Objective {
 
     public boolean isField() {
         return field;
+    }
+
+    public String getDisplayName() {
+        return displayName;
     }
 
     public ObjectiveManager getParent() {

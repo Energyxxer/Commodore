@@ -15,6 +15,6 @@ public class ObjectivesAddCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "scoreboard objectives add " + objective.getName() + " " + objective.getType() + " ");
+        return new CommandResolution(execContext, "scoreboard objectives add " + objective.getName() + " " + objective.getType() + ((objective.getDisplayName() != null) ? " " + objective.getDisplayName() : ""));
     }
 }
