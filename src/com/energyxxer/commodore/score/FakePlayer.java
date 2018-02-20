@@ -22,4 +22,9 @@ public class FakePlayer implements ScoreHolder {
     public Collection<MacroScoreHolder> getMacroHolders() {
         return Collections.singletonList(macroHolder);
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

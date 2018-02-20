@@ -1,8 +1,5 @@
 package com.energyxxer.commodore;
 
-import com.energyxxer.commodore.entity.Entity;
-import com.energyxxer.commodore.score.ScoreHolder;
-
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
@@ -79,10 +76,6 @@ public final class CommandUtils {
         }
 
         return sb.toString();
-    }
-
-    public static String getRawReference(ScoreHolder scoreHolder, Entity sender) {
-        return (scoreHolder instanceof Entity && sender != null) ? ((Entity) scoreHolder).getSelectorAs(sender).toString() : scoreHolder.getReference();
     }
 
     public static String toString(double num) {
