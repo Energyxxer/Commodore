@@ -6,6 +6,7 @@ import com.energyxxer.commodore.score.MacroScore;
 import com.energyxxer.commodore.score.MacroScoreHolder;
 import com.energyxxer.commodore.score.Objective;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import com.energyxxer.commodore.selector.LimitArgument;
 import com.energyxxer.commodore.selector.Selector;
 
 import java.util.ArrayList;
@@ -93,5 +94,14 @@ public class GenericEntity implements Entity {
     @Override
     public boolean isPlayer() {
         return selector.isPlayer();
+    }
+
+    @Override
+    public GenericEntity limitToOne() {
+        Selector newSelector = selector.clone();
+        newSelector.addArgument(new LimitArgument(1));
+        GenericEntity clone = new GenericEntity(newSelector);
+        clone.addMacroHolders(macroHolders);
+        return clone;
     }
 }
