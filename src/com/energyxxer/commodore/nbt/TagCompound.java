@@ -2,7 +2,7 @@ package com.energyxxer.commodore.nbt;
 
 import java.util.*;
 
-public class TagCompound extends NBTTag {
+public class TagCompound extends ComplexNBTTag {
     private final ArrayList<NBTTag> content = new ArrayList<>();
 
     public TagCompound() {
@@ -30,11 +30,7 @@ public class TagCompound extends NBTTag {
         this(name, Arrays.asList(tags));
     }
 
-
-    public void addAll(Collection<NBTTag> tags) {
-        tags.forEach(this::add);
-    }
-
+    @Override
     public void add(NBTTag tag) {
         content.add(tag);
     }

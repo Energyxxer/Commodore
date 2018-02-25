@@ -1,9 +1,9 @@
 package com.energyxxer.commodore.nbt;
 
 public abstract class NBTTag {
-    protected final String name;
+    protected String name;
 
-    public static final String ALLOWED_NAME_CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+    private static final String ALLOWED_NAME_CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
 
     public NBTTag(String name) {
         this.name = name;
@@ -24,6 +24,14 @@ public abstract class NBTTag {
         if(needsQuotes) {
             return "\"" + name.replace("\\", "\\\\").replace("\"", "\\\"") + "\"";
         } else return name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public abstract String toHeadlessString();

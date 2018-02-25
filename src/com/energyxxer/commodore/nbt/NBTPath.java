@@ -1,8 +1,11 @@
 package com.energyxxer.commodore.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Iterator;
 import java.util.Objects;
 
-public class NBTPath {
+public class NBTPath implements Iterable<NBTPath> {
 
     private final NBTPathNode node;
     private final NBTPath next;
@@ -51,6 +54,24 @@ public class NBTPath {
     @Override
     public int hashCode() {
         return Objects.hash(node, next);
+    }
+
+    public NBTPathNode getNode() {
+        return node;
+    }
+
+    public NBTPath getNext() {
+        return next;
+    }
+
+    public boolean hasNext() {
+        return next != null;
+    }
+
+    @NotNull
+    @Override
+    public Iterator<NBTPath> iterator() {
+        return new NBTPathTraverser(this);
     }
 }
 
