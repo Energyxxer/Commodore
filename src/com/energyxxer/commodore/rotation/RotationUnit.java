@@ -2,6 +2,8 @@ package com.energyxxer.commodore.rotation;
 
 import com.energyxxer.commodore.CommandUtils;
 
+import java.util.Objects;
+
 public class RotationUnit {
 
     public enum Type {
@@ -41,5 +43,20 @@ public class RotationUnit {
     @Override
     public String toString() {
         return type.prefix + CommandUtils.toString(value);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RotationUnit that = (RotationUnit) o;
+        return Double.compare(that.value, value) == 0 &&
+                type == that.type;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(type, value);
     }
 }

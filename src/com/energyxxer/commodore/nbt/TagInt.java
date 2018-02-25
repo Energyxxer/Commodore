@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.nbt;
 
+import java.util.Objects;
+
 public class TagInt extends NBTTag {
     private final int value;
 
@@ -19,7 +21,7 @@ public class TagInt extends NBTTag {
 
     @Override
     public String toHeadlessString() {
-        return String.valueOf(value);
+        return String.valueOf(value) + NumericNBTType.INT.getSuffix();
     }
 
     @Override
@@ -30,5 +32,18 @@ public class TagInt extends NBTTag {
     @Override
     public TagInt clone() {
         return new TagInt(name, value);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TagInt tagInt = (TagInt) o;
+        return value == tagInt.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

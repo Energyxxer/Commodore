@@ -3,6 +3,8 @@ package com.energyxxer.commodore.block;
 import com.energyxxer.commodore.nbt.TagCompound;
 import com.energyxxer.commodore.types.BlockType;
 
+import java.util.Objects;
+
 public class Block {
     private final BlockType type;
     private Blockstate state;
@@ -40,5 +42,20 @@ public class Block {
         }
         if(nbt != null) sb.append(nbt.toHeadlessString());
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Block block = (Block) o;
+        return Objects.equals(type, block.type) &&
+                Objects.equals(state, block.state) &&
+                Objects.equals(nbt, block.nbt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, state, nbt);
     }
 }

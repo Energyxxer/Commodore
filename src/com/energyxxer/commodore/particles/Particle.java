@@ -6,6 +6,7 @@ import com.energyxxer.commodore.types.ParticleType;
 import com.energyxxer.commodore.util.ParticleColor;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Particle {
     private final ParticleType type;
@@ -45,5 +46,20 @@ public class Particle {
             sb.append(arg);
         }
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Particle particle = (Particle) o;
+        return Objects.equals(type, particle.type) &&
+                Objects.equals(arguments, particle.arguments);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(type, arguments);
     }
 }

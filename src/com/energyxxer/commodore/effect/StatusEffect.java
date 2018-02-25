@@ -2,6 +2,8 @@ package com.energyxxer.commodore.effect;
 
 import com.energyxxer.commodore.types.EffectType;
 
+import java.util.Objects;
+
 import static com.energyxxer.commodore.effect.StatusEffect.ParticleVisibility.HIDDEN;
 import static com.energyxxer.commodore.effect.StatusEffect.ParticleVisibility.VISIBLE;
 
@@ -74,5 +76,22 @@ public class StatusEffect {
     @Override
     public String toString() {
         return effect.toString() + " " + (duration / 20) + " " + amplifier + ((visibility == HIDDEN) ? " true" : "");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        StatusEffect that = (StatusEffect) o;
+        return duration == that.duration &&
+                amplifier == that.amplifier &&
+                Objects.equals(effect, that.effect) &&
+                visibility == that.visibility;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(effect, duration, amplifier, visibility);
     }
 }

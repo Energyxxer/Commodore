@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.nbt;
 
+import java.util.Objects;
+
 public class NBTPath {
 
     private final NBTPathNode node;
@@ -36,6 +38,20 @@ public class NBTPath {
         }
         return sb.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NBTPath nbtPath = (NBTPath) o;
+        return Objects.equals(node, nbtPath.node) &&
+                Objects.equals(next, nbtPath.next);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(node, next);
+    }
 }
 
 interface NBTPathNode {
@@ -59,6 +75,19 @@ class NBTPathKey implements NBTPathNode {
     public String getPathSeparator() {
         return ".";
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NBTPathKey that = (NBTPathKey) o;
+        return Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 }
 
 class NBTPathIndex implements NBTPathNode {
@@ -76,5 +105,18 @@ class NBTPathIndex implements NBTPathNode {
     @Override
     public String getPathSeparator() {
         return "";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NBTPathIndex that = (NBTPathIndex) o;
+        return index == that.index;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(index);
     }
 }

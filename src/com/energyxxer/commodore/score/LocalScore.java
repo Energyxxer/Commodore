@@ -3,6 +3,7 @@ package com.energyxxer.commodore.score;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Objects;
 
 public class LocalScore {
     private final Objective objective;
@@ -34,5 +35,20 @@ public class LocalScore {
                 "objective=" + objective +
                 ", holder=" + holder +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LocalScore that = (LocalScore) o;
+        return Objects.equals(objective, that.objective) &&
+                Objects.equals(holder, that.holder);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(objective, holder);
     }
 }

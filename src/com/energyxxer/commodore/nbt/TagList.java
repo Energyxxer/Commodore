@@ -1,9 +1,6 @@
 package com.energyxxer.commodore.nbt;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
 public class TagList extends NBTTag {
     private final ArrayList<NBTTag> content = new ArrayList<>();
@@ -76,5 +73,18 @@ public class TagList extends NBTTag {
         TagList copy = new TagList(name);
         content.forEach(t -> copy.add(t.clone()));
         return copy;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TagList tagList = (TagList) o;
+        return Objects.equals(content, tagList.content);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(content);
     }
 }

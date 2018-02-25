@@ -6,6 +6,8 @@ import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
+import java.util.Objects;
+
 public class CoordinateSet implements ExecuteModifier {
 
     private final Coordinate x;
@@ -89,5 +91,21 @@ public class CoordinateSet implements ExecuteModifier {
         if(y.isSignificant()) map.setUsed(ExecutionVariable.Y);
         if(z.isSignificant()) map.setUsed(ExecutionVariable.Z);
         return map;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CoordinateSet that = (CoordinateSet) o;
+        return Objects.equals(x, that.x) &&
+                Objects.equals(y, that.y) &&
+                Objects.equals(z, that.z);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(x, y, z);
     }
 }

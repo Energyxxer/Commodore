@@ -6,6 +6,8 @@ import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
+import java.util.Objects;
+
 public class Rotation implements ExecuteModifier {
 
     private final RotationUnit yaw; //y-rot
@@ -56,5 +58,20 @@ public class Rotation implements ExecuteModifier {
         if(yaw.isSignificant()) map.setUsed(ExecutionVariable.YAW);
         if(pitch.isSignificant()) map.setUsed(ExecutionVariable.PITCH);
         return map;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rotation rotation = (Rotation) o;
+        return Objects.equals(yaw, rotation.yaw) &&
+                Objects.equals(pitch, rotation.pitch);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(yaw, pitch);
     }
 }

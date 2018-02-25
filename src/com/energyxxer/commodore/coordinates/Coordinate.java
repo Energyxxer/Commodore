@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.coordinates;
 
+import java.util.Objects;
+
 public class Coordinate {
     public enum Type {
         ABSOLUTE(""), RELATIVE("~"), LOCAL("^");
@@ -80,5 +82,20 @@ public class Coordinate {
     @Override
     public String toString() {
         return getAs(DisplayMode.ENTITY_POS);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Coordinate that = (Coordinate) o;
+        return Double.compare(that.coord, coord) == 0 &&
+                type == that.type;
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(type, coord);
     }
 }
