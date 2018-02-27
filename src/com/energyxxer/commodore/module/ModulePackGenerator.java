@@ -55,7 +55,7 @@ public class ModulePackGenerator {
 
             for(Function func : namespace.getFunctionManager().getAll()) {
                 if(func.getEntryCount() == 0) continue;
-                String functionPath = func.getFilePath();
+                String functionPath = func.getPath();
                 String fileName = namespacePath + "/functions/" + functionPath + ".mcfunction";
 
                 createFile(fileName, func.getResolvedContent());

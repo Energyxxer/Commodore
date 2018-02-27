@@ -73,10 +73,6 @@ public class Function {
         return path;
     }
 
-    public String getFilePath() {
-        return path.replace(".", "/");
-    }
-
     public FunctionManager getParent() {
         return parent;
     }

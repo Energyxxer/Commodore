@@ -1,10 +1,12 @@
 package com.energyxxer.commodore.tags;
 
-import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.types.Type;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public interface Tag<T extends Type> {
 
@@ -23,26 +25,17 @@ public interface Tag<T extends Type> {
     ArrayList<T> getValues();
 
     default String getJSONContent() {
-        StringBuilder sb = new StringBuilder("{\n\t\"values\":[");
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        Iterator<T> it = getValues().iterator();
+        JsonObject root = new JsonObject();
+        JsonArray list = new JsonArray();
+        root.add("values", list);
 
-        while(it.hasNext()) {
-            sb.append("\n\t\t\"");
-            sb.append(CommandUtils.escape(it.next().toString()));
-            sb.append("\"");
-            if(it.hasNext()) sb.append(",");
+        for(T value : getValues()) {
+            list.add(value.toString());
         }
 
-        sb.append("\n\t]");
-        if(this.getOverridePolicy() != OverridePolicy.DEFAULT_POLICY) {
-            sb.append(",\n\t\"replace\": ");
-            sb.append(this.getOverridePolicy().valueBool);
-            sb.append('"');
-        }
-        sb.append("\n}");
-
-        return sb.toString();
+        return gson.toJson(root);
     }
 
     String getName();
