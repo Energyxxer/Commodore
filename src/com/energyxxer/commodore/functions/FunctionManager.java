@@ -38,7 +38,7 @@ public class FunctionManager {
         } else {
             int i = 1;
             while(true) {
-                String newName = name + "#" + i;
+                String newName = name + "-" + i;
                 if(!contains(newName)) return forceCreate(newName);
                 i++;
             }
