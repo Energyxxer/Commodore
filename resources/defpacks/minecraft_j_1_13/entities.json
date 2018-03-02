@@ -65,6 +65,12 @@
     "living": true,
     "hostile": false
   },
+  "minecraft:cod_mob": {
+    "spawnable": true,
+    "targetable": true,
+    "living": true,
+    "hostile": false
+  },
   "minecraft:commandblock_minecart": {
     "spawnable": true,
     "targetable": true,
@@ -299,6 +305,12 @@
     "living": true,
     "hostile": false
   },
+  "minecraft:phantom": {
+    "spawnable": true,
+    "targetable": true,
+    "living": true,
+    "hostile": false
+  },
   "minecraft:pig": {
     "spawnable": true,
     "targetable": true,
@@ -317,7 +329,19 @@
     "living": false,
     "hostile": false
   },
+  "minecraft:puffer_fish": {
+    "spawnable": true,
+    "targetable": true,
+    "living": true,
+    "hostile": false
+  },
   "minecraft:rabbit": {
+    "spawnable": true,
+    "targetable": true,
+    "living": true,
+    "hostile": false
+  },
+  "minecraft:salmon_mob": {
     "spawnable": true,
     "targetable": true,
     "living": true,
@@ -423,6 +447,18 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
+    "hostile": false
+  },
+  "minecraft:trident": {
+    "spawnable": true,
+    "targetable": true,
+    "living": false,
+    "hostile": false
+  },
+  "minecraft:turtle": {
+    "spawnable": true,
+    "targetable": true,
+    "living": true,
     "hostile": false
   },
   "minecraft:vex": {

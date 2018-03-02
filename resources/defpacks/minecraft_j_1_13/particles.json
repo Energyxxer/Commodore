@@ -14,10 +14,19 @@
   "minecraft:bubble": {
     "argument": "none"
   },
+  "minecraft:bubble_pop": {
+    "argument": "none"
+  },
+  "minecraft:bubble_column_up": {
+    "argument": "none"
+  },
   "minecraft:cloud": {
     "argument": "none"
   },
   "minecraft:crit": {
+    "argument": "none"
+  },
+  "minecraft:current_down": {
     "argument": "none"
   },
   "minecraft:damage_indicator": {
@@ -117,6 +126,9 @@
     "argument": "none"
   },
   "minecraft:splash": {
+    "argument": "none"
+  },
+  "minecraft:squid_ink": {
     "argument": "none"
   },
   "minecraft:sweep_attack": {

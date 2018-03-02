@@ -115,6 +115,23 @@
     "id": 62,
     "max_level": 3
   },
+  "minecraft:loyalty": {
+    "id": 65,
+    "max_level": 3
+  },
+  "minecraft:impaling": {
+    "id": 66,
+    "max_level": 5
+  },
+  "minecraft:riptide": {
+    "id": 67,
+    "max_level": 3
+  },
+  "minecraft:channeling": {
+    "id": 68,
+    "max_level": 1,
+    "treasure": true
+  },
   "minecraft:mending": {
     "id": 70,
     "max_level": 1,
