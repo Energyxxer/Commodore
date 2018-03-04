@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.module;
 
+import com.energyxxer.commodore.module.options.ModuleOptionManager;
 import com.energyxxer.commodore.score.ObjectiveManager;
 
 import java.io.File;
@@ -12,6 +13,8 @@ public class CommandModule {
     protected final String name;
     protected String description;
     protected final String prefix;
+
+    protected ModuleOptionManager optMgr;
 
     protected final ObjectiveManager objMgr;
 
@@ -30,6 +33,8 @@ public class CommandModule {
         this.objMgr = new ObjectiveManager(this);
 
         this.minecraft = getNamespace("minecraft");
+
+        optMgr = new ModuleOptionManager();
     }
 
     public String getDescription() {
@@ -50,6 +55,10 @@ public class CommandModule {
 
     public ObjectiveManager getObjectiveManager() {
         return objMgr;
+    }
+
+    public ModuleOptionManager getOptionManager() {
+        return optMgr;
     }
 
     public void compile(File directory, ModulePackGenerator.OutputType outputType) {

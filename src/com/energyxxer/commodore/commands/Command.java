@@ -4,11 +4,14 @@ import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.functions.FunctionWriter;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
+import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.Collections;
+
+import static com.energyxxer.commodore.module.options.UnusedCommandPolicy.*;
 
 /**
  * An abstract representation of a Minecraft command.
@@ -28,7 +31,20 @@ public interface Command extends FunctionWriter {
     @Override
     default String toFunctionContent(Function function) {
         try {
-            return (!isScoreboardManipulation() || isUsed()) ? resolveCommand(function.getExecutionContext()).construct() : "# [REMOVED]";
+            UnusedCommandPolicy policy = function.getNamespace().getOwner().getOptionManager().UNUSED_COMMAND_POLICY.getValue();
+            if(policy == KEEP) {
+                return resolveCommand(function.getExecutionContext()).construct();
+            } else {
+                boolean used = !isScoreboardManipulation() || isUsed();
+
+                if(!used && policy == REMOVE) return null;
+
+                String content = resolveCommand(function.getExecutionContext()).construct();
+
+                if(!used && policy == COMMENT_OUT) content = "# [UNUSED]: " + content;
+
+                return content;
+            }
         } catch(IllegalStateException x) {
             System.out.println(function.getAccessLog());
             throw x;
