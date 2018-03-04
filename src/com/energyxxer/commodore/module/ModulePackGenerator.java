@@ -56,9 +56,10 @@ public class ModulePackGenerator {
             for(Function func : namespace.getFunctionManager().getAll()) {
                 if(func.getEntryCount() == 0) continue;
                 String functionPath = func.getPath();
-                String fileName = namespacePath + "/functions/" + functionPath + ".mcfunction";
+                String fileName = namespacePath + "/functions/" + functionPath;
 
-                createFile(fileName, func.getResolvedContent());
+                createFile(fileName + ".mcfunction", func.getResolvedContent());
+                if(module.optMgr.EXPORT_ACCESS_LOGS.getValue()) createFile(fileName + ".accesslog", func.getAccessLog().toString());
             }
 
             TagManager tagMgr = namespace.getTagManager();
