@@ -30,7 +30,14 @@ public class ScoreAccessLog {
             ScoreboardAccess access = log.get(i);
             Collection<ScoreboardAccess> dependencies = access.getDependencies();
 
-            if(access.getResolution() != ScoreboardAccess.AccessResolution.UNRESOLVED) continue;
+            if(access.getResolution() != ScoreboardAccess.AccessResolution.UNRESOLVED) {
+                if(access.getType() == ScoreboardAccess.AccessType.READ) {
+                    macroLog.addUsed(access.getScores());
+                } else if(access.getType() == ScoreboardAccess.AccessType.WRITE) {
+                    macroLog.removeUsed(access.getScores());
+                }
+                continue;
+            }
 
             if(!dependencies.isEmpty()) {
                 for(ScoreboardAccess dependency : dependencies) {
@@ -102,7 +109,14 @@ class MacroScoreAccessLog {
 
     void addUsed(Collection<MacroScore> scores) {
         scores.forEach(s -> {
-            if(!usedMacroScores.contains(s)) usedMacroScores.add(s);
+            boolean contained = false;
+            for(MacroScore usedScore : usedMacroScores) {
+                if(usedScore.matches(s)) {
+                    contained = true;
+                    break;
+                }
+            }
+            if(!contained) usedMacroScores.add(s);
             if(s.getObjective() != null && !seenObjectives.contains(s.getObjective())) seenObjectives.add(s.getObjective());
         });
     }
