@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functions;
 
+import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.module.Namespace;
 
 import java.util.Collection;
@@ -31,22 +32,26 @@ public class FunctionManager {
     }
 
     public Function create(String name, boolean force) {
+        return create(name, force, null);
+    }
+
+    public Function create(String name, boolean force, Entity sender) {
         name = name.toLowerCase();
-        if(!contains(name)) return forceCreate(name);
+        if(!contains(name)) return forceCreate(name, sender);
         if(!force) {
             throw new IllegalArgumentException("A function by the name '" + name + "' already exists");
         } else {
             int i = 1;
             while(true) {
                 String newName = name + "-" + i;
-                if(!contains(newName)) return forceCreate(newName);
+                if(!contains(newName)) return forceCreate(newName, sender);
                 i++;
             }
         }
     }
 
     public Function create(String name) {
-        return create(name, false);
+        return create(name, false, null);
     }
 
     public Collection<Function> getAll() {
@@ -60,7 +65,11 @@ public class FunctionManager {
     }
 
     private Function forceCreate(String name) {
-        Function newFunction = new Function(this, namespace, name);
+        return forceCreate(name, null);
+    }
+
+    private Function forceCreate(String name, Entity sender) {
+        Function newFunction = new Function(this, namespace, name, sender);
         functions.put(name, newFunction);
         return newFunction;
     }

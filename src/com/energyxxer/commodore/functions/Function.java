@@ -21,9 +21,9 @@ public class Function {
     private final Namespace namespace;
     private final String path;
     private final ArrayList<FunctionWriter> content = new ArrayList<>();
-    private final ExecutionContext execContext;
     private final MacroScoreHolder senderMacro;
 
+    private ExecutionContext execContext;
     private boolean accessesResolved = false;
     private boolean contentResolved = false;
     private String resolvedContent = null;
@@ -144,6 +144,12 @@ public class Function {
 
     public ExecutionContext getExecutionContext() {
         return execContext;
+    }
+
+    public void setExecutionContext(ExecutionContext execContext) {
+        if(content.isEmpty()) {
+            this.execContext = execContext;
+        } else throw new IllegalStateException("Cannot change function execution context when it already has entries");
     }
 
     public String getHeader() {
