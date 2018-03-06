@@ -27,7 +27,7 @@ public class TagCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "tag" + action.toString().toLowerCase() + " \be0 " + tag, entity);
+        return new CommandResolution(execContext, "tag \be0 " + action.toString().toLowerCase() + " " + tag, entity);
     }
 
     @Override @NotNull
