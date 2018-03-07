@@ -1,0 +1,44 @@
+package com.energyxxer.commodore.defpacks;
+
+import java.util.HashMap;
+
+public class DefinitionBlueprint {
+    final String namespace;
+    final String name;
+    final HashMap<String, String> properties;
+
+    public DefinitionBlueprint(String name) {
+        this(name, null);
+    }
+
+    DefinitionBlueprint(String name, HashMap<String, String> properties) {
+        if(name.contains(":")) {
+            this.namespace = name.substring(0, name.indexOf(":"));
+            this.name = name.substring(name.indexOf(":")+1);
+        } else {
+            this.namespace = "minecraft";
+            this.name = name;
+        }
+        this.properties = properties;
+    }
+
+    public String getNamespace() {
+        return namespace;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public HashMap<String, String> getProperties() {
+        return new HashMap<>(properties);
+    }
+
+    @Override
+    public String toString() {
+        return "DefinitionBlueprint{" +
+                "name='" + namespace + ':' + name + '\'' +
+                ", properties=" + properties +
+                '}';
+    }
+}

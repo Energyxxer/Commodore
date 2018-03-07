@@ -9,6 +9,7 @@ import com.google.gson.JsonObject;
 
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +17,7 @@ import static com.energyxxer.commodore.defpacks.DefinitionPack.DefinitionCategor
 
 public class DefinitionPack {
 
-    enum DefinitionCategory {
+    public enum DefinitionCategory {
         BLOCK((m) -> m.block),
         ITEM((m) -> m.item),
         EFFECT((m) -> m.effect),
@@ -92,13 +93,11 @@ public class DefinitionPack {
             }
         }
 
-        System.out.println(definitions);
-
         loaded = true;
     }
 
     public void initialize(CommandModule module) {
-        if(!loaded) load();
+        load();
         for(Map.Entry<DefinitionCategory, ArrayList<DefinitionBlueprint>> defs : definitions.entrySet()) {
             DefinitionCategory category = defs.getKey();
             for(DefinitionBlueprint blueprint : defs.getValue()) {
@@ -107,38 +106,14 @@ public class DefinitionPack {
         }
     }
 
+    public Collection<DefinitionBlueprint> getBlueprints(DefinitionCategory category) {
+        load();
+        return new ArrayList<>(definitions.get(category));
+    }
+
     @Override
     public String toString() {
         return "DefinitionPack [" + packName + "]";
-    }
-}
-
-class DefinitionBlueprint {
-    final String namespace;
-    final String name;
-    final HashMap<String, String> properties;
-
-    public DefinitionBlueprint(String name) {
-        this(name, null);
-    }
-
-    DefinitionBlueprint(String name, HashMap<String, String> properties) {
-        if(name.contains(":")) {
-            this.namespace = name.substring(0, name.indexOf(":"));
-            this.name = name.substring(name.indexOf(":")+1);
-        } else {
-            this.namespace = "minecraft";
-            this.name = name;
-        }
-        this.properties = properties;
-    }
-
-    @Override
-    public String toString() {
-        return "DefinitionBlueprint{" +
-                "name='" + namespace + ':' + name + '\'' +
-                ", properties=" + properties +
-                '}';
     }
 }
 
