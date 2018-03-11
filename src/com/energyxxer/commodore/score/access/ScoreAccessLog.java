@@ -130,6 +130,7 @@ class MacroScoreAccessLog {
                     i--;
                 }
             }
+            if(score.getObjective() != null && !seenObjectives.contains(score.getObjective())) seenObjectives.add(score.getObjective());
         }
     }
 
@@ -148,8 +149,9 @@ class MacroScoreAccessLog {
 
     boolean isLastFieldAccess(Collection<MacroScore> scores) {
         for(MacroScore score : scores) {
-            if(score.getObjective() != null && (!score.getObjective().isField() || seenObjectives.contains(score.getObjective()))) return false;
+            // if score.getObjective().isField() && !seenObjective.contains(score.getObjective) then it is last field access
+            if(score.getObjective() != null && (score.getObjective().isField() && !seenObjectives.contains(score.getObjective()))) return true;
         }
-        return true;
+        return false;
     }
 }
