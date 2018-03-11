@@ -39,7 +39,7 @@ public class ScoreAdd implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "scoreboard players add \be0 " + score.getObjective().getName() + " " + delta, score.getHolder());
+        return new CommandResolution(execContext, "scoreboard players " + ((delta >= 0) ? "add" : "remove") + " \be0 " + score.getObjective().getName() + " " + Math.abs(delta), score.getHolder());
     }
 
     @Override
