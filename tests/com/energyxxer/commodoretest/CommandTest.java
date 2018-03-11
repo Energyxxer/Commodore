@@ -52,14 +52,12 @@ import com.energyxxer.commodore.functions.FunctionHeaderComment;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.ModulePackGenerator;
+import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.nbt.*;
 import com.energyxxer.commodore.particles.Particle;
 import com.energyxxer.commodore.rotation.Rotation;
 import com.energyxxer.commodore.rotation.RotationUnit;
-import com.energyxxer.commodore.score.LocalScore;
-import com.energyxxer.commodore.score.MacroScoreHolder;
-import com.energyxxer.commodore.score.Objective;
-import com.energyxxer.commodore.score.ObjectiveManager;
+import com.energyxxer.commodore.score.*;
 import com.energyxxer.commodore.selector.*;
 import com.energyxxer.commodore.selector.advancement.AdvancementCompletionEntry;
 import com.energyxxer.commodore.selector.advancement.AdvancementCriterionEntry;
@@ -143,6 +141,7 @@ public final class CommandTest {
         //System.out.println("datacmd = " + datacmd.getRawCommand());*/
 
         CommandModule module = new CommandModule("Commodore Test", "A simple Commodore test project", "ct");
+        module.getOptionManager().UNUSED_COMMAND_POLICY.setValue(UnusedCommandPolicy.COMMENT_OUT);
         StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
         ObjectiveManager objMgr = module.getObjectiveManager();
         objMgr.setPrefixEnabled(true);
@@ -332,18 +331,34 @@ public final class CommandTest {
         otherFunction.append(new WorldBorderSetWarningDistance(8));
         otherFunction.append(new WorldBorderSetDamageAmount(2));
 
+        Function scoreTest = module.getNamespace("ct").getFunctionManager().create("score-test");
+
+        Objective obj = module.getObjectiveManager().create("obj", true);
+
+        Entity entityA = new GenericEntity(new Selector(Selector.BaseSelector.SENDER));
+        entityA.addMacroHolder(new MacroScoreHolder("INSTANCE"));
+
+        ScoreHolder fakePlayer = new FakePlayer("TEMPEST");
+
+        scoreTest.append(new ScoreSet(new LocalScore(obj, entityA), 5));
+        scoreTest.append(new ScoreSet(new LocalScore(obj, fakePlayer), 9));
+
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 
-        System.out.println(function.getResolvedContent());
+        //System.out.println(function.getResolvedContent());
 
-        System.out.println(otherFunction.getResolvedContent());
+        //System.out.println(otherFunction.getResolvedContent());
+
+        System.out.println(scoreTest.getResolvedContent());
+
+        System.out.println(scoreTest.getAccessLog());
 
         System.out.println(module.getNamespace("ct").getFunctionManager().get("init_objectives").getResolvedContent());
 
         //System.out.println(function.getAccessLog());
         //System.out.println(otherFunction.getAccessLog());
 
-        System.out.println(Selector.parse("@s[name=\"something\",distance=..0.0001,tag=!try_ext_pwr,tag=!try_ext_ret]").toVerboseString());
+        /*System.out.println(Selector.parse("@s[name=\"something\",distance=..0.0001,tag=!try_ext_pwr,tag=!try_ext_ret]").toVerboseString());
         System.out.println(Selector.parse("@e[distance=..10,limit=1,tag=!HsR_TeslaTower,type=!armor_stand]").toVerboseString());
         System.out.println(Selector.parse("@e[type=!cow,x_rotation=5..10,tag=try_ext_thread,limit=1]").toVerboseString());
         System.out.println(Selector.parse("@a[x=-5,y=0,z=-5,dx=10,dy=255,dz=10]").toVerboseString());
@@ -353,17 +368,10 @@ public final class CommandTest {
         System.out.println(Selector.parse("@e[limit=1,type=slime,sort=random]").toVerboseString());
         System.out.println(Selector.parse("@e[tag=temp,limit=1]").toVerboseString());
         System.out.println(Selector.parse("@r[sort=furthest]").toVerboseString());
-        /*System.out.println(Selector.parse("").toVerboseString());
-        System.out.println(Selector.parse("").toVerboseString());
-        System.out.println(Selector.parse("").toVerboseString());
-        System.out.println(Selector.parse("").toVerboseString());
-        System.out.println(Selector.parse("").toVerboseString());
-        System.out.println(Selector.parse("").toVerboseString());
-        System.out.println(Selector.parse("").toVerboseString());*/
         System.out.println(Selector.parse("@p").toVerboseString());
         System.out.println(Selector.parse("@a").toVerboseString());
         System.out.println(Selector.parse("@r").toVerboseString());
         System.out.println(Selector.parse("@e").toVerboseString());
-        System.out.println(Selector.parse("@s").toVerboseString());
+        System.out.println(Selector.parse("@s").toVerboseString());*/
     }
 }

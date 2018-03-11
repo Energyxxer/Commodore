@@ -2,7 +2,6 @@ package com.energyxxer.commodore.score.access;
 
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.score.MacroScore;
-import com.energyxxer.commodore.score.Objective;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -105,7 +104,7 @@ public class ScoreAccessLog {
 
 class MacroScoreAccessLog {
     private final ArrayList<MacroScore> usedMacroScores = new ArrayList<>();
-    private final ArrayList<Objective> seenObjectives = new ArrayList<>();
+    private final ArrayList<MacroScore> seenMacroScores = new ArrayList<>();
 
     void addUsed(Collection<MacroScore> scores) {
         scores.forEach(s -> {
@@ -117,7 +116,14 @@ class MacroScoreAccessLog {
                 }
             }
             if(!contained) usedMacroScores.add(s);
-            if(s.getObjective() != null && !seenObjectives.contains(s.getObjective())) seenObjectives.add(s.getObjective());
+            contained = false;
+            for(MacroScore seenScore : seenMacroScores) {
+                if(seenScore.matches(s)) {
+                    contained = true;
+                    break;
+                }
+            }
+            if(!contained) seenMacroScores.add(s);
         });
     }
 
@@ -130,7 +136,14 @@ class MacroScoreAccessLog {
                     i--;
                 }
             }
-            if(score.getObjective() != null && !seenObjectives.contains(score.getObjective())) seenObjectives.add(score.getObjective());
+            boolean contained = false;
+            for(MacroScore seenScore : seenMacroScores) {
+                if(seenScore.matches(score)) {
+                    contained = true;
+                    break;
+                }
+            }
+            if(!contained) seenMacroScores.add(score);
         }
     }
 
@@ -143,6 +156,15 @@ class MacroScoreAccessLog {
         return false;
     }
 
+    private boolean isSeen(MacroScore score) {
+        for(MacroScore seenScore : seenMacroScores) {
+            if(seenScore.matches(score)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Collection<MacroScore> getUsed() {
         return new ArrayList<>(usedMacroScores);
     }
@@ -150,7 +172,7 @@ class MacroScoreAccessLog {
     boolean isLastFieldAccess(Collection<MacroScore> scores) {
         for(MacroScore score : scores) {
             // if score.getObjective().isField() && !seenObjective.contains(score.getObjective) then it is last field access
-            if(score.getObjective() != null && (score.getObjective().isField() && !seenObjectives.contains(score.getObjective()))) return true;
+            if(score.getObjective() != null && (score.getObjective().isField() && !isSeen(score))) return true;
         }
         return false;
     }

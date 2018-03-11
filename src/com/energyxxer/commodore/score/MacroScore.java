@@ -20,7 +20,7 @@ public class MacroScore {
     }
 
     public boolean matches(MacroScore other) {
-        return (this.holder == null || other.holder == null || this.holder.equals(other.holder)) && (this.objective == null || other.objective == null || this.objective == other.objective);
+        return (other.holder == null || (this.holder != null && this.holder.equals(other.holder))) && (other.objective == null || this.objective == other.objective);
     }
 
     @Override
