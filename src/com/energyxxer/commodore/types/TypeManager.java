@@ -15,6 +15,7 @@ public class TypeManager {
     public final TypeDictionary<DifficultyType> difficulty;
     public final TypeDictionary<DimensionType> dimension;
     public final TypeDictionary<GamemodeType> gamemode;
+    public final TypeDictionary<GameruleType> gamerule;
     public final TypeDictionary<StructureType> structure;
 
     public final TypeDictionary<ItemSlot> slot;
@@ -32,6 +33,7 @@ public class TypeManager {
         this.difficulty = new TypeDictionary<>(owner, "difficulty", DifficultyType::new);
         this.dimension = new TypeDictionary<>(owner, "dimension", DimensionType::new);
         this.gamemode = new TypeDictionary<>(owner, "gamemode", GamemodeType::new);
+        this.gamerule = new TypeDictionary<>(owner, "gamerule", GameruleType::new);
         this.structure = new TypeDictionary<>(owner, "structure", StructureType::new);
 
         this.slot = new TypeDictionary<>(owner, "slot", ItemSlot::new);

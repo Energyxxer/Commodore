@@ -1,0 +1,71 @@
+{
+  "announceAdvancements": {
+    "argument": "boolean"
+  },
+  "commandBlockOutput": {
+    "argument": "boolean"
+  },
+  "disableElytraMovementCheck": {
+    "argument": "boolean"
+  },
+  "doDaylightCycle": {
+    "argument": "boolean"
+  },
+  "doEntityDrops": {
+    "argument": "boolean"
+  },
+  "doFireTick": {
+    "argument": "boolean"
+  },
+  "doLimitedCrafting": {
+    "argument": "boolean"
+  },
+  "doMobLoot": {
+    "argument": "boolean"
+  },
+  "doMobSpawning": {
+    "argument": "boolean"
+  },
+  "doTileDrops": {
+    "argument": "boolean"
+  },
+  "doWeatherCycle": {
+    "argument": "boolean"
+  },
+  "keepInventory": {
+    "argument": "boolean"
+  },
+  "logAdminCommands": {
+    "argument": "boolean"
+  },
+  "maxCommandChainLength": {
+    "argument": "int"
+  },
+  "maxEntityCramming": {
+    "argument": "boolean"
+  },
+  "mobGriefing": {
+    "argument": "boolean"
+  },
+  "naturalRegeneration": {
+    "argument": "boolean"
+  },
+  "randomTickSpeed": {
+    "argument": "int"
+  },
+  "reducedDebugInfo": {
+    "argument": "boolean"
+  },
+  "sendCommandFeedback": {
+    "argument": "boolean"
+  },
+  "showDeathMessages": {
+    "argument": "boolean"
+  },
+  "spawnRadius": {
+    "argument": "int"
+  },
+  "spectatorsGenerateChunks": {
+    "argument": "boolean"
+  }
+}
