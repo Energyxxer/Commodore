@@ -17,6 +17,8 @@ public class TypeManager {
     public final TypeDictionary<GamemodeType> gamemode;
     public final TypeDictionary<StructureType> structure;
 
+    public final TypeDictionary<ItemSlot> slot;
+
     public TypeManager(Namespace owner) {
         this.owner = owner;
 
@@ -31,6 +33,8 @@ public class TypeManager {
         this.dimension = new TypeDictionary<>(owner, "dimension", DimensionType::new);
         this.gamemode = new TypeDictionary<>(owner, "gamemode", GamemodeType::new);
         this.structure = new TypeDictionary<>(owner, "structure", StructureType::new);
+
+        this.slot = new TypeDictionary<>(owner, "slot", ItemSlot::new);
     }
 
 

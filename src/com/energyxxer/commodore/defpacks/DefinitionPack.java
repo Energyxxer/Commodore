@@ -27,7 +27,8 @@ public class DefinitionPack {
         DIFFICULTY((m) -> m.difficulty),
         DIMENSION((m) -> m.dimension),
         GAMEMODE((m) -> m.gamemode),
-        STRUCTURE((m) -> m.structure);
+        STRUCTURE((m) -> m.structure),
+        SLOT((m) -> m.slot);
 
         private final DictionaryPicker picker;
 
@@ -57,6 +58,7 @@ public class DefinitionPack {
         definitions.put(DIMENSION, new ArrayList<>());
         definitions.put(GAMEMODE, new ArrayList<>());
         definitions.put(STRUCTURE, new ArrayList<>());
+        definitions.put(SLOT, new ArrayList<>());
     }
 
     public void load() {
@@ -76,8 +78,10 @@ public class DefinitionPack {
         JsonObject gamemodes = gson.fromJson(new InputStreamReader(DefinitionPack.class.getResourceAsStream("/defpacks/" + packDir + "/gamemodes.json")), JsonObject.class);
         JsonObject structures = gson.fromJson(new InputStreamReader(DefinitionPack.class.getResourceAsStream("/defpacks/" + packDir + "/structures.json")), JsonObject.class);
 
-        DefinitionCategory[] categories = {BLOCK, ITEM, EFFECT, ENTITY, PARTICLE, ENCHANTMENT, DIFFICULTY, DIMENSION, GAMEMODE, STRUCTURE};
-        JsonObject[] objects = {blocks, items, effects, entities, particles, enchantments, difficulties, dimensions, gamemodes, structures};
+        JsonObject slots = gson.fromJson(new InputStreamReader(DefinitionPack.class.getResourceAsStream("/defpacks/" + packDir + "/slots.json")), JsonObject.class);
+
+        DefinitionCategory[] categories = {BLOCK, ITEM, EFFECT, ENTITY, PARTICLE, ENCHANTMENT, DIFFICULTY, DIMENSION, GAMEMODE, STRUCTURE, SLOT};
+        JsonObject[] objects = {blocks, items, effects, entities, particles, enchantments, difficulties, dimensions, gamemodes, structures, slots};
 
         for(int i = 0; i < categories.length; i++) {
             for(Map.Entry<String, JsonElement> entry : objects[i].entrySet()) {

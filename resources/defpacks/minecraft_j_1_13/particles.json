@@ -42,7 +42,7 @@
     "argument": "none"
   },
   "minecraft:dust": {
-    "argument": "color-int"
+    "argument": "color-double"
   },
   "minecraft:effect": {
     "argument": "none"
