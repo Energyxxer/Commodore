@@ -14,26 +14,35 @@ import java.util.Collection;
 public class ScorePlayersOperation implements Command {
 
     public enum Operation {
-        ADD("+="), SUBTRACT("-="), MULTIPLY("*="), DIVIDE("/="), MODULO("%="), LESS_THAN("<"), GREATER_THAN(">"), ASSIGN("=", false);
+        ADD("+=", 0b1110), SUBTRACT("-=", 0b1110), MULTIPLY("*=", 0b1110), DIVIDE("/=", 0b1110), MODULO("%=", 0b1110), LESS_THAN("<", 0b1110), GREATER_THAN(">", 0b1110), ASSIGN("=", 0b0110), SWAP("><", 0b1111);
+        //Leftmost 2 bits are for the read-access of target and source respectively.
+        //Rightmost 2 bits are for write-access of target and source respectively.
+
 
         private final String shorthand;
-        private final boolean targetRead;
+        private final int accessMap;
 
-        Operation(String shorthand) {
-            this(shorthand, true);
-        }
-
-        Operation(String shorthand, boolean targetRead) {
+        Operation(String shorthand, int accessMap) {
             this.shorthand = shorthand;
-            this.targetRead = targetRead;
+            this.accessMap = accessMap;
         }
 
         public String getShorthand() {
             return shorthand;
         }
 
-        public boolean isTargetRead() {
-            return targetRead;
+        public Collection<ScoreboardAccess> getAccesses(LocalScore target, LocalScore source) {
+            ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
+            ScoreboardAccess last = null;
+
+            for(int i = 1; i <= 0b1000; i <<= 1) {
+                ScoreboardAccess.AccessType accessType = (i > 0b0010) ? ScoreboardAccess.AccessType.READ : ScoreboardAccess.AccessType.WRITE;
+                LocalScore score = ((i & 0b1010) > 0) ? target : source;
+                last = new ScoreboardAccess(score.getMacroScores(), accessType, last);
+                accesses.add(last);
+            }
+
+            return accesses;
         }
     }
 
@@ -55,19 +64,7 @@ public class ScorePlayersOperation implements Command {
             accesses.addAll(((Entity) source.getHolder()).getScoreboardAccesses());
         }
 
-        if(operation.isTargetRead()) {
-            ScoreboardAccess access1 = new ScoreboardAccess(source.getMacroScores(), ScoreboardAccess.AccessType.READ);
-            ScoreboardAccess access2 = new ScoreboardAccess(target.getMacroScores(), ScoreboardAccess.AccessType.READ, access1);
-            ScoreboardAccess access3 = new ScoreboardAccess(target.getMacroScores(), ScoreboardAccess.AccessType.WRITE, access2);
-            accesses.add(access1);
-            accesses.add(access2);
-            accesses.add(access3);
-        } else {
-            ScoreboardAccess access2 = new ScoreboardAccess(target.getMacroScores(), ScoreboardAccess.AccessType.WRITE);
-            ScoreboardAccess access1 = new ScoreboardAccess(source.getMacroScores(), ScoreboardAccess.AccessType.READ, access2);
-            accesses.add(access1);
-            accesses.add(access2);
-        }
+        accesses.addAll(operation.getAccesses(target, source));
     }
 
     @Override @NotNull

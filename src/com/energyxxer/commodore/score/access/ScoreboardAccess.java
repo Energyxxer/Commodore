@@ -23,7 +23,10 @@ public class ScoreboardAccess {
     public ScoreboardAccess(Collection<MacroScore> scores, AccessType type, Collection<ScoreboardAccess> dependencies) {
         this.scores = new ArrayList<>(scores);
         this.type = type;
-        this.dependencies = (dependencies != null) ? new ArrayList<>(dependencies) : Collections.emptyList();
+        this.dependencies = (dependencies != null) ? new ArrayList<>() : Collections.emptyList();
+        if(dependencies != null) dependencies.forEach(d -> {
+            if(d != null) this.dependencies.add(d);
+        });
     }
 
     public Function getFunction() {
