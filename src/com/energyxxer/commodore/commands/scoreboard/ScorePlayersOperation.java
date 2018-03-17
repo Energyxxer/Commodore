@@ -35,11 +35,14 @@ public class ScorePlayersOperation implements Command {
             ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
             ScoreboardAccess last = null;
 
-            for(int i = 1; i <= 0b1000; i <<= 1) {
-                ScoreboardAccess.AccessType accessType = (i > 0b0010) ? ScoreboardAccess.AccessType.READ : ScoreboardAccess.AccessType.WRITE;
-                LocalScore score = ((i & 0b1010) > 0) ? target : source;
-                last = new ScoreboardAccess(score.getMacroScores(), accessType, last);
-                accesses.add(last);
+            for(int i = 0b1000; i > 0; i >>= 1) {
+                if((accessMap & i) > 0) {
+                    ScoreboardAccess.AccessType accessType = (i > 0b0010) ? ScoreboardAccess.AccessType.READ : ScoreboardAccess.AccessType.WRITE;
+                    LocalScore score = ((i & 0b1010) > 0) ? target : source;
+
+                    last = new ScoreboardAccess(score.getMacroScores(), accessType, last);
+                    accesses.add(last);
+                }
             }
 
             return accesses;
