@@ -8,7 +8,9 @@ import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 public class ExecuteCommand implements Command {
 
@@ -16,7 +18,16 @@ public class ExecuteCommand implements Command {
     private final ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
 
     public ExecuteCommand(Command chainedCommand) {
+        this(chainedCommand, Collections.emptyList());
+    }
+
+    public ExecuteCommand(Command chainedCommand, ExecuteModifier... modifiers) {
+        this(chainedCommand, Arrays.asList(modifiers));
+    }
+
+    public ExecuteCommand(Command chainedCommand, Collection<ExecuteModifier> modifiers) {
         this.chainedCommand = chainedCommand;
+        this.modifiers.addAll(modifiers);
     }
 
     public void addModifier(ExecuteModifier modifier) {

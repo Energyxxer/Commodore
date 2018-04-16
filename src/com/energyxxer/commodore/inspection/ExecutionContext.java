@@ -2,6 +2,7 @@ package com.energyxxer.commodore.inspection;
 
 import com.energyxxer.commodore.commands.execute.ExecuteModifier;
 import com.energyxxer.commodore.entity.Entity;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,11 +12,11 @@ public class ExecutionContext {
     private final ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
     private Entity finalSender;
 
-    public ExecutionContext(Entity sender) {
+    public ExecutionContext(@NotNull Entity sender) {
         this.originalSender = this.finalSender = sender;
     }
 
-    public ExecutionContext(Entity originalSender, Collection<ExecuteModifier> modifiers) {
+    public ExecutionContext(@NotNull Entity originalSender, Collection<ExecuteModifier> modifiers) {
         this.originalSender = originalSender;
         this.modifiers.addAll(modifiers);
         updateFinalSender();
