@@ -9,23 +9,30 @@ import java.util.*;
 
 public class CommandResolution {
     private final ExecutionContext execContext;
-    private final String raw;
-    private final ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
+    private final ArrayList<CommandResolutionLine> lines = new ArrayList<>();
 
     public CommandResolution(ExecutionContext execContext, String raw, Collection<CommandEmbeddable> embeddables) {
         this.execContext = execContext;
-        this.raw = raw;
-        if(embeddables != null) this.embeddables.addAll(embeddables);
+        lines.add(new CommandResolutionLine(raw, embeddables));
     }
 
     public CommandResolution(ExecutionContext execContext, String raw, CommandEmbeddable... embeddables) {
         this(execContext, raw, Arrays.asList(embeddables));
     }
 
+    public CommandResolution(ExecutionContext execContext, CommandResolutionLine... lines) {
+        this(execContext, Arrays.asList(lines));
+    }
+
+    public CommandResolution(ExecutionContext execContext, Collection<CommandResolutionLine> lines) {
+        this.execContext = execContext;
+        this.lines.addAll(lines);
+    }
+
     /**
      * Really weak code; prone to infinite loops if some knobhead makes two self-referencing entity/modifier pairs
      **/
-    private String resolveModifiers(ArrayList<ExecuteModifier> modifiers) {
+    static String resolveModifiers(ExecutionContext execContext, ArrayList<ExecuteModifier> modifiers) {
         ArrayList<ExecuteModifier> alreadyResolved = new ArrayList<>();
 
         HashMap<ExecuteModifier, String> resolved = new HashMap<>();
@@ -65,7 +72,7 @@ public class CommandResolution {
         return sb.toString();
     }
 
-    private String embed(String raw, String pattern, String replacement) {
+    static String embed(String raw, String pattern, String replacement) {
         int fromIndex = 0;
         int index;
         while((index = raw.indexOf(pattern, fromIndex)) >= 0) {
@@ -86,33 +93,23 @@ public class CommandResolution {
     }
 
     public String construct() {
-        ArrayList<ExecuteModifier> modifiers = new ArrayList<>(this.execContext.getModifiers());
-
-        for(int i = 0; i < embeddables.size(); i++) {
-            CommandEmbeddable embeddable = embeddables.get(i);
-            if(embeddable instanceof Entity) {
-                EntityResolution resolution = ((Entity) embeddable).resolveFor(new ExecutionContext(execContext.getOriginalSender(), modifiers));
-
-                modifiers.addAll(resolution.getModifiers());
-                embeddables.set(i, resolution);
-            }
-        }
-
-        String chainedCommand = raw;
-
-        for(int i = 0; i < embeddables.size(); i++) {
-            chainedCommand = embed(chainedCommand, "\be" + i, embeddables.get(i).toString());
-        }
-
         StringBuilder sb = new StringBuilder();
 
-        if(!modifiers.isEmpty()) {
-            sb.append("execute ");
-            sb.append(resolveModifiers(modifiers));
-            sb.append(" run ");
+        for(CommandResolutionLine line : lines) {
+            sb.append(line.construct(execContext, new ArrayList<>(this.execContext.getModifiers())));
+            sb.append('\n');
         }
-        sb.append(chainedCommand);
+
+        if(sb.length() > 0) sb.deleteCharAt(sb.length()-1);
 
         return sb.toString();
+    }
+
+    public ExecutionContext getExecutionContext() {
+        return execContext;
+    }
+
+    public ArrayList<CommandResolutionLine> getLines() {
+        return lines;
     }
 }

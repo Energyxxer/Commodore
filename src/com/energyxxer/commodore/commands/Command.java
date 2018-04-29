@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.commands;
 
 import com.energyxxer.commodore.functions.Function;
+import com.energyxxer.commodore.functions.FunctionSection;
 import com.energyxxer.commodore.functions.FunctionWriter;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
@@ -29,24 +30,24 @@ public interface Command extends FunctionWriter {
     CommandResolution resolveCommand(ExecutionContext execContext);
 
     @Override
-    default String toFunctionContent(Function function) {
+    default String toFunctionContent(FunctionSection section) {
         try {
-            UnusedCommandPolicy policy = function.getNamespace().getOwner().getOptionManager().UNUSED_COMMAND_POLICY.getValue();
+            UnusedCommandPolicy policy = section.getNamespace().getOwner().getOptionManager().UNUSED_COMMAND_POLICY.getValue();
             if(policy == KEEP) {
-                return resolveCommand(function.getExecutionContext()).construct();
+                return resolveCommand(section.getExecutionContext()).construct();
             } else {
                 boolean used = !isScoreboardManipulation() || isUsed();
 
                 if(!used && policy == REMOVE) return null;
 
-                String content = resolveCommand(function.getExecutionContext()).construct();
+                String content = resolveCommand(section.getExecutionContext()).construct();
 
                 if(!used && policy == COMMENT_OUT) content = "# [UNUSED]: " + content;
 
                 return content;
             }
         } catch(IllegalStateException x) {
-            System.out.println(function.getAccessLog());
+            if(section instanceof Function) System.out.println(((Function) section).getAccessLog());
             throw x;
         }
     }
@@ -78,16 +79,16 @@ public interface Command extends FunctionWriter {
     }
 
     @Override
-    default void onAppend(Function function) {
-        this.onAppend(function, function.getExecutionContext());
+    default void onAppend(FunctionSection section) {
+        this.onAppend(section, section.getExecutionContext());
     }
 
     /**
      * Runs whenever this command is appended into a function.
-     * @param function The function this command is appended to.
+     * @param section The function section this command is appended to.
      * @param execContext The execution context of this command. May not be the function's execution context.
      */
-    default void onAppend(Function function, ExecutionContext execContext) {
+    default void onAppend(FunctionSection section, ExecutionContext execContext) {
     }
 
     /**

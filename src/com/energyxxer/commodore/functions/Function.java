@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class Function {
+public class Function implements FunctionSection {
     private final FunctionManager parent;
 
     private final Namespace namespace;
@@ -51,10 +51,12 @@ public class Function {
         return execContext.getFinalSender();
     }
 
+    @Override
     public void append(FunctionWriter... writers) {
         append(Arrays.asList(writers));
     }
 
+    @Override
     public void append(Collection<FunctionWriter> writers) {
         this.content.addAll(writers);
         writers.forEach(w -> w.onAppend(this));

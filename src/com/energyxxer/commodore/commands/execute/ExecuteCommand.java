@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.commands.execute;
 
 import com.energyxxer.commodore.commands.Command;
-import com.energyxxer.commodore.functions.Function;
+import com.energyxxer.commodore.functions.FunctionSection;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
@@ -56,9 +56,9 @@ public class ExecuteCommand implements Command {
     }
 
     @Override
-    public void onAppend(Function function, ExecutionContext execContext) {
-        Command.super.onAppend(function, execContext);
-        chainedCommand.onAppend(function, new ExecutionContext(execContext.getFinalSender(), this.modifiers));
+    public void onAppend(FunctionSection section, ExecutionContext execContext) {
+        Command.super.onAppend(section, execContext);
+        chainedCommand.onAppend(section, new ExecutionContext(execContext.getFinalSender(), this.modifiers));
     }
 
     @Override

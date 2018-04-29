@@ -1,6 +1,7 @@
 package com.energyxxer.commodoretest;
 
 import com.energyxxer.commodore.block.Block;
+import com.energyxxer.commodore.commands.CommandGroup;
 import com.energyxxer.commodore.commands.advancement.AdvancementCommand;
 import com.energyxxer.commodore.commands.bossbar.BossbarCommand;
 import com.energyxxer.commodore.commands.bossbar.BossbarCreateCommand;
@@ -24,6 +25,7 @@ import com.energyxxer.commodore.commands.locate.LocateCommand;
 import com.energyxxer.commodore.commands.particle.ParticleCommand;
 import com.energyxxer.commodore.commands.playsound.PlaySoundCommand;
 import com.energyxxer.commodore.commands.recipe.RecipeCommand;
+import com.energyxxer.commodore.commands.say.SayCommand;
 import com.energyxxer.commodore.commands.scoreboard.*;
 import com.energyxxer.commodore.commands.spreadplayers.SpreadPlayersCommand;
 import com.energyxxer.commodore.commands.stopsound.StopSoundCommand;
@@ -342,6 +344,15 @@ public final class CommandTest {
 
         scoreTest.append(new ScoreSet(new LocalScore(obj, entityA), 5));
         scoreTest.append(new ScoreSet(new LocalScore(obj, fakePlayer), 9));
+
+        CommandGroup cg = new CommandGroup(scoreTest);
+        cg.append(new SayCommand("Hello"));
+        cg.append(new SayCommand("World"));
+
+        ExecuteCommand exec2 = new ExecuteCommand(cg);
+        exec2.addModifier(new ExecuteInDimension(module.minecraft.getTypeManager().dimension.get("the_nether")));
+
+        scoreTest.append(exec2);
 
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 

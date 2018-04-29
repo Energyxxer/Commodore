@@ -7,7 +7,7 @@ public class FunctionHeaderComment extends FunctionComment {
     }
 
     @Override
-    public String toFunctionContent(Function function) {
+    public String toFunctionContent(FunctionSection section) {
         StringBuilder sb = new StringBuilder();
         sb.append('\n');
         sb.append("#\n");

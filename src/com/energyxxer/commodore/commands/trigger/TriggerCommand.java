@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.commands.trigger;
 
 import com.energyxxer.commodore.commands.Command;
-import com.energyxxer.commodore.functions.Function;
+import com.energyxxer.commodore.functions.FunctionSection;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.LocalScore;
@@ -66,7 +66,7 @@ public class TriggerCommand implements Command {
     }
 
     @Override
-    public void onAppend(Function function, ExecutionContext execContext) {
+    public void onAppend(FunctionSection section, ExecutionContext execContext) {
         this.execContext = execContext;
     }
 

@@ -16,7 +16,7 @@ public class FunctionComment implements FunctionWriter {
     }
 
     @Override
-    public String toFunctionContent(Function function) {
+    public String toFunctionContent(FunctionSection section) {
         StringBuilder sb = new StringBuilder();
 
         Iterator<String> it = lines.iterator();

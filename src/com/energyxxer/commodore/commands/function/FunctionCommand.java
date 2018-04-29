@@ -2,6 +2,7 @@ package com.energyxxer.commodore.commands.function;
 
 import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.functions.Function;
+import com.energyxxer.commodore.functions.FunctionSection;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
@@ -41,8 +42,8 @@ public class FunctionCommand implements Command {
     }
 
     @Override
-    public void onAppend(Function function, ExecutionContext execContext) {
+    public void onAppend(FunctionSection section, ExecutionContext execContext) {
         this.execContext = execContext;
-        Command.super.onAppend(function, execContext);
+        Command.super.onAppend(section, execContext);
     }
 }
