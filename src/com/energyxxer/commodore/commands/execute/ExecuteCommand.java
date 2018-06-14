@@ -17,20 +17,20 @@ public class ExecuteCommand implements Command {
     private final Command chainedCommand;
     private final ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
 
-    public ExecuteCommand(Command chainedCommand) {
+    public ExecuteCommand(@NotNull Command chainedCommand) {
         this(chainedCommand, Collections.emptyList());
     }
 
-    public ExecuteCommand(Command chainedCommand, ExecuteModifier... modifiers) {
+    public ExecuteCommand(@NotNull Command chainedCommand, @NotNull ExecuteModifier... modifiers) {
         this(chainedCommand, Arrays.asList(modifiers));
     }
 
-    public ExecuteCommand(Command chainedCommand, Collection<ExecuteModifier> modifiers) {
+    public ExecuteCommand(@NotNull Command chainedCommand, @NotNull Collection<ExecuteModifier> modifiers) {
         this.chainedCommand = chainedCommand;
         this.modifiers.addAll(modifiers);
     }
 
-    public void addModifier(ExecuteModifier modifier) {
+    public void addModifier(@NotNull ExecuteModifier modifier) {
         this.modifiers.add(modifier);
     }
 
@@ -56,7 +56,7 @@ public class ExecuteCommand implements Command {
     }
 
     @Override
-    public void onAppend(FunctionSection section, ExecutionContext execContext) {
+    public void onAppend(@NotNull FunctionSection section, @NotNull ExecutionContext execContext) {
         Command.super.onAppend(section, execContext);
         chainedCommand.onAppend(section, new ExecutionContext(execContext.getFinalSender(), this.modifiers));
     }

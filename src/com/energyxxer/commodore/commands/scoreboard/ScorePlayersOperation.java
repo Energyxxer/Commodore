@@ -10,11 +10,20 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 public class ScorePlayersOperation implements Command {
 
     public enum Operation {
-        ADD("+=", 0b1110), SUBTRACT("-=", 0b1110), MULTIPLY("*=", 0b1110), DIVIDE("/=", 0b1110), MODULO("%=", 0b1110), LESS_THAN("<", 0b1110), GREATER_THAN(">", 0b1110), ASSIGN("=", 0b0110), SWAP("><", 0b1111);
+        ADD("+=", 0b1110),
+        SUBTRACT("-=", 0b1110),
+        MULTIPLY("*=", 0b1110),
+        DIVIDE("/=", 0b1110),
+        MODULO("%=", 0b1110),
+        LESS_THAN("<", 0b1110),
+        GREATER_THAN(">", 0b1110),
+        ASSIGN("=", 0b0110),
+        SWAP("><", 0b1111);
         //Leftmost 2 bits are for the read-access of target and source respectively.
         //Rightmost 2 bits are for write-access of target and source respectively.
 
@@ -35,7 +44,7 @@ public class ScorePlayersOperation implements Command {
             ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
             ScoreboardAccess last = null;
 
-            for(int i = 0b1000; i > 0; i >>= 1) {
+            for(int i = 0b0001; i <= 0b1000; i <<= 1) {
                 if((accessMap & i) > 0) {
                     ScoreboardAccess.AccessType accessType = (i > 0b0010) ? ScoreboardAccess.AccessType.READ : ScoreboardAccess.AccessType.WRITE;
                     LocalScore score = ((i & 0b1010) > 0) ? target : source;
@@ -44,6 +53,8 @@ public class ScorePlayersOperation implements Command {
                     accesses.add(last);
                 }
             }
+
+            Collections.reverse(accesses);
 
             return accesses;
         }

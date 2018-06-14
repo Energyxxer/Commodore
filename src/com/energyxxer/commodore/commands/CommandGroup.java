@@ -68,10 +68,7 @@ public class CommandGroup implements Command, FunctionSection {
 
     @Override
     public void append(Collection<FunctionWriter> writers) {
-        writers.forEach(w -> {
-            this.writers.add(w);
-            w.onAppend(this);
-        });
+        this.writers.addAll(writers);
     }
 
     @Override

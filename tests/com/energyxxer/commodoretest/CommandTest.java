@@ -347,6 +347,7 @@ public final class CommandTest {
 
         CommandGroup cg = new CommandGroup(scoreTest);
         cg.append(new SayCommand("Hello"));
+        cg.append(new FunctionComment("Comment"));
         cg.append(new SayCommand("World"));
 
         ExecuteCommand exec2 = new ExecuteCommand(cg);
