@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.module;
 
+import com.energyxxer.commodore.functions.AccessLogFile;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.tags.Tag;
 import com.energyxxer.commodore.tags.TagGroup;
@@ -9,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -53,13 +55,17 @@ public class ModulePackGenerator {
         for(Namespace namespace : module.namespaces.values()) {
             String namespacePath = "data/" + namespace.name;
 
+            ArrayList<Exportable> exportables = new ArrayList<>();
+
             for(Function func : namespace.getFunctionManager().getAll()) {
                 if(func.getEntryCount() == 0) continue;
-                String functionPath = func.getPath();
+                exportables.add(func);
+                if(module.optMgr.EXPORT_ACCESS_LOGS.getValue()) exportables.add(new AccessLogFile(func));//createFile(fileName + ".accesslog", func.getAccessLog().toString());
+                continue;
+                /*String functionPath = func.getPath();
                 String fileName = namespacePath + "/functions/" + functionPath;
 
-                createFile(fileName + ".mcfunction", func.getResolvedContent());
-                if(module.optMgr.EXPORT_ACCESS_LOGS.getValue()) createFile(fileName + ".accesslog", func.getAccessLog().toString());
+                createFile(fileName + ".mcfunction", func.getResolvedContent());*/
             }
 
             TagManager tagMgr = namespace.getTagManager();
@@ -68,10 +74,18 @@ public class ModulePackGenerator {
 
             for(TagGroup<?> group : groups) {
                 for(Tag tag : group.getAll()) {
-                    String directoryPath = namespacePath + "/tags/" + group.getGroupName();
+                    exportables.add(tag);
+                    continue;
+                    /*String directoryPath = namespacePath + "/tags/" + group.getGroupName();
                     String fileName = directoryPath + "/" + tag.getName() + ".json";
 
-                    createFile(fileName, tag.getJSONContent());
+                    createFile(fileName, tag.getContents());*/
+                }
+            }
+
+            for(Exportable exportable : exportables) {
+                if(exportable.shouldExport()) {
+                    createFile(namespacePath + "/" + exportable.getExportPath(), exportable.getContents());
                 }
             }
         }

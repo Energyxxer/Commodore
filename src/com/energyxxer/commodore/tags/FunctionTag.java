@@ -13,6 +13,7 @@ public class FunctionTag extends FunctionReference implements Tag {
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
 
     public static final TagInstantiator<FunctionTag> INSTANTIATOR = FunctionTag::new;
+    private boolean export = true;
 
     FunctionTag(Namespace namespace, String id) {
         super(namespace, id);
@@ -45,6 +46,21 @@ public class FunctionTag extends FunctionReference implements Tag {
 
     public void addValues(FunctionReference... values) {
         this.addValues(Arrays.asList(values));
+    }
+
+    @Override
+    public boolean shouldExport() {
+        return export;
+    }
+
+    @Override
+    public void setExport(boolean export) {
+        this.export = export;
+    }
+
+    @Override
+    public String getExportPath() {
+        return "tags/functions/" + name + ".json";
     }
 
     //----------

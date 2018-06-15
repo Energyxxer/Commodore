@@ -247,6 +247,8 @@ public final class CommandTest {
         buttons.addValue(module.minecraft.getTypeManager().block.get("acacia_button"));
         buttons.addValue(module.minecraft.getTypeManager().block.get("dark_oak_button"));
 
+        buttons.setExport(false);
+
         function.append(new CloneCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new CoordinateSet(2, 2, 2, Coordinate.Type.RELATIVE), new CoordinateSet(5, 5, 5)));
         function.append(new CloneCommand(new CoordinateSet(0.5, 0.5, 0.5), new CoordinateSet(2.5, 2.5, 2.5, Coordinate.Type.RELATIVE), new CoordinateSet(5, 5, 5), CloneCommand.SourceMode.FORCE));
         function.append(new CloneMaskedCommand(new CoordinateSet(0, 0, 0), new CoordinateSet(2, 2, 2), new CoordinateSet(5, 5, 5)));
@@ -302,7 +304,7 @@ public final class CommandTest {
         FunctionTag tick = module.minecraft.getTagManager().getFunctionGroup().createNew("tick");
         tick.addValue(new FunctionReference(otherFunction));
 
-        function.append(new FunctionHeaderComment(buttons.getJSONContent().split("\n")));
+        function.append(new FunctionHeaderComment(buttons.getContents().split("\n")));
 
         otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit"))));
         otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL)));
@@ -359,6 +361,9 @@ public final class CommandTest {
         exec2.addModifier(new ExecuteInDimension(module.minecraft.getTypeManager().dimension.get("the_nether")));
 
         scoreTest.append(exec2);
+
+        scoreTest.setExport(false);
+        otherFunction.setExport(false);
 
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 

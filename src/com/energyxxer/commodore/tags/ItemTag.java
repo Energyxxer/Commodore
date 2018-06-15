@@ -13,6 +13,7 @@ public class ItemTag extends ItemType implements Tag {
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
 
     public static final TagInstantiator<ItemTag> INSTANTIATOR = ItemTag::new;
+    private boolean export = true;
 
     ItemTag(Namespace namespace, String id) {
         super(namespace, id);
@@ -45,6 +46,21 @@ public class ItemTag extends ItemType implements Tag {
 
     public void addValues(ItemType... values) {
         this.addValues(Arrays.asList(values));
+    }
+
+    @Override
+    public boolean shouldExport() {
+        return export;
+    }
+
+    @Override
+    public void setExport(boolean export) {
+        this.export = export;
+    }
+
+    @Override
+    public String getExportPath() {
+        return "tags/items/" + name + ".json";
     }
 
     //----------

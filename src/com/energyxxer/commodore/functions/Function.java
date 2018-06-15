@@ -4,6 +4,7 @@ import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.inspection.ExecutionContext;
+import com.energyxxer.commodore.module.Exportable;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.score.MacroScore;
 import com.energyxxer.commodore.score.MacroScoreHolder;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class Function implements FunctionSection {
+public class Function implements FunctionSection, Exportable {
     private final FunctionManager parent;
 
     private final Namespace namespace;
@@ -29,6 +30,8 @@ public class Function implements FunctionSection {
     private String resolvedContent = null;
 
     private final ScoreAccessLog accessLog = new ScoreAccessLog(this);
+
+    private boolean export = true;
 
     Function(FunctionManager parent, Namespace namespace, String path) {
         this(parent, namespace, path, null);
@@ -73,6 +76,11 @@ public class Function implements FunctionSection {
 
     public String getPath() {
         return path;
+    }
+
+    @Override
+    public String getExportPath() {
+        return "functions/" + getPath() + ".mcfunction";
     }
 
     public FunctionManager getParent() {
@@ -160,6 +168,21 @@ public class Function implements FunctionSection {
 
     public int getEntryCount() {
         return content.size();
+    }
+
+    @Override
+    public boolean shouldExport() {
+        return export;
+    }
+
+    @Override
+    public void setExport(boolean export) {
+        this.export = export;
+    }
+
+    @Override
+    public String getContents() {
+        return getResolvedContent();
     }
 
     @Override

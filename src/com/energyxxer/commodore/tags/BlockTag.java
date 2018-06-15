@@ -12,6 +12,7 @@ public class BlockTag extends BlockType implements Tag {
     public static final TagInstantiator<BlockTag> INSTANTIATOR = BlockTag::new;
     private final ArrayList<BlockType> values = new ArrayList<>();
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
+    private boolean export = true;
 
     BlockTag(Namespace namespace, String id) {
         super(namespace, id);
@@ -44,6 +45,21 @@ public class BlockTag extends BlockType implements Tag {
 
     public void addValues(BlockType... values) {
         this.addValues(Arrays.asList(values));
+    }
+
+    @Override
+    public boolean shouldExport() {
+        return export;
+    }
+
+    @Override
+    public void setExport(boolean export) {
+        this.export = export;
+    }
+
+    @Override
+    public String getExportPath() {
+        return "tags/blocks/" + name + ".json";
     }
 
     //----------

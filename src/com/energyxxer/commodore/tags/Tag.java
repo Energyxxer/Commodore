@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.tags;
 
+import com.energyxxer.commodore.module.Exportable;
 import com.energyxxer.commodore.types.Type;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -8,7 +9,7 @@ import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
-public interface Tag<T extends Type> {
+public interface Tag<T extends Type> extends Exportable {
 
     enum OverridePolicy {
         REPLACE(true), APPEND(false);
@@ -24,7 +25,7 @@ public interface Tag<T extends Type> {
 
     ArrayList<T> getValues();
 
-    default String getJSONContent() {
+    default String getContents() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         JsonObject root = new JsonObject();
