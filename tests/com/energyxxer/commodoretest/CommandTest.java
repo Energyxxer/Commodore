@@ -367,6 +367,8 @@ public final class CommandTest {
 
         System.out.println(module.getNamespace("ct").getFunctionManager().get("init_objectives").getResolvedContent());
 
+        System.out.println(module.minecraft.getTypeManager().biome.get("beaches"));
+
         //System.out.println(function.getAccessLog());
         //System.out.println(otherFunction.getAccessLog());
 

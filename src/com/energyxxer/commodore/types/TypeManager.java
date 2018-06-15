@@ -13,6 +13,7 @@ public class TypeManager {
     public final TypeDictionary<ParticleType> particle;
     public final TypeDictionary<EnchantmentType> enchantment;
     public final TypeDictionary<DimensionType> dimension;
+    public final TypeDictionary<BiomeType> biome;
 
     public final TypeDictionary<DifficultyType> difficulty;
     public final TypeDictionary<GamemodeType> gamemode;
@@ -32,6 +33,7 @@ public class TypeManager {
         this.particle = new TypeDictionary<>(owner, "particle", (id) -> new ParticleType(this.owner, id));
         this.enchantment = new TypeDictionary<>(owner, "enchantment", (id) -> new EnchantmentType(this.owner, id));
         this.dimension = new TypeDictionary<>(owner, "dimension", (id) -> new DimensionType(this.owner, id));
+        this.biome = new TypeDictionary<>(owner, "biome", (id) -> new BiomeType(this.owner, id));
 
         this.difficulty = new TypeDictionary<>(owner, "difficulty", DifficultyType::new);
         this.gamemode = new TypeDictionary<>(owner, "gamemode", GamemodeType::new);
