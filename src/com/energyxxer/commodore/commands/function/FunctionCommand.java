@@ -6,7 +6,7 @@ import com.energyxxer.commodore.functions.FunctionSection;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
-import com.energyxxer.commodore.types.FunctionReference;
+import com.energyxxer.commodore.types.defaults.FunctionReference;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;

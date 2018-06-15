@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.commands.bossbar.set;
 
 import com.energyxxer.commodore.commands.bossbar.BossbarCommand;
-import com.energyxxer.commodore.types.BossbarReference;
+import com.energyxxer.commodore.types.defaults.BossbarReference;
 
 public abstract class BossbarSetCommand extends BossbarCommand {
     protected final BossbarReference reference;

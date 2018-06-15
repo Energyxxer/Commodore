@@ -5,7 +5,7 @@ import com.energyxxer.commodore.inspection.CommandEmbeddable;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.textcomponents.TextComponent;
-import com.energyxxer.commodore.types.BossbarReference;
+import com.energyxxer.commodore.types.defaults.BossbarReference;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;

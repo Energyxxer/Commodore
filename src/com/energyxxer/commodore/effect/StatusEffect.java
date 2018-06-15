@@ -1,6 +1,6 @@
 package com.energyxxer.commodore.effect;
 
-import com.energyxxer.commodore.types.EffectType;
+import com.energyxxer.commodore.types.defaults.EffectType;
 
 import java.util.Objects;
 

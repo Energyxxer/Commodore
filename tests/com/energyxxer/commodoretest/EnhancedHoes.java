@@ -20,7 +20,7 @@ import com.energyxxer.commodore.score.MacroScoreHolder;
 import com.energyxxer.commodore.score.Objective;
 import com.energyxxer.commodore.selector.*;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
-import com.energyxxer.commodore.types.EntityType;
+import com.energyxxer.commodore.types.defaults.EntityType;
 
 import java.io.File;
 import java.util.HashMap;

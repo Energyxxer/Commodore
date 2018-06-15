@@ -2,14 +2,14 @@ package com.energyxxer.commodore.types;
 
 import com.energyxxer.commodore.module.Namespace;
 
-public class DimensionType extends Type {
-    protected DimensionType(Namespace namespace, String id) {
-        super(namespace, id);
+public class GenericType extends Type {
+    public GenericType(String category, Namespace namespace, String name) {
+        super(category, namespace, name);
     }
 
     @Override
     public boolean useNamespace() {
-        return true;
+        return namespace != null;
     }
 
     @Override

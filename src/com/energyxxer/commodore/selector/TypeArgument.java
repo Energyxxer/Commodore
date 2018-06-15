@@ -2,7 +2,7 @@ package com.energyxxer.commodore.selector;
 
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
-import com.energyxxer.commodore.types.EntityType;
+import com.energyxxer.commodore.types.defaults.EntityType;
 
 import java.util.Collection;
 import java.util.regex.Matcher;

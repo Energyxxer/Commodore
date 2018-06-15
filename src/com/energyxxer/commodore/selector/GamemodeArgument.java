@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.selector;
 
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
-import com.energyxxer.commodore.types.GamemodeType;
+import com.energyxxer.commodore.types.defaults.GamemodeType;
 
 public class GamemodeArgument implements SelectorArgument {
 

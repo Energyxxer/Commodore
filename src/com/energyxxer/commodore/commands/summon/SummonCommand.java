@@ -5,7 +5,7 @@ import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.nbt.TagCompound;
-import com.energyxxer.commodore.types.EntityType;
+import com.energyxxer.commodore.types.defaults.EntityType;
 import org.jetbrains.annotations.NotNull;
 
 public class SummonCommand implements Command {

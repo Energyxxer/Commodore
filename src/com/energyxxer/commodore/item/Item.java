@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.item;
 
 import com.energyxxer.commodore.nbt.TagCompound;
-import com.energyxxer.commodore.types.ItemType;
+import com.energyxxer.commodore.types.defaults.ItemType;
 
 public class Item {
     private final ItemType type;

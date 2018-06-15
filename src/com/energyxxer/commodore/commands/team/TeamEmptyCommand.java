@@ -2,7 +2,7 @@ package com.energyxxer.commodore.commands.team;
 
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
-import com.energyxxer.commodore.types.TeamReference;
+import com.energyxxer.commodore.types.defaults.TeamReference;
 import org.jetbrains.annotations.NotNull;
 
 public class TeamEmptyCommand extends TeamCommand {

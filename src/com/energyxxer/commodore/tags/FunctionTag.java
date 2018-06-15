@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.tags;
 
 import com.energyxxer.commodore.module.Namespace;
-import com.energyxxer.commodore.types.FunctionReference;
+import com.energyxxer.commodore.types.defaults.FunctionReference;
 
 import java.util.ArrayList;
 import java.util.Arrays;

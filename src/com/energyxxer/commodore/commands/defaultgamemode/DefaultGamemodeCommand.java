@@ -3,7 +3,7 @@ package com.energyxxer.commodore.commands.defaultgamemode;
 import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
-import com.energyxxer.commodore.types.GamemodeType;
+import com.energyxxer.commodore.types.defaults.GamemodeType;
 import org.jetbrains.annotations.NotNull;
 
 public class DefaultGamemodeCommand implements Command {

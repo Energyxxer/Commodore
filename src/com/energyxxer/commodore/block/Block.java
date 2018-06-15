@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.block;
 
 import com.energyxxer.commodore.nbt.TagCompound;
-import com.energyxxer.commodore.types.BlockType;
+import com.energyxxer.commodore.types.defaults.BlockType;
 
 import java.util.Objects;
 

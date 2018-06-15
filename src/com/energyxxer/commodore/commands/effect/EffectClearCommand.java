@@ -3,7 +3,7 @@ package com.energyxxer.commodore.commands.effect;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
-import com.energyxxer.commodore.types.EffectType;
+import com.energyxxer.commodore.types.defaults.EffectType;
 import org.jetbrains.annotations.NotNull;
 
 public class EffectClearCommand extends EffectCommand {

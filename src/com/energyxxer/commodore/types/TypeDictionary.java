@@ -45,6 +45,10 @@ public class TypeDictionary<T extends Type> {
         }
     }
 
+    public String getCategory() {
+        return category;
+    }
+
     @Override
     public String toString() {
         return "TypeDictionary{" +

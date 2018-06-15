@@ -5,7 +5,7 @@ import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
-import com.energyxxer.commodore.types.GamemodeType;
+import com.energyxxer.commodore.types.defaults.GamemodeType;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

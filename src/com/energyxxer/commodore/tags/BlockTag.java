@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.tags;
 
 import com.energyxxer.commodore.module.Namespace;
-import com.energyxxer.commodore.types.BlockType;
+import com.energyxxer.commodore.types.defaults.BlockType;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,8 +1,12 @@
-package com.energyxxer.commodore.types;
+package com.energyxxer.commodore.types.defaults;
+
+import com.energyxxer.commodore.types.Type;
 
 public class StructureType extends Type {
+    public static final String CATEGORY = "structure";
+
     public StructureType(String name) {
-        super(null, name);
+        super(CATEGORY, null, name);
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.energyxxer.commodore.commands.locate;
 import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
-import com.energyxxer.commodore.types.StructureType;
+import com.energyxxer.commodore.types.defaults.StructureType;
 import org.jetbrains.annotations.NotNull;
 
 public class LocateCommand implements Command {

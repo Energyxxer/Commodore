@@ -1,8 +1,8 @@
 package com.energyxxer.commodore.particles;
 
-import com.energyxxer.commodore.types.BlockType;
-import com.energyxxer.commodore.types.ItemType;
-import com.energyxxer.commodore.types.ParticleType;
+import com.energyxxer.commodore.types.defaults.BlockType;
+import com.energyxxer.commodore.types.defaults.ItemType;
+import com.energyxxer.commodore.types.defaults.ParticleType;
 import com.energyxxer.commodore.util.ParticleColor;
 
 import java.util.ArrayList;

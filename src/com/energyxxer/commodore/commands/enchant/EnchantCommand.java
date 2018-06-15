@@ -4,7 +4,7 @@ import com.energyxxer.commodore.commands.Command;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
-import com.energyxxer.commodore.types.EnchantmentType;
+import com.energyxxer.commodore.types.defaults.EnchantmentType;
 import org.jetbrains.annotations.NotNull;
 
 public class EnchantCommand implements Command {

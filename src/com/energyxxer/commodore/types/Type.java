@@ -5,11 +5,13 @@ import com.energyxxer.commodore.module.Namespace;
 import java.util.HashMap;
 
 public abstract class Type {
-    private final Namespace namespace;
-    private final String name;
-    private final HashMap<String, String> properties = new HashMap<>();
+    protected final String category;
+    protected final Namespace namespace;
+    protected final String name;
+    protected final HashMap<String, String> properties = new HashMap<>();
 
-    public Type(Namespace namespace, String name) {
+    public Type(String category, Namespace namespace, String name) {
+        this.category = category;
         this.namespace = namespace;
         this.name = name;
     }

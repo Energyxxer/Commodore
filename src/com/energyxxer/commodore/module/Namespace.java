@@ -2,7 +2,7 @@ package com.energyxxer.commodore.module;
 
 import com.energyxxer.commodore.functions.FunctionManager;
 import com.energyxxer.commodore.tags.TagManager;
-import com.energyxxer.commodore.types.TypeManager;
+import com.energyxxer.commodore.types.defaults.TypeManager;
 
 public class Namespace {
     private final CommandModule owner;

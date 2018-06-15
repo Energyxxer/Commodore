@@ -8,15 +8,20 @@ public class DefinitionBlueprint {
     final HashMap<String, String> properties;
 
     public DefinitionBlueprint(String name) {
-        this(name, null);
+        this(name, null, false);
     }
 
-    DefinitionBlueprint(String name, HashMap<String, String> properties) {
-        if(name.contains(":")) {
-            this.namespace = name.substring(0, name.indexOf(":"));
-            this.name = name.substring(name.indexOf(":")+1);
+    DefinitionBlueprint(String name, HashMap<String, String> properties, boolean useNamespace) {
+        if(useNamespace) {
+            if(name.contains(":")) {
+                this.namespace = name.substring(0, name.indexOf(":"));
+                this.name = name.substring(name.indexOf(":")+1);
+            } else {
+                this.namespace = "minecraft";
+                this.name = name;
+            }
         } else {
-            this.namespace = "minecraft";
+            this.namespace = null;
             this.name = name;
         }
         this.properties = properties;

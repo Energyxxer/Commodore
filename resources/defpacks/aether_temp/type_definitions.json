@@ -1,0 +1,6 @@
+{
+  "dungeon": {
+    "use_namespace": true,
+    "from": "definitions/dungeons"
+  }
+}

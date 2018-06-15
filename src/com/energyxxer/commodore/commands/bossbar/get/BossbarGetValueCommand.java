@@ -1,6 +1,6 @@
 package com.energyxxer.commodore.commands.bossbar.get;
 
-import com.energyxxer.commodore.types.BossbarReference;
+import com.energyxxer.commodore.types.defaults.BossbarReference;
 
 public class BossbarGetValueCommand extends BossbarGetCommand {
 

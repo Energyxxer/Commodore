@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.tags;
 
 import com.energyxxer.commodore.module.Namespace;
-import com.energyxxer.commodore.types.ItemType;
+import com.energyxxer.commodore.types.defaults.ItemType;
 
 import java.util.ArrayList;
 import java.util.Arrays;

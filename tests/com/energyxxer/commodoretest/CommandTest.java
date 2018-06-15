@@ -45,6 +45,7 @@ import com.energyxxer.commodore.commands.worldborder.WorldBorderSetDistance;
 import com.energyxxer.commodore.commands.worldborder.WorldBorderSetWarningDistance;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
+import com.energyxxer.commodore.defpacks.DefinitionPack;
 import com.energyxxer.commodore.effect.StatusEffect;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.entity.GenericEntity;
@@ -71,7 +72,7 @@ import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
 import com.energyxxer.commodore.textcomponents.StringTextComponent;
 import com.energyxxer.commodore.textcomponents.TextColor;
 import com.energyxxer.commodore.textcomponents.TextStyle;
-import com.energyxxer.commodore.types.*;
+import com.energyxxer.commodore.types.defaults.*;
 import com.energyxxer.commodore.util.Delta;
 
 import java.io.File;
@@ -142,9 +143,13 @@ public final class CommandTest {
         function.append(datacmd);
         //System.out.println("datacmd = " + datacmd.getRawCommand());*/
 
+        DefinitionPack aetherPack = new DefinitionPack("Aether II Test Definition Pack", "aether_temp");
+
+
         CommandModule module = new CommandModule("Commodore Test", "A simple Commodore test project", "ct");
         module.getOptionManager().UNUSED_COMMAND_POLICY.setValue(UnusedCommandPolicy.COMMENT_OUT);
         StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
+        aetherPack.initialize(module);
         ObjectiveManager objMgr = module.getObjectiveManager();
         objMgr.setPrefixEnabled(true);
         objMgr.setCreationFunction(module.getNamespace("ct").getFunctionManager().create("init_objectives"));
@@ -368,6 +373,8 @@ public final class CommandTest {
         System.out.println(module.getNamespace("ct").getFunctionManager().get("init_objectives").getResolvedContent());
 
         System.out.println(module.minecraft.getTypeManager().biome.get("beaches"));
+
+        System.out.println(module.getNamespace("aether").getTypeManager().getDictionary("dungeon").get("ancient_vaults"));
 
         //System.out.println(function.getAccessLog());
         //System.out.println(otherFunction.getAccessLog());

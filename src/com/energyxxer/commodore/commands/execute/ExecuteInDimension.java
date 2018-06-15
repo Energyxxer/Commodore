@@ -3,7 +3,7 @@ package com.energyxxer.commodore.commands.execute;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
-import com.energyxxer.commodore.types.DimensionType;
+import com.energyxxer.commodore.types.defaults.DimensionType;
 
 public class ExecuteInDimension implements ExecuteModifier {
     private final DimensionType dimension;

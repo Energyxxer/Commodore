@@ -4,7 +4,7 @@ import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
-import com.energyxxer.commodore.types.BlockType;
+import com.energyxxer.commodore.types.defaults.BlockType;
 
 public class ExecuteConditionBlock extends ExecuteCondition {
     public final CoordinateSet pos;
