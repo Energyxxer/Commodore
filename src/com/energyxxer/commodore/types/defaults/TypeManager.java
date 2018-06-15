@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class TypeManager {
     private final Namespace owner;
 
-    public final HashMap<String, TypeDictionary<? extends Type>> types = new HashMap<>();
+    private final HashMap<String, TypeDictionary<? extends Type>> types = new HashMap<>();
 
     public final TypeDictionary<BlockType> block;
     public final TypeDictionary<FluidType> fluid;
