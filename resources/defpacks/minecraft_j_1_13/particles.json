@@ -32,6 +32,9 @@
   "minecraft:damage_indicator": {
     "argument": "none"
   },
+  "minecraft:dolphin": {
+    "argument": "none"
+  },
   "minecraft:dragon_breath": {
     "argument": "none"
   },
@@ -105,6 +108,9 @@
     "argument": "none"
   },
   "minecraft:mycelium": {
+    "argument": "none"
+  },
+  "minecraft:nautilus": {
     "argument": "none"
   },
   "minecraft:note": {

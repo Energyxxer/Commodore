@@ -65,7 +65,7 @@
     "living": true,
     "hostile": false
   },
-  "minecraft:cod_mob": {
+  "minecraft:cod": {
     "spawnable": true,
     "targetable": true,
     "living": true,
@@ -89,6 +89,12 @@
     "living": true,
     "hostile": true
   },
+  "minecraft:dolphin": {
+    "spawnable": true,
+    "targetable": true,
+    "living": true,
+    "hostile": false
+  },
   "minecraft:donkey": {
     "spawnable": true,
     "targetable": true,
@@ -100,6 +106,12 @@
     "targetable": true,
     "living": false,
     "hostile": false
+  },
+  "minecraft:drowned": {
+    "spawnable": true,
+    "targetable": true,
+    "living": true,
+    "hostile": true
   },
   "minecraft:egg": {
     "spawnable": true,
@@ -309,7 +321,7 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": true
   },
   "minecraft:pig": {
     "spawnable": true,
@@ -329,7 +341,7 @@
     "living": false,
     "hostile": false
   },
-  "minecraft:puffer_fish": {
+  "minecraft:pufferfish": {
     "spawnable": true,
     "targetable": true,
     "living": true,
@@ -341,7 +353,7 @@
     "living": true,
     "hostile": false
   },
-  "minecraft:salmon_mob": {
+  "minecraft:salmon": {
     "spawnable": true,
     "targetable": true,
     "living": true,
@@ -441,7 +453,7 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": true
+    "hostile": false
   },
   "minecraft:tnt_minecart": {
     "spawnable": true,
@@ -453,6 +465,12 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
+    "hostile": false
+  },
+  "minecraft:tropical_fish": {
+    "spawnable": true,
+    "targetable": true,
+    "living": true,
     "hostile": false
   },
   "minecraft:turtle": {

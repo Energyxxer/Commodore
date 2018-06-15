@@ -2,14 +2,9 @@ package com.energyxxer.commodore.types;
 
 import com.energyxxer.commodore.module.Namespace;
 
-public class DimensionType extends Type {
-    protected DimensionType(Namespace namespace, String id) {
+public class FluidType extends Type {
+    protected FluidType(Namespace namespace, String id) {
         super(namespace, id);
-    }
-
-    @Override
-    public boolean useNamespace() {
-        return true;
     }
 
     @Override

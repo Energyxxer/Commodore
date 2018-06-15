@@ -22,7 +22,7 @@ public abstract class Type {
 
     @Override
     public String toString() {
-        return ((useNamespace()) ? (namespace.toString() + ':') : "") + name;
+        return ((useNamespace()) ? (namespace + ":") : "") + name;
     }
 
     @Override

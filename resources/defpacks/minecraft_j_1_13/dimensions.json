@@ -1,11 +1,11 @@
 {
-  "overworld": {
+  "minecraft:overworld": {
     "id": 0
   },
-  "the_nether": {
+  "minecraft:the_nether": {
     "id": -1
   },
-  "the_end": {
+  "minecraft:the_end": {
     "id": 1
   }
 }
