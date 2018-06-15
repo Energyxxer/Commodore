@@ -55,7 +55,13 @@ public class TypeManager {
     }
 
     public void join(TypeManager other) {
-        this.block.join(other.block);
+        for(TypeDictionary<? extends Type> fromThat : other.types.values()) {
+            boolean useNamespace = !fromThat.list().isEmpty() && fromThat.list().toArray(new Type[0])[0].useNamespace();
+            TypeDictionary<?> dict = createDictionary(fromThat.getCategory(), useNamespace);
+            for(Type t : fromThat.list()) {
+                dict.create(t.getName());
+            }
+        }
     }
 
     public TypeDictionary<?> createDictionary(String category, boolean useNamespace) {
