@@ -4,10 +4,8 @@ import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.defaults.ItemType;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
-public class ItemTag extends ItemType implements Tag {
+public class ItemTag extends ItemType implements Tag<ItemType> {
 
     private final ArrayList<ItemType> values = new ArrayList<>();
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
@@ -15,8 +13,11 @@ public class ItemTag extends ItemType implements Tag {
     public static final TagInstantiator<ItemTag> INSTANTIATOR = ItemTag::new;
     private boolean export = true;
 
-    ItemTag(Namespace namespace, String id) {
+    private TagGroup group;
+
+    ItemTag(TagGroup group, Namespace namespace, String id) {
         super(namespace, id);
+        this.group = group;
     }
 
     @Override
@@ -36,16 +37,10 @@ public class ItemTag extends ItemType implements Tag {
 
     // ADD METHODS
 
-    public void addValue(ItemType value) {
-        values.add(value);
-    }
-
-    public void addValues(Collection<ItemType> values) {
-        this.values.addAll(values);
-    }
-
-    public void addValues(ItemType... values) {
-        this.addValues(Arrays.asList(values));
+    @Override
+    public void addValue(TagIncorporable value) {
+        if(value instanceof ItemType) values.add((ItemType) value);
+        else throw new ClassCastException("Value cannot be cast to ItemType");
     }
 
     @Override
@@ -59,8 +54,8 @@ public class ItemTag extends ItemType implements Tag {
     }
 
     @Override
-    public String getExportPath() {
-        return "tags/items/" + name + ".json";
+    public TagGroup<?> getGroup() {
+        return group;
     }
 
     //----------

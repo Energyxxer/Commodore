@@ -45,7 +45,6 @@ import com.energyxxer.commodore.commands.worldborder.WorldBorderSetDistance;
 import com.energyxxer.commodore.commands.worldborder.WorldBorderSetWarningDistance;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
-import com.energyxxer.commodore.defpacks.DefinitionPack;
 import com.energyxxer.commodore.effect.StatusEffect;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.entity.GenericEntity;
@@ -143,13 +142,13 @@ public final class CommandTest {
         function.append(datacmd);
         //System.out.println("datacmd = " + datacmd.getRawCommand());*/
 
-        DefinitionPack aetherPack = new DefinitionPack("Aether II Test Definition Pack", "aether_temp");
+        //DefinitionPack aetherPack = new DefinitionPack("Aether II Test Definition Pack", "aether_temp");
 
 
         CommandModule module = new CommandModule("Commodore Test", "A simple Commodore test project", "ct");
         module.getOptionManager().UNUSED_COMMAND_POLICY.setValue(UnusedCommandPolicy.COMMENT_OUT);
         StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
-        aetherPack.initialize(module);
+        //aetherPack.initialize(module);
         ObjectiveManager objMgr = module.getObjectiveManager();
         objMgr.setPrefixEnabled(true);
         objMgr.setCreationFunction(module.getNamespace("ct").getFunctionManager().create("init_objectives"));
@@ -238,7 +237,7 @@ public final class CommandTest {
 
         function.append(new FunctionComment("CLONE COMMANDS"));
 
-        BlockTag buttons = module.minecraft.getTagManager().getBlockGroup().createNew("buttons");
+        BlockTag buttons = module.minecraft.getTagManager().getBlockGroup().create("buttons");
         buttons.addValue(module.minecraft.getTypeManager().block.get("stone_button"));
         buttons.addValue(module.minecraft.getTypeManager().block.get("oak_button"));
         buttons.addValue(module.minecraft.getTypeManager().block.get("spruce_button"));
@@ -301,7 +300,7 @@ public final class CommandTest {
             //otherFunction.append(exec1);
         }
 
-        FunctionTag tick = module.minecraft.getTagManager().getFunctionGroup().createNew("tick");
+        FunctionTag tick = module.minecraft.getTagManager().getFunctionGroup().create("tick");
         tick.addValue(new FunctionReference(otherFunction));
 
         function.append(new FunctionHeaderComment(buttons.getContents().split("\n")));
@@ -367,6 +366,11 @@ public final class CommandTest {
 
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 
+        System.out.println("module.minecraft.getTagManager().getBlockGroup() = " + module.minecraft.getTagManager().getBlockGroup());
+        System.out.println(module.minecraft.getTagManager().getBlockGroup().get("coral_blocks").getValues());
+        System.out.println(((BlockTag) module.minecraft.getTagManager().getBlockGroup().get("coral_blocks").getValues().get(0)).getValues());
+        System.out.println(module.minecraft.getTagManager().getBlockGroup().get("dead_coral_blocks").getValues());
+
         //System.out.println(function.getResolvedContent());
 
         //System.out.println(otherFunction.getResolvedContent());
@@ -379,7 +383,7 @@ public final class CommandTest {
 
         System.out.println(module.minecraft.getTypeManager().biome.get("beaches"));
 
-        System.out.println(module.getNamespace("aether").getTypeManager().getDictionary("dungeon").get("ancient_vaults"));
+        //System.out.println(module.getNamespace("aether").getTypeManager().getDictionary("dungeon").get("ancient_vaults"));
 
         //System.out.println(function.getAccessLog());
         //System.out.println(otherFunction.getAccessLog());

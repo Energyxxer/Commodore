@@ -1,58 +1,61 @@
 {
   "block": {
     "use_namespace": true,
-    "from": "definitions/blocks"
+    "tag_directory": "blocks",
+    "import_from": "definitions/blocks"
   },
   "fluid": {
     "use_namespace": true,
-    "from": "definitions/fluids"
+    "tag_directory": "fluids",
+    "import_from": "definitions/fluids"
   },
   "item": {
     "use_namespace": true,
-    "from": "definitions/items"
+    "tag_directory": "items",
+    "import_from": "definitions/items"
   },
   "effect": {
     "use_namespace": true,
-    "from": "definitions/effects"
+    "import_from": "definitions/effects"
   },
   "entity": {
     "use_namespace": true,
-    "from": "definitions/entities"
+    "import_from": "definitions/entities"
   },
   "particle": {
     "use_namespace": true,
-    "from": "definitions/particles"
+    "import_from": "definitions/particles"
   },
   "enchantment": {
     "use_namespace": true,
-    "from": "definitions/enchantments"
+    "import_from": "definitions/enchantments"
   },
   "dimension": {
     "use_namespace": true,
-    "from": "definitions/dimensions"
+    "import_from": "definitions/dimensions"
   },
   "biome": {
     "use_namespace": true,
-    "from": "definitions/biomes"
+    "import_from": "definitions/biomes"
   },
   "difficulty": {
     "use_namespace": false,
-    "from": "definitions/difficulties"
+    "import_from": "definitions/difficulties"
   },
   "gamemode": {
     "use_namespace": false,
-    "from": "definitions/gamemodes"
+    "import_from": "definitions/gamemodes"
   },
   "gamerule": {
     "use_namespace": false,
-    "from": "definitions/gamerules"
+    "import_from": "definitions/gamerules"
   },
   "structure": {
     "use_namespace": false,
-    "from": "definitions/structures"
+    "import_from": "definitions/structures"
   },
   "slot": {
     "use_namespace": false,
-    "from": "definitions/slots"
+    "import_from": "definitions/slots"
   }
 }

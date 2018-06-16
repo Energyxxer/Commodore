@@ -2,7 +2,6 @@ package com.energyxxer.commodore.module;
 
 import com.energyxxer.commodore.functions.AccessLogFile;
 import com.energyxxer.commodore.functions.Function;
-import com.energyxxer.commodore.tags.Tag;
 import com.energyxxer.commodore.tags.TagGroup;
 import com.energyxxer.commodore.tags.TagManager;
 import com.google.gson.Gson;
@@ -60,27 +59,13 @@ public class ModulePackGenerator {
             for(Function func : namespace.getFunctionManager().getAll()) {
                 if(func.getEntryCount() == 0) continue;
                 exportables.add(func);
-                if(module.optMgr.EXPORT_ACCESS_LOGS.getValue()) exportables.add(new AccessLogFile(func));//createFile(fileName + ".accesslog", func.getAccessLog().toString());
-                continue;
-                /*String functionPath = func.getPath();
-                String fileName = namespacePath + "/functions/" + functionPath;
-
-                createFile(fileName + ".mcfunction", func.getResolvedContent());*/
+                if(module.optMgr.EXPORT_ACCESS_LOGS.getValue()) exportables.add(new AccessLogFile(func));
             }
 
             TagManager tagMgr = namespace.getTagManager();
 
-            TagGroup<?>[] groups = {tagMgr.getBlockGroup(), tagMgr.getItemGroup(), tagMgr.getFunctionGroup()};
-
-            for(TagGroup<?> group : groups) {
-                for(Tag tag : group.getAll()) {
-                    exportables.add(tag);
-                    continue;
-                    /*String directoryPath = namespacePath + "/tags/" + group.getGroupName();
-                    String fileName = directoryPath + "/" + tag.getName() + ".json";
-
-                    createFile(fileName, tag.getContents());*/
-                }
+            for(TagGroup<?> group : tagMgr.getGroups()) {
+                exportables.addAll(group.getAll());
             }
 
             for(Exportable exportable : exportables) {

@@ -1,25 +1,29 @@
 package com.energyxxer.commodore.tags;
 
 import com.energyxxer.commodore.module.Exportable;
-import com.energyxxer.commodore.types.Type;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
-public interface Tag<T extends Type> extends Exportable {
+public interface Tag<T extends TagIncorporable> extends Exportable, TagIncorporable {
 
     enum OverridePolicy {
         REPLACE(true), APPEND(false);
 
-        final boolean valueBool;
+        public final boolean valueBool;
 
         public static final OverridePolicy DEFAULT_POLICY = APPEND;
 
         OverridePolicy(boolean valueBool) {
             this.valueBool = valueBool;
+        }
+
+        public static OverridePolicy valueOf(boolean bool) {
+            return bool ? REPLACE : APPEND;
         }
     }
 
@@ -44,4 +48,17 @@ public interface Tag<T extends Type> extends Exportable {
     OverridePolicy getOverridePolicy();
 
     void setOverridePolicy(OverridePolicy newPolicy);
+
+    TagGroup<?> getGroup();
+
+    <V extends TagIncorporable> void addValue(V value);
+
+    default void addValues(Collection<T> values) {
+        values.forEach(this::addValue);
+    }
+
+    @Override
+    default String getExportPath() {
+        return "tags/" + getGroup().getDirectoryName() + "/" + getName() + ".json";
+    }
 }

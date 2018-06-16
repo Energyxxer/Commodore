@@ -4,10 +4,8 @@ import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.defaults.FunctionReference;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
-public class FunctionTag extends FunctionReference implements Tag {
+public class FunctionTag extends FunctionReference implements Tag<FunctionReference> {
 
     private final ArrayList<FunctionReference> values = new ArrayList<>();
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
@@ -15,8 +13,11 @@ public class FunctionTag extends FunctionReference implements Tag {
     public static final TagInstantiator<FunctionTag> INSTANTIATOR = FunctionTag::new;
     private boolean export = true;
 
-    FunctionTag(Namespace namespace, String id) {
+    private TagGroup<?> group;
+
+    FunctionTag(TagGroup group, Namespace namespace, String id) {
         super(namespace, id);
+        this.group = group;
     }
 
     @Override
@@ -36,16 +37,10 @@ public class FunctionTag extends FunctionReference implements Tag {
 
     // ADD METHODS
 
-    public void addValue(FunctionReference value) {
-        values.add(value);
-    }
-
-    public void addValues(Collection<FunctionReference> values) {
-        this.values.addAll(values);
-    }
-
-    public void addValues(FunctionReference... values) {
-        this.addValues(Arrays.asList(values));
+    @Override
+    public void addValue(TagIncorporable value) {
+        if(value instanceof FunctionReference) values.add((FunctionReference) value);
+        else throw new ClassCastException("Value cannot be cast to FunctionReference");
     }
 
     @Override
@@ -59,8 +54,8 @@ public class FunctionTag extends FunctionReference implements Tag {
     }
 
     @Override
-    public String getExportPath() {
-        return "tags/functions/" + name + ".json";
+    public TagGroup<?> getGroup() {
+        return group;
     }
 
     //----------

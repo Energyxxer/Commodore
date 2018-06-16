@@ -7,10 +7,6 @@ public class DefinitionBlueprint {
     final String name;
     final HashMap<String, String> properties;
 
-    public DefinitionBlueprint(String name) {
-        this(name, null, false);
-    }
-
     DefinitionBlueprint(String name, HashMap<String, String> properties, boolean useNamespace) {
         if(useNamespace) {
             if(name.contains(":")) {

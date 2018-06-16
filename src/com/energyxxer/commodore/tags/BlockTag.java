@@ -4,18 +4,19 @@ import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.defaults.BlockType;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 
-public class BlockTag extends BlockType implements Tag {
+public class BlockTag extends BlockType implements Tag<BlockType> {
 
     public static final TagInstantiator<BlockTag> INSTANTIATOR = BlockTag::new;
     private final ArrayList<BlockType> values = new ArrayList<>();
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
     private boolean export = true;
 
-    BlockTag(Namespace namespace, String id) {
+    private TagGroup<?> group;
+
+    BlockTag(TagGroup group, Namespace namespace, String id) {
         super(namespace, id);
+        this.group = group;
     }
 
     @Override
@@ -35,16 +36,10 @@ public class BlockTag extends BlockType implements Tag {
 
     // ADD METHODS
 
-    public void addValue(BlockType value) {
-        values.add(value);
-    }
-
-    public void addValues(Collection<BlockType> values) {
-        this.values.addAll(values);
-    }
-
-    public void addValues(BlockType... values) {
-        this.addValues(Arrays.asList(values));
+    @Override
+    public void addValue(TagIncorporable value) {
+        if(value instanceof BlockType) values.add((BlockType) value);
+        else throw new ClassCastException("Value cannot be cast to BlockType");
     }
 
     @Override
@@ -58,8 +53,8 @@ public class BlockTag extends BlockType implements Tag {
     }
 
     @Override
-    public String getExportPath() {
-        return "tags/blocks/" + name + ".json";
+    public TagGroup<?> getGroup() {
+        return group;
     }
 
     //----------
