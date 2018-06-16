@@ -2,11 +2,13 @@ package com.energyxxer.commodore.tags;
 
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.defaults.BlockType;
+import com.energyxxer.commodore.types.defaults.FluidType;
 import com.energyxxer.commodore.types.defaults.FunctionReference;
 import com.energyxxer.commodore.types.defaults.ItemType;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Map;
 
 public class TagManager {
 
@@ -16,6 +18,7 @@ public class TagManager {
     private final TagGroup<BlockTag> blockTags;
     private final TagGroup<ItemTag> itemTags;
     private final TagGroup<FunctionTag> functionTags;
+    private final TagGroup<FluidTag> fluidTags;
 
     public TagManager(Namespace namespace) {
         this.namespace = namespace;
@@ -23,6 +26,7 @@ public class TagManager {
         put(this.blockTags = new TagGroup<>(namespace, BlockType.CATEGORY, "blocks", BlockTag.INSTANTIATOR));
         put(this.itemTags = new TagGroup<>(namespace, ItemType.CATEGORY, "items", ItemTag.INSTANTIATOR));
         put(this.functionTags = new TagGroup<>(namespace, FunctionReference.CATEGORY, "functions", FunctionTag.INSTANTIATOR));
+        put(this.fluidTags = new TagGroup<>(namespace, FluidType.CATEGORY, "fluids", FluidTag.INSTANTIATOR));
     }
 
     public void put(TagGroup<? extends Tag> group) {
@@ -57,9 +61,12 @@ public class TagManager {
     }
 
     public void join(TagManager other) {
-        this.blockTags.join(other.blockTags);
-        this.itemTags.join(other.itemTags);
-        this.functionTags.join(other.functionTags);
+        for(Map.Entry<String, TagGroup<? extends Tag>> entry : other.groups.entrySet()) {
+            String category = entry.getKey();
+            TagGroup<? extends Tag> group = entry.getValue();
+            TagGroup<? extends Tag> thisGroup = this.createGroup(category, group.getDirectoryName());
+            thisGroup.join(group);
+        }
     }
 
     public Collection<TagGroup<? extends Tag>> getGroups() {

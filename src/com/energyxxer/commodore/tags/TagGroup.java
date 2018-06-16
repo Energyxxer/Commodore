@@ -46,7 +46,7 @@ public class TagGroup<T extends Tag<? extends TagIncorporable>> {
         return category;
     }
 
-    public void join(TagGroup<T> other) {
+    public void join(TagGroup other) {
         this.tags.addAll(other.tags);
     }
 
