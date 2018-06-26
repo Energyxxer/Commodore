@@ -10,17 +10,20 @@ import java.util.Collection;
 public class CommandResolutionLine {
     final String raw;
     final ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
+    final ExecutionContext execContext;
 
-    public CommandResolutionLine(String raw, CommandEmbeddable... embeddables) {
-        this(raw, Arrays.asList(embeddables));
+    public CommandResolutionLine(ExecutionContext execContext, String raw, CommandEmbeddable... embeddables) {
+        this(execContext, raw, Arrays.asList(embeddables));
     }
 
-    public CommandResolutionLine(String raw, Collection<CommandEmbeddable> embeddables) {
+    public CommandResolutionLine(ExecutionContext execContext, String raw, Collection<CommandEmbeddable> embeddables) {
         this.raw = raw;
+        this.execContext = execContext;
         if(embeddables != null) this.embeddables.addAll(embeddables);
     }
 
-    String construct(ExecutionContext execContext, ArrayList<ExecuteModifier> modifiers) {
+    String construct() {
+        ArrayList<ExecuteModifier> modifiers = new ArrayList<>(execContext.getModifiers());
 
         StringBuilder sb = new StringBuilder();
 

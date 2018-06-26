@@ -31,7 +31,7 @@ public class CommandGroup implements Command, FunctionSection {
                 lines.addAll(resolution.getLines());
             }
         }
-        return new CommandResolution(execContext, lines);
+        return new CommandResolution(lines);
     }/*
 
     @Override

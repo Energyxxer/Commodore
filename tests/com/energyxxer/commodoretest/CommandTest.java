@@ -76,7 +76,7 @@ import com.energyxxer.commodore.util.Delta;
 
 import java.io.File;
 
-public final class CommandTest {
+public class CommandTest {
     public static void main(String[] args) {
         /*
         Function function = new Function("test:function");

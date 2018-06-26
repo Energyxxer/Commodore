@@ -97,8 +97,6 @@ public class DefinitionPack {
             }
 
             importNamespaceData();
-
-            System.out.println("tags = " + tags);
         }
 
         loaded = true;

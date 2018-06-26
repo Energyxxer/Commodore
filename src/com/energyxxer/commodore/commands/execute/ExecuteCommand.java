@@ -36,7 +36,9 @@ public class ExecuteCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        ExecutionContext chainedContext = new ExecutionContext(execContext.getFinalSender(), this.modifiers);
+        ArrayList<ExecuteModifier> joinedModifiers = new ArrayList<>(execContext.getModifiers());
+        joinedModifiers.addAll(modifiers);
+        ExecutionContext chainedContext = new ExecutionContext(execContext.getFinalSender(), joinedModifiers);
         return chainedCommand.resolveCommand(chainedContext);
     }
 

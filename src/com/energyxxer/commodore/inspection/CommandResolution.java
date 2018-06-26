@@ -8,28 +8,25 @@ import com.energyxxer.commodore.entity.Entity;
 import java.util.*;
 
 public class CommandResolution {
-    private final ExecutionContext execContext;
     private final ArrayList<CommandResolutionLine> lines = new ArrayList<>();
 
     public CommandResolution(ExecutionContext execContext, String raw, Collection<CommandEmbeddable> embeddables) {
-        this.execContext = execContext;
-        lines.add(new CommandResolutionLine(raw, embeddables));
+        lines.add(new CommandResolutionLine(execContext, raw, embeddables));
     }
 
     public CommandResolution(ExecutionContext execContext, String raw, CommandEmbeddable... embeddables) {
         this(execContext, raw, Arrays.asList(embeddables));
     }
 
-    public CommandResolution(ExecutionContext execContext, CommandResolutionLine... lines) {
-        this(execContext, Arrays.asList(lines));
+    public CommandResolution(CommandResolutionLine... lines) {
+        this(Arrays.asList(lines));
     }
 
-    public CommandResolution(ExecutionContext execContext, Collection<CommandResolutionLine> lines) {
-        this.execContext = execContext;
+    public CommandResolution(Collection<CommandResolutionLine> lines) {
         this.lines.addAll(lines);
     }
 
-    /**
+    /*
      * Really weak code; prone to infinite loops if some knobhead makes two self-referencing entity/modifier pairs
      **/
     static String resolveModifiers(ExecutionContext execContext, ArrayList<ExecuteModifier> modifiers) {
@@ -96,17 +93,13 @@ public class CommandResolution {
         StringBuilder sb = new StringBuilder();
 
         for(CommandResolutionLine line : lines) {
-            sb.append(line.construct(execContext, new ArrayList<>(this.execContext.getModifiers())));
+            sb.append(line.construct());
             sb.append('\n');
         }
 
         if(sb.length() > 0) sb.deleteCharAt(sb.length()-1);
 
         return sb.toString();
-    }
-
-    public ExecutionContext getExecutionContext() {
-        return execContext;
     }
 
     public ArrayList<CommandResolutionLine> getLines() {
