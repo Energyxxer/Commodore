@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.tags;
 
 import com.energyxxer.commodore.module.Exportable;
+import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.types.Type;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -9,9 +11,9 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public interface Tag<T extends TagIncorporable> extends Exportable, TagIncorporable {
+public abstract class Tag extends Type implements Exportable {
 
-    enum OverridePolicy {
+    public enum OverridePolicy {
         REPLACE(true), APPEND(false);
 
         public final boolean valueBool;
@@ -27,38 +29,40 @@ public interface Tag<T extends TagIncorporable> extends Exportable, TagIncorpora
         }
     }
 
-    ArrayList<T> getValues();
+    public Tag(String category, Namespace namespace, String name) {
+        super(category, namespace, name);
+    }
 
-    default String getContents() {
+    public abstract ArrayList<Type> getValues();
+
+    public abstract OverridePolicy getOverridePolicy();
+
+    public abstract void setOverridePolicy(OverridePolicy newPolicy);
+
+    public abstract TagGroup<?> getGroup();
+
+    public abstract void addValue(Type value);
+
+    public String getContents() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         JsonObject root = new JsonObject();
         JsonArray list = new JsonArray();
         root.add("values", list);
 
-        for(T value : getValues()) {
+        for(Type value : getValues()) {
             list.add(value.toString());
         }
 
         return gson.toJson(root);
     }
 
-    String getName();
-
-    OverridePolicy getOverridePolicy();
-
-    void setOverridePolicy(OverridePolicy newPolicy);
-
-    TagGroup<?> getGroup();
-
-    <V extends TagIncorporable> void addValue(V value);
-
-    default void addValues(Collection<T> values) {
+    public void addValues(Collection<Type> values) {
         values.forEach(this::addValue);
     }
 
     @Override
-    default String getExportPath() {
+    public String getExportPath() {
         return "tags/" + getGroup().getDirectoryName() + "/" + getName() + ".json";
     }
 }

@@ -1,11 +1,10 @@
 package com.energyxxer.commodore.types;
 
 import com.energyxxer.commodore.module.Namespace;
-import com.energyxxer.commodore.tags.TagIncorporable;
 
 import java.util.HashMap;
 
-public abstract class Type implements TagIncorporable {
+public abstract class Type {
     protected final String category;
     protected final Namespace namespace;
     protected final String name;

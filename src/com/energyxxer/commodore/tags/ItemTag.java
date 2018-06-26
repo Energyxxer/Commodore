@@ -1,13 +1,16 @@
 package com.energyxxer.commodore.tags;
 
 import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.ItemType;
 
 import java.util.ArrayList;
 
-public class ItemTag extends ItemType implements Tag<ItemType> {
+import static com.energyxxer.commodore.types.TypeAssert.assertItem;
 
-    private final ArrayList<ItemType> values = new ArrayList<>();
+public class ItemTag extends Tag {
+
+    private final ArrayList<Type> values = new ArrayList<>();
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
 
     public static final TagInstantiator<ItemTag> INSTANTIATOR = ItemTag::new;
@@ -16,12 +19,12 @@ public class ItemTag extends ItemType implements Tag<ItemType> {
     private TagGroup group;
 
     ItemTag(TagGroup group, Namespace namespace, String id) {
-        super(namespace, id);
+        super(ItemType.CATEGORY, namespace, id);
         this.group = group;
     }
 
     @Override
-    public ArrayList<ItemType> getValues() {
+    public ArrayList<Type> getValues() {
         return values;
     }
 
@@ -38,9 +41,9 @@ public class ItemTag extends ItemType implements Tag<ItemType> {
     // ADD METHODS
 
     @Override
-    public void addValue(TagIncorporable value) {
-        if(value instanceof ItemType) values.add((ItemType) value);
-        else throw new ClassCastException("Value cannot be cast to ItemType");
+    public void addValue(Type value) {
+        assertItem(value);
+        values.add(value);
     }
 
     @Override

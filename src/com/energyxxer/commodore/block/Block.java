@@ -1,28 +1,31 @@
 package com.energyxxer.commodore.block;
 
 import com.energyxxer.commodore.nbt.TagCompound;
-import com.energyxxer.commodore.types.defaults.BlockType;
+import com.energyxxer.commodore.types.Type;
 
 import java.util.Objects;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertBlock;
+
 public class Block {
-    private final BlockType type;
+    private final Type type;
     private Blockstate state;
     private final TagCompound nbt;
 
-    public Block(BlockType type) {
+    public Block(Type type) {
         this(type, null, null);
     }
 
-    public Block(BlockType type, Blockstate state) {
+    public Block(Type type, Blockstate state) {
         this(type, state, null);
     }
 
-    public Block(BlockType type, TagCompound nbt) {
+    public Block(Type type, TagCompound nbt) {
         this(type, null, nbt);
     }
 
-    public Block(BlockType type, Blockstate state, TagCompound nbt) {
+    public Block(Type type, Blockstate state, TagCompound nbt) {
+        assertBlock(type);
         this.type = type;
         if(state != null) this.state = state;
         this.nbt = nbt;

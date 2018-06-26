@@ -1,13 +1,14 @@
 package com.energyxxer.commodore.tags;
 
 import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.FunctionReference;
 
 import java.util.ArrayList;
 
-public class FunctionTag extends FunctionReference implements Tag<FunctionReference> {
+public class FunctionTag extends Tag {
 
-    private final ArrayList<FunctionReference> values = new ArrayList<>();
+    private final ArrayList<Type> values = new ArrayList<>();
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
 
     public static final TagInstantiator<FunctionTag> INSTANTIATOR = FunctionTag::new;
@@ -16,12 +17,12 @@ public class FunctionTag extends FunctionReference implements Tag<FunctionRefere
     private TagGroup<?> group;
 
     FunctionTag(TagGroup group, Namespace namespace, String id) {
-        super(namespace, id);
+        super(FunctionReference.CATEGORY, namespace, id);
         this.group = group;
     }
 
     @Override
-    public ArrayList<FunctionReference> getValues() {
+    public ArrayList<Type> getValues() {
         return values;
     }
 
@@ -38,8 +39,8 @@ public class FunctionTag extends FunctionReference implements Tag<FunctionRefere
     // ADD METHODS
 
     @Override
-    public void addValue(TagIncorporable value) {
-        if(value instanceof FunctionReference) values.add((FunctionReference) value);
+    public void addValue(Type value) {
+        if(value instanceof FunctionReference) values.add(value);
         else throw new ClassCastException("Value cannot be cast to FunctionReference");
     }
 

@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.particles;
 
+import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.BlockType;
 import com.energyxxer.commodore.types.defaults.ItemType;
 import com.energyxxer.commodore.types.defaults.ParticleType;
@@ -27,8 +28,8 @@ public class Particle {
 
             if(
                     (argument instanceof ParticleColor && expectedArgument.equals("color")) ||
-                    (argument instanceof BlockType && expectedArgument.equals("block")) ||
-                    (argument instanceof ItemType && expectedArgument.equals("item")) ||
+                    (argument instanceof Type && BlockType.CATEGORY.equals(((Type) argument).getCategory()) && expectedArgument.equals("block")) ||
+                    (argument instanceof Type && ItemType.CATEGORY.equals(((Type) argument).getCategory()) && expectedArgument.equals("item")) ||
                     (argument instanceof Integer && expectedArgument.equals("int")) ||
                     (argument instanceof Double && expectedArgument.equals("double"))
             ) {

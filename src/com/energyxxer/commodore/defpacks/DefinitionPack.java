@@ -4,7 +4,6 @@ import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.tags.Tag;
 import com.energyxxer.commodore.tags.TagGroup;
-import com.energyxxer.commodore.tags.TagIncorporable;
 import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.util.JsonObjectWrapper;
 import com.google.gson.Gson;
@@ -226,7 +225,7 @@ public class DefinitionPack {
                 Namespace ns = (blueprint.namespace != null) ? module.getNamespace(blueprint.namespace) : module.minecraft;
                 TagGroup<? extends Tag> group = ns.getTagManager().createGroup(category, getCategory(category).tagDirectory);
 
-                Tag<? extends TagIncorporable> tag = group.create(blueprint.name);
+                Tag tag = group.create(blueprint.name);
                 tag.setOverridePolicy(blueprint.policy);
                 tag.setExport(blueprint.export);
 

@@ -1,26 +1,29 @@
 package com.energyxxer.commodore.tags;
 
 import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.FluidType;
 
 import java.util.ArrayList;
 
-public class FluidTag extends FluidType implements Tag<FluidType> {
+import static com.energyxxer.commodore.types.TypeAssert.assertFluid;
+
+public class FluidTag extends Tag {
 
     public static final TagInstantiator<FluidTag> INSTANTIATOR = FluidTag::new;
-    private final ArrayList<FluidType> values = new ArrayList<>();
+    private final ArrayList<Type> values = new ArrayList<>();
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
     private boolean export = true;
 
     private TagGroup<?> group;
 
     FluidTag(TagGroup group, Namespace namespace, String id) {
-        super(namespace, id);
+        super(FluidType.CATEGORY, namespace, id);
         this.group = group;
     }
 
     @Override
-    public ArrayList<FluidType> getValues() {
+    public ArrayList<Type> getValues() {
         return values;
     }
 
@@ -37,9 +40,9 @@ public class FluidTag extends FluidType implements Tag<FluidType> {
     // ADD METHODS
 
     @Override
-    public void addValue(TagIncorporable value) {
-        if(value instanceof FluidType) values.add((FluidType) value);
-        else throw new ClassCastException("Value cannot be cast to FluidType");
+    public void addValue(Type value) {
+        assertFluid(value);
+        values.add(value);
     }
 
     @Override

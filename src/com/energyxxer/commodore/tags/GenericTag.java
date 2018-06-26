@@ -1,12 +1,13 @@
 package com.energyxxer.commodore.tags;
 
 import com.energyxxer.commodore.module.Namespace;
-import com.energyxxer.commodore.types.GenericType;
 import com.energyxxer.commodore.types.Type;
 
 import java.util.ArrayList;
 
-public class GenericTag extends GenericType implements Tag<Type> {
+import static com.energyxxer.commodore.types.TypeAssert.assertType;
+
+public class GenericTag extends Tag {
     public static final TagInstantiator<GenericTag> INSTANTIATOR = GenericTag::new;
     private final ArrayList<Type> values = new ArrayList<>();
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
@@ -20,12 +21,9 @@ public class GenericTag extends GenericType implements Tag<Type> {
     }
 
     @Override
-    public void addValue(TagIncorporable value) {
-        if(value instanceof Type) {
-            if(((Type) value).getCategory().equals(group.getCategory())) {
-                values.add((Type) value);
-            } else throw new IllegalArgumentException("'" + value + "' does not belong to category '" + group.getCategory() + "'");
-        } else throw new ClassCastException("Value cannot be cast to Type");
+    public void addValue(Type value) {
+        assertType(value, group.getCategory());
+        values.add(value);
     }
 
     @Override

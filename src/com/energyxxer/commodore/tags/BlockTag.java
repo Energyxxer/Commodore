@@ -1,26 +1,29 @@
 package com.energyxxer.commodore.tags;
 
 import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.BlockType;
 
 import java.util.ArrayList;
 
-public class BlockTag extends BlockType implements Tag<BlockType> {
+import static com.energyxxer.commodore.types.TypeAssert.assertBlock;
+
+public class BlockTag extends Tag {
 
     public static final TagInstantiator<BlockTag> INSTANTIATOR = BlockTag::new;
-    private final ArrayList<BlockType> values = new ArrayList<>();
+    private final ArrayList<Type> values = new ArrayList<>();
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
     private boolean export = true;
 
     private TagGroup<?> group;
 
     BlockTag(TagGroup group, Namespace namespace, String id) {
-        super(namespace, id);
+        super(BlockType.CATEGORY, namespace, id);
         this.group = group;
     }
 
     @Override
-    public ArrayList<BlockType> getValues() {
+    public ArrayList<Type> getValues() {
         return values;
     }
 
@@ -37,9 +40,9 @@ public class BlockTag extends BlockType implements Tag<BlockType> {
     // ADD METHODS
 
     @Override
-    public void addValue(TagIncorporable value) {
-        if(value instanceof BlockType) values.add((BlockType) value);
-        else throw new ClassCastException("Value cannot be cast to BlockType");
+    public void addValue(Type value) {
+        assertBlock(value);
+        values.add(value);
     }
 
     @Override
