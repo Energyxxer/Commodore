@@ -3,51 +3,45 @@ package com.energyxxer.commodore.commands.team;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.textcomponents.TextColor;
+import com.energyxxer.commodore.textcomponents.TextComponent;
 import com.energyxxer.commodore.types.defaults.TeamReference;
 import org.jetbrains.annotations.NotNull;
 
-public class TeamOptionCommand extends TeamCommand {
+public class TeamModifyCommand extends TeamCommand {
 
-    enum ValueType {
-        APPLIES_TO(AppliesTo.class), BOOLEAN(Boolean.class), COLOR(TextColor.class);
-
-        Class _class;
-
-        ValueType(Class _class) {
-            this._class = _class;
-        }
-
-        boolean isValidValue(Object o) {
-            return _class.isInstance(o);
-        }
-    }
-
-    public enum TeamOptionKey {
-        COLLISION_RULE("collisionRule", ValueType.APPLIES_TO, "push"),
-        COLOR("color", ValueType.COLOR),
-        DEATH_MESSAGE_VISIBILITY("deathMessageVisibility", ValueType.APPLIES_TO, "hideFor", true),
-        FRIENDLY_FIRE("friendlyFire", ValueType.BOOLEAN),
-        NAMETAG_VISIBILITY("nametagVisibility", ValueType.APPLIES_TO, "hideFor", true),
-        SEE_FRIENDLY_INVISIBLES("seeFriendlyInvisibles", ValueType.BOOLEAN);
+    public enum TeamModifyKey {
+        COLLISION_RULE("collisionRule", AppliesTo.class, "push"),
+        COLOR("color", TextColor.class),
+        DEATH_MESSAGE_VISIBILITY("deathMessageVisibility", AppliesTo.class, "hideFor", true),
+        DISPLAY_NAME("displayName", TextComponent.class),
+        FRIENDLY_FIRE("friendlyFire", Boolean.class),
+        NAMETAG_VISIBILITY("nametagVisibility", AppliesTo.class, "hideFor", true),
+        PREFIX("prefix", TextComponent.class),
+        SEE_FRIENDLY_INVISIBLES("seeFriendlyInvisibles", Boolean.class),
+        SUFFIX("suffix", TextComponent.class);
 
         private final String argumentKey;
-        private final ValueType valueType;
+        private final Class valueClass;
         private final String valueVerb;
         private final boolean teamValueInverted;
 
-        TeamOptionKey(String argumentKey, ValueType valueType) {
-            this(argumentKey, valueType, null);
+        TeamModifyKey(String argumentKey, Class valueClass) {
+            this(argumentKey, valueClass, null);
         }
 
-        TeamOptionKey(String argumentKey, ValueType valueType, String valueVerb) {
-            this(argumentKey, valueType, valueVerb, false);
+        TeamModifyKey(String argumentKey, Class valueClass, String valueVerb) {
+            this(argumentKey, valueClass, valueVerb, false);
         }
 
-        TeamOptionKey(String argumentKey, ValueType valueType, String valueVerb, boolean teamValueInverted) {
+        TeamModifyKey(String argumentKey, Class valueClass, String valueVerb, boolean teamValueInverted) {
             this.argumentKey = argumentKey;
-            this.valueType = valueType;
+            this.valueClass = valueClass;
             this.valueVerb = valueVerb;
             this.teamValueInverted = teamValueInverted;
+        }
+
+        public boolean isValidValue(Object o) {
+            return valueClass.isInstance(o);
         }
 
         public String getValueVerb() {
@@ -84,27 +78,31 @@ public class TeamOptionCommand extends TeamCommand {
     }
 
     private final TeamReference reference;
-    private final TeamOptionKey key;
+    private final TeamModifyKey key;
     private final Object value;
 
-    public TeamOptionCommand(TeamReference reference, TeamOptionKey key, AppliesTo value) {
+    public TeamModifyCommand(TeamReference reference, TeamModifyKey key, AppliesTo value) {
         this(reference, key, (Object) value);
     }
 
-    public TeamOptionCommand(TeamReference reference, TeamOptionKey key, boolean value) {
+    public TeamModifyCommand(TeamReference reference, TeamModifyKey key, boolean value) {
         this(reference, key, (Object) value);
     }
 
-    public TeamOptionCommand(TeamReference reference, TeamOptionKey key, TextColor value) {
+    public TeamModifyCommand(TeamReference reference, TeamModifyKey key, TextColor value) {
         this(reference, key, (Object) value);
     }
 
-    private TeamOptionCommand(TeamReference reference, TeamOptionKey key, Object value) {
+    public TeamModifyCommand(TeamReference reference, TeamModifyKey key, TextComponent value) {
+        this(reference, key, (Object) value);
+    }
+
+    private TeamModifyCommand(TeamReference reference, TeamModifyKey key, Object value) {
         this.reference = reference;
         this.key = key;
-        if (key.valueType.isValidValue(value)) {
+        if (key.isValidValue(value)) {
             this.value = value;
-        } else throw new IllegalArgumentException("'" + value + "' is not a valid argument type for team option '" + key + "': expected value of type '" + key.valueType + "'");
+        } else throw new IllegalArgumentException("'" + value + "' is not a valid argument type for team option '" + key + "': expected value of type '" + key.valueClass.getSimpleName() + "'");
     }
 
     private String getValueString() {
@@ -117,11 +115,13 @@ public class TeamOptionCommand extends TeamCommand {
             return ((Boolean) value).toString();
         } else if(value instanceof TextColor) {
             return value.toString().toLowerCase();
+        } else if(value instanceof TextComponent) {
+            return value.toString();
         } else return null;
     }
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "team option " + reference + " " + key.getArgumentKey() + " " + getValueString());
+        return new CommandResolution(execContext, "team modify " + reference + " " + key.getArgumentKey() + " " + getValueString());
     }
 }

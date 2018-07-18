@@ -31,7 +31,7 @@ import com.energyxxer.commodore.commands.spreadplayers.SpreadPlayersCommand;
 import com.energyxxer.commodore.commands.stopsound.StopSoundCommand;
 import com.energyxxer.commodore.commands.summon.SummonCommand;
 import com.energyxxer.commodore.commands.team.TeamCreateCommand;
-import com.energyxxer.commodore.commands.team.TeamOptionCommand;
+import com.energyxxer.commodore.commands.team.TeamModifyCommand;
 import com.energyxxer.commodore.commands.teleport.TeleportCommand;
 import com.energyxxer.commodore.commands.teleport.destination.TeleportDestination;
 import com.energyxxer.commodore.commands.teleport.facing.TeleportFacing;
@@ -324,10 +324,10 @@ public class CommandTest {
         TeamReference blu = new TeamReference("blu");
 
         otherFunction.append(new TeamCreateCommand(blu, "Blue Team"));
-        otherFunction.append(new TeamOptionCommand(blu, TeamOptionCommand.TeamOptionKey.DEATH_MESSAGE_VISIBILITY, TeamOptionCommand.AppliesTo.OTHER_TEAMS));
-        otherFunction.append(new TeamOptionCommand(blu, TeamOptionCommand.TeamOptionKey.COLLISION_RULE, TeamOptionCommand.AppliesTo.OTHER_TEAMS));
-        otherFunction.append(new TeamOptionCommand(blu, TeamOptionCommand.TeamOptionKey.FRIENDLY_FIRE, true));
-        otherFunction.append(new TeamOptionCommand(blu, TeamOptionCommand.TeamOptionKey.COLOR, TextColor.GOLD));
+        otherFunction.append(new TeamModifyCommand(blu, TeamModifyCommand.TeamModifyKey.DEATH_MESSAGE_VISIBILITY, TeamModifyCommand.AppliesTo.OTHER_TEAMS));
+        otherFunction.append(new TeamModifyCommand(blu, TeamModifyCommand.TeamModifyKey.COLLISION_RULE, TeamModifyCommand.AppliesTo.OTHER_TEAMS));
+        otherFunction.append(new TeamModifyCommand(blu, TeamModifyCommand.TeamModifyKey.FRIENDLY_FIRE, true));
+        otherFunction.append(new TeamModifyCommand(blu, TeamModifyCommand.TeamModifyKey.COLOR, TextColor.GOLD));
 
         otherFunction.append(new LocateCommand(module.minecraft.getTypeManager().structure.get("Village")));
 
@@ -361,8 +361,17 @@ public class CommandTest {
 
         scoreTest.append(exec2);
 
-        scoreTest.setExport(false);
-        otherFunction.setExport(false);
+        scoreTest.append(new ObjectiveModifyCommand(objMgr.get("A"), ObjectiveModifyCommand.ObjectiveModifyKey.RENDER_TYPE, ObjectiveModifyCommand.ObjectiveRenderType.HEARTS));
+        scoreTest.append(new ObjectiveModifyCommand(objMgr.get("A"), ObjectiveModifyCommand.ObjectiveModifyKey.DISPLAY_NAME, new StringTextComponent("hello", new TextStyle(TextColor.DARK_AQUA, TextStyle.BOLD + TextStyle.UNDERLINE))));
+
+        TeamReference team = new TeamReference("blu");
+
+        scoreTest.append(new TeamCreateCommand(team));
+        scoreTest.append(new TeamModifyCommand(team, TeamModifyCommand.TeamModifyKey.COLLISION_RULE, TeamModifyCommand.AppliesTo.OTHER_TEAMS));
+        scoreTest.append(new TeamModifyCommand(team, TeamModifyCommand.TeamModifyKey.DISPLAY_NAME, new StringTextComponent("Blue", new TextStyle(TextColor.RED, TextStyle.BOLD))));
+
+        //scoreTest.setExport(false);
+        //otherFunction.setExport(false);
 
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 
