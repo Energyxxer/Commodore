@@ -4,7 +4,7 @@ import com.energyxxer.commodore.inspection.CommandEmbeddable;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.textcomponents.TextComponent;
-import com.energyxxer.commodore.types.defaults.BossbarReference;
+import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -12,8 +12,8 @@ import java.util.Collection;
 public class BossbarSetNameCommand extends BossbarSetCommand {
     private final TextComponent name;
 
-    public BossbarSetNameCommand(BossbarReference reference, TextComponent name) {
-        super(reference);
+    public BossbarSetNameCommand(Type bossbar, TextComponent name) {
+        super(bossbar);
         this.name = name;
     }
 

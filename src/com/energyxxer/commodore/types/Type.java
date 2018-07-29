@@ -1,26 +1,154 @@
 package com.energyxxer.commodore.types;
 
+import com.energyxxer.commodore.defpacks.DefinitionPack;
+import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.types.defaults.GenericType;
+import com.energyxxer.commodore.types.defaults.TypeManager;
 
 import java.util.HashMap;
 
+/**
+ * Defines a type of a Minecraft object of a certain category.<br>
+ *     Such categories are, by default, blocks, items, fluids, entities, biomes, difficulties, dimensions,
+ *     status effects, enchantments, gamemodes, gamerules, item slots, particles, structures, functions and bossbars.
+ *     <br>
+ *
+ * These types can be provided either via definition packs or by creating them via the {@link TypeDictionary#create}
+ * method of the corresponding category in the {@link TypeManager} of the corresponding {@link Namespace} of the
+ * {@link CommandModule}.
+ *
+ * Definition packs can also define their own categories.
+ *
+ * @see DefinitionPack
+ *
+ * @see TypeDictionary
+ * @see TypeManager
+ * @see Namespace
+ * @see CommandModule
+ *
+ * @see GenericType
+ * */
 public abstract class Type {
+    /**
+     * The case-sensitive string describing the category of this type.
+     * */
     protected final String category;
+    /**
+     * The namespace this type belongs to.
+     * */
     protected final Namespace namespace;
+    /**
+     * The name this type is referred to as.
+     * */
     protected final String name;
+    /**
+     * The properties of this type, as defined via the JSON declaration of this type in a definition pack, or given
+     * directly by the {@link Type#putProperty(String, String)} and {@link Type#putProperties(HashMap)} methods.
+     * */
     protected final HashMap<String, String> properties = new HashMap<>();
 
+    /**
+     * Creates a type with the specified fields.
+     *
+     * @param category The case-sensitive string describing the category of this type.
+     * @param namespace The Namespace this type belongs to. Can be null if {@link Type#useNamespace} returns false.
+     * @param name The name this type is referred to as.
+     * */
     public Type(String category, Namespace namespace, String name) {
         this.category = category;
         this.namespace = namespace;
         this.name = name;
     }
 
+    /**
+     * Describes whether or not this type is namespace-sensitive, and whether it should print the namespace when used in
+     * a command. If this returns true, the {@link Type#namespace} field should not be null.
+     *
+     * @return <code>true</code> if the namespace is a sensitive part of its declaration, <code>false</code> if it's
+     * not.
+     * */
     public boolean useNamespace() {
         return true;
     }
 
+    /**
+     * Describes whether or not this type alone is enough to set a concrete instance of itself. For instance, if this
+     * type object refers to a block <i>tag</i>, this type is not concrete, as it is not enough to be able to set
+     * a block of this type. In short, this dictates whether or not this type is a standalone definition, or if it
+     * describes multiple types at once.
+     *
+     * @return <code>true</code> if this type can be set and tested, <code>false</code> if this type can only be tested.
+     * */
     public abstract boolean isConcrete();
+
+    /**
+     * Returns the name this type is referred to as.
+     *
+     * @return The name of this type.
+     * */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Returns the namespace this type belongs to.
+     *
+     * @return The namespace of this type.
+     * */
+    public Namespace getNamespace() {
+        return namespace;
+    }
+
+    /**
+     * Returns the category this type belongs to.
+     *
+     * @return The category of this type.
+     * */
+    public String getCategory() {
+        return category;
+    }
+
+    /**
+     * Adds a property to this type.
+     *
+     * @param key The key with which the specified property is to be associated.
+     * @param value The value to be associated with the specified key.
+     * */
+    public void putProperty(String key, String value) {
+        properties.put(key, value);
+    }
+
+    /**
+     * Adds several properties to this type.
+     *
+     * @param properties A string-string map containing all the properties to add to this type.
+     * */
+    public void putProperties(HashMap<String, String> properties) {
+        this.properties.putAll(properties);
+    }
+
+    /**
+     * If this type has a property with the given key, the value associated with that key is returned.
+     * If it doesn't contain that key, <code>null is returned</code>
+     *
+     * @param key The key whose associated value is to be returned.
+     *
+     * @return The value associated with the given key.
+     * */
+    public String getProperty(String key) {
+        return properties.get(key);
+    }
+
+    /**
+     * Retrieves the map containing this type's properties.
+     *
+     * @return The map of this type's properties. Any modifications to the returned
+     * value will also be made to this type's properties.
+     * */
+    public HashMap<String, String> getProperties() {
+        return properties;
+    }
 
     @Override
     public String toString() {
@@ -37,30 +165,10 @@ public abstract class Type {
         return (!useNamespace() || namespace.equals(otherType.namespace)) && name.equals(otherType.name);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void putProperty(String key, String value) {
-        properties.put(key, value);
-    }
-
-    public void putProperties(HashMap<String, String> properties) {
-        this.properties.putAll(properties);
-    }
-
-    public String getProperty(String key) {
-        return properties.get(key);
-    }
-
     @Override
     public int hashCode() {
         int result = namespace.hashCode();
         result = 31 * result + name.hashCode();
         return result;
-    }
-
-    public String getCategory() {
-        return category;
     }
 }

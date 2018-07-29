@@ -6,27 +6,29 @@ import com.energyxxer.commodore.functions.FunctionSection;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.FunctionReference;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
+import java.util.Collections;
 
 public class FunctionCommand implements Command {
-    private final FunctionReference reference;
+    private final Type function;
     private ExecutionContext execContext = null;
     private Collection<ScoreboardAccess> accesses = null;
 
     public FunctionCommand(Function function) {
-        this.reference = new FunctionReference(function);
+        this.function = new FunctionReference(function);
     }
 
-    public FunctionCommand(FunctionReference reference) {
-        this.reference = reference;
+    public FunctionCommand(FunctionReference function) {
+        this.function = function;
     }
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "function " + reference);
+        return new CommandResolution(execContext, "function " + function);
     }
 
     //TODO: Resolve functions for each execution context
@@ -36,8 +38,11 @@ public class FunctionCommand implements Command {
         if(execContext == null)
             throw new IllegalStateException("Cannot resolve scoreboard accesses for unappended function command");
         if(accesses != null) return accesses;
-        reference.getFunction().resolveAccessLogs();
-        accesses = reference.getFunction().getScoreboardAccesses(execContext);
+        if(function instanceof FunctionReference) {
+            ((FunctionReference) function).getFunction().resolveAccessLogs();
+            accesses = ((FunctionReference) function).getFunction().getScoreboardAccesses(execContext);
+        }
+        if(accesses == null) accesses = Collections.emptyList();
         return accesses;
     }
 

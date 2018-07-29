@@ -1,10 +1,10 @@
 package com.energyxxer.commodore.commands.bossbar.get;
 
-import com.energyxxer.commodore.types.defaults.BossbarReference;
+import com.energyxxer.commodore.types.Type;
 
 public class BossbarGetPlayersCommand extends BossbarGetCommand {
 
-    public BossbarGetPlayersCommand(BossbarReference reference) {
+    public BossbarGetPlayersCommand(Type reference) {
         super(reference);
     }
 

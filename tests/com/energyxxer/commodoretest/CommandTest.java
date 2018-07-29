@@ -75,6 +75,7 @@ import com.energyxxer.commodore.types.defaults.*;
 import com.energyxxer.commodore.util.Delta;
 
 import java.io.File;
+import java.io.IOException;
 
 public class CommandTest {
     public static void main(String[] args) {
@@ -147,16 +148,19 @@ public class CommandTest {
 
         CommandModule module = new CommandModule("Commodore Test", "A simple Commodore test project", "ct");
         module.getOptionManager().UNUSED_COMMAND_POLICY.setValue(UnusedCommandPolicy.COMMENT_OUT);
-        StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
-        //aetherPack.initialize(module);
+        try {
+            StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
+        } catch(IOException x) {
+            x.printStackTrace();
+        }
         ObjectiveManager objMgr = module.getObjectiveManager();
         objMgr.setPrefixEnabled(true);
-        objMgr.setCreationFunction(module.getNamespace("ct").getFunctionManager().create("init_objectives"));
+        objMgr.setCreationFunction(module.createNamespace("ct").getFunctionManager().create("init_objectives"));
         objMgr.create("return", true);
 
-        Function function = module.getNamespace("test").getFunctionManager().create("scores");
+        Function function = module.createNamespace("test").getFunctionManager().create("scores");
 
-        EntityType bat = module.getNamespace("minecraft").getTypeManager().entity.get("bat");
+        EntityType bat = module.minecraft.getTypeManager().entity.get("bat");
 
         GenericEntity entity = new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES));
         entity.getSelector().addArguments(new TypeArgument(bat), new TagArgument("a"), new TagArgument("!b"));
@@ -237,7 +241,7 @@ public class CommandTest {
 
         function.append(new FunctionComment("CLONE COMMANDS"));
 
-        BlockTag buttons = module.minecraft.getTagManager().getBlockGroup().create("buttons");
+        BlockTag buttons = module.minecraft.getTagManager().blockTags.create("buttons");
         buttons.addValue(module.minecraft.getTypeManager().block.get("stone_button"));
         buttons.addValue(module.minecraft.getTypeManager().block.get("oak_button"));
         buttons.addValue(module.minecraft.getTypeManager().block.get("spruce_button"));
@@ -300,7 +304,7 @@ public class CommandTest {
             //otherFunction.append(exec1);
         }
 
-        FunctionTag tick = module.minecraft.getTagManager().getFunctionGroup().create("tick");
+        FunctionTag tick = module.minecraft.getTagManager().functionTags.create("tick");
         tick.addValue(new FunctionReference(otherFunction));
 
         function.append(new FunctionHeaderComment(buttons.getContents().split("\n")));
@@ -375,10 +379,10 @@ public class CommandTest {
 
         module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
 
-        System.out.println("module.minecraft.getTagManager().getBlockGroup() = " + module.minecraft.getTagManager().getBlockGroup());
-        System.out.println(module.minecraft.getTagManager().getBlockGroup().get("coral_blocks").getValues());
-        System.out.println(((BlockTag) module.minecraft.getTagManager().getBlockGroup().get("coral_blocks").getValues().get(0)).getValues());
-        System.out.println(module.minecraft.getTagManager().getBlockGroup().get("dead_coral_blocks").getValues());
+        System.out.println("module.minecraft.getTagManager().getBlockGroup() = " + module.minecraft.getTagManager().blockTags);
+        System.out.println(module.minecraft.getTagManager().blockTags.get("coral_blocks").getValues());
+        System.out.println(((BlockTag) module.minecraft.getTagManager().blockTags.get("coral_blocks").getValues().get(0)).getValues());
+        System.out.println(module.minecraft.getTagManager().blockTags.get("dead_coral_blocks").getValues());
 
         //System.out.println(function.getResolvedContent());
 

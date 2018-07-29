@@ -12,14 +12,19 @@ import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 
 import java.io.File;
+import java.io.IOException;
 
 public class CommandGroupTest {
     public static void main(String[] args) {
         CommandModule module = new CommandModule("Command Group Test", "cgt");
         module.getOptionManager().UNUSED_COMMAND_POLICY.setValue(UnusedCommandPolicy.COMMENT_OUT);
-        StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
+        try {
+            StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
+        } catch(IOException x) {
+            x.printStackTrace();
+        }
 
-        Namespace cgt = module.getNamespace("cgt");
+        Namespace cgt = module.createNamespace("cgt");
 
         Function function = cgt.getFunctionManager().create("func");
 
@@ -27,6 +32,8 @@ public class CommandGroupTest {
         CommandGroup cg = new CommandGroup(function);
         cg.append(exec);
         ExecuteCommand outerExec = new ExecuteCommand(cg, new ExecuteInDimension(module.minecraft.getTypeManager().dimension.get("the_end")));
+
+        System.out.println(module.minecraft.getTypeManager().block.get("stone").getProperties());
 
         function.append(outerExec);
 

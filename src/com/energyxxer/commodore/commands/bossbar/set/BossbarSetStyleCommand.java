@@ -2,14 +2,14 @@ package com.energyxxer.commodore.commands.bossbar.set;
 
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
-import com.energyxxer.commodore.types.defaults.BossbarReference;
+import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
 public class BossbarSetStyleCommand extends BossbarSetCommand {
     private final BossbarStyle style;
 
-    public BossbarSetStyleCommand(BossbarReference reference, BossbarStyle style) {
-        super(reference);
+    public BossbarSetStyleCommand(Type bossbar, BossbarStyle style) {
+        super(bossbar);
         this.style = style;
     }
 

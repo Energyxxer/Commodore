@@ -2,6 +2,7 @@ package com.energyxxer.commodore.coordinates;
 
 import java.util.Objects;
 
+/***/
 public class Coordinate {
     public enum Type {
         ABSOLUTE(""), RELATIVE("~"), LOCAL("^");

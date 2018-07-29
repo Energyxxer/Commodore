@@ -4,7 +4,7 @@ import com.energyxxer.commodore.tags.Tag;
 
 import java.util.ArrayList;
 
-public class TagBlueprint {
+class TagBlueprint {
     final String namespace;
     final String name;
     Tag.OverridePolicy policy;

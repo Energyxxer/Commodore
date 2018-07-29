@@ -8,16 +8,28 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 import java.util.Objects;
 
+/***/
 public class CoordinateSet implements ExecuteModifier {
 
     private final Coordinate x;
     private final Coordinate y;
     private final Coordinate z;
 
+    public CoordinateSet() {
+        this(0,0,0, Coordinate.Type.RELATIVE);
+    }
+
     public CoordinateSet(Coordinate x, Coordinate y, Coordinate z) {
         this.x = x;
         this.y = y;
         this.z = z;
+
+        byte locals = 0;
+        if(x.getType() == Coordinate.Type.LOCAL) locals++;
+        if(y.getType() == Coordinate.Type.LOCAL) locals++;
+        if(z.getType() == Coordinate.Type.LOCAL) locals++;
+
+        if(locals != 0 && locals != 3) throw new IllegalArgumentException("Cannot combine local and world coordinates");
     }
 
     public CoordinateSet(double x, double y, double z) {
@@ -105,7 +117,6 @@ public class CoordinateSet implements ExecuteModifier {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(x, y, z);
     }
 }

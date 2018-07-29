@@ -23,6 +23,7 @@ import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.types.defaults.EntityType;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,7 +40,11 @@ public class EnhancedHoes {
 
     public static void main(String[] args) {
         CommandModule module = new CommandModule("Enhanced Hoes", "eh");
-        StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
+        try {
+            StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
+        } catch(IOException x) {
+            x.printStackTrace();
+        }
 
         Objective count = module.getObjectiveManager().create("count");
         Objective tier = module.getObjectiveManager().create("tier");
@@ -48,7 +53,7 @@ public class EnhancedHoes {
         Namespace minecraft = module.minecraft;
         EntityType itemEntityType = minecraft.getTypeManager().entity.get("item");
 
-        Namespace namespace = module.getNamespace(module.getPrefix());
+        Namespace namespace = module.createNamespace(module.getPrefix());
 
         Function tick = namespace.getFunctionManager().create("tick");
 

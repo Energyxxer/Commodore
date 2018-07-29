@@ -5,22 +5,26 @@ import com.energyxxer.commodore.inspection.CommandEmbeddable;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.textcomponents.TextComponent;
-import com.energyxxer.commodore.types.defaults.BossbarReference;
+import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertBossbar;
+
 public class BossbarCreateCommand extends BossbarCommand {
-    private final BossbarReference bossbar;
+    private final Type bossbar;
     private final TextComponent name;
 
-    public BossbarCreateCommand(BossbarReference bossbar) {
+    public BossbarCreateCommand(Type bossbar) {
         this(bossbar, null);
     }
 
-    public BossbarCreateCommand(BossbarReference bossbar, TextComponent name) {
+    public BossbarCreateCommand(Type bossbar, TextComponent name) {
         this.bossbar = bossbar;
         this.name = name;
+
+        assertBossbar(bossbar);
     }
 
     @Override

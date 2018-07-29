@@ -10,7 +10,7 @@ public class FunctionReference extends Type {
     private Function function;
 
     public FunctionReference(Function function) {
-        super("function_reference", function.getNamespace(), function.getPath());
+        super(CATEGORY, function.getNamespace(), function.getPath());
         this.function = function;
     }
 

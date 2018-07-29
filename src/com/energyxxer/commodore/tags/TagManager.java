@@ -15,10 +15,10 @@ public class TagManager {
     private final Namespace namespace;
 
     private final HashMap<String, TagGroup<? extends Tag>> groups = new HashMap<>();
-    private final TagGroup<BlockTag> blockTags;
-    private final TagGroup<ItemTag> itemTags;
-    private final TagGroup<FunctionTag> functionTags;
-    private final TagGroup<FluidTag> fluidTags;
+    public final TagGroup<BlockTag> blockTags;
+    public final TagGroup<ItemTag> itemTags;
+    public final TagGroup<FunctionTag> functionTags;
+    public final TagGroup<FluidTag> fluidTags;
 
     public TagManager(Namespace namespace) {
         this.namespace = namespace;
@@ -46,18 +46,6 @@ public class TagManager {
 
     public Namespace getNamespace() {
         return namespace;
-    }
-
-    public TagGroup<BlockTag> getBlockGroup() {
-        return blockTags;
-    }
-
-    public TagGroup<ItemTag> getItemGroup() {
-        return itemTags;
-    }
-
-    public TagGroup<FunctionTag> getFunctionGroup() {
-        return functionTags;
     }
 
     public void join(TagManager other) {

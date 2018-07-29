@@ -2,10 +2,12 @@ package com.energyxxer.commodore.defpacks;
 
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.tags.Tag;
 import com.energyxxer.commodore.tags.TagGroup;
 import com.energyxxer.commodore.types.Type;
-import com.energyxxer.commodore.util.JsonObjectWrapper;
+import com.energyxxer.commodore.util.io.CompoundInput;
+import com.energyxxer.commodore.util.io.JsonObjectWrapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -16,43 +18,93 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Serves as a medium to incorporate game data from a pack, containing things from type definitions and tag definitions
+ * to custom category definitions. This definition pack can then be loaded and imported into a command module once or
+ * multiple times, copying all of the definitions supplied by the pack into that command module.<br><br>
+ *
+ * A definition pack can be created from, but not limited to, a classpath resource, a directory in the filesystem
+ * or a zip file. More sources can be made by extending the CompoundInput interface.<br><br>
+ *
+ * Definition packs have the following structure:<br>
+ *
+ * <pre>
+ * root/
+ *      type_definitions.json
+ *      data/
+ *          <i>namespace/</i>
+ *              tags/
+ *                  <i>category_name/</i>
+ *                      <i>tag_name</i>.json
+ *                      <i>tag_subfolder/</i>
+ *                          <i>nested_tag</i>.json
+ * </pre>
+ *
+ * Of these, type_definitions.json is mandatory. It should contain an object where each element's key corresponds to
+ * a type category, and their value corresponds to an object containing that category's properties. Possible category
+ * options are as follows:
+ *
+ * <ol>
+ *     <li>use_namespace: <code>boolean</code> - Describes whether the namespace of that type should be printed along
+ *     with the type's name. For instance, blocks utilize the namespace (minecraft:stone), while gamemodes don't
+ *     (survival). <code>true</code> if it should include the namespace, <code>false</code> if it shouldn't. If not
+ *     specified, defaults to <code>false</code>. Types for
+ *     categories that don't use namespaces will be stored in the minecraft namespace</li>
+ *     <li>import_from: <code>string</code> - Specifies the path from the root of the definition pack to find all the
+ *     definitions for the corresponding category. The .json extension for this file is implicit.
+ *     This path doesn't need to be any of those defined in the definition pack structure above. In the standard
+ *     definition pack for Minecraft Java 1.13, all the definitions are under the <code>definitions/</code>
+ *     folder.</li>. If not specified, no default types are created for this category.
+ *     <li>tag_directory: <code>string</code> - Describes the name of the folder under the
+ *     <code>data/<i>namespace</i>/tags/</code> directory where tags for this category should be exported. If not
+ *     specified, tags for this category will not be exported.</li>
+ * </ol>
+ *
+ * An example of an entry in the root object of type_definitions is as follows:
+ *
+ * <pre>
+ * "block": {
+ *     "use_namespace": true,
+ *     "import_from": "definitions/blocks",
+ *     "tag_directory": "blocks"
+ * }
+ * </pre>
+ *
+ * For type definition files, the root should be an object, where each element's key corresponds to a type name
+ * (including namespace, if applicable), and each element's value should be an object, containing any properties the
+ * pack deems appropriate for the type. Those properties will then be added to the generated Type object's property map
+ * in a String-String pair. Non-string property values, such as numbers, booleans, objects and lists,
+ * will be stored as raw strings.<br><br>
+ *
+ * An example of a type definition in the root object of a type definition is as follows:
+ * <pre>
+ * "minecraft:speed": {
+ *     "id": 1,
+ *     "type": "positive"
+ * }
+ * </pre>
+ *
+ * As for the content of tag files, the format is exactly the same as vanilla Minecraft tags, with one extra property.
+ * You can add a boolean property called "export" to the root object of the file to specify whether or not that
+ * specific tag should be exported by any command module that has it, during compilation. By default, tags created
+ * by definition packs are not exported into data packs.
+ *
+ * @see StandardDefinitionPacks
+ *
+ * @see CommandModule
+ * @see CompoundInput
+ * @see Type
+ * @see Tag
+ * */
 public class DefinitionPack {
-
-    /*public enum DefinitionCategory {
-        BLOCK("blocks"),
-        FLUID("fluids"),
-        ITEM("items"),
-        EFFECT("effects"),
-        ENTITY("entities"),
-        PARTICLE("particles"),
-        ENCHANTMENT("enchantments"),
-        DIMENSION("dimensions"),
-        BIOME("biomes"),
-        DIFFICULTY("difficulties"),
-        GAMEMODE("gamemodes"),
-        GAMERULE("gamerules"),
-        STRUCTURE("structures"),
-        SLOT("slots");
-
-        private final String filename;
-
-        DefinitionCategory(String filename) {
-            this.filename = filename;
-        }
-
-        TypeDictionary pickFrom(TypeManager typeManager) {
-            return typeManager.types.get(name().toLowerCase());
-        }
-    }*/
 
     private final Gson gson;
 
     private final String packName;
-    private final String packDir;
+    private final CompoundInput fsi;
 
     private final HashMap<String, ArrayList<DefinitionBlueprint>> definitions = new HashMap<>();
     private final HashMap<String, ArrayList<TagBlueprint>> tags = new HashMap<>();
@@ -60,22 +112,21 @@ public class DefinitionPack {
 
     private boolean loaded = false;
 
-    public DefinitionPack(String packName, String packDir) {
+    public DefinitionPack(String packName, CompoundInput fsi) {
         this.packName = packName;
-        this.packDir = packDir;
+        this.fsi = fsi;
 
         this.gson = new Gson();
-
-        /*for(DefinitionCategory cat : DefinitionCategory.values()) {
-            definitions.put(cat, new ArrayList<>());
-        }*/
     }
 
-    public void load() {
+    public void load() throws IOException {
         if(loaded) return;
+        loaded = true;
 
-        {
-            JsonObject definitions = gson.fromJson(new InputStreamReader(DefinitionPack.class.getResourceAsStream("/defpacks/" + packDir + "/type_definitions.json")), JsonObject.class);
+        try {
+            fsi.open();
+
+            JsonObject definitions = gson.fromJson(new InputStreamReader(fsi.get("type_definitions.json")), JsonObject.class);
 
             for(Map.Entry<String, JsonElement> categoryDef : definitions.entrySet()) {
                 String category = categoryDef.getKey();
@@ -97,99 +148,81 @@ public class DefinitionPack {
             }
 
             importNamespaceData();
-        }
 
-        loaded = true;
+        } finally {
+            fsi.close();
+        }
     }
 
-    private void importTypes(TypeDefinition definition) {
-        InputStreamReader is = new InputStreamReader(DefinitionPack.class.getResourceAsStream("/defpacks/" + packDir + "/" + definition.importFrom + ".json"));
+    private void importTypes(TypeDefinition definition) throws IOException {
+        InputStreamReader is = new InputStreamReader(fsi.get(definition.importFrom + ".json"));
         JsonObject entryFileObj = gson.fromJson(is, JsonObject.class);
         for(Map.Entry<String, JsonElement> typeDef : entryFileObj.entrySet()) {
             String name = typeDef.getKey();
             HashMap<String, String> properties = new HashMap<>();
             for(Map.Entry<String, JsonElement> member : typeDef.getValue().getAsJsonObject().entrySet()) {
-                if(member.getValue().isJsonPrimitive()) {
-                    properties.put(member.getKey(), member.getValue().getAsString());
-                }
+                properties.put(member.getKey(), member.getValue().toString());
             }
 
             this.definitions.get(definition.category).add(new DefinitionBlueprint(name, properties, definition.useNamespace));
         }
 
-        try {
-            is.close();
-        } catch(IOException x) {
-            x.printStackTrace();
-        }
+        is.close();
     }
 
-    private void importNamespaceData() {
-        try {
-            InputStream in = DefinitionPack.class.getResourceAsStream("/defpacks/" + packDir + "/data/");
-            if(in != null) {
-                BufferedReader br = new BufferedReader(new InputStreamReader(in));
+    private void importNamespaceData() throws IOException {
+        InputStream in = fsi.get("data/");
+        if(in != null) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
-                String namespace;
-                while((namespace = br.readLine()) != null) {
-                    importTags(namespace);
-                }
-
-                br.close();
+            String namespace;
+            while((namespace = br.readLine()) != null) {
+                importTags(namespace);
             }
-        } catch(IOException x) {
-            x.printStackTrace();
+
+            br.close();
         }
     }
 
-    private void importTags(String namespace) {
-        try {
-            InputStream in = DefinitionPack.class.getResourceAsStream("/defpacks/" + packDir + "/data/" + namespace + "/tags/");
-            if(in != null) {
-                BufferedReader br = new BufferedReader(new InputStreamReader(in));
+    private void importTags(String namespace) throws IOException {
+        InputStream in = fsi.get("data/" + namespace + "/tags/");
+        if(in != null) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
-                String inCategory;
-                while((inCategory = br.readLine()) != null) {
-
-                    for(TypeDefinition definition : definedCategories) {
-                        if(inCategory.equals(definition.tagDirectory)) {
-                            importTagGroup("/defpacks/" + packDir + "/data/" + namespace + "/tags/" + definition.tagDirectory, namespace, "", definition);
-                        }
-                    }
-
-                }
-
-                br.close();
-            }
-        } catch(IOException x) {
-            x.printStackTrace();
-        }
-    }
-
-    private void importTagGroup(String path, String namespace, String prevPath, TypeDefinition definition) {
-        try {
-            InputStream in = DefinitionPack.class.getResourceAsStream(path);
-            if(in != null) {
-                BufferedReader br = new BufferedReader(new InputStreamReader(in));
-
-                String tag;
-                while((tag = br.readLine()) != null) {
-                    if(tag.endsWith(".json")) {
-                        importTag(path + "/" + tag, namespace, prevPath + tag.substring(0, tag.length()-5), definition);
-                    } else if(!tag.contains(".")) {
-                        importTagGroup(path + "/" + tag, namespace, path + "/" + prevPath + tag + "/", definition);
+            String inCategory;
+            while((inCategory = br.readLine()) != null) {
+                for(TypeDefinition definition : definedCategories) {
+                    if(inCategory.equals(definition.tagDirectory)) {
+                        importTagGroup("data/" + namespace + "/tags/" + definition.tagDirectory, namespace, "", definition);
                     }
                 }
 
-                br.close();
             }
-        } catch(IOException x) {
-            x.printStackTrace();
+
+            br.close();
         }
     }
 
-    private void importTag(String path, String namespace, String name, TypeDefinition definition) {
-        try(InputStreamReader is = new InputStreamReader(DefinitionPack.class.getResourceAsStream(path))) {
+    private void importTagGroup(String path, String namespace, String prevPath, TypeDefinition definition) throws IOException {
+        InputStream in = fsi.get(path);
+        if(in != null) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
+            String tag;
+            while((tag = br.readLine()) != null) {
+                if(tag.endsWith(".json")) {
+                    importTag(path + "/" + tag, namespace, prevPath + tag.substring(0, tag.length()-5), definition);
+                } else if(!tag.contains(".")) {
+                    importTagGroup(path + "/" + tag, namespace, path + "/" + prevPath + tag + "/", definition);
+                }
+            }
+
+            br.close();
+        }
+    }
+
+    private void importTag(String path, String namespace, String name, TypeDefinition definition) throws IOException {
+        try(InputStreamReader is = new InputStreamReader(fsi.get(path))) {
             JsonObjectWrapper obj = new JsonObjectWrapper(gson.fromJson(is, JsonObject.class));
 
             TagBlueprint tag = new TagBlueprint(namespace, name);
@@ -203,24 +236,22 @@ public class DefinitionPack {
 
             if(!tags.containsKey(definition.category)) tags.put(definition.category, new ArrayList<>());
             tags.get(definition.category).add(tag);
-        } catch(IOException x) {
-            x.printStackTrace();
         }
     }
 
-    public void initialize(CommandModule module) {
+    public void initialize(CommandModule module) throws IOException {
         load();
         for(Map.Entry<String, ArrayList<DefinitionBlueprint>> defs : definitions.entrySet()) {
             String category = defs.getKey();
             for(DefinitionBlueprint blueprint : defs.getValue()) {
-                Namespace ns = (blueprint.namespace != null) ? module.getNamespace(blueprint.namespace) : module.minecraft;
+                Namespace ns = (blueprint.namespace != null) ? module.createNamespace(blueprint.namespace) : module.minecraft;
                 ns.getTypeManager().createDictionary(category, blueprint.namespace != null).create(blueprint.name).putProperties(blueprint.properties);
             }
         }
         for(Map.Entry<String, ArrayList<TagBlueprint>> entry : tags.entrySet()) {
             String category = entry.getKey();
             for(TagBlueprint blueprint : entry.getValue()) {
-                Namespace ns = (blueprint.namespace != null) ? module.getNamespace(blueprint.namespace) : module.minecraft;
+                Namespace ns = (blueprint.namespace != null) ? module.createNamespace(blueprint.namespace) : module.minecraft;
                 TagGroup<? extends Tag> group = ns.getTagManager().createGroup(category, getCategory(category).tagDirectory);
 
                 Tag tag = group.create(blueprint.name);
@@ -237,10 +268,10 @@ public class DefinitionPack {
                     }
 
                     if(isTag) {
-                        Tag created = module.getNamespace(namespace).getTagManager().getGroup(category).create(value);
+                        Tag created = module.createNamespace(namespace).getTagManager().getGroup(category).create(value);
                         tag.addValue(created);
                     } else {
-                        Type created = module.getNamespace(namespace).getTypeManager().createDictionary(category, true).create(value);
+                        Type created = module.createNamespace(namespace).getTypeManager().createDictionary(category, true).create(value);
                         tag.addValue(created);
                     }
                 }
@@ -253,16 +284,6 @@ public class DefinitionPack {
             if(def.category.equals(category)) return def;
         }
         throw new RuntimeException("Unable to find definition of category '" + category + "'");
-    }
-
-    public Collection<TypeDefinition> getDefinedCategories() {
-        load();
-        return new ArrayList<>(definedCategories);
-    }
-
-    public Collection<DefinitionBlueprint> getBlueprints(String category) {
-        load();
-        return new ArrayList<>(definitions.get(category));
     }
 
     @Override

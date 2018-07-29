@@ -32,7 +32,7 @@ public class CommandModule {
 
         this.objMgr = new ObjectiveManager(this);
 
-        this.minecraft = getNamespace("minecraft");
+        this.minecraft = createNamespace("minecraft");
 
         optMgr = new ModuleOptionManager();
     }
@@ -72,13 +72,17 @@ public class CommandModule {
         }
     }
 
-    public Namespace getNamespace(String name) {
+    public Namespace createNamespace(String name) {
         Namespace alreadyExisting = namespaces.get(name);
         if(alreadyExisting != null) return alreadyExisting;
 
         Namespace newNamespace = new Namespace(this, name);
         namespaces.put(name, newNamespace);
         return newNamespace;
+    }
+
+    public Namespace getNamespace(String name) {
+        return namespaces.get(name);
     }
 
     public void join(CommandModule other) {
