@@ -38,6 +38,8 @@ public class TypeAssert {
     /**
      * Throws an exception if the given type is not of the category <i>block</i>.
      *
+     * @param type The type whose category is to be tested.
+     *
      * @throws IllegalTypeException If the given type is not of the <i>block</i> category.
      * */
     public static void assertBlock(Type type) {
@@ -46,6 +48,8 @@ public class TypeAssert {
 
     /**
      * Throws an exception if the given type is not of the category <i>item</i>.
+     *
+     * @param type The type whose category is to be tested.
      *
      * @throws IllegalTypeException If the given type is not of the <i>item</i> category.
      * */
@@ -56,6 +60,8 @@ public class TypeAssert {
     /**
      * Throws an exception if the given type is not of the category <i>fluid</i>.
      *
+     * @param type The type whose category is to be tested.
+     *
      * @throws IllegalTypeException If the given type is not of the <i>fluid</i> category.
      * */
     public static void assertFluid(Type type) {
@@ -64,6 +70,8 @@ public class TypeAssert {
 
     /**
      * Throws an exception if the given type is not of the category <i>biome</i>.
+     *
+     * @param type The type whose category is to be tested.
      *
      * @throws IllegalTypeException If the given type is not of the <i>biome</i> category.
      * */
@@ -74,6 +82,8 @@ public class TypeAssert {
     /**
      * Throws an exception if the given type is not of the category <i>difficulty</i>.
      *
+     * @param type The type whose category is to be tested.
+     *
      * @throws IllegalTypeException If the given type is not of the <i>difficulty</i> category.
      * */
     public static void assertDifficulty(Type type) {
@@ -82,6 +92,8 @@ public class TypeAssert {
 
     /**
      * Throws an exception if the given type is not of the category <i>dimension</i>.
+     *
+     * @param type The type whose category is to be tested.
      *
      * @throws IllegalTypeException If the given type is not of the <i>dimension</i> category.
      * */
@@ -92,6 +104,8 @@ public class TypeAssert {
     /**
      * Throws an exception if the given type is not of the category <i>entity</i>.
      *
+     * @param type The type whose category is to be tested.
+     *
      * @throws IllegalTypeException If the given type is not of the <i>entity</i> category.
      * */
     public static void assertEntity(Type type) {
@@ -100,6 +114,8 @@ public class TypeAssert {
 
     /**
      * Throws an exception if the given type is not of the category <i>effect</i>.
+     *
+     * @param type The type whose category is to be tested.
      *
      * @throws IllegalTypeException If the given type is not of the <i>effect</i> category.
      * */
@@ -110,6 +126,8 @@ public class TypeAssert {
     /**
      * Throws an exception if the given type is not of the category <i>enchantment</i>.
      *
+     * @param type The type whose category is to be tested.
+     *
      * @throws IllegalTypeException If the given type is not of the <i>enchantment</i> category.
      * */
     public static void assertEnchantment(Type type) {
@@ -118,6 +136,8 @@ public class TypeAssert {
 
     /**
      * Throws an exception if the given type is not of the category <i>gamemode</i>.
+     *
+     * @param type The type whose category is to be tested.
      *
      * @throws IllegalTypeException If the given type is not of the <i>gamemode</i> category.
      * */
@@ -128,6 +148,8 @@ public class TypeAssert {
     /**
      * Throws an exception if the given type is not of the category <i>gamerule</i>.
      *
+     * @param type The type whose category is to be tested.
+     *
      * @throws IllegalTypeException If the given type is not of the <i>gamerule</i> category.
      * */
     public static void assertGamerule(Type type) {
@@ -136,6 +158,8 @@ public class TypeAssert {
 
     /**
      * Throws an exception if the given type is not of the category <i>slot</i>.
+     *
+     * @param type The type whose category is to be tested.
      *
      * @throws IllegalTypeException If the given type is not of the <i>slot</i> category.
      * */
@@ -146,6 +170,8 @@ public class TypeAssert {
     /**
      * Throws an exception if the given type is not of the category <i>particle</i>.
      *
+     * @param type The type whose category is to be tested.
+     *
      * @throws IllegalTypeException If the given type is not of the <i>particle</i> category.
      * */
     public static void assertParticle(Type type) {
@@ -154,6 +180,8 @@ public class TypeAssert {
 
     /**
      * Throws an exception if the given type is not of the category <i>structure</i>.
+     *
+     * @param type The type whose category is to be tested.
      *
      * @throws IllegalTypeException If the given type is not of the <i>structure</i> category.
      * */
@@ -164,6 +192,8 @@ public class TypeAssert {
     /**
      * Throws an exception if the given type is not of the category <i>function_reference</i>.
      *
+     * @param type The type whose category is to be tested.
+     *
      * @throws IllegalTypeException If the given type is not of the <i>function_reference</i> category.
      * */
     public static void assertFunction(Type type) {
@@ -172,6 +202,8 @@ public class TypeAssert {
 
     /**
      * Throws an exception if the given type is not of the category <i>bossbar_reference</i>.
+     *
+     * @param type The type whose category is to be tested.
      *
      * @throws IllegalTypeException If the given type is not of the <i>bossbar_reference</i> category.
      * */

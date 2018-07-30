@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.module;
 
+import com.energyxxer.commodore.defpacks.DefinitionPack;
 import com.energyxxer.commodore.module.options.ModuleOptionManager;
 import com.energyxxer.commodore.score.ObjectiveManager;
 
@@ -93,6 +94,10 @@ public class CommandModule {
 
     public boolean namespaceExists(String name) {
         return namespaces.containsKey(name);
+    }
+
+    public void importDefinitions(DefinitionPack pack) throws IOException {
+        pack.populate(this);
     }
 
     @Override

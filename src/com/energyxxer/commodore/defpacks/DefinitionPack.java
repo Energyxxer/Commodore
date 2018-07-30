@@ -65,7 +65,7 @@ import java.util.Map;
  *     definitions for the corresponding category. The .json extension for this file is implicit.
  *     This path doesn't need to be any of those defined in the definition pack structure above. In the standard
  *     definition pack for Minecraft Java 1.13, all the definitions are under the <code>definitions/</code>
- *     folder.</li>. If not specified, no default types are created for this category.
+ *     folder. If not specified, no default types are created for this category.</li>
  *     <li>tag_directory: <code>string</code> - Describes the name of the folder under the
  *     <code>data/<i>namespace</i>/tags/</code> directory where tags for this category should be exported. If not
  *     specified, tags for this category will not be exported.</li>
@@ -124,38 +124,82 @@ public class DefinitionPack {
     private final static int CURRENT_PACK_VERSION = 1;
 
     /**
-     * I honestly don't know what this is for or why we need it as a field but things are what they are.
+     * The Gson object used to parse the pack's JSON.
      * */
     private final Gson gson;
 
-    private final String packName;
-    private final CompoundInput fsi;
+    /**
+     * The {@link CompoundInput} from which to retrieve pack data.
+     * */
+    private final CompoundInput source;
 
+    /**
+     * Stores each of the definitions for each category. The key is the category to which the definitions belong, and
+     * the value is the list of definitions for that specific category.
+     * Populated once pack is loaded.
+     * */
     private final HashMap<String, ArrayList<DefinitionBlueprint>> definitions = new HashMap<>();
+    /**
+     * Stores each of the tags for each category. The key is the category to which the tags belong, and the value is
+     * the list of tags for that specific category.
+     * Populated once pack is loaded.
+     * */
     private final HashMap<String, ArrayList<TagBlueprint>> tags = new HashMap<>();
-    private final ArrayList<TypeDefinition> definedCategories = new ArrayList<>();
+    /**
+     * Stores a list of all the defined categories and their flags.
+     * */
+    private final ArrayList<CategoryDeclaration> definedCategories = new ArrayList<>();
 
+    /**
+     * Describes whether this pack has been loaded before; that is, if the contents of the pack have been read and
+     * stored in this object's fields.
+     * */
     private boolean loaded = false;
+
+    /**
+     * The name of the pack, as specified by the "name" property of the pack.json file. Set when pack is loaded.
+     * */
+    private String packName = null;
+    /**
+     * The version of this pack, as specified by the "version" property of the pack.json file. Set when pack is loaded.
+     * */
     private int version = -1;
 
-    public DefinitionPack(String packName, CompoundInput fsi) {
-        this.packName = packName;
-        this.fsi = fsi;
+    /**
+     * Creates a definition pack object to be read from the specified source.
+     *
+     * @param source The source from which to read the definition pack.
+     * */
+    public DefinitionPack(CompoundInput source) {
+        this.source = source;
 
         this.gson = new Gson();
     }
 
+    /**
+     * Reads the definition pack's contents from the source into this object for future use.
+     *
+     * @throws IOException If an IOException occurred during the retrieval of the pack's resources.
+     * @throws MalformedPackException If mandatory files or properties are not found in the source.
+     * */
     public void load() throws IOException {
         if(loaded) return;
         loaded = true;
 
         try {
-            fsi.open();
+            source.open();
 
-            JsonObject config = gson.fromJson(new InputStreamReader(fsi.get("pack.json")), JsonObject.class);
+            InputStream packIs = source.get("pack.json");
+            if(packIs == null) throw new MalformedPackException("pack.json file not found");
+
+            JsonObject config = gson.fromJson(new InputStreamReader(packIs), JsonObject.class);
             JsonObjectWrapper configWrapper = new JsonObjectWrapper(config);
 
-            this.version = configWrapper.getAsInt("version", 1);
+            this.packName = configWrapper.getAsString("name",null);
+            if(this.packName == null || this.packName.length() == 0)
+                throw new MalformedPackException("\"name\" property of definition pack not found in the root object of pack.json");
+
+            this.version = configWrapper.getAsInt("version", CURRENT_PACK_VERSION);
             if(this.version > CURRENT_PACK_VERSION) {
                 System.err.println("[WARNING] Definition pack '" + packName + "' is pack version " + this.version + " but " + getClass().getName() + " only supports up to version " + CURRENT_PACK_VERSION);
                 System.err.println("\tWill attempt to parse pack as version " + CURRENT_PACK_VERSION);
@@ -166,7 +210,7 @@ public class DefinitionPack {
             if(categories != null) for(Map.Entry<String, JsonElement> categoryDef : categories.entrySet()) {
                 String category = categoryDef.getKey();
 
-                TypeDefinition definition = new TypeDefinition(category);
+                CategoryDeclaration definition = new CategoryDeclaration(category);
 
                 this.definedCategories.add(definition);
                 this.definitions.put(category, new ArrayList<>());
@@ -185,13 +229,20 @@ public class DefinitionPack {
             importNamespaceData();
 
         } finally {
-            fsi.close();
+            source.close();
         }
     }
 
-    private void importTypes(TypeDefinition definition) throws IOException {
-        InputStreamReader is = new InputStreamReader(fsi.get(definition.importFrom + ".json"));
-        JsonObject entryFileObj = gson.fromJson(is, JsonObject.class);
+    /**
+     * Imports the type definitions for the specified category using that category's flags.
+     *
+     * @param declaration The category declaration object whose type definitions should be read.
+     * */
+    private void importTypes(CategoryDeclaration declaration) throws IOException {
+        InputStream fileIn = source.get(declaration.importFrom + ".json");
+        if(fileIn == null) throw new MalformedPackException("Couldn't import type definitions for category '" + declaration.category + "': " + declaration.importFrom + ".json wasn't found");
+        InputStreamReader isr = new InputStreamReader(fileIn);
+        JsonObject entryFileObj = gson.fromJson(isr, JsonObject.class);
         for(Map.Entry<String, JsonElement> typeDef : entryFileObj.entrySet()) {
             String name = typeDef.getKey();
             HashMap<String, String> properties = new HashMap<>();
@@ -200,14 +251,17 @@ public class DefinitionPack {
                 properties.put(member.getKey(), stringified);
             }
 
-            this.definitions.get(definition.category).add(new DefinitionBlueprint(name, properties, definition.useNamespace));
+            this.definitions.get(declaration.category).add(new DefinitionBlueprint(name, properties, declaration.useNamespace));
         }
 
-        is.close();
+        isr.close();
     }
 
+    /**
+     * Imports all the namespace data (such as tags) for this definition pack.
+     * */
     private void importNamespaceData() throws IOException {
-        InputStream in = fsi.get("data/");
+        InputStream in = source.get("data/");
         if(in != null) {
             BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
@@ -220,45 +274,65 @@ public class DefinitionPack {
         }
     }
 
+    /**
+     * Imports all the tags in the specified namespace for this definition pack.
+     *
+     * @param namespace The string of the namespace whose tags should be imported.
+     * */
     private void importTags(String namespace) throws IOException {
-        InputStream in = fsi.get("data/" + namespace + "/tags/");
+        InputStream in = source.get("data/" + namespace + "/tags/");
         if(in != null) {
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+            try(BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
+                String inCategory;
+                while((inCategory = br.readLine()) != null) {
+                    for(CategoryDeclaration definition : definedCategories) {
+                        if(inCategory.equals(definition.tagDirectory)) {
+                            importTagGroup("data/" + namespace + "/tags/" + definition.tagDirectory, namespace, "", definition);
+                        }
+                    }
 
-            String inCategory;
-            while((inCategory = br.readLine()) != null) {
-                for(TypeDefinition definition : definedCategories) {
-                    if(inCategory.equals(definition.tagDirectory)) {
-                        importTagGroup("data/" + namespace + "/tags/" + definition.tagDirectory, namespace, "", definition);
+                }
+            }
+        }
+    }
+
+    /**
+     * Imports all the tags corresponding to a specific category in a given namespace for this definition pack.
+     *
+     * @param path The path to the directory containing the tags to import, directly under the tag group directory.
+     * @param namespace The namespace this tag group belongs to; that is, the name of the folder directly
+     *                  under the data/ directory.
+     * @param prevPath The path segment to append between the path and the files to read. Used for nested tags.
+     * @param declaration The category declaration for the category this tag group belongs to.
+     * */
+    private void importTagGroup(String path, String namespace, String prevPath, CategoryDeclaration declaration) throws IOException {
+        InputStream in = source.get(path);
+        if(in != null) {
+            try(BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
+                String tag;
+                while ((tag = br.readLine()) != null) {
+                    if (tag.endsWith(".json")) {
+                        importTag(path + "/" + tag, namespace, prevPath + tag.substring(0, tag.length() - 5), declaration);
+                    } else if (!tag.contains(".")) {
+                        importTagGroup(path + "/" + tag, namespace, path + "/" + prevPath + tag + "/", declaration);
                     }
                 }
-
             }
-
-            br.close();
         }
     }
 
-    private void importTagGroup(String path, String namespace, String prevPath, TypeDefinition definition) throws IOException {
-        InputStream in = fsi.get(path);
-        if(in != null) {
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
-
-            String tag;
-            while((tag = br.readLine()) != null) {
-                if(tag.endsWith(".json")) {
-                    importTag(path + "/" + tag, namespace, prevPath + tag.substring(0, tag.length()-5), definition);
-                } else if(!tag.contains(".")) {
-                    importTagGroup(path + "/" + tag, namespace, path + "/" + prevPath + tag + "/", definition);
-                }
-            }
-
-            br.close();
-        }
-    }
-
-    private void importTag(String path, String namespace, String name, TypeDefinition definition) throws IOException {
-        try(InputStreamReader is = new InputStreamReader(fsi.get(path))) {
+    /**
+     * Imports the tag at the corresponding path.
+     *
+     * @param path The path to the tag file to import.
+     * @param namespace The namespace this tag belongs to.
+     * @param name The name of the tag, including nested folders inside the tag group directory, and excluding
+     *             the .json extension. That is, what this tag will be referred to using commands, without the pound
+     *             prefix and the namespace.
+     * @param declaration The category declaration for the category this tag group belongs to.
+     * */
+    private void importTag(String path, String namespace, String name, CategoryDeclaration declaration) throws IOException {
+        try(InputStreamReader is = new InputStreamReader(source.get(path))) {
             JsonObjectWrapper obj = new JsonObjectWrapper(gson.fromJson(is, JsonObject.class));
 
             TagBlueprint tag = new TagBlueprint(namespace, name);
@@ -270,12 +344,23 @@ public class DefinitionPack {
                 tag.content.add(elem.getAsString());
             }
 
-            if(!tags.containsKey(definition.category)) tags.put(definition.category, new ArrayList<>());
-            tags.get(definition.category).add(tag);
+            if(!tags.containsKey(declaration.category)) tags.put(declaration.category, new ArrayList<>());
+            tags.get(declaration.category).add(tag);
         }
     }
 
-    public void initialize(CommandModule module) throws IOException {
+    /**
+     * Adds all this definition pack's definitions into the given module. This method loads the definition pack into
+     * memory if it hasn't already been loaded.
+     *
+     * @param module The module to populate with this pack's definitions.
+     *
+     * @throws IOException If an IOException occurred during the retrieval of the pack's resources (and hasn't been
+     *                     loaded before).
+     * @throws MalformedPackException If mandatory files or properties are not found in the source (and hasn't been
+     *                                loaded before).
+     * */
+    public void populate(CommandModule module) throws IOException {
         load();
         for(Map.Entry<String, ArrayList<DefinitionBlueprint>> defs : definitions.entrySet()) {
             String category = defs.getKey();
@@ -315,11 +400,20 @@ public class DefinitionPack {
         }
     }
 
-    private TypeDefinition getCategory(String category) {
-        for(TypeDefinition def : definedCategories) {
+    /**
+     * Retrieves the declaration for the given category, if it exists.
+     *
+     * @param category The string specifying the name of the category whose declaration is to be fetched.
+     *
+     * @return The declaration for the specified category.
+     *
+     * @throws MalformedPackException If the declaration for such category doesn't exist (shouldn't happen in practice).
+     * */
+    private CategoryDeclaration getCategory(String category) {
+        for(CategoryDeclaration def : definedCategories) {
             if(def.category.equals(category)) return def;
         }
-        throw new RuntimeException("Unable to find definition of category '" + category + "'");
+        throw new MalformedPackException("Unable to find definition of category '" + category + "'");
     }
 
     @Override

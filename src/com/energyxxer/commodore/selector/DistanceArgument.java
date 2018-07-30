@@ -35,9 +35,4 @@ public class DistanceArgument implements SelectorArgument {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.Y, ExecutionVariable.Z, ExecutionVariable.DIMENSION);
     }
-
-    public static SelectorArgumentParseResult parse(String str) {
-        SelectorNumberArgumentParseResult<Double> result = SelectorNumberArgument.parseDouble(str);
-        return new SelectorArgumentParseResult(result.raw, new DistanceArgument(result.result));
-    }
 }

@@ -10,7 +10,9 @@ public class DirectoryCompoundInput implements CompoundInput {
     }
 
     @Override
-    public InputStream get(String path) {
+    public InputStream get(String path) throws IOException {
+        if(!directory.exists()) throw new IOException("Root '" + directory + "' not found");
+
         File target = new File(directory, path.replace('/',File.separatorChar));
 
         try {

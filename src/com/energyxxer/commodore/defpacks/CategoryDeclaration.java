@@ -1,18 +1,18 @@
 package com.energyxxer.commodore.defpacks;
 
-class TypeDefinition {
+class CategoryDeclaration {
     final String category;
     String tagDirectory;
     boolean useNamespace;
     String importFrom;
 
-    public TypeDefinition(String category) {
+    public CategoryDeclaration(String category) {
         this.category = category;
     }
 
     @Override
     public String toString() {
-        return "TypeDefinition{" +
+        return "CategoryDeclaration{" +
                 "category='" + category + '\'' +
                 ", tagDirectory='" + tagDirectory + '\'' +
                 ", useNamespace=" + useNamespace +

@@ -4,6 +4,9 @@ import com.energyxxer.commodore.tags.Tag;
 
 import java.util.ArrayList;
 
+/**
+ *
+ * */
 class TagBlueprint {
     final String namespace;
     final String name;

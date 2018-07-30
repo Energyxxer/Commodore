@@ -34,9 +34,4 @@ public class LevelArgument implements SelectorArgument {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
     }
-
-    public static SelectorArgumentParseResult parse(String str) {
-        SelectorNumberArgumentParseResult<Integer> result = SelectorNumberArgument.parseInt(str);
-        return new SelectorArgumentParseResult(result.raw, new LevelArgument(result.result));
-    }
 }

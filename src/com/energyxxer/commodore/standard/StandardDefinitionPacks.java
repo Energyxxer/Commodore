@@ -31,5 +31,5 @@ public class StandardDefinitionPacks {
      *
      * This also includes all the tags in the vanilla data pack, for both blocks, fluids and items.
      * */
-    public static final DefinitionPack MINECRAFT_J_1_13 = new DefinitionPack("Minecraft Java Edition 1.13", new ResourceCompoundInput("/defpacks/minecraft_j_1_13/", StandardDefinitionPacks.class));
+    public static final DefinitionPack MINECRAFT_J_1_13 = new DefinitionPack(new ResourceCompoundInput("/defpacks/minecraft_j_1_13/", StandardDefinitionPacks.class));
 }

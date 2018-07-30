@@ -41,7 +41,7 @@ public class EnhancedHoes {
     public static void main(String[] args) {
         CommandModule module = new CommandModule("Enhanced Hoes", "eh");
         try {
-            StandardDefinitionPacks.MINECRAFT_J_1_13.initialize(module);
+            StandardDefinitionPacks.MINECRAFT_J_1_13.populate(module);
         } catch(IOException x) {
             x.printStackTrace();
         }

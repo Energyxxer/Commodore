@@ -3,7 +3,6 @@ package com.energyxxer.commodore.selector;
 import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.score.Objective;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -185,125 +184,6 @@ public class Selector implements Cloneable {
         Selector copy = new Selector(base);
         args.forEach(a -> copy.addArguments(a.clone()));
         return copy;
-    }
-
-    @NotNull
-    public static Selector parse(String str) {
-        str = str.trim();
-        if(!str.startsWith("@")) throw new IllegalArgumentException("Not a selector");
-        BaseSelector base = null;
-        for(BaseSelector b : BaseSelector.values()) {
-            if(str.substring(1).startsWith(b.header)) {
-                base = b;
-                break;
-            }
-        }
-        if(base == null) throw new IllegalArgumentException("Unknown selector header");
-        Selector sel = new Selector(base);
-        str = str.substring(1+base.header.length());
-        if(str.length() == 0) return sel;
-        if(!str.startsWith("[") || !str.endsWith("]")) throw new IllegalArgumentException("Malformed selector parameters");
-        str = str.substring(1, str.length()-1);
-
-        while(str.length() > 0) {
-            SelectorArgumentParseResult nextArgument = parseArgument(str);
-            str = str.substring(nextArgument.raw.length());
-            if(str.startsWith(",")) {
-                str = str.substring(1);
-            } else if(str.length() > 0) throw new IllegalArgumentException("Expected , at: " + str);
-            if(nextArgument.arg != null) {
-                sel.addArguments(nextArgument.arg);
-            }
-        }
-
-        return sel;
-    }
-
-    private static SelectorArgumentParseResult parseArgument(String str) {
-        String key = parseKey(str);
-        str = str.substring(key.length());
-
-        if(!str.startsWith("=")) throw new IllegalArgumentException("Expected key-value separator at: " + str);
-        str = str.substring(1);
-
-        SelectorArgumentParseResult result = delegateParseArgument(key, str);
-        result.raw = key + "=" + result.raw;
-
-        return result;
-    }
-
-    private static SelectorArgumentParseResult delegateParseArgument(String key, String str) {
-        switch(key) {
-            case "advancement": return AdvancementArgument.parse(str);
-            case "distance": return DistanceArgument.parse(str);
-            case "dx": return DXArgument.parse(str);
-            case "dy": return DYArgument.parse(str);
-            case "dz": return DZArgument.parse(str);
-            case "gamemode": return GamemodeArgument.parse(str);
-            case "level": return LevelArgument.parse(str);
-            case "limit": return LimitArgument.parse(str);
-            case "name": return NameArgument.parse(str);
-            case "nbt": return NBTArgument.parse(str);
-            case "x_rotation": return PitchArgument.parse(str);
-            case "y_rotation": return YawArgument.parse(str);
-            case "scores": return ScoreArgument.parse(str);
-            case "sort": return SortArgument.parse(str);
-            case "tag": return TagArgument.parse(str);
-            case "type": return TypeArgument.parse(str);
-            case "x": return XArgument.parse(str);
-            case "y": return YArgument.parse(str);
-            case "z": return ZArgument.parse(str);
-        }
-        throw new IllegalArgumentException("Invalid argument type '" + key + "'");
-    }
-
-    private static String parseKey(String str) {
-        String[] delimiters = new String[] {"\"", "'"};
-        for(String delimiter : delimiters) {
-            if(str.startsWith(delimiter)) {
-                if(str.endsWith(delimiter)) {
-                    str = str.substring(1,str.length()-1);
-
-                    StringBuilder sb = new StringBuilder();
-
-                    boolean escaped = false;
-                    for(char c : str.toCharArray()) {
-                        if(escaped) {
-                            switch(c) {
-                                case 'n': {
-                                    sb.append('\n');
-                                    break;
-                                }
-                                case 'b': {
-                                    sb.append('\b');
-                                    break;
-                                }
-                                case 'r': {
-                                    sb.append('\r');
-                                    break;
-                                }
-                                default: {
-                                    sb.append(c);
-                                }
-                            }
-                            escaped = false;
-                        } else if(c == '\\') {
-                            escaped = true;
-                        } else sb.append(c);
-                    }
-
-                    return sb.toString();
-
-                } else throw new IllegalArgumentException("Unclosed string at: " + str);
-            }
-        }
-        //No delimiter
-        for(int i = 0; i < str.length(); i++) {
-            if(!"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-_0123456789".contains("" + str.charAt(i))) {
-                return str.substring(0,i);
-            }
-        }
-        return str;
     }
 
     public String toVerboseString() {

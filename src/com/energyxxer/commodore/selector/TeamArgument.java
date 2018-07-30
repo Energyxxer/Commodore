@@ -41,8 +41,4 @@ public class TeamArgument implements SelectorArgument {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
     }
-
-    public static SelectorArgumentParseResult parse(String str) {
-        throw new UnsupportedOperationException("Team argument is unsupported for parsing operations");
-    }
 }
