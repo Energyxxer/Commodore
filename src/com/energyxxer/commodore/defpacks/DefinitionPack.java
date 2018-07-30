@@ -33,7 +33,7 @@ import java.util.Map;
  *
  * <pre>
  * root/
- *      type_definitions.json
+ *      pack.json
  *      data/
  *          <i>namespace/</i>
  *              tags/
@@ -43,7 +43,7 @@ import java.util.Map;
  *                          <i>nested_tag</i>.json
  * </pre>
  *
- * Of these, type_definitions.json is mandatory. It should contain an object where each element's key corresponds to
+ * Of these, pack.json is mandatory. It should contain an object where each element's key corresponds to
  * a type category, and their value corresponds to an object containing that category's properties. Possible category
  * options are as follows:
  *
@@ -100,6 +100,7 @@ import java.util.Map;
  * @see Tag
  * */
 public class DefinitionPack {
+    private final static int CURRENT_PACK_VERSION = 1;
 
     private final Gson gson;
 
@@ -111,6 +112,7 @@ public class DefinitionPack {
     private final ArrayList<TypeDefinition> definedCategories = new ArrayList<>();
 
     private boolean loaded = false;
+    private int version = -1;
 
     public DefinitionPack(String packName, CompoundInput fsi) {
         this.packName = packName;
@@ -126,9 +128,14 @@ public class DefinitionPack {
         try {
             fsi.open();
 
-            JsonObject definitions = gson.fromJson(new InputStreamReader(fsi.get("type_definitions.json")), JsonObject.class);
+            JsonObject config = gson.fromJson(new InputStreamReader(fsi.get("pack.json")), JsonObject.class);
+            JsonObjectWrapper configWrapper = new JsonObjectWrapper(config);
 
-            for(Map.Entry<String, JsonElement> categoryDef : definitions.entrySet()) {
+            this.version = configWrapper.getAsInt("version", 1);
+
+            JsonObject categories = config.getAsJsonObject("categories");
+
+            if(categories != null) for(Map.Entry<String, JsonElement> categoryDef : categories.entrySet()) {
                 String category = categoryDef.getKey();
 
                 TypeDefinition definition = new TypeDefinition(category);
@@ -161,7 +168,8 @@ public class DefinitionPack {
             String name = typeDef.getKey();
             HashMap<String, String> properties = new HashMap<>();
             for(Map.Entry<String, JsonElement> member : typeDef.getValue().getAsJsonObject().entrySet()) {
-                properties.put(member.getKey(), member.getValue().toString());
+                String stringified = (member.getValue().isJsonPrimitive()) ? member.getValue().getAsString() : member.getValue().toString();
+                properties.put(member.getKey(), stringified);
             }
 
             this.definitions.get(definition.category).add(new DefinitionBlueprint(name, properties, definition.useNamespace));

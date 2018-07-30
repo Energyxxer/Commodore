@@ -34,6 +34,7 @@ public class CommandGroupTest {
         ExecuteCommand outerExec = new ExecuteCommand(cg, new ExecuteInDimension(module.minecraft.getTypeManager().dimension.get("the_end")));
 
         System.out.println(module.minecraft.getTypeManager().block.get("stone").getProperties());
+        System.out.println(module.minecraft.getTypeManager().enchantment.get("binding_curse").getProperties());
 
         function.append(outerExec);
 
