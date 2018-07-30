@@ -43,16 +43,24 @@ import java.util.Map;
  *                          <i>nested_tag</i>.json
  * </pre>
  *
- * Of these, pack.json is mandatory. It should contain an object where each element's key corresponds to
- * a type category, and their value corresponds to an object containing that category's properties. Possible category
- * options are as follows:
+ * Of these, pack.json is mandatory. Its root should be an object containing the main configuration for the pack.
+ * <br>
+ *     Accepted values currently are:<br><br>
+ *
+ *     <code>version - int</code>: serves to tell Commodore what version this pack is meant to be parsed as, for the
+ *     sake of backwards compatibility. The current version will be in the {@link DefinitionPack#CURRENT_PACK_VERSION}
+ *     field. This documentation will always cover info only for the current pack version.<br>
+ *
+ *     <code>categories - object</code>: It should be an object where each element's key corresponds to a type category,
+ *     and their value corresponds to an object containing that category's properties. Possible category options are
+ *     as follows:
  *
  * <ol>
  *     <li>use_namespace: <code>boolean</code> - Describes whether the namespace of that type should be printed along
  *     with the type's name. For instance, blocks utilize the namespace (minecraft:stone), while gamemodes don't
  *     (survival). <code>true</code> if it should include the namespace, <code>false</code> if it shouldn't. If not
  *     specified, defaults to <code>false</code>. Types for
- *     categories that don't use namespaces will be stored in the minecraft namespace</li>
+ *     categories that don't use namespaces will be stored in the <code>minecraft</code> namespace</li>
  *     <li>import_from: <code>string</code> - Specifies the path from the root of the definition pack to find all the
  *     definitions for the corresponding category. The .json extension for this file is implicit.
  *     This path doesn't need to be any of those defined in the definition pack structure above. In the standard
@@ -63,13 +71,23 @@ import java.util.Map;
  *     specified, tags for this category will not be exported.</li>
  * </ol>
  *
- * An example of an entry in the root object of type_definitions is as follows:
+ * An example of an entry in the root object of pack.json is as follows:
  *
  * <pre>
- * "block": {
- *     "use_namespace": true,
- *     "import_from": "definitions/blocks",
- *     "tag_directory": "blocks"
+ * {
+ *   "version": 1,
+ *   "categories": {
+ *     "block": {
+ *       "use_namespace": true,
+ *       "import_from": "definitions/blocks",
+ *       "tag_directory": "blocks"
+ *     },
+ *     "item": {
+         "use_namespace": true,
+         "tag_directory": "items",
+         "import_from": "definitions/items"
+        }
+ *   }
  * }
  * </pre>
  *
@@ -100,8 +118,14 @@ import java.util.Map;
  * @see Tag
  * */
 public class DefinitionPack {
+    /**
+     * Describes the most recent definition pack version this class can parse.
+     * */
     private final static int CURRENT_PACK_VERSION = 1;
 
+    /**
+     * I honestly don't know what this is for or why we need it as a field but things are what they are.
+     * */
     private final Gson gson;
 
     private final String packName;
@@ -132,6 +156,10 @@ public class DefinitionPack {
             JsonObjectWrapper configWrapper = new JsonObjectWrapper(config);
 
             this.version = configWrapper.getAsInt("version", 1);
+            if(this.version > CURRENT_PACK_VERSION) {
+                System.err.println("[WARNING] Definition pack '" + packName + "' is pack version " + this.version + " but " + getClass().getName() + " only supports up to version " + CURRENT_PACK_VERSION);
+                System.err.println("\tWill attempt to parse pack as version " + CURRENT_PACK_VERSION);
+            }
 
             JsonObject categories = config.getAsJsonObject("categories");
 
