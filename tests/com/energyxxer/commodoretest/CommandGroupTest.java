@@ -10,7 +10,6 @@ import com.energyxxer.commodore.commands.say.SayCommand;
 import com.energyxxer.commodore.commands.teleport.TeleportCommand;
 import com.energyxxer.commodore.commands.teleport.destination.BlockDestination;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
-import com.energyxxer.commodore.defpacks.DefinitionPack;
 import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.module.CommandModule;
@@ -19,7 +18,6 @@ import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.selector.Selector;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
-import com.energyxxer.commodore.util.io.DirectoryCompoundInput;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,12 +26,12 @@ public class CommandGroupTest {
     public static void main(String[] args) {
         CommandModule module = new CommandModule("Command Group Test", "cgt");
 
-        DefinitionPack AETHER_TEST = new DefinitionPack(new DirectoryCompoundInput(new File("C:\\Users\\Usuario\\Commodore\\defpacks\\aetherii")));
+        //DefinitionPack AETHER_TEST = new DefinitionPack(new DirectoryCompoundInput(new File("C:\\Users\\Usuario\\Commodore\\defpacks\\aetherii")));
 
         module.getOptionManager().UNUSED_COMMAND_POLICY.setValue(UnusedCommandPolicy.COMMENT_OUT);
         try {
             module.importDefinitions(StandardDefinitionPacks.MINECRAFT_J_1_13);
-            module.importDefinitions(AETHER_TEST);
+            //module.importDefinitions(AETHER_TEST);
         } catch(IOException x) {
             x.printStackTrace();
         }
@@ -50,7 +48,7 @@ public class CommandGroupTest {
         System.out.println(module.minecraft.getTypeManager().block.get("stone").getProperties());
         System.out.println(module.minecraft.getTypeManager().enchantment.get("binding_curse").getProperties());
 
-        function.append(new TeleportCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES)), new BlockDestination(new CoordinateSet(0,0.000000001,0))));
+        function.append(new TeleportCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES)), new BlockDestination(new CoordinateSet(5,0.000000001,0))));
 
         function.append(outerExec);
 

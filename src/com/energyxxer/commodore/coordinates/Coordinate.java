@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.coordinates;
 
+import com.energyxxer.commodore.CommandUtils;
+
 import java.util.Objects;
 
 /**
@@ -176,8 +178,8 @@ public class Coordinate {
         String numStr;
 
         if((mode.doFloor() && type == Type.ABSOLUTE) || (num % 1 == 0 && type != Type.ABSOLUTE))
-            numStr = String.valueOf((int) num);
-        else numStr = String.valueOf(num);
+            numStr = CommandUtils.numberToPlainString(num);
+        else numStr = CommandUtils.numberToStringNoScientific(num);
 
         if(num == 0 && type != Type.ABSOLUTE) numStr = "";
 

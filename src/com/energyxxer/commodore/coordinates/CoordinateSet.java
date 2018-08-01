@@ -8,17 +8,46 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 
 import java.util.Objects;
 
-/***/
+/**
+ * Represents a set of three coordinates, for axes x, y and z.<br>
+ *
+ *     This doubles as an execute modifier class for the <code>execute positioned &lt;x&gt; &lt;y&gt; &lt;z&gt;</code>
+ *     subcommand.
+ *
+ * @see Coordinate
+ * @see ExecuteModifier
+ * */
 public class CoordinateSet implements ExecuteModifier {
 
+    /**
+     * The coordinate for this set's x axis.
+     * */
     private final Coordinate x;
+    /**
+     * The coordinate for this set's y axis.
+     * */
     private final Coordinate y;
+    /**
+     * The coordinate for this set's z axis.
+     * */
     private final Coordinate z;
 
+    /**
+     * Creates a coordinate set that points to the current execution position, that is, <code>~ ~ ~</code>.
+     * */
     public CoordinateSet() {
         this(0,0,0, Coordinate.Type.RELATIVE);
     }
 
+    /**
+     * Creates a coordinate set from the specified coordinate objects.
+     *
+     * @param x The x coordinate object.
+     * @param y The y coordinate object.
+     * @param z The z coordinate object.
+     *
+     * @throws IllegalArgumentException If there is a mix of world coordinate and local coordinate types.
+     * */
     public CoordinateSet(Coordinate x, Coordinate y, Coordinate z) {
         this.x = x;
         this.y = y;
@@ -32,30 +61,76 @@ public class CoordinateSet implements ExecuteModifier {
         if(locals != 0 && locals != 3) throw new IllegalArgumentException("Cannot combine local and world coordinates");
     }
 
+    /**
+     * Creates an absolute coordinate set from the specified coordinates.
+     *
+     * @param x The x coordinate.
+     * @param y The y coordinate.
+     * @param z The z coordinate.
+     * */
     public CoordinateSet(double x, double y, double z) {
         this(new Coordinate(x), new Coordinate(y), new Coordinate(z));
     }
 
+    /**
+     * Creates a coordinate set from the specified coordinates and a type for those three coordinates.
+     *
+     * @param x The x coordinate.
+     * @param y The y coordinate.
+     * @param z The z coordinate.
+     * @param type The type of all three coordinates.
+     * */
     public CoordinateSet(double x, double y, double z, Coordinate.Type type) {
         this(new Coordinate(type, x), new Coordinate(type, y), new Coordinate(type, z));
     }
 
+    /**
+     * Turns this coordinate set into a string that can be used in a command, using the specified display mode.
+     *
+     * @param mode The mode this coordinate set should be printed as.
+     *
+     * @return The string representing this coordinate set.
+     * */
     public String getAs(Coordinate.DisplayMode mode) {
         return x.getAs(mode) + " " + y.getAs(mode) + " " + z.getAs(mode);
     }
 
+    /**
+     * Turns this coordinate set into a string that can be used in a command, using the specified display mode.<br>
+     *     Unlike the {@link CoordinateSet#getAs} method, this method only prints out the x and z coordinates for
+     *     commands that use strictly two-dimensional coordinates, disregarding altitude.
+     *
+     * @param mode The mode this coordinate set should be printed as.
+     *
+     * @return The string representing this coordinate set's X and Z coordinates.
+     * */
     public String getXZAs(Coordinate.DisplayMode mode) {
         return x.getAs(mode) + " " + z.getAs(mode);
     }
 
+    /**
+     * Retrieves this coordinate set's x coordinate.
+     *
+     * @return The x coordinate for this coordinate set.
+     * */
     public Coordinate getX() {
         return x;
     }
 
+    /**
+     * Retrieves this coordinate set's y coordinate.
+     *
+     * @return The y coordinate for this coordinate set.
+     * */
     public Coordinate getY() {
         return y;
     }
 
+    /**
+     * Retrieves this coordinate set's z coordinate.
+     *
+     * @return The z coordinate for this coordinate set.
+     * */
     public Coordinate getZ() {
         return z;
     }
