@@ -113,7 +113,7 @@ public class CommandTest {
         //System.out.println("style0 = " + style0);
         //System.out.println("style1 = " + style1);
 
-        //System.out.println("style1 (masked to style0) = " + style1.toString(style0));
+        //System.out.println("style1 (masked to style0) = " + style1.numberToPlainString(style0));
 
         ListTextComponent ltc = new ListTextComponent();
 
@@ -377,7 +377,11 @@ public class CommandTest {
         //scoreTest.setExport(false);
         //otherFunction.setExport(false);
 
-        module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
+        try {
+            module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
+        } catch(IOException x) {
+            x.printStackTrace();
+        }
 
         System.out.println("module.minecraft.getTagManager().getBlockGroup() = " + module.minecraft.getTagManager().blockTags);
         System.out.println(module.minecraft.getTagManager().blockTags.get("coral_blocks").getValues());
@@ -394,7 +398,7 @@ public class CommandTest {
 
         System.out.println(module.getNamespace("ct").getFunctionManager().get("init_objectives").getResolvedContent());
 
-        System.out.println(module.minecraft.getTypeManager().biome.get("beaches"));
+        System.out.println(module.minecraft.getTypeManager().biome.get("beach"));
 
         //System.out.println(module.getNamespace("aether").getTypeManager().getDictionary("dungeon").get("ancient_vaults"));
 

@@ -39,7 +39,7 @@ public class ExecuteStoreEntity extends ExecuteStore {
 
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + "entity \be0 " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.toString(scale), entity);
+        return new SubCommandResult(execContext, this.getStarter() + "entity \be0 " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.numberToPlainString(scale), entity);
     }
 
     @Override

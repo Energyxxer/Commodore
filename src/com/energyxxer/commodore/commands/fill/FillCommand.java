@@ -8,6 +8,8 @@ import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
+
 public class FillCommand implements Command {
 
     private final CoordinateSet pos1;
@@ -19,7 +21,7 @@ public class FillCommand implements Command {
         this.pos1 = pos1;
         this.pos2 = pos2;
         this.block = block;
-        if(!block.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual blocks");
+        assertStandalone(block.getBlockType());
     }
 
     protected String getMaskExtra() {

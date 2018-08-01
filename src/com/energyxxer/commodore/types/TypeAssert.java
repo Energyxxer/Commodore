@@ -27,12 +27,12 @@ public class TypeAssert {
      * Throws an exception if the given type cannot be set on its own. To be used in cases where a type must
      * not be a tag.
      *
-     * @param type The type whose concrete property is to be tested.
+     * @param type The type whose standalone property is to be tested.
      *
-     * @throws IllegalTypeException If the given type is not concrete; that is, if it is a tag.
+     * @throws IllegalTypeException If the given type is not standalone; that is, if it is a tag.
      * */
-    public static void assertConcrete(Type type) {
-        if(!type.isConcrete()) throw new IllegalTypeException("Expected concrete type");
+    public static void assertStandalone(Type type) {
+        if(!type.isStandalone()) throw new IllegalTypeException("Expected standalone type");
     }
 
     /**

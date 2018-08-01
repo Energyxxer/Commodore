@@ -14,7 +14,7 @@ public class DZArgument implements SelectorArgument {
 
     @Override
     public String getArgumentString() {
-        return "dz=" + CommandUtils.toString(value);
+        return "dz=" + CommandUtils.numberToPlainString(value);
     }
 
     @Override

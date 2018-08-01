@@ -7,6 +7,8 @@ import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.item.Item;
 import org.jetbrains.annotations.NotNull;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
+
 public class ReplaceItemBlockCommand extends ReplaceItemCommand {
 
     private final CoordinateSet pos;
@@ -24,7 +26,7 @@ public class ReplaceItemBlockCommand extends ReplaceItemCommand {
         this.item = item;
         this.count = count;
 
-        if(!item.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual items");
+        assertStandalone(item.getItemType());
     }
 
     @Override @NotNull

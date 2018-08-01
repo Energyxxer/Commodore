@@ -1,5 +1,10 @@
 package com.energyxxer.commodore.module.options;
 
+/**
+ * Describes a customizable option for a command module.<br>
+ *
+ * @param <T> The type of the value accepted by the option.
+ * */
 public class ModuleOption<T> {
     private final String name;
     private T value;

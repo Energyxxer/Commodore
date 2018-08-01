@@ -116,7 +116,11 @@ public class EnhancedHoes {
             tick.append(new DataMergeCommand(loneCrops, new TagCompound(new TagList("Tags"))));
         }
 
-        module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
+        try {
+            module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
+        } catch(IOException x) {
+            x.printStackTrace();
+        }
 
         System.out.println(tick.getResolvedContent());
         System.out.println(tick.getAccessLog());

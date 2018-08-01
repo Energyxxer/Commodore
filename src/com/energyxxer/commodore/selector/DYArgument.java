@@ -14,7 +14,7 @@ public class DYArgument implements SelectorArgument {
 
     @Override
     public String getArgumentString() {
-        return "dy=" + CommandUtils.toString(value);
+        return "dy=" + CommandUtils.numberToPlainString(value);
     }
 
     @Override

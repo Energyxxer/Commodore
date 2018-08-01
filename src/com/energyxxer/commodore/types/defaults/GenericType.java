@@ -25,7 +25,7 @@ public class GenericType extends Type {
     }
 
     @Override
-    public boolean isConcrete() {
+    public boolean isStandalone() {
         return true;
     }
 }

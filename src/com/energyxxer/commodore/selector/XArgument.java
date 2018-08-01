@@ -13,7 +13,7 @@ public class XArgument implements SelectorArgument {
 
     @Override
     public String getArgumentString() {
-        return "x=" + CommandUtils.toString(value);
+        return "x=" + CommandUtils.numberToPlainString(value);
     }
 
     @Override

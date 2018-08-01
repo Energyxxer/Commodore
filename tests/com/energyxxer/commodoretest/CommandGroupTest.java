@@ -5,12 +5,17 @@ import com.energyxxer.commodore.commands.CommandGroup;
 import com.energyxxer.commodore.commands.execute.ExecuteCommand;
 import com.energyxxer.commodore.commands.execute.ExecuteInDimension;
 import com.energyxxer.commodore.commands.say.SayCommand;
+import com.energyxxer.commodore.commands.teleport.TeleportCommand;
+import com.energyxxer.commodore.commands.teleport.destination.BlockDestination;
+import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.defpacks.DefinitionPack;
+import com.energyxxer.commodore.entity.GenericEntity;
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.ModulePackGenerator;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
+import com.energyxxer.commodore.selector.Selector;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.util.io.DirectoryCompoundInput;
 
@@ -43,11 +48,17 @@ public class CommandGroupTest {
         System.out.println(module.minecraft.getTypeManager().block.get("stone").getProperties());
         System.out.println(module.minecraft.getTypeManager().enchantment.get("binding_curse").getProperties());
 
+        function.append(new TeleportCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES)), new BlockDestination(new CoordinateSet(0,0.000000001,0))));
+
         function.append(outerExec);
 
-        System.out.println(CommandUtils.toString(0.0000001));
+        System.out.println(CommandUtils.numberToPlainString(0.0000001));
 
-        module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
+        try {
+            module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
+        } catch(IOException x) {
+            x.printStackTrace();
+        }
 
         System.out.println(function.getResolvedContent());
     }

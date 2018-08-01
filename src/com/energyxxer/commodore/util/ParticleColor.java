@@ -27,6 +27,6 @@ public class ParticleColor {
 
     @Override
     public String toString() {
-        return CommandUtils.toString(red) + " " + CommandUtils.toString(green) + " " + CommandUtils.toString(blue);
+        return CommandUtils.numberToPlainString(red) + " " + CommandUtils.numberToPlainString(green) + " " + CommandUtils.numberToPlainString(blue);
     }
 }

@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.score;
 
 import com.energyxxer.commodore.commands.scoreboard.ObjectivesAddCommand;
+import com.energyxxer.commodore.textcomponents.TextComponent;
 
 import java.util.Objects;
 
@@ -8,7 +9,7 @@ public class Objective {
     private final ObjectiveManager parent;
     private String name;
     private String type;
-    private String displayName;
+    private TextComponent displayName;
     /**
      * Signifies whether the objective acts as a field, used to carry data from one tick or function to the next.
      * If this is true, a SET access command not followed by a GET access command at the end
@@ -22,7 +23,7 @@ public class Objective {
         this(parent, name, type, null);
     }
 
-    Objective(ObjectiveManager parent, String name, String type, String displayName) {
+    Objective(ObjectiveManager parent, String name, String type, TextComponent displayName) {
         this(parent, name, type, displayName, false);
     }
 
@@ -30,12 +31,13 @@ public class Objective {
         this(parent, name, type, null, field);
     }
 
-    Objective(ObjectiveManager parent, String name, String type, String displayName, boolean field) {
+    Objective(ObjectiveManager parent, String name, String type, TextComponent displayName, boolean field) {
         if(name.length() > MAX_NAME_LENGTH)
             throw new IllegalArgumentException("Objective name '" + name + "' exceeds the limit of " + MAX_NAME_LENGTH + " characters");
         this.parent = parent;
         this.name = name;
         this.type = type;
+        this.displayName = displayName;
         this.field = field;
     }
 
@@ -51,7 +53,7 @@ public class Objective {
         return field;
     }
 
-    public String getDisplayName() {
+    public TextComponent getDisplayName() {
         return displayName;
     }
 

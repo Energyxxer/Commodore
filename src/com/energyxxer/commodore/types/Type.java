@@ -73,14 +73,14 @@ public abstract class Type {
     }
 
     /**
-     * Describes whether or not this type alone is enough to set a concrete instance of itself. For instance, if this
-     * type object refers to a block <i>tag</i>, this type is not concrete, as it is not enough to be able to set
+     * Describes whether or not this type alone is enough to set an instance of itself. For instance, if this
+     * type object refers to a block <i>tag</i>, this type is not standalone, as it is not enough to be able to set
      * a block of this type. In short, this dictates whether or not this type is a standalone definition, or if it
      * describes multiple types at once.
      *
      * @return <code>true</code> if this type can be set and tested, <code>false</code> if this type can only be tested.
      * */
-    public abstract boolean isConcrete();
+    public abstract boolean isStandalone();
 
     /**
      * Returns the name this type is referred to as.

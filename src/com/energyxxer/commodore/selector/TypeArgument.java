@@ -62,8 +62,8 @@ public class TypeArgument implements SelectorArgument {
         for(SelectorArgument arg : typeArgs) {
             TypeArgument that = (TypeArgument) arg;
 
-            if((!this.isNegated() && this.getType().isConcrete() && !that.isNegated() && that.getType().isConcrete() && this.getType() != that.getType()) || (this.getType() == that.getType() && this.isNegated() != that.isNegated())) throw new IllegalArgumentException("Impossible selector");
-            //this is positive concrete, that is positive concrete, not equal //NO
+            if((!this.isNegated() && this.getType().isStandalone() && !that.isNegated() && that.getType().isStandalone() && this.getType() != that.getType()) || (this.getType() == that.getType() && this.isNegated() != that.isNegated())) throw new IllegalArgumentException("Impossible selector");
+            //this is positive standalone, that is positive standalone, not equal //NO
             //equal in value, opposite in polarity //NO
         }
         return SelectorArgument.super.isCompatibleWith(selector);

@@ -23,9 +23,9 @@ public class SelectorNumberArgument<T extends Number> implements Cloneable {
     @Override
     public String toString() {
         if(min != null && max != null && min.equals(max)) {
-            return CommandUtils.toString(min.doubleValue());
+            return CommandUtils.numberToPlainString(min.doubleValue());
         } else {
-            return ((min != null) ? CommandUtils.toString(min.doubleValue()) : "") + ".." + ((max != null) ? "" + CommandUtils.toString(max.doubleValue()) : "");
+            return ((min != null) ? CommandUtils.numberToPlainString(min.doubleValue()) : "") + ".." + ((max != null) ? "" + CommandUtils.numberToPlainString(max.doubleValue()) : "");
         }
     }
 

@@ -2,7 +2,7 @@ package com.energyxxer.commodore.defpacks;
 
 import java.util.HashMap;
 
-class DefinitionBlueprint {
+public class DefinitionBlueprint {
     final String namespace;
     final String name;
     final HashMap<String, String> properties;

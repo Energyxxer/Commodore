@@ -63,11 +63,11 @@ public class PlaySoundCommand implements Command {
                 ((location != null) ?
                         " " + location +
                                 ((maxVolume != -1) ?
-                                        " " + CommandUtils.toString(maxVolume) +
+                                        " " + CommandUtils.numberToPlainString(maxVolume) +
                                                 ((pitch != -1) ?
-                                                        " " + CommandUtils.toString(pitch) +
+                                                        " " + CommandUtils.numberToPlainString(pitch) +
                                                                 ((minVolume != -1) ?
-                                                                        " " + CommandUtils.toString(minVolume)
+                                                                        " " + CommandUtils.numberToPlainString(minVolume)
                                                                         : "")
                                                         : "")
                                         : "")

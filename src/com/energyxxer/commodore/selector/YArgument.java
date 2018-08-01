@@ -14,7 +14,7 @@ public class YArgument implements SelectorArgument {
 
     @Override
     public String getArgumentString() {
-        return "y=" + CommandUtils.toString(value);
+        return "y=" + CommandUtils.numberToPlainString(value);
     }
 
     @Override

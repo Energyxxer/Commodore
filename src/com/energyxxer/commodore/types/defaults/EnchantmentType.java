@@ -11,7 +11,7 @@ public class EnchantmentType extends Type {
     }
 
     @Override
-    public boolean isConcrete() {
+    public boolean isStandalone() {
         return true;
     }
 }

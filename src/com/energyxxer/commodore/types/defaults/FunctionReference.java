@@ -19,7 +19,7 @@ public class FunctionReference extends Type {
     }
 
     @Override
-    public boolean isConcrete() {
+    public boolean isStandalone() {
         return false;
     }
 

@@ -13,7 +13,7 @@ public class ZArgument implements SelectorArgument {
 
     @Override
     public String getArgumentString() {
-        return "z=" + CommandUtils.toString(value);
+        return "z=" + CommandUtils.numberToPlainString(value);
     }
 
     @Override

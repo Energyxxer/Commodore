@@ -10,6 +10,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
+
 public class ReplaceItemEntityCommand extends ReplaceItemCommand {
 
     private final Entity entity;
@@ -27,7 +29,7 @@ public class ReplaceItemEntityCommand extends ReplaceItemCommand {
         this.item = item;
         this.count = count;
 
-        if(!item.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual items");
+        assertStandalone(item.getItemType());
     }
 
     @Override @NotNull

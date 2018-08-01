@@ -8,6 +8,8 @@ import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
+
 public class SetblockCommand implements Command {
     private final CoordinateSet pos;
     private final Block block;
@@ -16,7 +18,7 @@ public class SetblockCommand implements Command {
         this.pos = pos;
         this.block = block;
 
-        if(!block.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual blocks");
+        assertStandalone(block.getBlockType());
     }
 
     @Override @NotNull

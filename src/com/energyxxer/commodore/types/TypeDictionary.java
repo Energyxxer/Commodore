@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * Class which contains all the types of a specific category in a certain namespace.<br>
  *
- *     The generic <code>T</code> refers to the {@link Type} subclass which will be instantiated when a type is created
+ * @param <T> Refers to the {@link Type} subclass which will be instantiated when a type is created
  *     in this dictionary and, by extension, the class of the object returned by methods {@link TypeDictionary#create}
  *     and {@link TypeDictionary#get}.
  *

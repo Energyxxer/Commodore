@@ -56,7 +56,7 @@ public class Block {
     }
 
     /**
-     * Creates a Block of the specific {@link Type} and blockstate.
+     * Creates a Block of the specific {@link Type} and NBT content.
      *
      * @param type The {@link Type} of the block. Can be a block tag.
      * @param nbt The {@link TagCompound} that describes the NBT data of the block.
@@ -68,7 +68,7 @@ public class Block {
     }
 
     /**
-     * Creates a Block of the specific {@link Type} and blockstate.
+     * Creates a Block of the specific {@link Type}, blockstate and NBT content.
      *
      * @param type The {@link Type} of the block. Can be a block tag.
      * @param state The {@link Blockstate} state of the block.
@@ -84,13 +84,30 @@ public class Block {
     }
 
     /**
-     * Specifies whether or not the type of this block is a placeable block, and not a tag.<br>
-     *     By this definition, concrete blocks can be set, and non-concrete blocks can't be set but tested.
+     * Retrieves this block's type.
      *
-     *     @return <code>true</code> if the type of this block is concrete, <code>false</code> if it isn't concrete.
+     * @return The type of this block.
      * */
-    public boolean isConcrete() {
-        return type.isConcrete();
+    public Type getBlockType() {
+        return type;
+    }
+
+    /**
+     * Retrieves this block's blockstate.
+     *
+     * @return The blockstate for this block.
+     * */
+    public Blockstate getBlockstate() {
+        return state;
+    }
+
+    /**
+     * Retrieves this block's NBT content.
+     *
+     * @return The NBT content of this block.
+     * */
+    public TagCompound getNBT() {
+        return nbt;
     }
 
     @Override

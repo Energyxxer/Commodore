@@ -32,7 +32,7 @@ public class ModulePackGenerator {
 
     private ZipOutputStream zipStream;
 
-    public ModulePackGenerator(CommandModule module, File directory, OutputType outputType) throws IOException {
+    public ModulePackGenerator(CommandModule module, File directory, OutputType outputType) {
         this.module = module;
         this.outputType = outputType;
 
@@ -42,9 +42,12 @@ public class ModulePackGenerator {
 
         this.gson = new GsonBuilder().setPrettyPrinting().create();
 
-        rootPath = directory.getAbsolutePath() + File.separator + module.name + (outputType == ZIP ? ".zip" : "");
-        rootFile = new File(rootPath);
+        this.rootPath = directory.getAbsolutePath() + File.separator + module.name + (outputType == ZIP ? ".zip" : "");
+        this.rootFile = new File(this.rootPath);
         if(rootFile.isDirectory() && !rootFile.exists()) rootFile.mkdirs();
+    }
+
+    public void generate() throws IOException {
         if(outputType == ZIP) {
             zipStream = new ZipOutputStream(new FileOutputStream(rootFile));
         }

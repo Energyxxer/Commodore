@@ -11,7 +11,7 @@ public class BlockType extends Type {
     }
 
     @Override
-    public boolean isConcrete() {
+    public boolean isStandalone() {
         return true;
     }
 }

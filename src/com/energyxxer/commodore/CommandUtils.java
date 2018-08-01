@@ -62,8 +62,21 @@ public final class CommandUtils {
      *
      * @param num The number to turn into a plain number string.
      * */
-    public static String toString(double num) {
+    public static String numberToPlainString(double num) {
         DecimalFormat df = new DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
+        df.setMaximumFractionDigits(340);
+
+        return df.format(num);
+    }
+
+    /**
+     * Converts the given number into its plain string representation. This method differs from
+     * {@link Double#toString()} in that scientific notation will not be used.
+     *
+     * @param num The number to turn into a non-scientific number string.
+     * */
+    public static String numberToStringNoScientific(double num) {
+        DecimalFormat df = new DecimalFormat("0.0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
         df.setMaximumFractionDigits(340);
 
         return df.format(num);

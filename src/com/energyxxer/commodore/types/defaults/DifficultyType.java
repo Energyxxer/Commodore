@@ -15,7 +15,7 @@ public class DifficultyType extends Type {
     }
 
     @Override
-    public boolean isConcrete() {
+    public boolean isStandalone() {
         return true;
     }
 }

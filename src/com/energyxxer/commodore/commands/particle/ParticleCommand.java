@@ -75,7 +75,7 @@ public class ParticleCommand implements Command {
         }
         if(speed != 0 || sb.length() > 0 || delta != null) {
             sb.insert(0, ' ');
-            sb.insert(0, CommandUtils.toString(speed));
+            sb.insert(0, CommandUtils.numberToPlainString(speed));
         }
         if(delta != null || sb.length() > 0) {
             sb.insert(0, ' ');

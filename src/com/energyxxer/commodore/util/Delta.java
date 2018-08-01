@@ -31,6 +31,6 @@ public class Delta {
 
     @Override
     public String toString() {
-        return CommandUtils.toString(x) + " " + CommandUtils.toString(y) + " " + CommandUtils.toString(z);
+        return CommandUtils.numberToPlainString(x) + " " + CommandUtils.numberToPlainString(y) + " " + CommandUtils.numberToPlainString(z);
     }
 }

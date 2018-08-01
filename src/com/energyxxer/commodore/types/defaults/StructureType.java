@@ -15,7 +15,7 @@ public class StructureType extends Type {
     }
 
     @Override
-    public boolean isConcrete() {
+    public boolean isStandalone() {
         return true;
     }
 }

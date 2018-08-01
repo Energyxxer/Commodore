@@ -35,7 +35,7 @@ public class ExecuteStoreBlock extends ExecuteStore {
 
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + "block " + position.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.toString(scale));
+        return new SubCommandResult(execContext, this.getStarter() + "block " + position.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.numberToPlainString(scale));
     }
 
     @Override

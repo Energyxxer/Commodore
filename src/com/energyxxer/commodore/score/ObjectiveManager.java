@@ -2,6 +2,7 @@ package com.energyxxer.commodore.score;
 
 import com.energyxxer.commodore.functions.Function;
 import com.energyxxer.commodore.module.CommandModule;
+import com.energyxxer.commodore.textcomponents.TextComponent;
 
 import java.util.HashMap;
 
@@ -44,7 +45,7 @@ public class ObjectiveManager {
         return create(name, type, null, field);
     }
 
-    public Objective create(String name, String type, String displayName, boolean field) {
+    public Objective create(String name, String type, TextComponent displayName, boolean field) {
         if(!contains(name)) return forceCreate(name, type, displayName, field);
         throw new IllegalArgumentException("An objective by the name '" + name + "' already exists");
     }
@@ -53,7 +54,7 @@ public class ObjectiveManager {
         return forceCreate(name, "dummy", null, false);
     }
 
-    private Objective forceCreate(String name, String type, String displayName, boolean field) {
+    private Objective forceCreate(String name, String type, TextComponent displayName, boolean field) {
         Objective newObjective = new Objective(this, name, type, displayName, field);
         objectives.put(name, newObjective);
         return newObjective;

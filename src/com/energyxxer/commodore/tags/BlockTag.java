@@ -63,7 +63,7 @@ public class BlockTag extends Tag {
     //----------
 
     @Override
-    public boolean isConcrete() {
+    public boolean isStandalone() {
         return false;
     }
 

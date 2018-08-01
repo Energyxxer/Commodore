@@ -57,7 +57,7 @@ public class GenericTag extends Tag {
     }
 
     @Override
-    public boolean isConcrete() {
+    public boolean isStandalone() {
         return false;
     }
 

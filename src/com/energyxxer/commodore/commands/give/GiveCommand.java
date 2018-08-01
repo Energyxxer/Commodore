@@ -11,6 +11,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
+
 public class GiveCommand implements Command {
 
     private final Entity player;
@@ -28,7 +30,7 @@ public class GiveCommand implements Command {
 
         player.assertPlayer();
 
-        if(!item.isConcrete()) throw new IllegalArgumentException("Tags aren't allowed here, only actual items");
+        assertStandalone(item.getItemType());
     }
 
     @Override @NotNull

@@ -23,7 +23,7 @@ public class CommandResolutionLine {
     }
 
     String construct() {
-        ArrayList<ExecuteModifier> modifiers = new ArrayList<>(execContext.getModifiers());
+        ArrayList<ExecuteModifier> modifiers = execContext.getModifiers();
 
         StringBuilder sb = new StringBuilder();
 

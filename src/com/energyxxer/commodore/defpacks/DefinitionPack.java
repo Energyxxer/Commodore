@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -414,6 +415,33 @@ public class DefinitionPack {
             if(def.category.equals(category)) return def;
         }
         throw new MalformedPackException("Unable to find definition of category '" + category + "'");
+    }
+
+    /**
+     * Retrieves the list of blueprints for types of the specified category.
+     *
+     * @param category The category whose blueprints should be retrieved.
+     *
+     * @return The list of blueprints for that specific category, if it exists. Otherwise <code>null</code>.
+     *
+     * @throws IllegalStateException If the definition pack hasn't been loaded yet.
+     * */
+    public Collection<DefinitionBlueprint> getBlueprints(String category) {
+        if(!loaded) throw new IllegalStateException("Definition pack hasn't been loaded yet");
+        return new ArrayList<>(definitions.get(category));
+    }
+
+    /**
+     * Retrieves the map of each type blueprint, where the key is the category and the value is the list of its type
+     * blueprints.
+     *
+     * @return The map of each type blueprint.
+     *
+     * @throws IllegalStateException If the definition pack hasn't been loaded yet.
+     * */
+    public HashMap<String, ArrayList<DefinitionBlueprint>> getDefinitions() {
+        if(!loaded) throw new IllegalStateException("Definition pack hasn't been loaded yet");
+        return definitions;
     }
 
     @Override

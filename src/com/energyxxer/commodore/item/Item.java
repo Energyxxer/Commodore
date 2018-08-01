@@ -1,23 +1,71 @@
 package com.energyxxer.commodore.item;
 
 import com.energyxxer.commodore.nbt.TagCompound;
+import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.ItemType;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertItem;
+
+/**
+ * Defines an item of a specific type, complete with NBT data, which can be used with commands to give,
+ * clear, replace and test.
+ *
+ * @see Type
+ * @see ItemType
+ * @see TagCompound
+ * */
 public class Item {
-    private final ItemType type;
+    /**
+     * The {@link Type} of this item. Can be an item tag.
+     * */
+    private final Type type;
+    /**
+     * The {@link TagCompound} NBT data for this item, if applicable.
+     * */
     private final TagCompound nbt;
 
-    public Item(ItemType type) {
+    /**
+     * Creates an Item of the specific {@link Type}.
+     *
+     * @param type The {@link Type} of the item. Can be an item tag.
+     *
+     * @throws IllegalArgumentException if the type specified isn't of type Item.
+     * */
+    public Item(Type type) {
         this(type, null);
     }
 
-    public Item(ItemType type, TagCompound nbt) {
+    /**
+     * Creates an Item of the specific {@link Type} and NBT content.
+     *
+     * @param type The {@link Type} of the item. Can be an item tag.
+     * @param nbt The {@link TagCompound} that describes the NBT data of the item.
+     *
+     * @throws IllegalArgumentException if the type specified isn't of type Item.
+     * */
+    public Item(Type type, TagCompound nbt) {
         this.type = type;
         this.nbt = nbt;
+
+        assertItem(type);
     }
 
-    public boolean isConcrete() {
-        return type.isConcrete();
+    /**
+     * Retrieves this item's type.
+     *
+     * @return The type of this item.
+     * */
+    public Type getItemType() {
+        return type;
+    }
+
+    /**
+     * Retrieves this item's NBT content.
+     *
+     * @return The NBT content of this item.
+     * */
+    public TagCompound getNBT() {
+        return nbt;
     }
 
     @Override
