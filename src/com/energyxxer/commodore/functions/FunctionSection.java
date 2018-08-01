@@ -40,6 +40,8 @@ public interface FunctionSection {
 
     /**
      * Retrieves the execution context this function section runs on.
+     *
+     * @return The execution context this function section runs on.
      * */
     ExecutionContext getExecutionContext();
 }

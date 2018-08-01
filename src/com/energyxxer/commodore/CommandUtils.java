@@ -41,6 +41,8 @@ public final class CommandUtils {
     /**
      * Returns whether this character contains any characters disallowed in unquoted strings.
      *
+     * @param str The string whose need for quotation is to be tested.
+     *
      * @return <code>true</code> if this character contains any characters, disallowed in unquoted strings,
      * <code>false</code> if all characters are allowed in unquoted strings.
      * */
@@ -61,6 +63,8 @@ public final class CommandUtils {
      * </ol>
      *
      * @param num The number to turn into a plain number string.
+     *
+     * @return The number, as a plain number string.
      * */
     public static String numberToPlainString(double num) {
         DecimalFormat df = new DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
@@ -74,6 +78,8 @@ public final class CommandUtils {
      * {@link Double#toString()} in that scientific notation will not be used.
      *
      * @param num The number to turn into a non-scientific number string.
+     *
+     * @return The number, as a non-scientific number string.
      * */
     public static String numberToStringNoScientific(double num) {
         DecimalFormat df = new DecimalFormat("0.0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
@@ -84,7 +90,7 @@ public final class CommandUtils {
 
     /**
      * CommandUtils should not be instantiated.
-    */
+     * */
     private CommandUtils() {
     }
 }

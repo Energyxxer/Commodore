@@ -208,6 +208,8 @@ public class CommandModule {
     /**
      * Checks whether a namespace with the given name already exists.
      *
+     * @param name The name of the namespace to check.
+     *
      * @return <code>true</code> if a namespace of the given name exists in this module, <code>false</code> otherwise.
      * */
     public boolean namespaceExists(String name) {
