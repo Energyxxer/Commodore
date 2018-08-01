@@ -5,6 +5,7 @@ com.energyxxer.commodore.commands.advancement
 com.energyxxer.commodore.commands.bossbar
 com.energyxxer.commodore.commands.bossbar.get
 com.energyxxer.commodore.commands.bossbar.set
+com.energyxxer.commodore.commands.chunk
 com.energyxxer.commodore.commands.clear
 com.energyxxer.commodore.commands.clone
 com.energyxxer.commodore.commands.data

@@ -2,6 +2,8 @@ package com.energyxxer.commodoretest;
 
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.commands.CommandGroup;
+import com.energyxxer.commodore.commands.chunk.ChunkForceCommand;
+import com.energyxxer.commodore.commands.chunk.ChunkUnforceCommand;
 import com.energyxxer.commodore.commands.execute.ExecuteCommand;
 import com.energyxxer.commodore.commands.execute.ExecuteInDimension;
 import com.energyxxer.commodore.commands.say.SayCommand;
@@ -51,6 +53,10 @@ public class CommandGroupTest {
         function.append(new TeleportCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES)), new BlockDestination(new CoordinateSet(0,0.000000001,0))));
 
         function.append(outerExec);
+
+        function.append(new ChunkForceCommand(625, 625));
+        function.append(new ChunkForceCommand(625, 625, module.minecraft.getTypeManager().dimension.get("the_nether")));
+        function.append(new ChunkUnforceCommand(625, 625, module.minecraft.getTypeManager().dimension.get("overworld")));
 
         System.out.println(CommandUtils.numberToPlainString(0.0000001));
 
