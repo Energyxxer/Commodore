@@ -3,7 +3,6 @@ package com.energyxxer.commodore.inspection;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.commands.execute.ExecuteModifier;
 import com.energyxxer.commodore.commands.execute.SubCommandResult;
-import com.energyxxer.commodore.entity.Entity;
 
 import java.util.*;
 
@@ -42,16 +41,12 @@ public class CommandResolution {
                 String raw = result.getRaw();
                 for(int j = 0; j < result.getEmbeddables().size(); j++) {
                     CommandEmbeddable embeddable = result.getEmbeddables().get(j);
-                    if(embeddable instanceof Entity) {
-                        embeddable = ((Entity) embeddable).resolveFor(subExecContext);
-                    }
-                    if(embeddable instanceof EntityResolution) {
-                        modifiers.addAll(i, ((EntityResolution) embeddable).getModifiers());
-                        i -= ((EntityResolution) embeddable).getModifiers().size() + 1;
-                    }
+                    CommandEmbeddableResolution resolution = embeddable.resolveEmbed(subExecContext);
+                    modifiers.addAll(resolution.getNewModifiers());
+                    i -= resolution.getNewModifiers().size() + 1;
+                    raw = embed(raw, "\be" + j, resolution.getEmbedString());
                     //TODO: This probably needs to re-create the subExecContext to accurately resolve the next Entity
                     // I'm too sleepy to attempt that now
-                    raw = embed(raw, "\be" + j, embeddable.toString());
                 }
                 alreadyResolved.add(modifier);
                 resolved.put(modifier, raw);

@@ -1,7 +1,6 @@
 package com.energyxxer.commodore.inspection;
 
 import com.energyxxer.commodore.commands.execute.ExecuteModifier;
-import com.energyxxer.commodore.entity.Entity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,6 +9,7 @@ import java.util.Collection;
 public class CommandResolutionLine {
     final String raw;
     final ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
+    final ArrayList<CommandEmbeddableResolution> embeddableResolutions = new ArrayList<>();
     final ExecutionContext execContext;
 
     public CommandResolutionLine(ExecutionContext execContext, String raw, CommandEmbeddable... embeddables) {
@@ -27,20 +27,16 @@ public class CommandResolutionLine {
 
         StringBuilder sb = new StringBuilder();
 
-        for(int i = 0; i < embeddables.size(); i++) {
-            CommandEmbeddable embeddable = embeddables.get(i);
-            if(embeddable instanceof Entity) {
-                EntityResolution resolution = ((Entity) embeddable).resolveFor(new ExecutionContext(execContext.getOriginalSender(), modifiers));
-
-                modifiers.addAll(resolution.getModifiers());
-                embeddables.set(i, resolution);
-            }
+        for(CommandEmbeddable embeddable : embeddables) {
+            CommandEmbeddableResolution resolution = embeddable.resolveEmbed(new ExecutionContext(execContext.getOriginalSender(), modifiers));
+            modifiers.addAll(resolution.getNewModifiers());
+            embeddableResolutions.add(resolution);
         }
 
         String chainedCommand = raw;
 
-        for(int i = 0; i < embeddables.size(); i++) {
-            chainedCommand = CommandResolution.embed(chainedCommand, "\be" + i, embeddables.get(i).toString());
+        for(int i = 0; i < embeddableResolutions.size(); i++) {
+            chainedCommand = CommandResolution.embed(chainedCommand, "\be" + i, embeddableResolutions.get(i).getEmbedString());
         }
 
         if(!modifiers.isEmpty()) {

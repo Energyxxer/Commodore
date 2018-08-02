@@ -22,9 +22,6 @@ public class EntityResolution implements CommandEmbeddable {
     /**
      * The execute modifiers required to alter the execution context in order to effectively target the entity using the
      * selector.
-     * <br>
-     * This should be carefully constructed so that it doesn't clash with the execution context passed to the
-     * Entity::getSelectorAs method.
      * */
     private final ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
 
@@ -50,6 +47,12 @@ public class EntityResolution implements CommandEmbeddable {
         return modifiers;
     }
 
+    @Override
+    public CommandEmbeddableResolution resolveEmbed(ExecutionContext execContext) {
+        return new CommandEmbeddableResolution(selector.toString(), modifiers);
+    }
+
+    @Override
     public String toString() {
         return selector.toString();
     }
