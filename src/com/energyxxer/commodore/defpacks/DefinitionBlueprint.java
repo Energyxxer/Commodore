@@ -2,11 +2,31 @@ package com.energyxxer.commodore.defpacks;
 
 import java.util.HashMap;
 
+/**
+ * Represents an entry in a type definition file that describes information about a specific type.
+ * */
 public class DefinitionBlueprint {
+    /**
+     * The namespace this type belongs to. May be null if there is no namespace associated with it.
+     * */
     final String namespace;
+    /**
+     * The name of this type.
+     * */
     final String name;
+    /**
+     * A map containing this type's defined properties.
+     * */
     final HashMap<String, String> properties;
 
+    /**
+     * Creates a definition blueprint with the specified name, namespace and property map.
+     *
+     * @param name The full name of this type (including the namespace prefix, if applicable and the useNamespace param
+     *             reflects that).
+     * @param properties The map of this type's properties.
+     * @param useNamespace Whether this type should be namespace-sensitive.
+     * */
     DefinitionBlueprint(String name, HashMap<String, String> properties, boolean useNamespace) {
         if(useNamespace) {
             if(name.contains(":")) {
@@ -23,14 +43,29 @@ public class DefinitionBlueprint {
         this.properties = properties;
     }
 
+    /**
+     * Retrieves this blueprint's namespace.
+     *
+     * @return The namespace of this blueprint.
+     * */
     public String getNamespace() {
         return namespace;
     }
 
+    /**
+     * Retrieves this blueprint's name.
+     *
+     * @return The name of this blueprint.
+     * */
     public String getName() {
         return name;
     }
 
+    /**
+     * Retrieves this blueprint's properties.
+     *
+     * @return The properties of this blueprint.
+     * */
     public HashMap<String, String> getProperties() {
         return new HashMap<>(properties);
     }

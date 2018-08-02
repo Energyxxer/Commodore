@@ -3,13 +3,17 @@ package com.energyxxer.commodore.commands.execute;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.inspection.ExecutionVariable;
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
-import com.energyxxer.commodore.types.defaults.DimensionType;
+import com.energyxxer.commodore.types.Type;
+
+import static com.energyxxer.commodore.types.TypeAssert.assertDimension;
 
 public class ExecuteInDimension implements ExecuteModifier {
-    private final DimensionType dimension;
+    private final Type dimension;
 
-    public ExecuteInDimension(DimensionType dimension) {
+    public ExecuteInDimension(Type dimension) {
         this.dimension = dimension;
+
+        assertDimension(dimension);
     }
 
     @Override

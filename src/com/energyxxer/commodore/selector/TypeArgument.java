@@ -1,24 +1,28 @@
 package com.energyxxer.commodore.selector;
 
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
-import com.energyxxer.commodore.types.defaults.EntityType;
+import com.energyxxer.commodore.types.Type;
 
 import java.util.Collection;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertEntity;
+
 public class TypeArgument implements SelectorArgument {
-    private final EntityType type;
+    private final Type type;
     private final boolean negated;
 
-    public TypeArgument(EntityType type) {
+    public TypeArgument(Type type) {
         this(type, false);
     }
 
-    public TypeArgument(EntityType type, boolean negated) {
+    public TypeArgument(Type type, boolean negated) {
         this.type = type;
         this.negated = negated;
+
+        assertEntity(type);
     }
 
-    public EntityType getType() {
+    public Type getType() {
         return type;
     }
 

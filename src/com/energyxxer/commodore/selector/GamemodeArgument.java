@@ -1,20 +1,24 @@
 package com.energyxxer.commodore.selector;
 
 import com.energyxxer.commodore.inspection.ExecutionVariableMap;
-import com.energyxxer.commodore.types.defaults.GamemodeType;
+import com.energyxxer.commodore.types.Type;
+
+import static com.energyxxer.commodore.types.TypeAssert.assertGamemode;
 
 public class GamemodeArgument implements SelectorArgument {
 
-    private final GamemodeType gamemode;
+    private final Type gamemode;
     private final boolean negated;
 
-    public GamemodeArgument(GamemodeType gamemode) {
+    public GamemodeArgument(Type gamemode) {
         this(gamemode, false);
     }
 
-    public GamemodeArgument(GamemodeType gamemode, boolean negated) {
+    public GamemodeArgument(Type gamemode, boolean negated) {
         this.gamemode = gamemode;
         this.negated = negated;
+
+        assertGamemode(gamemode);
     }
 
     @Override

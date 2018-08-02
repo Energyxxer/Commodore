@@ -5,27 +5,31 @@ import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
 import com.energyxxer.commodore.nbt.TagCompound;
-import com.energyxxer.commodore.types.defaults.EntityType;
+import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
+
+import static com.energyxxer.commodore.types.TypeAssert.assertEntity;
 
 public class SummonCommand implements Command {
 
-    private final EntityType type;
+    private final Type type;
     private final CoordinateSet pos;
     private final TagCompound data;
 
-    public SummonCommand(EntityType type) {
+    public SummonCommand(Type type) {
         this(type, null);
     }
 
-    public SummonCommand(EntityType type, CoordinateSet pos) {
+    public SummonCommand(Type type, CoordinateSet pos) {
         this(type, pos, null);
     }
 
-    public SummonCommand(EntityType type, CoordinateSet pos, TagCompound data) {
+    public SummonCommand(Type type, CoordinateSet pos, TagCompound data) {
         this.type = type;
         this.pos = pos;
         this.data = data;
+
+        assertEntity(type);
 
         if(!type.getProperty("spawnable").equals("true")) throw new IllegalArgumentException("Entity '" + type + "' is not a valid spawnable entity");
     }

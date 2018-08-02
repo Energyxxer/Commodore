@@ -3,18 +3,20 @@ package com.energyxxer.commodore.particles;
 import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.BlockType;
 import com.energyxxer.commodore.types.defaults.ItemType;
-import com.energyxxer.commodore.types.defaults.ParticleType;
 import com.energyxxer.commodore.util.ParticleColor;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertParticle;
+
 public class Particle {
-    private final ParticleType type;
+    private final Type type;
     private final ArrayList<Object> arguments = new ArrayList<>();
 
-    public Particle(ParticleType type, Object... arguments) {
+    public Particle(Type type, Object... arguments) {
         this.type = type;
+        assertParticle(type);
         String[] expectedArguments = type.getProperty("argument").split("-");
         if(expectedArguments.length == 1 && expectedArguments[0].equals("none")) {
             if(arguments.length > 0) {
