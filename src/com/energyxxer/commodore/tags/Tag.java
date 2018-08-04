@@ -58,6 +58,11 @@ public abstract class Tag extends Type implements Exportable {
 
         /**
          * Obtains the policy that corresponds to the given boolean value of the "replace" element of a tag.
+         *
+         * @param bool The boolean value of the "replace" element in the json file of which to get the corresponding
+         *             override policy.
+         *
+         * @return The override policy associated with the given boolean value.
          * */
         public static OverridePolicy valueOf(boolean bool) {
             return bool ? REPLACE : APPEND;

@@ -8,6 +8,15 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
+/**
+ * Represents an abstracted view of the micro operations performed by the game in order to perform a scoreboard
+ * operation. A scoreboard access has a list of affected {@link MacroScore}, an {@link AccessType} (Read access or
+ * Write access) and, optionally, a link dependency, which may be another scoreboard access.
+ * <br>
+ *
+ * @see MacroScore
+ * @see ScoreAccessLog
+ * */
 public class ScoreboardAccess {
 
     private final Collection<MacroScore> scores;

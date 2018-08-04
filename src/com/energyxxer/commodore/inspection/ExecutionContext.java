@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Holds all the context-modifying execute subcommands a command or function section is run under.
+ * Holds all the context-modifying execute sub-commands a command or function section is run under.
  * */
 public class ExecutionContext {
     /**

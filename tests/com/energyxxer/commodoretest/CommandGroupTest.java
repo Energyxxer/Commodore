@@ -6,7 +6,10 @@ import com.energyxxer.commodore.commands.chunk.ChunkForceCommand;
 import com.energyxxer.commodore.commands.chunk.ChunkUnforceCommand;
 import com.energyxxer.commodore.commands.execute.ExecuteCommand;
 import com.energyxxer.commodore.commands.execute.ExecuteInDimension;
+import com.energyxxer.commodore.commands.function.FunctionCommand;
 import com.energyxxer.commodore.commands.say.SayCommand;
+import com.energyxxer.commodore.commands.scoreboard.ScoreGet;
+import com.energyxxer.commodore.commands.scoreboard.ScoreSet;
 import com.energyxxer.commodore.commands.teleport.TeleportCommand;
 import com.energyxxer.commodore.commands.teleport.destination.BlockDestination;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
@@ -16,6 +19,8 @@ import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.ModulePackGenerator;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
+import com.energyxxer.commodore.score.LocalScore;
+import com.energyxxer.commodore.score.Objective;
 import com.energyxxer.commodore.selector.Selector;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 
@@ -57,6 +62,22 @@ public class CommandGroupTest {
         function.append(new ChunkUnforceCommand(625, 625, module.minecraft.getTypeManager().dimension.get("overworld")));
 
         System.out.println(CommandUtils.numberToPlainString(0.0000001));
+
+
+        Function a = cgt.getFunctionManager().create("a");
+        Function b = cgt.getFunctionManager().create("b");
+
+        GenericEntity all = new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES));
+        GenericEntity one = new GenericEntity(new Selector(Selector.BaseSelector.NEAREST_PLAYER));
+        Objective obj = module.getObjectiveManager().create("temp");
+
+        a.append(new ScoreSet(new LocalScore(obj, all), 5));
+        a.append(new ScoreSet(new LocalScore(obj, one), 9));
+
+        a.append(new ScoreGet(new LocalScore(obj, all)));
+
+        a.append(new FunctionCommand(a));
+
 
         try {
             module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);

@@ -25,7 +25,7 @@ public class Function implements FunctionSection, Exportable {
     private final MacroScoreHolder senderMacro;
 
     private ExecutionContext execContext;
-    private boolean accessesResolved = false;
+    private byte accessesResolvedState = 0;
     private boolean contentResolved = false;
     private String resolvedContent = null;
 
@@ -116,7 +116,8 @@ public class Function implements FunctionSection, Exportable {
     }
 
     public void resolveAccessLogs() {
-        if(accessesResolved) return;
+        if(accessesResolvedState >= 1) return;
+        accessesResolvedState = 1;
         content.forEach(w -> {
             if(w instanceof Command) {
                 for(ScoreboardAccess access : ((Command) w).getScoreboardAccesses()) {
@@ -126,7 +127,7 @@ public class Function implements FunctionSection, Exportable {
             }
         });
         accessLog.resolve();
-        accessesResolved = true;
+        accessesResolvedState = 2;
     }
 
     public Collection<ScoreboardAccess> getScoreboardAccesses(ExecutionContext execContext) {

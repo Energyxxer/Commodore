@@ -31,8 +31,6 @@ public class FunctionCommand implements Command {
         return new CommandResolution(execContext, "function " + function);
     }
 
-    //TODO: Resolve functions for each execution context
-
     @Override
     public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
         if(execContext == null)
