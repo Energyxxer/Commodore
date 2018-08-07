@@ -19,7 +19,7 @@ public class EffectClearCommand extends EffectCommand {
         super(entity);
         this.type = type;
 
-        assertEffect(type);
+        if(type != null) assertEffect(type);
     }
 
     @Override @NotNull
