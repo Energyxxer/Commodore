@@ -40,8 +40,8 @@ public class LimitArgument implements SelectorArgument {
     }
 
     @Override
-    public boolean isCompatibleWith(Selector selector) {
-        if(selector.getBase() == Selector.BaseSelector.SENDER) throw new IllegalArgumentException("Limit is inapplicable for the " + selector.getBase() + " selector type");
-        return SelectorArgument.super.isCompatibleWith(selector);
+    public void assertCompatibleWith(Selector selector) {
+        if(selector.getBase().getLimit().isEnforced()) throw new IllegalArgumentException("Limit is not applicable for the " + selector.getBase() + " selector type");
+        SelectorArgument.super.assertCompatibleWith(selector);
     }
 }
