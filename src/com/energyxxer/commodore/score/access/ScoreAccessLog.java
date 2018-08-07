@@ -56,7 +56,7 @@ public class ScoreAccessLog {
     }
 
     /**
-     * Processes the current log's accesses, giving them a resolution.
+     * Processes the current log's accesses from end to beginning, giving each of them a resolution.
      * */
     public void resolve() {
         MacroScoreAccessLog macroLog = new MacroScoreAccessLog();
@@ -143,10 +143,25 @@ public class ScoreAccessLog {
     }
 }
 
+/**
+ * Helper class that is used to keep track of macro scores that have been read by a scoreboard access so as to mark
+ * previous write accesses as used or unused. Processing is done from the end to the beginning of the function.
+ * */
 class MacroScoreAccessLog {
+    /**
+     * Stores all macro scores that have been read and not written to.
+     * */
     private final ArrayList<MacroScore> usedMacroScores = new ArrayList<>();
+    /**
+     * Stores all macro scores seen in the function.
+     * */
     private final ArrayList<MacroScore> seenMacroScores = new ArrayList<>();
 
+    /**
+     * Marks the given macro scores as used, if they aren't already. Also adds the macro scores to the seen list.
+     *
+     * @param scores A collection of macro scores to add to this macro log.
+     * */
     void addUsed(Collection<MacroScore> scores) {
         scores.forEach(s -> {
             boolean contained = false;
@@ -168,6 +183,11 @@ class MacroScoreAccessLog {
         });
     }
 
+    /**
+     * Unmarks the given macro scores as used, if it is already. Also adds the macro scores to the seen list.
+     *
+     * @param scores A collection of macro scores to remove from this macro log.
+     * */
     void removeUsed(Collection<MacroScore> scores) {
         for(MacroScore score : scores) {
             for(int i = 0; i < usedMacroScores.size(); i++) {
@@ -188,6 +208,15 @@ class MacroScoreAccessLog {
         }
     }
 
+    /**
+     * Checks if any of the given macro scores have had a read access later in the log and hasn't been overwritten by
+     * another write access.
+     *
+     * @param scores A collection of scores to check whether they have been used or not.
+     *
+     * @return <code>true</code> if any one of the given scores has been read and not overwritten, <code>false</code>
+     * otherwise.
+     * */
     boolean areAnyUsed(Collection<MacroScore> scores) {
         for(MacroScore score : scores) {
             for(MacroScore usedScore : usedMacroScores) {
@@ -197,6 +226,14 @@ class MacroScoreAccessLog {
         return false;
     }
 
+    /**
+     * Checks whether a given score has been present in this macro log before; that is, if it has been passed to
+     * {@link MacroScoreAccessLog#addUsed(Collection)} or {@link MacroScoreAccessLog#removeUsed(Collection)} before.
+     *
+     * @param score The score to check if it has been seen.
+     *
+     * @return <code>true</code> if the macro score has been seen, <code>false</code> otherwise.
+     * */
     private boolean isSeen(MacroScore score) {
         for(MacroScore seenScore : seenMacroScores) {
             if(seenScore.matches(score)) {
@@ -206,13 +243,20 @@ class MacroScoreAccessLog {
         return false;
     }
 
+    /**
+     * Retrieves a list of all the macro scores used.
+     *
+     * @return The list of all the macro scores used.
+     * */
     public Collection<MacroScore> getUsed() {
         return new ArrayList<>(usedMacroScores);
     }
 
+    /**
+     * Checks whether at least one from a given list of macro scores corresponds to a field objective.
+     * */
     boolean isLastFieldAccess(Collection<MacroScore> scores) {
         for(MacroScore score : scores) {
-            // if score.getObjective().isField() && !seenObjective.contains(score.getObjective) then it is last field access
             if(score.getObjective() != null && (score.getObjective().isField() && !isSeen(score))) return true;
         }
         return false;
