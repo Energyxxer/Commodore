@@ -2,8 +2,8 @@ package com.energyxxer.commodoretest;
 
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.commands.CommandGroup;
-import com.energyxxer.commodore.commands.chunk.ChunkForceCommand;
-import com.energyxxer.commodore.commands.chunk.ChunkUnforceCommand;
+import com.energyxxer.commodore.commands.chunk.ForceLoadAddCommand;
+import com.energyxxer.commodore.commands.chunk.ForceLoadRemoveCommand;
 import com.energyxxer.commodore.commands.execute.ExecuteCommand;
 import com.energyxxer.commodore.commands.execute.ExecuteInDimension;
 import com.energyxxer.commodore.commands.function.FunctionCommand;
@@ -57,9 +57,11 @@ public class CommandGroupTest {
 
         function.append(outerExec);
 
-        function.append(new ChunkForceCommand(625, 625));
-        function.append(new ChunkForceCommand(625, 625, module.minecraft.getTypeManager().dimension.get("the_nether")));
-        function.append(new ChunkUnforceCommand(625, 625, module.minecraft.getTypeManager().dimension.get("overworld")));
+        function.append(new ForceLoadAddCommand(new CoordinateSet(625, 0, 625)));
+        function.append(new ExecuteCommand(new ForceLoadAddCommand(new CoordinateSet(625, 0, 625)),
+                new ExecuteInDimension(module.minecraft.getTypeManager().dimension.get("the_nether"))));
+        function.append(new ExecuteCommand(new ForceLoadRemoveCommand(new CoordinateSet(625, 0, 625)),
+                new ExecuteInDimension(module.minecraft.getTypeManager().dimension.get("the_nether"))));
 
         System.out.println(CommandUtils.numberToPlainString(0.0000001));
 
