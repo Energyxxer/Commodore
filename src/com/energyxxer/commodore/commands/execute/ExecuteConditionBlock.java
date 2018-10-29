@@ -9,8 +9,8 @@ import com.energyxxer.commodore.types.Type;
 import static com.energyxxer.commodore.types.TypeAssert.assertBlock;
 
 public class ExecuteConditionBlock extends ExecuteCondition {
-    public final CoordinateSet pos;
-    public final Type blockType;
+    private final CoordinateSet pos;
+    private final Type blockType;
 
     public ExecuteConditionBlock(ConditionType flowController, CoordinateSet pos, Type blockType) {
         super(flowController);

@@ -8,7 +8,7 @@ import com.energyxxer.commodore.inspection.ExecutionVariableMap;
 public class ExecuteConditionRegion extends ExecuteCondition {
 
     public enum AirPolicy {
-        ALL, MASKED;
+        ALL, MASKED
     }
 
     //If region matches the template

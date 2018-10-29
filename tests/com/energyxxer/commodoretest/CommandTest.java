@@ -240,6 +240,7 @@ public class CommandTest {
         exec.addModifier(new ExecuteStoreScore(a));
         exec.addModifier(new ExecuteStoreEntity(singlePlayer, new NBTPath("Position",new NBTPath(1)), NumericNBTType.DOUBLE));
         exec.addModifier(new ExecuteStoreBlock(new CoordinateSet(0, 3, 0), new NBTPath("Position",new NBTPath(1)), NumericNBTType.DOUBLE));
+        exec.addModifier(new ExecuteConditionDataEntity(ExecuteCondition.ConditionType.IF, entity, new NBTPath("Silent")));
 
         function.append(exec);
 
@@ -396,9 +397,9 @@ public class CommandTest {
 
         //System.out.println(otherFunction.getResolvedContent());
 
-        System.out.println(scoreTest.getResolvedContent());
+        System.out.println(function.getResolvedContent());
 
-        System.out.println(scoreTest.getAccessLog());
+        System.out.println(function.getAccessLog());
 
         System.out.println(module.getNamespace("ct").getFunctionManager().get("init_objectives").getResolvedContent());
 

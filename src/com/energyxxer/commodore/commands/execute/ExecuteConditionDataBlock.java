@@ -1,28 +1,32 @@
 package com.energyxxer.commodore.commands.execute;
 
-import com.energyxxer.commodore.entity.Entity;
+import com.energyxxer.commodore.coordinates.Coordinate;
+import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.inspection.ExecutionContext;
+import com.energyxxer.commodore.nbt.path.NBTPath;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 
-public class ExecuteConditionEntity extends ExecuteCondition {
-    private final Entity entity;
+public class ExecuteConditionDataBlock extends ExecuteCondition {
+    private final CoordinateSet pos;
+    private final NBTPath path;
 
-    public ExecuteConditionEntity(ConditionType flowController, Entity entity) {
+    public ExecuteConditionDataBlock(ConditionType flowController, CoordinateSet pos, NBTPath path) {
         super(flowController);
-        this.entity = entity;
+        this.pos = pos;
+        this.path = path;
     }
 
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + "entity \be0", entity);
+        return new SubCommandResult(execContext, this.getStarter() + "data block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path);
     }
 
     @Override
     public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return entity.getScoreboardAccesses();
+        return pos.getScoreboardAccesses();
     }
 
     @Override
