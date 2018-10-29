@@ -4,8 +4,8 @@ import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.inspection.ExecutionContext;
-import com.energyxxer.commodore.nbt.NBTPath;
 import com.energyxxer.commodore.nbt.NumericNBTType;
+import com.energyxxer.commodore.nbt.path.NBTPath;
 
 public class ExecuteStoreBlock extends ExecuteStore {
     private final CoordinateSet position;

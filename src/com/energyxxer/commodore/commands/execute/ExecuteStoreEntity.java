@@ -3,8 +3,8 @@ package com.energyxxer.commodore.commands.execute;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.ExecutionContext;
-import com.energyxxer.commodore.nbt.NBTPath;
 import com.energyxxer.commodore.nbt.NumericNBTType;
+import com.energyxxer.commodore.nbt.path.NBTPath;
 import com.energyxxer.commodore.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 

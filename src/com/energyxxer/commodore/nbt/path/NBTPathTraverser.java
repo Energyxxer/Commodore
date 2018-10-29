@@ -1,4 +1,4 @@
-package com.energyxxer.commodore.nbt;
+package com.energyxxer.commodore.nbt.path;
 
 import java.util.Iterator;
 

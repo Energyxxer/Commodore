@@ -1,5 +1,10 @@
 package com.energyxxer.commodore.nbt;
 
+import com.energyxxer.commodore.nbt.path.NBTPath;
+import com.energyxxer.commodore.nbt.path.NBTPathIndex;
+import com.energyxxer.commodore.nbt.path.NBTPathKey;
+import com.energyxxer.commodore.nbt.path.NBTPathNode;
+
 public class NBTCompoundBuilder {
     private TagCompound compound;
     private ComplexNBTTag lastTag;

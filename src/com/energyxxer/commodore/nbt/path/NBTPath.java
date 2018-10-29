@@ -1,7 +1,8 @@
-package com.energyxxer.commodore.nbt;
+package com.energyxxer.commodore.nbt.path;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Objects;
 
@@ -29,6 +30,15 @@ public class NBTPath implements Iterable<NBTPath> {
     protected NBTPath(NBTPathNode node, NBTPath next) {
         this.node = node;
         this.next = next;
+    }
+
+    public NBTPath(NBTPathNode... nodes) {
+        if(nodes.length >= 1) {
+            this.node = nodes[0];
+            if(nodes.length > 1) {
+                this.next = new NBTPath(Arrays.copyOfRange(nodes, 1, nodes.length));
+            } else this.next = null;
+        } else throw new IllegalArgumentException("Received empty array of path nodes");
     }
 
     @Override
@@ -75,69 +85,3 @@ public class NBTPath implements Iterable<NBTPath> {
     }
 }
 
-interface NBTPathNode {
-    String getPathString();
-    String getPathSeparator();
-}
-
-class NBTPathKey implements NBTPathNode {
-    private final String name;
-
-    public NBTPathKey(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public String getPathString() {
-        return name;
-    }
-
-    @Override
-    public String getPathSeparator() {
-        return ".";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        NBTPathKey that = (NBTPathKey) o;
-        return Objects.equals(name, that.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name);
-    }
-}
-
-class NBTPathIndex implements NBTPathNode {
-    private final int index;
-
-    public NBTPathIndex(int index) {
-        this.index = index;
-    }
-
-    @Override
-    public String getPathString() {
-        return "["+index+"]";
-    }
-
-    @Override
-    public String getPathSeparator() {
-        return "";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        NBTPathIndex that = (NBTPathIndex) o;
-        return index == that.index;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(index);
-    }
-}

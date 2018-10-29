@@ -1,5 +1,6 @@
 package com.energyxxer.commodoretest;
 
+import com.energyxxer.commodore.commands.data.DataGetCommand;
 import com.energyxxer.commodore.commands.setblock.SetblockCommand;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
@@ -8,6 +9,13 @@ import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.ModulePackGenerator;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
+import com.energyxxer.commodore.nbt.TagByte;
+import com.energyxxer.commodore.nbt.TagCompound;
+import com.energyxxer.commodore.nbt.TagInt;
+import com.energyxxer.commodore.nbt.path.NBTListMatch;
+import com.energyxxer.commodore.nbt.path.NBTObjectMatch;
+import com.energyxxer.commodore.nbt.path.NBTPath;
+import com.energyxxer.commodore.nbt.path.NBTPathKey;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 
 import java.io.File;
@@ -29,6 +37,9 @@ public class V114Test {
         Function function = ns.getFunctionManager().create("func");
 
         function.append(new SetblockCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), module.minecraft.getTypeManager().block.get("bamboo")));
+
+        NBTPath path = new NBTPath(new NBTPathKey("Items"), new NBTListMatch(new TagCompound(new TagByte("Count", 1))), new NBTPathKey("tag"), new NBTObjectMatch(new TagCompound(new TagByte("LevelUp", 1))), new NBTPathKey("Enchantments"), new NBTListMatch(new TagCompound(new TagInt("lvl", 1))));
+        function.append(new DataGetCommand(function.getSender(), path));
 
         try {
             module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);

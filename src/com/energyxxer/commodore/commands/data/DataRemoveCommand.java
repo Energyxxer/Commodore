@@ -5,7 +5,7 @@ import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
-import com.energyxxer.commodore.nbt.NBTPath;
+import com.energyxxer.commodore.nbt.path.NBTPath;
 import org.jetbrains.annotations.NotNull;
 
 public class DataRemoveCommand extends DataCommand {
