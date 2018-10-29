@@ -2,6 +2,7 @@ package com.energyxxer.commodore.commands.time;
 
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
+import com.energyxxer.commodore.util.TimeSpan;
 import org.jetbrains.annotations.NotNull;
 
 public class TimeSetCommand extends TimeCommand {
@@ -14,9 +15,13 @@ public class TimeSetCommand extends TimeCommand {
         }
     }
 
-    private final int time;
+    private final TimeSpan time;
 
     public TimeSetCommand(int time) {
+        this(new TimeSpan(time));
+    }
+
+    public TimeSetCommand(TimeSpan time) {
         this.time = time;
     }
 
@@ -26,6 +31,6 @@ public class TimeSetCommand extends TimeCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "time set" + time);
+        return new CommandResolution(execContext, "time set " + time);
     }
 }
