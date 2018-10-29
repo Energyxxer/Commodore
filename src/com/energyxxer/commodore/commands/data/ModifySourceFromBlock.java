@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.commands.data;
 
+import com.energyxxer.commodore.commands.CommandDelegateResolution;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.nbt.path.NBTPath;
@@ -14,7 +15,7 @@ public class ModifySourceFromBlock implements ModifySource {
     }
 
     @Override
-    public ModifySourceResolution resolve() {
-        return new ModifySourceResolution("from block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + sourcePath);
+    public CommandDelegateResolution resolve() {
+        return new CommandDelegateResolution("from block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + sourcePath);
     }
 }

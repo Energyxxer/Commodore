@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.commands.data;
 
+import com.energyxxer.commodore.commands.CommandDelegateResolution;
 import com.energyxxer.commodore.nbt.NBTTag;
 
 public class ModifySourceValue implements ModifySource {
@@ -10,7 +11,7 @@ public class ModifySourceValue implements ModifySource {
     }
 
     @Override
-    public ModifySourceResolution resolve() {
-        return new ModifySourceResolution("value " + value.toHeadlessString());
+    public CommandDelegateResolution resolve() {
+        return new CommandDelegateResolution("value " + value.toHeadlessString());
     }
 }

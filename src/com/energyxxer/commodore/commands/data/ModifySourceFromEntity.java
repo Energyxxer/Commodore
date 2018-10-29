@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.commands.data;
 
+import com.energyxxer.commodore.commands.CommandDelegateResolution;
 import com.energyxxer.commodore.entity.Entity;
 import com.energyxxer.commodore.nbt.path.NBTPath;
 
@@ -13,7 +14,7 @@ public class ModifySourceFromEntity implements ModifySource {
     }
 
     @Override
-    public ModifySourceResolution resolve() {
-        return new ModifySourceResolution("from entity \be# " + sourcePath, entity);
+    public CommandDelegateResolution resolve() {
+        return new CommandDelegateResolution("from entity \be# " + sourcePath, entity);
     }
 }

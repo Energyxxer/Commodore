@@ -27,15 +27,15 @@ public class Namespace {
     /**
      * The function manager for this namespace.
      * */
-    private final FunctionManager fncMgr;
+    public final FunctionManager functions;
     /**
      * The tag manager for this namespace.
      * */
-    private final TagManager tagMgr;
+    public final TagManager tags;
     /**
      * The type manager for this namespace.
      * */
-    private final TypeManager typeMgr;
+    public final TypeManager types;
 
     /**
      * Creates a namespace object for the given module and with the given name.
@@ -47,16 +47,16 @@ public class Namespace {
         this.owner = owner;
         this.name = name;
 
-        this.fncMgr = new FunctionManager(this);
-        this.tagMgr = new TagManager(this);
-        this.typeMgr = new TypeManager(this);
+        this.functions = new FunctionManager(this);
+        this.tags = new TagManager(this);
+        this.types = new TypeManager(this);
     }
 
     /**
      * Runs the necessary procedures for compilation of the module this belongs to.
      * */
     void compile() {
-        fncMgr.resolveAccessLogs();
+        functions.resolveAccessLogs();
     }
 
     /**
@@ -83,7 +83,7 @@ public class Namespace {
      * @return The function manager for this namespace.
      * */
     public FunctionManager getFunctionManager() {
-        return fncMgr;
+        return functions;
     }
 
     /**
@@ -92,7 +92,7 @@ public class Namespace {
      * @return The tag manager for this namespace.
      * */
     public TagManager getTagManager() {
-        return tagMgr;
+        return tags;
     }
 
     /**
@@ -101,7 +101,7 @@ public class Namespace {
      * @return The type manager for this namespace.
      * */
     public TypeManager getTypeManager() {
-        return typeMgr;
+        return types;
     }
 
     /**
@@ -115,9 +115,9 @@ public class Namespace {
     public Namespace clone(CommandModule newOwner) {
         Namespace clone = new Namespace(newOwner, name);
 
-        clone.fncMgr.join(this.fncMgr);
-        clone.tagMgr.join(this.tagMgr);
-        clone.typeMgr.join(this.typeMgr);
+        clone.functions.join(this.functions);
+        clone.tags.join(this.tags);
+        clone.types.join(this.types);
 
         return clone;
     }

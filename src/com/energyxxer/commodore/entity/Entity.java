@@ -49,7 +49,8 @@ public interface Entity extends ScoreHolder, Cloneable, CommandEmbeddable {
     Collection<ScoreboardAccess> getScoreboardAccesses();
 
     /**
-     * Retrieves this entity's count limit; that is, how many entities, max, this entity object represents.
+     * Retrieves this entity's count limit; that is, how many entities, max, this entity object represents. -1 if
+     * indeterminate.
      *
      * @return The limit for this entity.
      * */
@@ -84,5 +85,14 @@ public interface Entity extends ScoreHolder, Cloneable, CommandEmbeddable {
      * */
     default void assertPlayer() {
         if(!isPlayer()) throw new IllegalArgumentException("Provided entity '" + this + "' includes non-player entities, expected only players");
+    }
+
+    /**
+     * Throws an exception if this entity may not represent entities of type <code>minecraft:player</code>.
+     *
+     * @throws IllegalArgumentException If this entity doesn't represent only players.
+     * */
+    default void assertSingle() {
+        if(getLimit() != 1) throw new IllegalArgumentException("Provided entity '" + this + "' includes multiple entities, expected at most one");
     }
 }

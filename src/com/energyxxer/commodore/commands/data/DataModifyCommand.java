@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.commands.data;
 
+import com.energyxxer.commodore.commands.CommandDelegateResolution;
 import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.entity.Entity;
@@ -10,8 +11,6 @@ import com.energyxxer.commodore.nbt.path.NBTPath;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class DataModifyCommand extends DataCommand {
 
@@ -65,7 +64,7 @@ public class DataModifyCommand extends DataCommand {
         sb.append(operation.operation);
         sb.append(' ');
 
-        ModifySourceResolution sourceResolution = source.resolve();
+        CommandDelegateResolution sourceResolution = source.resolve();
 
         sb.append(sourceResolution.attachment.replace("\be#", "\be" + embeddables.size()));
         embeddables.addAll(sourceResolution.embeddables);
@@ -83,15 +82,5 @@ class ModifyOperation {
 }
 
 interface ModifySource {
-    ModifySourceResolution resolve();
-}
-
-class ModifySourceResolution {
-    String attachment;
-    List<CommandEmbeddable> embeddables;
-
-    ModifySourceResolution(String attachment, CommandEmbeddable... embeddables) {
-        this.attachment = attachment;
-        this.embeddables = Arrays.asList(embeddables);
-    }
+    CommandDelegateResolution resolve();
 }
