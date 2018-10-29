@@ -1,0 +1,14 @@
+{
+  "peaceful": {
+    "id": 0
+  },
+  "easy": {
+    "id": 1
+  },
+  "medium": {
+    "id": 2
+  },
+  "hard": {
+    "id": 3
+  }
+}

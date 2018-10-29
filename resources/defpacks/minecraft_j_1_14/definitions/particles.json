@@ -1,0 +1,152 @@
+{
+  "minecraft:ambient_entity_effect": {
+    "argument": "none"
+  },
+  "minecraft:angry_villager": {
+    "argument": "none"
+  },
+  "minecraft:barrier": {
+    "argument": "none"
+  },
+  "minecraft:block": {
+    "argument": "block"
+  },
+  "minecraft:bubble": {
+    "argument": "none"
+  },
+  "minecraft:bubble_pop": {
+    "argument": "none"
+  },
+  "minecraft:bubble_column_up": {
+    "argument": "none"
+  },
+  "minecraft:cloud": {
+    "argument": "none"
+  },
+  "minecraft:crit": {
+    "argument": "none"
+  },
+  "minecraft:current_down": {
+    "argument": "none"
+  },
+  "minecraft:damage_indicator": {
+    "argument": "none"
+  },
+  "minecraft:dolphin": {
+    "argument": "none"
+  },
+  "minecraft:dragon_breath": {
+    "argument": "none"
+  },
+  "minecraft:dripping_lava": {
+    "argument": "none"
+  },
+  "minecraft:dripping_water": {
+    "argument": "none"
+  },
+  "minecraft:dust": {
+    "argument": "color-double"
+  },
+  "minecraft:effect": {
+    "argument": "none"
+  },
+  "minecraft:elder_guardian": {
+    "argument": "none"
+  },
+  "minecraft:enchanted_hit": {
+    "argument": "none"
+  },
+  "minecraft:enchant": {
+    "argument": "none"
+  },
+  "minecraft:end_rod": {
+    "argument": "none"
+  },
+  "minecraft:entity_effect": {
+    "argument": "none"
+  },
+  "minecraft:explosion_emitter": {
+    "argument": "none"
+  },
+  "minecraft:explosion": {
+    "argument": "none"
+  },
+  "minecraft:falling_dust": {
+    "argument": "block"
+  },
+  "minecraft:firework": {
+    "argument": "none"
+  },
+  "minecraft:fishing": {
+    "argument": "none"
+  },
+  "minecraft:flame": {
+    "argument": "none"
+  },
+  "minecraft:happy_villager": {
+    "argument": "none"
+  },
+  "minecraft:heart": {
+    "argument": "none"
+  },
+  "minecraft:instant_effect": {
+    "argument": "none"
+  },
+  "minecraft:item": {
+    "argument": "item"
+  },
+  "minecraft:item_slime": {
+    "argument": "none"
+  },
+  "minecraft:item_snowball": {
+    "argument": "none"
+  },
+  "minecraft:large_smoke": {
+    "argument": "none"
+  },
+  "minecraft:lava": {
+    "argument": "none"
+  },
+  "minecraft:mycelium": {
+    "argument": "none"
+  },
+  "minecraft:nautilus": {
+    "argument": "none"
+  },
+  "minecraft:note": {
+    "argument": "none"
+  },
+  "minecraft:poof": {
+    "argument": "none"
+  },
+  "minecraft:portal": {
+    "argument": "none"
+  },
+  "minecraft:rain": {
+    "argument": "none"
+  },
+  "minecraft:smoke": {
+    "argument": "none"
+  },
+  "minecraft:spit": {
+    "argument": "none"
+  },
+  "minecraft:splash": {
+    "argument": "none"
+  },
+  "minecraft:squid_ink": {
+    "argument": "none"
+  },
+  "minecraft:sweep_attack": {
+    "argument": "none"
+  },
+  "minecraft:totem_of_undying": {
+    "argument": "none"
+  },
+  "minecraft:underwater": {
+    "argument": "none"
+  },
+  "minecraft:witch": {
+    "argument": "none"
+  }
+}

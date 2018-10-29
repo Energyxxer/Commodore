@@ -1,0 +1,121 @@
+{
+  "minecraft:protection": {
+    "max_level": 4
+  },
+  "minecraft:fire_protection": {
+    "max_level": 4
+  },
+  "minecraft:feather_falling": {
+    "max_level": 4
+  },
+  "minecraft:blast_protection": {
+    "max_level": 4
+  },
+  "minecraft:projectile_protection": {
+    "max_level": 4
+  },
+  "minecraft:respiration": {
+    "max_level": 3
+  },
+  "minecraft:aqua_affinity": {
+    "max_level": 1
+  },
+  "minecraft:thorns": {
+    "max_level": 3
+  },
+  "minecraft:depth_strider": {
+    "max_level": 3
+  },
+  "minecraft:frost_walker": {
+    "max_level": 2,
+    "treasure": true
+  },
+  "minecraft:binding_curse": {
+    "max_level": 1,
+    "treasure": true,
+    "curse": true
+  },
+  "minecraft:sharpness": {
+    "max_level": 5
+  },
+  "minecraft:smite": {
+    "max_level": 5
+  },
+  "minecraft:bane_of_arthropods": {
+    "max_level": 3
+  },
+  "minecraft:knockback": {
+    "max_level": 2
+  },
+  "minecraft:fire_aspect": {
+    "max_level": 2
+  },
+  "minecraft:looting": {
+    "max_level": 3
+  },
+  "minecraft:sweeping": {
+    "max_level": 3
+  },
+  "minecraft:efficiency": {
+    "max_level": 5
+  },
+  "minecraft:silk_touch": {
+    "max_level": 1
+  },
+  "minecraft:unbreaking": {
+    "max_level": 3
+  },
+  "minecraft:fortune": {
+    "max_level": 3
+  },
+  "minecraft:power": {
+    "max_level": 5
+  },
+  "minecraft:punch": {
+    "max_level": 2
+  },
+  "minecraft:flame": {
+    "max_level": 1
+  },
+  "minecraft:infinity": {
+    "max_level": 1
+  },
+  "minecraft:luck_of_the_sea": {
+    "max_level": 3,
+    "treasure": true
+  },
+  "minecraft:lure": {
+    "max_level": 3
+  },
+  "minecraft:loyalty": {
+    "max_level": 3
+  },
+  "minecraft:impaling": {
+    "max_level": 5
+  },
+  "minecraft:riptide": {
+    "max_level": 3
+  },
+  "minecraft:channeling": {
+    "max_level": 1,
+    "treasure": true
+  },
+  "minecraft:mending": {
+    "max_level": 1,
+    "treasure": true
+  },
+  "minecraft:vanishing_curse": {
+    "max_level": 1,
+    "treasure": true,
+    "curse": true
+  },
+  "minecraft:multishot": {
+    "max_level": 1
+  },
+  "minecraft:piercing": {
+    "max_level": 4
+  },
+  "minecraft:quick_charge": {
+    "max_level": 3
+  }
+}

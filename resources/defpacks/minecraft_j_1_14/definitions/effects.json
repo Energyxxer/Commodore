@@ -1,0 +1,122 @@
+{
+  "minecraft:speed": {
+    "id": 1,
+    "type": "positive"
+  },
+  "minecraft:slowness": {
+    "id": 2,
+    "type": "negative"
+  },
+  "minecraft:haste": {
+    "id": 3,
+    "type": "positive"
+  },
+  "minecraft:mining_fatigue": {
+    "id": 4,
+    "type": "negative"
+  },
+  "minecraft:strength": {
+    "id": 5,
+    "type": "positive"
+  },
+  "minecraft:instant_health": {
+    "id": 6,
+    "type": "instant"
+  },
+  "minecraft:instant_damage": {
+    "id": 7,
+    "type": "instant"
+  },
+  "minecraft:jump_boost": {
+    "id": 8,
+    "type": "positive"
+  },
+  "minecraft:nausea": {
+    "id": 9,
+    "type": "negative"
+  },
+  "minecraft:regeneration": {
+    "id": 10,
+    "type": "positive"
+  },
+  "minecraft:resistance": {
+    "id": 11,
+    "type": "positive"
+  },
+  "minecraft:fire_resistance": {
+    "id": 12,
+    "type": "positive"
+  },
+  "minecraft:water_breathing": {
+    "id": 13,
+    "type": "positive"
+  },
+  "minecraft:invisibility": {
+    "id": 14,
+    "type": "positive"
+  },
+  "minecraft:blindness": {
+    "id": 15,
+    "type": "negative"
+  },
+  "minecraft:night_vision": {
+    "id": 16,
+    "type": "positive"
+  },
+  "minecraft:hunger": {
+    "id": 17,
+    "type": "negative"
+  },
+  "minecraft:weakness": {
+    "id": 18,
+    "type": "negative"
+  },
+  "minecraft:poison": {
+    "id": 19,
+    "type": "negative"
+  },
+  "minecraft:wither": {
+    "id": 20,
+    "type": "negative"
+  },
+  "minecraft:health_boost": {
+    "id": 21,
+    "type": "positive"
+  },
+  "minecraft:absorption": {
+    "id": 22,
+    "type": "positive"
+  },
+  "minecraft:saturation": {
+    "id": 23,
+    "type": "instant"
+  },
+  "minecraft:glowing": {
+    "id": 24,
+    "type": "negative"
+  },
+  "minecraft:levitation": {
+    "id": 25,
+    "type": "negative"
+  },
+  "minecraft:luck": {
+    "id": 26,
+    "type": "positive"
+  },
+  "minecraft:unluck": {
+    "id": 27,
+    "type": "negative"
+  },
+  "minecraft:slow_falling": {
+    "id": 28,
+    "type": "positive"
+  },
+  "minecraft:conduit_power": {
+    "id": 29,
+    "type": "positive"
+  },
+  "minecraft:dolphins_grace": {
+    "id": 30,
+    "type": "positive"
+  }
+}
