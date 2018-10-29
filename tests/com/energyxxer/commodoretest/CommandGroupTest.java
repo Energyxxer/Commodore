@@ -35,7 +35,7 @@ public class CommandGroupTest {
 
         module.getOptionManager().UNUSED_COMMAND_POLICY.setValue(UnusedCommandPolicy.COMMENT_OUT);
         try {
-            module.importDefinitions(StandardDefinitionPacks.MINECRAFT_J_1_13);
+            module.importDefinitions(StandardDefinitionPacks.MINECRAFT_JAVA_LATEST_RELEASE);
             //module.importDefinitions(AETHER_TEST);
         } catch(IOException x) {
             x.printStackTrace();

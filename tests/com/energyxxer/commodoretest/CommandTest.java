@@ -149,7 +149,7 @@ public class CommandTest {
         CommandModule module = new CommandModule("Commodore Test", "A simple Commodore test project", "ct");
         module.getOptionManager().UNUSED_COMMAND_POLICY.setValue(UnusedCommandPolicy.COMMENT_OUT);
         try {
-            StandardDefinitionPacks.MINECRAFT_J_1_13.populate(module);
+            StandardDefinitionPacks.MINECRAFT_JAVA_LATEST_RELEASE.populate(module);
         } catch(IOException x) {
             x.printStackTrace();
         }

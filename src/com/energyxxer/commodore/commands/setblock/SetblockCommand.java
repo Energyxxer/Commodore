@@ -6,6 +6,7 @@ import com.energyxxer.commodore.coordinates.Coordinate;
 import com.energyxxer.commodore.coordinates.CoordinateSet;
 import com.energyxxer.commodore.inspection.CommandResolution;
 import com.energyxxer.commodore.inspection.ExecutionContext;
+import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
@@ -19,6 +20,10 @@ public class SetblockCommand implements Command {
         this.block = block;
 
         assertStandalone(block.getBlockType());
+    }
+
+    public SetblockCommand(CoordinateSet pos, Type blockType) {
+        this(pos, new Block(blockType));
     }
 
     @Override @NotNull

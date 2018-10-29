@@ -1,10 +1,7 @@
 package com.energyxxer.commodore.tags;
 
 import com.energyxxer.commodore.module.Namespace;
-import com.energyxxer.commodore.types.defaults.BlockType;
-import com.energyxxer.commodore.types.defaults.FluidType;
-import com.energyxxer.commodore.types.defaults.FunctionReference;
-import com.energyxxer.commodore.types.defaults.ItemType;
+import com.energyxxer.commodore.types.defaults.*;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -17,6 +14,7 @@ public class TagManager {
     private final HashMap<String, TagGroup<? extends Tag>> groups = new HashMap<>();
     public final TagGroup<BlockTag> blockTags;
     public final TagGroup<ItemTag> itemTags;
+    public final TagGroup<EntityTypeTag> entityTypeTags;
     public final TagGroup<FunctionTag> functionTags;
     public final TagGroup<FluidTag> fluidTags;
 
@@ -25,6 +23,7 @@ public class TagManager {
 
         put(this.blockTags = new TagGroup<>(namespace, BlockType.CATEGORY, "blocks", BlockTag.INSTANTIATOR));
         put(this.itemTags = new TagGroup<>(namespace, ItemType.CATEGORY, "items", ItemTag.INSTANTIATOR));
+        put(this.entityTypeTags = new TagGroup<>(namespace, EntityType.CATEGORY, "entity_types", EntityTypeTag.INSTANTIATOR));
         put(this.functionTags = new TagGroup<>(namespace, FunctionReference.CATEGORY, "functions", FunctionTag.INSTANTIATOR));
         put(this.fluidTags = new TagGroup<>(namespace, FluidType.CATEGORY, "fluids", FluidTag.INSTANTIATOR));
     }
