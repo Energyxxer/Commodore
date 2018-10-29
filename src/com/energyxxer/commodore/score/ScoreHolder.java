@@ -12,5 +12,10 @@ import java.util.Collection;
  * @see Objective
  * */
 public interface ScoreHolder extends CommandEmbeddable {
+    /**
+     * Retrieves the {@link MacroScoreHolder} that describe this score holder.
+     *
+     * @return The list of macro score holders that represent this score holder.
+     * */
     Collection<MacroScoreHolder> getMacroHolders();
 }

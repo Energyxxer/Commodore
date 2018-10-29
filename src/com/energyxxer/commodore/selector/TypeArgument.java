@@ -32,7 +32,7 @@ public class TypeArgument implements SelectorArgument {
 
     @Override
     public String getArgumentString() {
-        return "type=" + type;
+        return "type=" + (negated ? "!" : "") + type;
     }
 
     @Override
@@ -61,15 +61,23 @@ public class TypeArgument implements SelectorArgument {
     }
 
     @Override
-    public boolean isCompatibleWith(Selector selector) {
+    public void assertCompatibleWith(Selector selector) {
         Collection<SelectorArgument> typeArgs = selector.getArgumentsByKey(getKey());
         for(SelectorArgument arg : typeArgs) {
             TypeArgument that = (TypeArgument) arg;
 
-            if((!this.isNegated() && this.getType().isStandalone() && !that.isNegated() && that.getType().isStandalone() && this.getType() != that.getType()) || (this.getType() == that.getType() && this.isNegated() != that.isNegated())) throw new IllegalArgumentException("Impossible selector");
-            //this is positive standalone, that is positive standalone, not equal //NO
-            //equal in value, opposite in polarity //NO
+            if(    (!this.isNegated() &&
+                    this.getType().isStandalone() &&
+                    !that.isNegated() &&
+                    that.getType().isStandalone() &&
+                    this.getType() != that.getType())
+                    ||
+                   (this.getType() == that.getType() &&
+                    this.isNegated() != that.isNegated()))
+                throw new IllegalArgumentException("Impossible selector");
+            //this is positive standalone, that is positive standalone, not equal //impossible
+            //equal in value, opposite in polarity //impossible
         }
-        return SelectorArgument.super.isCompatibleWith(selector);
+        SelectorArgument.super.assertCompatibleWith(selector);
     }
 }

@@ -27,7 +27,7 @@ public interface ExecuteModifier {
         return null;
     }
 
-    //TODO: Add an Entity sender argument to getUsedExecutionVariables()
+    //TODO: Add an ExecutionContext argument to getUsedExecutionVariables()
     default ExecutionVariableMap getUsedExecutionVariables() {
         return null;
     }
