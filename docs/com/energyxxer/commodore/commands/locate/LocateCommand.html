@@ -91,7 +91,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">com.energyxxer.commodore.commands.locate</div>
+<div class="subTitle">com.energyxxer.commodore.functionlogic.commands.locate</div>
 <h2 title="Class LocateCommand" class="title">Class LocateCommand</h2>
 </div>
 <div class="contentContainer">
@@ -99,7 +99,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>com.energyxxer.commodore.commands.locate.LocateCommand</li>
+<li>com.energyxxer.commodore.functionlogic.commands.locate.LocateCommand</li>
 </ul>
 </li>
 </ul>
@@ -108,13 +108,13 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../../com/energyxxer/commodore/commands/Command.html" title="interface in com.energyxxer.commodore.commands">Command</a>, <a href="../../../../../com/energyxxer/commodore/functions/FunctionWriter.html" title="interface in com.energyxxer.commodore.functions">FunctionWriter</a></dd>
+<dd><a href="../../../../../com/energyxxer/commodore/commands/Command.html" title="interface in com.energyxxer.commodore.functionlogic.commands">Command</a>, <a href="../../../../../com/energyxxer/commodore/functions/FunctionWriter.html" title="interface in com.energyxxer.commodore.functionlogic.functions">FunctionWriter</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">LocateCommand</span>
 extends java.lang.Object
-implements <a href="../../../../../com/energyxxer/commodore/commands/Command.html" title="interface in com.energyxxer.commodore.commands">Command</a></pre>
+implements <a href="../../../../../com/energyxxer/commodore/commands/Command.html" title="interface in com.energyxxer.commodore.functionlogic.commands">Command</a></pre>
 </li>
 </ul>
 </div>
@@ -157,8 +157,8 @@ implements <a href="../../../../../com/energyxxer/commodore/commands/Command.htm
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>@NotNull <a href="../../../../../com/energyxxer/commodore/inspection/CommandResolution.html" title="class in com.energyxxer.commodore.inspection">CommandResolution</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/energyxxer/commodore/commands/locate/LocateCommand.html#resolveCommand-com.energyxxer.commodore.inspection.ExecutionContext-">resolveCommand</a></span>(<a href="../../../../../com/energyxxer/commodore/inspection/ExecutionContext.html" title="class in com.energyxxer.commodore.inspection">ExecutionContext</a>&nbsp;execContext)</code>
+<td class="colFirst"><code>@NotNull <a href="../../../../../com/energyxxer/commodore/inspection/CommandResolution.html" title="class in com.energyxxer.commodore.functionlogic.inspection">CommandResolution</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../com/energyxxer/commodore/commands/locate/LocateCommand.html#resolveCommand-com.energyxxer.commodore.functionlogic.inspection.ExecutionContext-">resolveCommand</a></span>(<a href="../../../../../com/energyxxer/commodore/inspection/ExecutionContext.html" title="class in com.energyxxer.commodore.functionlogic.inspection">ExecutionContext</a>&nbsp;execContext)</code>
 <div class="block">Resolves this command into a <code>CommandResolution</code> object, given the execution context passed.</div>
 </td>
 </tr>
@@ -171,11 +171,11 @@ implements <a href="../../../../../com/energyxxer/commodore/commands/Command.htm
 <code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
 </ul>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.com.energyxxer.commodore.commands.Command">
+<li class="blockList"><a name="methods.inherited.from.class.com.energyxxer.commodore.functionlogic.commands.Command">
 <!--   -->
 </a>
-<h3>Methods inherited from interface&nbsp;com.energyxxer.commodore.commands.<a href="../../../../../com/energyxxer/commodore/commands/Command.html" title="interface in com.energyxxer.commodore.commands">Command</a></h3>
-<code><a href="../../../../../com/energyxxer/commodore/commands/Command.html#getScoreboardAccesses--">getScoreboardAccesses</a>, <a href="../../../../../com/energyxxer/commodore/commands/Command.html#isUsed--">isUsed</a>, <a href="../../../../../com/energyxxer/commodore/commands/Command.html#onAppend-com.energyxxer.commodore.functions.FunctionSection-">onAppend</a>, <a href="../../../../../com/energyxxer/commodore/commands/Command.html#onAppend-com.energyxxer.commodore.functions.FunctionSection-com.energyxxer.commodore.inspection.ExecutionContext-">onAppend</a>, <a href="../../../../../com/energyxxer/commodore/commands/Command.html#toFunctionContent-com.energyxxer.commodore.functions.FunctionSection-">toFunctionContent</a></code></li>
+<h3>Methods inherited from interface&nbsp;com.energyxxer.commodore.functionlogic.commands.<a href="../../../../../com/energyxxer/commodore/commands/Command.html" title="interface in com.energyxxer.commodore.functionlogic.commands">Command</a></h3>
+<code><a href="../../../../../com/energyxxer/commodore/commands/Command.html#getScoreboardAccesses--">getScoreboardAccesses</a>, <a href="../../../../../com/energyxxer/commodore/commands/Command.html#isUsed--">isUsed</a>, <a href="../../../../../com/energyxxer/commodore/commands/Command.html#onAppend-com.energyxxer.commodore.functionlogic.functions.FunctionSection-">onAppend</a>, <a href="../../../../../com/energyxxer/commodore/commands/Command.html#onAppend-com.energyxxer.commodore.functionlogic.functions.FunctionSection-com.energyxxer.commodore.functionlogic.inspection.ExecutionContext-">onAppend</a>, <a href="../../../../../com/energyxxer/commodore/commands/Command.html#toFunctionContent-com.energyxxer.commodore.functionlogic.functions.FunctionSection-">toFunctionContent</a></code></li>
 </ul>
 </li>
 </ul>
@@ -208,19 +208,19 @@ implements <a href="../../../../../com/energyxxer/commodore/commands/Command.htm
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="resolveCommand-com.energyxxer.commodore.inspection.ExecutionContext-">
+<a name="resolveCommand-com.energyxxer.commodore.functionlogic.inspection.ExecutionContext-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>resolveCommand</h4>
 <pre>@NotNull
-public&nbsp;@NotNull <a href="../../../../../com/energyxxer/commodore/inspection/CommandResolution.html" title="class in com.energyxxer.commodore.inspection">CommandResolution</a>&nbsp;resolveCommand(<a href="../../../../../com/energyxxer/commodore/inspection/ExecutionContext.html" title="class in com.energyxxer.commodore.inspection">ExecutionContext</a>&nbsp;execContext)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../com/energyxxer/commodore/commands/Command.html#resolveCommand-com.energyxxer.commodore.inspection.ExecutionContext-">Command</a></code></span></div>
+public&nbsp;@NotNull <a href="../../../../../com/energyxxer/commodore/inspection/CommandResolution.html" title="class in com.energyxxer.commodore.functionlogic.inspection">CommandResolution</a>&nbsp;resolveCommand(<a href="../../../../../com/energyxxer/commodore/inspection/ExecutionContext.html" title="class in com.energyxxer.commodore.functionlogic.inspection">ExecutionContext</a>&nbsp;execContext)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../com/energyxxer/commodore/commands/Command.html#resolveCommand-com.energyxxer.commodore.functionlogic.inspection.ExecutionContext-">Command</a></code></span></div>
 <div class="block">Resolves this command into a <code>CommandResolution</code> object, given the execution context passed.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/energyxxer/commodore/commands/Command.html#resolveCommand-com.energyxxer.commodore.inspection.ExecutionContext-">resolveCommand</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/energyxxer/commodore/commands/Command.html" title="interface in com.energyxxer.commodore.commands">Command</a></code></dd>
+<dd><code><a href="../../../../../com/energyxxer/commodore/commands/Command.html#resolveCommand-com.energyxxer.commodore.functionlogic.inspection.ExecutionContext-">resolveCommand</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/energyxxer/commodore/commands/Command.html" title="interface in com.energyxxer.commodore.functionlogic.commands">Command</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>execContext</code> - The execution context this command is run under.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -241,7 +241,7 @@ public&nbsp;@NotNull <a href="../../../../../com/energyxxer/commodore/inspection
  classes derived from the /scoreboard command.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../com/energyxxer/commodore/commands/Command.html#isScoreboardManipulation--">isScoreboardManipulation</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/energyxxer/commodore/commands/Command.html" title="interface in com.energyxxer.commodore.commands">Command</a></code></dd>
+<dd><code><a href="../../../../../com/energyxxer/commodore/commands/Command.html#isScoreboardManipulation--">isScoreboardManipulation</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../com/energyxxer/commodore/commands/Command.html" title="interface in com.energyxxer.commodore.functionlogic.commands">Command</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>true if the command should be omitted when scoreboard accesses unused, false otherwise.</dd>
 </dl>

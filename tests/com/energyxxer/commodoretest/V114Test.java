@@ -1,21 +1,21 @@
 package com.energyxxer.commodoretest;
 
-import com.energyxxer.commodore.commands.data.DataModifyCommand;
-import com.energyxxer.commodore.commands.data.ModifySourceFromEntity;
-import com.energyxxer.commodore.commands.data.ModifySourceValue;
-import com.energyxxer.commodore.commands.drop.*;
-import com.energyxxer.commodore.commands.setblock.SetblockCommand;
-import com.energyxxer.commodore.coordinates.Coordinate;
-import com.energyxxer.commodore.coordinates.CoordinateSet;
-import com.energyxxer.commodore.functions.Function;
+import com.energyxxer.commodore.functionlogic.commands.data.DataModifyCommand;
+import com.energyxxer.commodore.functionlogic.commands.data.ModifySourceFromEntity;
+import com.energyxxer.commodore.functionlogic.commands.data.ModifySourceValue;
+import com.energyxxer.commodore.functionlogic.commands.drop.*;
+import com.energyxxer.commodore.functionlogic.commands.setblock.SetblockCommand;
+import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
+import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
+import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.ModulePackGenerator;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
-import com.energyxxer.commodore.nbt.TagByte;
-import com.energyxxer.commodore.nbt.TagCompound;
-import com.energyxxer.commodore.nbt.TagInt;
-import com.energyxxer.commodore.nbt.path.*;
+import com.energyxxer.commodore.functionlogic.nbt.TagByte;
+import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
+import com.energyxxer.commodore.functionlogic.nbt.TagInt;
+import com.energyxxer.commodore.functionlogic.nbt.path.*;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 
 import java.io.File;

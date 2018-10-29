@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.module;
 
-import com.energyxxer.commodore.functions.AccessLogFile;
-import com.energyxxer.commodore.functions.Function;
+import com.energyxxer.commodore.functionlogic.functions.AccessLogFile;
+import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.tags.TagGroup;
 import com.energyxxer.commodore.tags.TagManager;
 import com.google.gson.Gson;

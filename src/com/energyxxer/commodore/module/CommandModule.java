@@ -3,7 +3,7 @@ package com.energyxxer.commodore.module;
 import com.energyxxer.commodore.defpacks.DefinitionPack;
 import com.energyxxer.commodore.defpacks.MalformedPackException;
 import com.energyxxer.commodore.module.options.ModuleOptionManager;
-import com.energyxxer.commodore.score.ObjectiveManager;
+import com.energyxxer.commodore.functionlogic.score.ObjectiveManager;
 
 import java.io.File;
 import java.io.IOException;

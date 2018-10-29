@@ -1,24 +1,24 @@
 package com.energyxxer.commodoretest;
 
-import com.energyxxer.commodore.commands.data.DataMergeCommand;
-import com.energyxxer.commodore.commands.execute.ExecuteAtEntity;
-import com.energyxxer.commodore.commands.execute.ExecuteCommand;
-import com.energyxxer.commodore.commands.scoreboard.ScoreAdd;
-import com.energyxxer.commodore.commands.tag.TagCommand;
-import com.energyxxer.commodore.entity.GenericEntity;
-import com.energyxxer.commodore.functions.Function;
-import com.energyxxer.commodore.functions.FunctionComment;
+import com.energyxxer.commodore.functionlogic.commands.data.DataMergeCommand;
+import com.energyxxer.commodore.functionlogic.commands.execute.ExecuteAtEntity;
+import com.energyxxer.commodore.functionlogic.commands.execute.ExecuteCommand;
+import com.energyxxer.commodore.functionlogic.commands.scoreboard.ScoreAdd;
+import com.energyxxer.commodore.functionlogic.commands.tag.TagCommand;
+import com.energyxxer.commodore.functionlogic.entity.GenericEntity;
+import com.energyxxer.commodore.functionlogic.functions.Function;
+import com.energyxxer.commodore.functionlogic.functions.FunctionComment;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.ModulePackGenerator;
 import com.energyxxer.commodore.module.Namespace;
-import com.energyxxer.commodore.nbt.TagCompound;
-import com.energyxxer.commodore.nbt.TagList;
-import com.energyxxer.commodore.nbt.TagShort;
-import com.energyxxer.commodore.nbt.TagString;
-import com.energyxxer.commodore.score.LocalScore;
-import com.energyxxer.commodore.score.MacroScoreHolder;
-import com.energyxxer.commodore.score.Objective;
-import com.energyxxer.commodore.selector.*;
+import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
+import com.energyxxer.commodore.functionlogic.nbt.TagList;
+import com.energyxxer.commodore.functionlogic.nbt.TagShort;
+import com.energyxxer.commodore.functionlogic.nbt.TagString;
+import com.energyxxer.commodore.functionlogic.score.LocalScore;
+import com.energyxxer.commodore.functionlogic.score.MacroScoreHolder;
+import com.energyxxer.commodore.functionlogic.score.Objective;
+import com.energyxxer.commodore.functionlogic.selector.*;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.types.defaults.EntityType;
 
@@ -27,7 +27,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.energyxxer.commodore.selector.Selector.BaseSelector.ALL_ENTITIES;
+import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.ALL_ENTITIES;
 
 public class EnhancedHoes {
 

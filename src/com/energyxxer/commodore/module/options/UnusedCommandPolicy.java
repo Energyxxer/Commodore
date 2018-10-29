@@ -1,6 +1,6 @@
 package com.energyxxer.commodore.module.options;
 
-import com.energyxxer.commodore.commands.Command;
+import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.module.CommandModule;
 
 /**

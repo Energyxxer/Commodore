@@ -48,8 +48,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../com/energyxxer/commodore/inspection/EntityResolution.html" title="class in com.energyxxer.commodore.inspection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../com/energyxxer/commodore/inspection/ExecutionVariable.html" title="enum in com.energyxxer.commodore.inspection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../com/energyxxer/commodore/inspection/EntityResolution.html" title="class in com.energyxxer.commodore.functionlogic.inspection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../com/energyxxer/commodore/inspection/ExecutionVariable.html" title="enum in com.energyxxer.commodore.functionlogic.inspection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?com/energyxxer/commodore/inspection/ExecutionContext.html" target="_top">Frames</a></li>
@@ -91,7 +91,7 @@ var activeTableTab = "activeTableTab";
 <!-- ========= END OF TOP NAVBAR ========= -->
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
-<div class="subTitle">com.energyxxer.commodore.inspection</div>
+<div class="subTitle">com.energyxxer.commodore.functionlogic.inspection</div>
 <h2 title="Class ExecutionContext" class="title">Class ExecutionContext</h2>
 </div>
 <div class="contentContainer">
@@ -99,7 +99,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>com.energyxxer.commodore.inspection.ExecutionContext</li>
+<li>com.energyxxer.commodore.functionlogic.inspection.ExecutionContext</li>
 </ul>
 </li>
 </ul>
@@ -129,13 +129,13 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/energyxxer/commodore/inspection/ExecutionContext.html#ExecutionContext-com.energyxxer.commodore.entity.Entity-">ExecutionContext</a></span>(@NotNull <a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.entity">Entity</a>&nbsp;sender)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/energyxxer/commodore/inspection/ExecutionContext.html#ExecutionContext-com.energyxxer.commodore.functionlogic.entity.Entity-">ExecutionContext</a></span>(@NotNull <a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.functionlogic.entity">Entity</a>&nbsp;sender)</code>
 <div class="block">Creates an execution context with no execute modifiers, executed by the given entity.</div>
 </td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/energyxxer/commodore/inspection/ExecutionContext.html#ExecutionContext-com.energyxxer.commodore.entity.Entity-java.util.Collection-">ExecutionContext</a></span>(@NotNull <a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.entity">Entity</a>&nbsp;originalSender,
-                java.util.Collection&lt;<a href="../../../../com/energyxxer/commodore/commands/execute/ExecuteModifier.html" title="interface in com.energyxxer.commodore.commands.execute">ExecuteModifier</a>&gt;&nbsp;modifiers)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../com/energyxxer/commodore/inspection/ExecutionContext.html#ExecutionContext-com.energyxxer.commodore.functionlogic.entity.Entity-java.util.Collection-">ExecutionContext</a></span>(@NotNull <a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.functionlogic.entity">Entity</a>&nbsp;originalSender,
+                java.util.Collection&lt;<a href="../../../../com/energyxxer/commodore/commands/execute/ExecuteModifier.html" title="interface in com.energyxxer.commodore.functionlogic.commands.execute">ExecuteModifier</a>&gt;&nbsp;modifiers)</code>
 <div class="block">Creates an execution context started by the given sender entity, and modified by the given execute modifiers.</div>
 </td>
 </tr>
@@ -155,19 +155,19 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.entity">Entity</a></code></td>
+<td class="colFirst"><code><a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.functionlogic.entity">Entity</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/energyxxer/commodore/inspection/ExecutionContext.html#getFinalSender--">getFinalSender</a></span>()</code>
 <div class="block">Retrieves entity who runs the command after all the executes have been evaluated.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>java.util.ArrayList&lt;<a href="../../../../com/energyxxer/commodore/commands/execute/ExecuteModifier.html" title="interface in com.energyxxer.commodore.commands.execute">ExecuteModifier</a>&gt;</code></td>
+<td class="colFirst"><code>java.util.ArrayList&lt;<a href="../../../../com/energyxxer/commodore/commands/execute/ExecuteModifier.html" title="interface in com.energyxxer.commodore.functionlogic.commands.execute">ExecuteModifier</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/energyxxer/commodore/inspection/ExecutionContext.html#getModifiers--">getModifiers</a></span>()</code>
 <div class="block">Retrieves a list of the execute modifiers that affect this execution context.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.entity">Entity</a></code></td>
+<td class="colFirst"><code><a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.functionlogic.entity">Entity</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/energyxxer/commodore/inspection/ExecutionContext.html#getOriginalSender--">getOriginalSender</a></span>()</code>
 <div class="block">Retrieves the entity who starts the execute command.</div>
 </td>
@@ -194,14 +194,14 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="ExecutionContext-com.energyxxer.commodore.entity.Entity-">
+<a name="ExecutionContext-com.energyxxer.commodore.functionlogic.entity.Entity-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>ExecutionContext</h4>
 <pre>public&nbsp;ExecutionContext(@NotNull
-                        @NotNull <a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.entity">Entity</a>&nbsp;sender)</pre>
+                        @NotNull <a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.functionlogic.entity">Entity</a>&nbsp;sender)</pre>
 <div class="block">Creates an execution context with no execute modifiers, executed by the given entity.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -209,15 +209,15 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a name="ExecutionContext-com.energyxxer.commodore.entity.Entity-java.util.Collection-">
+<a name="ExecutionContext-com.energyxxer.commodore.functionlogic.entity.Entity-java.util.Collection-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>ExecutionContext</h4>
 <pre>public&nbsp;ExecutionContext(@NotNull
-                        @NotNull <a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.entity">Entity</a>&nbsp;originalSender,
-                        java.util.Collection&lt;<a href="../../../../com/energyxxer/commodore/commands/execute/ExecuteModifier.html" title="interface in com.energyxxer.commodore.commands.execute">ExecuteModifier</a>&gt;&nbsp;modifiers)</pre>
+                        @NotNull <a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.functionlogic.entity">Entity</a>&nbsp;originalSender,
+                        java.util.Collection&lt;<a href="../../../../com/energyxxer/commodore/commands/execute/ExecuteModifier.html" title="interface in com.energyxxer.commodore.functionlogic.commands.execute">ExecuteModifier</a>&gt;&nbsp;modifiers)</pre>
 <div class="block">Creates an execution context started by the given sender entity, and modified by the given execute modifiers.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -241,7 +241,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getOriginalSender</h4>
-<pre>public&nbsp;<a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.entity">Entity</a>&nbsp;getOriginalSender()</pre>
+<pre>public&nbsp;<a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.functionlogic.entity">Entity</a>&nbsp;getOriginalSender()</pre>
 <div class="block">Retrieves the entity who starts the execute command.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -255,7 +255,7 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getModifiers</h4>
-<pre>public&nbsp;java.util.ArrayList&lt;<a href="../../../../com/energyxxer/commodore/commands/execute/ExecuteModifier.html" title="interface in com.energyxxer.commodore.commands.execute">ExecuteModifier</a>&gt;&nbsp;getModifiers()</pre>
+<pre>public&nbsp;java.util.ArrayList&lt;<a href="../../../../com/energyxxer/commodore/commands/execute/ExecuteModifier.html" title="interface in com.energyxxer.commodore.functionlogic.commands.execute">ExecuteModifier</a>&gt;&nbsp;getModifiers()</pre>
 <div class="block">Retrieves a list of the execute modifiers that affect this execution context.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -269,7 +269,7 @@ extends java.lang.Object</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>getFinalSender</h4>
-<pre>public&nbsp;<a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.entity">Entity</a>&nbsp;getFinalSender()</pre>
+<pre>public&nbsp;<a href="../../../../com/energyxxer/commodore/entity/Entity.html" title="interface in com.energyxxer.commodore.functionlogic.entity">Entity</a>&nbsp;getFinalSender()</pre>
 <div class="block">Retrieves entity who runs the command after all the executes have been evaluated.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -304,8 +304,8 @@ extends java.lang.Object</pre>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../com/energyxxer/commodore/inspection/EntityResolution.html" title="class in com.energyxxer.commodore.inspection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../com/energyxxer/commodore/inspection/ExecutionVariable.html" title="enum in com.energyxxer.commodore.inspection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../com/energyxxer/commodore/inspection/EntityResolution.html" title="class in com.energyxxer.commodore.functionlogic.inspection"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../com/energyxxer/commodore/inspection/ExecutionVariable.html" title="enum in com.energyxxer.commodore.functionlogic.inspection"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?com/energyxxer/commodore/inspection/ExecutionContext.html" target="_top">Frames</a></li>

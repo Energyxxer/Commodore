@@ -1,6 +1,6 @@
 package com.energyxxer.commodore.types.defaults;
 
-import com.energyxxer.commodore.functions.Function;
+import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.Type;
 

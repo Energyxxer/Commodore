@@ -1,6 +1,6 @@
 package com.energyxxer.commodore.module;
 
-import com.energyxxer.commodore.functions.FunctionManager;
+import com.energyxxer.commodore.functionlogic.functions.FunctionManager;
 import com.energyxxer.commodore.tags.TagManager;
 import com.energyxxer.commodore.types.defaults.TypeManager;
 

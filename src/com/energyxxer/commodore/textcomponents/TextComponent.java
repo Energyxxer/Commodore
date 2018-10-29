@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.textcomponents;
 
-import com.energyxxer.commodore.inspection.CommandEmbeddable;
-import com.energyxxer.commodore.score.access.ScoreboardAccess;
+import com.energyxxer.commodore.functionlogic.inspection.CommandEmbeddable;
+import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;

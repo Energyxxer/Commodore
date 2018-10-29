@@ -1,6 +1,6 @@
 package com.energyxxer.commodore.block;
 
-import com.energyxxer.commodore.nbt.TagCompound;
+import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
 import com.energyxxer.commodore.types.IllegalTypeException;
 import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.BlockType;

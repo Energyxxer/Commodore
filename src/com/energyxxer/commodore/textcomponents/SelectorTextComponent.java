@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.textcomponents;
 
-import com.energyxxer.commodore.entity.Entity;
-import com.energyxxer.commodore.inspection.CommandEmbeddable;
+import com.energyxxer.commodore.functionlogic.entity.Entity;
+import com.energyxxer.commodore.functionlogic.inspection.CommandEmbeddable;
 
 import java.util.Collection;
 import java.util.Collections;
