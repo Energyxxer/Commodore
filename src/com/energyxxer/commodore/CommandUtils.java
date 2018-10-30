@@ -1,5 +1,9 @@
 package com.energyxxer.commodore;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
+
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Locale;
@@ -83,6 +87,26 @@ public final class CommandUtils {
         df.setMaximumFractionDigits(340);
 
         return df.format(num);
+    }
+
+    public static JsonElement constructRange(int min, int max) {
+        if(min == max) return new JsonPrimitive(min);
+        else {
+            JsonObject range = new JsonObject();
+            range.addProperty("min", min);
+            range.addProperty("max", max);
+            return range;
+        }
+    }
+
+    public static JsonElement constructRange(double min, double max) {
+        if(min == max) return new JsonPrimitive(min);
+        else {
+            JsonObject range = new JsonObject();
+            range.addProperty("min", min);
+            range.addProperty("max", max);
+            return range;
+        }
     }
 
     /**

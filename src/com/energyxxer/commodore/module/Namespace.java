@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.module;
 
 import com.energyxxer.commodore.functionlogic.functions.FunctionManager;
+import com.energyxxer.commodore.loottables.LootTableManager;
 import com.energyxxer.commodore.tags.TagManager;
 import com.energyxxer.commodore.types.defaults.TypeManager;
 
@@ -36,6 +37,10 @@ public class Namespace {
      * The type manager for this namespace.
      * */
     public final TypeManager types;
+    /**
+     * The loot table manager for this namespace.
+     * */
+    public final LootTableManager lootTables;
 
     /**
      * Creates a namespace object for the given module and with the given name.
@@ -50,6 +55,7 @@ public class Namespace {
         this.functions = new FunctionManager(this);
         this.tags = new TagManager(this);
         this.types = new TypeManager(this);
+        this.lootTables = new LootTableManager(this);
     }
 
     /**
@@ -102,6 +108,15 @@ public class Namespace {
      * */
     public TypeManager getTypeManager() {
         return types;
+    }
+
+    /**
+     * Retrieves this namespace's loot table manager.
+     *
+     * @return The loot table manager for this namespace.
+     * */
+    public LootTableManager getLootTableManager() {
+        return lootTables;
     }
 
     /**

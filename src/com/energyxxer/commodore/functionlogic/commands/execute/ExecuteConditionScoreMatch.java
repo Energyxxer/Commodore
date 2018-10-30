@@ -4,7 +4,7 @@ import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.LocalScore;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
-import com.energyxxer.commodore.functionlogic.selector.SelectorNumberArgument;
+import com.energyxxer.commodore.util.NumberRange;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -13,9 +13,9 @@ import java.util.Collections;
 public class ExecuteConditionScoreMatch extends ExecuteCondition {
 
     private final LocalScore target;
-    private final SelectorNumberArgument range;
+    private final NumberRange range;
 
-    public ExecuteConditionScoreMatch(ConditionType flowController, LocalScore target, SelectorNumberArgument range) {
+    public ExecuteConditionScoreMatch(ConditionType flowController, LocalScore target, NumberRange range) {
         super(flowController);
         this.target = target;
         this.range = range;

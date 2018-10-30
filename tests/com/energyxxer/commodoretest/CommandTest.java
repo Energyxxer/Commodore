@@ -45,6 +45,7 @@ import com.energyxxer.commodore.functionlogic.commands.worldborder.WorldBorderSe
 import com.energyxxer.commodore.functionlogic.commands.worldborder.WorldBorderSetWarningDistance;
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
+import com.energyxxer.commodore.util.NumberRange;
 import com.energyxxer.commodore.util.StatusEffect;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.entity.GenericEntity;
@@ -299,7 +300,7 @@ public class CommandTest {
             //otherFunction.append(new ScoreSet(new LocalScore(t, entity1), 4));
 
             ScoreArgument scoreArg = new ScoreArgument();
-            scoreArg.put(t, new SelectorNumberArgument<>(1, 5));
+            scoreArg.put(t, new NumberRange<>(1, 5));
             GenericEntity entity2 = new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS, scoreArg));
             entity2.addMacroHolder(testMacro);
 

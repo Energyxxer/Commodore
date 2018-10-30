@@ -21,6 +21,7 @@ import com.energyxxer.commodore.functionlogic.score.Objective;
 import com.energyxxer.commodore.functionlogic.selector.*;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.types.defaults.EntityType;
+import com.energyxxer.commodore.util.NumberRange;
 
 import java.io.File;
 import java.io.IOException;
@@ -93,7 +94,7 @@ public class EnhancedHoes {
         tick.append(new FunctionComment("Prevent item frames from duplicating crops"));
         {
             GenericEntity nearbyCrops = allCrops.clone();
-            nearbyCrops.getSelector().addArguments(new DistanceArgument(new SelectorNumberArgument<>(null, 1.0)));
+            nearbyCrops.getSelector().addArguments(new DistanceArgument(new NumberRange<>(null, 1.0)));
 
             ExecuteCommand exec = new ExecuteCommand(new TagCommand(TagCommand.Action.REMOVE, nearbyCrops, "crop"));
             exec.addModifier(new ExecuteAtEntity(new GenericEntity(new Selector(ALL_ENTITIES, new TypeArgument(minecraft.getTypeManager().entity.get("item_frame"))))));
@@ -103,14 +104,14 @@ public class EnhancedHoes {
         tick.append(new FunctionComment("Prevent duplication of premature harvests"));
         {
             GenericEntity nearbyCrops = allSelfCrops.clone();
-            nearbyCrops.getSelector().addArguments(new DistanceArgument(new SelectorNumberArgument<>(null, 1.0)));
+            nearbyCrops.getSelector().addArguments(new DistanceArgument(new NumberRange<>(null, 1.0)));
             ExecuteCommand exec = new ExecuteCommand(new ScoreAdd(new LocalScore(crowd, nearbyCrops), 1));
             exec.addModifier(new ExecuteAtEntity(allSelfCrops));
             tick.append(exec);
         }
         {
             ScoreArgument scores = new ScoreArgument();
-            scores.put(crowd, new SelectorNumberArgument<>(1));
+            scores.put(crowd, new NumberRange<>(1));
             GenericEntity loneCrops = allSelfCrops.clone();
             loneCrops.getSelector().addArguments(scores);
             tick.append(new DataMergeCommand(loneCrops, new TagCompound(new TagList("Tags"))));

@@ -2,6 +2,7 @@ package com.energyxxer.commodore.module;
 
 import com.energyxxer.commodore.functionlogic.functions.AccessLogFile;
 import com.energyxxer.commodore.functionlogic.functions.Function;
+import com.energyxxer.commodore.loottables.LootTable;
 import com.energyxxer.commodore.tags.TagGroup;
 import com.energyxxer.commodore.tags.TagManager;
 import com.google.gson.Gson;
@@ -70,6 +71,8 @@ public class ModulePackGenerator {
             for(TagGroup<?> group : tagMgr.getGroups()) {
                 exportables.addAll(group.getAll());
             }
+
+            exportables.addAll(namespace.lootTables.getAll());
 
             for(Exportable exportable : exportables) {
                 if(exportable.shouldExport()) {

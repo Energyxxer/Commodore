@@ -1,12 +1,13 @@
 package com.energyxxer.commodore.functionlogic.selector;
 
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
+import com.energyxxer.commodore.util.NumberRange;
 
 public class PitchArgument implements SelectorArgument {
 
-    private final SelectorNumberArgument<Double> value;
+    private final NumberRange<Double> value;
 
-    public PitchArgument(SelectorNumberArgument<Double> value) {
+    public PitchArgument(NumberRange<Double> value) {
         this.value = value;
     }
 

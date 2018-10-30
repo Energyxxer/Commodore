@@ -2,12 +2,13 @@ package com.energyxxer.commodore.functionlogic.selector;
 
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
+import com.energyxxer.commodore.util.NumberRange;
 
 public class DistanceArgument implements SelectorArgument {
 
-    private final SelectorNumberArgument<Double> distance;
+    private final NumberRange<Double> distance;
 
-    public DistanceArgument(SelectorNumberArgument<Double> distance) {
+    public DistanceArgument(NumberRange<Double> distance) {
         this.distance = distance;
     }
 

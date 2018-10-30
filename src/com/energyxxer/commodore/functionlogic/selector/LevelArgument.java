@@ -1,12 +1,13 @@
 package com.energyxxer.commodore.functionlogic.selector;
 
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
+import com.energyxxer.commodore.util.NumberRange;
 
 public class LevelArgument implements SelectorArgument {
 
-    private final SelectorNumberArgument<Integer> value;
+    private final NumberRange<Integer> value;
 
-    public LevelArgument(SelectorNumberArgument<Integer> value) {
+    public LevelArgument(NumberRange<Integer> value) {
         this.value = value;
     }
 
