@@ -19,7 +19,7 @@ import com.energyxxer.commodore.loottables.LootNestedEntry;
 import com.energyxxer.commodore.loottables.LootTable;
 import com.energyxxer.commodore.loottables.Pool;
 import com.energyxxer.commodore.loottables.items.LootItemEntry;
-import com.energyxxer.commodore.loottables.items.LootItemFunction;
+import com.energyxxer.commodore.loottables.functions.LootFunction;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.ModulePackGenerator;
 import com.energyxxer.commodore.module.Namespace;
@@ -53,7 +53,7 @@ public class V114Test {
 
         function.append(new DropCommand(new DropToWorld(new CoordinateSet(0, 64, 0)), new DropFromKill(function.getSender())));
         function.append(new DropCommand(new DropToPlayer(function.getSender()), new DropFromFish("minecraft:entities/wither_skeleton", new CoordinateSet(1000, 62, 32), ToolOrHand.MAINHAND)));
-        function.append(new DropCommand(new DropToEntity(function.getSender(), module.minecraft.types.slot.get("weapon.offhand")), new DropFromAward("minecraft:entities/wither_skeleton")));
+        function.append(new DropCommand(new DropToEntity(function.getSender(), module.minecraft.types.slot.get("weapon.offhand")), new DropFromLoot("minecraft:entities/wither_skeleton")));
         function.append(new DropCommand(new DropToBlock(new CoordinateSet(0, 64, 0), module.minecraft.types.slot.get("container.4"), true), new DropFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE))));
         function.append(new DropCommand(new DropToBlock(new CoordinateSet(0, 64, 0)), new DropFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new ToolOrHand(module.minecraft.types.item.get("bamboo")))));
 
@@ -63,18 +63,18 @@ public class V114Test {
         first.setBonusRolls(2);
         moaDrop.addPool(first);
         LootItemEntry feathers = new LootItemEntry(module.minecraft.types.item.get("feather"));
-        feathers.addFunction(new LootItemFunction.SetCount(1, 4));
+        feathers.functions.add(new LootFunction.SetCount(1, 4));
         feathers.setWeight(3);
         LootItemEntry beef = new LootItemEntry(module.minecraft.types.item.get("beef"));
-        beef.addFunction(new LootItemFunction.FurnaceSmelt());
+        beef.functions.add(new LootFunction.FurnaceSmelt());
         first.addEntry(feathers);
         first.addEntry(beef);
 
         Pool second = new Pool();
         moaDrop.addPool(second);
         LootItemEntry crossbow = new LootItemEntry(module.minecraft.types.item.get("crossbow"));
-        crossbow.addFunction(new LootItemFunction.EnchantRandomly());
-        crossbow.addFunction(new LootItemFunction.SetAttributes(new Attribute("Speedup", Attribute.MOVEMENT_SPEED, Attribute.Operation.ADDITION, 0.1, Attribute.Slot.MAINHAND)));
+        crossbow.functions.add(new LootFunction.EnchantRandomly());
+        crossbow.functions.add(new LootFunction.SetAttributes(new Attribute("Speedup", Attribute.MOVEMENT_SPEED, Attribute.Operation.ADDITION, 0.1, Attribute.Slot.MAINHAND)));
         crossbow.setQuality(2);
         second.addEntry(crossbow);
         LootNestedEntry button = new LootNestedEntry("minecraft:blocks/acacia_button");

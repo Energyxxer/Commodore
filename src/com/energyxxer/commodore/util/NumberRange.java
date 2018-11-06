@@ -73,6 +73,14 @@ public class NumberRange<T extends Number> implements Cloneable {
         }
         throw new IllegalArgumentException("'" + str + "' is not an integer or range");
     }
+
+    public T getMin() {
+        return min;
+    }
+
+    public T getMax() {
+        return max;
+    }
 }
 
 class RangeParseResult<T extends Number> {

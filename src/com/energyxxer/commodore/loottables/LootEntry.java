@@ -1,11 +1,14 @@
 package com.energyxxer.commodore.loottables;
 
+import com.energyxxer.commodore.loottables.conditions.LootConditions;
 import com.google.gson.JsonObject;
 
 public abstract class LootEntry {
     private String type;
     private int weight = 1;
     private int quality = 0;
+
+    public final LootConditions conditions = new LootConditions();
 
     public LootEntry(String type) {
         this.type = type;

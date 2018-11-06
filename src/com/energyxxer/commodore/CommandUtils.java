@@ -89,22 +89,22 @@ public final class CommandUtils {
         return df.format(num);
     }
 
-    public static JsonElement constructRange(int min, int max) {
-        if(min == max) return new JsonPrimitive(min);
+    public static JsonElement constructRange(Integer min, Integer max) {
+        if(min != null && min.equals(max)) return new JsonPrimitive(min);
         else {
             JsonObject range = new JsonObject();
-            range.addProperty("min", min);
-            range.addProperty("max", max);
+            if(min != null) range.addProperty("min", min);
+            if(max != null) range.addProperty("max", max);
             return range;
         }
     }
 
-    public static JsonElement constructRange(double min, double max) {
-        if(min == max) return new JsonPrimitive(min);
+    public static JsonElement constructRange(Double min, Double max) {
+        if(min != null && min.equals(max)) return new JsonPrimitive(min);
         else {
             JsonObject range = new JsonObject();
-            range.addProperty("min", min);
-            range.addProperty("max", max);
+            if(min != null) range.addProperty("min", min);
+            if(max != null) range.addProperty("max", max);
             return range;
         }
     }

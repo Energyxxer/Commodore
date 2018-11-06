@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.loottables;
 
+import com.energyxxer.commodore.loottables.functions.LootFunctions;
 import com.energyxxer.commodore.module.Exportable;
 import com.energyxxer.commodore.module.Namespace;
 import com.google.gson.Gson;
@@ -17,6 +18,8 @@ public class LootTable implements Exportable {
     private final String path;
 
     private ArrayList<Pool> pools = new ArrayList<>();
+
+    private LootFunctions functions = new LootFunctions();
 
     private boolean export = true;
 
@@ -80,6 +83,8 @@ public class LootTable implements Exportable {
         for(Pool pool : pools) {
             poolList.add(pool.construct());
         }
+
+        functions.constructInto(root);
 
         return gson.toJson(root);
     }

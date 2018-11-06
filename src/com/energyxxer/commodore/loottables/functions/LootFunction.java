@@ -1,7 +1,8 @@
-package com.energyxxer.commodore.loottables.items;
+package com.energyxxer.commodore.loottables.functions;
 
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
+import com.energyxxer.commodore.loottables.conditions.LootConditions;
 import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.util.attributes.Attribute;
 import com.google.gson.JsonArray;
@@ -13,15 +14,17 @@ import java.util.Collection;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertEnchantment;
 
-public abstract class LootItemFunction {
+public abstract class LootFunction {
 
     private final String type;
+
+    public final LootConditions conditions = new LootConditions();
 
     public String getType() {
         return type;
     }
 
-    public LootItemFunction(String type) {
+    public LootFunction(String type) {
         this.type = type;
     }
 
@@ -31,7 +34,7 @@ public abstract class LootItemFunction {
         return object;
     }
 
-    public static class SetCount extends LootItemFunction {
+    public static class SetCount extends LootFunction {
         private int min, max;
 
         public SetCount(int count) {
@@ -68,7 +71,7 @@ public abstract class LootItemFunction {
         }
     }
 
-    public static class SetDamage extends LootItemFunction {
+    public static class SetDamage extends LootFunction {
         private int min, max;
 
         public SetDamage(int damage) {
@@ -105,7 +108,7 @@ public abstract class LootItemFunction {
         }
     }
 
-    public static class SetNBT extends LootItemFunction {
+    public static class SetNBT extends LootFunction {
         private TagCompound tag;
 
         public SetNBT(TagCompound tag) {
@@ -129,7 +132,7 @@ public abstract class LootItemFunction {
         }
     }
 
-    public static class SetAttributes extends LootItemFunction {
+    public static class SetAttributes extends LootFunction {
         private Collection<Attribute> attributes;
 
         public SetAttributes(Attribute... attributes) {
@@ -179,7 +182,7 @@ public abstract class LootItemFunction {
         }
     }
 
-    public static class EnchantRandomly extends LootItemFunction {
+    public static class EnchantRandomly extends LootFunction {
         private Collection<Type> enchantments;
 
         public EnchantRandomly(Type... enchantments) {
@@ -208,7 +211,7 @@ public abstract class LootItemFunction {
         }
     }
 
-    public static class EnchantWithLevels extends LootItemFunction {
+    public static class EnchantWithLevels extends LootFunction {
         private int minLevels;
         private int maxLevels;
         private boolean treasure = false;
@@ -241,7 +244,7 @@ public abstract class LootItemFunction {
         }
     }
 
-    public static class LootingEnchant extends LootItemFunction {
+    public static class LootingEnchant extends LootFunction {
         private int minCount;
         private int maxCount;
         private int limit;
@@ -270,7 +273,7 @@ public abstract class LootItemFunction {
         }
     }
 
-    public static class FurnaceSmelt extends LootItemFunction {
+    public static class FurnaceSmelt extends LootFunction {
 
         public FurnaceSmelt() {
             super("furnace_smelt");

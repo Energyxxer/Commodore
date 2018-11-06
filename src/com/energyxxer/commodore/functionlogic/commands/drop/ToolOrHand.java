@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.drop;
 
+import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.types.Type;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertItem;
@@ -18,6 +19,10 @@ public class ToolOrHand {
     public ToolOrHand(Type tool) {
         assertItem(tool);
         this.name = tool.toString();
+    }
+
+    public ToolOrHand(Item item) {
+        this.name = item.toString();
     }
 
     @Override

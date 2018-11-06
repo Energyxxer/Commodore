@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.loottables;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.loottables.conditions.LootConditions;
+import com.energyxxer.commodore.loottables.functions.LootFunctions;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -14,6 +16,9 @@ public class Pool {
     private int maxBonusRolls = 0;
     private ArrayList<LootEntry> entries = new ArrayList<>();
 
+    public final LootFunctions functions = new LootFunctions();
+    public final LootConditions conditions = new LootConditions();
+
     public JsonObject construct() {
         JsonObject object = new JsonObject();
         object.add("rolls", CommandUtils.constructRange(minRolls, maxRolls));
@@ -25,6 +30,7 @@ public class Pool {
         for(LootEntry entry : entries) {
             entryList.add(entry.construct());
         }
+        functions.constructInto(object);
         return object;
     }
 
