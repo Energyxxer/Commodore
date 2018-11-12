@@ -17,6 +17,14 @@ public class ClearCommand implements Command {
     private final Item item;
     private final int maxCount;
 
+    public ClearCommand() {
+        this(null, null);
+    }
+
+    public ClearCommand(Entity player) {
+        this(player, null);
+    }
+
     public ClearCommand(Entity player, Item item) {
         this(player, item, -1);
     }
@@ -31,7 +39,9 @@ public class ClearCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "clear \be0 " + item + ((maxCount >= 0) ? " " + maxCount : ""), player);
+        return player != null ?
+                new CommandResolution(execContext, "clear \be0" + ((item != null) ? (" " + item + ((maxCount >= 0) ? " " + maxCount : "")) : ""), player) :
+                new CommandResolution(execContext, "clear");
     }
 
     @Override @NotNull
