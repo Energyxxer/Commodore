@@ -13,15 +13,22 @@ import java.util.zip.ZipFile;
 public class ZipCompoundInput implements CompoundInput {
     private File file;
     private ZipFile zf = null;
+    private String rootPath;
 
     public ZipCompoundInput(File file) {
+        this(file, "");
+    }
+
+    public ZipCompoundInput(File file, String rootPath) {
         this.file = file;
+        if(rootPath.startsWith("/")) rootPath = rootPath.substring(1);
+        this.rootPath = rootPath;
     }
 
     @Override
     public InputStream get(String path) throws IOException {
         if(zf == null) throw new IllegalStateException("Must first call open() on the ZipCompoundInput");
-        ZipEntry entry = zf.getEntry(path);
+        ZipEntry entry = zf.getEntry(rootPath + path);
         if(entry == null) return null;
         if(entry.isDirectory()) { // If it's a directory, list all subfiles' names
             Enumeration<? extends ZipEntry> it = zf.entries();
@@ -31,7 +38,7 @@ public class ZipCompoundInput implements CompoundInput {
 
                 Path parent = Paths.get(sub.getName()).getParent();
 
-                if(parent != null && parent.equals(Paths.get(path))) {
+                if(parent != null && parent.equals(Paths.get(rootPath + path))) {
                     sb.append(sub.getName().substring(entry.getName().length())); // Add the name, excluding parent's path
                     if(sub.isDirectory()) sb.setLength(sb.length()-1); // If it's a directory, remove the trailing slash
                     sb.append('\n'); // Add a new line for more files

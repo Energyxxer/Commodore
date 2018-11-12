@@ -1,5 +1,6 @@
 package com.energyxxer.commodoretest;
 
+import com.energyxxer.commodore.functionlogic.commands.clear.ClearCommand;
 import com.energyxxer.commodore.functionlogic.commands.data.DataModifyCommand;
 import com.energyxxer.commodore.functionlogic.commands.data.ModifySourceFromEntity;
 import com.energyxxer.commodore.functionlogic.commands.data.ModifySourceValue;
@@ -14,12 +15,13 @@ import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
 import com.energyxxer.commodore.functionlogic.nbt.TagInt;
 import com.energyxxer.commodore.functionlogic.nbt.path.*;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
+import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.loottables.LootEmptyEntry;
 import com.energyxxer.commodore.loottables.LootNestedEntry;
 import com.energyxxer.commodore.loottables.LootTable;
 import com.energyxxer.commodore.loottables.Pool;
-import com.energyxxer.commodore.loottables.items.LootItemEntry;
 import com.energyxxer.commodore.loottables.functions.LootFunction;
+import com.energyxxer.commodore.loottables.items.LootItemEntry;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.ModulePackGenerator;
 import com.energyxxer.commodore.module.Namespace;
@@ -37,6 +39,7 @@ public class V114Test {
         module.getOptionManager().UNUSED_COMMAND_POLICY.setValue(UnusedCommandPolicy.COMMENT_OUT);
         try {
             module.importDefinitions(StandardDefinitionPacks.MINECRAFT_JAVA_LATEST_SNAPSHOT);
+            System.out.println(module.minecraft.tags.itemTags.getAll());
         } catch(IOException x) {
             x.printStackTrace();
         }
@@ -46,6 +49,8 @@ public class V114Test {
         Function function = ns.getFunctionManager().create("func", true, new GenericEntity(new Selector(Selector.BaseSelector.NEAREST_PLAYER)));
 
         function.append(new SetblockCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), module.minecraft.types.block.get("bamboo")));
+
+        function.append(new ClearCommand(function.getSender(), new Item(module.minecraft.tags.itemTags.get("wool"))));
 
         NBTPath path = new NBTPath(new NBTPathKey("Items"), new NBTListMatch(new TagCompound(new TagByte("Count", 1))), new NBTPathKey("tag"), new NBTObjectMatch(new TagCompound(new TagByte("LevelUp", 1))), new NBTPathKey("Enchantments"), new NBTListMatch(new TagCompound(new TagInt("lvl", 1))));
         function.append(new DataModifyCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), path, DataModifyCommand.MERGE(), new ModifySourceValue(new TagCompound(new TagInt("lvl", 2)))));
