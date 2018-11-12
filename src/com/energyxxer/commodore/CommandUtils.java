@@ -109,6 +109,72 @@ public final class CommandUtils {
         }
     }
 
+    public static String parseQuotedString(String text)
+    {
+        int index = 0;
+        char delimiter = text.charAt(index);
+        if (delimiter != '"' && delimiter != '\'') throw new IllegalArgumentException("Expected string at index " + index);
+        index++;
+        StringBuilder sb = new StringBuilder();
+        boolean escaped = false;
+        boolean terminated = false;
+        for (; index < text.length(); index++)
+        {
+            char c = text.charAt(index);
+            if (!escaped)
+            {
+                if (c == '\\')
+                {
+                    escaped = true;
+                    continue;
+                }
+                else if (c == delimiter)
+                {
+                    terminated = true;
+                    break;
+                }
+            }
+            else
+            {
+                escaped = false;
+                boolean unicodeSequence = false;
+                switch (c)
+                {
+                    case '0': c = '\0'; break;
+                    case 'b': c = '\b'; break;
+                    case 'f': c = '\f'; break;
+                    case 'n': c = '\n'; break;
+                    case 'r': c = '\r'; break;
+                    case 't': c = '\t'; break;
+                    case '\\': break;
+                    case '\'': break;
+                    case '\"': break;
+                    case 'u': unicodeSequence = true; break;
+                    default: throw new IllegalArgumentException("Illegal escape sequence");
+                }
+                if (unicodeSequence)
+                {
+                    int sequenceLength = 4;
+                    if (index + sequenceLength + 1 > text.length()) throw new IllegalArgumentException("Unexpected end of unicode escape sequence");
+                    String sequence = text.substring(index + 1, sequenceLength);
+                    int code;
+                    try {
+                        code = Integer.parseInt(sequence, 16);
+                    } catch(NumberFormatException x) {
+                        throw new IllegalArgumentException("Illegal unicode escape sequence");
+                    }
+                    String unicode = new String(Character.toChars(code));
+                    sb.append(unicode);
+                    index += sequenceLength;
+                    continue;
+                }
+            }
+            sb.append(c);
+        }
+        if (!terminated) throw new IllegalArgumentException("Unexpected end of input");
+        return sb.toString();
+    }
+
     /**
      * CommandUtils should not be instantiated.
      * */
