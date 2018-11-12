@@ -81,11 +81,11 @@ public class Coordinate {
     /**
      * The type of this coordinate.
      * */
-    private Type type;
+    private final Type type;
     /**
      * The distance from the origin this coordinate represents for its axis.
      * */
-    private double coord;
+    private final double coord;
 
     /**
      * Creates a coordinate object for the given distance in an absolute point of reference.
@@ -117,30 +117,12 @@ public class Coordinate {
     }
 
     /**
-     * Changes this coordinate's type.
-     *
-     * @param type The new coordinate type for this coordinate.
-     * */
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    /**
      * Retrieves this coordinate's distance from the point of reference; that is, its magnitude in its axis.
      *
      * @return The distance from the point of reference of this coordinate.
      * */
     public double getCoord() {
         return coord;
-    }
-
-    /**
-     * Changes this coordinate's magnitude.
-     *
-     * @param coord The new magnitude value for this coordinate.
-     * */
-    public void setCoord(double coord) {
-        this.coord = coord;
     }
 
     /**
