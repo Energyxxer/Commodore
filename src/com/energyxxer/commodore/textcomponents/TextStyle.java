@@ -64,7 +64,7 @@ public class TextStyle {
 
     public byte getMaskForParent(TextStyle parentStyle) {
         if(parentStyle == null) parentStyle = EMPTY_STYLE;
-        return (byte) ((parentStyle.mask | this.mask) & (parentStyle.flags ^ this.flags));
+        return (byte) ((parentStyle.mask | this.mask) & (~parentStyle.mask | (parentStyle.flags ^ this.flags)));
     }
 
     @Override
