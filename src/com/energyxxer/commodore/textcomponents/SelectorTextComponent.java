@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class SelectorTextComponent extends TextComponent {
-
     private final Entity entity;
 
     public SelectorTextComponent(Entity entity) {
@@ -28,11 +27,9 @@ public class SelectorTextComponent extends TextComponent {
     public String toString(TextComponent parent) {
         String escapedText = "\"\be#\r\"";
         String baseProperties = this.getBaseProperties(parent);
-        return (baseProperties == null) ? escapedText :
-                "{\"selector\":" +
+        return "{\"selector\":" +
                         escapedText +
-                        "," +
-                        baseProperties +
+                        (baseProperties != null ? "," + baseProperties : "") +
                         '}';
     }
 
