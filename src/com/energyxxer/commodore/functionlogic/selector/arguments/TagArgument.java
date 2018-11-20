@@ -1,29 +1,29 @@
-package com.energyxxer.commodore.functionlogic.selector;
+package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 
-public class NameArgument implements SelectorArgument {
-    private final String name;
+public class TagArgument implements SelectorArgument {
+    private final String tag;
     private final boolean negated;
 
-    public NameArgument(String name) {
-        if(name.startsWith("!")) {
-            this.name = name.substring(1);
+    public TagArgument(String tag) {
+        if(tag.startsWith("!")) {
+            this.tag = tag.substring(1);
             this.negated = true;
         } else {
-            this.name = name;
+            this.tag = tag;
             this.negated = false;
         }
     }
 
-    public NameArgument(String name, boolean negated) {
-        this.name = name;
+    public TagArgument(String tag, boolean negated) {
+        this.tag = tag;
         this.negated = negated;
     }
 
-    public String getName() {
-        return name;
+    public String getTag() {
+        return tag;
     }
 
     public boolean isNegated() {
@@ -32,7 +32,7 @@ public class NameArgument implements SelectorArgument {
 
     @Override
     public String getArgumentString() {
-        return "name=" + (negated ? "!" : "") + CommandUtils.quoteIfNecessary(name);
+        return "tag=" + (negated ? "!" : "") + CommandUtils.quoteIfNecessary(tag);
     }
 
     @Override
@@ -46,13 +46,13 @@ public class NameArgument implements SelectorArgument {
     }
 
     @Override
-    public NameArgument clone() {
-        return new NameArgument(name, negated);
+    public TagArgument clone() {
+        return new TagArgument(tag, negated);
     }
 
     @Override
     public String getKey() {
-        return "name";
+        return "tag";
     }
 
     @Override

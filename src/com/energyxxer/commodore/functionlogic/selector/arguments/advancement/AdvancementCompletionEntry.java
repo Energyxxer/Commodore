@@ -1,4 +1,4 @@
-package com.energyxxer.commodore.functionlogic.selector.advancement;
+package com.energyxxer.commodore.functionlogic.selector.arguments.advancement;
 
 public class AdvancementCompletionEntry implements AdvancementArgumentEntry {
 

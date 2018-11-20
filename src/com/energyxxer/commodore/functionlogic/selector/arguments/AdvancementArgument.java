@@ -1,7 +1,7 @@
-package com.energyxxer.commodore.functionlogic.selector;
+package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
-import com.energyxxer.commodore.functionlogic.selector.advancement.AdvancementArgumentEntry;
+import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.AdvancementArgumentEntry;
 
 import java.util.*;
 

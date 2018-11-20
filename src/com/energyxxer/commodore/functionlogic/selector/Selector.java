@@ -1,9 +1,11 @@
 package com.energyxxer.commodore.functionlogic.selector;
 
+import com.energyxxer.commodore.functionlogic.entity.EntityRepresentation;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.functionlogic.score.Objective;
-import com.energyxxer.commodore.functionlogic.selector.SortArgument.SortMode;
+import com.energyxxer.commodore.functionlogic.selector.arguments.*;
+import com.energyxxer.commodore.functionlogic.selector.arguments.SortArgument.SortMode;
 import com.energyxxer.commodore.util.BaseSelectorProperty;
 import com.energyxxer.commodore.util.BaseSelectorProperty.EnforcementType;
 
@@ -18,7 +20,7 @@ import java.util.Iterator;
  * @see com.energyxxer.commodore.functionlogic.entity.Entity
  * @see com.energyxxer.commodore.functionlogic.inspection.EntityResolution
  * */
-public class Selector implements Cloneable {
+public class Selector implements EntityRepresentation, Cloneable {
     /**
      * Represents a base selector type with default filtering of entities.
      * */

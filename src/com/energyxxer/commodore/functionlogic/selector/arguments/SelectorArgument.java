@@ -1,6 +1,7 @@
-package com.energyxxer.commodore.functionlogic.selector;
+package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
+import com.energyxxer.commodore.functionlogic.selector.Selector;
 
 public interface SelectorArgument extends Cloneable {
     String getArgumentString();

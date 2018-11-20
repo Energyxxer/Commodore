@@ -45,30 +45,28 @@ import com.energyxxer.commodore.functionlogic.commands.worldborder.WorldBorderSe
 import com.energyxxer.commodore.functionlogic.commands.worldborder.WorldBorderSetWarningDistance;
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
-import com.energyxxer.commodore.util.NumberRange;
-import com.energyxxer.commodore.util.StatusEffect;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.entity.GenericEntity;
 import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.functionlogic.functions.FunctionComment;
 import com.energyxxer.commodore.functionlogic.functions.FunctionHeaderComment;
-import com.energyxxer.commodore.item.Item;
-import com.energyxxer.commodore.module.CommandModule;
-import com.energyxxer.commodore.module.ModulePackGenerator;
-import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.functionlogic.nbt.NumericNBTType;
 import com.energyxxer.commodore.functionlogic.nbt.TagByte;
 import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
 import com.energyxxer.commodore.functionlogic.nbt.TagShort;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
-import com.energyxxer.commodore.util.Particle;
 import com.energyxxer.commodore.functionlogic.rotation.Rotation;
 import com.energyxxer.commodore.functionlogic.rotation.RotationUnit;
 import com.energyxxer.commodore.functionlogic.score.*;
-import com.energyxxer.commodore.functionlogic.selector.*;
-import com.energyxxer.commodore.functionlogic.selector.advancement.AdvancementCompletionEntry;
-import com.energyxxer.commodore.functionlogic.selector.advancement.AdvancementCriterionEntry;
-import com.energyxxer.commodore.functionlogic.selector.advancement.AdvancementCriterionGroupEntry;
+import com.energyxxer.commodore.functionlogic.selector.Selector;
+import com.energyxxer.commodore.functionlogic.selector.arguments.*;
+import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.AdvancementCompletionEntry;
+import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.AdvancementCriterionEntry;
+import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.AdvancementCriterionGroupEntry;
+import com.energyxxer.commodore.item.Item;
+import com.energyxxer.commodore.module.CommandModule;
+import com.energyxxer.commodore.module.ModulePackGenerator;
+import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.tags.BlockTag;
 import com.energyxxer.commodore.tags.FunctionTag;
@@ -78,6 +76,9 @@ import com.energyxxer.commodore.textcomponents.TextColor;
 import com.energyxxer.commodore.textcomponents.TextStyle;
 import com.energyxxer.commodore.types.defaults.*;
 import com.energyxxer.commodore.util.Delta;
+import com.energyxxer.commodore.util.NumberRange;
+import com.energyxxer.commodore.util.Particle;
+import com.energyxxer.commodore.util.StatusEffect;
 
 import java.io.File;
 import java.io.IOException;
@@ -208,7 +209,7 @@ public class CommandTest {
 
         function.append(new SummonCommand(bat, new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new TagCompound(new TagByte("Glowing", 1))));
 
-        function.append(new TeleportCommand(player, TeleportDestination.create(new CoordinateSet(0, 0, 2, Coordinate.Type.LOCAL)), TeleportFacing.create(new Rotation(12.5, 0, RotationUnit.Type.RELATIVE))));
+        function.append(new TeleportCommand(new PlayerName("Energyxxer"), TeleportDestination.create(new CoordinateSet(0, 0, 2, Coordinate.Type.LOCAL)), TeleportFacing.create(new Rotation(12.5, 0, RotationUnit.Type.RELATIVE))));
         Selector singlePlayerSelector = player.getSelector().clone();
         singlePlayerSelector.addArguments(new LimitArgument(1));
         Entity singlePlayer = new GenericEntity(singlePlayerSelector);
@@ -356,7 +357,7 @@ public class CommandTest {
         Entity entityA = new GenericEntity(new Selector(Selector.BaseSelector.SENDER));
         entityA.addMacroHolder(new MacroScoreHolder("INSTANCE"));
 
-        ScoreHolder fakePlayer = new FakePlayer("TEMPEST");
+        ScoreHolder fakePlayer = new PlayerName("TEMPEST");
 
         scoreTest.append(new ScoreSet(new LocalScore(obj, entityA), 5));
         scoreTest.append(new ScoreSet(new LocalScore(obj, fakePlayer), 9));

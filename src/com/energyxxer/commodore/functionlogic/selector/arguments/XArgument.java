@@ -1,19 +1,19 @@
-package com.energyxxer.commodore.functionlogic.selector;
+package com.energyxxer.commodore.functionlogic.selector.arguments;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
-import com.energyxxer.commodore.util.NumberRange;
 
-public class LevelArgument implements SelectorArgument {
+public class XArgument implements SelectorArgument {
 
-    private final NumberRange<Integer> value;
+    private final double value;
 
-    public LevelArgument(NumberRange<Integer> value) {
+    public XArgument(double value) {
         this.value = value;
     }
 
     @Override
     public String getArgumentString() {
-        return "level=" + value;
+        return "x=" + CommandUtils.numberToPlainString(value);
     }
 
     @Override
@@ -22,13 +22,13 @@ public class LevelArgument implements SelectorArgument {
     }
 
     @Override
-    public LevelArgument clone() {
-        return new LevelArgument(value.clone());
+    public XArgument clone() {
+        return new XArgument(value);
     }
 
     @Override
     public String getKey() {
-        return "level";
+        return "x";
     }
 
     @Override

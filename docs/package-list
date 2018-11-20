@@ -65,7 +65,7 @@ com.energyxxer.commodore.functionlogic.rotation
 com.energyxxer.commodore.functionlogic.score
 com.energyxxer.commodore.functionlogic.score.access
 com.energyxxer.commodore.functionlogic.selector
-com.energyxxer.commodore.functionlogic.selector.advancement
+com.energyxxer.commodore.functionlogic.selector.arguments.advancement
 com.energyxxer.commodore.standard
 com.energyxxer.commodore.tags
 com.energyxxer.commodore.textcomponents

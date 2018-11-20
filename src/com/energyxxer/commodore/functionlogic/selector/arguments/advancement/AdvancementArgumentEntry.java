@@ -1,4 +1,4 @@
-package com.energyxxer.commodore.functionlogic.selector.advancement;
+package com.energyxxer.commodore.functionlogic.selector.arguments.advancement;
 
 public interface AdvancementArgumentEntry extends Cloneable {
     String getArgumentString();

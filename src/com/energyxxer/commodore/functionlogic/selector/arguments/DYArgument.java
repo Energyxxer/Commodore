@@ -1,20 +1,20 @@
-
-package com.energyxxer.commodore.functionlogic.selector;
+package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 
-public class YArgument implements SelectorArgument {
+public class DYArgument implements SelectorArgument {
 
     private final double value;
 
-    public YArgument(double value) {
+    public DYArgument(double value) {
         this.value = value;
     }
 
     @Override
     public String getArgumentString() {
-        return "y=" + CommandUtils.numberToPlainString(value);
+        return "dy=" + CommandUtils.numberToPlainString(value);
     }
 
     @Override
@@ -23,17 +23,17 @@ public class YArgument implements SelectorArgument {
     }
 
     @Override
-    public YArgument clone() {
-        return new YArgument(value);
+    public DYArgument clone() {
+        return new DYArgument(value);
     }
 
     @Override
     public String getKey() {
-        return "y";
+        return "dy";
     }
 
     @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
-        return null;
+        return new ExecutionVariableMap(ExecutionVariable.Y, ExecutionVariable.DIMENSION);
     }
 }

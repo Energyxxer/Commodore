@@ -1,19 +1,20 @@
-package com.energyxxer.commodore.functionlogic.selector;
+
+package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 
-public class ZArgument implements SelectorArgument {
+public class YArgument implements SelectorArgument {
 
     private final double value;
 
-    public ZArgument(double value) {
+    public YArgument(double value) {
         this.value = value;
     }
 
     @Override
     public String getArgumentString() {
-        return "z=" + CommandUtils.numberToPlainString(value);
+        return "y=" + CommandUtils.numberToPlainString(value);
     }
 
     @Override
@@ -22,13 +23,13 @@ public class ZArgument implements SelectorArgument {
     }
 
     @Override
-    public ZArgument clone() {
-        return new ZArgument(value);
+    public YArgument clone() {
+        return new YArgument(value);
     }
 
     @Override
     public String getKey() {
-        return "z";
+        return "y";
     }
 
     @Override

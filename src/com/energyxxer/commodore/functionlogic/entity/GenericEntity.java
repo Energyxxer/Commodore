@@ -6,8 +6,8 @@ import com.energyxxer.commodore.functionlogic.score.MacroScore;
 import com.energyxxer.commodore.functionlogic.score.MacroScoreHolder;
 import com.energyxxer.commodore.functionlogic.score.Objective;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
-import com.energyxxer.commodore.functionlogic.selector.LimitArgument;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
+import com.energyxxer.commodore.functionlogic.selector.arguments.LimitArgument;
 
 import java.util.ArrayList;
 import java.util.Arrays;
