@@ -14,9 +14,10 @@ import java.util.Locale;
 public final class CommandUtils {
 
     /**
-     * String describing all the characters allowed in a string without the need of quotation marks.
+     * String describing all the characters allowed in a string without the need of quotation marks used
+     * in places such as nbt tag keys, entity tags, team names, etc.
      * */
-    private static final String IDENTIFIER_ALLOWED = "[A-Za-z0-9_.\\-+]+";
+    public static final String IDENTIFIER_ALLOWED = "[A-Za-z0-9_.\\-+]*";
 
     /**
      * Escapes the given string's quotes and backslashes.

@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.score;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.commands.scoreboard.ObjectivesAddCommand;
 import com.energyxxer.commodore.textcomponents.TextComponent;
 
@@ -32,8 +33,12 @@ public class Objective {
     }
 
     Objective(ObjectiveManager parent, String name, String type, TextComponent displayName, boolean field) {
+        if(name.length() <= 0)
+            throw new IllegalArgumentException("Objective name must not be empty");
         if(name.length() > MAX_NAME_LENGTH)
             throw new IllegalArgumentException("Objective name '" + name + "' exceeds the limit of " + MAX_NAME_LENGTH + " characters");
+        if(!name.matches(CommandUtils.IDENTIFIER_ALLOWED))
+            throw new IllegalArgumentException("Objective name '" + name + "' has illegal characters. Does not match regex: " + CommandUtils.IDENTIFIER_ALLOWED);
         this.parent = parent;
         this.name = name;
         this.type = type;

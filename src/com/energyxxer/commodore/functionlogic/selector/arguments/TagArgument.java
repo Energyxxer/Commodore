@@ -20,6 +20,8 @@ public class TagArgument implements SelectorArgument {
     public TagArgument(String tag, boolean negated) {
         this.tag = tag;
         this.negated = negated;
+        if(!tag.matches(CommandUtils.IDENTIFIER_ALLOWED))
+            throw new IllegalArgumentException("Tag argument value '" + tag + "' has illegal characters. Does not match regex: " + CommandUtils.IDENTIFIER_ALLOWED);
     }
 
     public String getTag() {
@@ -32,7 +34,7 @@ public class TagArgument implements SelectorArgument {
 
     @Override
     public String getArgumentString() {
-        return "tag=" + (negated ? "!" : "") + CommandUtils.quoteIfNecessary(tag);
+        return "tag=" + (negated ? "!" : "") + tag;
     }
 
     @Override
