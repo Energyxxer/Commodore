@@ -16,7 +16,7 @@ public final class CommandUtils {
     /**
      * String describing all the characters allowed in a string without the need of quotation marks.
      * */
-    private static final String STRING_ALLOWED = "[A-Za-z0-9_.\\-+]+";
+    private static final String IDENTIFIER_ALLOWED = "[A-Za-z0-9_.\\-+]+";
 
     /**
      * Escapes the given string's quotes and backslashes.
@@ -51,7 +51,7 @@ public final class CommandUtils {
      * <code>false</code> if all characters are allowed in unquoted strings.
      * */
     public static boolean needsQuoting(String str) {
-        return !str.matches(STRING_ALLOWED);
+        return !str.matches(IDENTIFIER_ALLOWED);
     }
 
     /**
