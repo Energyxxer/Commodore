@@ -273,11 +273,11 @@ public class CommandTest {
 
         function.append(new FillCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.get("command_block"))));
         function.append(new FillCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.get("command_block"))));
-        function.append(new FillDestroyCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.get("air"))));
-        function.append(new FillOutlineCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.get("white_concrete"))));
-        function.append(new FillHollowCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.get("blue_concrete"))));
-        function.append(new FillKeepCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.get("fire"))));
-        function.append(new FillReplaceCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.get("spruce_planks")), new Block(module.minecraft.getTypeManager().block.get("oak_planks"))));
+        function.append(new FillCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.get("air")), new FillDestroyMode()));
+        function.append(new FillCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.get("white_concrete")), new FillOutlineMode()));
+        function.append(new FillCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.get("blue_concrete")), new FillHollowMode()));
+        function.append(new FillCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.get("fire")), new FillKeepMode()));
+        function.append(new FillCommand(pos1, pos2, new Block(module.minecraft.getTypeManager().block.get("spruce_planks")), new FillReplaceMode(new Block(module.minecraft.getTypeManager().block.get("oak_planks")))));
 
         function.append(new FunctionComment("OTHERS"));
 

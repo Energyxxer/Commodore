@@ -17,19 +17,26 @@ public class FillCommand implements Command {
 
     private final Block block;
 
+    private final FillMode mode;
+
     public FillCommand(CoordinateSet pos1, CoordinateSet pos2, Block block) {
+        this(pos1, pos2, block, new FillReplaceMode());
+    }
+
+    public FillCommand(CoordinateSet pos1, CoordinateSet pos2, Block block, FillMode mode) {
         this.pos1 = pos1;
         this.pos2 = pos2;
         this.block = block;
+        this.mode = mode;
         assertStandalone(block.getBlockType());
-    }
-
-    protected String getMaskExtra() {
-        return "";
     }
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "fill " + pos1.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + pos2.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + block + getMaskExtra());
+        return new CommandResolution(execContext, "fill " + pos1.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + pos2.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + block + mode.getMaskExtra());
     }
+}
+
+interface FillMode {
+    String getMaskExtra();
 }

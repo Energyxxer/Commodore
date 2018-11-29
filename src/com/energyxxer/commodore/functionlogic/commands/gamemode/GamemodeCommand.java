@@ -10,6 +10,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertGamemode;
 
@@ -18,21 +19,25 @@ public class GamemodeCommand implements Command {
     private final Type gamemode;
     private final Entity player;
 
+    public GamemodeCommand(Type gamemode) {
+        this(gamemode, null);
+    }
+
     public GamemodeCommand(Type gamemode, Entity player) {
         this.gamemode = gamemode;
         this.player = player;
 
         assertGamemode(gamemode);
-        player.assertPlayer();
+        if(player != null) player.assertPlayer();
     }
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "gamemode " + gamemode + " \be0", player);
+        return player != null ? new CommandResolution(execContext, "gamemode " + gamemode + " \be0", player) : new CommandResolution(execContext, "gamemode " + gamemode);
     }
 
     @Override @NotNull
     public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return new ArrayList<>(player.getScoreboardAccesses());
+        return player != null ? new ArrayList<>(player.getScoreboardAccesses()) : Collections.emptyList();
     }
 }
