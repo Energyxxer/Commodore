@@ -9,10 +9,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 public class KillCommand implements Command {
 
     private final Entity entity;
+
+    public KillCommand() {
+        this(null);
+    }
 
     public KillCommand(Entity entity) {
         this.entity = entity;
@@ -20,11 +25,11 @@ public class KillCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "kill \be0", entity);
+        return entity != null ? new CommandResolution(execContext, "kill \be0", entity) : new CommandResolution(execContext, "kill");
     }
 
     @Override @NotNull
     public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return new ArrayList<>(entity.getScoreboardAccesses());
+        return entity != null ? new ArrayList<>(entity.getScoreboardAccesses()) : Collections.emptyList();
     }
 }

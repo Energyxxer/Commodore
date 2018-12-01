@@ -148,6 +148,18 @@ public class Selector implements EntityRepresentation, Cloneable {
             return player;
         }
 
+        /**
+         * Retrieves the base selector object corresponding to the given header characters.
+         *
+         * @param header The character used by the header of the base selector to retrieve.
+         * @return The base selector whose header is the given string.
+         * */
+        public static BaseSelector getForHeader(String header) {
+            for(BaseSelector base : values()) {
+                if(base.header.equals(header)) return base;
+            }
+            return null;
+        }
     }
     /**
      * The selector type for this selector.

@@ -2,7 +2,6 @@ package com.energyxxer.commodore.module;
 
 import com.energyxxer.commodore.functionlogic.functions.AccessLogFile;
 import com.energyxxer.commodore.functionlogic.functions.Function;
-import com.energyxxer.commodore.loottables.LootTable;
 import com.energyxxer.commodore.tags.TagGroup;
 import com.energyxxer.commodore.tags.TagManager;
 import com.google.gson.Gson;
@@ -33,17 +32,14 @@ public class ModulePackGenerator {
 
     private ZipOutputStream zipStream;
 
-    public ModulePackGenerator(CommandModule module, File directory, OutputType outputType) {
+    public ModulePackGenerator(CommandModule module, File outFile, OutputType outputType) {
         this.module = module;
         this.outputType = outputType;
 
-        if(!directory.exists()) directory.mkdirs();
-        if(!directory.isDirectory())
-            throw new IllegalArgumentException("Expected directory, instead found file at '" + directory + "'");
-
+        if(!outFile.exists()) outFile.mkdirs();
         this.gson = new GsonBuilder().setPrettyPrinting().create();
 
-        this.rootPath = directory.getAbsolutePath() + File.separator + module.name + (outputType == ZIP ? ".zip" : "");
+        this.rootPath = outFile.getAbsolutePath() + File.separator + module.name + (outputType == ZIP ? ".zip" : "");
         this.rootFile = new File(this.rootPath);
         if(rootFile.isDirectory() && !rootFile.exists()) rootFile.mkdirs();
     }
