@@ -9,6 +9,10 @@ public class ModifySourceFromBlock implements DataModifyCommand.ModifySource {
     private final CoordinateSet pos;
     private final NBTPath sourcePath;
 
+    public ModifySourceFromBlock(CoordinateSet pos) {
+        this(pos, null);
+    }
+
     public ModifySourceFromBlock(CoordinateSet pos, NBTPath sourcePath) {
         this.pos = pos;
         this.sourcePath = sourcePath;
@@ -16,6 +20,6 @@ public class ModifySourceFromBlock implements DataModifyCommand.ModifySource {
 
     @Override
     public CommandDelegateResolution resolve() {
-        return new CommandDelegateResolution("from block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + sourcePath);
+        return new CommandDelegateResolution("from block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + ((sourcePath != null) ? " " + sourcePath : ""));
     }
 }

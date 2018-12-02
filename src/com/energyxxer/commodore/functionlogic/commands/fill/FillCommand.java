@@ -12,6 +12,10 @@ import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
 
 public class FillCommand implements Command {
 
+    public interface FillMode {
+        String getMaskExtra();
+    }
+
     private final CoordinateSet pos1;
     private final CoordinateSet pos2;
 
@@ -35,8 +39,4 @@ public class FillCommand implements Command {
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "fill " + pos1.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + pos2.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + block + mode.getMaskExtra());
     }
-}
-
-interface FillMode {
-    String getMaskExtra();
 }
