@@ -39,15 +39,17 @@ public class CommandResolution {
                 ExecutionContext subExecContext = new ExecutionContext(execContext.getOriginalSender(), modifiers.subList(0, i));
                 SubCommandResult result = modifier.getSubCommand(subExecContext);
                 String raw = result.getRaw();
+                int offset = 0;
                 for(int j = 0; j < result.getEmbeddables().size(); j++) {
                     CommandEmbeddable embeddable = result.getEmbeddables().get(j);
                     CommandEmbeddableResolution resolution = embeddable.resolveEmbed(subExecContext);
-                    modifiers.addAll(resolution.getNewModifiers());
-                    i -= resolution.getNewModifiers().size() + 1;
+                    modifiers.addAll(i + offset, resolution.getNewModifiers());
+                    offset += resolution.getNewModifiers().size();
                     raw = embed(raw, "\be" + j, resolution.getEmbedString());
                     //TODO: This probably needs to re-create the subExecContext to accurately resolve the next Entity
                     // I'm too sleepy to attempt that now
                 }
+                if(offset != 0) i--;
                 alreadyResolved.add(modifier);
                 resolved.put(modifier, raw);
             }
