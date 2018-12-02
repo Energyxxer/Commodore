@@ -5,11 +5,12 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 
 public class ExecuteAlignment implements ExecuteModifier {
-    private boolean x;
-    private boolean y;
-    private boolean z;
+    private final boolean x;
+    private final boolean y;
+    private final boolean z;
 
     public ExecuteAlignment(boolean x, boolean y, boolean z) {
+        if(!(x || y || z)) throw new IllegalArgumentException("At least one axis must be included in an execute align modifier");
         this.x = x;
         this.y = y;
         this.z = z;
