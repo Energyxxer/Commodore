@@ -25,4 +25,11 @@ public enum ScoreComparison {
     public ScoreComparison getReverse() {
         return reverse;
     }
+
+    public static ScoreComparison getValueForSymbol(String sym) {
+        for(ScoreComparison value : values()) {
+            if(value.symbol.equals(sym)) return value;
+        }
+        return null;
+    }
 }
