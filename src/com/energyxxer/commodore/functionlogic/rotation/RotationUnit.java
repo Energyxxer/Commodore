@@ -42,7 +42,7 @@ public class RotationUnit {
 
     @Override
     public String toString() {
-        return type.prefix + CommandUtils.numberToPlainString(value);
+        return type.prefix + ((value == 0 && type == Type.RELATIVE) ? "" : CommandUtils.numberToPlainString(value));
     }
 
     @Override
