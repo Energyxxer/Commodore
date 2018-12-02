@@ -12,15 +12,15 @@ import java.util.Collection;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertBossbar;
 
-public class BossbarCreateCommand extends BossbarCommand {
+public class BossbarAddCommand extends BossbarCommand {
     private final Type bossbar;
     private final TextComponent name;
 
-    public BossbarCreateCommand(Type bossbar) {
+    public BossbarAddCommand(Type bossbar) {
         this(bossbar, null);
     }
 
-    public BossbarCreateCommand(Type bossbar, TextComponent name) {
+    public BossbarAddCommand(Type bossbar, TextComponent name) {
         this.bossbar = bossbar;
         this.name = name;
 
@@ -29,7 +29,7 @@ public class BossbarCreateCommand extends BossbarCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        String base = "bossbar create " + bossbar + " ";
+        String base = "bossbar add " + bossbar + " ";
 
         if(name != null) {
             String displayName = name.toString();

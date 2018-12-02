@@ -17,12 +17,14 @@ public class AdvancementCommand implements Command {
     }
 
     public enum Limit {
-        EVERYTHING(false), FROM(true), ONLY(true), THROUGH(true), UNTIL(true);
+        EVERYTHING(false, false), FROM(true, false), ONLY(true, true), THROUGH(true, false), UNTIL(true, false);
 
         private final boolean takesAdvancement;
+        private final boolean takesCriteria;
 
-        Limit(boolean takesAdvancement) {
+        Limit(boolean takesAdvancement, boolean takesCriteria) {
             this.takesAdvancement = takesAdvancement;
+            this.takesCriteria = takesCriteria;
         }
     }
 
@@ -30,6 +32,7 @@ public class AdvancementCommand implements Command {
     private final Entity player;
     private final Limit limit;
     private String advancement = null;
+    private ArrayList<String> criteria = new ArrayList<>();
 
     public AdvancementCommand(Action action, Entity player, Limit limit) {
         this(action, player, limit, null);
@@ -38,20 +41,35 @@ public class AdvancementCommand implements Command {
     }
 
     public AdvancementCommand(Action action, Entity player, Limit limit, String advancement) {
+        this(action, player, limit, advancement, null);
+    }
+
+    public AdvancementCommand(Action action, Entity player, Limit limit, String advancement, Collection<String> criteria) {
         this.action = action;
         this.player = player;
         this.limit = limit;
-        this.advancement = advancement;
+        if(limit.takesAdvancement) this.advancement = advancement;
+        if(limit.takesCriteria && criteria != null) this.criteria.addAll(criteria);
 
         player.assertPlayer();
 
         if(advancement != null && !limit.takesAdvancement)
-            System.out.println("[Commodore] [NOTICE] Limit '" + limit + "' doesn't require an advancement parameter, yet '" + advancement + "' was passed");
+            throw new IllegalArgumentException("Limit '" + limit + "' doesn't require an advancement parameter, yet '" + advancement + "' was passed");
+        if(criteria != null && !limit.takesCriteria)
+            throw new IllegalArgumentException("Limit '" + limit + "' doesn't require a criteria parameter, yet '" + criteria + "' was passed");
     }
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "advancement " + action.toString().toLowerCase() + " \be0 " + limit.toString().toLowerCase() + ((limit.takesAdvancement) ? " " + advancement : ""), player);
+        StringBuilder criteriaStr = new StringBuilder();
+        if(limit.takesCriteria && !criteria.isEmpty()) {
+            for(String str : criteria) {
+                criteriaStr.append(" ");
+                criteriaStr.append(str);
+            }
+        }
+        return new CommandResolution(execContext,
+                "advancement " + action.toString().toLowerCase() + " \be0 " + limit.toString().toLowerCase() + ((limit.takesAdvancement) ? " " + advancement : "") + ((limit.takesCriteria) ? criteriaStr.toString() : ""), player);
     }
 
     @Override @NotNull

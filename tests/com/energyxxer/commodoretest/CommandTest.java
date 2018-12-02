@@ -3,8 +3,8 @@ package com.energyxxer.commodoretest;
 import com.energyxxer.commodore.block.Block;
 import com.energyxxer.commodore.functionlogic.commands.CommandGroup;
 import com.energyxxer.commodore.functionlogic.commands.advancement.AdvancementCommand;
+import com.energyxxer.commodore.functionlogic.commands.bossbar.BossbarAddCommand;
 import com.energyxxer.commodore.functionlogic.commands.bossbar.BossbarCommand;
-import com.energyxxer.commodore.functionlogic.commands.bossbar.BossbarCreateCommand;
 import com.energyxxer.commodore.functionlogic.commands.bossbar.set.BossbarSetColorCommand;
 import com.energyxxer.commodore.functionlogic.commands.bossbar.set.BossbarSetPlayersCommand;
 import com.energyxxer.commodore.functionlogic.commands.bossbar.set.BossbarSetStyleCommand;
@@ -327,7 +327,7 @@ public class CommandTest {
 
         BossbarReference bb = new BossbarReference(module.minecraft, "stamina");
 
-        otherFunction.append(new BossbarCreateCommand(bb, new StringTextComponent("Stamina", new TextStyle(TextColor.WHITE))));
+        otherFunction.append(new BossbarAddCommand(bb, new StringTextComponent("Stamina", new TextStyle(TextColor.WHITE))));
         otherFunction.append(new BossbarSetColorCommand(bb, BossbarCommand.BossbarColor.BLUE));
         otherFunction.append(new BossbarSetStyleCommand(bb, BossbarCommand.BossbarStyle.NOTCHED_6));
         otherFunction.append(new BossbarSetPlayersCommand(bb, player));
