@@ -5,7 +5,7 @@ import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 
-public class ModifySourceFromBlock implements ModifySource {
+public class ModifySourceFromBlock implements DataModifyCommand.ModifySource {
     private final CoordinateSet pos;
     private final NBTPath sourcePath;
 

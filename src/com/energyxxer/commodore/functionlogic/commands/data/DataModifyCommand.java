@@ -71,16 +71,16 @@ public class DataModifyCommand extends DataCommand {
 
         return new CommandResolution(execContext, sb.toString(), embeddables.toArray(new CommandEmbeddable[0]));
     }
-}
 
-class ModifyOperation {
-    final String operation;
+    public static class ModifyOperation {
+        final String operation;
 
-    public ModifyOperation(String operation) {
-        this.operation = operation;
+        public ModifyOperation(String operation) {
+            this.operation = operation;
+        }
     }
-}
 
-interface ModifySource {
-    CommandDelegateResolution resolve();
+    public interface ModifySource {
+        CommandDelegateResolution resolve();
+    }
 }

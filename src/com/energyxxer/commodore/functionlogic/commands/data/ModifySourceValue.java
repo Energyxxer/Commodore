@@ -3,7 +3,7 @@ package com.energyxxer.commodore.functionlogic.commands.data;
 import com.energyxxer.commodore.functionlogic.commands.CommandDelegateResolution;
 import com.energyxxer.commodore.functionlogic.nbt.NBTTag;
 
-public class ModifySourceValue implements ModifySource {
+public class ModifySourceValue implements DataModifyCommand.ModifySource {
     private final NBTTag value;
 
     public ModifySourceValue(NBTTag value) {
