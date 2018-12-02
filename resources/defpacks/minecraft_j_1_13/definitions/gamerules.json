@@ -42,7 +42,7 @@
     "argument": "int"
   },
   "maxEntityCramming": {
-    "argument": "boolean"
+    "argument": "int"
   },
   "mobGriefing": {
     "argument": "boolean"
