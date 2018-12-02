@@ -13,6 +13,10 @@ public class DataGetCommand extends DataCommand {
     private NBTPath path;
     private double scale = 1;
 
+    public DataGetCommand(Entity entity) {
+        this(entity, null);
+    }
+
     public DataGetCommand(Entity entity, NBTPath path) {
         this(entity, path, 1);
     }
@@ -22,6 +26,10 @@ public class DataGetCommand extends DataCommand {
         if(entity.getLimit() < 0 || entity.getLimit() > 1) throw new IllegalArgumentException("Only one entity is allowed, but passed entity (" + entity + ") allows for more than one.");
         this.path = path;
         this.scale = scale;
+    }
+
+    public DataGetCommand(CoordinateSet pos) {
+        this(pos, null);
     }
 
     public DataGetCommand(CoordinateSet pos, NBTPath path) {
@@ -36,8 +44,8 @@ public class DataGetCommand extends DataCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        if(entity != null) return new CommandResolution(execContext, "data get entity \be0 " + path + (scale != 1 ? String.valueOf(scale) : ""), entity);
-        return new CommandResolution(execContext, "data get block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path + (scale != 1 ? String.valueOf(scale) : ""));
+        if(entity != null) return new CommandResolution(execContext, "data get entity \be0" + ((path != null) ? (" " + path + (scale != 1 ? String.valueOf(scale) : "")) : ""), entity);
+        return new CommandResolution(execContext, "data get block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + ((path != null) ? (" " + path + (scale != 1 ? String.valueOf(scale) : "")) : ""));
     }
 
     @Override
