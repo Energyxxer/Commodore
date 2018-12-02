@@ -14,8 +14,9 @@ public class FunctionReference extends Type {
         this.function = function;
     }
 
-    protected FunctionReference(Namespace namespace, String path) {
+    public FunctionReference(Namespace namespace, String path) {
         super(CATEGORY, namespace, path);
+        if(namespace.functions.contains(path)) this.function = namespace.functions.get(path);
     }
 
     @Override

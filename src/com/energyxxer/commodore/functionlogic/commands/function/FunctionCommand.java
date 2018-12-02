@@ -13,6 +13,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import java.util.Collections;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertFunction;
+
 public class FunctionCommand implements Command {
     private final Type function;
     private ExecutionContext execContext = null;
@@ -26,6 +28,11 @@ public class FunctionCommand implements Command {
         this.function = function;
     }
 
+    public FunctionCommand(Type function) {
+        this.function = function;
+        assertFunction(function);
+    }
+
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "function " + function);
@@ -36,7 +43,7 @@ public class FunctionCommand implements Command {
         if(execContext == null)
             throw new IllegalStateException("Cannot resolve scoreboard accesses for unappended function command");
         if(accesses != null) return accesses;
-        if(function instanceof FunctionReference) {
+        if(function instanceof FunctionReference && ((FunctionReference) function).getFunction() != null) {
             ((FunctionReference) function).getFunction().resolveAccessLogs();
             accesses = ((FunctionReference) function).getFunction().getScoreboardAccesses(execContext);
         }

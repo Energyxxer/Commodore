@@ -43,7 +43,7 @@ public class ScheduleCommand implements Command {
         if(execContext == null)
             throw new IllegalStateException("Cannot resolve scoreboard accesses for unappended function command");
         if(accesses != null) return accesses;
-        if(function instanceof FunctionReference) {
+        if(function instanceof FunctionReference && ((FunctionReference) function).getFunction() != null) {
             ((FunctionReference) function).getFunction().resolveAccessLogs();
             accesses = ((FunctionReference) function).getFunction().getScoreboardAccesses(execContext);
         }
