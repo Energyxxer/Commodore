@@ -18,11 +18,15 @@ public class StopSoundCommand implements Command {
     private final String sound;
 
     public StopSoundCommand(Entity player) {
-        this(player, null);
+        this(player, null, null);
     }
 
     public StopSoundCommand(Entity player, PlaySoundCommand.Source source) {
         this(player, source, null);
+    }
+
+    public StopSoundCommand(Entity player, String sound) {
+        this(player, null, sound);
     }
 
     public StopSoundCommand(Entity player, PlaySoundCommand.Source source, String sound) {
@@ -35,7 +39,18 @@ public class StopSoundCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "stopsound \be0" + (source != null ? " " + source.toString().toLowerCase() + (sound != null ? " " + sound : "") : (sound != null ? " * " + sound : "")), player);
+        return new CommandResolution(execContext, "stopsound \be0" +
+                (source != null ?
+                        sound != null ?
+                                " " + source.toString().toLowerCase() + " " + sound
+                                :
+                                " " + source.toString().toLowerCase()
+                        :
+                        sound != null ?
+                                " * " + sound
+                                :
+                                ""
+                ), player);
     }
 
     @Override @NotNull
