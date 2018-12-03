@@ -1,4 +1,4 @@
-package com.energyxxer.commodore.functionlogic.commands.drop;
+package com.energyxxer.commodore.functionlogic.commands.loot;
 
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.types.Type;

@@ -1,16 +1,16 @@
-package com.energyxxer.commodore.functionlogic.commands.drop;
+package com.energyxxer.commodore.functionlogic.commands.loot;
 
 import com.energyxxer.commodore.functionlogic.commands.CommandDelegateResolution;
 
-public class DropFromAward implements DropSource {
+public class LootFromLoot implements LootCommand.LootSource {
     private final String lootTable;
 
-    public DropFromAward(String lootTable) {
+    public LootFromLoot(String lootTable) {
         this.lootTable = lootTable;
     }
 
     @Override
     public CommandDelegateResolution resolve() {
-        return new CommandDelegateResolution("award " + lootTable);
+        return new CommandDelegateResolution("loot " + lootTable);
     }
 }

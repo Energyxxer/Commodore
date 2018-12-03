@@ -1,12 +1,12 @@
-package com.energyxxer.commodore.functionlogic.commands.drop;
+package com.energyxxer.commodore.functionlogic.commands.loot;
 
 import com.energyxxer.commodore.functionlogic.commands.CommandDelegateResolution;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 
-public class DropToPlayer implements DropDestination {
+public class LootGive implements LootCommand.LootDestination {
     private final Entity players;
 
-    public DropToPlayer(Entity players) {
+    public LootGive(Entity players) {
         this.players = players;
 
         players.assertPlayer();
@@ -14,6 +14,6 @@ public class DropToPlayer implements DropDestination {
 
     @Override
     public CommandDelegateResolution resolve() {
-        return new CommandDelegateResolution("player \be0", players);
+        return new CommandDelegateResolution("give \be0", players);
     }
 }

@@ -4,7 +4,7 @@ import com.energyxxer.commodore.functionlogic.commands.clear.ClearCommand;
 import com.energyxxer.commodore.functionlogic.commands.data.DataModifyCommand;
 import com.energyxxer.commodore.functionlogic.commands.data.ModifySourceFromEntity;
 import com.energyxxer.commodore.functionlogic.commands.data.ModifySourceValue;
-import com.energyxxer.commodore.functionlogic.commands.drop.*;
+import com.energyxxer.commodore.functionlogic.commands.loot.*;
 import com.energyxxer.commodore.functionlogic.commands.setblock.SetblockCommand;
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
@@ -56,11 +56,11 @@ public class V114Test {
         function.append(new DataModifyCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), path, DataModifyCommand.MERGE(), new ModifySourceValue(new TagCompound(new TagInt("lvl", 2)))));
         function.append(new DataModifyCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), path, DataModifyCommand.MERGE(), new ModifySourceFromEntity(function.getSender(), new NBTPath(new NBTPathKey("SelectedItem"), new NBTPathKey("tag"), new NBTPathKey("Enchantments"), new NBTPathIndex(0), new NBTPathKey("lvl")))));
 
-        function.append(new DropCommand(new DropToWorld(new CoordinateSet(0, 64, 0)), new DropFromKill(function.getSender())));
-        function.append(new DropCommand(new DropToPlayer(function.getSender()), new DropFromFish("minecraft:entities/wither_skeleton", new CoordinateSet(1000, 62, 32), ToolOrHand.MAINHAND)));
-        function.append(new DropCommand(new DropToEntity(function.getSender(), module.minecraft.types.slot.get("weapon.offhand")), new DropFromLoot("minecraft:entities/wither_skeleton")));
-        function.append(new DropCommand(new DropToBlock(new CoordinateSet(0, 64, 0), module.minecraft.types.slot.get("container.4"), true), new DropFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE))));
-        function.append(new DropCommand(new DropToBlock(new CoordinateSet(0, 64, 0)), new DropFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new ToolOrHand(module.minecraft.types.item.get("bamboo")))));
+        function.append(new LootCommand(new LootSpawn(new CoordinateSet(0, 64, 0)), new LootFromKill(function.getSender())));
+        function.append(new LootCommand(new LootGive(function.getSender()), new LootFromFish("minecraft:entities/wither_skeleton", new CoordinateSet(1000, 62, 32), ToolOrHand.MAINHAND)));
+        function.append(new LootCommand(new LootReplaceEntity(function.getSender(), module.minecraft.types.slot.get("weapon.offhand")), new LootFromLoot("minecraft:entities/wither_skeleton")));
+        function.append(new LootCommand(new LootReplaceBlock(new CoordinateSet(0, 64, 0), module.minecraft.types.slot.get("container.4")), new LootFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE))));
+        function.append(new LootCommand(new LootInsertBlock(new CoordinateSet(0, 64, 0)), new LootFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new ToolOrHand(module.minecraft.types.item.get("bamboo")))));
 
         LootTable moaDrop = ns.lootTables.create("mobs/moa");
         Pool first = new Pool();

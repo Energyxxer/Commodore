@@ -1,4 +1,4 @@
-package com.energyxxer.commodore.functionlogic.commands.drop;
+package com.energyxxer.commodore.functionlogic.commands.loot;
 
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.commands.CommandDelegateResolution;
@@ -9,11 +9,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
-public class DropCommand implements Command {
-    private final DropDestination destination;
-    private final DropSource source;
+public class LootCommand implements Command {
+    private final LootDestination destination;
+    private final LootSource source;
 
-    public DropCommand(DropDestination destination, DropSource source) {
+    public LootCommand(LootDestination destination, LootSource source) {
         this.destination = destination;
         this.source = source;
     }
@@ -21,7 +21,7 @@ public class DropCommand implements Command {
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
 
-        StringBuilder sb = new StringBuilder("drop ");
+        StringBuilder sb = new StringBuilder("loot ");
         ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
         CommandDelegateResolution destinationResolution = destination.resolve();
         CommandDelegateResolution sourceResolution = source.resolve();
@@ -36,12 +36,13 @@ public class DropCommand implements Command {
 
         return new CommandResolution(execContext, sb.toString(), embeddables);
     }
-}
 
-interface DropDestination {
-    CommandDelegateResolution resolve();
-}
+    public interface LootDestination {
+        CommandDelegateResolution resolve();
+    }
 
-interface DropSource {
-    CommandDelegateResolution resolve();
+    public interface LootSource {
+        CommandDelegateResolution resolve();
+    }
+
 }
