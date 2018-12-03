@@ -14,6 +14,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 import java.util.Collections;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertFunction;
+
 public class ScheduleCommand implements Command {
 
     private final Type function;
@@ -26,16 +28,18 @@ public class ScheduleCommand implements Command {
         this(new FunctionReference(function), delay);
     }
 
-    public ScheduleCommand(FunctionReference function, TimeSpan delay) {
+    public ScheduleCommand(Type function, TimeSpan delay) {
         this.function = function;
         this.delay = delay;
+
+        assertFunction(function);
 
         if(delay.getTicks() == 0) throw new IllegalArgumentException("Cannot schedule for the same tick");
     }
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "schedule function " + function + "");
+        return new CommandResolution(execContext, "schedule function " + function + " " + delay);
     }
 
     @Override
