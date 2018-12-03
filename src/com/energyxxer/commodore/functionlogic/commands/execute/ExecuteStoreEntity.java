@@ -59,6 +59,6 @@ public class ExecuteStoreEntity extends ExecuteStore {
 
     @Override
     public boolean isAbsolute() {
-        return false;
+        return true;
     }
 }

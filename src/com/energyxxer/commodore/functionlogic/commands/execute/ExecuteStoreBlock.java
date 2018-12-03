@@ -50,6 +50,6 @@ public class ExecuteStoreBlock extends ExecuteStore {
 
     @Override
     public boolean isAbsolute() {
-        return false;
+        return true;
     }
 }
