@@ -5,26 +5,30 @@ import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.item.Item;
+import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertSlot;
 import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
 
 public class ReplaceItemBlockCommand extends ReplaceItemCommand {
 
     private final CoordinateSet pos;
-    private final String slot;
+    private final Type slot;
     private final Item item;
     private final int count;
 
-    public ReplaceItemBlockCommand(CoordinateSet pos, String slot, Item item) {
+    public ReplaceItemBlockCommand(CoordinateSet pos, Type slot, Item item) {
         this(pos, slot, item, 1);
     }
 
-    public ReplaceItemBlockCommand(CoordinateSet pos, String slot, Item item, int count) {
+    public ReplaceItemBlockCommand(CoordinateSet pos, Type slot, Item item, int count) {
         this.pos = pos;
         this.slot = slot;
         this.item = item;
         this.count = count;
+
+        assertSlot(slot);
 
         assertStandalone(item.getItemType());
     }
