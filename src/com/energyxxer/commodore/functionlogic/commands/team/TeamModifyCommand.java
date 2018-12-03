@@ -55,6 +55,17 @@ public class TeamModifyCommand extends TeamCommand {
         public String getArgumentKey() {
             return argumentKey;
         }
+
+        public Class getValueClass() {
+            return valueClass;
+        }
+
+        public static TeamModifyKey getValueForKey(String key) {
+            for(TeamModifyKey value : values()) {
+                if(value.argumentKey.equals(key)) return value;
+            }
+            return null;
+        }
     }
 
     public enum AppliesTo {
