@@ -1,6 +1,6 @@
 package com.energyxxer.commodore.functionlogic.selector.arguments.advancement;
 
-public class AdvancementCriterionEntry implements AdvancementArgumentEntry {
+public class AdvancementCriterionEntry {
 
     private final String criterionName;
     private final boolean value;
@@ -10,7 +10,6 @@ public class AdvancementCriterionEntry implements AdvancementArgumentEntry {
         this.value = value;
     }
 
-    @Override
     public String getArgumentString() {
         return criterionName + "=" + value;
     }
