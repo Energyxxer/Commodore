@@ -9,6 +9,11 @@ public class LocalScore {
     private final Objective objective;
     private final ScoreHolder holder;
 
+    public LocalScore(ScoreHolder holder, Objective objective) {
+        this.objective = objective;
+        this.holder = holder;
+    }
+
     public LocalScore(Objective objective, ScoreHolder holder) {
         this.objective = objective;
         this.holder = holder;
