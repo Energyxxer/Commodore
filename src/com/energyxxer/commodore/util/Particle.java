@@ -1,8 +1,8 @@
 package com.energyxxer.commodore.util;
 
+import com.energyxxer.commodore.block.Block;
+import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.types.Type;
-import com.energyxxer.commodore.types.defaults.BlockType;
-import com.energyxxer.commodore.types.defaults.ItemType;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -29,8 +29,8 @@ public class Particle {
 
             if(
                     (argument instanceof ParticleColor && expectedArgument.equals("color")) ||
-                    (argument instanceof Type && BlockType.CATEGORY.equals(((Type) argument).getCategory()) && expectedArgument.equals("block")) ||
-                    (argument instanceof Type && ItemType.CATEGORY.equals(((Type) argument).getCategory()) && expectedArgument.equals("item")) ||
+                    (argument instanceof Block && expectedArgument.equals("block")) ||
+                    (argument instanceof Item && expectedArgument.equals("item")) ||
                     (argument instanceof Integer && expectedArgument.equals("int")) ||
                     (argument instanceof Double && expectedArgument.equals("double"))
             ) {
