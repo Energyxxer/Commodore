@@ -9,6 +9,7 @@ import static com.energyxxer.commodore.types.TypeAssert.assertSlot;
 
 public class LootReplaceBlock implements LootCommand.LootDestination {
     private final CoordinateSet pos;
+    private final Type slot;
 
     /**
      * Creates a /drop block destination with a "insert" mode.
@@ -20,11 +21,12 @@ public class LootReplaceBlock implements LootCommand.LootDestination {
      * */
     public LootReplaceBlock(CoordinateSet pos, Type slot) {
         assertSlot(slot);
+        this.slot = slot;
         this.pos = pos;
     }
 
     @Override
     public CommandDelegateResolution resolve() {
-        return new CommandDelegateResolution("replace block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS));
+        return new CommandDelegateResolution("replace block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + slot);
     }
 }
