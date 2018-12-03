@@ -11,12 +11,16 @@ public class SetWorldSpawnCommand implements Command {
 
     private final CoordinateSet pos;
 
+    public SetWorldSpawnCommand() {
+        this(new CoordinateSet());
+    }
+
     public SetWorldSpawnCommand(CoordinateSet pos) {
         this.pos = pos;
     }
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "setworldspawn " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS));
+        return new CommandResolution(execContext, "setworldspawn" + (pos != null && pos.isSignificant() ? " " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) : ""));
     }
 }
