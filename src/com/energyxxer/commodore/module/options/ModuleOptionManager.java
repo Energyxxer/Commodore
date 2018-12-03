@@ -30,4 +30,10 @@ public class ModuleOptionManager {
      * command and its resolution (whether it was used or unused).
      * */
     public final ModuleOption<Boolean> EXPORT_ACCESS_LOGS = new ModuleOption<>("EXPORT_ACCESS_LOGS", false);
+    /**
+     * Describes whether empty functions should be exported.
+     *
+     * Default value is <code>false</code>
+     * */
+    public final ModuleOption<Boolean> EXPORT_EMPTY_FUNCTIONS = new ModuleOption<>("EXPORT_EMPTY_FUNCTIONS", false);
 }

@@ -66,7 +66,7 @@ public class ModulePackGenerator {
             ArrayList<Exportable> exportables = new ArrayList<>();
 
             for(Function func : namespace.getFunctionManager().getAll()) {
-                if(func.getEntryCount() == 0) continue;
+                if(func.getEntryCount() == 0 && !module.optMgr.EXPORT_EMPTY_FUNCTIONS.getValue()) continue;
                 exportables.add(func);
                 if(module.optMgr.EXPORT_ACCESS_LOGS.getValue()) exportables.add(new AccessLogFile(func));
             }
@@ -116,7 +116,6 @@ public class ModulePackGenerator {
             try(BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
                 writer.write(contents);
                 writer.flush();
-                writer.close();
             }
         }
     }
