@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import static com.energyxxer.commodore.module.ModulePackGenerator.OutputType.FOLDER;
 import static com.energyxxer.commodore.module.ModulePackGenerator.OutputType.ZIP;
 
 public class ModulePackGenerator {
@@ -32,15 +33,23 @@ public class ModulePackGenerator {
 
     private ZipOutputStream zipStream;
 
+    public ModulePackGenerator(CommandModule module, File outFile) {
+        this(module, outFile, outFile.isFile() && outFile.getName().endsWith(".zip") ? ZIP : FOLDER);
+    }
+
     public ModulePackGenerator(CommandModule module, File outFile, OutputType outputType) {
         this.module = module;
         this.outputType = outputType;
 
-        if(!outFile.exists()) outFile.mkdirs();
+        if(outputType == FOLDER && !outFile.exists()) {
+            outFile.mkdirs();
+        } else if(outputType == ZIP && !outFile.getParentFile().exists()) {
+            outFile.getParentFile().mkdirs();
+        }
         this.gson = new GsonBuilder().setPrettyPrinting().create();
 
-        this.rootPath = outFile.getAbsolutePath() + File.separator + module.name + (outputType == ZIP ? ".zip" : "");
-        this.rootFile = new File(this.rootPath);
+        this.rootPath = outFile.getAbsolutePath();
+        this.rootFile = outFile;
         if(rootFile.isDirectory() && !rootFile.exists()) rootFile.mkdirs();
     }
 

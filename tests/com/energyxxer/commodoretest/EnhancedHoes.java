@@ -18,7 +18,6 @@ import com.energyxxer.commodore.functionlogic.score.Objective;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.functionlogic.selector.arguments.*;
 import com.energyxxer.commodore.module.CommandModule;
-import com.energyxxer.commodore.module.ModulePackGenerator;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.types.defaults.EntityType;
@@ -119,7 +118,7 @@ public class EnhancedHoes {
         }
 
         try {
-            module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
+            module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output" + File.separator + module.getName() + File.separator));
         } catch(IOException x) {
             x.printStackTrace();
         }

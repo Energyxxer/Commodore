@@ -65,7 +65,6 @@ import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.Adv
 import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.AdvancementCriterionGroupEntry;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.module.CommandModule;
-import com.energyxxer.commodore.module.ModulePackGenerator;
 import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.tags.BlockTag;
@@ -385,7 +384,7 @@ public class CommandTest {
         //otherFunction.setExport(false);
 
         try {
-            module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
+            module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output" + File.separator + module.getName() + File.separator));
         } catch(IOException x) {
             x.printStackTrace();
         }

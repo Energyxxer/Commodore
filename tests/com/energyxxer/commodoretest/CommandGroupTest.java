@@ -15,13 +15,12 @@ import com.energyxxer.commodore.functionlogic.commands.teleport.destination.Bloc
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.GenericEntity;
 import com.energyxxer.commodore.functionlogic.functions.Function;
-import com.energyxxer.commodore.module.CommandModule;
-import com.energyxxer.commodore.module.ModulePackGenerator;
-import com.energyxxer.commodore.module.Namespace;
-import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.functionlogic.score.LocalScore;
 import com.energyxxer.commodore.functionlogic.score.Objective;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
+import com.energyxxer.commodore.module.CommandModule;
+import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 
 import java.io.File;
@@ -82,7 +81,7 @@ public class CommandGroupTest {
 
 
         try {
-            module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
+            module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output" + File.separator + module.getName() + File.separator));
         } catch(IOException x) {
             x.printStackTrace();
         }

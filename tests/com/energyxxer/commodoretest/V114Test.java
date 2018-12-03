@@ -23,7 +23,6 @@ import com.energyxxer.commodore.loottables.Pool;
 import com.energyxxer.commodore.loottables.functions.LootFunction;
 import com.energyxxer.commodore.loottables.items.LootItemEntry;
 import com.energyxxer.commodore.module.CommandModule;
-import com.energyxxer.commodore.module.ModulePackGenerator;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
@@ -89,7 +88,7 @@ public class V114Test {
         second.addEntry(empty);
 
         try {
-            module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output"), ModulePackGenerator.OutputType.FOLDER);
+            module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output" + File.separator + module.getName() + File.separator));
         } catch(IOException x) {
             x.printStackTrace();
         }

@@ -2,8 +2,8 @@ package com.energyxxer.commodore.module;
 
 import com.energyxxer.commodore.defpacks.DefinitionPack;
 import com.energyxxer.commodore.defpacks.MalformedPackException;
-import com.energyxxer.commodore.module.options.ModuleOptionManager;
 import com.energyxxer.commodore.functionlogic.score.ObjectiveManager;
+import com.energyxxer.commodore.module.options.ModuleOptionManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -154,16 +154,15 @@ public class CommandModule {
     /**
      * Generates a data pack with the module's current content.
      *
-     * @param directory The directory inside which the data pack will be generated.
-     * @param outputType How the data pack should be generated.
+     * @param file The file inside which the data pack will be generated.
      *
      * @throws IOException If an IO error occurs during the generation of the data pack.
      * */
-    public void compile(File directory, ModulePackGenerator.OutputType outputType) throws IOException {
+    public void compile(File file) throws IOException {
         objMgr.compile();
         namespaces.values().forEach(Namespace::compile);
 
-        new ModulePackGenerator(this, directory, outputType).generate();
+        new ModulePackGenerator(this, file).generate();
     }
 
     /**
