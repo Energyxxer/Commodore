@@ -219,8 +219,9 @@ class MacroScoreAccessLog {
      * */
     boolean areAnyUsed(Collection<MacroScore> scores) {
         for(MacroScore score : scores) {
+            if(score.getObjective() == null || score.getHolder() == null) return true;
             for(MacroScore usedScore : usedMacroScores) {
-                if(usedScore.matches(score)) return true;
+                if(usedScore.getObjective() == null || usedScore.getHolder() == null || usedScore.matches(score)) return true;
             }
         }
         return false;

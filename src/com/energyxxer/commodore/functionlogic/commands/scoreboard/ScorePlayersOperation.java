@@ -58,6 +58,13 @@ public class ScorePlayersOperation implements Command {
 
             return accesses;
         }
+
+        public static Operation getOperationForSymbol(String symbol) {
+            for(Operation value : values()) {
+                if(value.shorthand.equals(symbol)) return value;
+            }
+            return null;
+        }
     }
 
     private final LocalScore target;
