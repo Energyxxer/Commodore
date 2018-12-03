@@ -4,6 +4,7 @@ import com.energyxxer.commodore.defpacks.DefinitionPack;
 import com.energyxxer.commodore.defpacks.MalformedPackException;
 import com.energyxxer.commodore.functionlogic.score.ObjectiveManager;
 import com.energyxxer.commodore.module.options.ModuleOptionManager;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
@@ -66,7 +67,7 @@ public class CommandModule {
      * @param prefix The prefix used optionally by elements of the module to avoid conflicts.
      * */
     public CommandModule(String name, String prefix) {
-        this(name, null, prefix);
+        this(name, "Module Pack created programmatically with Commodore", prefix);
     }
 
     /**
@@ -76,7 +77,7 @@ public class CommandModule {
      * @param description The description of the module, as to be displayed in the data pack's mcmeta file.
      * @param prefix The prefix used optionally by elements of the module to avoid conflicts.
      * */
-    public CommandModule(String name, String description, String prefix) {
+    public CommandModule(String name, @NotNull String description, String prefix) {
         this.name = name;
         this.description = description;
         this.prefix = prefix;

@@ -95,7 +95,7 @@ public class ModulePackGenerator {
         root.add("pack", inner);
         inner.addProperty("pack_format", 1);
 
-        if(module.description != null) inner.addProperty("description", module.description);
+        inner.addProperty("description", module.description);
 
         createFile("pack.mcmeta", gson.toJson(root));
     }
