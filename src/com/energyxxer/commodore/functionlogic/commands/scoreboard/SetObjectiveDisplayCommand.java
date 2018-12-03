@@ -38,10 +38,21 @@ public class SetObjectiveDisplayCommand implements Command {
         private String getArgumentKey() {
             return argumentKey;
         }
+
+        public static ScoreDisplay getValueForKey(String key) {
+            for(ScoreDisplay value : values()) {
+                if(value.argumentKey.equals(key)) return value;
+            }
+            return null;
+        }
     }
 
     private final Objective objective;
     private final ScoreDisplay slot;
+
+    public SetObjectiveDisplayCommand(ScoreDisplay slot) {
+        this(null, slot);
+    }
 
     public SetObjectiveDisplayCommand(Objective objective, ScoreDisplay slot) {
         this.objective = objective;
@@ -50,6 +61,6 @@ public class SetObjectiveDisplayCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "scoreboard objectives setdisplay " + slot.getArgumentKey() + " " + objective.getName());
+        return new CommandResolution(execContext, "scoreboard objectives setdisplay " + slot.getArgumentKey() + (objective != null ? " " + objective.getName() : ""));
     }
 }

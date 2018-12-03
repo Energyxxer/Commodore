@@ -37,7 +37,7 @@ public class TriggerCommand implements Command {
 
     public TriggerCommand(Objective objective, Action action, int amount) {
         if(!objective.getType().equals("trigger"))
-            throw new IllegalArgumentException("Unable to use objective '" + objective.getName() + "' with TriggerCommand; Expected objective of blockType 'trigger', instead got '" + objective.getType() + "'");
+            throw new IllegalArgumentException("Unable to use objective '" + objective.getName() + "' with TriggerCommand; Expected objective of type 'trigger', instead got '" + objective.getType() + "'");
         this.objective = objective;
         this.action = action;
         this.amount = amount;
