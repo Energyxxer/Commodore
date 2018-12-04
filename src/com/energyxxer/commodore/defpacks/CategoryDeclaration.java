@@ -3,7 +3,7 @@ package com.energyxxer.commodore.defpacks;
 /**
  * Represents a category declaration extracted from the pack.json of a definition pack.
  * */
-class CategoryDeclaration {
+public class CategoryDeclaration {
     /**
      * The category this declaration refers to.
      * */
@@ -38,5 +38,21 @@ class CategoryDeclaration {
                 ", useNamespace=" + useNamespace +
                 ", importFrom='" + importFrom + '\'' +
                 '}';
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getTagDirectory() {
+        return tagDirectory;
+    }
+
+    public boolean usesNamespace() {
+        return useNamespace;
+    }
+
+    public String getImportFrom() {
+        return importFrom;
     }
 }

@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,6 +46,11 @@ public class CommandModule {
      * namespace whose name is the string in its key.
      * */
     protected final HashMap<String, Namespace> namespaces = new HashMap<>();
+
+    /**
+     * A list that contains extra exportable files that will be exported alongside the module when compiled.
+     * */
+    public final ArrayList<Exportable> exportables = new ArrayList<>();
 
     /**
      * This command module's default namespace, made a <code>public final</code> field for easy access.

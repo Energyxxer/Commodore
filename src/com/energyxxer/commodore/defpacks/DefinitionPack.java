@@ -444,6 +444,18 @@ public class DefinitionPack {
         return definitions;
     }
 
+    /**
+     * Retrieves the list of category declaration in this definition pack.
+     *
+     * @return The list of defined categories.
+     *
+     * @throws IllegalStateException If the definition pack hasn't been loaded yet.
+     * */
+    public Collection<CategoryDeclaration> getDefinedCategories() {
+        if(!loaded) throw new IllegalStateException("Definition pack hasn't been loaded yet");
+        return new ArrayList<>(definedCategories);
+    }
+
     @Override
     public String toString() {
         return "DefinitionPack [" + packName + "]";

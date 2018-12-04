@@ -60,6 +60,12 @@ public class ModulePackGenerator {
 
         createPackMcmeta();
 
+        for(Exportable exportable : module.exportables) {
+            if(exportable.shouldExport()) {
+                createFile(exportable.getExportPath(), exportable.getContents());
+            }
+        }
+
         for(Namespace namespace : module.namespaces.values()) {
             String namespacePath = "data/" + namespace.name;
 
