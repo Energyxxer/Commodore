@@ -42,7 +42,9 @@ public class CommandResolutionLine {
         if(!modifiers.isEmpty()) {
             sb.append("execute ");
             sb.append(CommandResolution.resolveModifiers(execContext, modifiers));
-            sb.append(" run ");
+            if(chainedCommand.length() > 0) {
+                sb.append(" run ");
+            }
         }
         sb.append(chainedCommand);
 
