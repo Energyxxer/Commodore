@@ -43,22 +43,22 @@ public class TagCompound extends ComplexNBTTag {
 
     public TagCompound merge(TagCompound other) {
         TagCompound merged = this.clone();
-        for(NBTTag tag : other.getAllTags()) {
-            if(merged.contains(tag.getName())) {
-                NBTTag otherTag = merged.get(tag.getName());
-                if(tag.getClass() == otherTag.getClass() && tag instanceof ComplexNBTTag) {
-                    merged.remove(tag.getName());
-                    if(tag instanceof TagCompound) {
+        for(NBTTag otherTag : other.getAllTags()) {
+            if(merged.contains(otherTag.getName())) {
+                NBTTag tag = merged.get(otherTag.getName());
+                if(otherTag.getClass() == tag.getClass() && otherTag instanceof ComplexNBTTag) {
+                    merged.remove(otherTag.getName());
+                    if(otherTag instanceof TagCompound) {
                         merged.add(((TagCompound) tag).merge((TagCompound) otherTag));
-                    } else if(tag instanceof TagList) {
+                    } else if(otherTag instanceof TagList) {
                         merged.add(((TagList) tag).merge((TagList) otherTag));
                     }
                 } else {
-                    merged.remove(tag.getName());
-                    merged.add(tag.clone());
+                    merged.remove(otherTag.getName());
+                    merged.add(otherTag.clone());
                 }
             } else {
-                merged.add(tag.clone());
+                merged.add(otherTag.clone());
             }
         }
         return merged;
