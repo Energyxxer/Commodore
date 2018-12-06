@@ -202,6 +202,17 @@ public class Selector implements EntityRepresentation, Cloneable {
     }
 
     /**
+     * Adds the given arguments to the selector.
+     *
+     * @param arguments The arguments to add to this selector.
+     * */
+    public void addArguments(Collection<SelectorArgument> arguments) {
+        for(SelectorArgument argument : arguments) {
+            addArgument(argument);
+        }
+    }
+
+    /**
      * Adds the given argument to the selector.
      *
      * @param argument The argument to add to this selector.
