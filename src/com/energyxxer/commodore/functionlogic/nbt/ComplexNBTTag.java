@@ -13,4 +13,12 @@ public abstract class ComplexNBTTag extends NBTTag {
     }
 
     public abstract void add(NBTTag tag);
+
+    public abstract int size();
+
+    public abstract boolean isEmpty();
+
+    public abstract boolean contains(String key);
+
+    public abstract Collection<NBTTag> getAllTags();
 }

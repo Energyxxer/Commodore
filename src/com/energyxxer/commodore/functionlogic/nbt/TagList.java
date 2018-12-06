@@ -30,13 +30,30 @@ public class TagList extends ComplexNBTTag {
         this(name, Arrays.asList(tags));
     }
 
+    public TagList merge(TagList other) {
+        if(this.isEmpty()) return other.clone();
+        if(other.isEmpty()) return this.clone();
+        if(other.content.get(0).getType().equals(this.content.get(0).getType())) {
+            TagList merged = this.clone();
+            for(NBTTag tag : other.content) {
+                merged.add(tag.clone());
+            }
+            return merged;
+        } else throw new IllegalArgumentException("Unable to merge tag lists: Incompatible types: " + this.content.get(0).getType() + " and " + other.content.get(0).getType());
+    }
+
     @Override
     public void add(NBTTag tag) {
         if(content.isEmpty() || content.get(0).getType().equals(tag.getType())) {
             content.add(tag);
         } else {
-            throw new IllegalArgumentException("Unable to addCriterion tag of type " + tag.getType() + " to list of type " + content.get(0).getType() + "; Tag: " + tag);
+            throw new IllegalArgumentException("Unable to add tag of type " + tag.getType() + " to list of type " + content.get(0).getType() + "; Tag: " + tag);
         }
+    }
+
+    @Override
+    public Collection<NBTTag> getAllTags() {
+        return new ArrayList<>(content);
     }
 
     @Override
@@ -57,6 +74,24 @@ public class TagList extends ComplexNBTTag {
         sb.append(']');
 
         return sb.toString();
+    }
+
+    @Override
+    public int size() {
+        return content.size();
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return content.isEmpty();
+    }
+
+    @Override
+    public boolean contains(String key) {
+        for(NBTTag other : content) {
+            if(other.name.equals(key)) return true;
+        }
+        return false;
     }
 
     @Override
