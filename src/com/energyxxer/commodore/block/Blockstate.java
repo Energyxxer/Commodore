@@ -89,6 +89,32 @@ public class Blockstate {
         return blockstate;
     }
 
+    public int size() {
+        return map.size();
+    }
+
+    public boolean isEmpty() {
+        return map.isEmpty();
+    }
+
+    public Blockstate clone() {
+        Blockstate newState = new Blockstate();
+        for(Map.Entry<String, String> entry : map.entrySet()) {
+            newState.put(entry.getKey(), entry.getValue());
+        }
+        return newState;
+    }
+
+    public Blockstate merge(Blockstate other) {
+        if(other.isEmpty()) return this.clone();
+        if(this.isEmpty()) return other.clone();
+        Blockstate merged = this.clone();
+        for(Map.Entry<String, String> entry : other.map.entrySet()) {
+            merged.put(entry.getKey(), entry.getValue());
+        }
+        return merged;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
