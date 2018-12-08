@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.score;
 
 import com.energyxxer.commodore.functionlogic.functions.Function;
+import com.energyxxer.commodore.functionlogic.functions.FunctionSection;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.textcomponents.TextComponent;
 
@@ -64,7 +65,7 @@ public class ObjectiveManager {
         return owner;
     }
 
-    private void dumpObjectiveCreators(Function function) {
+    private void dumpObjectiveCreators(FunctionSection function) {
         objectives.values().forEach(o -> function.append(o.getObjectiveCreator()));
     }
 
