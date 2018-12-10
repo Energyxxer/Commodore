@@ -46,8 +46,8 @@ public class DataGetCommand extends DataCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        if(entity != null) return new CommandResolution(execContext, "data get entity \be0" + ((path != null) ? (" " + path + (scale != 1 ? String.valueOf(scale) : "")) : ""), entity);
-        return new CommandResolution(execContext, "data get block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + ((path != null) ? (" " + path + (scale != 1 ? String.valueOf(scale) : "")) : ""));
+        if(entity != null) return new CommandResolution(execContext, "data get entity \be0" + ((path != null) ? (" " + path + (scale != 1 ? " " + String.valueOf(scale) : "")) : ""), entity);
+        return new CommandResolution(execContext, "data get block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + ((path != null) ? (" " + path + (scale != 1 ? " " + String.valueOf(scale) : "")) : ""));
     }
 
     @Override
