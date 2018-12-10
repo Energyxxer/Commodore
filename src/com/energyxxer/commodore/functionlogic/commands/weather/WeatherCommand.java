@@ -13,14 +13,15 @@ public class WeatherCommand implements Command {
         CLEAR, RAIN, THUNDER
     }
 
+    @NotNull
     private final Mode mode;
     private final int duration;
 
-    public WeatherCommand(Mode mode) {
+    public WeatherCommand(@NotNull Mode mode) {
         this(mode, DEFAULT_DURATION);
     }
 
-    public WeatherCommand(Mode mode, int duration) {
+    public WeatherCommand(@NotNull Mode mode, int duration) {
         this.mode = mode;
         this.duration = duration;
     }

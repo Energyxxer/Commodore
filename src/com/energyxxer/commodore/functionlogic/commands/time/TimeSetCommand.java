@@ -15,17 +15,20 @@ public class TimeSetCommand extends TimeCommand {
         }
     }
 
+    @NotNull
     private final String time;
 
     public TimeSetCommand(int time) {
         this(new TimeSpan(time));
     }
 
-    public TimeSetCommand(TimeSpan time) {
+    @NotNull
+    public TimeSetCommand(@NotNull TimeSpan time) {
         this.time = time.toString();
     }
 
-    public TimeSetCommand(TimeOfDay time) {
+    @NotNull
+    public TimeSetCommand(@NotNull TimeOfDay time) {
         this.time = time.toString().toLowerCase();
     }
 

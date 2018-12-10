@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.functionlogic.functions;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Describes an element that can write its contents into a Function via a FunctionSection.
  *
@@ -14,13 +16,14 @@ public interface FunctionWriter {
      *
      * @return The string to be written to the function section.
      */
-    String toFunctionContent(FunctionSection section);
+    @NotNull
+    String toFunctionContent(@NotNull FunctionSection section);
 
     /**
      * Runs whenever this <code>FunctionWriter</code> is appended to a function.
      *
      * @param section The function this writer is appended to.
      */
-    default void onAppend(FunctionSection section) {
+    default void onAppend(@NotNull FunctionSection section) {
     }
 }

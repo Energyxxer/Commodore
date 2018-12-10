@@ -11,18 +11,21 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class ExecuteConditionScoreComparison extends ExecuteCondition {
-
+    @NotNull
     private final LocalScore target;
+    @NotNull
     private final ScoreComparison comparison;
+    @NotNull
     private final LocalScore source;
 
-    public ExecuteConditionScoreComparison(ConditionType flowController, LocalScore target, ScoreComparison comparison, LocalScore source) {
+    public ExecuteConditionScoreComparison(@NotNull ConditionType flowController, @NotNull LocalScore target, @NotNull ScoreComparison comparison, @NotNull LocalScore source) {
         super(flowController);
         this.target = target;
         this.comparison = comparison;
         this.source = source;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, this.getStarter() + "score \be0 " + target.getObjective().getName() + " " + comparison.getSymbol() + " \be1 " + source.getObjective().getName(), target.getHolder(), source.getHolder());

@@ -10,13 +10,14 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class ExecuteRotatedAsEntity implements ExecuteModifier {
-
+    @NotNull
     private final Entity entity;
 
-    public ExecuteRotatedAsEntity(Entity entity) {
+    public ExecuteRotatedAsEntity(@NotNull Entity entity) {
         this.entity = entity;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, "rotated as \be0", entity);

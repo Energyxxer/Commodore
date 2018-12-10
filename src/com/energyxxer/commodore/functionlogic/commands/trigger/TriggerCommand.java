@@ -24,18 +24,20 @@ public class TriggerCommand implements Command {
         }
     }
 
-    private Objective objective;
-    private Action action;
-    private int amount;
+    @NotNull
+    private final Objective objective;
+    @NotNull
+    private final Action action;
+    private final int amount;
 
     private ExecutionContext execContext;
     private ArrayList<ScoreboardAccess> accesses;
 
-    public TriggerCommand(Objective objective) {
+    public TriggerCommand(@NotNull Objective objective) {
         this(objective, Action.ADD, 1);
     }
 
-    public TriggerCommand(Objective objective, Action action, int amount) {
+    public TriggerCommand(@NotNull Objective objective, @NotNull Action action, int amount) {
         if(!objective.getType().equals("trigger"))
             throw new IllegalArgumentException("Unable to use objective '" + objective.getName() + "' with TriggerCommand; Expected objective of type 'trigger', instead got '" + objective.getType() + "'");
         this.objective = objective;

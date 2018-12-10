@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 public class BossbarSetVisibleCommand extends BossbarSetCommand {
     private final boolean visible;
 
-    public BossbarSetVisibleCommand(Type bossbar, boolean visible) {
+    public BossbarSetVisibleCommand(@NotNull Type bossbar, boolean visible) {
         super(bossbar);
         this.visible = visible;
     }

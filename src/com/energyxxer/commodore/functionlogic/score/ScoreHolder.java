@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.score;
 
 import com.energyxxer.commodore.functionlogic.inspection.CommandEmbeddable;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 
@@ -17,5 +18,6 @@ public interface ScoreHolder extends CommandEmbeddable {
      *
      * @return The list of macro score holders that represent this score holder.
      * */
-    Collection<MacroScoreHolder> getMacroHolders();
+    @NotNull
+    Collection<@NotNull MacroScoreHolder> getMacroHolders();
 }

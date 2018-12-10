@@ -2,15 +2,17 @@ package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.util.NumberRange;
+import org.jetbrains.annotations.NotNull;
 
 public class YawArgument implements SelectorArgument {
+    @NotNull
+    private final NumberRange<@NotNull Double> value;
 
-    private final NumberRange<Double> value;
-
-    public YawArgument(NumberRange<Double> value) {
+    public YawArgument(@NotNull NumberRange<@NotNull Double> value) {
         this.value = value;
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         return "x_rotation=" + value;
@@ -21,11 +23,13 @@ public class YawArgument implements SelectorArgument {
         return false;
     }
 
+    @NotNull
     @Override
     public YawArgument clone() {
         return new YawArgument(value.clone());
     }
 
+    @NotNull
     @Override
     public String getKey() {
         return "x_rotation";

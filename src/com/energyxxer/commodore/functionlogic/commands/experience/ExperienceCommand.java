@@ -14,9 +14,10 @@ public abstract class ExperienceCommand implements Command {
         POINTS, LEVELS
     }
 
+    @NotNull
     protected final Entity player;
 
-    public ExperienceCommand(Entity player) {
+    public ExperienceCommand(@NotNull Entity player) {
         this.player = player;
         player.assertPlayer();
     }

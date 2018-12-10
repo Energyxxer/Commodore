@@ -1,75 +1,88 @@
 package com.energyxxer.commodore.functionlogic.score;
 
-import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.functionlogic.functions.FunctionSection;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.textcomponents.TextComponent;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 
 public class ObjectiveManager {
 
+    @NotNull
     private final CommandModule owner;
 
-    private final HashMap<String, Objective> objectives = new HashMap<>();
-    private Function creationFunction;
+    @NotNull
+    private final HashMap<@NotNull String, @NotNull Objective> objectives = new HashMap<>();
+    @Nullable
+    private FunctionSection creationFunction;
 
     private boolean usePrefix = false;
 
-    public ObjectiveManager(CommandModule owner) {
+    public ObjectiveManager(@NotNull CommandModule owner) {
         this.owner = owner;
     }
 
-    public Objective get(String name) {
+    @NotNull
+    public Objective get(@NotNull String name) {
         Objective existing = objectives.get(name);
 
         return (existing != null) ? existing : forceCreate(name);
     }
 
-    public boolean contains(String name) {
+    public boolean contains(@NotNull String name) {
         return objectives.containsKey(name);
     }
 
-    public Objective create(String name) {
+    @NotNull
+    public Objective create(@NotNull String name) {
         return create(name, "dummy");
     }
 
-    public Objective create(String name, String type) {
+    @NotNull
+    public Objective create(@NotNull String name, @NotNull String type) {
         return create(name, type, false);
     }
 
-    public Objective create(String name, boolean field) {
+    @NotNull
+    public Objective create(@NotNull String name, boolean field) {
         return create(name, "dummy", field);
     }
 
-    public Objective create(String name, String type, boolean field) {
+    @NotNull
+    public Objective create(@NotNull String name, @NotNull String type, boolean field) {
         return create(name, type, null, field);
     }
 
-    public Objective create(String name, String type, TextComponent displayName, boolean field) {
+    @NotNull
+    public Objective create(@NotNull String name, @NotNull String type, @Nullable TextComponent displayName, boolean field) {
         if(!contains(name)) return forceCreate(name, type, displayName, field);
         throw new IllegalArgumentException("An objective by the name '" + name + "' already exists");
     }
 
-    private Objective forceCreate(String name) {
+    @NotNull
+    private Objective forceCreate(@NotNull String name) {
         return forceCreate(name, "dummy", null, false);
     }
 
-    private Objective forceCreate(String name, String type, TextComponent displayName, boolean field) {
+    @NotNull
+    private Objective forceCreate(@NotNull String name, @NotNull String type, @Nullable TextComponent displayName, boolean field) {
         Objective newObjective = new Objective(this, name, type, displayName, field);
         objectives.put(name, newObjective);
         return newObjective;
     }
 
+    @NotNull
     public CommandModule getOwner() {
         return owner;
     }
 
-    private void dumpObjectiveCreators(FunctionSection function) {
+    private void dumpObjectiveCreators(@NotNull FunctionSection function) {
         objectives.values().forEach(o -> function.append(o.getObjectiveCreator()));
     }
 
-    public void setCreationFunction(Function creationFunction) {
+    public void setCreationFunction(@Nullable FunctionSection creationFunction) {
         this.creationFunction = creationFunction;
     }
 

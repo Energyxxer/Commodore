@@ -10,15 +10,18 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class ExecuteConditionDataBlock extends ExecuteCondition {
+    @NotNull
     private final CoordinateSet pos;
+    @NotNull
     private final NBTPath path;
 
-    public ExecuteConditionDataBlock(ConditionType flowController, CoordinateSet pos, NBTPath path) {
+    public ExecuteConditionDataBlock(@NotNull ConditionType flowController, @NotNull CoordinateSet pos, @NotNull NBTPath path) {
         super(flowController);
         this.pos = pos;
         this.path = path;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, this.getStarter() + "data block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path);

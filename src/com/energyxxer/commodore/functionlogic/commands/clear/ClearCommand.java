@@ -4,16 +4,19 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
+import com.energyxxer.commodore.item.Item;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 public class ClearCommand implements Command {
-
+    @Nullable
     private final Entity player;
+    @Nullable
     private final Item item;
     private final int maxCount;
 
@@ -21,20 +24,20 @@ public class ClearCommand implements Command {
         this(null, null);
     }
 
-    public ClearCommand(Entity player) {
+    public ClearCommand(@Nullable Entity player) {
         this(player, null);
     }
 
-    public ClearCommand(Entity player, Item item) {
+    public ClearCommand(@Nullable Entity player, @Nullable Item item) {
         this(player, item, -1);
     }
 
-    public ClearCommand(Entity player, Item item, int maxCount) {
+    public ClearCommand(@Nullable Entity player, @Nullable Item item, int maxCount) {
         this.player = player;
         this.item = item;
         this.maxCount = maxCount;
 
-        player.assertPlayer();
+        if(player != null) player.assertPlayer();
     }
 
     @Override @NotNull
@@ -46,6 +49,6 @@ public class ClearCommand implements Command {
 
     @Override @NotNull
     public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return new ArrayList<>(player.getScoreboardAccesses());
+        return player != null ? new ArrayList<>(player.getScoreboardAccesses()) : Collections.emptyList();
     }
 }

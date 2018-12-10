@@ -3,20 +3,22 @@ package com.energyxxer.commodore.functionlogic.selector.arguments;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.functionlogic.score.Objective;
 import com.energyxxer.commodore.util.NumberRange;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
 public class ScoreArgument implements SelectorArgument {
-
-    private final HashMap<Objective, NumberRange<Integer>> scores = new HashMap<>();
+    @NotNull
+    private final HashMap<@NotNull Objective, @NotNull NumberRange<@NotNull Integer>> scores = new HashMap<>();
 
     public ScoreArgument() {
     }
 
-    public void put(Objective objective, NumberRange<Integer> value) {
+    public void put(@NotNull Objective objective, @NotNull NumberRange<@NotNull Integer> value) {
         this.scores.put(objective, value);
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         StringBuilder sb = new StringBuilder("scores={");
@@ -46,6 +48,7 @@ public class ScoreArgument implements SelectorArgument {
         return false;
     }
 
+    @NotNull
     @Override
     public ScoreArgument clone() {
         ScoreArgument copy = new ScoreArgument();
@@ -53,6 +56,7 @@ public class ScoreArgument implements SelectorArgument {
         return copy;
     }
 
+    @NotNull
     @Override
     public String getKey() {
         return "scores";

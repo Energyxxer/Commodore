@@ -28,14 +28,16 @@ public abstract class DataCommand implements Command {
     * DataCommand(CoordinateSet pos, TagCompound nbt) //data merge block <x y z> <nbt>
     * */
 
-    protected Entity entity;
-    protected CoordinateSet pos;
+    protected final Entity entity;
+    protected final CoordinateSet pos;
 
-    public DataCommand(Entity entity) {
+    public DataCommand(@NotNull Entity entity) {
+        this.pos = null;
         this.entity = entity;
     }
 
-    public DataCommand(CoordinateSet pos) {
+    public DataCommand(@NotNull CoordinateSet pos) {
+        this.entity = null;
         this.pos = pos;
     }
 

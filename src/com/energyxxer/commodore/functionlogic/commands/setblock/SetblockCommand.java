@@ -12,8 +12,11 @@ import org.jetbrains.annotations.NotNull;
 import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
 
 public class SetblockCommand implements Command {
+    @NotNull
     private final CoordinateSet pos;
+    @NotNull
     private final Block block;
+    @NotNull
     private final OldBlockHandlingMode mode;
 
     public enum OldBlockHandlingMode {
@@ -21,11 +24,11 @@ public class SetblockCommand implements Command {
         public static final OldBlockHandlingMode DEFAULT = REPLACE;
     }
 
-    public SetblockCommand(CoordinateSet pos, Block block) {
+    public SetblockCommand(@NotNull CoordinateSet pos, @NotNull Block block) {
         this(pos, block, OldBlockHandlingMode.REPLACE);
     }
 
-    public SetblockCommand(CoordinateSet pos, Block block, OldBlockHandlingMode mode) {
+    public SetblockCommand(@NotNull CoordinateSet pos, @NotNull Block block, @NotNull OldBlockHandlingMode mode) {
         this.pos = pos;
         this.block = block;
         this.mode = mode;
@@ -33,11 +36,11 @@ public class SetblockCommand implements Command {
         assertStandalone(block.getBlockType());
     }
 
-    public SetblockCommand(CoordinateSet pos, Type blockType) {
+    public SetblockCommand(@NotNull CoordinateSet pos, @NotNull Type blockType) {
         this(pos, blockType, OldBlockHandlingMode.REPLACE);
     }
 
-    public SetblockCommand(CoordinateSet pos, Type blockType, OldBlockHandlingMode mode) {
+    public SetblockCommand(@NotNull CoordinateSet pos, @NotNull Type blockType, @NotNull OldBlockHandlingMode mode) {
         this(pos, new Block(blockType), mode);
     }
 

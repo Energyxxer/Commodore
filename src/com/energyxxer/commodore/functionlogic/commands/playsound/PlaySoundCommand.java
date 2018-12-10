@@ -8,6 +8,7 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,31 +19,35 @@ public class PlaySoundCommand implements Command {
         AMBIENT, BLOCK, HOSTILE, MASTER, MUSIC, NEUTRAL, PLAYER, RECORD, VOICE, WEATHER
     }
 
+    @NotNull
     private final String sound;
+    @NotNull
     private final Source source;
+    @NotNull
     private final Entity player;
+    @Nullable
     private final CoordinateSet location;
     private final float maxVolume;
     private final float pitch;
     private final float minVolume;
 
-    public PlaySoundCommand(String sound, Source source, Entity player) {
+    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @NotNull Entity player) {
         this(sound, source, player, null);
     }
 
-    public PlaySoundCommand(String sound, Source source, Entity player, CoordinateSet location) {
+    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @NotNull Entity player, @Nullable CoordinateSet location) {
         this(sound, source, player, location, -1);
     }
 
-    public PlaySoundCommand(String sound, Source source, Entity player, CoordinateSet location, float maxVolume) {
+    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @NotNull Entity player, @Nullable CoordinateSet location, float maxVolume) {
         this(sound, source, player, location, maxVolume, -1);
     }
 
-    public PlaySoundCommand(String sound, Source source, Entity player, CoordinateSet location, float maxVolume, float pitch) {
+    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @NotNull Entity player, @Nullable CoordinateSet location, float maxVolume, float pitch) {
         this(sound, source, player, location, maxVolume, pitch, -1);
     }
 
-    public PlaySoundCommand(String sound, Source source, Entity player, CoordinateSet location, float maxVolume, float pitch, float minVolume) {
+    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @NotNull Entity player, @Nullable CoordinateSet location, float maxVolume, float pitch, float minVolume) {
         this.sound = sound;
         this.source = source;
         this.player = player;

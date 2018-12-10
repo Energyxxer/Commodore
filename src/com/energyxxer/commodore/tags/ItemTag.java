@@ -3,6 +3,7 @@ package com.energyxxer.commodore.tags;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.ItemType;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -16,32 +17,35 @@ public class ItemTag extends Tag {
     public static final TagInstantiator<ItemTag> INSTANTIATOR = ItemTag::new;
     private boolean export = true;
 
+    @NotNull
     private TagGroup group;
 
-    ItemTag(TagGroup group, Namespace namespace, String id) {
+    ItemTag(@NotNull TagGroup group, @NotNull Namespace namespace, @NotNull String id) {
         super(ItemType.CATEGORY, namespace, id);
         this.group = group;
     }
 
+    @NotNull
     @Override
     public ArrayList<Type> getValues() {
         return values;
     }
 
+    @NotNull
     @Override
     public OverridePolicy getOverridePolicy() {
         return policy;
     }
 
     @Override
-    public void setOverridePolicy(OverridePolicy newPolicy) {
+    public void setOverridePolicy(@NotNull OverridePolicy newPolicy) {
         this.policy = newPolicy;
     }
 
     // ADD METHODS
 
     @Override
-    public void addValue(Type value) {
+    public void addValue(@NotNull Type value) {
         assertItem(value);
         values.add(value);
     }
@@ -56,6 +60,7 @@ public class ItemTag extends Tag {
         this.export = export;
     }
 
+    @NotNull
     @Override
     public TagGroup<?> getGroup() {
         return group;

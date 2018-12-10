@@ -37,7 +37,7 @@ public class Blockstate {
      *
      * @param key The key whose associated value is to be removed.
      * */
-    public void remove(String key) {
+    public void remove(@NotNull String key) {
         map.remove(key);
     }
 
@@ -49,7 +49,7 @@ public class Blockstate {
      * @return The value associated with the given key. If such key is not found in the blockstate, <code>null</code>
      * is returned.
      * */
-    public String get(String key) {
+    public @NotNull String get(@NotNull String key) {
         return map.get(key);
     }
 
@@ -59,7 +59,7 @@ public class Blockstate {
      * @return The map containing this blockstate's properties. Any changes made to the returned map will also be made
      * to this blockstate's properties.
      * */
-    public HashMap<String, String> getProperties() {
+    public @NotNull HashMap<String, String> getProperties() {
         return map;
     }
 
@@ -77,7 +77,7 @@ public class Blockstate {
      *
      * @throws IllegalArgumentException If the passed parameter is malformed and doesn't correspond to a blockstate.
      * */
-    public static Blockstate parseRaw(String raw) {
+    public static @NotNull Blockstate parseRaw(@NotNull String raw) {
         String[] states = raw.split(",");
         Blockstate blockstate = new Blockstate();
         for(String state : states) {
@@ -97,7 +97,7 @@ public class Blockstate {
         return map.isEmpty();
     }
 
-    public Blockstate clone() {
+    public @NotNull Blockstate clone() {
         Blockstate newState = new Blockstate();
         for(Map.Entry<String, String> entry : map.entrySet()) {
             newState.put(entry.getKey(), entry.getValue());
@@ -105,7 +105,7 @@ public class Blockstate {
         return newState;
     }
 
-    public Blockstate merge(Blockstate other) {
+    public @NotNull Blockstate merge(@NotNull Blockstate other) {
         if(other.isEmpty()) return this.clone();
         if(this.isEmpty()) return other.clone();
         Blockstate merged = this.clone();

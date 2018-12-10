@@ -7,24 +7,28 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
 import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertEntity;
 
 public class SummonCommand implements Command {
 
+    @NotNull
     private final Type type;
+    @Nullable
     private final CoordinateSet pos;
+    @Nullable
     private final TagCompound data;
 
-    public SummonCommand(Type type) {
+    public SummonCommand(@NotNull Type type) {
         this(type, null);
     }
 
-    public SummonCommand(Type type, CoordinateSet pos) {
+    public SummonCommand(@NotNull Type type, @Nullable CoordinateSet pos) {
         this(type, pos, null);
     }
 
-    public SummonCommand(Type type, CoordinateSet pos, TagCompound data) {
+    public SummonCommand(@NotNull Type type, @Nullable CoordinateSet pos, @Nullable TagCompound data) {
         this.type = type;
         this.pos = pos;
         this.data = data;

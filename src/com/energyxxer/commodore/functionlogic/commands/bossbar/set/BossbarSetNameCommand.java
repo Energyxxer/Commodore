@@ -10,9 +10,10 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class BossbarSetNameCommand extends BossbarSetCommand {
+    @NotNull
     private final TextComponent name;
 
-    public BossbarSetNameCommand(Type bossbar, TextComponent name) {
+    public BossbarSetNameCommand(@NotNull Type bossbar, @NotNull TextComponent name) {
         super(bossbar);
         this.name = name;
     }

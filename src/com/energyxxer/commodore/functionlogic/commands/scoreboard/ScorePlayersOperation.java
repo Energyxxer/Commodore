@@ -27,15 +27,16 @@ public class ScorePlayersOperation implements Command {
         //Leftmost 2 bits are for the read-access of target and source respectively.
         //Rightmost 2 bits are for write-access of target and source respectively.
 
-
+        @NotNull
         private final String shorthand;
         private final int accessMap;
 
-        Operation(String shorthand, int accessMap) {
+        Operation(@NotNull String shorthand, int accessMap) {
             this.shorthand = shorthand;
             this.accessMap = accessMap;
         }
 
+        @NotNull
         public String getShorthand() {
             return shorthand;
         }
@@ -67,13 +68,16 @@ public class ScorePlayersOperation implements Command {
         }
     }
 
+    @NotNull
     private final LocalScore target;
+    @NotNull
     private final Operation operation;
+    @NotNull
     private final LocalScore source;
 
     private final ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
 
-    public ScorePlayersOperation(LocalScore target, Operation operation, LocalScore source) {
+    public ScorePlayersOperation(@NotNull LocalScore target, @NotNull Operation operation, @NotNull LocalScore source) {
         this.target = target;
         this.operation = operation;
         this.source = source;

@@ -1,47 +1,51 @@
 package com.energyxxer.commodore.functionlogic.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 public class TagCompound extends ComplexNBTTag {
-    private final ArrayList<NBTTag> content = new ArrayList<>();
+    @NotNull
+    private final ArrayList<@NotNull NBTTag> content = new ArrayList<>();
 
     public TagCompound() {
         this("");
     }
 
-    public TagCompound(String name) {
+    public TagCompound(@NotNull String name) {
         super(name);
     }
 
-    public TagCompound(Collection<NBTTag> tags) {
+    public TagCompound(@NotNull Collection<@NotNull NBTTag> tags) {
         this("", tags);
     }
 
-    public TagCompound(String name, Collection<NBTTag> tags) {
+    public TagCompound(@NotNull String name, @NotNull Collection<@NotNull NBTTag> tags) {
         super(name);
         this.addAll(tags);
     }
 
-    public TagCompound(NBTTag... tags) {
+    public TagCompound(@NotNull NBTTag... tags) {
         this("", tags);
     }
 
-    public TagCompound(String name, NBTTag... tags) {
+    public TagCompound(@NotNull String name, @NotNull NBTTag... tags) {
         this(name, Arrays.asList(tags));
     }
 
-    public NBTTag get(String key) {
+    public NBTTag get(@NotNull String key) {
         for(NBTTag other : content) {
             if(other.name.equals(key)) return other;
         }
         return null;
     }
 
-    public void remove(String key) {
+    public void remove(@NotNull String key) {
         content.removeIf(t -> t.name.equals(key));
     }
 
-    public TagCompound merge(TagCompound other) {
+    @NotNull
+    public TagCompound merge(@NotNull TagCompound other) {
         TagCompound merged = this.clone();
         for(NBTTag otherTag : other.getAllTags()) {
             if(merged.contains(otherTag.getName())) {
@@ -65,7 +69,7 @@ public class TagCompound extends ComplexNBTTag {
     }
 
     @Override
-    public void add(NBTTag tag) {
+    public void add(@NotNull NBTTag tag) {
         for(NBTTag other : content) {
             if(other.getName().equals(tag.name)) {
                 throw new IllegalArgumentException("Unable to add tag: '" + tag.name + "' already exists in compound");
@@ -85,18 +89,20 @@ public class TagCompound extends ComplexNBTTag {
     }
 
     @Override
-    public boolean contains(String key) {
+    public boolean contains(@NotNull String key) {
         for(NBTTag other : content) {
             if(other.name.equals(key)) return true;
         }
         return false;
     }
 
+    @NotNull
     @Override
     public String getType() {
         return "TAG_Compound";
     }
 
+    @NotNull
     @Override
     public String toHeadlessString() {
         StringBuilder sb = new StringBuilder("{");
@@ -117,11 +123,13 @@ public class TagCompound extends ComplexNBTTag {
         return this.toHeaderString() + ":" + this.toHeadlessString();
     }
 
+    @NotNull
     @Override
     public Collection<NBTTag> getAllTags() {
         return new ArrayList<>(content);
     }
 
+    @NotNull
     @Override
     public TagCompound clone() {
         TagCompound copy = new TagCompound(name);

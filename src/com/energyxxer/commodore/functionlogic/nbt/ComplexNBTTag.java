@@ -1,24 +1,27 @@
 package com.energyxxer.commodore.functionlogic.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Collection;
 
 public abstract class ComplexNBTTag extends NBTTag {
 
-    public ComplexNBTTag(String name) {
+    public ComplexNBTTag(@NotNull String name) {
         super(name);
     }
 
-    public void addAll(Collection<NBTTag> tags) {
+    public void addAll(@NotNull Collection<@NotNull NBTTag> tags) {
         tags.forEach(this::add);
     }
 
-    public abstract void add(NBTTag tag);
+    public abstract void add(@NotNull NBTTag tag);
 
     public abstract int size();
 
     public abstract boolean isEmpty();
 
-    public abstract boolean contains(String key);
+    public abstract boolean contains(@NotNull String key);
 
-    public abstract Collection<NBTTag> getAllTags();
+    @NotNull
+    public abstract Collection<@NotNull NBTTag> getAllTags();
 }

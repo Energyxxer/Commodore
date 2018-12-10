@@ -5,17 +5,19 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertEffect;
 
 public class EffectClearCommand extends EffectCommand {
+    @Nullable
     private final Type type;
 
-    public EffectClearCommand(Entity entity) {
+    public EffectClearCommand(@NotNull Entity entity) {
         this(entity, null);
     }
 
-    public EffectClearCommand(Entity entity, Type type) {
+    public EffectClearCommand(@NotNull Entity entity, @Nullable Type type) {
         super(entity);
         this.type = type;
 

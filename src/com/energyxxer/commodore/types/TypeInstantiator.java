@@ -1,5 +1,8 @@
 package com.energyxxer.commodore.types;
 
+import org.jetbrains.annotations.NotNull;
+
 public interface TypeInstantiator<T extends Type> {
-    T create(String name);
+    @NotNull
+    T create(@NotNull String name);
 }

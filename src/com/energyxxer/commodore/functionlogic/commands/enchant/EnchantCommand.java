@@ -10,15 +10,17 @@ import org.jetbrains.annotations.NotNull;
 import static com.energyxxer.commodore.types.TypeAssert.assertEnchantment;
 
 public class EnchantCommand implements Command {
+    @NotNull
     private final Entity entity;
+    @NotNull
     private final Type enchantment;
     private final int level;
 
-    public EnchantCommand(Entity entity, Type enchantment) {
+    public EnchantCommand(@NotNull Entity entity, @NotNull Type enchantment) {
         this(entity, enchantment, 1);
     }
 
-    public EnchantCommand(Entity entity, Type enchantment, int level) {
+    public EnchantCommand(@NotNull Entity entity, @NotNull Type enchantment, int level) {
         this.entity = entity;
         this.enchantment = enchantment;
         this.level = level;

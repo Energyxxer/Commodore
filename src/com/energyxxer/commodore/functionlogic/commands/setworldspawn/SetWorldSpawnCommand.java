@@ -6,16 +6,18 @@ import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class SetWorldSpawnCommand implements Command {
 
+    @Nullable
     private final CoordinateSet pos;
 
     public SetWorldSpawnCommand() {
         this(new CoordinateSet());
     }
 
-    public SetWorldSpawnCommand(CoordinateSet pos) {
+    public SetWorldSpawnCommand(@Nullable CoordinateSet pos) {
         this.pos = pos;
     }
 

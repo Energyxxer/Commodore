@@ -1,28 +1,33 @@
 package com.energyxxer.commodore.functionlogic.selector.arguments.advancement;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 public class AdvancementCriterionGroupEntry implements AdvancementArgumentEntry {
 
+    @NotNull
     private final String advancementName;
-    private final List<AdvancementCriterionEntry> criteria = new ArrayList<>();
+    @NotNull
+    private final List<@NotNull AdvancementCriterionEntry> criteria = new ArrayList<>();
 
-    public AdvancementCriterionGroupEntry(String advancementName) {
+    public AdvancementCriterionGroupEntry(@NotNull String advancementName) {
         this.advancementName = advancementName;
     }
 
-    public void addCriterion(AdvancementCriterionEntry criterion) {
+    public void addCriterion(@NotNull AdvancementCriterionEntry criterion) {
         criteria.add(criterion);
     }
 
-    public void addCriteria(AdvancementCriterionEntry... criteria) {
+    public void addCriteria(@NotNull AdvancementCriterionEntry... criteria) {
         addCriteria(Arrays.asList(criteria));
     }
 
-    public void addCriteria(Collection<AdvancementCriterionEntry> criteria) {
+    public void addCriteria(@NotNull Collection<@NotNull AdvancementCriterionEntry> criteria) {
         this.criteria.addAll(criteria);
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         StringBuilder sb = new StringBuilder(advancementName);
@@ -41,6 +46,7 @@ public class AdvancementCriterionGroupEntry implements AdvancementArgumentEntry 
         return sb.toString();
     }
 
+    @NotNull
     @Override
     public AdvancementCriterionGroupEntry clone() {
         AdvancementCriterionGroupEntry copy = new AdvancementCriterionGroupEntry(advancementName);

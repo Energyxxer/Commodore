@@ -8,6 +8,7 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,18 +16,20 @@ import java.util.Collections;
 
 public class SpawnpointCommand implements Command {
 
+    @Nullable
     private final Entity player;
+    @Nullable
     private final CoordinateSet pos;
 
     public SpawnpointCommand() {
         this(null);
     }
 
-    public SpawnpointCommand(Entity player) {
+    public SpawnpointCommand(@Nullable Entity player) {
         this(player, new CoordinateSet());
     }
 
-    public SpawnpointCommand(Entity player, CoordinateSet pos) {
+    public SpawnpointCommand(@Nullable Entity player, @Nullable CoordinateSet pos) {
         this.player = player;
         this.pos = pos;
 

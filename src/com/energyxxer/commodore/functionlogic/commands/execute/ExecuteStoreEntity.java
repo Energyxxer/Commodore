@@ -11,24 +11,27 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class ExecuteStoreEntity extends ExecuteStore {
+    @NotNull
     private final Entity entity;
+    @NotNull
     private final NBTPath path;
+    @NotNull
     private final NumericNBTType type;
     private final double scale;
 
-    public ExecuteStoreEntity(Entity entity, NBTPath path, NumericNBTType type) {
+    public ExecuteStoreEntity(@NotNull Entity entity, @NotNull NBTPath path, @NotNull NumericNBTType type) {
         this(StoreValue.DEFAULT, entity, path, type);
     }
 
-    public ExecuteStoreEntity(StoreValue storeValue, Entity entity, NBTPath path, NumericNBTType type) {
+    public ExecuteStoreEntity(@NotNull StoreValue storeValue, @NotNull Entity entity, @NotNull NBTPath path, @NotNull NumericNBTType type) {
         this(storeValue, entity, path, type, 1);
     }
 
-    public ExecuteStoreEntity(Entity entity, NBTPath path, NumericNBTType type, double scale) {
+    public ExecuteStoreEntity(@NotNull Entity entity, @NotNull NBTPath path, @NotNull NumericNBTType type, double scale) {
         this(StoreValue.DEFAULT, entity, path, type, scale);
     }
 
-    public ExecuteStoreEntity(StoreValue storeValue, Entity entity, NBTPath path, NumericNBTType type, double scale) {
+    public ExecuteStoreEntity(@NotNull StoreValue storeValue, @NotNull Entity entity, @NotNull NBTPath path, @NotNull NumericNBTType type, double scale) {
         super(storeValue);
         this.entity = entity;
         this.path = path;
@@ -37,6 +40,7 @@ public class ExecuteStoreEntity extends ExecuteStore {
         if(entity.getLimit() < 0 || entity.getLimit() > 1) throw new IllegalArgumentException("Only one entity is allowed, but passed entity (" + entity + ") allows for more than one.");
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, this.getStarter() + "entity \be0 " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.numberToPlainString(scale), entity);

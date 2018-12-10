@@ -3,6 +3,7 @@ package com.energyxxer.commodore.util;
 import com.energyxxer.commodore.block.Block;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.types.Type;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -10,10 +11,12 @@ import java.util.Objects;
 import static com.energyxxer.commodore.types.TypeAssert.assertParticle;
 
 public class Particle {
+    @NotNull
     private final Type type;
+    @NotNull
     private final ArrayList<Object> arguments = new ArrayList<>();
 
-    public Particle(Type type, Object... arguments) {
+    public Particle(@NotNull Type type, @NotNull Object... arguments) {
         this.type = type;
         assertParticle(type);
         String[] expectedArguments = type.getProperty("argument").split("-");

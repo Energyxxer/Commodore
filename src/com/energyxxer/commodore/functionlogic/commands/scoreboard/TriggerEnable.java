@@ -8,10 +8,12 @@ import com.energyxxer.commodore.functionlogic.score.Objective;
 import org.jetbrains.annotations.NotNull;
 
 public class TriggerEnable implements Command {
+    @NotNull
     private final Entity player;
+    @NotNull
     private final Objective objective;
 
-    public TriggerEnable(Entity player, Objective objective) {
+    public TriggerEnable(@NotNull Entity player, @NotNull Objective objective) {
         this.player = player;
         this.objective = objective;
     }

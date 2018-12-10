@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 public interface ExecuteModifier {
+    @NotNull
     SubCommandResult getSubCommand(ExecutionContext execContext);
 
     @NotNull

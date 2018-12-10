@@ -7,6 +7,7 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.MacroScoreHolder;
 import com.energyxxer.commodore.functionlogic.score.ScoreHolder;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 
@@ -27,10 +28,12 @@ public interface Entity extends ScoreHolder, Cloneable, CommandEmbeddable {
      * @return An {@link EntityResolution} object detailing what execution variables should be changed to target it via
      * its selector.
      * */
+    @NotNull
     EntityResolution resolveFor(ExecutionContext context);
 
+    @NotNull
     @Override
-    default CommandEmbeddableResolution resolveEmbed(ExecutionContext execContext) {
+    default CommandEmbeddableResolution resolveEmbed(@NotNull ExecutionContext execContext) {
         return resolveFor(execContext).resolveEmbed(execContext);
     }
 

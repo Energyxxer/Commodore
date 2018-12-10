@@ -15,11 +15,14 @@ public class TagCommand implements Command {
         ADD, REMOVE
     }
 
+    @NotNull
     private final Action action;
+    @NotNull
     private final Entity entity;
+    @NotNull
     private final String tag;
 
-    public TagCommand(Action action, Entity entity, String tag) {
+    public TagCommand(@NotNull Action action, @NotNull Entity entity, @NotNull String tag) {
         this.action = action;
         this.entity = entity;
         this.tag = tag;

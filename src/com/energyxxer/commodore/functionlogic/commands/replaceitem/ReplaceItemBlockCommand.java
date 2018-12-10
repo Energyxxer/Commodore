@@ -12,17 +12,19 @@ import static com.energyxxer.commodore.types.TypeAssert.assertSlot;
 import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
 
 public class ReplaceItemBlockCommand extends ReplaceItemCommand {
-
+    @NotNull
     private final CoordinateSet pos;
+    @NotNull
     private final Type slot;
+    @NotNull
     private final Item item;
     private final int count;
 
-    public ReplaceItemBlockCommand(CoordinateSet pos, Type slot, Item item) {
+    public ReplaceItemBlockCommand(@NotNull CoordinateSet pos, @NotNull Type slot, @NotNull Item item) {
         this(pos, slot, item, 1);
     }
 
-    public ReplaceItemBlockCommand(CoordinateSet pos, Type slot, Item item, int count) {
+    public ReplaceItemBlockCommand(@NotNull CoordinateSet pos, @NotNull Type slot, @NotNull Item item, int count) {
         this.pos = pos;
         this.slot = slot;
         this.item = item;

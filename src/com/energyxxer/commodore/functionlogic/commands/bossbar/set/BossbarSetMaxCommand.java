@@ -6,9 +6,9 @@ import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
 public class BossbarSetMaxCommand extends BossbarSetCommand {
-    private int max;
+    private final int max;
 
-    public BossbarSetMaxCommand(Type bossbar, int max) {
+    public BossbarSetMaxCommand(@NotNull Type bossbar, int max) {
         super(bossbar);
 
         if(max < 1) throw new IllegalArgumentException("Max value should not be less than 1, found " + max);

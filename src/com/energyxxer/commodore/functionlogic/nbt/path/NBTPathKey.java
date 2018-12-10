@@ -1,19 +1,24 @@
 package com.energyxxer.commodore.functionlogic.nbt.path;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class NBTPathKey implements NBTPathNode {
+    @NotNull
     private final String name;
 
-    public NBTPathKey(String name) {
+    public NBTPathKey(@NotNull String name) {
         this.name = name;
     }
 
+    @NotNull
     @Override
     public String getPathString() {
         return name;
     }
 
+    @NotNull
     @Override
     public String getPathSeparator() {
         return ".";

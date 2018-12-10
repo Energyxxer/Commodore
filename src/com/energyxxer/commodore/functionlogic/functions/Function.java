@@ -4,40 +4,49 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.entity.GenericEntity;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.module.Exportable;
-import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.functionlogic.score.MacroScore;
 import com.energyxxer.commodore.functionlogic.score.MacroScoreHolder;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreAccessLog;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
+import com.energyxxer.commodore.module.Exportable;
+import com.energyxxer.commodore.module.Namespace;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
 public class Function implements FunctionSection, Exportable {
+    @NotNull
     private final FunctionManager parent;
 
+    @NotNull
     private final Namespace namespace;
+    @NotNull
     private final String path;
-    private final ArrayList<FunctionWriter> content = new ArrayList<>();
+    @NotNull
+    private final ArrayList<@NotNull FunctionWriter> content = new ArrayList<>();
+    @NotNull
     private final MacroScoreHolder senderMacro;
 
+    @NotNull
     private ExecutionContext execContext;
     private byte accessesResolvedState = 0;
     private boolean contentResolved = false;
     private String resolvedContent = null;
 
+    @NotNull
     private final ScoreAccessLog accessLog = new ScoreAccessLog(this);
 
     private boolean export = true;
 
-    Function(FunctionManager parent, Namespace namespace, String path) {
+    Function(@NotNull FunctionManager parent, @NotNull Namespace namespace, @NotNull String path) {
         this(parent, namespace, path, null);
     }
 
-    Function(FunctionManager parent, Namespace namespace, String path, Entity sender) {
+    Function(@NotNull FunctionManager parent, @NotNull Namespace namespace, @NotNull String path, @Nullable Entity sender) {
         this.parent = parent;
 
         this.namespace = namespace;
@@ -50,43 +59,50 @@ public class Function implements FunctionSection, Exportable {
         this.execContext = new ExecutionContext(newSender);
     }
 
+    @NotNull
     public Entity getSender() {
         return execContext.getFinalSender();
     }
 
     @Override
-    public void append(FunctionWriter... writers) {
+    public void append(@NotNull FunctionWriter... writers) {
         append(Arrays.asList(writers));
     }
 
     @Override
-    public void append(Collection<FunctionWriter> writers) {
+    public void append(@NotNull Collection<@NotNull FunctionWriter> writers) {
         this.content.addAll(writers);
         writers.forEach(w -> w.onAppend(this));
         contentResolved = false;
     }
 
+    @NotNull
     public String getFullName() {
         return namespace.toString() + ':' + path;
     }
 
+    @NotNull
     public Namespace getNamespace() {
         return namespace;
     }
 
+    @NotNull
     public String getPath() {
         return path;
     }
 
+    @NotNull
     @Override
     public String getExportPath() {
         return "functions/" + getPath() + ".mcfunction";
     }
 
+    @NotNull
     public FunctionManager getParent() {
         return parent;
     }
 
+    @NotNull
     public String getResolvedContent() {
         if(!contentResolved) {
             StringBuilder sb = new StringBuilder();
@@ -111,6 +127,7 @@ public class Function implements FunctionSection, Exportable {
         return resolvedContent;
     }
 
+    @NotNull
     public ScoreAccessLog getAccessLog() {
         return accessLog;
     }
@@ -163,6 +180,7 @@ public class Function implements FunctionSection, Exportable {
         } else throw new IllegalStateException("Cannot change function execution context when it already has entries");
     }
 
+    @NotNull
     public String getHeader() {
         return "[Function " + getFullName() + " : " + content.size() + " " + ((content.size() == 1) ? "entry" : "entries") + "]";
     }
@@ -181,6 +199,7 @@ public class Function implements FunctionSection, Exportable {
         this.export = export;
     }
 
+    @NotNull
     @Override
     public String getContents() {
         return getResolvedContent();

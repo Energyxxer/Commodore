@@ -18,17 +18,19 @@ import static com.energyxxer.commodore.types.TypeAssert.assertFunction;
 
 public class ScheduleCommand implements Command {
 
+    @NotNull
     private final Type function;
     private ExecutionContext execContext = null;
     private Collection<ScoreboardAccess> accesses = null;
 
+    @NotNull
     private TimeSpan delay;
 
-    public ScheduleCommand(Function function, TimeSpan delay) {
+    public ScheduleCommand(@NotNull Function function, @NotNull TimeSpan delay) {
         this(new FunctionReference(function), delay);
     }
 
-    public ScheduleCommand(Type function, TimeSpan delay) {
+    public ScheduleCommand(@NotNull Type function, @NotNull TimeSpan delay) {
         this.function = function;
         this.delay = delay;
 

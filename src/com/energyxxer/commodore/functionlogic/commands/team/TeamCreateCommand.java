@@ -6,20 +6,23 @@ import com.energyxxer.commodore.textcomponents.StringTextComponent;
 import com.energyxxer.commodore.textcomponents.TextComponent;
 import com.energyxxer.commodore.types.defaults.TeamReference;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class TeamCreateCommand extends TeamCommand {
+    @NotNull
     private final TeamReference reference;
+    @Nullable
     private final TextComponent displayName;
 
-    public TeamCreateCommand(TeamReference reference) {
+    public TeamCreateCommand(@NotNull TeamReference reference) {
         this(reference, (TextComponent) null);
     }
 
-    public TeamCreateCommand(TeamReference reference, String displayName) {
+    public TeamCreateCommand(@NotNull TeamReference reference, @Nullable String displayName) {
         this(reference, new StringTextComponent(displayName));
     }
 
-    public TeamCreateCommand(TeamReference reference, TextComponent displayName) {
+    public TeamCreateCommand(@NotNull TeamReference reference, @Nullable TextComponent displayName) {
         this.reference = reference;
         this.displayName = displayName;
     }

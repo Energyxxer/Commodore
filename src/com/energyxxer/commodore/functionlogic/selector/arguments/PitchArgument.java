@@ -2,15 +2,17 @@ package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.util.NumberRange;
+import org.jetbrains.annotations.NotNull;
 
 public class PitchArgument implements SelectorArgument {
+    @NotNull
+    private final NumberRange<@NotNull Double> value;
 
-    private final NumberRange<Double> value;
-
-    public PitchArgument(NumberRange<Double> value) {
+    public PitchArgument(@NotNull NumberRange<@NotNull Double> value) {
         this.value = value;
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         return "y_rotation=" + value;
@@ -21,11 +23,13 @@ public class PitchArgument implements SelectorArgument {
         return false;
     }
 
+    @NotNull
     @Override
     public PitchArgument clone() {
         return new PitchArgument(value.clone());
     }
 
+    @NotNull
     @Override
     public String getKey() {
         return "y_rotation";

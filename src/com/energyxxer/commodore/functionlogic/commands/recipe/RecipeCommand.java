@@ -15,15 +15,18 @@ public class RecipeCommand implements Command {
         GIVE, TAKE
     }
 
+    @NotNull
     private final Action action;
+    @NotNull
     private final Entity player;
+    @NotNull
     private final String recipeName;
 
-    public RecipeCommand(Action action, Entity player) {
+    public RecipeCommand(@NotNull Action action, @NotNull Entity player) {
         this(action, player, "*");
     }
 
-    public RecipeCommand(Action action, Entity player, String recipeName) {
+    public RecipeCommand(@NotNull Action action, @NotNull Entity player, @NotNull String recipeName) {
         this.action = action;
         this.player = player;
         this.recipeName = recipeName;

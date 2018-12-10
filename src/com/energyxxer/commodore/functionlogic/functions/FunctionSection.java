@@ -2,6 +2,7 @@ package com.energyxxer.commodore.functionlogic.functions;
 
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.module.Namespace;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -19,7 +20,7 @@ public interface FunctionSection {
      *
      * @param writers The writers to add to this function section.
      * */
-    default void append(FunctionWriter... writers) {
+    default void append(@NotNull FunctionWriter... writers) {
         append(Arrays.asList(writers));
     }
 
@@ -29,13 +30,14 @@ public interface FunctionSection {
      *
      * @param writers The writers to add to this function section.
      * */
-    void append(Collection<FunctionWriter> writers);
+    void append(@NotNull Collection<@NotNull FunctionWriter> writers);
 
     /**
      * Retrieves the namespace this function section belongs to.
      *
      * @return The namespace this function section belongs to.
      * */
+    @NotNull
     Namespace getNamespace();
 
     /**

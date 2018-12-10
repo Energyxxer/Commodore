@@ -1,27 +1,34 @@
 package com.energyxxer.commodore.functionlogic.inspection;
 
 import com.energyxxer.commodore.functionlogic.commands.execute.ExecuteModifier;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
 public class CommandResolutionLine {
+    @NotNull
     final String raw;
+    @NotNull
     final ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
+    @NotNull
     final ArrayList<CommandEmbeddableResolution> embeddableResolutions = new ArrayList<>();
+    @NotNull
     final ExecutionContext execContext;
 
-    public CommandResolutionLine(ExecutionContext execContext, String raw, CommandEmbeddable... embeddables) {
+    public CommandResolutionLine(@NotNull ExecutionContext execContext, @NotNull String raw, @NotNull CommandEmbeddable... embeddables) {
         this(execContext, raw, Arrays.asList(embeddables));
     }
 
-    public CommandResolutionLine(ExecutionContext execContext, String raw, Collection<CommandEmbeddable> embeddables) {
+    public CommandResolutionLine(@NotNull ExecutionContext execContext, @NotNull String raw, @Nullable Collection<@NotNull CommandEmbeddable> embeddables) {
         this.raw = raw;
         this.execContext = execContext;
         if(embeddables != null) this.embeddables.addAll(embeddables);
     }
 
+    @NotNull
     String construct() {
         ArrayList<ExecuteModifier> modifiers = execContext.getModifiers();
 

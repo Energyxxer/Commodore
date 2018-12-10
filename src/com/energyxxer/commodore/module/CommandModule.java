@@ -5,6 +5,7 @@ import com.energyxxer.commodore.defpacks.MalformedPackException;
 import com.energyxxer.commodore.functionlogic.score.ObjectiveManager;
 import com.energyxxer.commodore.module.options.ModuleOptionManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,40 +22,48 @@ public class CommandModule {
     /**
      * The name of this command module, which is used as the directory or file name for the compiled pack.
      * */
+    @NotNull
     protected String name;
     /**
      * The description of this command module, as seen in the compiled pack.mcmeta
      * */
+    @NotNull
     protected String description;
     /**
      * The prefix which should be used for special names in this module. Currently only used by objective names.
      * */
+    @Nullable
     protected final String prefix;
 
     /**
      * This module's option manager.
      * */
+    @NotNull
     protected ModuleOptionManager optMgr;
 
     /**
      * This module's objective manager.
      * */
+    @NotNull
     protected final ObjectiveManager objMgr;
 
     /**
      * A map of this objective's namespaces, where the key is the namespace string, and the value is the object of the
      * namespace whose name is the string in its key.
      * */
-    protected final HashMap<String, Namespace> namespaces = new HashMap<>();
+    @NotNull
+    protected final HashMap<@NotNull String, @NotNull Namespace> namespaces = new HashMap<>();
 
     /**
      * A list that contains extra exportable files that will be exported alongside the module when compiled.
      * */
+    @NotNull
     public final ArrayList<Exportable> exportables = new ArrayList<>();
 
     /**
      * This command module's default namespace, made a <code>public final</code> field for easy access.
      * */
+    @NotNull
     public final Namespace minecraft;
 
     /**
@@ -62,7 +71,7 @@ public class CommandModule {
      *
      * @param name The name of the new module.
      * */
-    public CommandModule(String name) {
+    public CommandModule(@NotNull String name) {
         this(name, null);
     }
 
@@ -72,7 +81,7 @@ public class CommandModule {
      * @param name The name of the new module.
      * @param prefix The prefix used optionally by elements of the module to avoid conflicts.
      * */
-    public CommandModule(String name, String prefix) {
+    public CommandModule(@NotNull String name, @Nullable String prefix) {
         this(name, "Module Pack created programmatically with Commodore", prefix);
     }
 
@@ -83,7 +92,7 @@ public class CommandModule {
      * @param description The description of the module, as to be displayed in the data pack's mcmeta file.
      * @param prefix The prefix used optionally by elements of the module to avoid conflicts.
      * */
-    public CommandModule(String name, @NotNull String description, String prefix) {
+    public CommandModule(@NotNull String name, @NotNull String description, @Nullable String prefix) {
         this.name = name;
         this.description = description;
         this.prefix = prefix;
@@ -100,6 +109,7 @@ public class CommandModule {
      *
      * @return The name for this module.
      * */
+    @NotNull
     public String getName() {
         return name;
     }
@@ -109,6 +119,7 @@ public class CommandModule {
      *
      * @return The description for this module.
      * */
+    @NotNull
     public String getDescription() {
         return description;
     }
@@ -118,6 +129,7 @@ public class CommandModule {
      *
      * @return The prefix for this module.
      * */
+    @Nullable
     public String getPrefix() {
         return prefix;
     }
@@ -127,7 +139,7 @@ public class CommandModule {
      *
      * @param name The new name for this module.
      * */
-    public void setName(String name) {
+    public void setName(@NotNull String name) {
         this.name = name;
     }
 
@@ -136,7 +148,7 @@ public class CommandModule {
      *
      * @param description The new description for this module.
      * */
-    public void setDescription(String description) {
+    public void setDescription(@NotNull String description) {
         this.description = description;
     }
 
@@ -145,6 +157,7 @@ public class CommandModule {
      *
      * @return The objective manager for this module.
      * */
+    @NotNull
     public ObjectiveManager getObjectiveManager() {
         return objMgr;
     }
@@ -154,6 +167,7 @@ public class CommandModule {
      *
      * @return The option manager for this module.
      * */
+    @NotNull
     public ModuleOptionManager getOptionManager() {
         return optMgr;
     }
@@ -165,7 +179,7 @@ public class CommandModule {
      *
      * @throws IOException If an IO error occurs during the generation of the data pack.
      * */
-    public void compile(File file) throws IOException {
+    public void compile(@NotNull File file) throws IOException {
         objMgr.compile();
         namespaces.values().forEach(Namespace::compile);
 
@@ -180,7 +194,8 @@ public class CommandModule {
      * @return The newly created namespace, if it was created, or the previously existing namespace if one of the same
      * name was found.
      * */
-    public Namespace createNamespace(String name) {
+    @NotNull
+    public Namespace createNamespace(@NotNull String name) {
         Namespace alreadyExisting = namespaces.get(name);
         if(alreadyExisting != null) return alreadyExisting;
 
@@ -196,7 +211,8 @@ public class CommandModule {
      *
      * @return This module's namespace of the given name if it exists; <code>null</code> otherwise.
      * */
-    public Namespace getNamespace(String name) {
+    @NotNull
+    public Namespace getNamespace(@NotNull String name) {
         return namespaces.get(name);
     }
 
@@ -205,7 +221,7 @@ public class CommandModule {
      *
      * @param other The module whose data is to be copied over to this module.
      * */
-    public void join(CommandModule other) {
+    public void join(@NotNull CommandModule other) {
         for(Map.Entry<String, Namespace> ns : other.namespaces.entrySet()) {
             this.namespaces.putIfAbsent(ns.getKey(), ns.getValue().clone(this));
         }
@@ -218,7 +234,7 @@ public class CommandModule {
      *
      * @return <code>true</code> if a namespace of the given name exists in this module, <code>false</code> otherwise.
      * */
-    public boolean namespaceExists(String name) {
+    public boolean namespaceExists(@NotNull String name) {
         return namespaces.containsKey(name);
     }
 
@@ -233,7 +249,7 @@ public class CommandModule {
      * @throws MalformedPackException If mandatory files or properties are not found in the pack's source (and hasn't
      *                                been loaded before).
      * */
-    public void importDefinitions(DefinitionPack pack) throws IOException {
+    public void importDefinitions(@NotNull DefinitionPack pack) throws IOException {
         pack.populate(this);
     }
 

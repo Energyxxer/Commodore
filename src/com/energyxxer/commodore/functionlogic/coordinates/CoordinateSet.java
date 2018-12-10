@@ -5,6 +5,7 @@ import com.energyxxer.commodore.functionlogic.commands.execute.SubCommandResult;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -22,14 +23,17 @@ public class CoordinateSet implements ExecuteModifier {
     /**
      * The coordinate for this set's x axis.
      * */
+    @NotNull
     private final Coordinate x;
     /**
      * The coordinate for this set's y axis.
      * */
+    @NotNull
     private final Coordinate y;
     /**
      * The coordinate for this set's z axis.
      * */
+    @NotNull
     private final Coordinate z;
 
     /**
@@ -48,7 +52,7 @@ public class CoordinateSet implements ExecuteModifier {
      *
      * @throws IllegalArgumentException If there is a mix of world coordinate and local coordinate types.
      * */
-    public CoordinateSet(Coordinate x, Coordinate y, Coordinate z) {
+    public CoordinateSet(@NotNull Coordinate x, @NotNull Coordinate y, @NotNull Coordinate z) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -80,7 +84,7 @@ public class CoordinateSet implements ExecuteModifier {
      * @param z The z coordinate.
      * @param type The type of all three coordinates.
      * */
-    public CoordinateSet(double x, double y, double z, Coordinate.Type type) {
+    public CoordinateSet(double x, double y, double z, @NotNull Coordinate.Type type) {
         this(new Coordinate(type, x), new Coordinate(type, y), new Coordinate(type, z));
     }
 
@@ -91,7 +95,7 @@ public class CoordinateSet implements ExecuteModifier {
      *
      * @return The string representing this coordinate set.
      * */
-    public String getAs(Coordinate.DisplayMode mode) {
+    public String getAs(@NotNull Coordinate.DisplayMode mode) {
         return x.getAs(mode) + " " + y.getAs(mode) + " " + z.getAs(mode);
     }
 
@@ -104,7 +108,7 @@ public class CoordinateSet implements ExecuteModifier {
      *
      * @return The string representing this coordinate set's X and Z coordinates.
      * */
-    public String getXZAs(Coordinate.DisplayMode mode) {
+    public String getXZAs(@NotNull Coordinate.DisplayMode mode) {
         return x.getAs(mode) + " " + z.getAs(mode);
     }
 
@@ -113,6 +117,7 @@ public class CoordinateSet implements ExecuteModifier {
      *
      * @return The x coordinate for this coordinate set.
      * */
+    @NotNull
     public Coordinate getX() {
         return x;
     }
@@ -122,6 +127,7 @@ public class CoordinateSet implements ExecuteModifier {
      *
      * @return The y coordinate for this coordinate set.
      * */
+    @NotNull
     public Coordinate getY() {
         return y;
     }
@@ -131,6 +137,7 @@ public class CoordinateSet implements ExecuteModifier {
      *
      * @return The z coordinate for this coordinate set.
      * */
+    @NotNull
     public Coordinate getZ() {
         return z;
     }
@@ -140,6 +147,7 @@ public class CoordinateSet implements ExecuteModifier {
         return getAs(Coordinate.DisplayMode.ENTITY_POS);
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, "positioned " + this.getAs(Coordinate.DisplayMode.ENTITY_POS));

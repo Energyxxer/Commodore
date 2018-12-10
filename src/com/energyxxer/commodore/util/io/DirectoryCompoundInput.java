@@ -1,16 +1,21 @@
 package com.energyxxer.commodore.util.io;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.io.*;
 
 public class DirectoryCompoundInput implements CompoundInput {
+    @NotNull
     private File directory;
 
-    public DirectoryCompoundInput(File directory) {
+    public DirectoryCompoundInput(@NotNull File directory) {
         this.directory = directory;
     }
 
+    @Nullable
     @Override
-    public InputStream get(String path) throws IOException {
+    public InputStream get(@NotNull String path) throws IOException {
         if(!directory.exists()) throw new IOException("Root '" + directory + "' not found");
 
         File target = new File(directory, path.replace('/',File.separatorChar));

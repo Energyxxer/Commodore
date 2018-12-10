@@ -3,6 +3,8 @@ package com.energyxxer.commodore.item;
 import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
 import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.ItemType;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertItem;
 
@@ -18,10 +20,12 @@ public class Item {
     /**
      * The {@link Type} of this item. Can be an item tag.
      * */
+    @NotNull
     private final Type type;
     /**
      * The {@link TagCompound} NBT data for this item, if applicable.
      * */
+    @Nullable
     private final TagCompound nbt;
 
     /**
@@ -31,7 +35,7 @@ public class Item {
      *
      * @throws IllegalArgumentException if the type specified isn't of type Item.
      * */
-    public Item(Type type) {
+    public Item(@NotNull Type type) {
         this(type, null);
     }
 
@@ -43,7 +47,7 @@ public class Item {
      *
      * @throws IllegalArgumentException if the type specified isn't of type Item.
      * */
-    public Item(Type type, TagCompound nbt) {
+    public Item(@NotNull Type type, @Nullable TagCompound nbt) {
         this.type = type;
         this.nbt = nbt;
 
@@ -55,6 +59,7 @@ public class Item {
      *
      * @return The type of this item.
      * */
+    @NotNull
     public Type getItemType() {
         return type;
     }
@@ -64,6 +69,7 @@ public class Item {
      *
      * @return The NBT content of this item.
      * */
+    @Nullable
     public TagCompound getNBT() {
         return nbt;
     }

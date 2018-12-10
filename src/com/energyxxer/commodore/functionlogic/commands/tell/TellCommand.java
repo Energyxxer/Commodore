@@ -11,10 +11,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class TellCommand implements Command {
+    @NotNull
     private final Entity player;
+    @NotNull
     private final String message;
 
-    public TellCommand(Entity player, String message) {
+    public TellCommand(@NotNull Entity player, @NotNull String message) {
         this.player = player;
         this.message = message;
 

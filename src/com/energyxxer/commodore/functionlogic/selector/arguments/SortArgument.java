@@ -3,6 +3,7 @@ package com.energyxxer.commodore.functionlogic.selector.arguments;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
+import org.jetbrains.annotations.NotNull;
 
 public class SortArgument implements SelectorArgument {
 
@@ -56,16 +57,19 @@ public class SortArgument implements SelectorArgument {
 
     }
 
+    @NotNull
     private final SortMode mode;
 
-    public SortArgument(SortMode mode) {
+    public SortArgument(@NotNull SortMode mode) {
         this.mode = mode;
     }
 
+    @NotNull
     public SortMode getSortMode() {
         return mode;
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         return "sort=" + mode.toString().toLowerCase();
@@ -76,11 +80,13 @@ public class SortArgument implements SelectorArgument {
         return false;
     }
 
+    @NotNull
     @Override
     public SortArgument clone() {
         return new SortArgument(mode);
     }
 
+    @NotNull
     @Override
     public String getKey() {
         return "sort";
@@ -92,7 +98,7 @@ public class SortArgument implements SelectorArgument {
     }
 
     @Override
-    public void assertCompatibleWith(Selector selector) {
+    public void assertCompatibleWith(@NotNull Selector selector) {
         if(selector.getBase().getSorting().isEnforced()) throw new IllegalArgumentException("Sort is not applicable for the " + selector.getBase() + " selector type");
         SelectorArgument.super.assertCompatibleWith(selector);
     }

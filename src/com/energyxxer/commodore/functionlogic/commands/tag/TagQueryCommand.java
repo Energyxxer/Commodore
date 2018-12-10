@@ -12,9 +12,10 @@ import java.util.Collection;
 
 public class TagQueryCommand implements Command {
 
+    @NotNull
     private final Entity entity;
 
-    public TagQueryCommand(Entity entity) {
+    public TagQueryCommand(@NotNull Entity entity) {
         this.entity = entity;
     }
 

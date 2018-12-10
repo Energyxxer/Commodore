@@ -8,9 +8,10 @@ import org.jetbrains.annotations.NotNull;
 import static com.energyxxer.commodore.types.TypeAssert.assertBossbar;
 
 public class BossbarRemoveCommand extends BossbarCommand {
+    @NotNull
     private final Type bossbar;
 
-    public BossbarRemoveCommand(Type bossbar) {
+    public BossbarRemoveCommand(@NotNull Type bossbar) {
         this.bossbar = bossbar;
         assertBossbar(bossbar);
     }

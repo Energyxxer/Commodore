@@ -2,12 +2,14 @@ package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
+import org.jetbrains.annotations.NotNull;
 
 public class NameArgument implements SelectorArgument {
+    @NotNull
     private final String name;
     private final boolean negated;
 
-    public NameArgument(String name) {
+    public NameArgument(@NotNull String name) {
         if(name.startsWith("!")) {
             this.name = name.substring(1);
             this.negated = true;
@@ -17,11 +19,12 @@ public class NameArgument implements SelectorArgument {
         }
     }
 
-    public NameArgument(String name, boolean negated) {
+    public NameArgument(@NotNull String name, boolean negated) {
         this.name = name;
         this.negated = negated;
     }
 
+    @NotNull
     public String getName() {
         return name;
     }
@@ -30,6 +33,7 @@ public class NameArgument implements SelectorArgument {
         return negated;
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         return "name=" + (negated ? "!" : "") + CommandUtils.quoteIfNecessary(name);
@@ -45,11 +49,13 @@ public class NameArgument implements SelectorArgument {
         return getArgumentString();
     }
 
+    @NotNull
     @Override
     public NameArgument clone() {
         return new NameArgument(name, negated);
     }
 
+    @NotNull
     @Override
     public String getKey() {
         return "name";

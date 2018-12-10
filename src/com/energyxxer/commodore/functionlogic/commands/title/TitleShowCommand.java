@@ -16,10 +16,12 @@ public class TitleShowCommand extends TitleCommand {
         TITLE, SUBTITLE, ACTIONBAR
     }
 
+    @NotNull
     private final Display display;
+    @NotNull
     private final TextComponent message;
 
-    public TitleShowCommand(Entity player, Display display, TextComponent message) {
+    public TitleShowCommand(@NotNull Entity player, @NotNull Display display, @NotNull TextComponent message) {
         super(player);
         this.display = display;
         this.message = message;

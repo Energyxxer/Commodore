@@ -3,6 +3,8 @@ package com.energyxxer.commodore;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -26,7 +28,8 @@ public final class CommandUtils {
      *
      * @return The escaped string.
      * */
-    public static String escape(String str) {
+    @NotNull
+    public static String escape(@NotNull String str) {
         return str.replace("\\", "\\\\").replace("\"", "\\\"");
     }
 
@@ -39,7 +42,8 @@ public final class CommandUtils {
      * @return The given string, quoted, only if it contains a character not allowed in an unquoted string. Otherwise,
      * the returned string is the same as the original.
      * */
-    public static String quoteIfNecessary(String str) {
+    @NotNull
+    public static String quoteIfNecessary(@NotNull String str) {
         return (needsQuoting(str)) ? "\"" + escape(str) + "\"" : str;
     }
 
@@ -51,7 +55,7 @@ public final class CommandUtils {
      * @return <code>true</code> if this character contains any characters, disallowed in unquoted strings,
      * <code>false</code> if all characters are allowed in unquoted strings.
      * */
-    public static boolean needsQuoting(String str) {
+    public static boolean needsQuoting(@NotNull String str) {
         return !str.matches(IDENTIFIER_ALLOWED);
     }
 
@@ -68,6 +72,7 @@ public final class CommandUtils {
      *
      * @return The number, as a plain number string.
      * */
+    @NotNull
     public static String numberToPlainString(double num) {
         DecimalFormat df = new DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
         df.setMaximumFractionDigits(340);
@@ -83,6 +88,7 @@ public final class CommandUtils {
      *
      * @return The number, as a non-scientific number string.
      * */
+    @NotNull
     public static String numberToStringNoScientific(double num) {
         DecimalFormat df = new DecimalFormat("0.0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
         df.setMaximumFractionDigits(340);
@@ -90,7 +96,8 @@ public final class CommandUtils {
         return df.format(num);
     }
 
-    public static JsonElement constructRange(Integer min, Integer max) {
+    @NotNull
+    public static JsonElement constructRange(@Nullable Integer min, @Nullable Integer max) {
         if(min != null && min.equals(max)) return new JsonPrimitive(min);
         else {
             JsonObject range = new JsonObject();
@@ -100,7 +107,8 @@ public final class CommandUtils {
         }
     }
 
-    public static JsonElement constructRange(Double min, Double max) {
+    @NotNull
+    public static JsonElement constructRange(@Nullable Double min, @Nullable Double max) {
         if(min != null && min.equals(max)) return new JsonPrimitive(min);
         else {
             JsonObject range = new JsonObject();
@@ -110,8 +118,8 @@ public final class CommandUtils {
         }
     }
 
-    public static String parseQuotedString(String text)
-    {
+    @NotNull
+    public static String parseQuotedString(@NotNull String text) {
         int index = 0;
         char delimiter = text.charAt(index);
         if (delimiter != '"' && delimiter != '\'') throw new IllegalArgumentException("Expected string at index " + index);

@@ -1,13 +1,16 @@
 package com.energyxxer.commodore.functionlogic.functions;
 
+import org.jetbrains.annotations.NotNull;
+
 public class FunctionHeaderComment extends FunctionComment {
 
-    public FunctionHeaderComment(String... lines) {
+    public FunctionHeaderComment(@NotNull String... lines) {
         super(lines);
     }
 
+    @NotNull
     @Override
-    public String toFunctionContent(FunctionSection section) {
+    public String toFunctionContent(@NotNull FunctionSection section) {
         StringBuilder sb = new StringBuilder();
         sb.append('\n');
         sb.append("#\n");

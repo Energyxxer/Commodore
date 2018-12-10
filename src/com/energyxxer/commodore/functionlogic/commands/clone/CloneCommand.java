@@ -15,32 +15,39 @@ public class CloneCommand implements Command {
         public static final SourceMode DEFAULT = NORMAL;
     }
 
-    protected final CoordinateSet source1;
-    protected final CoordinateSet source2;
+    @NotNull
+    private final CoordinateSet source1;
+    @NotNull
+    private final CoordinateSet source2;
 
+    @NotNull
     protected final CoordinateSet destination;
 
-    protected final SourceMode sourceMode;
+    @NotNull
+    private final SourceMode sourceMode;
 
     public CloneCommand(CoordinateSet source1, CoordinateSet source2, CoordinateSet destination) {
         this(source1, source2, destination, SourceMode.DEFAULT);
     }
 
-    public CloneCommand(CoordinateSet source1, CoordinateSet source2, CoordinateSet destination, SourceMode sourceMode) {
+    public CloneCommand(@NotNull CoordinateSet source1, @NotNull CoordinateSet source2, @NotNull CoordinateSet destination, @NotNull SourceMode sourceMode) {
         this.source1 = source1;
         this.source2 = source2;
         this.destination = destination;
         this.sourceMode = sourceMode;
     }
 
+    @NotNull
     private String getBase() {
         return "clone " + source1.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + source2.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + destination.getAs(Coordinate.DisplayMode.BLOCK_POS);
     }
 
+    @NotNull
     protected String getMaskExtra() {
         return (sourceMode != SourceMode.DEFAULT) ? " replace" : "";
     }
 
+    @NotNull
     private String getSourceModeExtra() {
         return (sourceMode != SourceMode.DEFAULT) ? " " + sourceMode.toString().toLowerCase() : "";
     }

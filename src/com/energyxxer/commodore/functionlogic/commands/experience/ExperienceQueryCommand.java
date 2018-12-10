@@ -7,9 +7,10 @@ import org.jetbrains.annotations.NotNull;
 
 public class ExperienceQueryCommand extends ExperienceCommand {
 
+    @NotNull
     private final Unit unit;
 
-    public ExperienceQueryCommand(Entity player, Unit unit) {
+    public ExperienceQueryCommand(@NotNull Entity player, @NotNull Unit unit) {
         super(player);
         this.unit = unit;
     }

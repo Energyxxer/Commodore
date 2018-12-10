@@ -6,9 +6,10 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
 public class TeamLeaveCommand extends TeamCommand {
+    @NotNull
     private final Entity entity;
 
-    public TeamLeaveCommand(Entity entity) {
+    public TeamLeaveCommand(@NotNull Entity entity) {
         this.entity = entity;
     }
 

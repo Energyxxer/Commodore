@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class TitleResetCommand extends TitleCommand {
 
-    public TitleResetCommand(Entity player) {
+    public TitleResetCommand(@NotNull Entity player) {
         super(player);
     }
 

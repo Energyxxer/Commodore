@@ -2,28 +2,31 @@ package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.AdvancementArgumentEntry;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
 public class AdvancementArgument implements SelectorArgument {
 
-    private final List<AdvancementArgumentEntry> entries = new ArrayList<>();
+    @NotNull
+    private final List<@NotNull AdvancementArgumentEntry> entries = new ArrayList<>();
 
     public AdvancementArgument() {
     }
 
-    public void addEntry(AdvancementArgumentEntry entry) {
+    public void addEntry(@NotNull AdvancementArgumentEntry entry) {
         entries.add(entry);
     }
 
-    public void addEntries(AdvancementArgumentEntry... entries) {
+    public void addEntries(@NotNull AdvancementArgumentEntry... entries) {
         addEntries(Arrays.asList(entries));
     }
 
-    private void addEntries(Collection<AdvancementArgumentEntry> entries) {
+    private void addEntries(@NotNull Collection<@NotNull AdvancementArgumentEntry> entries) {
         this.entries.addAll(entries);
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         StringBuilder sb = new StringBuilder("advancements={");
@@ -45,6 +48,7 @@ public class AdvancementArgument implements SelectorArgument {
         return true;
     }
 
+    @NotNull
     @Override
     public AdvancementArgument clone() {
         AdvancementArgument copy = new AdvancementArgument();
@@ -52,6 +56,7 @@ public class AdvancementArgument implements SelectorArgument {
         return copy;
     }
 
+    @NotNull
     @Override
     public String getKey() {
         return "advancements";

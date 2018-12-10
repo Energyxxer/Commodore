@@ -6,9 +6,10 @@ import com.energyxxer.commodore.types.defaults.TeamReference;
 import org.jetbrains.annotations.NotNull;
 
 public class TeamRemoveCommand extends TeamCommand {
+    @NotNull
     private final TeamReference reference;
 
-    public TeamRemoveCommand(TeamReference reference) {
+    public TeamRemoveCommand(@NotNull TeamReference reference) {
         this.reference = reference;
     }
 

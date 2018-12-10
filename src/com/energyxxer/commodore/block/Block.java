@@ -4,6 +4,8 @@ import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
 import com.energyxxer.commodore.types.IllegalTypeException;
 import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.BlockType;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
@@ -22,14 +24,17 @@ public class Block {
     /**
      * The {@link Type} of this block. Can be a block tag.
      * */
+    @NotNull
     private final Type type;
     /**
      * The {@link Blockstate} of this block, if applicable.
      * */
+    @Nullable
     private Blockstate state;
     /**
      * The {@link TagCompound} NBT data for this block, if applicable.
      * */
+    @Nullable
     private final TagCompound nbt;
 
     /**
@@ -39,7 +44,7 @@ public class Block {
      *
      * @throws IllegalArgumentException if the type specified isn't of type Block.
      * */
-    public Block(Type type) {
+    public Block(@NotNull Type type) {
         this(type, null, null);
     }
 
@@ -51,7 +56,7 @@ public class Block {
      *
      * @throws IllegalTypeException if the type specified isn't of type Block.
      * */
-    public Block(Type type, Blockstate state) {
+    public Block(@NotNull Type type, @Nullable Blockstate state) {
         this(type, state, null);
     }
 
@@ -63,7 +68,7 @@ public class Block {
      *
      * @throws IllegalTypeException if the type specified isn't of type Block.
      * */
-    public Block(Type type, TagCompound nbt) {
+    public Block(@NotNull Type type, @Nullable TagCompound nbt) {
         this(type, null, nbt);
     }
 
@@ -76,7 +81,7 @@ public class Block {
      *
      * @throws IllegalTypeException if the type specified isn't of type Block.
      * */
-    public Block(Type type, Blockstate state, TagCompound nbt) {
+    public Block(@NotNull Type type, @Nullable Blockstate state, @Nullable TagCompound nbt) {
         assertBlock(type);
         this.type = type;
         if(state != null) this.state = state;
@@ -88,7 +93,7 @@ public class Block {
      *
      * @return The type of this block.
      * */
-    public Type getBlockType() {
+    public @NotNull Type getBlockType() {
         return type;
     }
 
@@ -97,7 +102,7 @@ public class Block {
      *
      * @return The blockstate for this block.
      * */
-    public Blockstate getBlockstate() {
+    public @Nullable Blockstate getBlockstate() {
         return state;
     }
 
@@ -106,7 +111,7 @@ public class Block {
      *
      * @return The NBT content of this block.
      * */
-    public TagCompound getNBT() {
+    public @Nullable TagCompound getNBT() {
         return nbt;
     }
 

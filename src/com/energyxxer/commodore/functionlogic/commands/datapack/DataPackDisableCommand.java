@@ -5,10 +5,10 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
 public class DataPackDisableCommand extends DataPackCommand {
-
+    @NotNull
     private final String pack;
 
-    public DataPackDisableCommand(String pack) {
+    public DataPackDisableCommand(@NotNull String pack) {
         this.pack = pack;
     }
 

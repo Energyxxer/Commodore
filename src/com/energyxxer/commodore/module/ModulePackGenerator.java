@@ -7,6 +7,8 @@ import com.energyxxer.commodore.tags.TagManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -22,22 +24,26 @@ public class ModulePackGenerator {
         FOLDER, ZIP
     }
 
+    @NotNull
     private final CommandModule module;
 
+    @NotNull
     private String rootPath;
+    @NotNull
     private File rootFile;
 
     private Gson gson;
 
+    @NotNull
     private final OutputType outputType;
 
     private ZipOutputStream zipStream;
 
-    public ModulePackGenerator(CommandModule module, File outFile) {
+    public ModulePackGenerator(@NotNull CommandModule module, @NotNull File outFile) {
         this(module, outFile, outFile.isFile() && outFile.getName().endsWith(".zip") ? ZIP : FOLDER);
     }
 
-    public ModulePackGenerator(CommandModule module, File outFile, OutputType outputType) {
+    public ModulePackGenerator(@NotNull CommandModule module, @NotNull File outFile, @NotNull OutputType outputType) {
         this.module = module;
         this.outputType = outputType;
 
@@ -106,7 +112,8 @@ public class ModulePackGenerator {
         createFile("pack.mcmeta", gson.toJson(root));
     }
 
-    private void createFile(String path, String contents) throws IOException {
+    private void createFile(@Nullable String path, @Nullable String contents) throws IOException {
+        if(path == null || contents == null) return;
         if(outputType == ZIP) {
             ZipEntry e = new ZipEntry(path);
             zipStream.putNextEntry(e);

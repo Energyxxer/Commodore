@@ -10,14 +10,15 @@ import org.jetbrains.annotations.NotNull;
 
 public class DataMergeCommand extends DataCommand {
 
+    @NotNull
     private final TagCompound nbt;
 
-    public DataMergeCommand(Entity entity, TagCompound nbt) {
+    public DataMergeCommand(@NotNull Entity entity, @NotNull TagCompound nbt) {
         super(entity);
         this.nbt = nbt;
     }
 
-    public DataMergeCommand(CoordinateSet pos, TagCompound nbt) {
+    public DataMergeCommand(@NotNull CoordinateSet pos, @NotNull TagCompound nbt) {
         super(pos);
         this.nbt = nbt;
     }

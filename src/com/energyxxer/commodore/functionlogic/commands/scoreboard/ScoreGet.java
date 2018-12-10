@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class ScoreGet implements Command {
-
+    @NotNull
     private final LocalScore score;
 
     private final ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
 
-    public ScoreGet(LocalScore score) {
+    public ScoreGet(@NotNull LocalScore score) {
         this.score = score;
 
         if(score.getHolder() instanceof Entity) {

@@ -6,6 +6,7 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandEmbeddableResolu
 import com.energyxxer.commodore.functionlogic.inspection.EntityResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,38 +19,44 @@ public class PlayerName implements Entity, EntityRepresentation {
     /**
      * The name of this fake player.
      * */
+    @NotNull
     private final String name;
 
     /**
      * The {@link MacroScoreHolder}s for this entity.
      * */
-    private final ArrayList<MacroScoreHolder> macroHolders = new ArrayList<>();
+    @NotNull
+    private final ArrayList<@NotNull MacroScoreHolder> macroHolders = new ArrayList<>();
 
     /**
      * Creates a fake player with the given name.
      *
      * @param name The name of the new fake player.
      * */
-    public PlayerName(String name) {
+    public PlayerName(@NotNull String name) {
         this.name = name;
         this.macroHolders.add(new MacroScoreHolder("PlayerName#" + name));
     }
 
+    @NotNull
     @Override
-    public CommandEmbeddableResolution resolveEmbed(ExecutionContext execContext) {
+    public CommandEmbeddableResolution resolveEmbed(@NotNull ExecutionContext execContext) {
         return new CommandEmbeddableResolution(name);
     }
 
     @Override
-    public Collection<MacroScoreHolder> getMacroHolders() {
+    @NotNull
+    public Collection<@NotNull MacroScoreHolder> getMacroHolders() {
         return macroHolders;
     }
 
+    @NotNull
     @Override
     public String toString() {
         return name;
     }
 
+    @NotNull
     @Override
     public EntityResolution resolveFor(ExecutionContext context) {
         return new EntityResolution(this, this);

@@ -2,13 +2,16 @@ package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class TagArgument implements SelectorArgument {
+    @Nullable
     private final String tag;
     private final boolean negated;
 
-    public TagArgument(String tag) {
-        if(tag.startsWith("!")) {
+    public TagArgument(@Nullable String tag) {
+        if(tag != null && tag.startsWith("!")) {
             this.tag = tag.substring(1);
             this.negated = true;
         } else {
@@ -17,13 +20,14 @@ public class TagArgument implements SelectorArgument {
         }
     }
 
-    public TagArgument(String tag, boolean negated) {
+    public TagArgument(@Nullable String tag, boolean negated) {
         this.tag = tag;
         this.negated = negated;
-        if(!tag.matches(CommandUtils.IDENTIFIER_ALLOWED))
+        if(tag != null && !tag.matches(CommandUtils.IDENTIFIER_ALLOWED))
             throw new IllegalArgumentException("Tag argument value '" + tag + "' has illegal characters. Does not match regex: " + CommandUtils.IDENTIFIER_ALLOWED);
     }
 
+    @Nullable
     public String getTag() {
         return tag;
     }
@@ -32,6 +36,7 @@ public class TagArgument implements SelectorArgument {
         return negated;
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         return "tag=" + (negated ? "!" : "") + tag;
@@ -47,11 +52,13 @@ public class TagArgument implements SelectorArgument {
         return getArgumentString();
     }
 
+    @NotNull
     @Override
     public TagArgument clone() {
         return new TagArgument(tag, negated);
     }
 
+    @NotNull
     @Override
     public String getKey() {
         return "tag";

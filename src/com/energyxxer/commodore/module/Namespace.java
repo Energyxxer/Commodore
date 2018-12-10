@@ -4,6 +4,7 @@ import com.energyxxer.commodore.functionlogic.functions.FunctionManager;
 import com.energyxxer.commodore.loottables.LootTableManager;
 import com.energyxxer.commodore.tags.TagManager;
 import com.energyxxer.commodore.types.defaults.TypeManager;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents a namespace inside a command module, containing all the elements that belong to it, including, but not
@@ -18,24 +19,29 @@ public class Namespace {
     /**
      * The command module this namespace belongs to.
      * */
+    @NotNull
     private final CommandModule owner;
     /**
      * The name of the namespace, which is used as a prefix to namespace-sensitive references such as blocks or
      * functions.
      * */
+    @NotNull
     final String name;
 
     /**
      * The function manager for this namespace.
      * */
+    @NotNull
     public final FunctionManager functions;
     /**
      * The tag manager for this namespace.
      * */
+    @NotNull
     public final TagManager tags;
     /**
      * The type manager for this namespace.
      * */
+    @NotNull
     public final TypeManager types;
     /**
      * The loot table manager for this namespace.
@@ -48,7 +54,7 @@ public class Namespace {
      * @param owner The module this new namespace should belong to.
      * @param name The name of this namespace.
      * */
-    public Namespace(CommandModule owner, String name) {
+    public Namespace(@NotNull CommandModule owner, @NotNull String name) {
         this.owner = owner;
         this.name = name;
 
@@ -70,6 +76,7 @@ public class Namespace {
      *
      * @return The command module that owns this namespace.
      * */
+    @NotNull
     public CommandModule getOwner() {
         return owner;
     }
@@ -79,6 +86,7 @@ public class Namespace {
      *
      * @return The name for this namespace.
      * */
+    @NotNull
     public String getName() {
         return name;
     }
@@ -88,6 +96,7 @@ public class Namespace {
      *
      * @return The function manager for this namespace.
      * */
+    @NotNull
     public FunctionManager getFunctionManager() {
         return functions;
     }
@@ -97,6 +106,7 @@ public class Namespace {
      *
      * @return The tag manager for this namespace.
      * */
+    @NotNull
     public TagManager getTagManager() {
         return tags;
     }
@@ -106,6 +116,7 @@ public class Namespace {
      *
      * @return The type manager for this namespace.
      * */
+    @NotNull
     public TypeManager getTypeManager() {
         return types;
     }
@@ -127,7 +138,8 @@ public class Namespace {
      *
      * @return The newly created namespace.
      * */
-    public Namespace clone(CommandModule newOwner) {
+    @NotNull
+    public Namespace clone(@NotNull CommandModule newOwner) {
         Namespace clone = new Namespace(newOwner, name);
 
         clone.functions.join(this.functions);

@@ -12,13 +12,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class ScoreAdd implements Command {
-
+    @NotNull
     private final LocalScore score;
     private final int delta;
 
     private final ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
 
-    public ScoreAdd(LocalScore score, int delta) {
+    public ScoreAdd(@NotNull LocalScore score, int delta) {
         this.score = score;
         this.delta = delta;
 

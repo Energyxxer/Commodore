@@ -8,6 +8,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -76,7 +77,7 @@ public abstract class Tag extends Type implements Exportable {
      * @param namespace The namespace this tag belongs to.
      * @param name The name of this tag.
      * */
-    public Tag(String category, Namespace namespace, String name) {
+    public Tag(@NotNull String category, @NotNull Namespace namespace, @NotNull String name) {
         super(category, namespace, name);
     }
 
@@ -85,7 +86,8 @@ public abstract class Tag extends Type implements Exportable {
      *
      * @return The list of values contained in this tag.
      * */
-    public abstract ArrayList<Type> getValues();
+    @NotNull
+    public abstract ArrayList<@NotNull Type> getValues();
 
     /**
      * Retrieves this tag's override policy. That is, how this tag handles conflicts with same-identifier tags from
@@ -93,6 +95,7 @@ public abstract class Tag extends Type implements Exportable {
      *
      * @return The override policy for this tag.
      * */
+    @NotNull
     public abstract OverridePolicy getOverridePolicy();
 
     /**
@@ -100,13 +103,14 @@ public abstract class Tag extends Type implements Exportable {
      *
      * @param newPolicy The new override policy for this tag.
      * */
-    public abstract void setOverridePolicy(OverridePolicy newPolicy);
+    public abstract void setOverridePolicy(@NotNull OverridePolicy newPolicy);
 
     /**
      * Retrieves this tag's parent group.
      *
      * @return The group this tag belongs to.
      * */
+    @NotNull
     public abstract TagGroup<?> getGroup();
 
     /**
@@ -116,7 +120,7 @@ public abstract class Tag extends Type implements Exportable {
      *
      * @throws IllegalTypeException If the given value doesn't match this tag's category.
      * */
-    public abstract void addValue(Type value);
+    public abstract void addValue(@NotNull Type value);
 
     /**
      * Adds a collection of values to this tag's contents.
@@ -125,11 +129,12 @@ public abstract class Tag extends Type implements Exportable {
      *
      * @throws IllegalTypeException If any of the given values don't match this tag's category.
      * */
-    public void addValues(Collection<Type> values) {
+    public void addValues(@NotNull Collection<@NotNull Type> values) {
         values.forEach(this::addValue);
     }
 
     @Override
+    @NotNull
     public String getContents() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -145,6 +150,7 @@ public abstract class Tag extends Type implements Exportable {
     }
 
     @Override
+    @NotNull
     public String getExportPath() {
         return "tags/" + getGroup().getDirectoryName() + "/" + getName() + ".json";
     }

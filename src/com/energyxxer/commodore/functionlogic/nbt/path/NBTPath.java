@@ -1,21 +1,23 @@
 package com.energyxxer.commodore.functionlogic.nbt.path;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Objects;
 
 public class NBTPath implements Iterable<NBTPath> {
-
+    @NotNull
     private final NBTPathNode node;
+    @Nullable
     private final NBTPath next;
 
-    public NBTPath(String key) {
+    public NBTPath(@NotNull String key) {
         this(key, null);
     }
 
-    public NBTPath(String key, NBTPath next) {
+    public NBTPath(@NotNull String key, @Nullable NBTPath next) {
         this(new NBTPathKey(key), next);
     }
 
@@ -23,16 +25,16 @@ public class NBTPath implements Iterable<NBTPath> {
         this(index, null);
     }
 
-    public NBTPath(int index, NBTPath next) {
+    public NBTPath(int index, @Nullable NBTPath next) {
         this(new NBTPathIndex(index), next);
     }
 
-    protected NBTPath(NBTPathNode node, NBTPath next) {
+    protected NBTPath(@NotNull NBTPathNode node, @Nullable NBTPath next) {
         this.node = node;
         this.next = next;
     }
 
-    public NBTPath(NBTPathNode... nodes) {
+    public NBTPath(@NotNull NBTPathNode... nodes) {
         if(nodes.length >= 1) {
             this.node = nodes[0];
             if(nodes.length > 1) {
@@ -66,10 +68,12 @@ public class NBTPath implements Iterable<NBTPath> {
         return Objects.hash(node, next);
     }
 
+    @NotNull
     public NBTPathNode getNode() {
         return node;
     }
 
+    @Nullable
     public NBTPath getNext() {
         return next;
     }

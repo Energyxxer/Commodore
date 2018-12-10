@@ -3,32 +3,33 @@ package com.energyxxer.commodore.functionlogic.inspection;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.commands.execute.ExecuteModifier;
 import com.energyxxer.commodore.functionlogic.commands.execute.SubCommandResult;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
 public class CommandResolution {
-    private final ArrayList<CommandResolutionLine> lines = new ArrayList<>();
+    private final @NotNull ArrayList<@NotNull CommandResolutionLine> lines = new ArrayList<>();
 
-    public CommandResolution(ExecutionContext execContext, String raw, Collection<CommandEmbeddable> embeddables) {
+    public CommandResolution(@NotNull ExecutionContext execContext, @NotNull String raw, @NotNull Collection<@NotNull CommandEmbeddable> embeddables) {
         lines.add(new CommandResolutionLine(execContext, raw, embeddables));
     }
 
-    public CommandResolution(ExecutionContext execContext, String raw, CommandEmbeddable... embeddables) {
+    public CommandResolution(@NotNull ExecutionContext execContext, @NotNull String raw, @NotNull CommandEmbeddable... embeddables) {
         this(execContext, raw, Arrays.asList(embeddables));
     }
 
-    public CommandResolution(CommandResolutionLine... lines) {
+    public CommandResolution(@NotNull CommandResolutionLine... lines) {
         this(Arrays.asList(lines));
     }
 
-    public CommandResolution(Collection<CommandResolutionLine> lines) {
+    public CommandResolution(@NotNull Collection<@NotNull CommandResolutionLine> lines) {
         this.lines.addAll(lines);
     }
 
     /*
      * Really weak code; prone to infinite loops if some knobhead makes two self-referencing entity/modifier pairs
      **/
-    static String resolveModifiers(ExecutionContext execContext, ArrayList<ExecuteModifier> modifiers) {
+    static String resolveModifiers(@NotNull ExecutionContext execContext, @NotNull ArrayList<@NotNull ExecuteModifier> modifiers) {
         ArrayList<ExecuteModifier> alreadyResolved = new ArrayList<>();
 
         HashMap<ExecuteModifier, String> resolved = new HashMap<>();
@@ -66,7 +67,7 @@ public class CommandResolution {
         return sb.toString();
     }
 
-    static String embed(String raw, String pattern, String replacement) {
+    static String embed(@NotNull String raw, @NotNull String pattern, @NotNull String replacement) {
         int fromIndex = 0;
         int index;
         while((index = raw.indexOf(pattern, fromIndex)) >= 0) {
@@ -86,6 +87,7 @@ public class CommandResolution {
         return raw;
     }
 
+    @NotNull
     public String construct() {
         StringBuilder sb = new StringBuilder();
 
@@ -99,6 +101,7 @@ public class CommandResolution {
         return sb.toString();
     }
 
+    @NotNull
     public ArrayList<CommandResolutionLine> getLines() {
         return lines;
     }

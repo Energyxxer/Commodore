@@ -1,12 +1,13 @@
 package com.energyxxer.commodore.util;
 
 import com.energyxxer.commodore.types.Type;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+import static com.energyxxer.commodore.types.TypeAssert.assertEffect;
 import static com.energyxxer.commodore.util.StatusEffect.ParticleVisibility.HIDDEN;
 import static com.energyxxer.commodore.util.StatusEffect.ParticleVisibility.VISIBLE;
-import static com.energyxxer.commodore.types.TypeAssert.assertEffect;
 
 /**
  * Represents a status effect that can be applied directly, through NBT or through a potion.
@@ -46,6 +47,7 @@ public class StatusEffect {
     /**
      * The effect type of this status effect.
      * */
+    @NotNull
     private Type effect;
     /**
      * The duration of this status effect once it's applied, in ticks.
@@ -58,6 +60,7 @@ public class StatusEffect {
     /**
      * The visibility of the particles of this effect when applied.
      * */
+    @NotNull
     private ParticleVisibility visibility;
 
     /**
@@ -67,7 +70,7 @@ public class StatusEffect {
      *
      * @throws com.energyxxer.commodore.types.IllegalTypeException If the given type isn't of the category Effect.
      * */
-    public StatusEffect(Type effect) {
+    public StatusEffect(@NotNull Type effect) {
         this(effect, DEFAULT_DURATION);
     }
 
@@ -79,7 +82,7 @@ public class StatusEffect {
      *
      * @throws com.energyxxer.commodore.types.IllegalTypeException If the given type isn't of the category Effect.
      * */
-    public StatusEffect(Type effect, int duration) {
+    public StatusEffect(@NotNull Type effect, int duration) {
         this(effect, duration, DEFAULT_AMPLIFIER);
     }
 
@@ -92,7 +95,7 @@ public class StatusEffect {
      *
      * @throws com.energyxxer.commodore.types.IllegalTypeException If the given type isn't of the category Effect.
      * */
-    public StatusEffect(Type effect, int duration, int amplifier) {
+    public StatusEffect(@NotNull Type effect, int duration, int amplifier) {
         this(effect, duration, amplifier, DEFAULT_VISIBILITY);
     }
 
@@ -106,7 +109,7 @@ public class StatusEffect {
      *
      * @throws com.energyxxer.commodore.types.IllegalTypeException If the given type isn't of the category Effect.
      * */
-    public StatusEffect(Type effect, int duration, int amplifier, ParticleVisibility visibility) {
+    public StatusEffect(@NotNull Type effect, int duration, int amplifier, @NotNull ParticleVisibility visibility) {
         this.effect = effect;
         this.duration = duration;
         this.amplifier = amplifier;
@@ -120,6 +123,7 @@ public class StatusEffect {
      *
      * @return The type of this status effect.
      * */
+    @NotNull
     public Type getEffect() {
         return effect;
     }
@@ -129,7 +133,7 @@ public class StatusEffect {
      *
      * @param effect The new type for this effect.
      * */
-    public void setEffect(Type effect) {
+    public void setEffect(@NotNull Type effect) {
         this.effect = effect;
     }
 
@@ -174,6 +178,7 @@ public class StatusEffect {
      *
      * @return The visibility for this status effect.
      * */
+    @NotNull
     public ParticleVisibility getVisibility() {
         return visibility;
     }
@@ -183,7 +188,7 @@ public class StatusEffect {
      *
      * @param visibility The new visibility for this status effect.
      * */
-    public void setVisibility(ParticleVisibility visibility) {
+    public void setVisibility(@NotNull ParticleVisibility visibility) {
         this.visibility = visibility;
     }
 
