@@ -9,9 +9,10 @@ import static com.energyxxer.commodore.types.TypeAssert.assertGamerule;
 
 public class GameruleQueryCommand extends GameruleCommand {
 
+    @NotNull
     private final Type gamerule;
 
-    public GameruleQueryCommand(Type gamerule) {
+    public GameruleQueryCommand(@NotNull Type gamerule) {
         this.gamerule = gamerule;
         assertGamerule(gamerule);
     }

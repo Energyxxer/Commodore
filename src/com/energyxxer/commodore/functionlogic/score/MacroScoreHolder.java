@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.functionlogic.score;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 /**
@@ -47,6 +49,7 @@ public class MacroScoreHolder {
      * The descriptor for this macro score holder; that is, the string that will be compared against other
      * macro score holders' to evaluate equivalency.
      * */
+    @NotNull
     private final String descriptor;
 
     /**
@@ -54,7 +57,7 @@ public class MacroScoreHolder {
      *
      * @param descriptor The descriptor for the new macro score holder.
      * */
-    public MacroScoreHolder(String descriptor) {
+    public MacroScoreHolder(@NotNull String descriptor) {
         this.descriptor = descriptor;
     }
 

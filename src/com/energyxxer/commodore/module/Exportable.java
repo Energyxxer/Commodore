@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.module;
 
+import org.jetbrains.annotations.Nullable;
+
 /**
  * Describes an element of a command module that can be exported into a data pack.
  *
@@ -24,11 +26,13 @@ public interface Exportable {
      *
      * @return The path to this object's export location.
      * */
+    @Nullable
     String getExportPath();
     /**
      * Retrieves the contents that should be written into the exported file.
      *
      * @return The text to write into the export location.
      * */
+    @Nullable
     String getContents();
 }

@@ -6,9 +6,10 @@ import com.energyxxer.commodore.types.defaults.TeamReference;
 import org.jetbrains.annotations.NotNull;
 
 public class TeamEmptyCommand extends TeamCommand {
+    @NotNull
     private final TeamReference reference;
 
-    public TeamEmptyCommand(TeamReference reference) {
+    public TeamEmptyCommand(@NotNull TeamReference reference) {
         this.reference = reference;
     }
 

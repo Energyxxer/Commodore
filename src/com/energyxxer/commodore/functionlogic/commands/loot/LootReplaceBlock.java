@@ -4,11 +4,14 @@ import com.energyxxer.commodore.functionlogic.commands.CommandDelegateResolution
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.types.Type;
+import org.jetbrains.annotations.NotNull;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertSlot;
 
 public class LootReplaceBlock implements LootCommand.LootDestination {
+    @NotNull
     private final CoordinateSet pos;
+    @NotNull
     private final Type slot;
 
     /**
@@ -19,12 +22,13 @@ public class LootReplaceBlock implements LootCommand.LootDestination {
      * @param pos The location of the container block to drop to
      * @param slot The from which items will be inserted
      * */
-    public LootReplaceBlock(CoordinateSet pos, Type slot) {
+    public LootReplaceBlock(@NotNull CoordinateSet pos, @NotNull Type slot) {
         assertSlot(slot);
         this.slot = slot;
         this.pos = pos;
     }
 
+    @NotNull
     @Override
     public CommandDelegateResolution resolve() {
         return new CommandDelegateResolution("replace block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + slot);

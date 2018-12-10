@@ -1,6 +1,8 @@
 package com.energyxxer.commodore.defpacks;
 
 import com.energyxxer.commodore.tags.Tag;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
@@ -11,18 +13,22 @@ class TagBlueprint {
     /**
      * The namespace this tag belongs to.
      * */
+    @NotNull
     final String namespace;
     /**
      * The name or path to this tag.
      * */
+    @NotNull
     final String name;
     /**
      * How this tag should behave when placed on top of another data pack with the same tag.
      * */
+    @Nullable
     Tag.OverridePolicy policy;
     /**
      * The raw contents of this tag, as retrieved from its .json file.
      * */
+    @NotNull
     ArrayList<String> content;
     /**
      * Whether the generated tag object should export into the compiled data pack. By default this is
@@ -36,7 +42,7 @@ class TagBlueprint {
      * @param namespace The namespace this tag belongs to.
      * @param name The name of this tag.
      * */
-    TagBlueprint(String namespace, String name) {
+    TagBlueprint(@NotNull String namespace, @NotNull String name) {
         this.namespace = namespace;
         this.name = name;
 

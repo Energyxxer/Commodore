@@ -1,24 +1,28 @@
 package com.energyxxer.commodore.functionlogic.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class TagString extends NBTTag {
     private final String value;
 
-    public TagString(String value) {
+    public TagString(@NotNull String value) {
         this("", value);
     }
 
-    public TagString(String name, String value) {
+    public TagString(@NotNull String name, String value) {
         super(name);
         this.value = value;
     }
 
+    @NotNull
     @Override
     public String getType() {
         return "TAG_String";
     }
 
+    @NotNull
     @Override
     public String toHeadlessString() {
         return '"' + value.replace("\\", "\\\\").replace("\"", "\\\"") + '"';
@@ -29,6 +33,7 @@ public class TagString extends NBTTag {
         return this.toHeaderString() + ":" + this.toHeadlessString();
     }
 
+    @NotNull
     @Override
     public TagString clone() {
         return new TagString(name, value);

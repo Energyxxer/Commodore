@@ -3,6 +3,7 @@ package com.energyxxer.commodore.standard;
 import com.energyxxer.commodore.defpacks.DefinitionPack;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.util.io.CompoundInput;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Holds definition packs built into Commodore that can be utilized by command modules.
@@ -31,6 +32,7 @@ public class StandardDefinitionPacks {
      *
      * This also includes all the tags in the vanilla data pack, for both blocks, fluids and items.
      * */
+    @NotNull
     public static final DefinitionPack MINECRAFT_JAVA_LATEST_RELEASE = new DefinitionPack(CompoundInput.Static.chooseInputForClasspath("/defpacks/minecraft_j_1_13/", StandardDefinitionPacks.class));
     /**
      * Contains the definitions for all game data for the 1.14 version of Minecraft Java Edition. Contains:
@@ -52,5 +54,6 @@ public class StandardDefinitionPacks {
      *
      * This also includes all the tags in the vanilla data pack, for both blocks, fluids, items and entity types.
      * */
+    @NotNull
     public static final DefinitionPack MINECRAFT_JAVA_LATEST_SNAPSHOT = new DefinitionPack(CompoundInput.Static.chooseInputForClasspath("/defpacks/minecraft_j_1_14/", StandardDefinitionPacks.class));
 }

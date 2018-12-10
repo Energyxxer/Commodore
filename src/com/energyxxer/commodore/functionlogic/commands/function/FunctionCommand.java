@@ -16,19 +16,20 @@ import java.util.Collections;
 import static com.energyxxer.commodore.types.TypeAssert.assertFunction;
 
 public class FunctionCommand implements Command {
+    @NotNull
     private final Type function;
     private ExecutionContext execContext = null;
     private Collection<ScoreboardAccess> accesses = null;
 
-    public FunctionCommand(Function function) {
+    public FunctionCommand(@NotNull Function function) {
         this.function = new FunctionReference(function);
     }
 
-    public FunctionCommand(FunctionReference function) {
+    public FunctionCommand(@NotNull FunctionReference function) {
         this.function = function;
     }
 
-    public FunctionCommand(Type function) {
+    public FunctionCommand(@NotNull Type function) {
         this.function = function;
         assertFunction(function);
     }

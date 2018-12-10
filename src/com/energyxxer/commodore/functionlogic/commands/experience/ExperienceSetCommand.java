@@ -8,9 +8,10 @@ import org.jetbrains.annotations.NotNull;
 public class ExperienceSetCommand extends ExperienceCommand {
 
     private final int amount;
+    @NotNull
     private final Unit unit;
 
-    public ExperienceSetCommand(Entity player, int amount, Unit unit) {
+    public ExperienceSetCommand(@NotNull Entity player, int amount, @NotNull Unit unit) {
         super(player);
         this.amount = amount;
         this.unit = unit;

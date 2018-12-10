@@ -1,36 +1,40 @@
 package com.energyxxer.commodore.functionlogic.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.*;
 
 public class TagList extends ComplexNBTTag {
-    private final ArrayList<NBTTag> content = new ArrayList<>();
+    @NotNull
+    private final ArrayList<@NotNull NBTTag> content = new ArrayList<>();
 
     public TagList() {
         this("");
     }
 
-    public TagList(String name) {
+    public TagList(@NotNull String name) {
         super(name);
     }
 
-    public TagList(Collection<NBTTag> tags) {
+    public TagList(@NotNull Collection<@NotNull NBTTag> tags) {
         this("", tags);
     }
 
-    public TagList(String name, Collection<NBTTag> tags) {
+    public TagList(@NotNull String name, @NotNull Collection<@NotNull NBTTag> tags) {
         super(name);
         this.addAll(tags);
     }
 
-    public TagList(NBTTag... tags) {
+    public TagList(@NotNull NBTTag... tags) {
         this("", tags);
     }
 
-    public TagList(String name, NBTTag... tags) {
+    public TagList(@NotNull String name, @NotNull NBTTag... tags) {
         this(name, Arrays.asList(tags));
     }
 
-    public TagList merge(TagList other) {
+    @NotNull
+    public TagList merge(@NotNull TagList other) {
         if(this.isEmpty()) return other.clone();
         if(other.isEmpty()) return this.clone();
         if(other.content.get(0).getType().equals(this.content.get(0).getType())) {
@@ -43,7 +47,7 @@ public class TagList extends ComplexNBTTag {
     }
 
     @Override
-    public void add(NBTTag tag) {
+    public void add(@NotNull NBTTag tag) {
         if(content.isEmpty() || content.get(0).getType().equals(tag.getType())) {
             content.add(tag);
         } else {
@@ -51,16 +55,19 @@ public class TagList extends ComplexNBTTag {
         }
     }
 
+    @NotNull
     @Override
     public Collection<NBTTag> getAllTags() {
         return new ArrayList<>(content);
     }
 
+    @NotNull
     @Override
     public String getType() {
         return "TAG_List";
     }
 
+    @NotNull
     @Override
     public String toHeadlessString() {
         StringBuilder sb = new StringBuilder("[");
@@ -87,7 +94,7 @@ public class TagList extends ComplexNBTTag {
     }
 
     @Override
-    public boolean contains(String key) {
+    public boolean contains(@NotNull String key) {
         for(NBTTag other : content) {
             if(other.name.equals(key)) return true;
         }
@@ -99,6 +106,7 @@ public class TagList extends ComplexNBTTag {
         return this.toHeaderString() + ":" + this.toHeadlessString();
     }
 
+    @NotNull
     @Override
     public TagList clone() {
         TagList copy = new TagList(name);

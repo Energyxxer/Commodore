@@ -7,9 +7,9 @@ import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
 public class BossbarSetColorCommand extends BossbarSetCommand {
-    private final BossbarCommand.BossbarColor color;
+    private final @NotNull BossbarCommand.BossbarColor color;
 
-    public BossbarSetColorCommand(Type bossbar, BossbarCommand.BossbarColor color) {
+    public BossbarSetColorCommand(@NotNull Type bossbar, @NotNull BossbarCommand.BossbarColor color) {
         super(bossbar);
         this.color = color;
     }

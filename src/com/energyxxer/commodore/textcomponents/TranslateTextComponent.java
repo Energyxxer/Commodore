@@ -1,11 +1,13 @@
 package com.energyxxer.commodore.textcomponents;
 
 import com.energyxxer.commodore.CommandUtils;
+import org.jetbrains.annotations.NotNull;
 
 public class TranslateTextComponent extends TextComponent {
+    @NotNull
     private final String translateKey;
 
-    public TranslateTextComponent(String translateKey) {
+    public TranslateTextComponent(@NotNull String translateKey) {
         this.translateKey = translateKey;
     }
 

@@ -8,6 +8,7 @@ import com.energyxxer.commodore.functionlogic.selector.arguments.*;
 import com.energyxxer.commodore.functionlogic.selector.arguments.SortArgument.SortMode;
 import com.energyxxer.commodore.util.BaseSelectorProperty;
 import com.energyxxer.commodore.util.BaseSelectorProperty.EnforcementType;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -164,10 +165,12 @@ public class Selector implements EntityRepresentation, Cloneable {
     /**
      * The selector type for this selector.
      * */
+    @NotNull
     private final BaseSelector base;
     /**
      * The list of arguments for this selector.
      * */
+    @NotNull
     private final ArrayList<SelectorArgument> args = new ArrayList<>();
 
     /**
@@ -175,7 +178,7 @@ public class Selector implements EntityRepresentation, Cloneable {
      *
      * @param base The base type of the new selector.
      * */
-    public Selector(BaseSelector base) {
+    public Selector(@NotNull BaseSelector base) {
         this.base = base;
     }
 
@@ -185,7 +188,7 @@ public class Selector implements EntityRepresentation, Cloneable {
      * @param base The base type of the new selector.
      * @param arguments The arguments for this selector.
      * */
-    public Selector(BaseSelector base, SelectorArgument... arguments) {
+    public Selector(@NotNull BaseSelector base, @NotNull SelectorArgument... arguments) {
         this(base);
         this.addArguments(arguments);
     }
@@ -195,7 +198,7 @@ public class Selector implements EntityRepresentation, Cloneable {
      *
      * @param arguments The arguments to add to this selector.
      * */
-    public void addArguments(SelectorArgument... arguments) {
+    public void addArguments(@NotNull SelectorArgument... arguments) {
         for(SelectorArgument argument : arguments) {
             addArgument(argument);
         }
@@ -206,7 +209,7 @@ public class Selector implements EntityRepresentation, Cloneable {
      *
      * @param arguments The arguments to add to this selector.
      * */
-    public void addArguments(Collection<SelectorArgument> arguments) {
+    public void addArguments(@NotNull Collection<@NotNull SelectorArgument> arguments) {
         for(SelectorArgument argument : arguments) {
             addArgument(argument);
         }
@@ -217,7 +220,7 @@ public class Selector implements EntityRepresentation, Cloneable {
      *
      * @param argument The argument to add to this selector.
      * */
-    public void addArgument(SelectorArgument argument) {
+    public void addArgument(@NotNull SelectorArgument argument) {
         try {
             argument.assertCompatibleWith(this);
             this.args.add(argument);
@@ -231,6 +234,7 @@ public class Selector implements EntityRepresentation, Cloneable {
      *
      * @return The base for this selector.
      * */
+    @NotNull
     public BaseSelector getBase() {
         return base;
     }
@@ -268,6 +272,7 @@ public class Selector implements EntityRepresentation, Cloneable {
      *
      * @return The sorting mode for this selector.
      * */
+    @NotNull
     public SortMode getSorting() {
         if(base.sorting.isEnforced()) return base.sorting.getValue();
         for(SelectorArgument arg : getArgumentsByKey("sort")) {
@@ -281,7 +286,8 @@ public class Selector implements EntityRepresentation, Cloneable {
      *
      * @return A list of objectives found in this selector's 'scores' argument.
      * */
-    public Collection<Objective> getObjectivesRead() {
+    @NotNull
+    public Collection<@NotNull Objective> getObjectivesRead() {
         ArrayList<Objective> objectives = new ArrayList<>();
         for(SelectorArgument arg : getArgumentsByKey("scores")) {
             for(Objective obj : ((ScoreArgument) arg).getObjectivesRead()) {
@@ -298,7 +304,8 @@ public class Selector implements EntityRepresentation, Cloneable {
      *
      * @return A list of selector arguments whose key are the same as the one given.
      * */
-    public Collection<SelectorArgument> getArgumentsByKey(String key) {
+    @NotNull
+    public Collection<@NotNull SelectorArgument> getArgumentsByKey(String key) {
         ArrayList<SelectorArgument> args = new ArrayList<>();
         for(SelectorArgument arg : this.args) {
             if(arg.getKey().equals(key)) args.add(arg);
@@ -314,7 +321,7 @@ public class Selector implements EntityRepresentation, Cloneable {
      * @return <code>true</code> if at least one of this selector's arguments is of the given key,
      * <code>false</code> otherwise.
      * */
-    public boolean containsArgumentForKey(String key) {
+    public boolean containsArgumentForKey(@NotNull String key) {
         for(SelectorArgument arg : args) {
             if(arg.getKey().equals(key)) return true;
         }
@@ -362,6 +369,7 @@ public class Selector implements EntityRepresentation, Cloneable {
         return usedVariables;
     }
 
+    @NotNull
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("@");

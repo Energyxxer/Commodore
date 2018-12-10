@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public abstract class EffectCommand implements Command {
-
+    @NotNull
     protected final Entity entity;
 
-    public EffectCommand(Entity entity) {
+    public EffectCommand(@NotNull Entity entity) {
         this.entity = entity;
     }
 

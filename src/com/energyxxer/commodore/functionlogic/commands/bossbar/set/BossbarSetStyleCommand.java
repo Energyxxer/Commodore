@@ -6,9 +6,10 @@ import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
 public class BossbarSetStyleCommand extends BossbarSetCommand {
+    @NotNull
     private final BossbarStyle style;
 
-    public BossbarSetStyleCommand(Type bossbar, BossbarStyle style) {
+    public BossbarSetStyleCommand(@NotNull Type bossbar, @NotNull BossbarStyle style) {
         super(bossbar);
         this.style = style;
     }

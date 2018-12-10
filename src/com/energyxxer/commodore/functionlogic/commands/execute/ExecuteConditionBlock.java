@@ -6,21 +6,25 @@ import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.types.Type;
+import org.jetbrains.annotations.NotNull;
 
 public class ExecuteConditionBlock extends ExecuteCondition {
+    @NotNull
     private final CoordinateSet pos;
+    @NotNull
     private final Block block;
 
-    public ExecuteConditionBlock(ConditionType flowController, CoordinateSet pos, Type blockType) {
+    public ExecuteConditionBlock(@NotNull ConditionType flowController, @NotNull CoordinateSet pos, @NotNull Type blockType) {
         this(flowController, pos, new Block(blockType));
     }
 
-    public ExecuteConditionBlock(ConditionType flowController, CoordinateSet pos, Block block) {
+    public ExecuteConditionBlock(@NotNull ConditionType flowController, @NotNull CoordinateSet pos, @NotNull Block block) {
         super(flowController);
         this.pos = pos;
         this.block = block;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, this.getStarter() + "block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + block);

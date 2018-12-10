@@ -7,9 +7,10 @@ import com.energyxxer.commodore.functionlogic.score.Objective;
 import org.jetbrains.annotations.NotNull;
 
 public class ObjectivesRemoveCommand implements Command {
+    @NotNull
     private final Objective objective;
 
-    public ObjectivesRemoveCommand(Objective objective) {
+    public ObjectivesRemoveCommand(@NotNull Objective objective) {
         this.objective = objective;
     }
 

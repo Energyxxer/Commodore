@@ -13,8 +13,9 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class ExecuteCommand implements Command {
-
+    @NotNull
     private final Command chainedCommand;
+    @NotNull
     private final ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
 
     public ExecuteCommand(@NotNull Command chainedCommand) {

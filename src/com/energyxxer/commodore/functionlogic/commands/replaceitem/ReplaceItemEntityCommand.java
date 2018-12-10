@@ -15,17 +15,19 @@ import static com.energyxxer.commodore.types.TypeAssert.assertSlot;
 import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
 
 public class ReplaceItemEntityCommand extends ReplaceItemCommand {
-
+    @NotNull
     private final Entity entity;
+    @NotNull
     private final Type slot;
+    @NotNull
     private final Item item;
     private final int count;
 
-    public ReplaceItemEntityCommand(Entity entity, Type slot, Item item) {
+    public ReplaceItemEntityCommand(@NotNull Entity entity, @NotNull Type slot, @NotNull Item item) {
         this(entity, slot, item, 1);
     }
 
-    public ReplaceItemEntityCommand(Entity entity, Type slot, Item item, int count) {
+    public ReplaceItemEntityCommand(@NotNull Entity entity, @NotNull Type slot, @NotNull Item item, int count) {
         this.entity = entity;
         this.slot = slot;
         this.item = item;

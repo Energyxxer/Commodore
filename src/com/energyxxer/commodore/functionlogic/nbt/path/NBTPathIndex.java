@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.functionlogic.nbt.path;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class NBTPathIndex implements NBTPathNode {
@@ -9,11 +11,13 @@ public class NBTPathIndex implements NBTPathNode {
         this.index = index;
     }
 
+    @NotNull
     @Override
     public String getPathString() {
         return "["+index+"]";
     }
 
+    @NotNull
     @Override
     public String getPathSeparator() {
         return "";

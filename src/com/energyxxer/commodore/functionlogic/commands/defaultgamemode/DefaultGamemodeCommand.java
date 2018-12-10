@@ -10,9 +10,10 @@ import static com.energyxxer.commodore.types.TypeAssert.assertGamemode;
 
 public class DefaultGamemodeCommand implements Command {
 
+    @NotNull
     private final Type gamemode;
 
-    public DefaultGamemodeCommand(Type gamemode) {
+    public DefaultGamemodeCommand(@NotNull Type gamemode) {
         assertGamemode(gamemode);
         this.gamemode = gamemode;
     }

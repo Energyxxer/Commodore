@@ -5,24 +5,27 @@ import com.energyxxer.commodore.functionlogic.commands.execute.SubCommandResult;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
 public class Rotation implements ExecuteModifier {
 
+    @NotNull
     private final RotationUnit yaw; //y-rot
+    @NotNull
     private final RotationUnit pitch; //x-rot
 
     public Rotation(double yaw, double pitch) {
         this(yaw, pitch, RotationUnit.Type.ABSOLUTE);
     }
 
-    public Rotation(double yaw, double pitch, RotationUnit.Type type) {
+    public Rotation(double yaw, double pitch, @NotNull RotationUnit.Type type) {
         this.yaw = new RotationUnit(type, yaw);
         this.pitch = new RotationUnit(type, pitch);
     }
 
-    public Rotation(RotationUnit yaw, RotationUnit pitch) {
+    public Rotation(@NotNull RotationUnit yaw, @NotNull RotationUnit pitch) {
         this.yaw = yaw;
         this.pitch = pitch;
     }
@@ -32,6 +35,7 @@ public class Rotation implements ExecuteModifier {
         return yaw + " " + pitch;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, "rotated " + yaw + " " + pitch);
@@ -71,7 +75,6 @@ public class Rotation implements ExecuteModifier {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(yaw, pitch);
     }
 }

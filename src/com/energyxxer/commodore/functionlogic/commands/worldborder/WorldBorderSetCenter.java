@@ -7,9 +7,10 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
 public class WorldBorderSetCenter extends WorldBorderCommand {
+    @NotNull
     private final CoordinateSet pos;
 
-    public WorldBorderSetCenter(CoordinateSet pos) {
+    public WorldBorderSetCenter(@NotNull CoordinateSet pos) {
         this.pos = pos;
     }
 

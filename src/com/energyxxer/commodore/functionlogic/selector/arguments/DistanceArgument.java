@@ -3,15 +3,17 @@ package com.energyxxer.commodore.functionlogic.selector.arguments;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.util.NumberRange;
+import org.jetbrains.annotations.NotNull;
 
 public class DistanceArgument implements SelectorArgument {
+    @NotNull
+    private final NumberRange<@NotNull Double> distance;
 
-    private final NumberRange<Double> distance;
-
-    public DistanceArgument(NumberRange<Double> distance) {
+    public DistanceArgument(@NotNull NumberRange<@NotNull Double> distance) {
         this.distance = distance;
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         return "distance=" + distance;
@@ -22,11 +24,13 @@ public class DistanceArgument implements SelectorArgument {
         return false;
     }
 
+    @NotNull
     @Override
     public DistanceArgument clone() {
         return new DistanceArgument(distance.clone());
     }
 
+    @NotNull
     @Override
     public String getKey() {
         return "distance";

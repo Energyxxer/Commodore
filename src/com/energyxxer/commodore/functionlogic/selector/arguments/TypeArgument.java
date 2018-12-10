@@ -3,26 +3,29 @@ package com.energyxxer.commodore.functionlogic.selector.arguments;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.types.Type;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertEntity;
 
 public class TypeArgument implements SelectorArgument {
+    @NotNull
     private final Type type;
     private final boolean negated;
 
-    public TypeArgument(Type type) {
+    public TypeArgument(@NotNull Type type) {
         this(type, false);
     }
 
-    public TypeArgument(Type type, boolean negated) {
+    public TypeArgument(@NotNull Type type, boolean negated) {
         this.type = type;
         this.negated = negated;
 
         assertEntity(type);
     }
 
+    @NotNull
     public Type getType() {
         return type;
     }
@@ -31,6 +34,7 @@ public class TypeArgument implements SelectorArgument {
         return negated;
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         return "type=" + (negated ? "!" : "") + type;
@@ -46,11 +50,13 @@ public class TypeArgument implements SelectorArgument {
         return getArgumentString();
     }
 
+    @NotNull
     @Override
     public TypeArgument clone() {
         return new TypeArgument(type, negated);
     }
 
+    @NotNull
     @Override
     public String getKey() {
         return "type";
@@ -62,7 +68,7 @@ public class TypeArgument implements SelectorArgument {
     }
 
     @Override
-    public void assertCompatibleWith(Selector selector) {
+    public void assertCompatibleWith(@NotNull Selector selector) {
         Collection<SelectorArgument> typeArgs = selector.getArgumentsByKey(getKey());
         for(SelectorArgument arg : typeArgs) {
             TypeArgument that = (TypeArgument) arg;

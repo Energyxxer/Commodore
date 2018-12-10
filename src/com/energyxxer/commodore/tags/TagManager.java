@@ -2,6 +2,7 @@ package com.energyxxer.commodore.tags;
 
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.defaults.*;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -9,16 +10,23 @@ import java.util.Map;
 
 public class TagManager {
 
+    @NotNull
     private final Namespace namespace;
 
+    @NotNull
     private final HashMap<String, TagGroup<? extends Tag>> groups = new HashMap<>();
+    @NotNull
     public final TagGroup<BlockTag> blockTags;
+    @NotNull
     public final TagGroup<ItemTag> itemTags;
+    @NotNull
     public final TagGroup<EntityTypeTag> entityTypeTags;
+    @NotNull
     public final TagGroup<FunctionTag> functionTags;
+    @NotNull
     public final TagGroup<FluidTag> fluidTags;
 
-    public TagManager(Namespace namespace) {
+    public TagManager(@NotNull Namespace namespace) {
         this.namespace = namespace;
 
         put(this.blockTags = new TagGroup<>(namespace, BlockType.CATEGORY, "blocks", BlockTag.INSTANTIATOR));
@@ -28,26 +36,29 @@ public class TagManager {
         put(this.fluidTags = new TagGroup<>(namespace, FluidType.CATEGORY, "fluids", FluidTag.INSTANTIATOR));
     }
 
-    public void put(TagGroup<? extends Tag> group) {
+    public void put(@NotNull TagGroup<? extends Tag> group) {
         groups.put(group.getCategory(), group);
     }
 
-    public TagGroup<? extends Tag> createGroup(String category, String tagDirectory) {
+    @NotNull
+    public TagGroup<? extends Tag> createGroup(@NotNull String category, @NotNull String tagDirectory) {
         if(groups.containsKey(category)) return groups.get(category);
         TagGroup<? extends Tag> newGroup = new TagGroup<>(namespace, category, tagDirectory, GenericTag.INSTANTIATOR);
         put(newGroup);
         return newGroup;
     }
 
-    public TagGroup<? extends Tag> getGroup(String category) {
+    @NotNull
+    public TagGroup<? extends Tag> getGroup(@NotNull String category) {
         return groups.get(category);
     }
 
+    @NotNull
     public Namespace getNamespace() {
         return namespace;
     }
 
-    public void join(TagManager other) {
+    public void join(@NotNull TagManager other) {
         for(Map.Entry<String, TagGroup<? extends Tag>> entry : other.groups.entrySet()) {
             String category = entry.getKey();
             TagGroup<? extends Tag> group = entry.getValue();

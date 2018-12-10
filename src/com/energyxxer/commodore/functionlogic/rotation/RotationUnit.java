@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.rotation;
 
 import com.energyxxer.commodore.CommandUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -15,7 +16,7 @@ public class RotationUnit {
             this.prefix = prefix;
         }
     }
-
+    @NotNull
     private final Type type;
     private final double value;
 
@@ -23,7 +24,7 @@ public class RotationUnit {
         this(Type.ABSOLUTE, value);
     }
 
-    public RotationUnit(Type type, double value) {
+    public RotationUnit(@NotNull Type type, double value) {
         this.type = type;
         this.value = value;
     }

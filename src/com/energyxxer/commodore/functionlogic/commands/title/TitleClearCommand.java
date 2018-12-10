@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class TitleClearCommand extends TitleCommand {
 
-    public TitleClearCommand(Entity player) {
+    public TitleClearCommand(@NotNull Entity player) {
         super(player);
     }
 

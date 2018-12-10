@@ -8,6 +8,7 @@ import com.energyxxer.commodore.functionlogic.score.Objective;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.functionlogic.selector.arguments.LimitArgument;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -21,6 +22,7 @@ public class GenericEntity implements Entity {
     /**
      * The selector this generic entity should utilize.
      * */
+    @NotNull
     private final Selector selector;
 
     /**
@@ -39,7 +41,7 @@ public class GenericEntity implements Entity {
      *
      * @param selector The selector this generic entity should resolve to.
      * */
-    public GenericEntity(Selector selector) {
+    public GenericEntity(@NotNull Selector selector) {
         this.selector = selector;
         addMacroHolder(new MacroScoreHolder("GE#" + this.hashCode()));
     }
@@ -50,6 +52,7 @@ public class GenericEntity implements Entity {
      *
      * @return The selector for this generic entity.
      * */
+    @NotNull
     public Selector getSelector() {
         return selector;
     }
@@ -94,6 +97,7 @@ public class GenericEntity implements Entity {
         return selector.getLimit();
     }
 
+    @NotNull
     @Override
     public EntityResolution resolveFor(ExecutionContext context) {
         if(context.getFinalSender() == this) return new EntityResolution(this, new Selector(Selector.BaseSelector.SENDER));
@@ -124,6 +128,7 @@ public class GenericEntity implements Entity {
         return scoreboardAccesses;
     }
 
+    @NotNull
     @Override
     public Collection<MacroScoreHolder> getMacroHolders() {
         return macroHolders;

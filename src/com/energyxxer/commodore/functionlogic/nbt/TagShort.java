@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.functionlogic.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class TagShort extends NBTTag {
@@ -9,7 +11,7 @@ public class TagShort extends NBTTag {
         this("", value);
     }
 
-    public TagShort(String name, int value) {
+    public TagShort(@NotNull String name, int value) {
         super(name);
         this.value = (short) value;
     }
@@ -18,16 +20,18 @@ public class TagShort extends NBTTag {
         this("", value);
     }
 
-    public TagShort(String name, short value) {
+    public TagShort(@NotNull String name, short value) {
         super(name);
         this.value = value;
     }
 
+    @NotNull
     @Override
     public String getType() {
         return "TAG_Short";
     }
 
+    @NotNull
     @Override
     public String toHeadlessString() {
         return String.valueOf(value) + NumericNBTType.SHORT.getSuffix();
@@ -38,6 +42,7 @@ public class TagShort extends NBTTag {
         return this.toHeaderString() + ":" + this.toHeadlessString();
     }
 
+    @NotNull
     @Override
     public TagShort clone() {
         return new TagShort(name, value);

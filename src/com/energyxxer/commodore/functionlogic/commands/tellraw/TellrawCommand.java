@@ -13,10 +13,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class TellrawCommand implements Command {
+    @NotNull
     private final Entity player;
+    @NotNull
     private final TextComponent message;
 
-    public TellrawCommand(Entity player, TextComponent message) {
+    public TellrawCommand(@NotNull Entity player, @NotNull TextComponent message) {
         this.player = player;
         this.message = message;
 

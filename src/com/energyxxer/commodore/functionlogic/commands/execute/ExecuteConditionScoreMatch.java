@@ -11,16 +11,18 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class ExecuteConditionScoreMatch extends ExecuteCondition {
-
+    @NotNull
     private final LocalScore target;
+    @NotNull
     private final NumberRange range;
 
-    public ExecuteConditionScoreMatch(ConditionType flowController, LocalScore target, NumberRange range) {
+    public ExecuteConditionScoreMatch(@NotNull ConditionType flowController, @NotNull LocalScore target, @NotNull NumberRange range) {
         super(flowController);
         this.target = target;
         this.range = range;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, this.getStarter() + "score \be0 " + target.getObjective().getName() + " matches " + range.toString(), target.getHolder());

@@ -3,41 +3,45 @@ package com.energyxxer.commodore.textcomponents;
 import com.energyxxer.commodore.functionlogic.inspection.CommandEmbeddable;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.*;
 
 public abstract class TextComponent {
+    @NotNull
     private TextStyle style = TextStyle.EMPTY_STYLE;
-    private final ArrayList<TextEvent> events = new ArrayList<>();
+    @NotNull
+    private final ArrayList<@NotNull TextEvent> events = new ArrayList<>();
 
     public abstract boolean supportsProperties();
 
+    @NotNull
     public TextStyle getStyle() {
         return style;
     }
 
-    public void setStyle(TextStyle style) {
+    public void setStyle(@Nullable TextStyle style) {
         if(style == null) return;
         if(supportsProperties()) {
             this.style = style;
         } else throw new UnsupportedOperationException(this.getClass().getName() + " does not support text properties");
     }
 
-    public void addEvent(TextEvent event) {
+    public void addEvent(@NotNull TextEvent event) {
         if(supportsProperties()) {
             this.events.add(event);
         } else throw new UnsupportedOperationException(this.getClass().getName() + " does not support text properties");
     }
 
-    public void addEvents(Collection<TextEvent> events) {
+    public void addEvents(@Nullable Collection<@NotNull TextEvent> events) {
         if(events != null) events.forEach(this::addEvent);
     }
 
-    public void addEvents(TextEvent... events) {
+    public void addEvents(@NotNull TextEvent... events) {
         this.addEvents(Arrays.asList(events));
     }
 
-    public void removeEvent(TextEvent event) {
+    public void removeEvent(@NotNull TextEvent event) {
         this.events.remove(event);
     }
 

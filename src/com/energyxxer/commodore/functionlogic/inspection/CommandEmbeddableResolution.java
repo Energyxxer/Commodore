@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.inspection;
 
 import com.energyxxer.commodore.functionlogic.commands.execute.ExecuteModifier;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,10 +15,12 @@ public class CommandEmbeddableResolution {
      * A list of execution modifiers required to be added before the command's execution to ensure the object is
      * embedded correctly.
      * */
+    @NotNull
     private final ArrayList<ExecuteModifier> newModifiers = new ArrayList<>();
     /**
      * The string to replace the embed marker within the command.
      * */
+    @NotNull
     private final String embedString;
 
     /**
@@ -27,7 +30,7 @@ public class CommandEmbeddableResolution {
      * @param newModifiers An array containing the execution modifiers required to be added before the commands'
      *                     execution. May be empty.
      * */
-    public CommandEmbeddableResolution(String embedString, ExecuteModifier... newModifiers) {
+    public CommandEmbeddableResolution(@NotNull String embedString, @NotNull ExecuteModifier... newModifiers) {
         this(embedString, Arrays.asList(newModifiers));
     }
 
@@ -38,7 +41,7 @@ public class CommandEmbeddableResolution {
      * @param newModifiers A list containing the execution modifiers required to be added before the commands'
      *                     execution. May be empty.
      * */
-    public CommandEmbeddableResolution(String embedString, Collection<ExecuteModifier> newModifiers) {
+    public CommandEmbeddableResolution(@NotNull String embedString, @NotNull Collection<@NotNull ExecuteModifier> newModifiers) {
         this.embedString = embedString;
         this.newModifiers.addAll(newModifiers);
     }
@@ -48,6 +51,7 @@ public class CommandEmbeddableResolution {
      *
      * @return The modifiers required for this embed to be added.
      * */
+    @NotNull
     public Collection<ExecuteModifier> getNewModifiers() {
         return newModifiers;
     }
@@ -57,6 +61,7 @@ public class CommandEmbeddableResolution {
      *
      * @return The string to replace the embed marker.
      * */
+    @NotNull
     public String getEmbedString() {
         return embedString;
     }

@@ -5,6 +5,7 @@ import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.defaults.GenericType;
 import com.energyxxer.commodore.types.defaults.TypeManager;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
 
@@ -33,6 +34,7 @@ public abstract class Type {
     /**
      * The case-sensitive string describing the category of this type.
      * */
+    @NotNull
     protected final String category;
     /**
      * The namespace this type belongs to.
@@ -41,11 +43,13 @@ public abstract class Type {
     /**
      * The name this type is referred to as.
      * */
+    @NotNull
     protected final String name;
     /**
      * The properties of this type, as defined via the JSON declaration of this type in a definition pack, or given
      * directly by the {@link Type#putProperty(String, String)} and {@link Type#putProperties(HashMap)} methods.
      * */
+    @NotNull
     protected final HashMap<String, String> properties = new HashMap<>();
 
     /**
@@ -55,7 +59,7 @@ public abstract class Type {
      * @param namespace The Namespace this type belongs to. Can be null if {@link Type#useNamespace} returns false.
      * @param name The name this type is referred to as.
      * */
-    public Type(String category, Namespace namespace, String name) {
+    public Type(@NotNull String category, Namespace namespace, @NotNull String name) {
         this.category = category;
         this.namespace = namespace;
         this.name = name;
@@ -87,6 +91,7 @@ public abstract class Type {
      *
      * @return The name of this type.
      * */
+    @NotNull
     public String getName() {
         return name;
     }
@@ -105,6 +110,7 @@ public abstract class Type {
      *
      * @return The category of this type.
      * */
+    @NotNull
     public String getCategory() {
         return category;
     }
@@ -146,6 +152,7 @@ public abstract class Type {
      * @return The map of this type's properties. Any modifications to the returned
      * value will also be made to this type's properties.
      * */
+    @NotNull
     public HashMap<String, String> getProperties() {
         return properties;
     }

@@ -10,19 +10,21 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class ExecuteStoreScore extends ExecuteStore {
+    @NotNull
     private final LocalScore score;
 
     private Collection<ScoreboardAccess> accesses = null;
 
-    public ExecuteStoreScore(LocalScore score) {
+    public ExecuteStoreScore(@NotNull LocalScore score) {
         this.score = score;
     }
 
-    public ExecuteStoreScore(StoreValue storeValue, LocalScore score) {
+    public ExecuteStoreScore(@NotNull StoreValue storeValue, @NotNull LocalScore score) {
         super(storeValue);
         this.score = score;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, this.getStarter() + "score \be0 " + score.getObjective().getName(), score.getHolder());

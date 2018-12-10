@@ -8,10 +8,10 @@ import org.jetbrains.annotations.NotNull;
 import static com.energyxxer.commodore.types.TypeAssert.assertDifficulty;
 
 public class DifficultySetCommand extends DifficultyCommand {
-
+    @NotNull
     private final Type difficulty;
 
-    public DifficultySetCommand(Type difficulty) {
+    public DifficultySetCommand(@NotNull Type difficulty) {
         this.difficulty = difficulty;
         assertDifficulty(difficulty);
     }

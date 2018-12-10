@@ -7,9 +7,10 @@ import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
 public class BossbarSetPlayersCommand extends BossbarSetCommand {
+    @NotNull
     private final Entity players;
 
-    public BossbarSetPlayersCommand(Type bossbar, Entity players) {
+    public BossbarSetPlayersCommand(@NotNull Type bossbar, @NotNull Entity players) {
         super(bossbar);
 
         players.assertPlayer();

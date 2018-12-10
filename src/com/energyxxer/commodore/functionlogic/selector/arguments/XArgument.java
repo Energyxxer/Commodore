@@ -2,6 +2,7 @@ package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
+import org.jetbrains.annotations.NotNull;
 
 public class XArgument implements SelectorArgument {
 
@@ -11,6 +12,7 @@ public class XArgument implements SelectorArgument {
         this.value = value;
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         return "x=" + CommandUtils.numberToPlainString(value);
@@ -21,11 +23,13 @@ public class XArgument implements SelectorArgument {
         return false;
     }
 
+    @NotNull
     @Override
     public XArgument clone() {
         return new XArgument(value);
     }
 
+    @NotNull
     @Override
     public String getKey() {
         return "x";

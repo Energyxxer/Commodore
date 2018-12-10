@@ -13,12 +13,14 @@ public class ObjectiveModifyCommand implements Command {
         HEARTS("hearts"),
         INTEGER("integer");
 
+        @NotNull
         private String valueKey;
 
-        ObjectiveRenderType(String valueKey) {
+        ObjectiveRenderType(@NotNull String valueKey) {
             this.valueKey = valueKey;
         }
 
+        @NotNull
         public String getValueKey() {
             return valueKey;
         }
@@ -33,18 +35,22 @@ public class ObjectiveModifyCommand implements Command {
         RENDER_TYPE("rendertype", ObjectiveRenderType.class),
         DISPLAY_NAME("displayname", TextComponent.class);
 
+        @NotNull
         private String argumentKey;
+        @NotNull
         private Class valueClass;
 
-        ObjectiveModifyKey(String argumentKey, Class valueClass) {
+        ObjectiveModifyKey(@NotNull String argumentKey, @NotNull Class valueClass) {
             this.argumentKey = argumentKey;
             this.valueClass = valueClass;
         }
 
+        @NotNull
         public String getArgumentKey() {
             return argumentKey;
         }
 
+        @NotNull
         public Class getValueClass() {
             return valueClass;
         }
@@ -54,19 +60,22 @@ public class ObjectiveModifyCommand implements Command {
         }
     }
 
+    @NotNull
     private Objective objective;
+    @NotNull
     private ObjectiveModifyKey key;
+    @NotNull
     private Object value;
 
-    public ObjectiveModifyCommand(Objective objective, ObjectiveModifyKey key, ObjectiveRenderType value) {
+    public ObjectiveModifyCommand(@NotNull Objective objective, @NotNull ObjectiveModifyKey key, @NotNull ObjectiveRenderType value) {
         this(objective, key, (Object) value);
     }
 
-    public ObjectiveModifyCommand(Objective objective, ObjectiveModifyKey key, TextComponent value) {
+    public ObjectiveModifyCommand(@NotNull Objective objective, @NotNull ObjectiveModifyKey key, @NotNull TextComponent value) {
         this(objective, key, (Object) value);
     }
 
-    private ObjectiveModifyCommand(Objective objective, ObjectiveModifyKey key, Object value) {
+    private ObjectiveModifyCommand(@NotNull Objective objective, @NotNull ObjectiveModifyKey key, @NotNull Object value) {
         this.objective = objective;
         this.key = key;
         if (key.isValidValue(value)) {
@@ -74,6 +83,7 @@ public class ObjectiveModifyCommand implements Command {
         } else throw new IllegalArgumentException("'" + value + "' is not a valid argument type for team option '" + key + "': expected value of type '" + key.valueClass.getSimpleName() + "'");
     }
 
+    @NotNull
     private String getValueString() {
         return value.toString();
     }

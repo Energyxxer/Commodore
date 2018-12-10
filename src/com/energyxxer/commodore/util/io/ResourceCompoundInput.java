@@ -1,18 +1,24 @@
 package com.energyxxer.commodore.util.io;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.io.InputStream;
 
 public class ResourceCompoundInput implements CompoundInput {
+    @NotNull
     private String rootPath;
+    @NotNull
     private Class cls;
 
-    public ResourceCompoundInput(String rootPath, Class cls) {
+    public ResourceCompoundInput(@NotNull String rootPath, @NotNull Class cls) {
         this.rootPath = rootPath;
         this.cls = cls;
     }
 
+    @Nullable
     @Override
-    public InputStream get(String path) {
+    public InputStream get(@NotNull String path) {
         return cls.getResourceAsStream(rootPath + path);
     }
 

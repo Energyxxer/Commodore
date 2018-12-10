@@ -7,52 +7,57 @@ import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.util.Particle;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.util.Delta;
+import com.energyxxer.commodore.util.Particle;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
 public class ParticleCommand implements Command {
+    @NotNull
     private final Particle particle;
-    private CoordinateSet position;
-    private Delta delta;
+    @Nullable
+    private final CoordinateSet position;
+    @Nullable
+    private final Delta delta;
     private final double speed;
     private final int count;
     private final boolean force;
+    @Nullable
     private final Entity viewers;
 
-    public ParticleCommand(Particle particle) {
+    public ParticleCommand(@NotNull Particle particle) {
         this(particle, null);
     }
 
-    public ParticleCommand(Particle particle, CoordinateSet position) {
+    public ParticleCommand(@NotNull Particle particle, @Nullable CoordinateSet position) {
         this(particle, position, null);
     }
 
-    public ParticleCommand(Particle particle, CoordinateSet position, Delta delta) {
+    public ParticleCommand(@NotNull Particle particle, @Nullable CoordinateSet position, @Nullable Delta delta) {
         this(particle, position, delta, 0);
     }
 
-    public ParticleCommand(Particle particle, CoordinateSet position, Delta delta, double speed) {
+    public ParticleCommand(@NotNull Particle particle, @Nullable CoordinateSet position, @Nullable Delta delta, double speed) {
         this(particle, position, delta, speed, 1);
     }
 
-    public ParticleCommand(Particle particle, CoordinateSet position, Delta delta, double speed, int count) {
+    public ParticleCommand(@NotNull Particle particle, @Nullable CoordinateSet position, @Nullable Delta delta, double speed, int count) {
         this(particle, position, delta, speed, count, false);
     }
 
-    public ParticleCommand(Particle particle, CoordinateSet position, Delta delta, double speed, int count, boolean force) {
+    public ParticleCommand(@NotNull Particle particle, @Nullable CoordinateSet position, @Nullable Delta delta, double speed, int count, boolean force) {
         this(particle, position, delta, speed, count, force, null);
     }
 
-    public ParticleCommand(Particle particle, CoordinateSet position, Delta delta, double speed, int count, boolean force, Entity viewers) {
+    public ParticleCommand(@NotNull Particle particle, @Nullable CoordinateSet position, @Nullable Delta delta, double speed, int count, boolean force, @Nullable Entity viewers) {
         this.particle = particle;
-        if(position != null && position.isSignificant()) this.position = position;
-        if(delta != null && (delta.x != 0 || delta.y != 0 || delta.z != 0)) this.delta = delta;
+        this.position = (position != null && position.isSignificant()) ? position : null;
+        this.delta = (delta != null && (delta.x != 0 || delta.y != 0 || delta.z != 0)) ? delta : null;
         this.speed = speed;
         this.count = count;
         this.force = force;

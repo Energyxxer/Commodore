@@ -3,6 +3,7 @@ package com.energyxxer.commodore.functionlogic.selector.arguments;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
+import org.jetbrains.annotations.NotNull;
 
 public class DZArgument implements SelectorArgument {
 
@@ -12,6 +13,7 @@ public class DZArgument implements SelectorArgument {
         this.value = value;
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         return "dz=" + CommandUtils.numberToPlainString(value);
@@ -22,11 +24,13 @@ public class DZArgument implements SelectorArgument {
         return false;
     }
 
+    @NotNull
     @Override
     public DZArgument clone() {
         return new DZArgument(value);
     }
 
+    @NotNull
     @Override
     public String getKey() {
         return "dz";

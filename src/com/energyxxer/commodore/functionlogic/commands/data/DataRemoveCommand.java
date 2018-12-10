@@ -10,14 +10,15 @@ import org.jetbrains.annotations.NotNull;
 
 public class DataRemoveCommand extends DataCommand {
 
+    @NotNull
     private final NBTPath path;
 
-    public DataRemoveCommand(Entity entity, NBTPath path) {
+    public DataRemoveCommand(@NotNull Entity entity, @NotNull NBTPath path) {
         super(entity);
         this.path = path;
     }
 
-    public DataRemoveCommand(CoordinateSet pos, NBTPath path) {
+    public DataRemoveCommand(@NotNull CoordinateSet pos, @NotNull NBTPath path) {
         super(pos);
         this.path = path;
     }

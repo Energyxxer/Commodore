@@ -1,16 +1,21 @@
 package com.energyxxer.commodore.functionlogic.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 public abstract class NBTTag {
+    @NotNull
     protected String name;
 
     private static final String ALLOWED_NAME_CHARACTERS = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
 
-    public NBTTag(String name) {
+    public NBTTag(@NotNull String name) {
         this.name = name;
     }
 
+    @NotNull
     public abstract String getType();
 
+    @NotNull
     public String toHeaderString() {
         boolean needsQuotes = false;
 
@@ -26,17 +31,20 @@ public abstract class NBTTag {
         } else return name;
     }
 
+    @NotNull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NotNull String name) {
         this.name = name;
     }
 
+    @NotNull
     public abstract String toHeadlessString();
 
     public abstract String toString();
 
+    @NotNull
     public abstract NBTTag clone();
 }

@@ -10,7 +10,9 @@ import java.util.Collection;
 import java.util.Collections;
 
 public class ScoreTextComponent extends TextComponent {
+    @NotNull
     private final LocalScore score;
+
     private final Collection<ScoreboardAccess> accesses;
 
     public ScoreTextComponent(LocalScore score) {

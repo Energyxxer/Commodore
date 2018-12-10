@@ -3,6 +3,7 @@ package com.energyxxer.commodore.functionlogic.commands.datapack;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class DataPackEnableCommand extends DataPackCommand {
 
@@ -16,18 +17,21 @@ public class DataPackEnableCommand extends DataPackCommand {
         }
     }
 
+    @NotNull
     private final String pack;
+    @NotNull
     private final Order order;
-    private String secondPack = null;
+    @Nullable
+    private final String secondPack;
 
-    public DataPackEnableCommand(String pack, Order order) {
+    public DataPackEnableCommand(@NotNull String pack, @NotNull Order order) {
         this(pack, order, null);
 
         if(order.takesSecondPack)
             throw new IllegalArgumentException("Order '" + order + "' requires a second datapack parameter");
     }
 
-    public DataPackEnableCommand(String pack, Order order, String secondPack) {
+    public DataPackEnableCommand(@NotNull String pack, @NotNull Order order, @Nullable String secondPack) {
         this.pack = pack;
         this.order = order;
         this.secondPack = secondPack;

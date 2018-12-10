@@ -14,16 +14,19 @@ public class ExecutionContext {
     /**
      * The sender of the command/function, before the execute modifiers.
      * */
+    @NotNull
     private final Entity originalSender;
     /**
      * The list of execute modifiers which modify the execution context; these are added in order into the execute
      * command.
      * */
-    private final ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
+    @NotNull
+    private final ArrayList<@NotNull ExecuteModifier> modifiers = new ArrayList<>();
     /**
      * The sender of the chained command; that is, the entity that is executing the command after all the execute
      * modifiers.
      * */
+    @NotNull
     private Entity finalSender;
 
     /**
@@ -42,7 +45,7 @@ public class ExecutionContext {
      * @param modifiers The list of execute modifiers which modify the execution context from the original sender's
      *                  context.
      * */
-    public ExecutionContext(@NotNull Entity originalSender, Collection<ExecuteModifier> modifiers) {
+    public ExecutionContext(@NotNull Entity originalSender, @NotNull Collection<ExecuteModifier> modifiers) {
         this.originalSender = originalSender;
         this.modifiers.addAll(modifiers);
         updateFinalSender();
@@ -68,6 +71,7 @@ public class ExecutionContext {
      *
      * @return This context's original sender.
      * */
+    @NotNull
     public Entity getOriginalSender() {
         return originalSender;
     }
@@ -86,6 +90,7 @@ public class ExecutionContext {
      *
      * @return The final sender of the context.
      * */
+    @NotNull
     public Entity getFinalSender() {
         return finalSender;
     }

@@ -2,6 +2,7 @@ package com.energyxxer.commodore.types;
 
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.defaults.TypeManager;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -22,10 +23,12 @@ public class TypeDictionary<T extends Type> {
     /**
      * The namespace this type dictionary belongs to.
      * */
+    @NotNull
     private final Namespace namespace;
     /**
      * The case-sensitive string which describes which category all the containing types belong to.
      * */
+    @NotNull
     private final String category;
 
     /**
@@ -34,10 +37,12 @@ public class TypeDictionary<T extends Type> {
      *
      * The type values are of the class bound by <code>T</code>.
      * */
-    private final HashMap<String, T> types = new HashMap<>();
+    @NotNull
+    private final HashMap<@NotNull String, @NotNull T> types = new HashMap<>();
     /**
      * The functional interface for creating type objects for the type bound by <code>T</code>
      * */
+    @NotNull
     private final TypeInstantiator<T> instantiator;
 
     /**
@@ -48,7 +53,7 @@ public class TypeDictionary<T extends Type> {
      * @param category The category all types created in this dictionary will belong to.
      * @param instantiator The instantiator which will create all types under this dictionary.
      * */
-    public TypeDictionary(Namespace namespace, String category, TypeInstantiator<T> instantiator) {
+    public TypeDictionary(@NotNull Namespace namespace, @NotNull String category, @NotNull TypeInstantiator<T> instantiator) {
         this.namespace = namespace;
         this.category = category;
         this.instantiator = instantiator;
@@ -62,7 +67,8 @@ public class TypeDictionary<T extends Type> {
      *
      * @return The newly-created or already-existing type by the given name, of the type bound by <code>T</code>.
      * */
-    public T create(String name) {
+    @NotNull
+    public T create(@NotNull String name) {
         T existing = types.get(name);
         if(existing != null) return existing;
 
@@ -80,7 +86,7 @@ public class TypeDictionary<T extends Type> {
      *
      * @throws TypeNotFoundException if there is not a type in this dictionary by the given name.
      * */
-    public T get(String name) throws TypeNotFoundException {
+    public T get(@NotNull String name) throws TypeNotFoundException {
         T existing = types.get(name);
         if(existing != null) return existing;
         throw new TypeNotFoundException("'" + name + "' does not exist as '" + category + "' in the '" + namespace + "' namespace");
@@ -91,6 +97,7 @@ public class TypeDictionary<T extends Type> {
      *
      * @return A collection with the types of this dictionary.
      * */
+    @NotNull
     public Collection<T> list() {
         return types.values();
     }
@@ -100,7 +107,7 @@ public class TypeDictionary<T extends Type> {
      *
      * @param other The dictionary of which all types will be added to this dictionary.
      * */
-    public void join(TypeDictionary<T> other) {
+    public void join(@NotNull TypeDictionary<T> other) {
         for(Map.Entry<String, T> entry : other.types.entrySet()) {
             this.types.putIfAbsent(entry.getKey(), entry.getValue());
         }
@@ -111,6 +118,7 @@ public class TypeDictionary<T extends Type> {
      *
      * @return The string describing the category of all types inside this dictionary.
      * */
+    @NotNull
     public String getCategory() {
         return category;
     }

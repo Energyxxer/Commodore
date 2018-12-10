@@ -7,29 +7,33 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class StopSoundCommand implements Command {
 
+    @NotNull
     private final Entity player;
+    @Nullable
     private final PlaySoundCommand.Source source;
+    @Nullable
     private final String sound;
 
-    public StopSoundCommand(Entity player) {
+    public StopSoundCommand(@NotNull Entity player) {
         this(player, null, null);
     }
 
-    public StopSoundCommand(Entity player, PlaySoundCommand.Source source) {
+    public StopSoundCommand(@NotNull Entity player, @Nullable PlaySoundCommand.Source source) {
         this(player, source, null);
     }
 
-    public StopSoundCommand(Entity player, String sound) {
+    public StopSoundCommand(@NotNull Entity player, @Nullable String sound) {
         this(player, null, sound);
     }
 
-    public StopSoundCommand(Entity player, PlaySoundCommand.Source source, String sound) {
+    public StopSoundCommand(@NotNull Entity player, @Nullable PlaySoundCommand.Source source, @Nullable String sound) {
         this.player = player;
         this.source = source;
         this.sound = sound;

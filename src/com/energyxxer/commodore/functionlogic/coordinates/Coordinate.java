@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.coordinates;
 
 import com.energyxxer.commodore.CommandUtils;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -81,6 +82,7 @@ public class Coordinate {
     /**
      * The type of this coordinate.
      * */
+    @NotNull
     private final Type type;
     /**
      * The distance from the origin this coordinate represents for its axis.
@@ -102,7 +104,7 @@ public class Coordinate {
      * @param type The type of coordinate this new coordinate should be.
      * @param coord The distance from the point of reference this coordinate represents for its axis.
      * */
-    public Coordinate(Type type, double coord) {
+    public Coordinate(@NotNull Type type, double coord) {
         this.type = type;
         this.coord = coord;
     }
@@ -112,6 +114,7 @@ public class Coordinate {
      *
      * @return The type of this coordinate.
      * */
+    @NotNull
     public Type getType() {
         return type;
     }

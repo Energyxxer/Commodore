@@ -3,6 +3,7 @@ package com.energyxxer.commodore.functionlogic.selector.arguments;
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
+import org.jetbrains.annotations.NotNull;
 
 public class DYArgument implements SelectorArgument {
 
@@ -12,6 +13,7 @@ public class DYArgument implements SelectorArgument {
         this.value = value;
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         return "dy=" + CommandUtils.numberToPlainString(value);
@@ -22,11 +24,13 @@ public class DYArgument implements SelectorArgument {
         return false;
     }
 
+    @NotNull
     @Override
     public DYArgument clone() {
         return new DYArgument(value);
     }
 
+    @NotNull
     @Override
     public String getKey() {
         return "dy";

@@ -9,15 +9,18 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class ExecuteConditionDataEntity extends ExecuteCondition {
+    @NotNull
     private final Entity entity;
+    @NotNull
     private final NBTPath path;
 
-    public ExecuteConditionDataEntity(ConditionType flowController, Entity entity, NBTPath path) {
+    public ExecuteConditionDataEntity(@NotNull ConditionType flowController, @NotNull Entity entity, @NotNull NBTPath path) {
         super(flowController);
         this.entity = entity;
         this.path = path;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, this.getStarter() + "data entity \be0 " + path, entity);

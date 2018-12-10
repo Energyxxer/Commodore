@@ -12,6 +12,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -127,11 +129,13 @@ public class DefinitionPack {
     /**
      * The Gson object used to parse the pack's JSON.
      * */
+    @NotNull
     private final Gson gson;
 
     /**
      * The {@link CompoundInput} from which to retrieve pack data.
      * */
+    @NotNull
     private final CompoundInput source;
 
     /**
@@ -139,16 +143,19 @@ public class DefinitionPack {
      * the value is the list of definitions for that specific category.
      * Populated once pack is loaded.
      * */
+    @NotNull
     private final HashMap<String, ArrayList<DefinitionBlueprint>> definitions = new HashMap<>();
     /**
      * Stores each of the tags for each category. The key is the category to which the tags belong, and the value is
      * the list of tags for that specific category.
      * Populated once pack is loaded.
      * */
+    @NotNull
     private final HashMap<String, ArrayList<TagBlueprint>> tags = new HashMap<>();
     /**
      * Stores a list of all the defined categories and their flags.
      * */
+    @NotNull
     private final ArrayList<CategoryDeclaration> definedCategories = new ArrayList<>();
 
     /**
@@ -160,7 +167,8 @@ public class DefinitionPack {
     /**
      * The name of the pack, as specified by the "name" property of the pack.json file. Set when pack is loaded.
      * */
-    private String packName = null;
+    @Nullable
+    private String packName;
     /**
      * The version of this pack, as specified by the "version" property of the pack.json file. Set when pack is loaded.
      * */
@@ -171,7 +179,7 @@ public class DefinitionPack {
      *
      * @param source The source from which to read the definition pack.
      * */
-    public DefinitionPack(CompoundInput source) {
+    public DefinitionPack(@NotNull CompoundInput source) {
         this.source = source;
 
         this.gson = new Gson();
@@ -239,7 +247,7 @@ public class DefinitionPack {
      *
      * @param declaration The category declaration object whose type definitions should be read.
      * */
-    private void importTypes(CategoryDeclaration declaration) throws IOException {
+    private void importTypes(@NotNull CategoryDeclaration declaration) throws IOException {
         InputStream fileIn = source.get(declaration.importFrom + ".json");
         if(fileIn == null) throw new MalformedPackException("Couldn't import type definitions for category '" + declaration.category + "': " + declaration.importFrom + ".json wasn't found");
         InputStreamReader isr = new InputStreamReader(fileIn);
@@ -280,7 +288,7 @@ public class DefinitionPack {
      *
      * @param namespace The string of the namespace whose tags should be imported.
      * */
-    private void importTags(String namespace) throws IOException {
+    private void importTags(@NotNull String namespace) throws IOException {
         InputStream in = source.get("data/" + namespace + "/tags/");
         if(in != null) {
             try(BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
@@ -332,7 +340,7 @@ public class DefinitionPack {
      *             prefix and the namespace.
      * @param declaration The category declaration for the category this tag group belongs to.
      * */
-    private void importTag(String path, String namespace, String name, CategoryDeclaration declaration) throws IOException {
+    private void importTag(@NotNull String path, @NotNull String namespace, @NotNull String name, @NotNull CategoryDeclaration declaration) throws IOException {
         try(InputStreamReader is = new InputStreamReader(source.get(path))) {
             JsonObjectWrapper obj = new JsonObjectWrapper(gson.fromJson(is, JsonObject.class));
 
@@ -361,7 +369,7 @@ public class DefinitionPack {
      * @throws MalformedPackException If mandatory files or properties are not found in the source (and hasn't been
      *                                loaded before).
      * */
-    public void populate(CommandModule module) throws IOException {
+    public void populate(@NotNull CommandModule module) throws IOException {
         load();
         for(Map.Entry<String, ArrayList<DefinitionBlueprint>> defs : definitions.entrySet()) {
             String category = defs.getKey();
@@ -410,7 +418,7 @@ public class DefinitionPack {
      *
      * @throws MalformedPackException If the declaration for such category doesn't exist (shouldn't happen in practice).
      * */
-    private CategoryDeclaration getCategory(String category) {
+    private @NotNull CategoryDeclaration getCategory(@NotNull String category) {
         for(CategoryDeclaration def : definedCategories) {
             if(def.category.equals(category)) return def;
         }
@@ -426,7 +434,7 @@ public class DefinitionPack {
      *
      * @throws IllegalStateException If the definition pack hasn't been loaded yet.
      * */
-    public Collection<DefinitionBlueprint> getBlueprints(String category) {
+    public @NotNull Collection<DefinitionBlueprint> getBlueprints(@NotNull String category) {
         if(!loaded) throw new IllegalStateException("Definition pack hasn't been loaded yet");
         return new ArrayList<>(definitions.get(category));
     }
@@ -451,7 +459,7 @@ public class DefinitionPack {
      *
      * @throws IllegalStateException If the definition pack hasn't been loaded yet.
      * */
-    public Collection<CategoryDeclaration> getDefinedCategories() {
+    public @NotNull Collection<CategoryDeclaration> getDefinedCategories() {
         if(!loaded) throw new IllegalStateException("Definition pack hasn't been loaded yet");
         return new ArrayList<>(definedCategories);
     }

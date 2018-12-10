@@ -1,9 +1,14 @@
 package com.energyxxer.commodore.functionlogic.commands.scoreboard;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 public enum ScoreComparison {
     LESS_THAN("<"), LESS_THAN_EQUAL("<="), EQUAL("="), GREATER_THAN_EQUAL(">="), GREATER_THAN(">");
 
+    @NotNull
     private final String symbol;
+    @Nullable
     private ScoreComparison reverse;
 
     static {
@@ -14,14 +19,16 @@ public enum ScoreComparison {
         EQUAL.reverse = EQUAL;
     }
 
-    ScoreComparison(String symbol) {
+    ScoreComparison(@NotNull String symbol) {
         this.symbol = symbol;
     }
 
+    @NotNull
     public String getSymbol() {
         return symbol;
     }
 
+    @Nullable
     public ScoreComparison getReverse() {
         return reverse;
     }

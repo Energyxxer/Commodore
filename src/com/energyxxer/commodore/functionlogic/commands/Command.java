@@ -5,8 +5,8 @@ import com.energyxxer.commodore.functionlogic.functions.FunctionSection;
 import com.energyxxer.commodore.functionlogic.functions.FunctionWriter;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
+import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -29,8 +29,9 @@ public interface Command extends FunctionWriter {
     @NotNull
     CommandResolution resolveCommand(ExecutionContext execContext);
 
+    @NotNull
     @Override
-    default String toFunctionContent(FunctionSection section) {
+    default String toFunctionContent(@NotNull FunctionSection section) {
         try {
             UnusedCommandPolicy policy = section.getNamespace().getOwner().getOptionManager().UNUSED_COMMAND_POLICY.getValue();
             if(policy == KEEP) {
@@ -79,7 +80,7 @@ public interface Command extends FunctionWriter {
     }
 
     @Override
-    default void onAppend(FunctionSection section) {
+    default void onAppend(@NotNull FunctionSection section) {
         this.onAppend(section, section.getExecutionContext());
     }
 

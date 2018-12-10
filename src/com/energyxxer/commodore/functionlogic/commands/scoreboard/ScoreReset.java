@@ -9,12 +9,15 @@ import com.energyxxer.commodore.functionlogic.score.LocalScore;
 import com.energyxxer.commodore.functionlogic.score.Objective;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class ScoreReset implements Command {
+    @Nullable
     private final Entity entity;
+    @Nullable
     private final Objective objective;
 
     private final ArrayList<ScoreboardAccess> accesses;
@@ -23,15 +26,15 @@ public class ScoreReset implements Command {
         this(null, null);
     }
 
-    public ScoreReset(Entity entity) {
+    public ScoreReset(@Nullable Entity entity) {
         this(entity, null);
     }
 
-    public ScoreReset(Objective objective) {
+    public ScoreReset(@Nullable Objective objective) {
         this(null, objective);
     }
 
-    public ScoreReset(Entity entity, Objective objective) {
+    public ScoreReset(@Nullable Entity entity, @Nullable Objective objective) {
         this.entity = entity;
         this.objective = objective;
 

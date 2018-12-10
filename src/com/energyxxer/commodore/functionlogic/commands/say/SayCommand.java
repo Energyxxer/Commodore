@@ -6,9 +6,10 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
 public class SayCommand implements Command {
+    @NotNull
     private final String message;
 
-    public SayCommand(String message) {
+    public SayCommand(@NotNull String message) {
         this.message = message;
     }
 

@@ -10,10 +10,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class LootCommand implements Command {
+    @NotNull
     private final LootDestination destination;
+    @NotNull
     private final LootSource source;
 
-    public LootCommand(LootDestination destination, LootSource source) {
+    public LootCommand(@NotNull LootDestination destination, @NotNull LootSource source) {
         this.destination = destination;
         this.source = source;
     }
@@ -38,10 +40,12 @@ public class LootCommand implements Command {
     }
 
     public interface LootDestination {
+        @NotNull
         CommandDelegateResolution resolve();
     }
 
     public interface LootSource {
+        @NotNull
         CommandDelegateResolution resolve();
     }
 

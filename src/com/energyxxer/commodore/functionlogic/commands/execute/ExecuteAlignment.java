@@ -3,6 +3,7 @@ package com.energyxxer.commodore.functionlogic.commands.execute;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
+import org.jetbrains.annotations.NotNull;
 
 public class ExecuteAlignment implements ExecuteModifier {
     private final boolean x;
@@ -16,6 +17,7 @@ public class ExecuteAlignment implements ExecuteModifier {
         this.z = z;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, "align " + ((x) ? "x" : "") + ((y) ? "y" : "") + ((z) ? "z" : ""));

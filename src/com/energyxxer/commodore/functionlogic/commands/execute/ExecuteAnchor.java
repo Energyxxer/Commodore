@@ -3,15 +3,17 @@ package com.energyxxer.commodore.functionlogic.commands.execute;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
+import org.jetbrains.annotations.NotNull;
 
 public class ExecuteAnchor implements ExecuteModifier {
-
+    @NotNull
     public final EntityAnchor anchor;
 
-    public ExecuteAnchor(EntityAnchor anchor) {
+    public ExecuteAnchor(@NotNull EntityAnchor anchor) {
         this.anchor = anchor;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, "anchored " + anchor.toString().toLowerCase());

@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.functionlogic.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class TagDouble extends NBTTag {
@@ -9,16 +11,18 @@ public class TagDouble extends NBTTag {
         this("", value);
     }
 
-    public TagDouble(String name, double value) {
+    public TagDouble(@NotNull String name, double value) {
         super(name);
         this.value = value;
     }
 
+    @NotNull
     @Override
     public String getType() {
         return "TAG_DOUBLE";
     }
 
+    @NotNull
     @Override
     public String toHeadlessString() {
         return String.valueOf(value) + NumericNBTType.DOUBLE.getSuffix();
@@ -29,6 +33,7 @@ public class TagDouble extends NBTTag {
         return this.toHeaderString() + ":" + this.toHeadlessString();
     }
 
+    @NotNull
     @Override
     public TagDouble clone() {
         return new TagDouble(name, value);

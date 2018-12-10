@@ -7,36 +7,38 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class DataGetCommand extends DataCommand {
 
-    private NBTPath path;
-    private double scale = 1;
+    @Nullable
+    private final NBTPath path;
+    private final double scale;
 
-    public DataGetCommand(Entity entity) {
+    public DataGetCommand(@NotNull Entity entity) {
         this(entity, null);
     }
 
-    public DataGetCommand(Entity entity, NBTPath path) {
+    public DataGetCommand(@NotNull Entity entity, @Nullable NBTPath path) {
         this(entity, path, 1);
     }
 
-    public DataGetCommand(Entity entity, NBTPath path, double scale) {
+    public DataGetCommand(@NotNull Entity entity, @Nullable NBTPath path, double scale) {
         super(entity);
         if(entity.getLimit() < 0 || entity.getLimit() > 1) throw new IllegalArgumentException("Only one entity is allowed, but passed entity (" + entity + ") allows for more than one.");
         this.path = path;
         this.scale = scale;
     }
 
-    public DataGetCommand(CoordinateSet pos) {
+    public DataGetCommand(@NotNull CoordinateSet pos) {
         this(pos, null);
     }
 
-    public DataGetCommand(CoordinateSet pos, NBTPath path) {
+    public DataGetCommand(@NotNull CoordinateSet pos, @Nullable NBTPath path) {
         this(pos, path, 1);
     }
 
-    public DataGetCommand(CoordinateSet pos, NBTPath path, double scale) {
+    public DataGetCommand(@NotNull CoordinateSet pos, @Nullable NBTPath path, double scale) {
         super(pos);
         this.path = path;
         this.scale = scale;

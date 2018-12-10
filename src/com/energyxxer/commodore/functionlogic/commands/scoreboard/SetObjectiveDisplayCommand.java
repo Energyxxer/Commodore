@@ -5,6 +5,7 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.Objective;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class SetObjectiveDisplayCommand implements Command {
 
@@ -29,12 +30,14 @@ public class SetObjectiveDisplayCommand implements Command {
         SIDEBAR_TEAM_WHITE("sidebar.team.white"),
         SIDEBAR_TEAM_YELLOW("sidebar.team.yellow");
 
+        @NotNull
         private final String argumentKey;
 
-        ScoreDisplay(String argumentKey) {
+        ScoreDisplay(@NotNull String argumentKey) {
             this.argumentKey = argumentKey;
         }
 
+        @NotNull
         private String getArgumentKey() {
             return argumentKey;
         }
@@ -47,14 +50,16 @@ public class SetObjectiveDisplayCommand implements Command {
         }
     }
 
+    @Nullable
     private final Objective objective;
+    @NotNull
     private final ScoreDisplay slot;
 
-    public SetObjectiveDisplayCommand(ScoreDisplay slot) {
+    public SetObjectiveDisplayCommand(@NotNull ScoreDisplay slot) {
         this(null, slot);
     }
 
-    public SetObjectiveDisplayCommand(Objective objective, ScoreDisplay slot) {
+    public SetObjectiveDisplayCommand(@Nullable Objective objective, @NotNull ScoreDisplay slot) {
         this.objective = objective;
         this.slot = slot;
     }

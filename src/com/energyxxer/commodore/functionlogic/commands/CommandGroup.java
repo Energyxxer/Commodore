@@ -5,20 +5,24 @@ import com.energyxxer.commodore.functionlogic.functions.FunctionWriter;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolutionLine;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
+import com.energyxxer.commodore.module.Namespace;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class CommandGroup implements Command, FunctionSection {
-    private FunctionSection parent;
+    @NotNull
+    private final FunctionSection parent;
+    @Nullable
     private ExecutionContext groupExecContext = null;
-    private ArrayList<FunctionWriter> writers = new ArrayList<>();
-    private ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
+    @NotNull
+    private final ArrayList<FunctionWriter> writers = new ArrayList<>();
+    private ArrayList<ScoreboardAccess> accesses = null;
 
-    public CommandGroup(FunctionSection parent) {
+    public CommandGroup(@NotNull FunctionSection parent) {
         this.parent = parent;
     }
 
@@ -67,10 +71,11 @@ public class CommandGroup implements Command, FunctionSection {
     }*/
 
     @Override
-    public void append(Collection<FunctionWriter> writers) {
+    public void append(@NotNull Collection<FunctionWriter> writers) {
         this.writers.addAll(writers);
     }
 
+    @NotNull
     @Override
     public Namespace getNamespace() {
         return parent.getNamespace();

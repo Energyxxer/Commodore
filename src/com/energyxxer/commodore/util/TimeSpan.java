@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.util;
 
 import com.energyxxer.commodore.CommandUtils;
+import org.jetbrains.annotations.NotNull;
 
 public class TimeSpan {
     public enum Units {
@@ -16,13 +17,14 @@ public class TimeSpan {
     }
 
     public double amount;
+    @NotNull
     public Units units;
 
     public TimeSpan(int amount) {
         this(amount, Units.TICKS);
     }
 
-    public TimeSpan(double amount, Units units) {
+    public TimeSpan(double amount, @NotNull Units units) {
         this.amount = amount;
         this.units = units;
 

@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.functionlogic.inspection;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * Represents an element that can be appended into a command.
  * */
@@ -13,5 +15,6 @@ public interface CommandEmbeddable {
      * @return The {@link CommandEmbeddableResolution} object containing all the info needed to append this object
      * into a command.
      * */
-    CommandEmbeddableResolution resolveEmbed(ExecutionContext execContext);
+    @NotNull
+    CommandEmbeddableResolution resolveEmbed(@NotNull ExecutionContext execContext);
 }

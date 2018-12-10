@@ -9,9 +9,10 @@ public class TimeQueryCommand extends TimeCommand {
         DAY, DAYTIME, GAMETIME
     }
 
+    @NotNull
     private final TimeCounter counter;
 
-    public TimeQueryCommand(TimeCounter counter) {
+    public TimeQueryCommand(@NotNull TimeCounter counter) {
         this.counter = counter;
     }
 

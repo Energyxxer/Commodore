@@ -1,28 +1,34 @@
 package com.energyxxer.commodore.functionlogic.score;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Objects;
 
 public class LocalScore {
+    @Nullable
     private final Objective objective;
+    @Nullable
     private final ScoreHolder holder;
 
-    public LocalScore(ScoreHolder holder, Objective objective) {
+    public LocalScore(@Nullable ScoreHolder holder, @Nullable Objective objective) {
         this.objective = objective;
         this.holder = holder;
     }
 
-    public LocalScore(Objective objective, ScoreHolder holder) {
+    public LocalScore(@Nullable Objective objective, @Nullable ScoreHolder holder) {
         this.objective = objective;
         this.holder = holder;
     }
 
+    @Nullable
     public Objective getObjective() {
         return objective;
     }
 
+    @Nullable
     public ScoreHolder getHolder() {
         return holder;
     }

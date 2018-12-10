@@ -10,13 +10,14 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class ExecuteAtEntity implements ExecuteModifier {
-
+    @NotNull
     private final Entity entity;
 
-    public ExecuteAtEntity(Entity entity) {
+    public ExecuteAtEntity(@NotNull Entity entity) {
         this.entity = entity;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, "at \be0", entity);

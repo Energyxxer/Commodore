@@ -10,18 +10,21 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class ExecuteFacingEntity implements ExecuteModifier {
+    @NotNull
     private final Entity entity;
+    @NotNull
     private final EntityAnchor anchor;
 
-    public ExecuteFacingEntity(Entity entity) {
+    public ExecuteFacingEntity(@NotNull Entity entity) {
         this(entity, EntityAnchor.FEET);
     }
 
-    public ExecuteFacingEntity(Entity entity, EntityAnchor anchor) {
+    public ExecuteFacingEntity(@NotNull Entity entity, @NotNull EntityAnchor anchor) {
         this.entity = entity;
         this.anchor = anchor;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, "facing entity \be0 " + anchor.toString().toLowerCase(), entity);

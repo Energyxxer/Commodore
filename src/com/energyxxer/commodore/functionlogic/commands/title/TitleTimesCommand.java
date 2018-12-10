@@ -10,7 +10,7 @@ public class TitleTimesCommand extends TitleCommand {
     private final int stay;
     private final int fadeOut;
 
-    public TitleTimesCommand(Entity player, int fadeIn, int stay, int fadeOut) {
+    public TitleTimesCommand(@NotNull Entity player, int fadeIn, int stay, int fadeOut) {
         super(player);
         this.fadeIn = fadeIn;
         this.stay = stay;

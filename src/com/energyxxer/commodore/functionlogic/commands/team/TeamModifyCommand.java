@@ -88,27 +88,30 @@ public class TeamModifyCommand extends TeamCommand {
         }
     }
 
+    @NotNull
     private final TeamReference reference;
+    @NotNull
     private final TeamModifyKey key;
+    @NotNull
     private final Object value;
 
-    public TeamModifyCommand(TeamReference reference, TeamModifyKey key, AppliesTo value) {
+    public TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, @NotNull AppliesTo value) {
         this(reference, key, (Object) value);
     }
 
-    public TeamModifyCommand(TeamReference reference, TeamModifyKey key, boolean value) {
+    public TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, boolean value) {
         this(reference, key, (Object) value);
     }
 
-    public TeamModifyCommand(TeamReference reference, TeamModifyKey key, TextColor value) {
+    public TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, @NotNull TextColor value) {
         this(reference, key, (Object) value);
     }
 
-    public TeamModifyCommand(TeamReference reference, TeamModifyKey key, TextComponent value) {
+    public TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, @NotNull TextComponent value) {
         this(reference, key, (Object) value);
     }
 
-    private TeamModifyCommand(TeamReference reference, TeamModifyKey key, Object value) {
+    private TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, @NotNull Object value) {
         this.reference = reference;
         this.key = key;
         if (key.isValidValue(value)) {

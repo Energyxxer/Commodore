@@ -3,19 +3,21 @@ package com.energyxxer.commodore.functionlogic.commands.datapack;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class DataPackListCommand extends DataPackCommand {
     public enum Filter {
         AVAILABLE, ENABLED
     }
 
+    @Nullable
     private final Filter filter;
 
     public DataPackListCommand() {
         this(null);
     }
 
-    public DataPackListCommand(Filter filter) {
+    public DataPackListCommand(@Nullable Filter filter) {
         this.filter = filter;
     }
 

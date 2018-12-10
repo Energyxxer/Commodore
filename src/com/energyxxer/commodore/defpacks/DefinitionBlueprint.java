@@ -1,5 +1,8 @@
 package com.energyxxer.commodore.defpacks;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.HashMap;
 
 /**
@@ -9,14 +12,17 @@ public class DefinitionBlueprint {
     /**
      * The namespace this type belongs to. May be null if there is no namespace associated with it.
      * */
+    @Nullable
     final String namespace;
     /**
      * The name of this type.
      * */
+    @NotNull
     final String name;
     /**
      * A map containing this type's defined properties.
      * */
+    @NotNull
     final HashMap<String, String> properties;
 
     /**
@@ -27,7 +33,7 @@ public class DefinitionBlueprint {
      * @param properties The map of this type's properties.
      * @param useNamespace Whether this type should be namespace-sensitive.
      * */
-    DefinitionBlueprint(String name, HashMap<String, String> properties, boolean useNamespace) {
+    DefinitionBlueprint(@NotNull String name, @NotNull HashMap<String, String> properties, boolean useNamespace) {
         if(useNamespace) {
             if(name.contains(":")) {
                 this.namespace = name.substring(0, name.indexOf(":"));
@@ -48,7 +54,7 @@ public class DefinitionBlueprint {
      *
      * @return The namespace of this blueprint.
      * */
-    public String getNamespace() {
+    public @Nullable String getNamespace() {
         return namespace;
     }
 
@@ -57,7 +63,7 @@ public class DefinitionBlueprint {
      *
      * @return The name of this blueprint.
      * */
-    public String getName() {
+    public @NotNull String getName() {
         return name;
     }
 
@@ -66,7 +72,7 @@ public class DefinitionBlueprint {
      *
      * @return The properties of this blueprint.
      * */
-    public HashMap<String, String> getProperties() {
+    public @NotNull HashMap<String, String> getProperties() {
         return new HashMap<>(properties);
     }
 

@@ -9,9 +9,10 @@ import org.jetbrains.annotations.NotNull;
 import static com.energyxxer.commodore.types.TypeAssert.assertStructure;
 
 public class LocateCommand implements Command {
+    @NotNull
     private final Type structure;
 
-    public LocateCommand(Type structure) {
+    public LocateCommand(@NotNull Type structure) {
         this.structure = structure;
 
         assertStructure(structure);

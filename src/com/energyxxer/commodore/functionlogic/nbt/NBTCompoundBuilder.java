@@ -4,9 +4,12 @@ import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPathIndex;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPathKey;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPathNode;
+import org.jetbrains.annotations.NotNull;
 
 public class NBTCompoundBuilder {
+    @NotNull
     private TagCompound compound;
+    @NotNull
     private ComplexNBTTag lastTag;
 
     public NBTCompoundBuilder() {
@@ -14,7 +17,7 @@ public class NBTCompoundBuilder {
         lastTag = compound;
     }
 
-    public void put(NBTPath path, NBTTag tag) {
+    public void put(@NotNull NBTPath path, @NotNull NBTTag tag) {
         NBTPathNode previous = null;
 
         for(NBTPath subPath : path) {
@@ -43,6 +46,7 @@ public class NBTCompoundBuilder {
         }
     }
 
+    @NotNull
     public TagCompound getCompound() {
         return compound;
     }

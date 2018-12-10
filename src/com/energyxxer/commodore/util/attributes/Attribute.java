@@ -1,5 +1,8 @@
 package com.energyxxer.commodore.util.attributes;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 public class Attribute {
     public enum Operation {
         ADDITION, MULTIPLY_BASE, MULTIPLY_TOTAL
@@ -28,27 +31,32 @@ public class Attribute {
     public static final String HORSE_JUMP_STRENGTH = "horse.jumpStrength";
     public static final String ZOMBIE_SPAWN_REINFORCEMENTS = "zombie.spawnReinforcements";
 
+    @NotNull
     private String name;
+    @NotNull
     private String attributeName;
+    @NotNull
     private Operation operation;
     private double minAmount;
     private double maxAmount;
+    @Nullable
     private String id;
+    @NotNull
     private Slot[] slots;
 
-    public Attribute(String name, String attributeName, Operation operation, double amount, Slot... slots) {
+    public Attribute(@NotNull String name, @NotNull String attributeName, @NotNull Operation operation, double amount, @NotNull Slot... slots) {
         this(name, attributeName, operation, amount, amount, slots);
     }
 
-    public Attribute(String name, String attributeName, Operation operation, double minAmount, double maxAmount, Slot... slots) {
+    public Attribute(@NotNull String name, @NotNull String attributeName, @NotNull Operation operation, double minAmount, double maxAmount, @NotNull Slot... slots) {
         this(name, attributeName, operation, minAmount, maxAmount, null, slots);
     }
 
-    public Attribute(String name, String attributeName, Operation operation, double amount, String id, Slot... slots) {
+    public Attribute(@NotNull String name, @NotNull String attributeName, @NotNull Operation operation, double amount, @Nullable String id, @NotNull Slot... slots) {
         this(name, attributeName, operation, amount, amount, id, slots);
     }
 
-    public Attribute(String name, String attributeName, Operation operation, double minAmount, double maxAmount, String id, Slot... slots) {
+    public Attribute(@NotNull String name, @NotNull String attributeName, @NotNull Operation operation, double minAmount, double maxAmount, @Nullable String id, @NotNull Slot... slots) {
         this.name = name;
         this.attributeName = attributeName;
         this.operation = operation;
@@ -58,27 +66,30 @@ public class Attribute {
         this.slots = slots;
     }
 
+    @NotNull
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(@NotNull String name) {
         this.name = name;
     }
 
+    @NotNull
     public String getAttributeName() {
         return attributeName;
     }
 
-    public void setAttributeName(String attributeName) {
+    public void setAttributeName(@NotNull String attributeName) {
         this.attributeName = attributeName;
     }
 
+    @NotNull
     public Operation getOperation() {
         return operation;
     }
 
-    public void setOperation(Operation operation) {
+    public void setOperation(@NotNull Operation operation) {
         this.operation = operation;
     }
 
@@ -103,19 +114,21 @@ public class Attribute {
         setMaxAmount(amount);
     }
 
+    @Nullable
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(@Nullable String id) {
         this.id = id;
     }
 
+    @NotNull
     public Slot[] getSlots() {
         return slots;
     }
 
-    public void setSlots(Slot[] slots) {
+    public void setSlots(@NotNull Slot[] slots) {
         this.slots = slots;
     }
 }

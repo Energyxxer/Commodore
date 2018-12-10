@@ -3,6 +3,7 @@ package com.energyxxer.commodore.tags;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.EntityType;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
@@ -15,32 +16,35 @@ public class EntityTypeTag extends Tag {
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
     private boolean export = true;
 
+    @NotNull
     private TagGroup<?> group;
 
-    EntityTypeTag(TagGroup group, Namespace namespace, String id) {
+    EntityTypeTag(@NotNull TagGroup group, @NotNull Namespace namespace, @NotNull String id) {
         super(EntityType.CATEGORY, namespace, id);
         this.group = group;
     }
 
+    @NotNull
     @Override
     public ArrayList<Type> getValues() {
         return values;
     }
 
+    @NotNull
     @Override
     public OverridePolicy getOverridePolicy() {
         return policy;
     }
 
     @Override
-    public void setOverridePolicy(OverridePolicy newPolicy) {
+    public void setOverridePolicy(@NotNull OverridePolicy newPolicy) {
         this.policy = newPolicy;
     }
 
     // ADD METHODS
 
     @Override
-    public void addValue(Type value) {
+    public void addValue(@NotNull Type value) {
         assertEntity(value);
         values.add(value);
     }
@@ -55,6 +59,7 @@ public class EntityTypeTag extends Tag {
         this.export = export;
     }
 
+    @NotNull
     @Override
     public TagGroup<?> getGroup() {
         return group;

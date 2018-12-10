@@ -8,13 +8,15 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class ExecuteConditionEntity extends ExecuteCondition {
+    @NotNull
     private final Entity entity;
 
-    public ExecuteConditionEntity(ConditionType flowController, Entity entity) {
+    public ExecuteConditionEntity(@NotNull ConditionType flowController, @NotNull Entity entity) {
         super(flowController);
         this.entity = entity;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, this.getStarter() + "entity \be0", entity);

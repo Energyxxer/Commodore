@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.commands.bossbar.get;
 
 import com.energyxxer.commodore.types.Type;
+import org.jetbrains.annotations.NotNull;
 
 public class BossbarGetPlayersCommand extends BossbarGetCommand {
 
@@ -9,7 +10,7 @@ public class BossbarGetPlayersCommand extends BossbarGetCommand {
     }
 
     @Override
-    protected String getKeyword() {
+    protected @NotNull String getKeyword() {
         return "players";
     }
 }

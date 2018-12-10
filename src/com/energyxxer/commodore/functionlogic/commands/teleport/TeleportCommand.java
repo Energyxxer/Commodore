@@ -9,28 +9,32 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 public class TeleportCommand implements Command {
+    @Nullable
     private Entity victim;
+    @NotNull
     private TeleportDestination destination;
+    @Nullable
     private TeleportFacing facing;
 
-    public TeleportCommand(TeleportDestination destination) {
+    public TeleportCommand(@NotNull TeleportDestination destination) {
         this(null, destination);
     }
 
-    public TeleportCommand(Entity victim, TeleportDestination destination) {
+    public TeleportCommand(@Nullable Entity victim, @NotNull TeleportDestination destination) {
         this(victim, destination, null);
     }
 
-    public TeleportCommand(TeleportDestination destination, TeleportFacing facing) {
+    public TeleportCommand(@NotNull TeleportDestination destination, @Nullable TeleportFacing facing) {
         this(null, destination, facing);
     }
 
-    public TeleportCommand(Entity victim, TeleportDestination destination, TeleportFacing facing) {
+    public TeleportCommand(@Nullable Entity victim, @NotNull TeleportDestination destination, @Nullable TeleportFacing facing) {
         this.victim = victim;
         this.destination = destination;
         this.facing = facing;

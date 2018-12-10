@@ -7,9 +7,10 @@ import com.energyxxer.commodore.functionlogic.score.Objective;
 import org.jetbrains.annotations.NotNull;
 
 public class ObjectivesAddCommand implements Command {
+    @NotNull
     private final Objective objective;
 
-    public ObjectivesAddCommand(Objective objective) {
+    public ObjectivesAddCommand(@NotNull Objective objective) {
         this.objective = objective;
     }
 

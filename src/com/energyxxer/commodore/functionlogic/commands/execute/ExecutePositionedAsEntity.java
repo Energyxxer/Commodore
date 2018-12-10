@@ -10,13 +10,14 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Collection;
 
 public class ExecutePositionedAsEntity implements ExecuteModifier {
-
+    @NotNull
     private final Entity entity;
 
-    public ExecutePositionedAsEntity(Entity entity) {
+    public ExecutePositionedAsEntity(@NotNull Entity entity) {
         this.entity = entity;
     }
 
+    @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, "positioned as \be0", entity);

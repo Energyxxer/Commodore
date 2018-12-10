@@ -5,16 +5,27 @@ import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 
 public class ListTextComponent extends TextComponent {
-
-    private final ArrayList<TextComponent> children = new ArrayList<>();
+    @NotNull
+    private final ArrayList<@NotNull TextComponent> children = new ArrayList<>();
 
     public ListTextComponent() {
+        this(Collections.emptyList());
     }
 
-    public void append(TextComponent child) {
+    public ListTextComponent(@NotNull TextComponent... children) {
+        this(Arrays.asList(children));
+    }
+
+    public ListTextComponent(@NotNull Collection<@NotNull TextComponent> children) {
+        children.forEach(this::append);
+    }
+
+    public void append(@NotNull TextComponent child) {
         children.add(child);
     }
 

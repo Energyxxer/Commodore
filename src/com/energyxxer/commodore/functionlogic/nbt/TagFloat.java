@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.functionlogic.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class TagFloat extends NBTTag {
@@ -9,16 +11,18 @@ public class TagFloat extends NBTTag {
         this("", value);
     }
 
-    public TagFloat(String name, float value) {
+    public TagFloat(@NotNull String name, float value) {
         super(name);
         this.value = value;
     }
 
+    @NotNull
     @Override
     public String getType() {
         return "TAG_Float";
     }
 
+    @NotNull
     @Override
     public String toHeadlessString() {
         return String.valueOf(value) + NumericNBTType.FLOAT.getSuffix();
@@ -29,6 +33,7 @@ public class TagFloat extends NBTTag {
         return this.toHeaderString() + ":" + this.toHeadlessString();
     }
 
+    @NotNull
     @Override
     public TagFloat clone() {
         return new TagFloat(name, value);

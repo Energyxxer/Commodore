@@ -6,6 +6,7 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,11 +29,16 @@ public class AdvancementCommand implements Command {
         }
     }
 
+    @NotNull
     private final Action action;
+    @NotNull
     private final Entity player;
+    @NotNull
     private final Limit limit;
-    private String advancement = null;
-    private ArrayList<String> criteria = new ArrayList<>();
+    @Nullable
+    private final String advancement;
+    @NotNull
+    private final ArrayList<String> criteria = new ArrayList<>();
 
     public AdvancementCommand(Action action, Entity player, Limit limit) {
         this(action, player, limit, null);
@@ -44,11 +50,11 @@ public class AdvancementCommand implements Command {
         this(action, player, limit, advancement, null);
     }
 
-    public AdvancementCommand(Action action, Entity player, Limit limit, String advancement, Collection<String> criteria) {
+    public AdvancementCommand(@NotNull Action action, @NotNull Entity player, @NotNull Limit limit, String advancement, Collection<String> criteria) {
         this.action = action;
         this.player = player;
         this.limit = limit;
-        if(limit.takesAdvancement) this.advancement = advancement;
+        this.advancement = limit.takesAdvancement ? advancement : null;
         if(limit.takesCriteria && criteria != null) this.criteria.addAll(criteria);
 
         player.assertPlayer();

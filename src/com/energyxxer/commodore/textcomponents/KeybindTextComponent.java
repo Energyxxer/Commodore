@@ -1,11 +1,13 @@
 package com.energyxxer.commodore.textcomponents;
 
 import com.energyxxer.commodore.CommandUtils;
+import org.jetbrains.annotations.NotNull;
 
 public class KeybindTextComponent extends TextComponent {
+    @NotNull
     private final String key;
 
-    public KeybindTextComponent(String key) {
+    public KeybindTextComponent(@NotNull String key) {
         this.key = key;
     }
 

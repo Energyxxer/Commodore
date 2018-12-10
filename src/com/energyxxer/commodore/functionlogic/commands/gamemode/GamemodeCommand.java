@@ -7,6 +7,7 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,15 +16,16 @@ import java.util.Collections;
 import static com.energyxxer.commodore.types.TypeAssert.assertGamemode;
 
 public class GamemodeCommand implements Command {
-
+    @NotNull
     private final Type gamemode;
+    @Nullable
     private final Entity player;
 
-    public GamemodeCommand(Type gamemode) {
+    public GamemodeCommand(@NotNull Type gamemode) {
         this(gamemode, null);
     }
 
-    public GamemodeCommand(Type gamemode, Entity player) {
+    public GamemodeCommand(@NotNull Type gamemode, @Nullable Entity player) {
         this.gamemode = gamemode;
         this.player = player;
 

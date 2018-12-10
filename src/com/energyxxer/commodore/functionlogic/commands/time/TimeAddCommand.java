@@ -6,9 +6,10 @@ import com.energyxxer.commodore.util.TimeSpan;
 import org.jetbrains.annotations.NotNull;
 
 public class TimeAddCommand extends TimeCommand {
+    @NotNull
     private final TimeSpan time;
 
-    public TimeAddCommand(TimeSpan time) {
+    public TimeAddCommand(@NotNull TimeSpan time) {
         this.time = time;
     }
     public TimeAddCommand(int time) {

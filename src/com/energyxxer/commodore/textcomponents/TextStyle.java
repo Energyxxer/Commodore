@@ -1,9 +1,12 @@
 package com.energyxxer.commodore.textcomponents;
 
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class TextStyle {
+    @Nullable
     private TextColor color;
     private byte flags = 0;
     private byte mask = 0b0011111;
@@ -42,7 +45,7 @@ public class TextStyle {
         return color;
     }
 
-    public void setColor(TextColor color) {
+    public void setColor(@Nullable TextColor color) {
         this.color = color;
     }
 

@@ -1,22 +1,22 @@
 package com.energyxxer.commodore.functionlogic.functions;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
 public class FunctionComment implements FunctionWriter {
-
-    protected Collection<String> lines;
-
-    protected FunctionComment() {
-    }
+    @NotNull
+    protected Collection<@NotNull String> lines;
 
     public FunctionComment(String... lines) {
         this.lines = Arrays.asList(lines);
     }
 
+    @NotNull
     @Override
-    public String toFunctionContent(FunctionSection section) {
+    public String toFunctionContent(@NotNull FunctionSection section) {
         StringBuilder sb = new StringBuilder();
 
         Iterator<String> it = lines.iterator();

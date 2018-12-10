@@ -14,13 +14,15 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class SpreadPlayersCommand implements Command {
+    @NotNull
     private final CoordinateSet center;
     private final double spreadDistance;
     private final double maxRange;
     private final boolean respectTeams;
+    @NotNull
     private final Entity targets;
 
-    public SpreadPlayersCommand(Entity targets, CoordinateSet center, double spreadDistance, double maxRange, boolean respectTeams) {
+    public SpreadPlayersCommand(@NotNull Entity targets, @NotNull CoordinateSet center, double spreadDistance, double maxRange, boolean respectTeams) {
         this.center = center;
         this.spreadDistance = spreadDistance;
         this.maxRange = maxRange;

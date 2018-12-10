@@ -7,20 +7,23 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.textcomponents.TextComponent;
 import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertBossbar;
 
 public class BossbarAddCommand extends BossbarCommand {
+    @NotNull
     private final Type bossbar;
+    @Nullable
     private final TextComponent name;
 
-    public BossbarAddCommand(Type bossbar) {
+    public BossbarAddCommand(@NotNull Type bossbar) {
         this(bossbar, null);
     }
 
-    public BossbarAddCommand(Type bossbar, TextComponent name) {
+    public BossbarAddCommand(@NotNull Type bossbar, @Nullable TextComponent name) {
         this.bossbar = bossbar;
         this.name = name;
 

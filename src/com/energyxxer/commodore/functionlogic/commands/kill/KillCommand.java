@@ -6,6 +6,7 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,13 +14,14 @@ import java.util.Collections;
 
 public class KillCommand implements Command {
 
+    @Nullable
     private final Entity entity;
 
     public KillCommand() {
         this(null);
     }
 
-    public KillCommand(Entity entity) {
+    public KillCommand(@Nullable Entity entity) {
         this.entity = entity;
     }
 

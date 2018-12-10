@@ -2,6 +2,7 @@ package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
+import org.jetbrains.annotations.NotNull;
 
 public class LimitArgument implements SelectorArgument {
     private int limit;
@@ -11,6 +12,7 @@ public class LimitArgument implements SelectorArgument {
         this.limit = limit;
     }
 
+    @NotNull
     @Override
     public String getArgumentString() {
         return "limit=" + limit;
@@ -21,6 +23,7 @@ public class LimitArgument implements SelectorArgument {
         return false;
     }
 
+    @NotNull
     @Override
     public LimitArgument clone() {
         return new LimitArgument(limit);
@@ -30,6 +33,7 @@ public class LimitArgument implements SelectorArgument {
         return limit;
     }
 
+    @NotNull
     @Override
     public String getKey() {
         return "limit";
@@ -41,7 +45,7 @@ public class LimitArgument implements SelectorArgument {
     }
 
     @Override
-    public void assertCompatibleWith(Selector selector) {
+    public void assertCompatibleWith(@NotNull Selector selector) {
         if(selector.getBase().getLimit().isEnforced()) throw new IllegalArgumentException("Limit is not applicable for the " + selector.getBase() + " selector type");
         SelectorArgument.super.assertCompatibleWith(selector);
     }

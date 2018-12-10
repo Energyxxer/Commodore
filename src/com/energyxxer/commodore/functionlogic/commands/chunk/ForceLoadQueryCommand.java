@@ -8,6 +8,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ForceLoadQueryCommand extends ForceLoadCommand {
+    @Nullable
     private CoordinateSet column;
 
     public ForceLoadQueryCommand() {

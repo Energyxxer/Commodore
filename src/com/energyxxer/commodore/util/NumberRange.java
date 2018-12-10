@@ -1,21 +1,25 @@
 package com.energyxxer.commodore.util;
 
 import com.energyxxer.commodore.CommandUtils;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class NumberRange<T extends Number> implements Cloneable {
+    @Nullable
     private final T min;
+    @Nullable
     private final T max;
 
-    public NumberRange(T min, T max) {
+    public NumberRange(@Nullable T min, @Nullable T max) {
         this.min = min;
         this.max = max;
     }
 
-    public NumberRange(T value) {
+    public NumberRange(@Nullable T value) {
         this.min = value;
         this.max = value;
     }
@@ -30,6 +34,7 @@ public class NumberRange<T extends Number> implements Cloneable {
     }
 
     @Override
+    @NotNull
     public NumberRange<T> clone() {
         return new NumberRange<>(min, max);
     }
@@ -74,10 +79,12 @@ public class NumberRange<T extends Number> implements Cloneable {
         throw new IllegalArgumentException("'" + str + "' is not an integer or range");
     }
 
+    @Nullable
     public T getMin() {
         return min;
     }
 
+    @Nullable
     public T getMax() {
         return max;
     }
