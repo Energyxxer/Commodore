@@ -1,7 +1,6 @@
 package com.energyxxer.commodore.defpacks;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
 
@@ -12,7 +11,6 @@ public class DefinitionBlueprint {
     /**
      * The namespace this type belongs to. May be null if there is no namespace associated with it.
      * */
-    @Nullable
     final String namespace;
     /**
      * The name of this type.
@@ -54,7 +52,7 @@ public class DefinitionBlueprint {
      *
      * @return The namespace of this blueprint.
      * */
-    public @Nullable String getNamespace() {
+    public String getNamespace() {
         return namespace;
     }
 

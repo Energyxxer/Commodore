@@ -55,6 +55,7 @@ public class TagGroup<T extends Tag> {
         return category;
     }
 
+    @SuppressWarnings("unchecked")
     public void join(@NotNull TagGroup other) {
         this.tags.addAll(other.tags);
     }

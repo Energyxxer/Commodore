@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.data;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
@@ -46,8 +47,8 @@ public class DataGetCommand extends DataCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        if(entity != null) return new CommandResolution(execContext, "data get entity \be0" + ((path != null) ? (" " + path + (scale != 1 ? " " + String.valueOf(scale) : "")) : ""), entity);
-        return new CommandResolution(execContext, "data get block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + ((path != null) ? (" " + path + (scale != 1 ? " " + String.valueOf(scale) : "")) : ""));
+        if(entity != null) return new CommandResolution(execContext, "data get entity \be0" + ((path != null) ? (" " + path + (scale != 1 ? " " + CommandUtils.numberToPlainString(scale) : "")) : ""), entity);
+        return new CommandResolution(execContext, "data get block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + ((path != null) ? (" " + path + (scale != 1 ? " " + CommandUtils.numberToPlainString(scale) : "")) : ""));
     }
 
     @Override
