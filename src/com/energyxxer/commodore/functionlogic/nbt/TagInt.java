@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public class TagInt extends NBTTag {
+public class TagInt extends NumericNBTTag<Integer> {
     private final int value;
 
     public TagInt(int value) {
@@ -14,6 +14,22 @@ public class TagInt extends NBTTag {
     public TagInt(@NotNull String name, int value) {
         super(name);
         this.value = value;
+    }
+
+    @Override
+    public @NotNull NumericNBTType getNumericType() {
+        return NumericNBTType.INT;
+    }
+
+    @NotNull
+    @Override
+    public Integer getValue() {
+        return value;
+    }
+
+    @Override
+    public @NotNull NumericNBTTag<Integer> scale(double scale) {
+        return new TagInt((int) (value * scale));
     }
 
     @NotNull

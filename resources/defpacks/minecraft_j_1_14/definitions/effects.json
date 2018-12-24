@@ -118,5 +118,9 @@
   "minecraft:dolphins_grace": {
     "id": 30,
     "type": "positive"
+  },
+  "minecraft:bad_omen": {
+    "id": 31,
+    "type": "negative"
   }
 }
