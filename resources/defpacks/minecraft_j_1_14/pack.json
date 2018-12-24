@@ -45,7 +45,7 @@
       "use_namespace": true,
       "import_from": "definitions/villager_professions"
     },
-    "villager_types": {
+    "villager_type": {
       "use_namespace": true,
       "import_from": "definitions/villager_types"
     },
