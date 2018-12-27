@@ -7,6 +7,10 @@ import java.util.Objects;
 public class TagInt extends NumericNBTTag<Integer> {
     private final int value;
 
+    public TagInt() {
+        this(0);
+    }
+
     public TagInt(int value) {
         this("", value);
     }

@@ -7,6 +7,10 @@ import java.util.Objects;
 public class TagLong extends NumericNBTTag<Long> {
     private final long value;
 
+    public TagLong() {
+        this(0);
+    }
+
     public TagLong(long value) {
         this("", value);
     }

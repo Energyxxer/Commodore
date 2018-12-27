@@ -7,6 +7,10 @@ import java.util.Objects;
 public class TagFloat extends NumericNBTTag<Float> {
     private final float value;
 
+    public TagFloat() {
+        this(0);
+    }
+
     public TagFloat(float value) {
         this("", value);
     }

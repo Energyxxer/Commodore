@@ -7,6 +7,10 @@ import java.util.Objects;
 public class TagString extends NBTTag {
     private final String value;
 
+    public TagString() {
+        this("");
+    }
+
     public TagString(@NotNull String value) {
         this("", value);
     }

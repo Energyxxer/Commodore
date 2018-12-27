@@ -7,6 +7,10 @@ import java.util.Objects;
 public class TagByte extends NumericNBTTag<Byte> {
     private final byte value;
 
+    public TagByte() {
+        this(0);
+    }
+
     public TagByte(int value) {
         this((byte) value);
     }

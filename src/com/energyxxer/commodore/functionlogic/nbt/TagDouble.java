@@ -7,6 +7,10 @@ import java.util.Objects;
 public class TagDouble extends NumericNBTTag<Double> {
     private final double value;
 
+    public TagDouble() {
+        this(0);
+    }
+
     public TagDouble(double value) {
         this("", value);
     }

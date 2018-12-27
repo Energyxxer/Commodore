@@ -7,6 +7,10 @@ import java.util.Objects;
 public class TagShort extends NumericNBTTag<Short> {
     private final short value;
 
+    public TagShort() {
+        this(0);
+    }
+
     public TagShort(int value) {
         this("", value);
     }
