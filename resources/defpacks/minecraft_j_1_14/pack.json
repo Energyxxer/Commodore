@@ -1,5 +1,5 @@
 {
-  "name": "Minecraft Java Edition 1.13",
+  "name": "Minecraft Java Edition 1.14",
   "version": 1,
   "categories": {
     "block": {
@@ -21,9 +21,17 @@
       "use_namespace": true,
       "import_from": "definitions/effects"
     },
+    "potion": {
+      "use_namespace": true,
+      "import_from": "definitions/potions"
+    },
     "entity": {
       "use_namespace": true,
       "import_from": "definitions/entities"
+    },
+    "block_entity": {
+      "use_namespace": true,
+      "import_from": "definitions/block_entities"
     },
     "particle": {
       "use_namespace": true,
