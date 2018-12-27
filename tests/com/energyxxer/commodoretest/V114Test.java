@@ -95,6 +95,6 @@ public class V114Test {
 
         System.out.println(function.getResolvedContent());
 
-        System.out.println(module.minecraft.types.getDictionary("villager_profession").list());
+        System.out.println(module.minecraft.types.blockEntity.list());
     }
 }

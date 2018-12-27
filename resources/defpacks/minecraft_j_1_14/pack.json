@@ -57,6 +57,10 @@
       "use_namespace": true,
       "import_from": "definitions/villager_types"
     },
+    "motive": {
+      "use_namespace": true,
+      "import_from": "definitions/motives"
+    },
     "difficulty": {
       "use_namespace": false,
       "import_from": "definitions/difficulties"

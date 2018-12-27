@@ -8,7 +8,7 @@
   "minecraft:player": {
     "spawnable": false,
     "targetable": true,
-    "living": false,
+    "living": true,
     "hostile": false
   },
   "minecraft:area_effect_cloud": {
@@ -27,7 +27,8 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:bat": {
     "spawnable": true,
@@ -57,13 +58,15 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "minecart": true
   },
   "minecraft:chicken": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "breedable": true
   },
   "minecraft:cod": {
     "spawnable": true,
@@ -75,13 +78,15 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "minecart": true
   },
   "minecraft:cow": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "breedable": true
   },
   "minecraft:creeper": {
     "spawnable": true,
@@ -99,25 +104,30 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "tamable": true,
+    "breedable": true
   },
   "minecraft:dragon_fireball": {
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:drowned": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": true
+    "hostile": true,
+    "undead": true
   },
   "minecraft:egg": {
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:elder_guardian": {
     "spawnable": true,
@@ -125,7 +135,7 @@
     "living": true,
     "hostile": true
   },
-  "minecraft:ender_crystal": {
+  "minecraft:end_crystal": {
     "spawnable": true,
     "targetable": true,
     "living": false,
@@ -141,7 +151,8 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:enderman": {
     "spawnable": true,
@@ -171,7 +182,8 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:falling_block": {
     "spawnable": true,
@@ -183,7 +195,8 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:fireworks_rocket": {
     "spawnable": true,
@@ -201,7 +214,8 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "minecart": true
   },
   "minecraft:ghast": {
     "spawnable": true,
@@ -213,7 +227,8 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": true
+    "hostile": true,
+    "undead": true
   },
   "minecraft:guardian": {
     "spawnable": true,
@@ -225,21 +240,25 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "minecart": true
   },
   "minecraft:horse": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "tamable": true,
+    "breedable": true
   },
   "minecraft:husk": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": true
+    "hostile": true,
+    "undead": true
   },
-  "minecraft:illusion_illager": {
+  "minecraft:illusioner": {
     "spawnable": true,
     "targetable": true,
     "living": true,
@@ -267,13 +286,16 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "tamable": true,
+    "breedable": true
   },
   "minecraft:llama_spit": {
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:magma_cube": {
     "spawnable": true,
@@ -285,25 +307,31 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "minecart": true
   },
   "minecraft:mooshroom": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "breedable": true
   },
   "minecraft:mule": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "tamable": true,
+    "breedable": true
   },
   "minecraft:ocelot": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "tamable": true,
+    "breedable": true
   },
   "minecraft:painting": {
     "spawnable": true,
@@ -315,19 +343,22 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "tamable": true
   },
   "minecraft:phantom": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": true
+    "hostile": true,
+    "undead": true
   },
   "minecraft:pig": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "breedable": true
   },
   "minecraft:polar_bear": {
     "spawnable": true,
@@ -339,7 +370,8 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:pufferfish": {
     "spawnable": true,
@@ -351,7 +383,8 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "breedable": true
   },
   "minecraft:salmon": {
     "spawnable": true,
@@ -363,7 +396,8 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "breedable": true
   },
   "minecraft:shulker": {
     "spawnable": true,
@@ -375,7 +409,8 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:silverfish": {
     "spawnable": true,
@@ -387,13 +422,17 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": true
+    "hostile": true,
+    "undead": true
   },
   "minecraft:skeleton_horse": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "undead": true,
+    "tamable": true,
+    "breedable": true
   },
   "minecraft:slime": {
     "spawnable": true,
@@ -405,13 +444,15 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:snowball": {
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:snowman": {
     "spawnable": true,
@@ -423,13 +464,15 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "minecart": true
   },
   "minecraft:spectral_arrow": {
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:spider": {
     "spawnable": true,
@@ -447,7 +490,8 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": true
+    "hostile": true,
+    "undead": true
   },
   "minecraft:tnt": {
     "spawnable": true,
@@ -459,13 +503,15 @@
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "minecart": true
   },
   "minecraft:trident": {
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:tropical_fish": {
     "spawnable": true,
@@ -477,7 +523,8 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "breedable": true
   },
   "minecraft:vex": {
     "spawnable": true,
@@ -489,7 +536,8 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "breedable": true
   },
   "minecraft:villager_golem": {
     "spawnable": true,
@@ -513,31 +561,37 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "undead": true
   },
   "minecraft:wither_skeleton": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": true
+    "hostile": true,
+    "undead": true
   },
   "minecraft:wither_skull": {
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:wolf": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "tamable": true,
+    "breedable": true
   },
   "minecraft:xp_bottle": {
     "spawnable": true,
     "targetable": true,
     "living": false,
-    "hostile": false
+    "hostile": false,
+    "projectile": true
   },
   "minecraft:xp_orb": {
     "spawnable": true,
@@ -549,24 +603,30 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": true
+    "hostile": true,
+    "undead": true
   },
   "minecraft:zombie_horse": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "undead": true,
+    "tamable": true,
+    "breedable": true
   },
   "minecraft:zombie_pigman": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": true
+    "hostile": true,
+    "undead": true
   },
   "minecraft:zombie_villager": {
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": true
+    "hostile": true,
+    "undead": true
   }
 }

@@ -45,9 +45,17 @@ public class TypeManager {
      * */
     public final TypeDictionary<EffectType> effect;
     /**
+     * A pre-defined type dictionary for all potion types.
+     * */
+    public final TypeDictionary<PotionType> potion;
+    /**
      * A pre-defined type dictionary for all entity types.
      * */
     public final TypeDictionary<EntityType> entity;
+    /**
+     * A pre-defined type dictionary for all block entity types.
+     * */
+    public final TypeDictionary<BlockEntityType> blockEntity;
     /**
      * A pre-defined type dictionary for all particle types.
      * */
@@ -64,6 +72,18 @@ public class TypeManager {
      * A pre-defined type dictionary for all biome types.
      * */
     public final TypeDictionary<BiomeType> biome;
+    /**
+     * A pre-defined type dictionary for all painting motive types.
+     * */
+    public final TypeDictionary<MotiveType> motive;
+    /**
+     * A pre-defined type dictionary for all villager types.
+     * */
+    public final TypeDictionary<VillagerType> villagerType;
+    /**
+     * A pre-defined type dictionary for all villager types.
+     * */
+    public final TypeDictionary<VillagerProfessionType> villagerProfession;
 
 
     /**
@@ -96,15 +116,20 @@ public class TypeManager {
     public TypeManager(Namespace owner) {
         this.owner = owner;
 
-        put(this.block = new TypeDictionary<>(owner, "block", (id) -> new BlockType(this.owner, id)));
-        put(this.fluid = new TypeDictionary<>(owner, "fluid", (id) -> new FluidType(this.owner, id)));
-        put(this.item = new TypeDictionary<>(owner, "item", (id) -> new ItemType(this.owner, id)));
-        put(this.effect = new TypeDictionary<>(owner, "effect", (id) -> new EffectType(this.owner, id)));
-        put(this.entity = new TypeDictionary<>(owner, "entity", (id) -> new EntityType(this.owner, id)));
-        put(this.particle = new TypeDictionary<>(owner, "particle", (id) -> new ParticleType(this.owner, id)));
-        put(this.enchantment = new TypeDictionary<>(owner, "enchantment", (id) -> new EnchantmentType(this.owner, id)));
-        put(this.dimension = new TypeDictionary<>(owner, "dimension", (id) -> new DimensionType(this.owner, id)));
-        put(this.biome = new TypeDictionary<>(owner, "biome", (id) -> new BiomeType(this.owner, id)));
+        put(this.block = new TypeDictionary<>(owner, BlockType.CATEGORY, (id) -> new BlockType(this.owner, id)));
+        put(this.fluid = new TypeDictionary<>(owner, FluidType.CATEGORY, (id) -> new FluidType(this.owner, id)));
+        put(this.item = new TypeDictionary<>(owner, ItemType.CATEGORY, (id) -> new ItemType(this.owner, id)));
+        put(this.effect = new TypeDictionary<>(owner, EffectType.CATEGORY, (id) -> new EffectType(this.owner, id)));
+        put(this.potion = new TypeDictionary<>(owner, PotionType.CATEGORY, (id) -> new PotionType(this.owner, id)));
+        put(this.entity = new TypeDictionary<>(owner, EntityType.CATEGORY, (id) -> new EntityType(this.owner, id)));
+        put(this.blockEntity = new TypeDictionary<>(owner, BlockEntityType.CATEGORY, (id) -> new BlockEntityType(this.owner, id)));
+        put(this.particle = new TypeDictionary<>(owner, ParticleType.CATEGORY, (id) -> new ParticleType(this.owner, id)));
+        put(this.enchantment = new TypeDictionary<>(owner, EnchantmentType.CATEGORY, (id) -> new EnchantmentType(this.owner, id)));
+        put(this.dimension = new TypeDictionary<>(owner, DimensionType.CATEGORY, (id) -> new DimensionType(this.owner, id)));
+        put(this.biome = new TypeDictionary<>(owner, BiomeType.CATEGORY, (id) -> new BiomeType(this.owner, id)));
+        put(this.motive = new TypeDictionary<>(owner, MotiveType.CATEGORY, (id) -> new MotiveType(this.owner, id)));
+        put(this.villagerType = new TypeDictionary<>(owner, VillagerType.CATEGORY, (id) -> new VillagerType(this.owner, id)));
+        put(this.villagerProfession = new TypeDictionary<>(owner, VillagerProfessionType.CATEGORY, (id) -> new VillagerProfessionType(this.owner, id)));
 
         put(this.difficulty = new TypeDictionary<>(owner, "difficulty", DifficultyType::new));
         put(this.gamemode = new TypeDictionary<>(owner, "gamemode", GamemodeType::new));

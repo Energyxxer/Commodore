@@ -41,6 +41,10 @@
       "use_namespace": true,
       "import_from": "definitions/biomes"
     },
+    "motive": {
+      "use_namespace": true,
+      "import_from": "definitions/motives"
+    },
     "difficulty": {
       "use_namespace": false,
       "import_from": "definitions/difficulties"
