@@ -49,6 +49,14 @@
       "use_namespace": true,
       "import_from": "definitions/biomes"
     },
+    "villager_profession": {
+      "use_namespace": true,
+      "import_from": "definitions/villager_professions"
+    },
+    "villager_type": {
+      "use_namespace": true,
+      "import_from": "definitions/villager_types"
+    },
     "difficulty": {
       "use_namespace": false,
       "import_from": "definitions/difficulties"
