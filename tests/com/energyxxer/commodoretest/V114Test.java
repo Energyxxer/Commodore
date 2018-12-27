@@ -96,5 +96,6 @@ public class V114Test {
         System.out.println(function.getResolvedContent());
 
         System.out.println(module.minecraft.types.blockEntity.list());
+
     }
 }
