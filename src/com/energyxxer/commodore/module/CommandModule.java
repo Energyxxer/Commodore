@@ -10,6 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -214,6 +215,16 @@ public class CommandModule {
     @NotNull
     public Namespace getNamespace(@NotNull String name) {
         return namespaces.get(name);
+    }
+
+    /**
+     * Retrieves a collection of all namespaces in this module
+     *
+     * @return a collection of all namespaces in this module
+     * */
+    @NotNull
+    public Collection<Namespace> getAllNamespaces() {
+        return namespaces.values();
     }
 
     /**

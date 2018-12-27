@@ -4,6 +4,7 @@ import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.TypeDictionary;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 /**
@@ -169,5 +170,14 @@ public class TypeManager {
      * */
     public TypeDictionary<?> getDictionary(String category) {
         return dictionaries.get(category);
+    }
+
+    /**
+     * Retrieves a collection with all the dictionaries in this type manager.
+     *
+     * @return A collection with all the dictionaries in this type manager.
+     * */
+    public Collection<TypeDictionary<?>> getAllDictionaries() {
+        return dictionaries.values();
     }
 }
