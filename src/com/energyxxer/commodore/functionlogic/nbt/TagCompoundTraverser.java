@@ -46,6 +46,7 @@ public class TagCompoundTraverser {
             ComplexNBTTag parent = tagStack.get(i);
             NBTTag tag = (i < tagStack.size()-1) ? tagStack.get(i+1) : leaf;
             int index = indexStack.get(i);
+            if(i < tagStack.size() -1) index--;
 
             nodes.add(getNodeFor(parent, tag, index));
         }
