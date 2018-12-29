@@ -73,6 +73,7 @@ import com.energyxxer.commodore.textcomponents.ScoreTextComponent;
 import com.energyxxer.commodore.textcomponents.StringTextComponent;
 import com.energyxxer.commodore.textcomponents.TextColor;
 import com.energyxxer.commodore.textcomponents.TextStyle;
+import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.*;
 import com.energyxxer.commodore.util.Delta;
 import com.energyxxer.commodore.util.NumberRange;
@@ -165,7 +166,7 @@ public class CommandTest {
 
         Function function = module.createNamespace("test").getFunctionManager().create("scores");
 
-        EntityType bat = module.minecraft.getTypeManager().entity.get("bat");
+        Type bat = module.minecraft.getTypeManager().entity.get("bat");
 
         GenericEntity entity = new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES));
         entity.getSelector().addArguments(new TypeArgument(bat), new TagArgument("a"), new TagArgument("!b"));
@@ -185,7 +186,7 @@ public class CommandTest {
 
         function.append(new ExperienceSetCommand(player, 5, ExperienceCommand.Unit.LEVELS));
 
-        ItemType diamondSword = module.getNamespace("minecraft").getTypeManager().item.get("diamond_sword");
+        Type diamondSword = module.getNamespace("minecraft").getTypeManager().item.get("diamond_sword");
 
         function.append(new GiveCommand(player, new Item(diamondSword, new TagCompound(new TagByte("Unbreakable", 1), new TagShort("Damage", 4))), 3));
 

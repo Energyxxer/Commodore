@@ -20,6 +20,7 @@ import com.energyxxer.commodore.functionlogic.selector.arguments.*;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
+import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.EntityType;
 import com.energyxxer.commodore.util.NumberRange;
 
@@ -52,7 +53,7 @@ public class EnhancedHoes {
         Objective crowd = module.getObjectiveManager().create("crowd");
 
         Namespace minecraft = module.minecraft;
-        EntityType itemEntityType = minecraft.getTypeManager().entity.get("item");
+        Type itemEntityType = minecraft.getTypeManager().entity.get("item");
 
         Namespace namespace = module.createNamespace(module.getPrefix());
 
