@@ -123,9 +123,8 @@ public class TagCompound extends ComplexNBTTag {
         return this.toHeaderString() + ":" + this.toHeadlessString();
     }
 
-    @NotNull
     @Override
-    public Collection<NBTTag> getAllTags() {
+    public List<@NotNull NBTTag> getAllTags() {
         return new ArrayList<>(content);
     }
 

@@ -3,6 +3,7 @@ package com.energyxxer.commodore.functionlogic.nbt;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
+import java.util.List;
 
 public abstract class ComplexNBTTag extends NBTTag {
 
@@ -22,6 +23,5 @@ public abstract class ComplexNBTTag extends NBTTag {
 
     public abstract boolean contains(@NotNull String key);
 
-    @NotNull
-    public abstract Collection<@NotNull NBTTag> getAllTags();
+    public abstract List<@NotNull NBTTag> getAllTags();
 }
