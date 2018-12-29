@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public class TagShort extends NumericNBTTag<Short> {
-    private final short value;
+    private short value;
 
     public TagShort() {
         this(0);
@@ -38,6 +38,11 @@ public class TagShort extends NumericNBTTag<Short> {
     @Override
     public Short getValue() {
         return value;
+    }
+
+    @Override
+    public void setValue(@NotNull Short value) {
+        this.value = value;
     }
 
     @Override

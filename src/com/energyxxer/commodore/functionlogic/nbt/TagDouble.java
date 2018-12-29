@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public class TagDouble extends NumericNBTTag<Double> {
-    private final double value;
+    private double value;
 
     public TagDouble() {
         this(0);
@@ -29,6 +29,11 @@ public class TagDouble extends NumericNBTTag<Double> {
     @Override
     public Double getValue() {
         return value;
+    }
+
+    @Override
+    public void setValue(@NotNull Double value) {
+        this.value = value;
     }
 
     @Override

@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public class TagByte extends NumericNBTTag<Byte> {
-    private final byte value;
+    private byte value;
 
     public TagByte() {
         this(0);
@@ -37,6 +37,11 @@ public class TagByte extends NumericNBTTag<Byte> {
     @Override
     public Byte getValue() {
         return value;
+    }
+
+    @Override
+    public void setValue(@NotNull Byte value) {
+        this.value = value;
     }
 
     @Override

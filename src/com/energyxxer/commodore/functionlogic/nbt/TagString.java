@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public class TagString extends NBTTag {
-    private final String value;
+    private String value;
 
     public TagString() {
         this("");
@@ -22,6 +22,10 @@ public class TagString extends NBTTag {
 
     public String getValue() {
         return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 
     @NotNull

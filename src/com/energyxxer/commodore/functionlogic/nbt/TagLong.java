@@ -5,7 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public class TagLong extends NumericNBTTag<Long> {
-    private final long value;
+    private long value;
 
     public TagLong() {
         this(0);
@@ -29,6 +29,11 @@ public class TagLong extends NumericNBTTag<Long> {
     @Override
     public Long getValue() {
         return value;
+    }
+
+    @Override
+    public void setValue(@NotNull Long value) {
+        this.value = value;
     }
 
     @Override
