@@ -20,6 +20,10 @@ public class TagString extends NBTTag {
         this.value = value;
     }
 
+    public String getValue() {
+        return value;
+    }
+
     @NotNull
     @Override
     public String getType() {
