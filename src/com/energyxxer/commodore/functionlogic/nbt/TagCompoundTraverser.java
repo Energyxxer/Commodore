@@ -39,6 +39,14 @@ public class TagCompoundTraverser {
         return null;
     }
 
+    public void skipThisNode() {
+        if(indexStack.isEmpty()) return;
+        if(indexStack.peek() == 0) {
+            tagStack.pop();
+            indexStack.pop();
+        }
+    }
+
     private NBTPath getPathInStack(NBTTag leaf) {
         ArrayList<NBTPathNode> nodes = new ArrayList<>();
 
