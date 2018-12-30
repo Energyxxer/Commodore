@@ -1,5 +1,6 @@
 package com.energyxxer.commodoretest;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.commands.clear.ClearCommand;
 import com.energyxxer.commodore.functionlogic.commands.data.DataModifyCommand;
 import com.energyxxer.commodore.functionlogic.commands.data.ModifySourceFromEntity;
@@ -96,6 +97,9 @@ public class V114Test {
         System.out.println(function.getResolvedContent());
 
         System.out.println(module.minecraft.types.blockEntity.list());
+
+        System.out.println(CommandUtils.escape(CommandUtils.parseQuotedString("\"\\uFEA7\"")));
+        System.out.println(CommandUtils.escape(CommandUtils.parseQuotedString("\"hello\"")));
 
     }
 }

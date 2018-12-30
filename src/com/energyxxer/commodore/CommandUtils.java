@@ -30,7 +30,17 @@ public final class CommandUtils {
      * */
     @NotNull
     public static String escape(@NotNull String str) {
-        return str.replace("\\", "\\\\").replace("\"", "\\\"");
+        str = str.replace("\\", "\\\\").replace("\"", "\\\"");
+        StringBuilder sb = new StringBuilder();
+        for(char c : str.toCharArray()) {
+            if(((int) c) >= 256) {
+                sb.append("\\u");
+                sb.append(Integer.toString((int)c, 16).toUpperCase());
+            } else {
+                sb.append(c);
+            }
+        }
+        return sb.toString();
     }
 
     /**
@@ -165,7 +175,7 @@ public final class CommandUtils {
                 {
                     int sequenceLength = 4;
                     if (index + sequenceLength + 1 > text.length()) throw new IllegalArgumentException("Unexpected end of unicode escape sequence");
-                    String sequence = text.substring(index + 1, sequenceLength);
+                    String sequence = text.substring(index + 1, index + 1 + sequenceLength);
                     int code;
                     try {
                         code = Integer.parseInt(sequence, 16);
