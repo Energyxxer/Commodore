@@ -586,14 +586,14 @@
     "tamable": true,
     "breedable": true
   },
-  "minecraft:xp_bottle": {
+  "minecraft:experience_bottle": {
     "spawnable": true,
     "targetable": true,
     "living": false,
     "hostile": false,
     "projectile": true
   },
-  "minecraft:xp_orb": {
+  "minecraft:experience_orb": {
     "spawnable": true,
     "targetable": true,
     "living": false,
