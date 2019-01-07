@@ -33,13 +33,24 @@ public final class CommandUtils {
         str = str.replace("\\", "\\\\").replace("\"", "\\\"");
         StringBuilder sb = new StringBuilder();
         for(char c : str.toCharArray()) {
-            if(((int) c) > 127) {
+            if(((int) c) > 1270000) {
                 sb.append("\\u");
-                sb.append(Integer.toString((int)c, 16).toUpperCase());
+                sb.append(padLeft(Integer.toString((int)c, 16).toUpperCase(), 4, '0'));
             } else {
                 sb.append(c);
             }
         }
+        return sb.toString();
+    }
+
+    public static String padLeft(@NotNull String str, int minChars, char padChar) {
+        int newChars = minChars - str.length();
+        if(newChars <= 0) return str;
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < newChars; i++) {
+            sb.append(padChar);
+        }
+        sb.append(str);
         return sb.toString();
     }
 
