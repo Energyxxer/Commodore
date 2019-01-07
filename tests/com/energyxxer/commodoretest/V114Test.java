@@ -101,6 +101,7 @@ public class V114Test {
         System.out.println(CommandUtils.escape(CommandUtils.parseQuotedString("\"\\uFEA7\"")));
         System.out.println(CommandUtils.escape(CommandUtils.parseQuotedString("\"hello\"")));
         System.out.println(CommandUtils.escape(CommandUtils.parseQuotedString("\"\\u00FE\"")));
+        System.out.println(CommandUtils.escape(CommandUtils.parseQuotedString("\"\\n\"")));
 
     }
 }

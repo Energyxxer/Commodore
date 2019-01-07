@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.util.HashMap;
 import java.util.Locale;
 
 /**
@@ -21,6 +22,16 @@ public final class CommandUtils {
      * */
     public static final String IDENTIFIER_ALLOWED = "[A-Za-z0-9_.\\-+]*";
 
+    private static final HashMap<Character, String> ESCAPED = new HashMap<>();
+
+    static {
+        ESCAPED.put('\b', "b");
+        ESCAPED.put('\n', "n");
+        ESCAPED.put('\f', "f");
+        ESCAPED.put('\r', "r");
+        ESCAPED.put('\t', "t");
+    }
+
     /**
      * Escapes the given string's quotes and backslashes.
      *
@@ -33,9 +44,12 @@ public final class CommandUtils {
         str = str.replace("\\", "\\\\").replace("\"", "\\\"");
         StringBuilder sb = new StringBuilder();
         for(char c : str.toCharArray()) {
-            if(((int) c) > 1270000) {
+            if(((int) c) > 127) {
                 sb.append("\\u");
                 sb.append(padLeft(Integer.toString((int)c, 16).toUpperCase(), 4, '0'));
+            } else if(ESCAPED.containsKey(c)) {
+                sb.append("\\");
+                sb.append(ESCAPED.get(c));
             } else {
                 sb.append(c);
             }
