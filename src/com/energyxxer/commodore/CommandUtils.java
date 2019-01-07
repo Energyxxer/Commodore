@@ -33,7 +33,7 @@ public final class CommandUtils {
         str = str.replace("\\", "\\\\").replace("\"", "\\\"");
         StringBuilder sb = new StringBuilder();
         for(char c : str.toCharArray()) {
-            if(((int) c) >= 256) {
+            if(((int) c) > 127) {
                 sb.append("\\u");
                 sb.append(Integer.toString((int)c, 16).toUpperCase());
             } else {
