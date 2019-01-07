@@ -5,21 +5,27 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class BossbarSetPlayersCommand extends BossbarSetCommand {
-    @NotNull
+    @Nullable
     private final Entity players;
 
-    public BossbarSetPlayersCommand(@NotNull Type bossbar, @NotNull Entity players) {
+    public BossbarSetPlayersCommand(@NotNull Type bossbar) {
+        this(bossbar, null);
+    }
+
+    public BossbarSetPlayersCommand(@NotNull Type bossbar, @Nullable Entity players) {
         super(bossbar);
 
-        players.assertPlayer();
+        if (players != null) players.assertPlayer();
 
         this.players = players;
     }
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, getBase() + "players \be0", players);
+        return players != null ? new CommandResolution(execContext, getBase() + "players \be0", players)
+                : new CommandResolution(execContext, getBase() + "players");
     }
 }
