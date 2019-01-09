@@ -151,5 +151,11 @@
   },
   "minecraft:witch": {
     "argument": "none"
+  },
+  "minecraft:campfire_cosy_smoke": {
+    "argument": "none"
+  },
+  "minecraft:campfire_signal_smoke": {
+    "argument": "none"
   }
 }

@@ -2602,5 +2602,8 @@
   },
   "minecraft:sweet_berries": {
     "protocol_id": 867
+  },
+  "minecraft:campfire": {
+    "protocol_id": 868
   }
 }

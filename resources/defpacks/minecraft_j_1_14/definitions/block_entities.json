@@ -91,5 +91,8 @@
   },
   "minecraft:jigsaw": {
     "protocol_id": 30
+  },
+  "minecraft:campfire": {
+    "protocol_id": 31
   }
 }
