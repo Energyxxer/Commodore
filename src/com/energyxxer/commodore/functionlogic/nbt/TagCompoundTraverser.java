@@ -65,7 +65,7 @@ public class TagCompoundTraverser {
     private NBTPathNode getNodeFor(ComplexNBTTag parent, NBTTag tag, int index) {
         if(parent instanceof TagCompound) {
             return new NBTPathKey(tag.name);
-        } else if(parent instanceof TagList) {
+        } else if(parent instanceof TagList || parent instanceof ArrayNBTTag) {
             return new NBTPathIndex(index);
         }
         throw new IllegalArgumentException("Unrecognized ComplexNBTTag subclass '" + parent.getClass().getSimpleName() + "' for parameter 'parent'");
