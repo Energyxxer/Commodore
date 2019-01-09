@@ -94,15 +94,7 @@ public class TagList extends ComplexNBTTag {
 
     @Override
     public boolean contains(@NotNull String key) {
-        for(NBTTag other : content) {
-            if(other.name.equals(key)) return true;
-        }
         return false;
-    }
-
-    @Override
-    public String toString() {
-        return this.toHeaderString() + ":" + this.toHeadlessString();
     }
 
     @NotNull

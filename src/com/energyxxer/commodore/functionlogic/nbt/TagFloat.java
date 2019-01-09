@@ -53,11 +53,6 @@ public class TagFloat extends NumericNBTTag<Float> {
         return String.valueOf(value) + NumericNBTType.FLOAT.getSuffix();
     }
 
-    @Override
-    public String toString() {
-        return this.toHeaderString() + ":" + this.toHeadlessString();
-    }
-
     @NotNull
     @Override
     public TagFloat clone() {

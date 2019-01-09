@@ -53,11 +53,6 @@ public class TagDouble extends NumericNBTTag<Double> {
         return String.valueOf(value) + NumericNBTType.DOUBLE.getSuffix();
     }
 
-    @Override
-    public String toString() {
-        return this.toHeaderString() + ":" + this.toHeadlessString();
-    }
-
     @NotNull
     @Override
     public TagDouble clone() {

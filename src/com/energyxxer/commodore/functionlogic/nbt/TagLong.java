@@ -53,11 +53,6 @@ public class TagLong extends NumericNBTTag<Long> {
         return String.valueOf(value) + NumericNBTType.LONG.getSuffix();
     }
 
-    @Override
-    public String toString() {
-        return this.toHeaderString() + ":" + this.toHeadlessString();
-    }
-
     @NotNull
     @Override
     public TagLong clone() {

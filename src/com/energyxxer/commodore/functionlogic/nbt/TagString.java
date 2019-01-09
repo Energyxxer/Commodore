@@ -40,11 +40,6 @@ public class TagString extends NBTTag {
         return '"' + value.replace("\\", "\\\\").replace("\"", "\\\"") + '"';
     }
 
-    @Override
-    public String toString() {
-        return this.toHeaderString() + ":" + this.toHeadlessString();
-    }
-
     @NotNull
     @Override
     public TagString clone() {

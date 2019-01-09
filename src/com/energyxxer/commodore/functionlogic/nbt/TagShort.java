@@ -62,11 +62,6 @@ public class TagShort extends NumericNBTTag<Short> {
         return String.valueOf(value) + NumericNBTType.SHORT.getSuffix();
     }
 
-    @Override
-    public String toString() {
-        return this.toHeaderString() + ":" + this.toHeadlessString();
-    }
-
     @NotNull
     @Override
     public TagShort clone() {

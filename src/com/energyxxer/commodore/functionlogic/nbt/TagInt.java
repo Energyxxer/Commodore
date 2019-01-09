@@ -53,11 +53,6 @@ public class TagInt extends NumericNBTTag<Integer> {
         return String.valueOf(value) + NumericNBTType.INT.getSuffix();
     }
 
-    @Override
-    public String toString() {
-        return this.toHeaderString() + ":" + this.toHeadlessString();
-    }
-
     @NotNull
     @Override
     public TagInt clone() {

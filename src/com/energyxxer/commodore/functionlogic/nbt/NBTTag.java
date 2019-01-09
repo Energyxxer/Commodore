@@ -43,7 +43,10 @@ public abstract class NBTTag {
     @NotNull
     public abstract String toHeadlessString();
 
-    public abstract String toString();
+    @Override
+    public String toString() {
+        return this.toHeaderString() + ":" + this.toHeadlessString();
+    }
 
     @NotNull
     public abstract NBTTag clone();

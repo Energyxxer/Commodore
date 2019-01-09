@@ -61,11 +61,6 @@ public class TagByte extends NumericNBTTag<Byte> {
         return String.valueOf(value) + NumericNBTType.BYTE.getSuffix();
     }
 
-    @Override
-    public String toString() {
-        return this.toHeaderString() + ":" + this.toHeadlessString();
-    }
-
     @NotNull
     @Override
     public TagByte clone() {

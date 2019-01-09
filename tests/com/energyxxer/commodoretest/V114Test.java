@@ -9,11 +9,8 @@ import com.energyxxer.commodore.functionlogic.commands.loot.*;
 import com.energyxxer.commodore.functionlogic.commands.setblock.SetblockCommand;
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
-import com.energyxxer.commodore.functionlogic.entity.GenericEntity;
 import com.energyxxer.commodore.functionlogic.functions.Function;
-import com.energyxxer.commodore.functionlogic.nbt.TagByte;
-import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
-import com.energyxxer.commodore.functionlogic.nbt.TagInt;
+import com.energyxxer.commodore.functionlogic.nbt.*;
 import com.energyxxer.commodore.functionlogic.nbt.path.*;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.item.Item;
@@ -31,7 +28,6 @@ import com.energyxxer.commodore.util.attributes.Attribute;
 import java.io.File;
 import java.io.IOException;
 
-import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector;
 import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.NEAREST_PLAYER;
 
 public class V114Test {
@@ -104,5 +100,10 @@ public class V114Test {
         System.out.println(CommandUtils.escape(CommandUtils.parseQuotedString("\"\\u00FE\"")));
         System.out.println(CommandUtils.escape(CommandUtils.parseQuotedString("\"\\n\"")));
 
+        TagCompound root = new TagCompound();
+        root.add(new TagIntArray("CookTime", 1, 1, 1, 1));
+        root.add(new TagIntArray("CookTimeTotal", 1, 1, 1, 1));
+
+        System.out.println(root.toHeadlessString());
     }
 }
