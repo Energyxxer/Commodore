@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class JsonObjectWrapper {
     @NotNull
-    public JsonObject obj;
+    public final JsonObject obj;
 
     public JsonObjectWrapper(@NotNull JsonObject obj) {
         this.obj = obj;

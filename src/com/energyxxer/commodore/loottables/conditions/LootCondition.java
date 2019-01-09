@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public abstract class LootCondition {
-    private String type;
+    private final String type;
 
     public LootCondition(String type) {
         this.type = type;
@@ -127,7 +127,7 @@ public abstract class LootCondition {
         }
 
         private EntityReference entity;
-        private HashMap<Property, Boolean> properties = new HashMap<>();
+        private final HashMap<Property, Boolean> properties = new HashMap<>();
 
         public EntityProperties(@NotNull EntityReference entity) {
             super("entity_properties");
@@ -178,7 +178,7 @@ public abstract class LootCondition {
     public static class EntityScores extends LootCondition {
 
         private EntityProperties.EntityReference entity;
-        private HashMap<String, NumberRange<Integer>> scores = new HashMap<>();
+        private final HashMap<String, NumberRange<Integer>> scores = new HashMap<>();
 
         public EntityScores(@NotNull LootCondition.EntityProperties.EntityReference entity) {
             super("entity_scores");

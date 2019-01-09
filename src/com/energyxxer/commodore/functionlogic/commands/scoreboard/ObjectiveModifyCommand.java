@@ -14,7 +14,7 @@ public class ObjectiveModifyCommand implements Command {
         INTEGER("integer");
 
         @NotNull
-        private String valueKey;
+        private final String valueKey;
 
         ObjectiveRenderType(@NotNull String valueKey) {
             this.valueKey = valueKey;
@@ -36,9 +36,9 @@ public class ObjectiveModifyCommand implements Command {
         DISPLAY_NAME("displayname", TextComponent.class);
 
         @NotNull
-        private String argumentKey;
+        private final String argumentKey;
         @NotNull
-        private Class valueClass;
+        private final Class valueClass;
 
         ObjectiveModifyKey(@NotNull String argumentKey, @NotNull Class valueClass) {
             this.argumentKey = argumentKey;
@@ -61,9 +61,9 @@ public class ObjectiveModifyCommand implements Command {
     }
 
     @NotNull
-    private Objective objective;
+    private final Objective objective;
     @NotNull
-    private ObjectiveModifyKey key;
+    private final ObjectiveModifyKey key;
     @NotNull
     private Object value;
 

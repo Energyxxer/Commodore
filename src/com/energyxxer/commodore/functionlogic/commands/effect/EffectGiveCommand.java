@@ -17,6 +17,6 @@ public class EffectGiveCommand extends EffectCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "effect give \be0 " + effect, entity);
+        return new CommandResolution(execContext, "effect give " + entity + " " + effect);
     }
 }

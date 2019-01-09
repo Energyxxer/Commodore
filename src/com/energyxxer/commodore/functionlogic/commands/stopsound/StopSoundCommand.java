@@ -5,12 +5,8 @@ import com.energyxxer.commodore.functionlogic.commands.playsound.PlaySoundComman
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 public class StopSoundCommand implements Command {
 
@@ -43,7 +39,7 @@ public class StopSoundCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "stopsound \be0" +
+        return new CommandResolution(execContext, "stopsound " + player +
                 (source != null ?
                         sound != null ?
                                 " " + source.toString().toLowerCase() + " " + sound
@@ -54,11 +50,7 @@ public class StopSoundCommand implements Command {
                                 " * " + sound
                                 :
                                 ""
-                ), player);
+                ));
     }
 
-    @Override @NotNull
-    public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return new ArrayList<>(player.getScoreboardAccesses());
-    }
 }

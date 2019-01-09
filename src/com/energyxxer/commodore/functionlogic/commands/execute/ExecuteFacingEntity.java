@@ -4,10 +4,7 @@ import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Collection;
 
 public class ExecuteFacingEntity implements ExecuteModifier {
     @NotNull
@@ -27,12 +24,7 @@ public class ExecuteFacingEntity implements ExecuteModifier {
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, "facing entity \be0 " + anchor.toString().toLowerCase(), entity);
-    }
-
-    @Override
-    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return entity.getScoreboardAccesses();
+        return new SubCommandResult(execContext, "facing entity " + entity + " " + anchor.toString().toLowerCase());
     }
 
     @Override

@@ -1,13 +1,8 @@
 package com.energyxxer.commodore.functionlogic.functions;
 
-import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.entity.GenericEntity;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.MacroScore;
-import com.energyxxer.commodore.functionlogic.score.MacroScoreHolder;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreAccessLog;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.module.Exportable;
 import com.energyxxer.commodore.module.Namespace;
@@ -17,6 +12,9 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+
+import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector;
+import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.SENDER;
 
 public class Function implements FunctionSection, Exportable {
     @NotNull
@@ -28,17 +26,11 @@ public class Function implements FunctionSection, Exportable {
     private final String path;
     @NotNull
     private final ArrayList<@NotNull FunctionWriter> content = new ArrayList<>();
-    @NotNull
-    private final MacroScoreHolder senderMacro;
 
     @NotNull
     private ExecutionContext execContext;
-    private byte accessesResolvedState = 0;
     private boolean contentResolved = false;
     private String resolvedContent = null;
-
-    @NotNull
-    private final ScoreAccessLog accessLog = new ScoreAccessLog(this);
 
     private boolean export = true;
 
@@ -52,9 +44,7 @@ public class Function implements FunctionSection, Exportable {
         this.namespace = namespace;
         this.path = path;
 
-        Entity newSender = (sender != null) ? sender.clone() : new GenericEntity(new Selector(Selector.BaseSelector.SENDER));
-        this.senderMacro = new MacroScoreHolder("FS#" + path);
-        newSender.addMacroHolder(this.senderMacro);
+        Entity newSender = (sender != null) ? sender.clone() : new Selector(SENDER);
 
         this.execContext = new ExecutionContext(newSender);
     }
@@ -117,57 +107,12 @@ public class Function implements FunctionSection, Exportable {
 
             for(FunctionWriter writer : content) {
                 String content = writer.toFunctionContent(this);
-                if(content != null) {
-                    sb.append(content);
-                    sb.append('\n');
-                }
+                sb.append(content);
+                sb.append('\n');
             }
             resolvedContent = sb.toString();
         }
         return resolvedContent;
-    }
-
-    @NotNull
-    public ScoreAccessLog getAccessLog() {
-        return accessLog;
-    }
-
-    public void resolveAccessLogs() {
-        if(accessesResolvedState >= 1) return;
-        accessesResolvedState = 1;
-        content.forEach(w -> {
-            if(w instanceof Command) {
-                for(ScoreboardAccess access : ((Command) w).getScoreboardAccesses()) {
-                    access.setFunction(this);
-                    accessLog.filterAccess(access);
-                }
-            }
-        });
-        accessLog.resolve();
-        accessesResolvedState = 2;
-    }
-
-    public Collection<ScoreboardAccess> getScoreboardAccesses(ExecutionContext execContext) {
-        Collection<MacroScoreHolder> replacementMacros = execContext.getFinalSender().getMacroHolders();
-
-        ArrayList<ScoreboardAccess> newAccesses = new ArrayList<>();
-        for(ScoreboardAccess access : accessLog.getScoreboardAccesses()) {
-            ArrayList<MacroScore> newScores = new ArrayList<>();
-            for(MacroScore score : access.getScores()) {
-                if(score.getHolder() != senderMacro) {
-                    newScores.add(score);
-                } else {
-                    for(MacroScoreHolder replacement : replacementMacros) {
-                        newScores.add(new MacroScore(replacement, score.getObjective()));
-                    }
-                }
-            }
-            ScoreboardAccess newAccess = new ScoreboardAccess(newScores, access.getType(), access.getDependencies());
-            newAccess.setResolution(access.getResolution());
-            newAccesses.add(newAccess);
-        }
-
-        return newAccesses;
     }
 
     public ExecutionContext getExecutionContext() {

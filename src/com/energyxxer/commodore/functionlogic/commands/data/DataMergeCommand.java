@@ -25,7 +25,7 @@ public class DataMergeCommand extends DataCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        if(entity != null) return new CommandResolution(execContext, "data merge entity \be0 " + nbt.toHeadlessString(), entity);
+        if(entity != null) return new CommandResolution(execContext, "data merge entity " + entity + " " + nbt.toHeadlessString());
         return new CommandResolution(execContext, "data merge block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + nbt.toHeadlessString());
     }
 }

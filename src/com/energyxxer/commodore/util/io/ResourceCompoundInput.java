@@ -7,9 +7,9 @@ import java.io.InputStream;
 
 public class ResourceCompoundInput implements CompoundInput {
     @NotNull
-    private String rootPath;
+    private final String rootPath;
     @NotNull
-    private Class cls;
+    private final Class cls;
 
     public ResourceCompoundInput(@NotNull String rootPath, @NotNull Class cls) {
         this.rootPath = rootPath;

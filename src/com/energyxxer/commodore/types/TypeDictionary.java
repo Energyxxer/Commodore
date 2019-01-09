@@ -30,13 +30,11 @@ public class TypeDictionary {
     /**
      * A map containing all the types in this dictionary, where the key is the name of the type (without the namespace),
      * and the value is the type object.
-     *
-     * The type values are of the class bound by <code>T</code>.
      * */
     @NotNull
     private final HashMap<@NotNull String, Type> types = new HashMap<>();
     /**
-     * The functional interface for creating type objects for the type bound by <code>T</code>
+     * The functional interface for creating type objects for the type bound by this dictionary's category
      * */
     @NotNull
     private final TypeInstantiator<Type> instantiator;
@@ -61,7 +59,7 @@ public class TypeDictionary {
      *
      * @param name The name the new type will be referred to as.
      *
-     * @return The newly-created or already-existing type by the given name, of the type bound by <code>T</code>.
+     * @return The newly-created or already-existing type by the given name
      * */
     public Type create(@NotNull String name) {
         Type existing = types.get(name);
@@ -73,12 +71,13 @@ public class TypeDictionary {
     }
 
     /**
-     * Creates a type with the given name. If a type by that name already exists in this dictionary, that
-     * already-existing type will be returned. Otherwise it will be created.
+     * Creates a type with the given name, using the provided instantiator. If a type by that name already
+     * exists in this dictionary, that already-existing type will be replaced by the one created via the instantiator.
      *
+     * @param instantiator The instantiator with which the type will be created.
      * @param name The name the new type will be referred to as.
      *
-     * @return The newly-created or already-existing type by the given name, of the type bound by <code>T</code>.
+     * @return The newly-created type by the given name.
      * */
     public Type create(@NotNull CustomTypeInstantiator instantiator, @NotNull String name) {
         Type newType = instantiator.create(this.category, this.namespace, name);

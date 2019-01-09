@@ -1,6 +1,6 @@
 package com.energyxxer.commodore.functionlogic.selector;
 
-import com.energyxxer.commodore.functionlogic.entity.EntityRepresentation;
+import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.functionlogic.score.Objective;
@@ -19,9 +19,8 @@ import java.util.Iterator;
  * arguments.
  *
  * @see com.energyxxer.commodore.functionlogic.entity.Entity
- * @see com.energyxxer.commodore.functionlogic.inspection.EntityResolution
  * */
-public class Selector implements EntityRepresentation, Cloneable {
+public class Selector implements Entity, Cloneable {
     /**
      * Represents a base selector type with default filtering of entities.
      * */
@@ -230,6 +229,38 @@ public class Selector implements EntityRepresentation, Cloneable {
     }
 
     /**
+     * Removes all arguments of the provided class from the selector.
+     *
+     * @param argumentType The class of the arguments to remove from this selector.
+     * */
+    public void removeArguments(Class<? extends SelectorArgument> argumentType) {
+        this.args.removeIf(argumentType::isInstance);
+    }
+
+    /**
+     * Removes the provided argument from this selector, if it exists.
+     *
+     * @param argument The argument to remove from this selector.
+     * */
+    public void removeArgument(SelectorArgument argument) {
+        this.args.remove(argument);
+    }
+
+    /**
+     * Checks if this selector contains an argument of the given type.
+     *
+     * @param argumentType The argument type to find in this selector.
+     *
+     * @return Whether this selector contains an argument of the type in the provided parameter.
+     * */
+    public boolean containsArgument(Class<? extends SelectorArgument> argumentType) {
+        for(SelectorArgument arg : args) {
+            if(argumentType.isInstance(arg)) return true;
+        }
+        return false;
+    }
+
+    /**
      * Retrieves this selector's base selector.
      *
      * @return The base for this selector.
@@ -367,6 +398,16 @@ public class Selector implements EntityRepresentation, Cloneable {
         if(containsArgumentForKey("z")) usedVariables.setUsed(ExecutionVariable.Z, false);
 
         return usedVariables;
+    }
+
+    @Override
+    public Entity limitToOne() {
+        Selector newSelector = this.clone();
+        if(newSelector.getLimit() != 1) {
+            newSelector.removeArguments(LimitArgument.class);
+            newSelector.addArgument(new LimitArgument(1));
+        }
+        return newSelector;
     }
 
     @NotNull

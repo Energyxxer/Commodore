@@ -26,6 +26,6 @@ public class EffectClearCommand extends EffectCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "effect clear \be0" + ((type != null) ? " " + type : ""), entity);
+        return new CommandResolution(execContext, "effect clear " + entity + ((type != null) ? " " + type : ""));
     }
 }

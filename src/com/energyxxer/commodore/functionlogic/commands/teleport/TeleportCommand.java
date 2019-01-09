@@ -4,23 +4,18 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.commands.teleport.destination.TeleportDestination;
 import com.energyxxer.commodore.functionlogic.commands.teleport.facing.TeleportFacing;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
-import com.energyxxer.commodore.functionlogic.inspection.CommandEmbeddable;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 public class TeleportCommand implements Command {
     @Nullable
-    private Entity victim;
+    private final Entity victim;
     @NotNull
-    private TeleportDestination destination;
+    private final TeleportDestination destination;
     @Nullable
-    private TeleportFacing facing;
+    private final TeleportFacing facing;
 
     public TeleportCommand(@NotNull TeleportDestination destination) {
         this(null, destination);
@@ -41,21 +36,9 @@ public class TeleportCommand implements Command {
     }
 
     @Override
-    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
-        ArrayList<ScoreboardAccess> accesses = new ArrayList<>(destination.getScoreboardAccesses());
-        if(facing != null) accesses.addAll(facing.getScoreboardAccesses());
-        return accesses;
-    }
-
-    @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
-        if(victim != null) embeddables.add(victim);
-        embeddables.addAll(destination.getEmbeddables());
-        if(facing != null) embeddables.addAll(facing.getEmbeddables());
-
         StringBuilder sb = new StringBuilder("tp ");
-        if(victim != null) sb.append("\be# ");
+        if(victim != null) sb.append(victim).append(" ");
         sb.append(destination.getRaw());
         if(facing != null) {
             sb.append(' ');
@@ -64,10 +47,6 @@ public class TeleportCommand implements Command {
 
         String str = sb.toString();
 
-        for(int i = 0; i < embeddables.size(); i++) {
-            str = str.replaceFirst("\be#","\be" + i);
-        }
-
-        return new CommandResolution(execContext, str, embeddables);
+        return new CommandResolution(execContext, str);
     }
 }

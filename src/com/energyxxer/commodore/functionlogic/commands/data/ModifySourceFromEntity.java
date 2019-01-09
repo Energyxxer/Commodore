@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.functionlogic.commands.data;
 
-import com.energyxxer.commodore.functionlogic.commands.CommandDelegateResolution;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import org.jetbrains.annotations.NotNull;
@@ -23,7 +22,7 @@ public class ModifySourceFromEntity implements DataModifyCommand.ModifySource {
 
     @NotNull
     @Override
-    public CommandDelegateResolution resolve() {
-        return new CommandDelegateResolution("from entity \be#" + ((sourcePath != null) ? " " + sourcePath : ""), entity);
+    public String resolve() {
+        return "from entity " + entity + ((sourcePath != null) ? " " + sourcePath : "");
     }
 }

@@ -15,7 +15,7 @@ public class GenericTag extends Tag {
     private boolean export = true;
 
     @NotNull
-    private TagGroup<?> group;
+    private final TagGroup<?> group;
 
     GenericTag(@NotNull TagGroup group, @NotNull Namespace namespace, @NotNull String id) {
         super(group.getCategory(), namespace, id);

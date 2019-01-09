@@ -13,6 +13,6 @@ public class TitleResetCommand extends TitleCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "title \be0 reset", player);
+        return new CommandResolution(execContext, "title " + player + " reset");
     }
 }

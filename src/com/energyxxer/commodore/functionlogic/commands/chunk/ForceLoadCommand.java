@@ -13,11 +13,11 @@ public abstract class ForceLoadCommand implements Command {
 
 abstract class ForceLoadChangeCommand extends ForceLoadCommand {
     @NotNull
-    private String subcommand;
+    private final String subcommand;
     @NotNull
-    private CoordinateSet from;
+    private final CoordinateSet from;
     @Nullable
-    private CoordinateSet to;
+    private final CoordinateSet to;
 
     public ForceLoadChangeCommand(@NotNull String subcommand, @NotNull CoordinateSet from, @Nullable CoordinateSet to) {
         this.subcommand = subcommand;

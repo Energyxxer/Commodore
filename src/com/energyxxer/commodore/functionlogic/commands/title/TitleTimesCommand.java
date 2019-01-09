@@ -19,6 +19,6 @@ public class TitleTimesCommand extends TitleCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "title \be0 times " + fadeIn + " " + stay + " " + fadeOut, player);
+        return new CommandResolution(execContext, "title " + player + " times " + fadeIn + " " + stay + " " + fadeOut);
     }
 }

@@ -11,8 +11,4 @@ public class ObjectivesListCommand implements Command {
         return new CommandResolution(execContext, "scoreboard objectives list");
     }
 
-    @Override
-    public boolean isScoreboardManipulation() {
-        return true;
-    }
 }

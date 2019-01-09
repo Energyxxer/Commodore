@@ -15,6 +15,6 @@ public class TeamLeaveCommand extends TeamCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "team leave \be0", entity);
+        return new CommandResolution(execContext, "team leave " + entity);
     }
 }

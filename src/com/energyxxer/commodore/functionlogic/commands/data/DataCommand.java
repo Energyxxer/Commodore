@@ -3,12 +3,7 @@ package com.energyxxer.commodore.functionlogic.commands.data;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 public abstract class DataCommand implements Command {
     /*
@@ -41,8 +36,4 @@ public abstract class DataCommand implements Command {
         this.pos = pos;
     }
 
-    @Override @NotNull
-    public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return (entity != null) ? new ArrayList<>(entity.getScoreboardAccesses()) : Collections.emptyList();
-    }
 }

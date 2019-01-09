@@ -381,7 +381,7 @@ public class DefinitionPack {
         for(Map.Entry<String, ArrayList<TagBlueprint>> entry : tags.entrySet()) {
             String category = entry.getKey();
             for(TagBlueprint blueprint : entry.getValue()) {
-                Namespace ns = (blueprint.namespace != null) ? module.createNamespace(blueprint.namespace) : module.minecraft;
+                Namespace ns = module.createNamespace(blueprint.namespace);
                 TagGroup<? extends Tag> group = ns.getTagManager().createGroup(category, getCategory(category).tagDirectory);
 
                 Tag tag = group.create(blueprint.name);

@@ -17,7 +17,7 @@ public class BlockTag extends Tag {
     private boolean export = true;
 
     @NotNull
-    private TagGroup<?> group;
+    private final TagGroup<?> group;
 
     BlockTag(@NotNull TagGroup group, @NotNull Namespace namespace, @NotNull String id) {
         super(BlockType.CATEGORY, namespace, id);

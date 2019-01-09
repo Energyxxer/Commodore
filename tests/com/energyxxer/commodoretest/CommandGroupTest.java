@@ -13,18 +13,20 @@ import com.energyxxer.commodore.functionlogic.commands.scoreboard.ScoreSet;
 import com.energyxxer.commodore.functionlogic.commands.teleport.TeleportCommand;
 import com.energyxxer.commodore.functionlogic.commands.teleport.destination.BlockDestination;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
-import com.energyxxer.commodore.functionlogic.entity.GenericEntity;
+import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.functionlogic.score.LocalScore;
 import com.energyxxer.commodore.functionlogic.score.Objective;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
-import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 
 import java.io.File;
 import java.io.IOException;
+
+import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.ALL_ENTITIES;
+import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.NEAREST_PLAYER;
 
 public class CommandGroupTest {
     public static void main(String[] args) {
@@ -32,7 +34,6 @@ public class CommandGroupTest {
 
         //DefinitionPack AETHER_TEST = new DefinitionPack(new DirectoryCompoundInput(new File("C:\\Users\\Usuario\\Commodore\\defpacks\\aetherii")));
 
-        module.getOptionManager().UNUSED_COMMAND_POLICY.setValue(UnusedCommandPolicy.COMMENT_OUT);
         try {
             module.importDefinitions(StandardDefinitionPacks.MINECRAFT_JAVA_LATEST_RELEASE);
             //module.importDefinitions(AETHER_TEST);
@@ -52,7 +53,7 @@ public class CommandGroupTest {
         System.out.println(module.minecraft.getTypeManager().block.get("stone").getProperties());
         System.out.println(module.minecraft.getTypeManager().enchantment.get("binding_curse").getProperties());
 
-        function.append(new TeleportCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES)), new BlockDestination(new CoordinateSet(5,0.000000001,0))));
+        function.append(new TeleportCommand(new Selector(ALL_ENTITIES), new BlockDestination(new CoordinateSet(5, 0.000000001, 0))));
 
         function.append(outerExec);
 
@@ -68,8 +69,8 @@ public class CommandGroupTest {
         Function a = cgt.getFunctionManager().create("a");
         Function b = cgt.getFunctionManager().create("b");
 
-        GenericEntity all = new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES));
-        GenericEntity one = new GenericEntity(new Selector(Selector.BaseSelector.NEAREST_PLAYER));
+        Entity all = new Selector(ALL_ENTITIES);
+        Entity one = new Selector(NEAREST_PLAYER);
         Objective obj = module.getObjectiveManager().create("temp");
 
         a.append(new ScoreSet(new LocalScore(obj, all), 5));

@@ -1,29 +1,20 @@
 package com.energyxxer.commodore.textcomponents;
 
 import com.energyxxer.commodore.CommandUtils;
-import com.energyxxer.commodore.functionlogic.inspection.CommandEmbeddable;
 import com.energyxxer.commodore.functionlogic.score.LocalScore;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Collection;
-import java.util.Collections;
 
 public class ScoreTextComponent extends TextComponent {
     @NotNull
     private final LocalScore score;
 
-    private final Collection<ScoreboardAccess> accesses;
-
     public ScoreTextComponent(LocalScore score) {
         this(score, null);
     }
 
-    public ScoreTextComponent(LocalScore score, TextStyle style) {
+    public ScoreTextComponent(@NotNull LocalScore score, TextStyle style) {
         this.score = score;
         this.setStyle(style);
-
-        this.accesses = Collections.singletonList(new ScoreboardAccess(score.getMacroScores(), ScoreboardAccess.AccessType.READ));
     }
 
     @Override
@@ -32,13 +23,8 @@ public class ScoreTextComponent extends TextComponent {
     }
 
     @Override
-    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return accesses;
-    }
-
-    @Override
     public String toString(TextComponent parent) {
-        String escapedName = "\"\be#\r\"";
+        String escapedName = "\"" + CommandUtils.escape(score.getHolder().toString()) + "\"";
         String escapedObjective = "\"" + CommandUtils.escape(score.getObjective().getName()) + "\"";
         String baseProperties = this.getBaseProperties(parent);
         return "{\"score\":{\"name\":" +
@@ -50,8 +36,4 @@ public class ScoreTextComponent extends TextComponent {
                 '}';
     }
 
-    @Override
-    public Collection<CommandEmbeddable> getEmbeddables() {
-        return Collections.singletonList(score.getHolder());
-    }
 }

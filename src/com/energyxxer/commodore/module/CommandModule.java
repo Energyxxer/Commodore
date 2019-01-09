@@ -40,7 +40,7 @@ public class CommandModule {
      * This module's option manager.
      * */
     @NotNull
-    protected ModuleOptionManager optMgr;
+    protected final ModuleOptionManager optMgr;
 
     /**
      * This module's objective manager.

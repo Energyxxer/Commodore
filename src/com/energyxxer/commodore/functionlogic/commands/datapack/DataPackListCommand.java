@@ -26,8 +26,4 @@ public class DataPackListCommand extends DataPackCommand {
         return new CommandResolution(execContext, "datapack list" + ((filter != null) ? " " + filter.toString().toLowerCase() : ""));
     }
 
-    @Override
-    public boolean isScoreboardManipulation() {
-        return true;
-    }
 }

@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.module;
 
-import com.energyxxer.commodore.functionlogic.functions.AccessLogFile;
 import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.tags.TagGroup;
 import com.energyxxer.commodore.tags.TagManager;
@@ -28,11 +27,11 @@ public class ModulePackGenerator {
     private final CommandModule module;
 
     @NotNull
-    private String rootPath;
+    private final String rootPath;
     @NotNull
-    private File rootFile;
+    private final File rootFile;
 
-    private Gson gson;
+    private final Gson gson;
 
     @NotNull
     private final OutputType outputType;
@@ -80,7 +79,6 @@ public class ModulePackGenerator {
             for(Function func : namespace.getFunctionManager().getAll()) {
                 if(func.getEntryCount() == 0 && !module.optMgr.EXPORT_EMPTY_FUNCTIONS.getValue()) continue;
                 exportables.add(func);
-                if(module.optMgr.EXPORT_ACCESS_LOGS.getValue()) exportables.add(new AccessLogFile(func));
             }
 
             TagManager tagMgr = namespace.getTagManager();

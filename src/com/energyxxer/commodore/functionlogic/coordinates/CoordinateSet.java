@@ -95,6 +95,7 @@ public class CoordinateSet implements ExecuteModifier {
      *
      * @return The string representing this coordinate set.
      * */
+    @NotNull
     public String getAs(@NotNull Coordinate.DisplayMode mode) {
         return x.getAs(mode) + " " + y.getAs(mode) + " " + z.getAs(mode);
     }

@@ -1,17 +1,13 @@
 package com.energyxxer.commodore.functionlogic.commands.data;
 
-import com.energyxxer.commodore.functionlogic.commands.CommandDelegateResolution;
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
-import com.energyxxer.commodore.functionlogic.inspection.CommandEmbeddable;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
 
 public class DataModifyCommand extends DataCommand {
 
@@ -59,13 +55,11 @@ public class DataModifyCommand extends DataCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
 
         StringBuilder sb = new StringBuilder("data modify ");
 
         if(entity != null) {
-            sb.append("entity \be0 ");
-            embeddables.add(entity);
+            sb.append("entity ").append(entity).append(" ");
         } else {
             sb.append("block ");
             sb.append(pos.getAs(Coordinate.DisplayMode.BLOCK_POS));
@@ -78,12 +72,9 @@ public class DataModifyCommand extends DataCommand {
         sb.append(operation.operation);
         sb.append(' ');
 
-        CommandDelegateResolution sourceResolution = source.resolve();
+        sb.append(source.resolve());
 
-        sb.append(sourceResolution.attachment.replace("\be#", "\be" + embeddables.size()));
-        embeddables.addAll(sourceResolution.embeddables);
-
-        return new CommandResolution(execContext, sb.toString(), embeddables.toArray(new CommandEmbeddable[0]));
+        return new CommandResolution(execContext, sb.toString());
     }
 
     public static class ModifyOperation {
@@ -97,6 +88,6 @@ public class DataModifyCommand extends DataCommand {
 
     public interface ModifySource {
         @NotNull
-        CommandDelegateResolution resolve();
+        String resolve();
     }
 }

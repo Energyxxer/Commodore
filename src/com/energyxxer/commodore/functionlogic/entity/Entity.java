@@ -1,15 +1,6 @@
 package com.energyxxer.commodore.functionlogic.entity;
 
-import com.energyxxer.commodore.functionlogic.inspection.CommandEmbeddable;
-import com.energyxxer.commodore.functionlogic.inspection.CommandEmbeddableResolution;
-import com.energyxxer.commodore.functionlogic.inspection.EntityResolution;
-import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.MacroScoreHolder;
-import com.energyxxer.commodore.functionlogic.score.ScoreHolder;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Collection;
 
 /**
  * Represents an entity or entities that can be affected by a command. This entity can then specify what execute
@@ -18,38 +9,7 @@ import java.util.Collection;
  *     This does <b>not</b> represent a particular entity selector which can change the targeted entity over time;
  *     instead, this represents a non-changing entity.
  * */
-public interface Entity extends ScoreHolder, Cloneable, CommandEmbeddable {
-
-    /**
-     * Resolves this entity into an {@link EntityResolution}, which contains both the modifiers and the selector
-     * needed to target it, based on the given execution context.
-     *
-     * @param context The context from which this entity should be targeted.
-     * @return An {@link EntityResolution} object detailing what execution variables should be changed to target it via
-     * its selector.
-     * */
-    @NotNull
-    EntityResolution resolveFor(ExecutionContext context);
-
-    @NotNull
-    @Override
-    default CommandEmbeddableResolution resolveEmbed(@NotNull ExecutionContext execContext) {
-        return resolveFor(execContext).resolveEmbed(execContext);
-    }
-
-    /**
-     * Adds a {@link MacroScoreHolder} to this entity.
-     *
-     * @param macro The {@link MacroScoreHolder} to add to this entity.
-     * */
-    void addMacroHolder(MacroScoreHolder macro);
-
-    /**
-     * Retrieves the scoreboard accesses that targeting this entity would require.
-     *
-     * @return The scoreboard accesses for this entity.
-     * */
-    Collection<ScoreboardAccess> getScoreboardAccesses();
+public interface Entity extends Cloneable {
 
     /**
      * Retrieves this entity's count limit; that is, how many entities, max, this entity object represents. -1 if
@@ -98,4 +58,7 @@ public interface Entity extends ScoreHolder, Cloneable, CommandEmbeddable {
     default void assertSingle() {
         if(getLimit() != 1) throw new IllegalArgumentException("Provided entity '" + this + "' includes multiple entities, expected at most one");
     }
+
+    @NotNull
+    String toString();
 }

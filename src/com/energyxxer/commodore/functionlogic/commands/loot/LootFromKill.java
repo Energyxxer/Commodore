@@ -15,6 +15,6 @@ public class LootFromKill implements LootCommand.LootSource {
     @NotNull
     @Override
     public CommandDelegateResolution resolve() {
-        return new CommandDelegateResolution("kill \be#", entity);
+        return new CommandDelegateResolution("kill " + entity);
     }
 }

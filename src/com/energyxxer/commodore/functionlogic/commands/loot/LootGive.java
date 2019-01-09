@@ -17,6 +17,6 @@ public class LootGive implements LootCommand.LootDestination {
     @NotNull
     @Override
     public CommandDelegateResolution resolve() {
-        return new CommandDelegateResolution("give \be0", players);
+        return new CommandDelegateResolution("give " + players);
     }
 }

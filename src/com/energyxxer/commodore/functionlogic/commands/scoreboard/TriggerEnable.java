@@ -20,6 +20,6 @@ public class TriggerEnable implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "scoreboard players enable \be0 " + objective.getName(), player);
+        return new CommandResolution(execContext, "scoreboard players enable " + player + " " + objective.getName());
     }
 }

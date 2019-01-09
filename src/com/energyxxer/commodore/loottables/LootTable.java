@@ -17,9 +17,9 @@ public class LootTable implements Exportable {
 
     private final String path;
 
-    private ArrayList<Pool> pools = new ArrayList<>();
+    private final ArrayList<Pool> pools = new ArrayList<>();
 
-    private LootFunctions functions = new LootFunctions();
+    private final LootFunctions functions = new LootFunctions();
 
     private boolean export = true;
 

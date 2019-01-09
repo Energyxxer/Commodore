@@ -25,18 +25,19 @@ import com.energyxxer.commodore.loottables.functions.LootFunction;
 import com.energyxxer.commodore.loottables.items.LootItemEntry;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
-import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.util.attributes.Attribute;
 
 import java.io.File;
 import java.io.IOException;
 
+import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector;
+import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.NEAREST_PLAYER;
+
 public class V114Test {
     public static void main(String[] args) {
         CommandModule module = new CommandModule("1.14 Test", "vp");
 
-        module.getOptionManager().UNUSED_COMMAND_POLICY.setValue(UnusedCommandPolicy.COMMENT_OUT);
         try {
             module.importDefinitions(StandardDefinitionPacks.MINECRAFT_JAVA_LATEST_SNAPSHOT);
             System.out.println(module.minecraft.tags.itemTags.getAll());
@@ -46,7 +47,7 @@ public class V114Test {
 
         Namespace ns = module.createNamespace("test");
 
-        Function function = ns.getFunctionManager().create("func", true, new GenericEntity(new Selector(Selector.BaseSelector.NEAREST_PLAYER)));
+        Function function = ns.getFunctionManager().create("func", true, new Selector(NEAREST_PLAYER));
 
         function.append(new SetblockCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), module.minecraft.types.block.get("bamboo")));
 

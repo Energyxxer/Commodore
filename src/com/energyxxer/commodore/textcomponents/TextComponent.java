@@ -1,11 +1,12 @@
 package com.energyxxer.commodore.textcomponents;
 
-import com.energyxxer.commodore.functionlogic.inspection.CommandEmbeddable;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Iterator;
 
 public abstract class TextComponent {
     @NotNull
@@ -75,12 +76,4 @@ public abstract class TextComponent {
         return this.toString(null);
     }
 
-    @NotNull
-    public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return Collections.emptyList();
-    }
-
-    public Collection<CommandEmbeddable> getEmbeddables() {
-        return Collections.emptyList();
-    }
 }

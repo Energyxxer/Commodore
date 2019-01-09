@@ -68,7 +68,6 @@ public class Namespace {
      * Runs the necessary procedures for compilation of the module this belongs to.
      * */
     void compile() {
-        functions.resolveAccessLogs();
     }
 
     /**

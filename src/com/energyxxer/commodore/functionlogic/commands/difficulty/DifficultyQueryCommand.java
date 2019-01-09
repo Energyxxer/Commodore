@@ -11,8 +11,4 @@ public class DifficultyQueryCommand extends DifficultyCommand {
         return new CommandResolution(execContext, "difficulty");
     }
 
-    @Override
-    public boolean isScoreboardManipulation() {
-        return true;
-    }
 }

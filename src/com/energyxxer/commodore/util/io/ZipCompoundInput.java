@@ -15,9 +15,9 @@ import java.util.zip.ZipFile;
 
 public class ZipCompoundInput implements CompoundInput {
     @NotNull
-    private File file;
+    private final File file;
     @NotNull
-    private String rootPath;
+    private final String rootPath;
     private ZipFile zf = null;
 
     public ZipCompoundInput(@NotNull File file) {

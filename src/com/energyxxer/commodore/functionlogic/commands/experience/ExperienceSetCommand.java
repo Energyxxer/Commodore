@@ -19,6 +19,6 @@ public class ExperienceSetCommand extends ExperienceCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "xp set \be0 " + amount + " " + unit.toString().toLowerCase(), player);
+        return new CommandResolution(execContext, "xp set " + player + " " + amount + " " + unit.toString().toLowerCase());
     }
 }

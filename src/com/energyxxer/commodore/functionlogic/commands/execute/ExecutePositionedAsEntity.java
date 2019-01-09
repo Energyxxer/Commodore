@@ -4,10 +4,7 @@ import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Collection;
 
 public class ExecutePositionedAsEntity implements ExecuteModifier {
     @NotNull
@@ -20,12 +17,7 @@ public class ExecutePositionedAsEntity implements ExecuteModifier {
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, "positioned as \be0", entity);
-    }
-
-    @Override
-    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return entity.getScoreboardAccesses();
+        return new SubCommandResult(execContext, "positioned as " + entity);
     }
 
     @Override

@@ -5,7 +5,6 @@ import com.energyxxer.commodore.functionlogic.commands.execute.ExecuteAtEntity;
 import com.energyxxer.commodore.functionlogic.commands.execute.ExecuteCommand;
 import com.energyxxer.commodore.functionlogic.commands.scoreboard.ScoreAdd;
 import com.energyxxer.commodore.functionlogic.commands.tag.TagCommand;
-import com.energyxxer.commodore.functionlogic.entity.GenericEntity;
 import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.functionlogic.functions.FunctionComment;
 import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
@@ -13,7 +12,6 @@ import com.energyxxer.commodore.functionlogic.nbt.TagList;
 import com.energyxxer.commodore.functionlogic.nbt.TagShort;
 import com.energyxxer.commodore.functionlogic.nbt.TagString;
 import com.energyxxer.commodore.functionlogic.score.LocalScore;
-import com.energyxxer.commodore.functionlogic.score.MacroScoreHolder;
 import com.energyxxer.commodore.functionlogic.score.Objective;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.functionlogic.selector.arguments.*;
@@ -21,7 +19,6 @@ import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.types.Type;
-import com.energyxxer.commodore.types.defaults.EntityType;
 import com.energyxxer.commodore.util.NumberRange;
 
 import java.io.File;
@@ -29,6 +26,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.energyxxer.commodore.functionlogic.commands.tag.TagCommand.Action.ADD;
 import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.ALL_ENTITIES;
 
 public class EnhancedHoes {
@@ -74,38 +72,32 @@ public class EnhancedHoes {
                         new TagShort("Age", 0),
                         new TagShort("PickupDelay", 10));
                 Selector sel = new Selector(ALL_ENTITIES, new TypeArgument(itemEntityType), new NBTArgument(nbt));
-                tick.append(new TagCommand(TagCommand.Action.ADD, new GenericEntity(sel), entry.getKey()));
+                tick.append(new TagCommand(ADD, sel, entry.getKey()));
             }
         }
-
-        MacroScoreHolder cropsMacro = new MacroScoreHolder("All Crops");
-        MacroScoreHolder selfCropsMacro = new MacroScoreHolder("Self Crops");
 
         Selector allCropsSelector = new Selector(ALL_ENTITIES, new TypeArgument(itemEntityType), new TagArgument("crop"));
         Selector selfCropsSelector = new Selector(ALL_ENTITIES, new TypeArgument(itemEntityType), new TagArgument("self_crop"));
 
-        GenericEntity allCrops = new GenericEntity(allCropsSelector);
-        GenericEntity allSelfCrops = new GenericEntity(selfCropsSelector);
-
-        allCrops.addMacroHolder(cropsMacro);
-        allSelfCrops.addMacroHolders(cropsMacro, selfCropsMacro);
+        Selector allCrops = allCropsSelector;
+        Selector allSelfCrops = selfCropsSelector;
 
         tick.append(new TagCommand(TagCommand.Action.ADD, allSelfCrops, "crop"));
 
         tick.append(new FunctionComment("Prevent item frames from duplicating crops"));
         {
-            GenericEntity nearbyCrops = allCrops.clone();
-            nearbyCrops.getSelector().addArguments(new DistanceArgument(new NumberRange<>(null, 1.0)));
+            Selector nearbyCrops = allCrops.clone();
+            nearbyCrops.addArguments(new DistanceArgument(new NumberRange<>(null, 1.0)));
 
             ExecuteCommand exec = new ExecuteCommand(new TagCommand(TagCommand.Action.REMOVE, nearbyCrops, "crop"));
-            exec.addModifier(new ExecuteAtEntity(new GenericEntity(new Selector(ALL_ENTITIES, new TypeArgument(minecraft.getTypeManager().entity.get("item_frame"))))));
+            exec.addModifier(new ExecuteAtEntity(new Selector(ALL_ENTITIES, new TypeArgument(minecraft.getTypeManager().entity.get("item_frame")))));
             tick.append(exec);
         }
 
         tick.append(new FunctionComment("Prevent duplication of premature harvests"));
         {
-            GenericEntity nearbyCrops = allSelfCrops.clone();
-            nearbyCrops.getSelector().addArguments(new DistanceArgument(new NumberRange<>(null, 1.0)));
+            Selector nearbyCrops = allSelfCrops.clone();
+            nearbyCrops.addArguments(new DistanceArgument(new NumberRange<>(null, 1.0)));
             ExecuteCommand exec = new ExecuteCommand(new ScoreAdd(new LocalScore(crowd, nearbyCrops), 1));
             exec.addModifier(new ExecuteAtEntity(allSelfCrops));
             tick.append(exec);
@@ -113,8 +105,8 @@ public class EnhancedHoes {
         {
             ScoreArgument scores = new ScoreArgument();
             scores.put(crowd, new NumberRange<>(1));
-            GenericEntity loneCrops = allSelfCrops.clone();
-            loneCrops.getSelector().addArguments(scores);
+            Selector loneCrops = allSelfCrops.clone();
+            loneCrops.addArguments(scores);
             tick.append(new DataMergeCommand(loneCrops, new TagCompound(new TagList("Tags"))));
         }
 
@@ -125,6 +117,5 @@ public class EnhancedHoes {
         }
 
         System.out.println(tick.getResolvedContent());
-        System.out.println(tick.getAccessLog());
     }
 }

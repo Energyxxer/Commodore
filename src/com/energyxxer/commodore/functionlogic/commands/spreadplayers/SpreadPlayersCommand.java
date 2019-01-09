@@ -7,11 +7,7 @@ import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 public class SpreadPlayersCommand implements Command {
     @NotNull
@@ -32,11 +28,7 @@ public class SpreadPlayersCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "spreadplayers " + center.getXZAs(Coordinate.DisplayMode.ENTITY_POS) + " " + CommandUtils.numberToPlainString(spreadDistance) + " " + CommandUtils.numberToPlainString(maxRange) + " " + respectTeams + " \be0", targets);
+        return new CommandResolution(execContext, "spreadplayers " + center.getXZAs(Coordinate.DisplayMode.ENTITY_POS) + " " + CommandUtils.numberToPlainString(spreadDistance) + " " + CommandUtils.numberToPlainString(maxRange) + " " + respectTeams + " " + targets);
     }
 
-    @Override @NotNull
-    public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return new ArrayList<>(targets.getScoreboardAccesses());
-    }
 }

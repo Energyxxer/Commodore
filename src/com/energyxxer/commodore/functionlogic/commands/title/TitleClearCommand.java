@@ -13,6 +13,6 @@ public class TitleClearCommand extends TitleCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "title \be0 clear", player);
+        return new CommandResolution(execContext, "title " + player + " clear");
     }
 }

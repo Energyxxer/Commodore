@@ -34,6 +34,6 @@ public class EnchantCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "enchant \be0 " + enchantment + " " + level, entity);
+        return new CommandResolution(execContext, "enchant " + entity + " " + enchantment + " " + level);
     }
 }

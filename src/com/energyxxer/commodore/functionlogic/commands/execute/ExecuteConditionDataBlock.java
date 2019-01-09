@@ -4,10 +4,7 @@ import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Collection;
 
 public class ExecuteConditionDataBlock extends ExecuteCondition {
     @NotNull
@@ -25,11 +22,6 @@ public class ExecuteConditionDataBlock extends ExecuteCondition {
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
         return new SubCommandResult(execContext, this.getStarter() + "data block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path);
-    }
-
-    @Override
-    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return pos.getScoreboardAccesses();
     }
 
     @Override

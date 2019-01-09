@@ -7,15 +7,10 @@ import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.util.Delta;
 import com.energyxxer.commodore.util.Particle;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 public class ParticleCommand implements Command {
     @NotNull
@@ -68,7 +63,7 @@ public class ParticleCommand implements Command {
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         StringBuilder sb = new StringBuilder();
-        if(viewers != null) sb.insert(0, "\be0");
+        if(viewers != null) sb.insert(0, viewers.toString());
         if(force) {
             sb.insert(0, "force ");
         } else if(sb.length() > 0) {
@@ -95,12 +90,8 @@ public class ParticleCommand implements Command {
         sb.insert(0, ' ');
         sb.insert(0, particle);
         sb.insert(0, "particle ");
-        if(viewers != null) return new CommandResolution(execContext, sb.toString().trim(), viewers);
+        if(viewers != null) return new CommandResolution(execContext, sb.toString().trim());
         return new CommandResolution(execContext, sb.toString().trim());
     }
 
-    @Override @NotNull
-    public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return (viewers != null) ? new ArrayList<>(viewers.getScoreboardAccesses()) : Collections.emptyList();
-    }
 }

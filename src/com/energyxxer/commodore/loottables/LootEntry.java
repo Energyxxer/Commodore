@@ -4,7 +4,7 @@ import com.energyxxer.commodore.loottables.conditions.LootConditions;
 import com.google.gson.JsonObject;
 
 public abstract class LootEntry {
-    private String type;
+    private final String type;
     private int weight = 1;
     private int quality = 0;
 

@@ -8,7 +8,7 @@ import com.google.gson.JsonObject;
 import static com.energyxxer.commodore.types.TypeAssert.assertItem;
 
 public class LootItemEntry extends LootEntry {
-    private Type name;
+    private final Type name;
     public final LootFunctions functions = new LootFunctions();
 
     public LootItemEntry(Type item) {

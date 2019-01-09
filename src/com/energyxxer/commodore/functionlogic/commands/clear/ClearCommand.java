@@ -4,14 +4,9 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.item.Item;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 
 public class ClearCommand implements Command {
     @Nullable
@@ -43,12 +38,8 @@ public class ClearCommand implements Command {
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return player != null ?
-                new CommandResolution(execContext, "clear \be0" + ((item != null) ? (" " + item + ((maxCount >= 0) ? " " + maxCount : "")) : ""), player) :
+                new CommandResolution(execContext, "clear " + player + ((item != null) ? (" " + item + ((maxCount >= 0) ? " " + maxCount : "")) : "")) :
                 new CommandResolution(execContext, "clear");
     }
 
-    @Override @NotNull
-    public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return player != null ? new ArrayList<>(player.getScoreboardAccesses()) : Collections.emptyList();
-    }
 }

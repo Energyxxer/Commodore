@@ -8,7 +8,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class NBTCompoundBuilder {
     @NotNull
-    private TagCompound compound;
+    private final TagCompound compound;
     @NotNull
     private ComplexNBTTag lastTag;
 

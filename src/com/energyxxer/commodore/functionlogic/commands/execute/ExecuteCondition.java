@@ -10,7 +10,7 @@ public abstract class ExecuteCondition implements ExecuteModifier {
     }
 
     @NotNull
-    protected ConditionType type;
+    protected final ConditionType type;
 
     public ExecuteCondition(@NotNull ConditionType type) {
         this.type = type;

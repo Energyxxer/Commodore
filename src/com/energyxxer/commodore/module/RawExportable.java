@@ -8,7 +8,7 @@ public class RawExportable implements Exportable {
     @NotNull
     private final String exportPath;
     @NotNull
-    private String fileContent;
+    private final String fileContent;
 
     public RawExportable(@NotNull String exportPath) {
         this(exportPath, "");

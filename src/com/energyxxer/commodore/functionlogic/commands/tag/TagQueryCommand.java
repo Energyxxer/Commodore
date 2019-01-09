@@ -4,11 +4,7 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 public class TagQueryCommand implements Command {
 
@@ -21,16 +17,7 @@ public class TagQueryCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "tag \be0 list", entity);
+        return new CommandResolution(execContext, "tag " + entity + " list");
     }
 
-    @Override @NotNull
-    public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return new ArrayList<>(entity.getScoreboardAccesses());
-    }
-
-    @Override
-    public boolean isScoreboardManipulation() {
-        return true;
-    }
 }

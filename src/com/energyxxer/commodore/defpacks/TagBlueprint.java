@@ -29,6 +29,7 @@ class TagBlueprint {
      * The raw contents of this tag, as retrieved from its .json file.
      * */
     @NotNull
+    final
     ArrayList<String> content;
     /**
      * Whether the generated tag object should export into the compiled data pack. By default this is

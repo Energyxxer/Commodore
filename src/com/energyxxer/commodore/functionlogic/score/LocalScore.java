@@ -1,24 +1,22 @@
 package com.energyxxer.commodore.functionlogic.score;
 
+import com.energyxxer.commodore.functionlogic.entity.Entity;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Objects;
 
 public class LocalScore {
     @Nullable
     private final Objective objective;
     @Nullable
-    private final ScoreHolder holder;
+    private final Entity holder;
 
-    public LocalScore(@Nullable ScoreHolder holder, @Nullable Objective objective) {
+    public LocalScore(@Nullable Entity holder, @Nullable Objective objective) {
         this.objective = objective;
         this.holder = holder;
     }
 
-    public LocalScore(@Nullable Objective objective, @Nullable ScoreHolder holder) {
+    public LocalScore(@Nullable Objective objective, @Nullable Entity holder) {
         this.objective = objective;
         this.holder = holder;
     }
@@ -29,15 +27,8 @@ public class LocalScore {
     }
 
     @Nullable
-    public ScoreHolder getHolder() {
+    public Entity getHolder() {
         return holder;
-    }
-
-    public Collection<MacroScore> getMacroScores() {
-        if(holder == null) return Collections.singletonList(new MacroScore(null, objective));
-        ArrayList<MacroScore> list = new ArrayList<>();
-        holder.getMacroHolders().forEach(h -> list.add(new MacroScore(h, objective)));
-        return list;
     }
 
     @Override
@@ -59,7 +50,6 @@ public class LocalScore {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(objective, holder);
     }
 }

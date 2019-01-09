@@ -7,7 +7,7 @@ import java.io.*;
 
 public class DirectoryCompoundInput implements CompoundInput {
     @NotNull
-    private File directory;
+    private final File directory;
 
     public DirectoryCompoundInput(@NotNull File directory) {
         this.directory = directory;

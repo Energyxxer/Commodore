@@ -4,7 +4,6 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.functions.FunctionSection;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -44,28 +43,9 @@ public class ExecuteCommand implements Command {
     }
 
     @Override
-    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
-        ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
-        for(ExecuteModifier modifier : modifiers) {
-            accesses.addAll(modifier.getScoreboardAccesses());
-        }
-        accesses.addAll(chainedCommand.getScoreboardAccesses());
-        return accesses;
-    }
-
-    @Override
-    public boolean isUsed() {
-        return Command.super.isUsed() && chainedCommand.isUsed();
-    }
-
-    @Override
     public void onAppend(@NotNull FunctionSection section, @NotNull ExecutionContext execContext) {
         Command.super.onAppend(section, execContext);
         chainedCommand.onAppend(section, new ExecutionContext(execContext.getOriginalSender(), this.modifiers));
     }
 
-    @Override
-    public boolean isScoreboardManipulation() {
-        return chainedCommand.isScoreboardManipulation();
-    }
 }

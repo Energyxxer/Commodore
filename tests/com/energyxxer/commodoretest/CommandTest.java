@@ -46,7 +46,6 @@ import com.energyxxer.commodore.functionlogic.commands.worldborder.WorldBorderSe
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
-import com.energyxxer.commodore.functionlogic.entity.GenericEntity;
 import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.functionlogic.functions.FunctionComment;
 import com.energyxxer.commodore.functionlogic.functions.FunctionHeaderComment;
@@ -57,7 +56,10 @@ import com.energyxxer.commodore.functionlogic.nbt.TagShort;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import com.energyxxer.commodore.functionlogic.rotation.Rotation;
 import com.energyxxer.commodore.functionlogic.rotation.RotationUnit;
-import com.energyxxer.commodore.functionlogic.score.*;
+import com.energyxxer.commodore.functionlogic.score.LocalScore;
+import com.energyxxer.commodore.functionlogic.score.Objective;
+import com.energyxxer.commodore.functionlogic.score.ObjectiveManager;
+import com.energyxxer.commodore.functionlogic.score.PlayerName;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.functionlogic.selector.arguments.*;
 import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.AdvancementCompletionEntry;
@@ -65,7 +67,6 @@ import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.Adv
 import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.AdvancementCriterionGroupEntry;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.module.CommandModule;
-import com.energyxxer.commodore.module.options.UnusedCommandPolicy;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.tags.BlockTag;
 import com.energyxxer.commodore.tags.FunctionTag;
@@ -74,7 +75,9 @@ import com.energyxxer.commodore.textcomponents.StringTextComponent;
 import com.energyxxer.commodore.textcomponents.TextColor;
 import com.energyxxer.commodore.textcomponents.TextStyle;
 import com.energyxxer.commodore.types.Type;
-import com.energyxxer.commodore.types.defaults.*;
+import com.energyxxer.commodore.types.defaults.BossbarReference;
+import com.energyxxer.commodore.types.defaults.FunctionReference;
+import com.energyxxer.commodore.types.defaults.TeamReference;
 import com.energyxxer.commodore.util.Delta;
 import com.energyxxer.commodore.util.NumberRange;
 import com.energyxxer.commodore.util.Particle;
@@ -82,6 +85,10 @@ import com.energyxxer.commodore.util.StatusEffect;
 
 import java.io.File;
 import java.io.IOException;
+
+import static com.energyxxer.commodore.functionlogic.commands.playsound.PlaySoundCommand.Source.MASTER;
+import static com.energyxxer.commodore.functionlogic.commands.recipe.RecipeCommand.Action.TAKE;
+import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.*;
 
 public class CommandTest {
     public static void main(String[] args) {
@@ -153,7 +160,6 @@ public class CommandTest {
 
 
         CommandModule module = new CommandModule("Commodore Test", "A simple Commodore test project", "ct");
-        module.getOptionManager().UNUSED_COMMAND_POLICY.setValue(UnusedCommandPolicy.COMMENT_OUT);
         try {
             StandardDefinitionPacks.MINECRAFT_JAVA_LATEST_RELEASE.populate(module);
         } catch(IOException x) {
@@ -168,8 +174,8 @@ public class CommandTest {
 
         Type bat = module.minecraft.getTypeManager().entity.get("bat");
 
-        GenericEntity entity = new GenericEntity(new Selector(Selector.BaseSelector.ALL_ENTITIES));
-        entity.getSelector().addArguments(new TypeArgument(bat), new TagArgument("a"), new TagArgument("!b"));
+        Selector entity = new Selector(ALL_ENTITIES);
+        entity.addArguments(new TypeArgument(bat), new TagArgument("a"), new TagArgument("!b"));
 
         Selector playerSelector = new Selector(Selector.BaseSelector.ALL_PLAYERS);
         AdvancementArgument advArg = new AdvancementArgument();
@@ -180,7 +186,7 @@ public class CommandTest {
         advArg.addEntry(criterionGroup);
         playerSelector.addArguments(advArg);
 
-        GenericEntity player = new GenericEntity(playerSelector);
+        Selector player = playerSelector;
 
         function.append(new AdvancementCommand(AdvancementCommand.Action.GRANT, player, AdvancementCommand.Limit.ONLY, "bar"));
 
@@ -198,7 +204,7 @@ public class CommandTest {
         function.append(new PlaySoundCommand("minecraft:ambient.cave", PlaySoundCommand.Source.MASTER, player, new CoordinateSet(500, 87, 500), 5, 0));
         function.append(new PlaySoundCommand("minecraft:ambient.cave", PlaySoundCommand.Source.MASTER, player, new CoordinateSet(500, 87, 500), 5, 0, 1));
 
-        function.append(new RecipeCommand(RecipeCommand.Action.TAKE, new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), "minecraft:banner_duplicate"));
+        function.append(new RecipeCommand(TAKE, new Selector(ALL_PLAYERS), "minecraft:banner_duplicate"));
 
         function.append(new SpreadPlayersCommand(player, new CoordinateSet(5, 0, 5), 3.2, 53.2, false));
 
@@ -210,9 +216,9 @@ public class CommandTest {
         function.append(new SummonCommand(bat, new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL), new TagCompound(new TagByte("Glowing", 1))));
 
         function.append(new TeleportCommand(new PlayerName("Energyxxer"), TeleportDestination.create(new CoordinateSet(0, 0, 2, Coordinate.Type.LOCAL)), TeleportFacing.create(new Rotation(12.5, 0, RotationUnit.Type.RELATIVE))));
-        Selector singlePlayerSelector = player.getSelector().clone();
+        Selector singlePlayerSelector = player.clone();
         singlePlayerSelector.addArguments(new LimitArgument(1));
-        Entity singlePlayer = new GenericEntity(singlePlayerSelector);
+        Entity singlePlayer = singlePlayerSelector;
         function.append(new TeleportCommand(entity, TeleportDestination.create(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE)), TeleportFacing.create(singlePlayer)));
 
         Objective t = module.getObjectiveManager().create("t", "trigger");
@@ -281,29 +287,25 @@ public class CommandTest {
 
         function.append(new FunctionComment("OTHERS"));
 
-        function.append(new GamemodeCommand(module.minecraft.getTypeManager().gamemode.get("spectator"), new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
-        function.append(new EffectGiveCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new StatusEffect(module.minecraft.getTypeManager().effect.get("resistance"), 100, 4)));
-        function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), module.minecraft.getTypeManager().effect.get("resistance")));
-        function.append(new EffectClearCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS))));
+        function.append(new GamemodeCommand(module.minecraft.getTypeManager().gamemode.get("spectator"), new Selector(ALL_PLAYERS)));
+        function.append(new EffectGiveCommand(new Selector(ALL_PLAYERS), new StatusEffect(module.minecraft.getTypeManager().effect.get("resistance"), 100, 4)));
+        function.append(new EffectClearCommand(new Selector(ALL_PLAYERS), module.minecraft.getTypeManager().effect.get("resistance")));
+        function.append(new EffectClearCommand(new Selector(ALL_PLAYERS)));
 
         Function otherFunction = module.getNamespace("test").getFunctionManager().create("some_other_function");
-        otherFunction.append(new PlaySoundCommand("minecraft:block.note.harp", PlaySoundCommand.Source.MASTER, new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), new CoordinateSet(0,0,0), 1, 1, 1));
+        otherFunction.append(new PlaySoundCommand("minecraft:block.note.harp", MASTER, new Selector(ALL_PLAYERS), new CoordinateSet(0, 0, 0), 1, 1, 1));
         otherFunction.append(new ScoreSet(new LocalScore(objMgr.get("return"), otherFunction.getSender()), 1));
         function.append(new FunctionCommand(otherFunction));
         function.append(new ScoreGet(new LocalScore(objMgr.get("return"), function.getSender())));
 
         {
-            MacroScoreHolder testMacro = new MacroScoreHolder("Test Holder");
-
-            GenericEntity entity1 = new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS));
-            entity1.addMacroHolder(testMacro);
+            Entity entity1 = new Selector(ALL_PLAYERS);
 
             //otherFunction.append(new ScoreSet(new LocalScore(t, entity1), 4));
 
             ScoreArgument scoreArg = new ScoreArgument();
             scoreArg.put(t, new NumberRange<>(1, 5));
-            GenericEntity entity2 = new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS, scoreArg));
-            entity2.addMacroHolder(testMacro);
+            Entity entity2 = new Selector(ALL_PLAYERS, scoreArg);
 
             ExecuteCommand exec1 = new ExecuteCommand(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("bubble")), new CoordinateSet(0,0,0, Coordinate.Type.RELATIVE), new Delta(0,0,0), 0, 100, true, entity1));
             exec1.addModifier(new ExecuteInDimension(module.minecraft.getTypeManager().dimension.get("the_end")));
@@ -342,7 +344,7 @@ public class CommandTest {
 
         otherFunction.append(new LocateCommand(module.minecraft.getTypeManager().structure.get("Village")));
 
-        otherFunction.append(new EnchantCommand(new GenericEntity(new Selector(Selector.BaseSelector.ALL_PLAYERS)), module.minecraft.getTypeManager().enchantment.get("looting"), 3));
+        otherFunction.append(new EnchantCommand(new Selector(ALL_PLAYERS), module.minecraft.getTypeManager().enchantment.get("looting"), 3));
 
         otherFunction.append(new WorldBorderSetCenter(new CoordinateSet(-2000, 0, 70)));
         otherFunction.append(new WorldBorderSetDistance(200));
@@ -354,10 +356,9 @@ public class CommandTest {
 
         Objective obj = module.getObjectiveManager().create("obj", true);
 
-        Entity entityA = new GenericEntity(new Selector(Selector.BaseSelector.SENDER));
-        entityA.addMacroHolder(new MacroScoreHolder("INSTANCE"));
+        Entity entityA = new Selector(SENDER);
 
-        ScoreHolder fakePlayer = new PlayerName("TEMPEST");
+        Entity fakePlayer = new PlayerName("TEMPEST");
 
         scoreTest.append(new ScoreSet(new LocalScore(obj, entityA), 5));
         scoreTest.append(new ScoreSet(new LocalScore(obj, fakePlayer), 9));
@@ -400,8 +401,6 @@ public class CommandTest {
         //System.out.println(otherFunction.getResolvedContent());
 
         System.out.println(function.getResolvedContent());
-
-        System.out.println(function.getAccessLog());
 
         System.out.println(module.getNamespace("ct").getFunctionManager().get("init_objectives").getResolvedContent());
 

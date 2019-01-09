@@ -11,8 +11,4 @@ public class ListCommand implements Command {
         return new CommandResolution(execContext, "list");
     }
 
-    @Override
-    public boolean isScoreboardManipulation() {
-        return true;
-    }
 }

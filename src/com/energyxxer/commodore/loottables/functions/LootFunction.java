@@ -183,7 +183,7 @@ public abstract class LootFunction {
     }
 
     public static class EnchantRandomly extends LootFunction {
-        private Collection<Type> enchantments;
+        private final Collection<Type> enchantments;
 
         public EnchantRandomly(Type... enchantments) {
             this(Arrays.asList(enchantments));
@@ -212,8 +212,8 @@ public abstract class LootFunction {
     }
 
     public static class EnchantWithLevels extends LootFunction {
-        private int minLevels;
-        private int maxLevels;
+        private final int minLevels;
+        private final int maxLevels;
         private boolean treasure = false;
 
         public EnchantWithLevels(int levels) {
@@ -245,9 +245,9 @@ public abstract class LootFunction {
     }
 
     public static class LootingEnchant extends LootFunction {
-        private int minCount;
-        private int maxCount;
-        private int limit;
+        private final int minCount;
+        private final int maxCount;
+        private final int limit;
 
         public LootingEnchant(int count) {
             this(count, -1);

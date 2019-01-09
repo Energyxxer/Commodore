@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class LootFunctions {
-    private ArrayList<LootFunction> functions = new ArrayList<>();
+    private final ArrayList<LootFunction> functions = new ArrayList<>();
 
     public void add(LootFunction function) {
         functions.add(function);

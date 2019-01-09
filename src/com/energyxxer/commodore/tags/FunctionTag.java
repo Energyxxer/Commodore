@@ -16,7 +16,7 @@ public class FunctionTag extends Tag {
     private boolean export = true;
 
     @NotNull
-    private TagGroup<?> group;
+    private final TagGroup<?> group;
 
     FunctionTag(@NotNull TagGroup group, @NotNull Namespace namespace, @NotNull String id) {
         super(FunctionReference.CATEGORY, namespace, id);

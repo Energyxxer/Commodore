@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class TagCompoundTraverser {
-    private Stack<ComplexNBTTag> tagStack = new Stack<>();
-    private Stack<Integer> indexStack = new Stack<>();
+    private final Stack<ComplexNBTTag> tagStack = new Stack<>();
+    private final Stack<Integer> indexStack = new Stack<>();
 
     public TagCompoundTraverser(ComplexNBTTag parent) {
         tagStack.push(parent);

@@ -23,8 +23,4 @@ public class TeamListCommand extends TeamCommand {
         return new CommandResolution(execContext, "team list" + (reference !=  null ? " " + reference : ""));
     }
 
-    @Override
-    public boolean isScoreboardManipulation() {
-        return true;
-    }
 }

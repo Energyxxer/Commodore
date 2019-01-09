@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class ForceLoadQueryCommand extends ForceLoadCommand {
     @Nullable
-    private CoordinateSet column;
+    private final CoordinateSet column;
 
     public ForceLoadQueryCommand() {
         this(null);

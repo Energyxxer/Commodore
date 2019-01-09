@@ -5,10 +5,7 @@ import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.nbt.NumericNBTType;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Collection;
 
 public class ExecuteStoreEntity extends ExecuteStore {
     @NotNull
@@ -43,12 +40,7 @@ public class ExecuteStoreEntity extends ExecuteStore {
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + "entity \be0 " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.numberToPlainString(scale), entity);
-    }
-
-    @Override
-    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return entity.getScoreboardAccesses();
+        return new SubCommandResult(execContext, this.getStarter() + "entity " + entity + " " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.numberToPlainString(scale));
     }
 
     @Override

@@ -17,7 +17,7 @@ public class FluidTag extends Tag {
     private boolean export = true;
 
     @NotNull
-    private TagGroup<?> group;
+    private final TagGroup<?> group;
 
     FluidTag(@NotNull TagGroup group, @NotNull Namespace namespace, @NotNull String id) {
         super(FluidType.CATEGORY, namespace, id);

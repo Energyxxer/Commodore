@@ -12,8 +12,4 @@ public class SeedCommand implements Command {
         return new CommandResolution(execContext, "seed");
     }
 
-    @Override
-    public boolean isScoreboardManipulation() {
-        return true;
-    }
 }

@@ -16,9 +16,9 @@ public class TimeSpan {
         }
     }
 
-    public double amount;
+    public final double amount;
     @NotNull
-    public Units units;
+    public final Units units;
 
     public TimeSpan(int amount) {
         this(amount, Units.TICKS);

@@ -23,8 +23,4 @@ public class LocateCommand implements Command {
         return new CommandResolution(execContext, "locate " + structure);
     }
 
-    @Override
-    public boolean isScoreboardManipulation() {
-        return true;
-    }
 }

@@ -1,7 +1,5 @@
 package com.energyxxer.commodore.textcomponents;
 
-import com.energyxxer.commodore.functionlogic.inspection.CommandEmbeddable;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -32,20 +30,6 @@ public class ListTextComponent extends TextComponent {
     @Override
     public boolean supportsProperties() {
         return false;
-    }
-
-    @Override
-    public @NotNull Collection<ScoreboardAccess> getScoreboardAccesses() {
-        ArrayList<ScoreboardAccess> accesses = new ArrayList<>();
-        children.forEach(c -> accesses.addAll(c.getScoreboardAccesses()));
-        return accesses;
-    }
-
-    @Override
-    public Collection<CommandEmbeddable> getEmbeddables() {
-        ArrayList<CommandEmbeddable> embeddables = new ArrayList<>();
-        children.forEach(c -> embeddables.addAll(c.getEmbeddables()));
-        return embeddables;
     }
 
     @Override

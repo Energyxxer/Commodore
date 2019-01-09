@@ -11,8 +11,4 @@ public class WorldBorderGetWidth extends WorldBorderCommand {
         return new CommandResolution(execContext, "worldborder get");
     }
 
-    @Override
-    public boolean isScoreboardManipulation() {
-        return true;
-    }
 }

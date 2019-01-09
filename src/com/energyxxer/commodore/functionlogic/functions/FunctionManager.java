@@ -28,10 +28,6 @@ public class FunctionManager {
         return (existing != null) ? existing : forceCreate(name);
     }
 
-    public void resolveAccessLogs() {
-        functions.values().forEach(Function::resolveAccessLogs);
-    }
-
     public boolean contains(@NotNull String name) {
         return functions.containsKey(name);
     }

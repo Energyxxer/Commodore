@@ -6,7 +6,6 @@ import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
 public class BossbarSetValueCommand extends BossbarSetCommand {
-    @NotNull
     private int value;
 
     public BossbarSetValueCommand(@NotNull Type bossbar, int value) {

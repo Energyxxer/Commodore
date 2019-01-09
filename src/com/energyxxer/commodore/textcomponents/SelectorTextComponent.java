@@ -1,12 +1,9 @@
 package com.energyxxer.commodore.textcomponents;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
-import com.energyxxer.commodore.functionlogic.inspection.CommandEmbeddable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Collection;
-import java.util.Collections;
 
 public class SelectorTextComponent extends TextComponent {
     @NotNull
@@ -28,7 +25,7 @@ public class SelectorTextComponent extends TextComponent {
 
     @Override
     public String toString(TextComponent parent) {
-        String escapedText = "\"\be#\r\"";
+        String escapedText = "\"" + CommandUtils.escape(entity.toString()) + "\"";
         String baseProperties = this.getBaseProperties(parent);
         return "{\"selector\":" +
                         escapedText +
@@ -36,8 +33,4 @@ public class SelectorTextComponent extends TextComponent {
                         '}';
     }
 
-    @Override
-    public Collection<CommandEmbeddable> getEmbeddables() {
-        return Collections.singletonList(entity);
-    }
 }

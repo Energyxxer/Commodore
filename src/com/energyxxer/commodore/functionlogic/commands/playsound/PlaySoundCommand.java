@@ -6,12 +6,8 @@ import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 public class PlaySoundCommand implements Command {
 
@@ -64,7 +60,7 @@ public class PlaySoundCommand implements Command {
         return new CommandResolution(execContext, "playsound " +
                 sound + " " +
                 source.toString().toLowerCase() + " " +
-                "\be0" +
+                player +
                 ((location != null) ?
                         " " + location +
                                 ((maxVolume != -1) ?
@@ -76,11 +72,7 @@ public class PlaySoundCommand implements Command {
                                                                         : "")
                                                         : "")
                                         : "")
-                        : ""), player);
+                        : ""));
     }
 
-    @Override @NotNull
-    public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return new ArrayList<>(player.getScoreboardAccesses());
-    }
 }

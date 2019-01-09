@@ -4,11 +4,7 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 public class RecipeCommand implements Command {
     public enum Action {
@@ -36,11 +32,7 @@ public class RecipeCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "recipe " + action.toString().toLowerCase() + " \be0 " + recipeName, player);
+        return new CommandResolution(execContext, "recipe " + action.toString().toLowerCase() + " " + player + " " + recipeName);
     }
 
-    @Override @NotNull
-    public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return new ArrayList<>(player.getScoreboardAccesses());
-    }
 }

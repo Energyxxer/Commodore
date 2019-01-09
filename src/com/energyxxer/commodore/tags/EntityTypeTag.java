@@ -17,7 +17,7 @@ public class EntityTypeTag extends Tag {
     private boolean export = true;
 
     @NotNull
-    private TagGroup<?> group;
+    private final TagGroup<?> group;
 
     EntityTypeTag(@NotNull TagGroup group, @NotNull Namespace namespace, @NotNull String id) {
         super(EntityType.CATEGORY, namespace, id);

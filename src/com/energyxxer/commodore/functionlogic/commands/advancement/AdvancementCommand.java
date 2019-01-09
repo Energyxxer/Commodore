@@ -4,7 +4,6 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -75,11 +74,7 @@ public class AdvancementCommand implements Command {
             }
         }
         return new CommandResolution(execContext,
-                "advancement " + action.toString().toLowerCase() + " \be0 " + limit.toString().toLowerCase() + ((limit.takesAdvancement) ? " " + advancement : "") + ((limit.takesCriteria) ? criteriaStr.toString() : ""), player);
+                "advancement " + action.toString().toLowerCase() + " " + player + " " + limit.toString().toLowerCase() + ((limit.takesAdvancement) ? " " + advancement : "") + ((limit.takesCriteria) ? criteriaStr.toString() : ""));
     }
 
-    @Override @NotNull
-    public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return new ArrayList<>(player.getScoreboardAccesses());
-    }
 }

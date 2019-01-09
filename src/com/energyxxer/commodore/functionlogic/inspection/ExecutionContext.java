@@ -48,6 +48,7 @@ public class ExecutionContext {
     public ExecutionContext(@NotNull Entity originalSender, @NotNull Collection<ExecuteModifier> modifiers) {
         this.originalSender = originalSender;
         this.modifiers.addAll(modifiers);
+        this.finalSender = originalSender;
         updateFinalSender();
     }
 

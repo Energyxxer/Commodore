@@ -3,13 +3,9 @@ package com.energyxxer.commodore.functionlogic.commands.replaceitem;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertSlot;
 import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
@@ -40,11 +36,7 @@ public class ReplaceItemEntityCommand extends ReplaceItemCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "replaceitem entity \be0 " + slot + " " + item + (count != 1 ? " " + count : ""), entity);
+        return new CommandResolution(execContext, "replaceitem entity " + entity + " " + slot + " " + item + (count != 1 ? " " + count : ""));
     }
 
-    @Override @NotNull
-    public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return new ArrayList<>(entity.getScoreboardAccesses());
-    }
 }

@@ -3,7 +3,7 @@ package com.energyxxer.commodore.loottables;
 import com.google.gson.JsonObject;
 
 public class LootNestedEntry extends LootEntry {
-    private String lootTableName;
+    private final String lootTableName;
 
     public LootNestedEntry(String lootTableName) {
         super("loot_table");

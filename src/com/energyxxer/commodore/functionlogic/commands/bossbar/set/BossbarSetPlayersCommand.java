@@ -25,7 +25,7 @@ public class BossbarSetPlayersCommand extends BossbarSetCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return players != null ? new CommandResolution(execContext, getBase() + "players \be0", players)
+        return players != null ? new CommandResolution(execContext, getBase() + "players " + players)
                 : new CommandResolution(execContext, getBase() + "players");
     }
 }

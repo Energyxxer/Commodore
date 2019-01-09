@@ -4,11 +4,7 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.score.access.ScoreboardAccess;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 public class TagCommand implements Command {
     public enum Action {
@@ -30,11 +26,7 @@ public class TagCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "tag \be0 " + action.toString().toLowerCase() + " " + tag, entity);
+        return new CommandResolution(execContext, "tag " + entity + " " + action.toString().toLowerCase() + " " + tag);
     }
 
-    @Override @NotNull
-    public Collection<ScoreboardAccess> getScoreboardAccesses() {
-        return new ArrayList<>(entity.getScoreboardAccesses());
-    }
 }

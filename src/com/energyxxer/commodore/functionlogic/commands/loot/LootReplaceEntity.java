@@ -22,6 +22,6 @@ public class LootReplaceEntity implements LootCommand.LootDestination {
     @NotNull
     @Override
     public CommandDelegateResolution resolve() {
-        return new CommandDelegateResolution("replace entity \be0 " + slot, entity);
+        return new CommandDelegateResolution("replace entity " + entity + " " + slot);
     }
 }

@@ -36,11 +36,12 @@ public class TextStyle {
         this(color, (byte) 0);
     }
 
-    public TextStyle(TextColor color, int flags) {
+    public TextStyle(@Nullable TextColor color, int flags) {
         this.color = color;
         this.flags = (byte) flags;
     }
 
+    @Nullable
     public TextColor getColor() {
         return color;
     }

@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 public class FunctionComment implements FunctionWriter {
     @NotNull
-    protected Collection<@NotNull String> lines;
+    protected final Collection<@NotNull String> lines;
 
     public FunctionComment(String... lines) {
         this.lines = Arrays.asList(lines);

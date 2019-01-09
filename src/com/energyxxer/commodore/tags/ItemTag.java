@@ -18,7 +18,7 @@ public class ItemTag extends Tag {
     private boolean export = true;
 
     @NotNull
-    private TagGroup group;
+    private final TagGroup group;
 
     ItemTag(@NotNull TagGroup group, @NotNull Namespace namespace, @NotNull String id) {
         super(ItemType.CATEGORY, namespace, id);

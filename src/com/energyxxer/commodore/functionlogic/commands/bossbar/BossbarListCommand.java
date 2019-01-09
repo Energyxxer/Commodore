@@ -10,8 +10,4 @@ public class BossbarListCommand extends BossbarCommand {
         return new CommandResolution(execContext, "bossbar list");
     }
 
-    @Override
-    public boolean isScoreboardManipulation() {
-        return true;
-    }
 }

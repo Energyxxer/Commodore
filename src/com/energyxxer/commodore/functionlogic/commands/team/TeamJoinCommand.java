@@ -24,6 +24,6 @@ public class TeamJoinCommand extends TeamCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return (entity != null) ? new CommandResolution(execContext, "team join " + reference + " \be0", entity) : new CommandResolution(execContext, "team join " + reference);
+        return (entity != null) ? new CommandResolution(execContext, "team join " + reference + " " + entity) : new CommandResolution(execContext, "team join " + reference);
     }
 }

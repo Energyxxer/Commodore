@@ -25,7 +25,7 @@ public class DataRemoveCommand extends DataCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        if(entity != null) return new CommandResolution(execContext, "data remove entity \be0 " + path, entity);
+        if(entity != null) return new CommandResolution(execContext, "data remove entity " + entity + " " + path);
         return new CommandResolution(execContext, "data remove block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path);
     }
 }

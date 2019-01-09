@@ -14,7 +14,7 @@ public class Pool {
     private int maxRolls = 1;
     private int minBonusRolls = 0;
     private int maxBonusRolls = 0;
-    private ArrayList<LootEntry> entries = new ArrayList<>();
+    private final ArrayList<LootEntry> entries = new ArrayList<>();
 
     public final LootFunctions functions = new LootFunctions();
     public final LootConditions conditions = new LootConditions();
