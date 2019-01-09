@@ -6,6 +6,10 @@ import java.util.Collection;
 
 public class TagIntArray extends ArrayNBTTag<TagInt> {
 
+    public TagIntArray() {
+        this("");
+    }
+
     public TagIntArray(@NotNull String name) {
         super(name, TagInt.class);
     }

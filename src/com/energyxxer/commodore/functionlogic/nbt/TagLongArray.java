@@ -6,6 +6,10 @@ import java.util.Collection;
 
 public class TagLongArray extends ArrayNBTTag<TagLong> {
 
+    public TagLongArray() {
+        this("");
+    }
+
     public TagLongArray(@NotNull String name) {
         super(name, TagLong.class);
     }
