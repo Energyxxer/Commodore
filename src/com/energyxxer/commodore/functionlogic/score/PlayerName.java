@@ -35,12 +35,17 @@ public class PlayerName implements Entity {
 
     @Override
     public Entity limitToOne() {
-        return this;
+        return this.clone();
     }
 
     @Override
     public Entity clone() {
         return new PlayerName(this.name);
+    }
+
+    @Override
+    public boolean isUnknownType() {
+        return false;
     }
 
     @Override

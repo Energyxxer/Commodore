@@ -359,12 +359,12 @@ public class Selector implements Entity, Cloneable {
         return false;
     }
 
-    /**
-     * Checks whether this selector targets only entities of type 'minecraft:player', using information from both
-     * the base selector and the 'type' argument, if it exists.
-     *
-     * @return <code>true</code> if the 'type' argument exists
-     * */
+    @Override
+    public boolean isUnknownType() {
+        return base == BaseSelector.SENDER;
+    }
+
+    @Override
     public boolean isPlayer() {
         if(base.player.isEnforced()) return base.player.getValue();
         for(SelectorArgument type : getArgumentsByKey("type")) {

@@ -34,6 +34,16 @@ public interface Entity extends Cloneable {
     Entity clone();
 
     /**
+     * Checks whether the type of the entities represented by this object cannot be known just from this object's values.
+     * An example of this is the @s selector, where @s could mean any entity type, even if it only returns one entity.
+     *
+     * Should return false if it expected to return more than one entity type.
+     *
+     * @return <code>true</code> if this entity represents a single unknown entity type, <code>false</code> otherwise.
+     * */
+    boolean isUnknownType();
+
+    /**
      * Checks whether all the entities represented by this object are guaranteed to be of type
      * <code>minecraft:player</code>.
      *
@@ -47,7 +57,7 @@ public interface Entity extends Cloneable {
      * @throws IllegalArgumentException If this entity doesn't represent only players.
      * */
     default void assertPlayer() {
-        if(!isPlayer()) throw new IllegalArgumentException("Provided entity '" + this + "' includes non-player entities, expected only players");
+        if(!isUnknownType() && !isPlayer()) throw new IllegalArgumentException("Provided entity '" + this + "' includes non-player entities, expected only players");
     }
 
     /**

@@ -54,6 +54,11 @@ public class GenericEntity implements Entity {
     }
 
     @Override
+    public boolean isUnknownType() {
+        return selector.isUnknownType();
+    }
+
+    @Override
     public boolean isPlayer() {
         return selector.isPlayer() || selector.getBase().equals(Selector.BaseSelector.SENDER);
     }
