@@ -54,6 +54,17 @@ public class TypeDictionary {
     }
 
     /**
+     * Checks if a type by the given name exists
+     *
+     * @param name The name to check if it exists.
+     *
+     * @return true if this dictionary contains the given name, false otherwise
+     * */
+    public boolean exists(@NotNull String name) {
+        return types.containsKey(name);
+    }
+
+    /**
      * Creates a type with the given name. If a type by that name already exists in this dictionary, that
      * already-existing type will be returned. Otherwise it will be created.
      *

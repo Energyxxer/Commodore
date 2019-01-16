@@ -110,7 +110,9 @@ public class TagCompound extends ComplexNBTTag {
         Iterator<NBTTag> it = content.iterator();
         while(it.hasNext()) {
             NBTTag tag = it.next();
-            sb.append(tag.toString());
+            sb.append(tag.toHeaderString());
+            sb.append(':');
+            sb.append(tag.toHeadlessString());
             if(it.hasNext()) sb.append(',');
         }
         sb.append('}');

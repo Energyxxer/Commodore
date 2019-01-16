@@ -17,9 +17,9 @@ public class TranslateTextComponent extends TextComponent {
     }
 
     @Override
-    public String toString(TextComponent parent) {
+    public String toString(TextStyle parentStyle) {
         String escapedText = "\"" + CommandUtils.escape(translateKey) + "\"";
-        String baseProperties = this.getBaseProperties(parent);
+        String baseProperties = this.getBaseProperties(parentStyle);
         return "{\"translate\":" +
                         escapedText +
                         (baseProperties != null ? "," + baseProperties : "") +

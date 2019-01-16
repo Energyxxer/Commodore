@@ -17,9 +17,9 @@ public class KeybindTextComponent extends TextComponent {
     }
 
     @Override
-    public String toString(TextComponent parent) {
+    public String toString(TextStyle parentStyle) {
         String escapedText = "\"" + CommandUtils.escape(key) + "\"";
-        String baseProperties = this.getBaseProperties(parent);
+        String baseProperties = this.getBaseProperties(parentStyle);
         return "{\"keybind\":" +
                         escapedText +
                         (baseProperties != null ? "," + baseProperties : "") +

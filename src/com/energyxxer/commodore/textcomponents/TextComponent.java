@@ -50,11 +50,11 @@ public abstract class TextComponent {
         this.events.clear();
     }
 
-    protected String getBaseProperties(TextComponent parent) {
+    protected String getBaseProperties(TextStyle parentStyle) {
         if(!supportsProperties()) return null;
 
         ArrayList<String> properties = new ArrayList<>();
-        String styleString = style.toString(parent != null ? parent.getStyle() : null);
+        String styleString = style.toString(parentStyle);
         if(styleString != null) properties.add(styleString);
         events.forEach(e -> properties.add(e.toString()));
 
@@ -69,7 +69,7 @@ public abstract class TextComponent {
         return sb.toString();
     }
 
-    public abstract String toString(TextComponent parent);
+    public abstract String toString(TextStyle parentStyle);
 
     @Override
     public String toString() {

@@ -8,7 +8,7 @@ public enum TextColor {
     DARK_RED('4'),
     DARK_PURPLE('5'),
     GOLD('6'),
-    LIGHT_GRAY('7'),
+    GRAY('7'),
     DARK_GRAY('8'),
     BLUE('9'),
     GREEN('a'),

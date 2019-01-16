@@ -10,7 +10,10 @@ import com.energyxxer.commodore.functionlogic.commands.setblock.SetblockCommand;
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.functions.Function;
-import com.energyxxer.commodore.functionlogic.nbt.*;
+import com.energyxxer.commodore.functionlogic.nbt.TagByte;
+import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
+import com.energyxxer.commodore.functionlogic.nbt.TagInt;
+import com.energyxxer.commodore.functionlogic.nbt.TagIntArray;
 import com.energyxxer.commodore.functionlogic.nbt.path.*;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.item.Item;
@@ -23,6 +26,9 @@ import com.energyxxer.commodore.loottables.items.LootItemEntry;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
+import com.energyxxer.commodore.textcomponents.ListTextComponent;
+import com.energyxxer.commodore.textcomponents.StringTextComponent;
+import com.energyxxer.commodore.textcomponents.TextStyle;
 import com.energyxxer.commodore.util.attributes.Attribute;
 
 import java.io.File;
@@ -103,6 +109,22 @@ public class V114Test {
         TagCompound root = new TagCompound();
         root.add(new TagIntArray("CookTime", 1, 1, 1, 1));
         root.add(new TagIntArray("CookTimeTotal", 1, 1, 1, 1));
+
+
+        ListTextComponent lt = new ListTextComponent();
+        lt.append(new StringTextComponent("AAA", new TextStyle() {
+            {
+                this.setMask(ITALIC);
+                this.setFlags(ITALIC);
+            }
+        }));
+        lt.append(new StringTextComponent("BBB", new TextStyle() {
+            {
+                this.setMask(ITALIC);
+            }
+        }));
+
+        System.out.println(lt.toString());
 
         System.out.println(root.toHeadlessString());
     }

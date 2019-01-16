@@ -24,6 +24,12 @@ public class TextStyle {
         EMPTY_STYLE.setMask(0);
     }
 
+    public TextStyle(TextStyle other) {
+        this.color = other.color;
+        this.mask = other.mask;
+        this.flags = other.flags;
+    }
+
     public TextStyle() {
         this(null, (byte) 0);
     }
@@ -68,7 +74,7 @@ public class TextStyle {
 
     public byte getMaskForParent(TextStyle parentStyle) {
         if(parentStyle == null) parentStyle = EMPTY_STYLE;
-        return (byte) ((parentStyle.mask | this.mask) & (~parentStyle.mask | (parentStyle.flags ^ this.flags)));
+        return (byte) (this.mask & ~(parentStyle.mask & (parentStyle.flags & this.flags)));
     }
 
     @Override
@@ -119,5 +125,17 @@ public class TextStyle {
         int result = color != null ? color.hashCode() : 0;
         result = 31 * result + (int) flags;
         return result;
+    }
+
+    public TextStyle merge(TextStyle other) {
+        if(other == null) return new TextStyle(this);
+        int newMask = this.mask | other.mask;
+        int newFlags = other.flags | ((~other.mask & this.mask) & this.flags);
+        TextColor newColor = this.color;
+        if(newColor == null) newColor = other.color;
+        TextStyle newStyle = new TextStyle(newColor);
+        newStyle.mask = (byte) newMask;
+        newStyle.flags = (byte) newFlags;
+        return newStyle;
     }
 }

@@ -45,7 +45,7 @@ public abstract class NBTTag {
 
     @Override
     public String toString() {
-        return this.toHeaderString() + ":" + this.toHeadlessString();
+        return this.toHeadlessString();
     }
 
     @NotNull

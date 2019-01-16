@@ -44,7 +44,7 @@ public class TagLong extends NumericNBTTag<Long> {
     @NotNull
     @Override
     public String getType() {
-        return "TAG_LONG";
+        return "TAG_Long";
     }
 
     @NotNull

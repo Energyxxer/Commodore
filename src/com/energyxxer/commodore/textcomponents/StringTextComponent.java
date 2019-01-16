@@ -23,9 +23,9 @@ public class StringTextComponent extends TextComponent {
     }
 
     @Override
-    public String toString(TextComponent parent) {
+    public String toString(TextStyle parentStyle) {
         String escapedText = "\"" + CommandUtils.escape(text) + "\"";
-        String baseProperties = this.getBaseProperties(parent);
+        String baseProperties = this.getBaseProperties(parentStyle);
         return (baseProperties == null) ? escapedText :
                 "{\"text\":" +
                         escapedText +

@@ -24,9 +24,9 @@ public class SelectorTextComponent extends TextComponent {
     }
 
     @Override
-    public String toString(TextComponent parent) {
+    public String toString(TextStyle parentStyle) {
         String escapedText = "\"" + CommandUtils.escape(entity.toString()) + "\"";
-        String baseProperties = this.getBaseProperties(parent);
+        String baseProperties = this.getBaseProperties(parentStyle);
         return "{\"selector\":" +
                         escapedText +
                         (baseProperties != null ? "," + baseProperties : "") +
