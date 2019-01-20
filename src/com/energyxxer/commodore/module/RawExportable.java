@@ -8,15 +8,19 @@ public class RawExportable implements Exportable {
     @NotNull
     private final String exportPath;
     @NotNull
-    private final String fileContent;
+    private final byte[] data;
 
     public RawExportable(@NotNull String exportPath) {
         this(exportPath, "");
     }
 
     public RawExportable(@NotNull String exportPath, @NotNull String fileContent) {
+        this(exportPath, fileContent.getBytes());
+    }
+
+    public RawExportable(@NotNull String exportPath, @NotNull byte[] data) {
         this.exportPath = exportPath;
-        this.fileContent = fileContent;
+        this.data = data;
 
         if(exportPath.contains("..")) throw new IllegalArgumentException("Parent directory path elements (../) are not allowed in an exportable");
     }
@@ -39,7 +43,7 @@ public class RawExportable implements Exportable {
 
     @Override
     @NotNull
-    public String getContents() {
-        return fileContent;
+    public byte[] getContents() {
+        return data;
     }
 }

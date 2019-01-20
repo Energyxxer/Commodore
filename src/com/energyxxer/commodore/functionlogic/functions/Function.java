@@ -1,7 +1,6 @@
 package com.energyxxer.commodore.functionlogic.functions;
 
 import com.energyxxer.commodore.functionlogic.entity.Entity;
-import com.energyxxer.commodore.functionlogic.entity.GenericEntity;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.module.Exportable;
@@ -13,7 +12,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector;
 import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.SENDER;
 
 public class Function implements FunctionSection, Exportable {
@@ -146,8 +144,8 @@ public class Function implements FunctionSection, Exportable {
 
     @NotNull
     @Override
-    public String getContents() {
-        return getResolvedContent();
+    public byte[] getContents() {
+        return getResolvedContent().getBytes();
     }
 
     @Override

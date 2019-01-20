@@ -21,12 +21,12 @@ public class Item {
      * The {@link Type} of this item. Can be an item tag.
      * */
     @NotNull
-    private final Type type;
+    private Type type;
     /**
      * The {@link TagCompound} NBT data for this item, if applicable.
      * */
     @Nullable
-    private final TagCompound nbt;
+    private TagCompound nbt;
 
     /**
      * Creates an Item of the specific {@link Type}.
@@ -72,6 +72,25 @@ public class Item {
     @Nullable
     public TagCompound getNBT() {
         return nbt;
+    }
+
+    /**
+     * Sets this item's type.
+     *
+     * @param type The new {@link Type} to assign to this item.
+     * */
+    public void setItemType(@NotNull Type type) {
+        assertItem(type);
+        this.type = type;
+    }
+
+    /**
+     * Sets this item's NBT.
+     *
+     * @param nbt The new {@link TagCompound} to assign to this item's NBT.
+     * */
+    public void setNbt(@Nullable TagCompound nbt) {
+        this.nbt = nbt;
     }
 
     @Override

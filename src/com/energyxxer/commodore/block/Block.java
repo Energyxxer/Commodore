@@ -25,7 +25,7 @@ public class Block {
      * The {@link Type} of this block. Can be a block tag.
      * */
     @NotNull
-    private final Type type;
+    private Type type;
     /**
      * The {@link Blockstate} of this block, if applicable.
      * */
@@ -35,7 +35,7 @@ public class Block {
      * The {@link TagCompound} NBT data for this block, if applicable.
      * */
     @Nullable
-    private final TagCompound nbt;
+    private TagCompound nbt;
 
     /**
      * Creates a Block of the specific {@link Type}.
@@ -113,6 +113,34 @@ public class Block {
      * */
     public @Nullable TagCompound getNBT() {
         return nbt;
+    }
+
+    /**
+     * Sets this block's type.
+     *
+     * @param type The new {@link Type} to assign to this block.
+     * */
+    public void setBlockType(@NotNull Type type) {
+        assertBlock(type);
+        this.type = type;
+    }
+
+    /**
+     * Sets this block's blockstate.
+     *
+     * @param state The new {@link Blockstate} for this block.
+     * */
+    public void setBlockstate(@Nullable Blockstate state) {
+        this.state = state;
+    }
+
+    /**
+     * Sets this block's NBT.
+     *
+     * @param nbt The new {@link TagCompound} to assign to this block's NBT.
+     * */
+    public void setNbt(@Nullable TagCompound nbt) {
+        this.nbt = nbt;
     }
 
     @Override

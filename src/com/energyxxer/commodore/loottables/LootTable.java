@@ -73,7 +73,7 @@ public class LootTable implements Exportable {
     }
 
     @Override
-    public String getContents() {
+    public byte[] getContents() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         JsonObject root = new JsonObject();
@@ -86,6 +86,6 @@ public class LootTable implements Exportable {
 
         functions.constructInto(root);
 
-        return gson.toJson(root);
+        return gson.toJson(root).getBytes();
     }
 }

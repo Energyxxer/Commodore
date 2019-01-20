@@ -316,7 +316,7 @@ public class CommandTest {
         FunctionTag tick = module.minecraft.getTagManager().functionTags.create("tick");
         tick.addValue(new FunctionReference(otherFunction));
 
-        function.append(new FunctionHeaderComment(buttons.getContents().split("\n")));
+        function.append(new FunctionHeaderComment(new String(buttons.getContents()).split("\n")));
 
         otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit"))));
         otherFunction.append(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("crit")), new CoordinateSet(0, 0, 5, Coordinate.Type.LOCAL)));

@@ -135,7 +135,7 @@ public abstract class Tag extends Type implements Exportable {
 
     @Override
     @NotNull
-    public String getContents() {
+    public byte[] getContents() {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
         JsonObject root = new JsonObject();
@@ -146,7 +146,7 @@ public abstract class Tag extends Type implements Exportable {
             list.add(value.toString());
         }
 
-        return gson.toJson(root);
+        return gson.toJson(root).getBytes();
     }
 
     @Override

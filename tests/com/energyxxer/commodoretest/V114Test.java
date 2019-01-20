@@ -26,6 +26,7 @@ import com.energyxxer.commodore.loottables.items.LootItemEntry;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
+import com.energyxxer.commodore.tags.ItemTag;
 import com.energyxxer.commodore.textcomponents.ListTextComponent;
 import com.energyxxer.commodore.textcomponents.StringTextComponent;
 import com.energyxxer.commodore.textcomponents.TextStyle;
@@ -91,6 +92,9 @@ public class V114Test {
         empty.setWeight(48);
         second.addEntry(empty);
 
+        ItemTag all = module.minecraft.tags.itemTags.create("all");
+        module.minecraft.types.item.list().forEach(all::addValue);
+
         try {
             module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output" + File.separator + module.getName() + File.separator));
         } catch(IOException x) {
@@ -99,7 +103,7 @@ public class V114Test {
 
         System.out.println(function.getResolvedContent());
 
-        System.out.println(module.minecraft.types.blockEntity.list());
+        System.out.println(module.minecraft.types.item.list());
 
         System.out.println(CommandUtils.escape(CommandUtils.parseQuotedString("\"\\uFEA7\"")));
         System.out.println(CommandUtils.escape(CommandUtils.parseQuotedString("\"hello\"")));

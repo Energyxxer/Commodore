@@ -107,24 +107,23 @@ public class ModulePackGenerator {
 
         inner.addProperty("description", module.description);
 
-        createFile("pack.mcmeta", gson.toJson(root));
+        createFile("pack.mcmeta", gson.toJson(root).getBytes());
     }
 
-    private void createFile(@Nullable String path, @Nullable String contents) throws IOException {
+    private void createFile(@Nullable String path, @Nullable byte[] contents) throws IOException {
         if(path == null || contents == null) return;
         if(outputType == ZIP) {
             ZipEntry e = new ZipEntry(path);
             zipStream.putNextEntry(e);
 
-            byte[] data = contents.getBytes();
-            zipStream.write(data, 0, data.length);
+            zipStream.write(contents, 0, contents.length);
             zipStream.closeEntry();
         } else {
             File file = new File(rootPath + File.separator + path.replace("/", File.separator));
             file.getParentFile().mkdirs();
             file.createNewFile();
 
-            try(BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            try(FileOutputStream writer = new FileOutputStream(file)) {
                 writer.write(contents);
                 writer.flush();
             }

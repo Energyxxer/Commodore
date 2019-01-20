@@ -34,5 +34,5 @@ public interface Exportable {
      * @return The text to write into the export location.
      * */
     @Nullable
-    String getContents();
+    byte[] getContents();
 }
