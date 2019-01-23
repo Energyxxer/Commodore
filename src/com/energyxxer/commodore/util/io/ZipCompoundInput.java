@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.util.io;
 
+import com.energyxxer.commodore.Commodore;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -51,7 +52,7 @@ public class ZipCompoundInput implements CompoundInput {
                 }
             }
             if(sb.length() > 0) sb.setLength(sb.length()-1); // Remove trailing newline
-            return new ByteArrayInputStream(sb.toString().getBytes());
+            return new ByteArrayInputStream(sb.toString().getBytes(Commodore.getDefaultEncoding()));
         }
         return zf.getInputStream(entry);
     }

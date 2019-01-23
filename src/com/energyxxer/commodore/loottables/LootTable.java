@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.loottables;
 
+import com.energyxxer.commodore.Commodore;
 import com.energyxxer.commodore.loottables.functions.LootFunctions;
 import com.energyxxer.commodore.module.Exportable;
 import com.energyxxer.commodore.module.Namespace;
@@ -86,6 +87,6 @@ public class LootTable implements Exportable {
 
         functions.constructInto(root);
 
-        return gson.toJson(root).getBytes();
+        return gson.toJson(root).getBytes(Commodore.getDefaultEncoding());
     }
 }

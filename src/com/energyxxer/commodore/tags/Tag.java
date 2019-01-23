@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.tags;
 
+import com.energyxxer.commodore.Commodore;
 import com.energyxxer.commodore.module.Exportable;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.IllegalTypeException;
@@ -146,7 +147,7 @@ public abstract class Tag extends Type implements Exportable {
             list.add(value.toString());
         }
 
-        return gson.toJson(root).getBytes();
+        return gson.toJson(root).getBytes(Commodore.getDefaultEncoding());
     }
 
     @Override

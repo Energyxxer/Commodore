@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.functions;
 
+import com.energyxxer.commodore.Commodore;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
@@ -145,7 +146,7 @@ public class Function implements FunctionSection, Exportable {
     @NotNull
     @Override
     public byte[] getContents() {
-        return getResolvedContent().getBytes();
+        return getResolvedContent().getBytes(Commodore.getDefaultEncoding());
     }
 
     @Override

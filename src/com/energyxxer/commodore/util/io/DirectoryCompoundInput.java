@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.util.io;
 
+import com.energyxxer.commodore.Commodore;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,7 +24,7 @@ public class DirectoryCompoundInput implements CompoundInput {
         try {
             if(target.isDirectory()) {
                 String[] targetList = target.list();
-                return targetList != null ? new ByteArrayInputStream(String.join("\n", targetList).getBytes()) : null;
+                return targetList != null ? new ByteArrayInputStream(String.join("\n", targetList).getBytes(Commodore.getDefaultEncoding())) : null;
             } else {
                 return new FileInputStream(target);
             }

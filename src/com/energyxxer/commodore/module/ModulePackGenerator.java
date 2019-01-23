@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.module;
 
+import com.energyxxer.commodore.Commodore;
 import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.tags.TagGroup;
 import com.energyxxer.commodore.tags.TagManager;
@@ -9,7 +10,9 @@ import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -39,7 +42,7 @@ public class ModulePackGenerator {
     private ZipOutputStream zipStream;
 
     public ModulePackGenerator(@NotNull CommandModule module, @NotNull File outFile) {
-        this(module, outFile, outFile.isFile() && outFile.getName().endsWith(".zip") ? ZIP : FOLDER);
+        this(module, outFile, outFile.getName().endsWith(".zip") ? ZIP : FOLDER);
     }
 
     public ModulePackGenerator(@NotNull CommandModule module, @NotNull File outFile, @NotNull OutputType outputType) {
@@ -55,7 +58,6 @@ public class ModulePackGenerator {
 
         this.rootPath = outFile.getAbsolutePath();
         this.rootFile = outFile;
-        if(rootFile.isDirectory() && !rootFile.exists()) rootFile.mkdirs();
     }
 
     public void generate() throws IOException {
@@ -107,7 +109,7 @@ public class ModulePackGenerator {
 
         inner.addProperty("description", module.description);
 
-        createFile("pack.mcmeta", gson.toJson(root).getBytes());
+        createFile("pack.mcmeta", gson.toJson(root).getBytes(Commodore.getDefaultEncoding()));
     }
 
     private void createFile(@Nullable String path, @Nullable byte[] contents) throws IOException {

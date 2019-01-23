@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.module;
 
+import com.energyxxer.commodore.Commodore;
 import org.jetbrains.annotations.NotNull;
 
 public class RawExportable implements Exportable {
@@ -15,7 +16,7 @@ public class RawExportable implements Exportable {
     }
 
     public RawExportable(@NotNull String exportPath, @NotNull String fileContent) {
-        this(exportPath, fileContent.getBytes());
+        this(exportPath, fileContent.getBytes(Commodore.getDefaultEncoding()));
     }
 
     public RawExportable(@NotNull String exportPath, @NotNull byte[] data) {
