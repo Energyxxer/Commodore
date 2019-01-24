@@ -24,6 +24,10 @@ public class NumberRange<T extends Number> implements Cloneable {
         this.max = value;
     }
 
+    public Class<? extends Number> getNumberClass() {
+        return min != null ? min.getClass() : max != null ? max.getClass() : Integer.class;
+    }
+
     @Override
     public String toString() {
         if(min != null && min.equals(max)) {

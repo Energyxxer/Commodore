@@ -6,6 +6,7 @@ import com.energyxxer.commodore.textcomponents.TextColor;
 import com.energyxxer.commodore.textcomponents.TextComponent;
 import com.energyxxer.commodore.types.defaults.TeamReference;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class TeamModifyCommand extends TeamCommand {
 
@@ -24,6 +25,8 @@ public class TeamModifyCommand extends TeamCommand {
         private final Class valueClass;
         private final String valueVerb;
         private final boolean teamValueInverted;
+        private boolean nullable = false;
+        private String nullableValue = null;
 
         TeamModifyKey(String argumentKey, Class valueClass) {
             this(argumentKey, valueClass, null);
@@ -41,7 +44,7 @@ public class TeamModifyCommand extends TeamCommand {
         }
 
         public boolean isValidValue(Object o) {
-            return valueClass.isInstance(o);
+            return (o == null && this.nullable) || valueClass.isInstance(o);
         }
 
         public String getValueVerb() {
@@ -65,6 +68,11 @@ public class TeamModifyCommand extends TeamCommand {
                 if(value.argumentKey.equals(key)) return value;
             }
             return null;
+        }
+
+        static {
+            COLOR.nullable = true;
+            COLOR.nullableValue = "reset";
         }
     }
 
@@ -92,26 +100,26 @@ public class TeamModifyCommand extends TeamCommand {
     private final TeamReference reference;
     @NotNull
     private final TeamModifyKey key;
-    @NotNull
+    @Nullable
     private final Object value;
 
-    public TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, @NotNull AppliesTo value) {
+    public TeamModifyCommand(TeamReference reference, TeamModifyKey key, AppliesTo value) {
         this(reference, key, (Object) value);
     }
 
-    public TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, boolean value) {
+    public TeamModifyCommand(TeamReference reference, TeamModifyKey key, boolean value) {
         this(reference, key, (Object) value);
     }
 
-    public TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, @NotNull TextColor value) {
+    public TeamModifyCommand(TeamReference reference, TeamModifyKey key, TextColor value) {
         this(reference, key, (Object) value);
     }
 
-    public TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, @NotNull TextComponent value) {
+    public TeamModifyCommand(TeamReference reference, TeamModifyKey key, TextComponent value) {
         this(reference, key, (Object) value);
     }
 
-    private TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, @NotNull Object value) {
+    private TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, @Nullable Object value) {
         this.reference = reference;
         this.key = key;
         if (key.isValidValue(value)) {
@@ -131,6 +139,8 @@ public class TeamModifyCommand extends TeamCommand {
             return value.toString().toLowerCase();
         } else if(value instanceof TextComponent) {
             return value.toString();
+        } else if(value == null && key.nullable) {
+            return key.nullableValue;
         } else return null;
     }
 
