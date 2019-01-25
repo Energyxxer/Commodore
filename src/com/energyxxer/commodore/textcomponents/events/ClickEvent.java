@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ClickEvent extends TextEvent {
     public enum Action {
-        RUN_COMMAND, SUGGEST_COMMAND, OPEN_URL
+        OPEN_URL, OPEN_FILE, RUN_COMMAND, SUGGEST_COMMAND, CHANGE_PAGE
     }
     @NotNull
     private final Action action;
