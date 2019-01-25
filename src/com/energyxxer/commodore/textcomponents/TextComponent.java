@@ -13,6 +13,7 @@ public abstract class TextComponent {
     private TextStyle style = TextStyle.EMPTY_STYLE;
     @NotNull
     private final ArrayList<@NotNull TextEvent> events = new ArrayList<>();
+    private ListTextComponent extra = null;
 
     public abstract boolean supportsProperties();
 
@@ -38,6 +39,13 @@ public abstract class TextComponent {
         if(events != null) events.forEach(this::addEvent);
     }
 
+    public void addExtra(@NotNull TextComponent component) {
+        if(supportsProperties()) {
+            if(this.extra == null) this.extra = new ListTextComponent();
+            this.extra.append(component);
+        } else throw new UnsupportedOperationException(this.getClass().getName() + " does not support text properties");
+    }
+
     public void addEvents(@NotNull TextEvent... events) {
         this.addEvents(Arrays.asList(events));
     }
@@ -57,6 +65,9 @@ public abstract class TextComponent {
         String styleString = style.toString(parentStyle);
         if(styleString != null) properties.add(styleString);
         events.forEach(e -> properties.add(e.toString()));
+        if(extra != null) {
+            properties.add("\"extra\":" + extra.toString(this.style.merge(parentStyle)));
+        }
 
         if(properties.isEmpty()) return null;
 
