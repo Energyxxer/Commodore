@@ -4,9 +4,12 @@ import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
+import org.jetbrains.annotations.NotNull;
 
 public class NBTTextComponent extends TextComponent {
+    @NotNull
     private final NBTPath path;
+    @NotNull
     private final Object toPrint;
     private final boolean interpret;
 
@@ -26,7 +29,7 @@ public class NBTTextComponent extends TextComponent {
         this(path, (Object) entity, interpret);
     }
 
-    private NBTTextComponent(NBTPath path, Object toPrint, boolean interpret) {
+    private NBTTextComponent(@NotNull NBTPath path, @NotNull Object toPrint, boolean interpret) {
         this.path = path;
         this.toPrint = toPrint;
         this.interpret = interpret;
