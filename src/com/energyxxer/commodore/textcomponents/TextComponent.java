@@ -10,10 +10,10 @@ import java.util.Iterator;
 
 public abstract class TextComponent {
     @NotNull
-    private TextStyle style = TextStyle.EMPTY_STYLE;
+    protected TextStyle style = TextStyle.EMPTY_STYLE;
     @NotNull
-    private final ArrayList<@NotNull TextEvent> events = new ArrayList<>();
-    private ListTextComponent extra = null;
+    protected final ArrayList<@NotNull TextEvent> events = new ArrayList<>();
+    protected ListTextComponent extra = null;
 
     public abstract boolean supportsProperties();
 

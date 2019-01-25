@@ -68,11 +68,13 @@ public class V114Test {
         function.append(new LootCommand(new LootReplaceBlock(new CoordinateSet(0, 64, 0), module.minecraft.types.slot.get("container.4")), new LootFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE))));
         function.append(new LootCommand(new LootInsertBlock(new CoordinateSet(0, 64, 0)), new LootFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new ToolOrHand(module.minecraft.types.item.get("bamboo")))));
 
-        TextComponent txt = new NBTTextComponent(new NBTPath(new NBTPathKey("Inventory"), new NBTPathIndex(0)), new Selector(SENDER));
+        TranslateTextComponent txt = new TranslateTextComponent("translation.example");
         txt.addEvent(new InsertionEvent("woo\"o"));
         txt.setStyle(new TextStyle(TextStyle.EMPTY_STYLE).setColor(TextColor.GREEN));
         txt.addExtra(new StringTextComponent("hi"));
         txt.addExtra(new KeybindTextComponent("key.use"));
+        txt.addExtra(new NBTTextComponent(new NBTPath(new NBTPathKey("Inventory"), new NBTPathIndex(0)), new Selector(SENDER)));
+        txt.addWith(new StringTextComponent("this works now"));
 
         function.append(new TellrawCommand(new Selector(ALL_PLAYERS), txt));
 
