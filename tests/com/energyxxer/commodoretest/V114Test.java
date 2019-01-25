@@ -7,6 +7,7 @@ import com.energyxxer.commodore.functionlogic.commands.data.ModifySourceFromEnti
 import com.energyxxer.commodore.functionlogic.commands.data.ModifySourceValue;
 import com.energyxxer.commodore.functionlogic.commands.loot.*;
 import com.energyxxer.commodore.functionlogic.commands.setblock.SetblockCommand;
+import com.energyxxer.commodore.functionlogic.commands.tellraw.TellrawCommand;
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.functions.Function;
@@ -27,15 +28,16 @@ import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.tags.ItemTag;
-import com.energyxxer.commodore.textcomponents.ListTextComponent;
-import com.energyxxer.commodore.textcomponents.StringTextComponent;
-import com.energyxxer.commodore.textcomponents.TextStyle;
+import com.energyxxer.commodore.textcomponents.*;
+import com.energyxxer.commodore.textcomponents.events.InsertionEvent;
 import com.energyxxer.commodore.util.attributes.Attribute;
 
 import java.io.File;
 import java.io.IOException;
 
+import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.ALL_PLAYERS;
 import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.NEAREST_PLAYER;
+import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.SENDER;
 
 public class V114Test {
     public static void main(String[] args) {
@@ -65,6 +67,12 @@ public class V114Test {
         function.append(new LootCommand(new LootReplaceEntity(function.getSender(), module.minecraft.types.slot.get("weapon.offhand")), new LootFromLoot("minecraft:entities/wither_skeleton")));
         function.append(new LootCommand(new LootReplaceBlock(new CoordinateSet(0, 64, 0), module.minecraft.types.slot.get("container.4")), new LootFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE))));
         function.append(new LootCommand(new LootInsertBlock(new CoordinateSet(0, 64, 0)), new LootFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new ToolOrHand(module.minecraft.types.item.get("bamboo")))));
+
+        TextComponent txt = new NBTTextComponent(new NBTPath(new NBTPathKey("Inven\"tory"), new NBTPathIndex(0)), new Selector(SENDER));
+        txt.addEvent(new InsertionEvent("woo\"o"));
+        txt.setStyle(new TextStyle(TextStyle.EMPTY_STYLE).setColor(TextColor.GREEN));
+
+        function.append(new TellrawCommand(new Selector(ALL_PLAYERS), txt));
 
         LootTable moaDrop = ns.lootTables.create("mobs/moa");
         Pool first = new Pool();

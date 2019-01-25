@@ -52,24 +52,27 @@ public class TextStyle {
         return color;
     }
 
-    public void setColor(@Nullable TextColor color) {
+    public TextStyle setColor(@Nullable TextColor color) {
         this.color = color;
+        return this;
     }
 
     public byte getFlags() {
         return flags;
     }
 
-    public void setFlags(byte flags) {
+    public TextStyle setFlags(byte flags) {
         this.flags = flags;
+        return this;
     }
 
     public byte getMask() {
         return mask;
     }
 
-    public void setMask(int mask) {
+    public TextStyle setMask(int mask) {
         this.mask = (byte) mask;
+        return this;
     }
 
     public byte getMaskForParent(TextStyle parentStyle) {
