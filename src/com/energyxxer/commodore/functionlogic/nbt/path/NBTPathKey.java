@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.nbt.path;
 
+import com.energyxxer.commodore.CommandUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -15,7 +16,7 @@ public class NBTPathKey implements NBTPathNode {
     @NotNull
     @Override
     public String getPathString() {
-        return name;
+        return (name.matches("[a-zA-Z0-9_\\-+]+")) ? name : "\"" + CommandUtils.escape(name) + "\"";
     }
 
     @NotNull
