@@ -21,15 +21,15 @@ public class HoverEvent extends TextEvent {
 
     public HoverEvent(@NotNull Action action, @NotNull TextComponent value) {
         this.action = action;
-        this.value = value.toString();
+        this.value = value;
     }
 
     @Override
     public String toString() {
         return "\"hoverEvent\":{\"action\":\"" +
                 action.toString().toLowerCase() +
-                "\",\"value\":\"" +
-                (value instanceof TextComponent ? value.toString() : CommandUtils.escape(value.toString())) +
-                "\"}";
+                "\",\"value\":" +
+                (value instanceof TextComponent ? value.toString() : "\"" + CommandUtils.escape(value.toString()) + "\"") +
+                "}";
     }
 }
