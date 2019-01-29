@@ -70,11 +70,12 @@ public class V114Test {
 
         TranslateTextComponent txt = new TranslateTextComponent("translation.example");
         txt.addEvent(new InsertionEvent("woo\"o"));
-        txt.setStyle(new TextStyle(TextStyle.EMPTY_STYLE).setColor(TextColor.GREEN));
+        txt.setStyle(new TextStyle(TextStyle.EMPTY_STYLE).setColor(TextColor.BLUE));
         txt.addExtra(new StringTextComponent("hi"));
         txt.addExtra(new KeybindTextComponent("key.use"));
         txt.addExtra(new NBTTextComponent(new NBTPath(new NBTPathKey("Inventory"), new NBTPathIndex(0)), new Selector(SENDER)));
-        txt.addWith(new StringTextComponent("this works now"));
+        txt.addWith(new StringTextComponent("this works now", new TextStyle(TextStyle.EMPTY_STYLE).setColor(TextColor.BLUE)));
+        txt.addWith(new StringTextComponent("this works now too", new TextStyle(TextStyle.EMPTY_STYLE).setColor(TextColor.BLUE)));
 
         function.append(new TellrawCommand(new Selector(ALL_PLAYERS), txt));
 

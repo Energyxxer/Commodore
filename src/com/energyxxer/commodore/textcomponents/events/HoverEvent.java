@@ -12,7 +12,7 @@ public class HoverEvent extends TextEvent {
     @NotNull
     private final Action action;
     @NotNull
-    private final String value;
+    private final Object value;
 
     public HoverEvent(@NotNull Action action, @NotNull String value) {
         this.action = action;
@@ -29,7 +29,7 @@ public class HoverEvent extends TextEvent {
         return "\"hoverEvent\":{\"action\":\"" +
                 action.toString().toLowerCase() +
                 "\",\"value\":\"" +
-                CommandUtils.escape(value) +
+                (value instanceof TextComponent ? value.toString() : CommandUtils.escape(value.toString())) +
                 "\"}";
     }
 }
