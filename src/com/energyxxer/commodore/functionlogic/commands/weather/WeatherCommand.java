@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.weather;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
@@ -24,6 +25,8 @@ public class WeatherCommand implements Command {
     public WeatherCommand(@NotNull Mode mode, int duration) {
         this.mode = mode;
         this.duration = duration;
+
+        if(duration < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Duration must not be less than 0, found " + duration, duration, "DURATION");
     }
 
     @Override @NotNull

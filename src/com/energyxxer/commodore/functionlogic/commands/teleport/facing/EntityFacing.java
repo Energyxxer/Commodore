@@ -17,6 +17,8 @@ public class EntityFacing implements TeleportFacing {
     public EntityFacing(@NotNull Entity entity, @NotNull EntityAnchor anchor) {
         this.entity = entity;
         this.anchor = anchor;
+
+        entity.assertSingle();
     }
 
     @NotNull

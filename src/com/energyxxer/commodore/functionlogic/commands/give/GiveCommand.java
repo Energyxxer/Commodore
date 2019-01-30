@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.give;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
@@ -26,8 +27,9 @@ public class GiveCommand implements Command {
         this.count = count;
 
         player.assertPlayer();
-
         assertStandalone(item.getItemType());
+        if(count < 1) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Count must not be less than 1, found " + count, count, "COUNT");
+        if(count > 64) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Count must not be more than 64, found " + count, count, "COUNT");
     }
 
     @Override @NotNull

@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.util;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
@@ -110,12 +111,10 @@ public class StatusEffect {
      * @throws com.energyxxer.commodore.types.IllegalTypeException If the given type isn't of the category Effect.
      * */
     public StatusEffect(@NotNull Type effect, int duration, int amplifier, @NotNull ParticleVisibility visibility) {
-        this.effect = effect;
-        this.duration = duration;
-        this.amplifier = amplifier;
+        setEffect(effect);
+        setDuration(duration);
+        setAmplifier(amplifier);
         this.visibility = visibility;
-
-        assertEffect(effect);
     }
 
     /**
@@ -134,6 +133,7 @@ public class StatusEffect {
      * @param effect The new type for this effect.
      * */
     public void setEffect(@NotNull Type effect) {
+        assertEffect(effect);
         this.effect = effect;
     }
 
@@ -152,6 +152,9 @@ public class StatusEffect {
      * @param duration The new duration for this status effect, in ticks.
      * */
     public void setDuration(int duration) {
+        if(duration <= 0) {
+            throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Duration must not be less than 1, found " + duration, duration);
+        }
         this.duration = duration;
     }
 
@@ -170,6 +173,9 @@ public class StatusEffect {
      * @param amplifier The new amplifier for this status effect.
      * */
     public void setAmplifier(int amplifier) {
+        if(amplifier < 0) {
+            throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Amplifier must not be less than 0, found " + amplifier, amplifier);
+        }
         this.amplifier = amplifier;
     }
 

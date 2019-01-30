@@ -54,20 +54,44 @@ public interface Entity extends Cloneable {
 
     /**
      * Throws an exception if this entity may not represent entities of type <code>minecraft:player</code>.
+     * The thrown exception's cause key will be <code>"PLAYER"</code>.
      *
-     * @throws IllegalArgumentException If this entity doesn't represent only players.
+     * @throws CommodoreException If this entity doesn't represent only players.
      * */
     default void assertPlayer() {
-        if(!isUnknownType() && !isPlayer()) throw new CommodoreException(CommodoreException.Source.ENTITY_ERROR, "Provided entity '" + this + "' includes non-player entities, expected only players", this);
+        assertPlayer("PLAYER");
     }
 
     /**
      * Throws an exception if this entity may not represent entities of type <code>minecraft:player</code>.
      *
+     * @param causeKey Key to attach to the CommodoreException thrown by this method.
+     *
+     * @throws CommodoreException If this entity doesn't represent only players.
+     * */
+    default void assertPlayer(String causeKey) {
+        if(!isUnknownType() && !isPlayer()) throw new CommodoreException(CommodoreException.Source.ENTITY_ERROR, "Provided entity '" + this + "' includes non-player entities, expected only players", this, causeKey);
+    }
+
+    /**
+     * Throws an exception if this entity may not represent entities of type <code>minecraft:player</code>.
+     * The thrown exception's cause key will be <code>"ENTITY"</code>.
+     *
      * @throws IllegalArgumentException If this entity doesn't represent only players.
      * */
     default void assertSingle() {
-        if(getLimit() != 1) throw new CommodoreException(CommodoreException.Source.ENTITY_ERROR, "Provided entity '" + this + "' includes multiple entities, expected at most one", this);
+        assertSingle("ENTITY");
+    }
+
+    /**
+     * Throws an exception if this entity may not represent entities of type <code>minecraft:player</code>.
+     *
+     * @param causeKey Key to attach to the CommodoreException thrown by this method.
+     *
+     * @throws IllegalArgumentException If this entity doesn't represent only players.
+     * */
+    default void assertSingle(String causeKey) {
+        if(getLimit() != 1) throw new CommodoreException(CommodoreException.Source.ENTITY_ERROR, "Provided entity '" + this + "' includes multiple entities, expected at most one", this, causeKey);
     }
 
     @NotNull

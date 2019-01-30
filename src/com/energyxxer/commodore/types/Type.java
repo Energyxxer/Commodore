@@ -8,6 +8,7 @@ import com.energyxxer.commodore.types.defaults.TypeManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * Defines a type of a Minecraft object of a certain category.<br>
@@ -159,7 +160,7 @@ public abstract class Type {
 
     @Override
     public String toString() {
-        return ((useNamespace()) ? (namespace + ":") : "") + name;
+        return ((useNamespace()) ? (getNamespace().getName() + ":") : "") + getName();
     }
 
     @Override
@@ -169,13 +170,11 @@ public abstract class Type {
 
         Type otherType = (Type) o;
 
-        return (!useNamespace() || namespace.equals(otherType.namespace)) && name.equals(otherType.name);
+        return (!useNamespace() || getNamespace().equals(otherType.getNamespace())) && getName().equals(otherType.getName());
     }
 
     @Override
     public int hashCode() {
-        int result = namespace.hashCode();
-        result = 31 * result + name.hashCode();
-        return result;
+        return Objects.hash(getCategory(), getNamespace(), getName(), getProperties());
     }
 }

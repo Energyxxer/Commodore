@@ -15,6 +15,8 @@ public class ExecuteConditionScoreMatch extends ExecuteCondition {
         super(flowController);
         this.target = target;
         this.range = range;
+
+        if (target.getHolder() != null) target.getHolder().assertSingle("TARGET_ENTITY");
     }
 
     @NotNull

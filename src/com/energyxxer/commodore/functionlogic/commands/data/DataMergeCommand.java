@@ -16,6 +16,8 @@ public class DataMergeCommand extends DataCommand {
     public DataMergeCommand(@NotNull Entity entity, @NotNull TagCompound nbt) {
         super(entity);
         this.nbt = nbt;
+
+        entity.assertSingle();
     }
 
     public DataMergeCommand(@NotNull CoordinateSet pos, @NotNull TagCompound nbt) {

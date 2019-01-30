@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertEntity;
+import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
 
 public class SummonCommand implements Command {
 
@@ -35,7 +36,7 @@ public class SummonCommand implements Command {
         this.data = data;
 
         assertEntity(type);
-
+        assertStandalone(type);
         if(!type.getProperty("spawnable").equals("true")) throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, "Entity '" + type + "' is not a valid spawnable entity", type);
     }
 

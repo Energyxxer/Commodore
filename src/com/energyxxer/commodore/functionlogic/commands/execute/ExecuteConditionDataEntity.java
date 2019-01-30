@@ -15,6 +15,8 @@ public class ExecuteConditionDataEntity extends ExecuteCondition {
         super(flowController);
         this.entity = entity;
         this.path = path;
+
+        entity.assertSingle();
     }
 
     @NotNull

@@ -44,6 +44,8 @@ public class DataModifyCommand extends DataCommand {
         this.targetPath = targetPath;
         this.operation = operation;
         this.source = source;
+
+        entity.assertSingle();
     }
 
     public DataModifyCommand(@NotNull CoordinateSet pos, @NotNull NBTPath targetPath, @NotNull ModifyOperation operation, @NotNull ModifySource source) {

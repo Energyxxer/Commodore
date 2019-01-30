@@ -17,6 +17,8 @@ public class ScoreList implements Command {
 
     public ScoreList(@Nullable Entity entity) {
         this.entity = entity;
+
+        if(entity != null) entity.assertSingle();
     }
 
     @Override

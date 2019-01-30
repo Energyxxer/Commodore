@@ -9,6 +9,8 @@ import org.jetbrains.annotations.NotNull;
 
 public class TriggerCommand implements Command {
 
+    public static final String TRIGGER_CRITERION = "trigger";
+
     public enum Action {
         SET(false), ADD(true);
 
@@ -30,8 +32,8 @@ public class TriggerCommand implements Command {
     }
 
     public TriggerCommand(@NotNull Objective objective, @NotNull Action action, int amount) {
-        if(!objective.getType().equals("trigger"))
-            throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, "Unable to use objective '" + objective.getName() + "' with TriggerCommand; Expected objective of type 'trigger', instead got '" + objective.getType() + "'", objective);
+        if(!objective.getType().equals(TRIGGER_CRITERION))
+            throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, "Unable to use objective '" + objective.getName() + "' with trigger; Expected objective of type '" + TRIGGER_CRITERION + "', instead got '" + objective.getType() + "'", objective, "OBJECTIVE");
         this.objective = objective;
         this.action = action;
         this.amount = amount;

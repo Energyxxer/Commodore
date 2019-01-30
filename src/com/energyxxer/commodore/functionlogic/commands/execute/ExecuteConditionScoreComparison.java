@@ -18,6 +18,9 @@ public class ExecuteConditionScoreComparison extends ExecuteCondition {
         this.target = target;
         this.comparison = comparison;
         this.source = source;
+
+        if (target.getHolder() != null) target.getHolder().assertSingle("TARGET_ENTITY");
+        if (source.getHolder() != null) target.getHolder().assertSingle("SOURCE_ENTITY");
     }
 
     @NotNull

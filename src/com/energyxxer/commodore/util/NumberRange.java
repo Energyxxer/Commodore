@@ -15,14 +15,21 @@ public class NumberRange<T extends Number> implements Cloneable {
     @Nullable
     private final T max;
 
+    public NumberRange(@Nullable T value) {
+        this(value, value);
+    }
+
     public NumberRange(@Nullable T min, @Nullable T max) {
         this.min = min;
         this.max = max;
+
+        if(min != null && max != null && (min.doubleValue() > max.doubleValue() || min.longValue() > max.longValue())) {
+            throw new CommodoreException(CommodoreException.Source.NUMBER_RANGE_ERROR, "Min cannot be bigger than max; Min: " + min + ", Max: " + max, min);
+        }
     }
 
-    public NumberRange(@Nullable T value) {
-        this.min = value;
-        this.max = value;
+    public boolean hasNegative() {
+        return (min != null && min.doubleValue() < 0) || (max != null && max.doubleValue() < 0);
     }
 
     public Class<? extends Number> getNumberClass() {

@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.selector.arguments;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.util.NumberRange;
 import org.jetbrains.annotations.NotNull;
@@ -10,6 +11,10 @@ public class LevelArgument implements SelectorArgument {
 
     public LevelArgument(@NotNull NumberRange<@NotNull Integer> value) {
         this.value = value;
+
+        if(value.hasNegative()) {
+            throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Level shouldn't be negative", value);
+        }
     }
 
     @NotNull

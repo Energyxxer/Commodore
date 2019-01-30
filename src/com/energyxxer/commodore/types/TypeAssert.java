@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.types;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.types.defaults.*;
 
 /**
@@ -20,7 +21,7 @@ public class TypeAssert {
      * @throws IllegalTypeException If the given type is not of the given category.
      * */
     public static void assertType(Type type, String category) {
-        if(!category.equals(type.category)) throw new IllegalTypeException("Expected type of category '" + category + "', instead got '" + type.category + "'");
+        if(!category.equals(type.category)) throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, "Expected type of category '" + category + "', instead got '" + type.category + "'", type);
     }
 
     /**
@@ -32,7 +33,7 @@ public class TypeAssert {
      * @throws IllegalTypeException If the given type is not standalone; that is, if it is a tag.
      * */
     public static void assertStandalone(Type type) {
-        if(!type.isStandalone()) throw new IllegalTypeException("Expected standalone type");
+        if(!type.isStandalone()) throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, type.getCategory().toUpperCase().charAt(0) + type.getCategory().substring(1).toLowerCase() + " tags aren't allowed in this context", type);
     }
 
     /**

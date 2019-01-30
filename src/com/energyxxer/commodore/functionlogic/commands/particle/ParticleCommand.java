@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.commands.particle;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
@@ -54,7 +55,9 @@ public class ParticleCommand implements Command {
         this.position = (position != null && position.isSignificant()) ? position : null;
         this.delta = (delta != null && (delta.x != 0 || delta.y != 0 || delta.z != 0)) ? delta : null;
         this.speed = speed;
+        if(speed < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Speed must not be less than 0.0, found " + speed, speed, "SPEED");
         this.count = count;
+        if(count < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Count must not be less than 0.0, found " + count, count, "COUNT");
         this.force = force;
         this.viewers = viewers;
         if(viewers != null) viewers.assertPlayer();

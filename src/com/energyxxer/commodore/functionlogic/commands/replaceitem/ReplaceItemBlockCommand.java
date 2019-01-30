@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.replaceitem;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
@@ -31,8 +32,9 @@ public class ReplaceItemBlockCommand extends ReplaceItemCommand {
         this.count = count;
 
         assertSlot(slot);
-
         assertStandalone(item.getItemType());
+        if(count < 1) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Count must not be less than 1, found " + count, count, "COUNT");
+        if(count > 64) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Count must not be more than 64, found " + count, count, "COUNT");
     }
 
     @Override @NotNull

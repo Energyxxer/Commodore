@@ -16,6 +16,8 @@ public class DataRemoveCommand extends DataCommand {
     public DataRemoveCommand(@NotNull Entity entity, @NotNull NBTPath path) {
         super(entity);
         this.path = path;
+
+        entity.assertSingle();
     }
 
     public DataRemoveCommand(@NotNull CoordinateSet pos, @NotNull NBTPath path) {

@@ -9,7 +9,7 @@ public class LimitArgument implements SelectorArgument {
     private int limit;
 
     public LimitArgument(int limit) {
-        if(limit <= 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Limit must be greater than zero: " + limit, limit);
+        if(limit <= 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Limit must be at least 1: " + limit, limit);
         this.limit = limit;
     }
 
