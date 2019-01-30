@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.block;
 
+import com.energyxxer.commodore.CommodoreException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
@@ -83,7 +84,7 @@ public class Blockstate {
         for(String state : states) {
             String[] pair = state.split("=");
             if(pair.length != 2)
-                throw new IllegalArgumentException("Illegal format at '" + state + "' state for raw blockstate '" + raw + "'");
+                throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Illegal format at '" + state + "' state for raw blockstate '" + raw + "'", state);
             blockstate.put(pair[0].trim(), pair[1].trim());
         }
         return blockstate;

@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.enchant;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
@@ -27,9 +28,9 @@ public class EnchantCommand implements Command {
 
         assertEnchantment(enchantment);
 
-        if(level < 0) throw new IllegalArgumentException("Level must not be less than 0, found " + level);
+        if(level < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Level must not be less than 0, found " + level, level);
         String maxLevel = enchantment.getProperty("max_level");
-        if(maxLevel != null && level > Integer.parseInt(maxLevel)) throw new IllegalArgumentException(level + " is higher than the maximum level of " + maxLevel + " supported by enchantment " + enchantment);
+        if(maxLevel != null && level > Integer.parseInt(maxLevel)) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, level + " is higher than the maximum level of " + maxLevel + " supported by enchantment " + enchantment, level);
     }
 
     @Override

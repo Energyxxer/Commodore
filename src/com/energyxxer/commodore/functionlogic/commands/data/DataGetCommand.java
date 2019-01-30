@@ -26,7 +26,7 @@ public class DataGetCommand extends DataCommand {
 
     public DataGetCommand(@NotNull Entity entity, @Nullable NBTPath path, double scale) {
         super(entity);
-        if(entity.getLimit() < 0 || entity.getLimit() > 1) throw new IllegalArgumentException("Only one entity is allowed, but passed entity (" + entity + ") allows for more than one.");
+        entity.assertSingle();
         this.path = path;
         this.scale = scale;
     }

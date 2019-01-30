@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.commands.execute;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.nbt.NumericNBTType;
@@ -34,7 +35,7 @@ public class ExecuteStoreEntity extends ExecuteStore {
         this.path = path;
         this.type = type;
         this.scale = scale;
-        if(entity.getLimit() < 0 || entity.getLimit() > 1) throw new IllegalArgumentException("Only one entity is allowed, but passed entity (" + entity + ") allows for more than one.");
+        if(entity.getLimit() < 0 || entity.getLimit() > 1) throw new CommodoreException(CommodoreException.Source.ENTITY_ERROR, "Only one entity is allowed, but passed entity (" + entity + ") allows for more than one.", entity);
     }
 
     @NotNull

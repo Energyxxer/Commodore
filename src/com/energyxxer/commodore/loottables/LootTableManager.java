@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.loottables;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.module.Namespace;
 
 import java.util.Collection;
@@ -35,7 +36,7 @@ public class LootTableManager {
             lootTables.put(tableName, table);
 
             return table;
-        } else throw new IllegalArgumentException("A loot table by the name '" + tableName + "' already exists");
+        } else throw new CommodoreException(CommodoreException.Source.DUPLICATION_ERROR, "A loot table by the name '" + tableName + "' already exists", tableName);
     }
 
     public Namespace getNamespace() {

@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.team;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.textcomponents.TextColor;
@@ -124,7 +125,7 @@ public class TeamModifyCommand extends TeamCommand {
         this.key = key;
         if (key.isValidValue(value)) {
             this.value = value;
-        } else throw new IllegalArgumentException("'" + value + "' is not a valid argument type for team option '" + key + "': expected value of type '" + key.valueClass.getSimpleName() + "'");
+        } else throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "'" + value + "' is not a valid argument type for team option '" + key + "': expected value of type '" + key.valueClass.getSimpleName() + "'", value);
     }
 
     private String getValueString() {

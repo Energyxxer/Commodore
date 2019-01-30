@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.nbt;
 
+import com.energyxxer.commodore.CommodoreException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public abstract class ArrayNBTTag<T extends NBTTag> extends ComplexNBTTag {
         if(tagClass.isInstance(tag)) {
             content.add((T) tag);
         } else {
-            throw new IllegalArgumentException("Unable to add tag of type " + tag.getType() + " to array of type " + getType() + "; Tag: " + tag);
+            throw new CommodoreException(CommodoreException.Source.NBT_TYPE_ERROR, "Unable to add tag of type " + tag.getType() + " to array of type " + getType() + "; Tag: " + tag, tag);
         }
     }
 

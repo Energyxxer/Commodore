@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.execute;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
@@ -11,7 +12,7 @@ public class ExecuteAlignment implements ExecuteModifier {
     private final boolean z;
 
     public ExecuteAlignment(boolean x, boolean y, boolean z) {
-        if(!(x || y || z)) throw new IllegalArgumentException("At least one axis must be included in an execute align modifier");
+        if(!(x || y || z)) throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "At least one axis must be included in an execute align modifier");
         this.x = x;
         this.y = y;
         this.z = z;

@@ -157,7 +157,7 @@ public final class CommandUtils {
     public static String parseQuotedString(@NotNull String text) {
         int index = 0;
         char delimiter = text.charAt(index);
-        if (delimiter != '"' && delimiter != '\'') throw new IllegalArgumentException("Expected string at index " + index);
+        if (delimiter != '"' && delimiter != '\'') throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Expected string at index " + index, text);
         index++;
         StringBuilder sb = new StringBuilder();
         boolean escaped = false;
@@ -194,18 +194,18 @@ public final class CommandUtils {
                     case '\'': break;
                     case '\"': break;
                     case 'u': unicodeSequence = true; break;
-                    default: throw new IllegalArgumentException("Illegal escape sequence");
+                    default: throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Illegal escape sequence", text);
                 }
                 if (unicodeSequence)
                 {
                     int sequenceLength = 4;
-                    if (index + sequenceLength + 1 > text.length()) throw new IllegalArgumentException("Unexpected end of unicode escape sequence");
+                    if (index + sequenceLength + 1 > text.length()) throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Unexpected end of unicode escape sequence", text);
                     String sequence = text.substring(index + 1, index + 1 + sequenceLength);
                     int code;
                     try {
                         code = Integer.parseInt(sequence, 16);
                     } catch(NumberFormatException x) {
-                        throw new IllegalArgumentException("Illegal unicode escape sequence");
+                        throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Illegal unicode escape sequence", text);
                     }
                     String unicode = new String(Character.toChars(code));
                     sb.append(unicode);
@@ -215,7 +215,7 @@ public final class CommandUtils {
             }
             sb.append(c);
         }
-        if (!terminated) throw new IllegalArgumentException("Unexpected end of input");
+        if (!terminated) throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Unexpected end of input", text);
         return sb.toString();
     }
 

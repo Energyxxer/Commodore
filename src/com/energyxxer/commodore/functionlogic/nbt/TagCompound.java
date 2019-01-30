@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.nbt;
 
+import com.energyxxer.commodore.CommodoreException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -72,7 +73,7 @@ public class TagCompound extends ComplexNBTTag {
     public void add(@NotNull NBTTag tag) {
         for(NBTTag other : content) {
             if(other.getName().equals(tag.name)) {
-                throw new IllegalArgumentException("Unable to add tag: '" + tag.name + "' already exists in compound");
+                throw new CommodoreException(CommodoreException.Source.NBT_TYPE_ERROR, "Unable to add tag: '" + tag.name + "' already exists in compound", tag);
             }
         }
         content.add(tag);

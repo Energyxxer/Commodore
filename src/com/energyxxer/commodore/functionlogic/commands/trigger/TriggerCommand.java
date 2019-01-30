@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.trigger;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
@@ -30,7 +31,7 @@ public class TriggerCommand implements Command {
 
     public TriggerCommand(@NotNull Objective objective, @NotNull Action action, int amount) {
         if(!objective.getType().equals("trigger"))
-            throw new IllegalArgumentException("Unable to use objective '" + objective.getName() + "' with TriggerCommand; Expected objective of type 'trigger', instead got '" + objective.getType() + "'");
+            throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, "Unable to use objective '" + objective.getName() + "' with TriggerCommand; Expected objective of type 'trigger', instead got '" + objective.getType() + "'", objective);
         this.objective = objective;
         this.action = action;
         this.amount = amount;

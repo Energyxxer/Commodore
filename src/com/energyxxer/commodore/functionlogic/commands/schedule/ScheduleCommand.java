@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.schedule;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.functionlogic.functions.FunctionSection;
@@ -30,7 +31,7 @@ public class ScheduleCommand implements Command {
 
         assertFunction(function);
 
-        if(delay.getTicks() == 0) throw new IllegalArgumentException("Cannot schedule for the same tick");
+        if(delay.getTicks() == 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Cannot schedule for the same tick", delay);
     }
 
     @Override @NotNull

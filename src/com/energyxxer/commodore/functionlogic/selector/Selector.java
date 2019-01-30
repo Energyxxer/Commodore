@@ -220,12 +220,8 @@ public class Selector implements Entity, Cloneable {
      * @param argument The argument to add to this selector.
      * */
     public void addArgument(@NotNull SelectorArgument argument) {
-        try {
-            argument.assertCompatibleWith(this);
-            this.args.add(argument);
-        } catch(IllegalArgumentException x) {
-            throw new IllegalArgumentException("Could not add '" + argument.getArgumentString() + "' to selector " + this + ": " + x.getMessage());
-        }
+        argument.assertCompatibleWith(this);
+        this.args.add(argument);
     }
 
     /**

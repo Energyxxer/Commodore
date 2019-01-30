@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.selector.arguments;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import org.jetbrains.annotations.NotNull;
@@ -20,6 +21,6 @@ public interface SelectorArgument extends Cloneable {
 
     default void assertCompatibleWith(@NotNull Selector selector) {
         if(!isRepeatable() && !selector.getArgumentsByKey(getKey()).isEmpty())
-            throw new IllegalArgumentException("Only one '" + getKey() + "' argument is allowed per selector");
+            throw new CommodoreException(CommodoreException.Source.SELECTOR_ERROR, "Only one '" + getKey() + "' argument is allowed per selector", selector);
     }
 }

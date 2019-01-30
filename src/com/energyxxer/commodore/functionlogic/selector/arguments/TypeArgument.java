@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.selector.arguments;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.types.Type;
@@ -81,7 +82,7 @@ public class TypeArgument implements SelectorArgument {
                     ||
                    (this.getType() == that.getType() &&
                     this.isNegated() != that.isNegated()))
-                throw new IllegalArgumentException("Impossible selector");
+                throw new CommodoreException(CommodoreException.Source.SELECTOR_ERROR, "Impossible selector", selector);
             //this is positive standalone, that is positive standalone, not equal //impossible
             //equal in value, opposite in polarity //impossible
         }

@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.nbt;
 
+import com.energyxxer.commodore.CommodoreException;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -43,7 +44,7 @@ public class TagList extends ComplexNBTTag {
                 merged.add(tag.clone());
             }
             return merged;
-        } else throw new IllegalArgumentException("Unable to merge tag lists: Incompatible types: " + this.content.get(0).getType() + " and " + other.content.get(0).getType());
+        } else throw new CommodoreException(CommodoreException.Source.NBT_TYPE_ERROR, "Unable to merge tag lists: Incompatible types: " + this.content.get(0).getType() + " and " + other.content.get(0).getType(), other);
     }
 
     @Override
@@ -51,7 +52,7 @@ public class TagList extends ComplexNBTTag {
         if(content.isEmpty() || content.get(0).getType().equals(tag.getType())) {
             content.add(tag);
         } else {
-            throw new IllegalArgumentException("Unable to add tag of type " + tag.getType() + " to list of type " + content.get(0).getType() + "; Tag: " + tag);
+            throw new CommodoreException(CommodoreException.Source.NBT_TYPE_ERROR, "Unable to add tag of type " + tag.getType() + " to list of type " + content.get(0).getType() + "; Tag: " + tag, tag);
         }
     }
 

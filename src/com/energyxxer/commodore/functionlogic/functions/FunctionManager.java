@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.functions;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.module.Namespace;
 import org.jetbrains.annotations.NotNull;
@@ -40,7 +41,7 @@ public class FunctionManager {
         name = name.toLowerCase();
         if(!contains(name)) return forceCreate(name, sender);
         if(!force) {
-            throw new IllegalArgumentException("A function by the name '" + name + "' already exists");
+            throw new CommodoreException(CommodoreException.Source.DUPLICATION_ERROR, "A function by the name '" + name + "' already exists", name);
         } else {
             int i = 1;
             while(true) {

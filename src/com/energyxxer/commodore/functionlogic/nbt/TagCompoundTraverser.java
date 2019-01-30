@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.nbt;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPathIndex;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPathKey;
@@ -68,7 +69,7 @@ public class TagCompoundTraverser {
         } else if(parent instanceof TagList || parent instanceof ArrayNBTTag) {
             return new NBTPathIndex(index);
         }
-        throw new IllegalArgumentException("Unrecognized ComplexNBTTag subclass '" + parent.getClass().getSimpleName() + "' for parameter 'parent'");
+        throw new CommodoreException(CommodoreException.Source.IMPOSSIBLE, "Unrecognized ComplexNBTTag subclass '" + parent.getClass().getSimpleName() + "' for parameter 'parent'", parent);
     }
 
     public static class PathContents {

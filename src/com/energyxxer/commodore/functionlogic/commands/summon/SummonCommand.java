@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.summon;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
@@ -35,7 +36,7 @@ public class SummonCommand implements Command {
 
         assertEntity(type);
 
-        if(!type.getProperty("spawnable").equals("true")) throw new IllegalArgumentException("Entity '" + type + "' is not a valid spawnable entity");
+        if(!type.getProperty("spawnable").equals("true")) throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, "Entity '" + type + "' is not a valid spawnable entity", type);
     }
 
     @Override @NotNull

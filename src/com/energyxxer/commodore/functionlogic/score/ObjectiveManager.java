@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.score;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.functions.FunctionSection;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.textcomponents.TextComponent;
@@ -58,7 +59,7 @@ public class ObjectiveManager {
     @NotNull
     public Objective create(@NotNull String name, @NotNull String type, @Nullable TextComponent displayName, boolean field) {
         if(!contains(name)) return forceCreate(name, type, displayName, field);
-        throw new IllegalArgumentException("An objective by the name '" + name + "' already exists");
+        throw new CommodoreException(CommodoreException.Source.DUPLICATION_ERROR, "An objective by the name '" + name + "' already exists", name);
     }
 
     @NotNull

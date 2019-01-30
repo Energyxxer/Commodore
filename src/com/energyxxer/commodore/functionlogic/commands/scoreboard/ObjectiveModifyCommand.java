@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.scoreboard;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
@@ -80,7 +81,7 @@ public class ObjectiveModifyCommand implements Command {
         this.key = key;
         if (key.isValidValue(value)) {
             this.value = value;
-        } else throw new IllegalArgumentException("'" + value + "' is not a valid argument type for team option '" + key + "': expected value of type '" + key.valueClass.getSimpleName() + "'");
+        } else throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "'" + value + "' is not a valid argument type for team option '" + key + "': expected value of type '" + key.valueClass.getSimpleName() + "'", value);
     }
 
     @NotNull

@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.scoreboard;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
@@ -17,7 +18,7 @@ public class ObjectivesAddCommand implements Command {
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         if(objective.getName().length() > Objective.MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException("Objective name '" + objective.getName() + "' exceeds the max length of " + Objective.MAX_NAME_LENGTH + " characters when module prefix is included");
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + objective.getName() + "' exceeds the max length of " + Objective.MAX_NAME_LENGTH + " characters when module prefix is included", objective);
         }
         return new CommandResolution(execContext, "scoreboard objectives add " + objective.getName() + " " + objective.getType() + ((objective.getDisplayName() != null) ? " " + objective.getDisplayName() : ""));
     }

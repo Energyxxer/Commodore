@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.advancement;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
@@ -42,7 +43,7 @@ public class AdvancementCommand implements Command {
     public AdvancementCommand(Action action, Entity player, Limit limit) {
         this(action, player, limit, null);
         if(limit.takesAdvancement)
-            throw new IllegalArgumentException("Limit '" + limit + "' requires an advancement parameter");
+            throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Limit '" + limit + "' requires an advancement parameter");
     }
 
     public AdvancementCommand(Action action, Entity player, Limit limit, String advancement) {
@@ -59,9 +60,9 @@ public class AdvancementCommand implements Command {
         player.assertPlayer();
 
         if(advancement != null && !limit.takesAdvancement)
-            throw new IllegalArgumentException("Limit '" + limit + "' doesn't require an advancement parameter, yet '" + advancement + "' was passed");
+            throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Limit '" + limit + "' doesn't require an advancement parameter, yet '" + advancement + "' was passed", advancement);
         if(criteria != null && !limit.takesCriteria)
-            throw new IllegalArgumentException("Limit '" + limit + "' doesn't require a criteria parameter, yet '" + criteria + "' was passed");
+            throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Limit '" + limit + "' doesn't require a criteria parameter, yet '" + criteria + "' was passed", advancement);
     }
 
     @Override @NotNull

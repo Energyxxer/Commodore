@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.nbt.path;
 
+import com.energyxxer.commodore.CommodoreException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,7 +41,7 @@ public class NBTPath implements Iterable<NBTPath> {
             if(nodes.length > 1) {
                 this.next = new NBTPath(Arrays.copyOfRange(nodes, 1, nodes.length));
             } else this.next = null;
-        } else throw new IllegalArgumentException("Received empty array of path nodes");
+        } else throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Received empty array of path nodes", nodes);
     }
 
     @Override

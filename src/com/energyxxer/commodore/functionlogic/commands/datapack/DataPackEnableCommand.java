@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.datapack;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +29,7 @@ public class DataPackEnableCommand extends DataPackCommand {
         this(pack, order, null);
 
         if(order.takesSecondPack)
-            throw new IllegalArgumentException("Order '" + order + "' requires a second datapack parameter");
+            throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Order '" + order + "' requires a second datapack parameter");
     }
 
     public DataPackEnableCommand(@NotNull String pack, @NotNull Order order, @Nullable String secondPack) {
@@ -37,7 +38,7 @@ public class DataPackEnableCommand extends DataPackCommand {
         this.secondPack = secondPack;
 
         if(secondPack != null && !order.takesSecondPack)
-            System.out.println("[Commodore] [NOTICE] Order '" + order + "' doesn't require a second datapack parameter, yet '" + secondPack + "' was passed");
+            throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Order '" + order + "' doesn't require a second datapack parameter, yet '" + secondPack + "' was passed", secondPack);
     }
 
     @Override @NotNull

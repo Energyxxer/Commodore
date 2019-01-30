@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.entity;
 
+import com.energyxxer.commodore.CommodoreException;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -57,7 +58,7 @@ public interface Entity extends Cloneable {
      * @throws IllegalArgumentException If this entity doesn't represent only players.
      * */
     default void assertPlayer() {
-        if(!isUnknownType() && !isPlayer()) throw new IllegalArgumentException("Provided entity '" + this + "' includes non-player entities, expected only players");
+        if(!isUnknownType() && !isPlayer()) throw new CommodoreException(CommodoreException.Source.ENTITY_ERROR, "Provided entity '" + this + "' includes non-player entities, expected only players", this);
     }
 
     /**
@@ -66,7 +67,7 @@ public interface Entity extends Cloneable {
      * @throws IllegalArgumentException If this entity doesn't represent only players.
      * */
     default void assertSingle() {
-        if(getLimit() != 1) throw new IllegalArgumentException("Provided entity '" + this + "' includes multiple entities, expected at most one");
+        if(getLimit() != 1) throw new CommodoreException(CommodoreException.Source.ENTITY_ERROR, "Provided entity '" + this + "' includes multiple entities, expected at most one", this);
     }
 
     @NotNull

@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.util;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.CommodoreException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -60,7 +61,7 @@ public class NumberRange<T extends Number> implements Cloneable {
         if(exact.lookingAt()) {
             return new RangeParseResult<>(exact.group(), new NumberRange<>(Double.parseDouble(exact.group())));
         }
-        throw new IllegalArgumentException("'" + str + "' is not a double or range");
+        throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "'" + str + "' is not a double or range", str);
     }
 
     public static RangeParseResult<Integer> parseInt(String str) {
@@ -80,7 +81,7 @@ public class NumberRange<T extends Number> implements Cloneable {
         if(exact.lookingAt()) {
             return new RangeParseResult<>(exact.group(), new NumberRange<>(Integer.parseInt(exact.group())));
         }
-        throw new IllegalArgumentException("'" + str + "' is not an integer or range");
+        throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "'" + str + "' is not an integer or range", str);
     }
 
     @Nullable

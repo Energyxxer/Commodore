@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.types.defaults;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.types.Type;
 
 public class TeamReference extends Type {
@@ -9,9 +10,9 @@ public class TeamReference extends Type {
     public TeamReference(String name) {
         super(CATEGORY, null, name);
         if(name.isEmpty())
-            throw new IllegalArgumentException("Team name must not be empty");
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Team name must not be empty", name);
         if(!name.matches(CommandUtils.IDENTIFIER_ALLOWED))
-            throw new IllegalArgumentException("Team name '" + name + "' has illegal characters. Does not match regex: " + CommandUtils.IDENTIFIER_ALLOWED);
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Team name '" + name + "' has illegal characters. Does not match regex: " + CommandUtils.IDENTIFIER_ALLOWED, name);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.module;
 
 import com.energyxxer.commodore.Commodore;
+import com.energyxxer.commodore.CommodoreException;
 import org.jetbrains.annotations.NotNull;
 
 public class RawExportable implements Exportable {
@@ -23,7 +24,7 @@ public class RawExportable implements Exportable {
         this.exportPath = exportPath;
         this.data = data;
 
-        if(exportPath.contains("..")) throw new IllegalArgumentException("Parent directory path elements (../) are not allowed in an exportable");
+        if(exportPath.contains("../")) throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Parent directory path elements (../) are not allowed in an exportable: " + exportPath, exportPath);
     }
 
     @Override

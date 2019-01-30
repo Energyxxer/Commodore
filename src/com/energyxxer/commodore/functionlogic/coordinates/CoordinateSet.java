@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.coordinates;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.execute.ExecuteModifier;
 import com.energyxxer.commodore.functionlogic.commands.execute.SubCommandResult;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
@@ -62,7 +63,7 @@ public class CoordinateSet implements ExecuteModifier {
         if(y.getType() == Coordinate.Type.LOCAL) locals++;
         if(z.getType() == Coordinate.Type.LOCAL) locals++;
 
-        if(locals != 0 && locals != 3) throw new IllegalArgumentException("Cannot combine local and world coordinates");
+        if(locals != 0 && locals != 3) throw new CommodoreException(CommodoreException.Source.COORDINATE_ERROR, "Cannot combine local and world coordinates");
     }
 
     /**

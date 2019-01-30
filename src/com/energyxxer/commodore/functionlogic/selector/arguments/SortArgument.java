@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.selector.arguments;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
@@ -99,7 +100,7 @@ public class SortArgument implements SelectorArgument {
 
     @Override
     public void assertCompatibleWith(@NotNull Selector selector) {
-        if(selector.getBase().getSorting().isEnforced()) throw new IllegalArgumentException("Sort is not applicable for the " + selector.getBase() + " selector type");
+        if(selector.getBase().getSorting().isEnforced()) throw new CommodoreException(CommodoreException.Source.SELECTOR_ERROR, "Sort is not applicable for the " + selector.getBase() + " selector type", selector);
         SelectorArgument.super.assertCompatibleWith(selector);
     }
 }

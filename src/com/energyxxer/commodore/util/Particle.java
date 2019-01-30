@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.util;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.block.Block;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.types.Type;
@@ -22,10 +23,10 @@ public class Particle {
         String[] expectedArguments = type.getProperty("argument").split("-");
         if(expectedArguments.length == 1 && expectedArguments[0].equals("none")) {
             if(arguments.length > 0) {
-                throw new IllegalArgumentException("Particle '" + type + "' takes no arguments; got " + arguments.length + " instead");
+                throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Particle '" + type + "' takes no arguments; got " + arguments.length + " instead", arguments);
             } else return;
         }
-        if(arguments.length != expectedArguments.length) throw new IllegalArgumentException("Particle '" + type + "' takes " + expectedArguments.length + " arguments, instead got " + arguments.length);
+        if(arguments.length != expectedArguments.length) throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Particle '" + type + "' takes " + expectedArguments.length + " arguments, instead got " + arguments.length, arguments);
         for(int i = 0; i < arguments.length; i++) {
             Object argument = arguments[i];
             String expectedArgument = expectedArguments[i];
@@ -38,7 +39,7 @@ public class Particle {
                     (argument instanceof Double && expectedArgument.equals("double"))
             ) {
                 this.arguments.add(argument);
-            } else throw new IllegalArgumentException("Particle '" + type + "' takes '" + expectedArgument + "' as argument " + (i+1) + "; instead, '" + argument + "' was passed");
+            } else throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Particle '" + type + "' takes '" + expectedArgument + "' as argument " + (i+1) + "; instead, '" + argument + "' was passed", argument);
         }
     }
 

@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -24,7 +25,7 @@ public class TagArgument implements SelectorArgument {
         this.tag = tag;
         this.negated = negated;
         if(tag != null && !tag.matches(CommandUtils.IDENTIFIER_ALLOWED))
-            throw new IllegalArgumentException("Tag argument value '" + tag + "' has illegal characters. Does not match regex: " + CommandUtils.IDENTIFIER_ALLOWED);
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Tag argument value '" + tag + "' has illegal characters. Does not match regex: " + CommandUtils.IDENTIFIER_ALLOWED, tag);
     }
 
     @Nullable
