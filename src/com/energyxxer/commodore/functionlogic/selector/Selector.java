@@ -13,6 +13,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Represents an entity selector used in-game to target any number of entities, using a mix of base selectors and
@@ -353,6 +354,15 @@ public class Selector implements Entity, Cloneable {
             if(arg.getKey().equals(key)) return true;
         }
         return false;
+    }
+
+    /**
+     * Creates and retrieves a list of all arguments currently in the selector.
+     *
+     * @return A list with all the arguments in this selector. Changes made to this list will not apply to this selector.
+     * */
+    public List<SelectorArgument> getAllArguments() {
+        return new ArrayList<>(args);
     }
 
     @Override

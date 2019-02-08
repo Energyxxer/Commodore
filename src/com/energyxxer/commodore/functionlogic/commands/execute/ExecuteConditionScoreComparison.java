@@ -43,4 +43,19 @@ public class ExecuteConditionScoreComparison extends ExecuteCondition {
     public boolean isAbsolute() {
         return false;
     }
+
+    @NotNull
+    public LocalScore getTarget() {
+        return target;
+    }
+
+    @NotNull
+    public ScoreComparison getComparison() {
+        return comparison;
+    }
+
+    @NotNull
+    public LocalScore getSource() {
+        return source;
+    }
 }

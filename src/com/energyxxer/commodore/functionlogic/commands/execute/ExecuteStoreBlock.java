@@ -57,4 +57,23 @@ public class ExecuteStoreBlock extends ExecuteStore {
     public boolean isAbsolute() {
         return true;
     }
+
+    @NotNull
+    public CoordinateSet getPosition() {
+        return position;
+    }
+
+    @NotNull
+    public NBTPath getPath() {
+        return path;
+    }
+
+    @NotNull
+    public NumericNBTType getType() {
+        return type;
+    }
+
+    public double getScale() {
+        return scale;
+    }
 }

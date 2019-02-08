@@ -37,4 +37,9 @@ public class ExecuteStoreScore extends ExecuteStore {
     public boolean isAbsolute() {
         return true;
     }
+
+    @NotNull
+    public LocalScore getScore() {
+        return score;
+    }
 }

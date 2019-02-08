@@ -39,4 +39,14 @@ public class ExecuteConditionScoreMatch extends ExecuteCondition {
     public boolean isAbsolute() {
         return false;
     }
+
+    @NotNull
+    public LocalScore getTarget() {
+        return target;
+    }
+
+    @NotNull
+    public NumberRange getRange() {
+        return range;
+    }
 }

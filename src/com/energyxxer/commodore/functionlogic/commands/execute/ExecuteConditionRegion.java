@@ -64,4 +64,24 @@ public class ExecuteConditionRegion extends ExecuteCondition {
         map.merge(template.getUsedExecutionVariables());
         return map;
     }
+
+    @NotNull
+    public CoordinateSet getRegion0() {
+        return region0;
+    }
+
+    @NotNull
+    public CoordinateSet getRegion1() {
+        return region1;
+    }
+
+    @NotNull
+    public CoordinateSet getTemplate() {
+        return template;
+    }
+
+    @NotNull
+    public AirPolicy getPolicy() {
+        return policy;
+    }
 }

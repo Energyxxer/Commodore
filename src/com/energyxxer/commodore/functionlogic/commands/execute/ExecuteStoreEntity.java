@@ -57,4 +57,23 @@ public class ExecuteStoreEntity extends ExecuteStore {
     public boolean isAbsolute() {
         return true;
     }
+
+    @NotNull
+    public Entity getEntity() {
+        return entity;
+    }
+
+    @NotNull
+    public NBTPath getPath() {
+        return path;
+    }
+
+    @NotNull
+    public NumericNBTType getType() {
+        return type;
+    }
+
+    public double getScale() {
+        return scale;
+    }
 }

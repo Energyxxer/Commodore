@@ -39,4 +39,14 @@ public class ExecuteConditionDataEntity extends ExecuteCondition {
     public boolean isAbsolute() {
         return false;
     }
+
+    @NotNull
+    public Entity getEntity() {
+        return entity;
+    }
+
+    @NotNull
+    public NBTPath getPath() {
+        return path;
+    }
 }

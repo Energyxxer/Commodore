@@ -38,4 +38,14 @@ public class ExecuteConditionDataBlock extends ExecuteCondition {
     public boolean isAbsolute() {
         return false;
     }
+
+    @NotNull
+    public CoordinateSet getPos() {
+        return pos;
+    }
+
+    @NotNull
+    public NBTPath getPath() {
+        return path;
+    }
 }

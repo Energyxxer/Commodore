@@ -45,4 +45,9 @@ public class ExecuteFacingBlock implements ExecuteModifier {
     public ExecutionVariableMap getModifiedExecutionVariables() {
         return new ExecutionVariableMap(ExecutionVariable.YAW, ExecutionVariable.PITCH);
     }
+
+    @NotNull
+    public CoordinateSet getPos() {
+        return pos;
+    }
 }

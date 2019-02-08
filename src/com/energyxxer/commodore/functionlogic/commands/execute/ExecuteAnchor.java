@@ -43,4 +43,9 @@ public class ExecuteAnchor implements ExecuteModifier {
     public ExecutionVariableMap getModifiedExecutionVariables() {
         return new ExecutionVariableMap(ExecutionVariable.ANCHOR);
     }
+
+    @NotNull
+    public EntityAnchor getAnchor() {
+        return anchor;
+    }
 }

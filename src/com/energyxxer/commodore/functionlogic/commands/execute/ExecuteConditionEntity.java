@@ -33,4 +33,9 @@ public class ExecuteConditionEntity extends ExecuteCondition {
     public boolean isAbsolute() {
         return false;
     }
+
+    @NotNull
+    public Entity getEntity() {
+        return entity;
+    }
 }

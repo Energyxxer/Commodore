@@ -52,4 +52,16 @@ public class ExecuteAlignment implements ExecuteModifier {
         if(z) map.setUsed(ExecutionVariable.Z);
         return map;
     }
+
+    public boolean isX() {
+        return x;
+    }
+
+    public boolean isY() {
+        return y;
+    }
+
+    public boolean isZ() {
+        return z;
+    }
 }

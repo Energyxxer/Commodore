@@ -41,4 +41,9 @@ public class ExecutePositionedAsEntity implements ExecuteModifier {
         if(entity.getLimit() != 1) map.setUsed(ExecutionVariable.COUNT);
         return map;
     }
+
+    @NotNull
+    public Entity getEntity() {
+        return entity;
+    }
 }

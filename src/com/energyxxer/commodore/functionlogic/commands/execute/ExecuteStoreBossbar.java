@@ -48,4 +48,14 @@ public class ExecuteStoreBossbar extends ExecuteStore {
     public boolean isAbsolute() {
         return true;
     }
+
+    @NotNull
+    public Type getBossbar() {
+        return bossbar;
+    }
+
+    @NotNull
+    public BossbarVariable getVariable() {
+        return variable;
+    }
 }

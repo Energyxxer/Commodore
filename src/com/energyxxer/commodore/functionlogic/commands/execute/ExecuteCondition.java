@@ -26,5 +26,10 @@ public abstract class ExecuteCondition implements ExecuteModifier {
         return new ExecutionVariableMap(ExecutionVariable.CONDITION);
     }
 
+    @NotNull
+    public ConditionType getType() {
+        return type;
+    }
+
     //Rest of the condition types built by subclasses
 }

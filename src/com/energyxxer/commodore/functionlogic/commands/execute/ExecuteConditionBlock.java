@@ -49,4 +49,14 @@ public class ExecuteConditionBlock extends ExecuteCondition {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return pos.getUsedExecutionVariables();
     }
+
+    @NotNull
+    public CoordinateSet getPos() {
+        return pos;
+    }
+
+    @NotNull
+    public Block getBlock() {
+        return block;
+    }
 }

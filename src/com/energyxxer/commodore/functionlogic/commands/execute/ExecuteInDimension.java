@@ -43,4 +43,9 @@ public class ExecuteInDimension implements ExecuteModifier {
     public ExecutionVariableMap getModifiedExecutionVariables() {
         return new ExecutionVariableMap(ExecutionVariable.DIMENSION);
     }
+
+    @NotNull
+    public Type getDimension() {
+        return dimension;
+    }
 }
