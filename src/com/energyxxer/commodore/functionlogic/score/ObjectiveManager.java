@@ -7,6 +7,7 @@ import com.energyxxer.commodore.textcomponents.TextComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collection;
 import java.util.HashMap;
 
 public class ObjectiveManager {
@@ -99,6 +100,10 @@ public class ObjectiveManager {
         if(creationFunction != null) {
             dumpObjectiveCreators(creationFunction);
         }
+    }
+
+    public Collection<Objective> getAll() {
+        return objectives.values();
     }
 
     @Override
