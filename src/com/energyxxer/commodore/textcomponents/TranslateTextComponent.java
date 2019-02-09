@@ -14,6 +14,11 @@ public class TranslateTextComponent extends TextComponent {
         this.translateKey = translateKey;
     }
 
+    public TranslateTextComponent(@NotNull String translateKey, TextStyle style) {
+        this.translateKey = translateKey;
+        this.setStyle(style);
+    }
+
     @Override
     public boolean supportsProperties() {
         return true;

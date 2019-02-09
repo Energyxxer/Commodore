@@ -13,7 +13,7 @@ public class SelectorTextComponent extends TextComponent {
         this(entity, null);
     }
 
-    public SelectorTextComponent(@NotNull Entity entity, @Nullable  TextStyle style) {
+    public SelectorTextComponent(@NotNull Entity entity, @Nullable TextStyle style) {
         this.entity = entity;
         this.setStyle(style);
     }

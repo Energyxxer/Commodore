@@ -1,5 +1,9 @@
 package com.energyxxer.commodore.textcomponents;
 
+import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
+import com.energyxxer.commodore.functionlogic.entity.Entity;
+import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
+import com.energyxxer.commodore.functionlogic.score.LocalScore;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -87,4 +91,56 @@ public abstract class TextComponent {
         return this.toString(null);
     }
 
+
+    public static class ShorthandConstructors {
+        public static StringTextComponent text(String text, TextStyle style) {
+            return new StringTextComponent(text, style);
+        }
+        public static StringTextComponent text(String text) {
+            return new StringTextComponent(text);
+        }
+        public static SelectorTextComponent selector(Entity entity, TextStyle style) {
+            return new SelectorTextComponent(entity, style);
+        }
+        public static SelectorTextComponent selector(Entity entity) {
+            return new SelectorTextComponent(entity);
+        }
+        public static TranslateTextComponent translate(String key, TextStyle style) {
+            return new TranslateTextComponent(key, style);
+        }
+        public static TranslateTextComponent translate(String key) {
+            return new TranslateTextComponent(key);
+        }
+        public static ScoreTextComponent score(LocalScore score, TextStyle style) {
+            return new ScoreTextComponent(score, style);
+        }
+        public static ScoreTextComponent score(LocalScore score) {
+            return new ScoreTextComponent(score);
+        }
+        public static KeybindTextComponent keybind(String key, TextStyle style) {
+            return new KeybindTextComponent(key, style);
+        }
+        public static KeybindTextComponent keybind(String key) {
+            return new KeybindTextComponent(key);
+        }
+        public static NBTTextComponent nbt(Entity entity, NBTPath path, TextStyle style) {
+            NBTTextComponent nbttc = new NBTTextComponent(path, entity);
+            nbttc.setStyle(style);
+            return nbttc;
+        }
+        public static NBTTextComponent nbt(Entity entity, NBTPath path) {
+            return new NBTTextComponent(path, entity);
+        }
+        public static NBTTextComponent nbt(CoordinateSet block, NBTPath path, TextStyle style) {
+            NBTTextComponent nbttc = new NBTTextComponent(path, block);
+            nbttc.setStyle(style);
+            return nbttc;
+        }
+        public static NBTTextComponent nbt(CoordinateSet block, NBTPath path) {
+            return new NBTTextComponent(path, block);
+        }
+        public static ListTextComponent list(TextComponent... components) {
+            return new ListTextComponent(components);
+        }
+    }
 }

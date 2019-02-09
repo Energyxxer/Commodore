@@ -33,7 +33,7 @@ public interface Command extends FunctionWriter {
     }
 
     /**
-     * Runs whenever this command is appended into a function.
+     * Runs whenever this command is appended or prepended into a function section.
      * @param section The function section this command is appended to.
      * @param execContext The execution context of this command. May not be the function's execution context.
      */

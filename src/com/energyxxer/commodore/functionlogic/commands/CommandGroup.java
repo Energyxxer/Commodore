@@ -41,6 +41,11 @@ public class CommandGroup implements Command, FunctionSection {
         this.writers.addAll(writers);
     }
 
+    @Override
+    public void prepend(@NotNull Collection<@NotNull FunctionWriter> writers) {
+        this.writers.addAll(0, writers);
+    }
+
     @NotNull
     @Override
     public Namespace getNamespace() {

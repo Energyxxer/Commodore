@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
 import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.SENDER;
@@ -54,13 +53,15 @@ public class Function implements FunctionSection, Exportable {
     }
 
     @Override
-    public void append(@NotNull FunctionWriter... writers) {
-        append(Arrays.asList(writers));
+    public void append(@NotNull Collection<@NotNull FunctionWriter> writers) {
+        this.content.addAll(writers);
+        writers.forEach(w -> w.onAppend(this));
+        contentResolved = false;
     }
 
     @Override
-    public void append(@NotNull Collection<@NotNull FunctionWriter> writers) {
-        this.content.addAll(writers);
+    public void prepend(@NotNull Collection<@NotNull FunctionWriter> writers) {
+        this.content.addAll(0, writers);
         writers.forEach(w -> w.onAppend(this));
         contentResolved = false;
     }

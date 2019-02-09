@@ -11,6 +11,11 @@ public class KeybindTextComponent extends TextComponent {
         this.key = key;
     }
 
+    public KeybindTextComponent(@NotNull String key, TextStyle style) {
+        this.key = key;
+        this.setStyle(style);
+    }
+
     @Override
     public boolean supportsProperties() {
         return true;

@@ -383,7 +383,6 @@ public class Selector implements Entity, Cloneable {
         return base.getPlayer().getValue();
     }
 
-    //TODO idek if execution variables are even going to be used.
     public ExecutionVariableMap getUsedExecutionVariables() {
         ExecutionVariableMap usedVariables = new ExecutionVariableMap();
 
