@@ -83,7 +83,13 @@
   "minecraft:flame": {
     "argument": "none"
   },
+  "minecraft:flash": {
+    "argument": "none"
+  },
   "minecraft:happy_villager": {
+    "argument": "none"
+  },
+  "minecraft:composter": {
     "argument": "none"
   },
   "minecraft:heart": {

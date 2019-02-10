@@ -266,7 +266,7 @@
     "hostile": true,
     "undead": true
   },
-  "minecraft:illager_beast": {
+  "minecraft:ravager": {
     "spawnable": true,
     "targetable": true,
     "living": true,
@@ -532,6 +532,13 @@
     "hostile": false,
     "minecart": true
   },
+  "minecraft:trader_llama": {
+    "spawnable": true,
+    "targetable": true,
+    "living": true,
+    "hostile": false,
+    "breedable": true
+  },
   "minecraft:trident": {
     "spawnable": true,
     "targetable": true,
@@ -576,6 +583,12 @@
     "targetable": true,
     "living": true,
     "hostile": true
+  },
+  "minecraft:wandering_trader": {
+    "spawnable": true,
+    "targetable": true,
+    "living": true,
+    "hostile": false
   },
   "minecraft:witch": {
     "spawnable": true,
