@@ -399,10 +399,10 @@ public class DefinitionPack {
 
                     if(isTag) {
                         Tag created = module.createNamespace(namespace).getTagManager().getGroup(category).create(value);
-                        tag.addValue(created);
+                        tag.addValue(created, false);
                     } else {
                         Type created = module.createNamespace(namespace).getTypeManager().createDictionary(category, true).create(value);
-                        tag.addValue(created);
+                        tag.addValue(created, false);
                     }
                 }
             }

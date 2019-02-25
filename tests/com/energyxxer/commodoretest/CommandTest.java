@@ -393,7 +393,7 @@ public class CommandTest {
 
         System.out.println("module.minecraft.getTagManager().getBlockGroup() = " + module.minecraft.getTagManager().blockTags);
         System.out.println(module.minecraft.getTagManager().blockTags.get("coral_blocks").getValues());
-        System.out.println(((BlockTag) module.minecraft.getTagManager().blockTags.get("coral_blocks").getValues().get(0)).getValues());
+        System.out.println(((BlockTag) module.minecraft.getTagManager().blockTags.get("coral_blocks").getValues().toArray(new Type[0])[0]).getValues());
         System.out.println(module.minecraft.getTagManager().blockTags.get("dead_coral_blocks").getValues());
 
         //System.out.println(function.getResolvedContent());

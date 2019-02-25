@@ -20,6 +20,11 @@ import java.util.Collection;
  * */
 public abstract class Tag extends Type implements Exportable {
 
+    @NotNull
+    protected final TagGroup group;
+    private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
+    private boolean export = true;
+
     /**
      * Describes how a tag conflict between two data packs should be handled.
      * */
@@ -71,6 +76,9 @@ public abstract class Tag extends Type implements Exportable {
         }
     }
 
+    private final ArrayList<Type> values = new ArrayList<>();
+    private final ArrayList<Boolean> shouldExportValues = new ArrayList<>();
+
     /**
      * Creates a tag of the specified category, namespace and name.
      *
@@ -78,8 +86,9 @@ public abstract class Tag extends Type implements Exportable {
      * @param namespace The namespace this tag belongs to.
      * @param name The name of this tag.
      * */
-    public Tag(@NotNull String category, @NotNull Namespace namespace, @NotNull String name) {
+    public Tag(@NotNull String category, @NotNull Namespace namespace, @NotNull String name, @NotNull TagGroup group) {
         super(category, namespace, name);
+        this.group = group;
     }
 
     /**
@@ -88,31 +97,33 @@ public abstract class Tag extends Type implements Exportable {
      * @return The list of values contained in this tag.
      * */
     @NotNull
-    public abstract ArrayList<@NotNull Type> getValues();
+    public Collection<@NotNull Type> getValues() {
+        return values;
+    }
 
-    /**
-     * Retrieves this tag's override policy. That is, how this tag handles conflicts with same-identifier tags from
-     * different data packs.
-     *
-     * @return The override policy for this tag.
-     * */
     @NotNull
-    public abstract OverridePolicy getOverridePolicy();
+    public OverridePolicy getOverridePolicy() {
+        return policy;
+    }
 
-    /**
-     * Changes this tag's override policy to the one specified.
-     *
-     * @param newPolicy The new override policy for this tag.
-     * */
-    public abstract void setOverridePolicy(@NotNull OverridePolicy newPolicy);
+    public void setOverridePolicy(@NotNull OverridePolicy newPolicy) {
+        this.policy = newPolicy;
+    }
 
-    /**
-     * Retrieves this tag's parent group.
-     *
-     * @return The group this tag belongs to.
-     * */
+    @Override
+    public boolean shouldExport() {
+        return export;
+    }
+
+    @Override
+    public void setExport(boolean export) {
+        this.export = export;
+    }
+
     @NotNull
-    public abstract TagGroup<?> getGroup();
+    public TagGroup<?> getGroup() {
+        return group;
+    }
 
     /**
      * Adds a value to this tag's contents.
@@ -121,7 +132,36 @@ public abstract class Tag extends Type implements Exportable {
      *
      * @throws IllegalTypeException If the given value doesn't match this tag's category.
      * */
-    public abstract void addValue(@NotNull Type value);
+    public void addValue(@NotNull Type value) {
+        addValue(value, true);
+    }
+
+    /**
+     * Adds a value to this tag's contents.
+     *
+     * @param value The value to add to this tag.
+     * @param shouldExport Whether this value should be exported with the tag file. If not specified, defaults to
+     *                     <code>true</code>
+     *
+     * @throws IllegalTypeException If the given value doesn't match this tag's category.
+     * */
+    public void addValue(@NotNull Type value, boolean shouldExport) {
+        values.add(value);
+        shouldExportValues.add(shouldExport);
+    }
+
+    /**
+     * Removes a value from this tag's contents. Does nothing if the given value doesn't exist in this tag.
+     *
+     * @param value The value to remove to this tag.
+     * */
+    public void removeValue(@NotNull Type value) {
+        int oldIndex;
+        while((oldIndex = values.indexOf(value)) >= 0) {
+            values.remove(oldIndex);
+            shouldExportValues.remove(oldIndex);
+        }
+    }
 
     /**
      * Adds a collection of values to this tag's contents.
@@ -143,11 +183,18 @@ public abstract class Tag extends Type implements Exportable {
         JsonArray list = new JsonArray();
         root.add("values", list);
 
-        for(Type value : getValues()) {
-            list.add(value.toString());
+        for(int i = 0; i < values.size(); i++) {
+            if(shouldExportValues.get(i)) {
+                list.add(values.get(i).toString());
+            }
         }
 
         return gson.toJson(root).getBytes(Commodore.getDefaultEncoding());
+    }
+
+    @Override
+    public boolean isStandalone() {
+        return false;
     }
 
     @Override
