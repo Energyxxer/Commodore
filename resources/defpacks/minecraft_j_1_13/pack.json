@@ -45,6 +45,10 @@
       "use_namespace": true,
       "import_from": "definitions/motives"
     },
+    "function_reference": {
+      "use_namespace": true,
+      "tag_directory": "functions"
+    },
     "difficulty": {
       "use_namespace": false,
       "import_from": "definitions/difficulties"
