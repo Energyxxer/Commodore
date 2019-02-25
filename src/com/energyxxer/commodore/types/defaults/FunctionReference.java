@@ -21,7 +21,7 @@ public class FunctionReference extends Type {
 
     @Override
     public boolean isStandalone() {
-        return false;
+        return true;
     }
 
     public Function getFunction() {
