@@ -191,9 +191,8 @@ public class DefinitionPack {
      * @throws IOException If an IOException occurred during the retrieval of the pack's resources.
      * @throws MalformedPackException If mandatory files or properties are not found in the source.
      * */
-    public void load() throws IOException {
+    public synchronized void load() throws IOException {
         if(loaded) return;
-        loaded = true;
 
         try {
             source.open();
@@ -239,6 +238,7 @@ public class DefinitionPack {
 
         } finally {
             source.close();
+            loaded = true;
         }
     }
 
