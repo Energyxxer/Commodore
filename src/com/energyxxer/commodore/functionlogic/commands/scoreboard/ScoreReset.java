@@ -4,15 +4,14 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
+import com.energyxxer.commodore.functionlogic.score.LocalScore;
 import com.energyxxer.commodore.functionlogic.score.Objective;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ScoreReset implements Command {
-    @Nullable
-    private final Entity entity;
-    @Nullable
-    private final Objective objective;
+    @NotNull
+    private final LocalScore score;
 
     public ScoreReset() {
         this(null, null);
@@ -27,19 +26,22 @@ public class ScoreReset implements Command {
     }
 
     public ScoreReset(@Nullable Entity entity, @Nullable Objective objective) {
-        this.entity = entity;
-        this.objective = objective;
+        this(new LocalScore(entity, objective));
+    }
+
+    public ScoreReset(@NotNull LocalScore score) {
+        this.score = score;
     }
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         StringBuilder sb = new StringBuilder("scoreboard players reset ");
-        if(entity != null) {
-            sb.append(entity);
+        if(score.getHolder() != null) {
+            sb.append(score.getHolder());
         } else sb.append('*');
-        if(objective != null) {
+        if(score.getObjective() != null) {
             sb.append(' ');
-            sb.append(objective.getName());
+            sb.append(score.getObjective().getName());
         }
         return new CommandResolution(execContext, sb.toString());
     }
