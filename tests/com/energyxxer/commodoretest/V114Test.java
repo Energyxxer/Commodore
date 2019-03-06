@@ -146,5 +146,7 @@ public class V114Test {
         System.out.println(lt.toString());
 
         System.out.println(root.toHeadlessString());
+
+        System.out.println(module.getResource("sounds.json"));
     }
 }

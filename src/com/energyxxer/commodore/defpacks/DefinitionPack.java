@@ -157,6 +157,11 @@ public class DefinitionPack {
      * */
     @NotNull
     private final ArrayList<CategoryDeclaration> definedCategories = new ArrayList<>();
+    /**
+     * Stores a map of all the extra resources for this definition pack.
+     * */
+    @NotNull
+    private final HashMap<String, Object> resources = new HashMap<>();
 
     /**
      * Describes whether this pack has been loaded before; that is, if the contents of the pack have been read and
@@ -235,6 +240,10 @@ public class DefinitionPack {
             }
 
             importNamespaceData();
+
+            //Load extra resources
+
+            importResources();
 
         } finally {
             source.close();
@@ -358,6 +367,40 @@ public class DefinitionPack {
         }
     }
 
+    private void importResources() throws IOException {
+        InputStream in = source.get("resources/");
+        if (in != null) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
+            String resourceFile;
+            while ((resourceFile = br.readLine()) != null) {
+                readResource(resourceFile);
+            }
+
+            br.close();
+        }
+    }
+
+    private void readResource(String fileName) throws IOException {
+        InputStream in = source.get("resources/" + fileName);
+        if(in != null) {
+            if (fileName.endsWith(".json")) {
+                try (InputStreamReader is = new InputStreamReader(in)) {
+                    JsonObject obj = gson.fromJson(is, JsonObject.class);
+                    resources.put(fileName, obj);
+                }
+            } else {
+                BufferedReader br = new BufferedReader(new InputStreamReader(in));
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = br.readLine()) != null) {
+                    sb.append(line);
+                }
+                resources.put(fileName, sb.toString());
+            }
+        }
+    }
+
     /**
      * Adds all this definition pack's definitions into the given module. This method loads the definition pack into
      * memory if it hasn't already been loaded.
@@ -406,6 +449,9 @@ public class DefinitionPack {
                     }
                 }
             }
+        }
+        for(Map.Entry<String, Object> entry : resources.entrySet()) {
+            module.putResource(entry.getKey(), entry.getValue());
         }
     }
 

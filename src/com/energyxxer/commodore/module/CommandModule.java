@@ -67,6 +67,9 @@ public class CommandModule {
     @NotNull
     public final Namespace minecraft;
 
+    @NotNull
+    protected final HashMap<@NotNull String, Object> resources = new HashMap<>();
+
     /**
      * Creates a command module with the given name.
      *
@@ -262,6 +265,38 @@ public class CommandModule {
      * */
     public void importDefinitions(@NotNull DefinitionPack pack) throws IOException {
         pack.populate(this);
+    }
+
+    /**
+     * Adds the given key-value pair to this module's resource list
+     *
+     * @param key The key to associate this resource with
+     * @param value The resource value to associate with this key
+     * */
+    public void putResource(@NotNull String key, Object value) {
+        resources.put(key, value);
+    }
+
+    /**
+     * Retrieves the map of this module's extra resources.
+     *
+     * @return A map of module's resources.
+     * */
+    @NotNull
+    public HashMap<String, Object> getResources() {
+        return resources;
+    }
+
+    /**
+     * Retrieves this module's resource associated with the given key
+     *
+     * @param key The key associated with the resource to retrieve
+     *
+     * @return The retrieved resource associated with the given key, if it exists.
+     * Returns <code>null</code> if the key is not present.
+     * */
+    public Object getResource(@NotNull String key) {
+        return resources.get(key);
     }
 
     @Override
