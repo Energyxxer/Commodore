@@ -53,7 +53,7 @@ public class EnhancedHoes {
         Namespace minecraft = module.minecraft;
         Type itemEntityType = minecraft.getTypeManager().entity.get("item");
 
-        Namespace namespace = module.createNamespace(module.getPrefix());
+        Namespace namespace = module.getNamespace(module.getPrefix());
 
         Function tick = namespace.getFunctionManager().create("tick");
 

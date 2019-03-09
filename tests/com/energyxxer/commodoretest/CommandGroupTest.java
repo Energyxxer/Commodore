@@ -41,7 +41,7 @@ public class CommandGroupTest {
             x.printStackTrace();
         }
 
-        Namespace cgt = module.createNamespace("cgt");
+        Namespace cgt = module.getNamespace("cgt");
 
         Function function = cgt.getFunctionManager().create("func");
 

@@ -52,7 +52,7 @@ public class V114Test {
 
         System.out.println(module.minecraft.tags.functionTags.getAll());
 
-        Namespace ns = module.createNamespace("test");
+        Namespace ns = module.getNamespace("test");
 
         Function function = ns.getFunctionManager().create("func", true, new Selector(NEAREST_PLAYER));
 

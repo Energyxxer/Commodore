@@ -167,10 +167,10 @@ public class CommandTest {
         }
         ObjectiveManager objMgr = module.getObjectiveManager();
         objMgr.setPrefixEnabled(true);
-        objMgr.setCreationFunction(module.createNamespace("ct").getFunctionManager().create("init_objectives"));
+        objMgr.setCreationFunction(module.getNamespace("ct").getFunctionManager().create("init_objectives"));
         objMgr.create("return", true);
 
-        Function function = module.createNamespace("test").getFunctionManager().create("scores");
+        Function function = module.getNamespace("test").getFunctionManager().create("scores");
 
         Type bat = module.minecraft.getTypeManager().entity.get("bat");
 

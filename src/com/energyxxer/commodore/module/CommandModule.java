@@ -33,7 +33,6 @@ public class CommandModule {
     /**
      * The prefix which should be used for special names in this module. Currently only used by objective names.
      * */
-    @Nullable
     protected final String prefix;
 
     /**
@@ -103,7 +102,7 @@ public class CommandModule {
 
         this.objMgr = new ObjectiveManager(this);
 
-        this.minecraft = createNamespace("minecraft");
+        this.minecraft = getNamespace("minecraft");
 
         optMgr = new ModuleOptionManager();
     }
@@ -133,7 +132,6 @@ public class CommandModule {
      *
      * @return The prefix for this module.
      * */
-    @Nullable
     public String getPrefix() {
         return prefix;
     }
@@ -197,27 +195,30 @@ public class CommandModule {
      *
      * @return The newly created namespace, if it was created, or the previously existing namespace if one of the same
      * name was found.
+     *
+     * @deprecated Does the same thing as {@link CommandModule#getNamespace(String)}
      * */
     @NotNull
+    @Deprecated
     public Namespace createNamespace(@NotNull String name) {
+        return getNamespace(name);
+    }
+
+    /**
+     * Creates a namespace with the given name, if it doesn't already exist.
+     *
+     * @param name The name of the namespace.
+     *
+     * @return The newly created namespace, if it was created, or the previously existing namespace if one of the same
+     * name was found.
+     * */
+    public Namespace getNamespace(@NotNull String name) {
         Namespace alreadyExisting = namespaces.get(name);
         if(alreadyExisting != null) return alreadyExisting;
 
         Namespace newNamespace = new Namespace(this, name);
         namespaces.put(name, newNamespace);
         return newNamespace;
-    }
-
-    /**
-     * Retrieves the namespace with the given name.
-     *
-     * @param name The name of the namespace to retrieve.
-     *
-     * @return This module's namespace of the given name if it exists; <code>null</code> otherwise.
-     * */
-    @NotNull
-    public Namespace getNamespace(@NotNull String name) {
-        return namespaces.get(name);
     }
 
     /**
