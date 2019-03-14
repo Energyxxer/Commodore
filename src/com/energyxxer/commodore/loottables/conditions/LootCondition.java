@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.loottables.conditions;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.util.IntegerRange;
 import com.energyxxer.commodore.util.NumberRange;
 import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
@@ -213,7 +214,7 @@ public abstract class LootCondition {
         }
 
         public void setScore(String objective, int min, int max) {
-            this.setScore(objective, new NumberRange<>(min, max));
+            this.setScore(objective, new IntegerRange(min, max));
         }
 
         public void setScore(String objective, NumberRange<Integer> range) {

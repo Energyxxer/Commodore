@@ -9,19 +9,20 @@ import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class NumberRange<T extends Number> implements Cloneable {
+public abstract class NumberRange<T extends Number> implements Cloneable {
     @Nullable
-    private final T min;
+    protected final T min;
     @Nullable
-    private final T max;
+    protected final T max;
 
-    public NumberRange(@Nullable T value) {
-        this(value, value);
-    }
+    @NotNull
+    protected final Class<? extends Number> cls;
 
-    public NumberRange(@Nullable T min, @Nullable T max) {
+    protected NumberRange(@NotNull Class<T> cls, @Nullable T min, @Nullable T max) {
         this.min = min;
         this.max = max;
+
+        this.cls = cls;
 
         if(min != null && max != null && (min.doubleValue() > max.doubleValue() || min.longValue() > max.longValue())) {
             throw new CommodoreException(CommodoreException.Source.NUMBER_RANGE_ERROR, "Min cannot be bigger than max; Min: " + min + ", Max: " + max, min);
@@ -32,24 +33,25 @@ public class NumberRange<T extends Number> implements Cloneable {
         return (min != null && min.doubleValue() < 0) || (max != null && max.doubleValue() < 0);
     }
 
+    @NotNull
     public Class<? extends Number> getNumberClass() {
-        return min != null ? min.getClass() : max != null ? max.getClass() : Integer.class;
+        return cls;
     }
 
     @Override
     public String toString() {
         if(min != null && min.equals(max)) {
             return CommandUtils.numberToPlainString(min.doubleValue());
+        } else if(min == null && max == null) {
+            return getSuperRangeString();
         } else {
-            return ((min != null) ? CommandUtils.numberToPlainString(min.doubleValue()) : "") + ".." + ((max != null) ? "" + CommandUtils.numberToPlainString(max.doubleValue()) : "");
+            return ((min != null) ? CommandUtils.numberToPlainString(min) : "") + ".." + ((max != null) ? "" + CommandUtils.numberToPlainString(max) : "");
         }
     }
 
     @Override
     @NotNull
-    public NumberRange<T> clone() {
-        return new NumberRange<>(min, max);
-    }
+    public abstract NumberRange<T> clone();
 
     public static RangeParseResult<Double> parseDouble(String str) {
         Matcher range = Pattern.compile("(-?\\d+(?:\\.\\d+)?)?\\.\\.(-?\\d+(?:\\.\\d+)?)?").matcher(str);
@@ -62,11 +64,11 @@ public class NumberRange<T extends Number> implements Cloneable {
             Double min = (rawMin != null) ? Double.parseDouble(rawMin) : null;
             Double max = (rawMax != null) ? Double.parseDouble(rawMax) : null;
 
-            return new RangeParseResult<>(range.group(), new NumberRange<>(min, max));
+            return new RangeParseResult<>(range.group(), new DoubleRange(min, max));
         }
         Matcher exact = Pattern.compile("-?\\d+(?:\\.\\d+)?").matcher(str);
         if(exact.lookingAt()) {
-            return new RangeParseResult<>(exact.group(), new NumberRange<>(Double.parseDouble(exact.group())));
+            return new RangeParseResult<>(exact.group(), new DoubleRange(Double.parseDouble(exact.group())));
         }
         throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "'" + str + "' is not a double or range", str);
     }
@@ -82,11 +84,11 @@ public class NumberRange<T extends Number> implements Cloneable {
             Integer min = (rawMin != null) ? Integer.parseInt(rawMin) : null;
             Integer max = (rawMax != null) ? Integer.parseInt(rawMax) : null;
 
-            return new RangeParseResult<>(range.group(), new NumberRange<>(min, max));
+            return new RangeParseResult<>(range.group(), new IntegerRange(min, max));
         }
         Matcher exact = Pattern.compile("-?\\d+").matcher(str);
         if(exact.lookingAt()) {
-            return new RangeParseResult<>(exact.group(), new NumberRange<>(Integer.parseInt(exact.group())));
+            return new RangeParseResult<>(exact.group(), new IntegerRange(Integer.parseInt(exact.group())));
         }
         throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "'" + str + "' is not an integer or range", str);
     }
@@ -100,6 +102,8 @@ public class NumberRange<T extends Number> implements Cloneable {
     public T getMax() {
         return max;
     }
+
+    protected abstract String getSuperRangeString();
 }
 
 class RangeParseResult<T extends Number> {

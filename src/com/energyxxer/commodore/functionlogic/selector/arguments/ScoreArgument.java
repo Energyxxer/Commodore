@@ -9,12 +9,12 @@ import java.util.*;
 
 public class ScoreArgument implements SelectorArgument {
     @NotNull
-    private final HashMap<@NotNull Objective, @NotNull NumberRange<@NotNull Integer>> scores = new HashMap<>();
+    private final HashMap<@NotNull Objective, @NotNull NumberRange<Integer>> scores = new HashMap<>();
 
     public ScoreArgument() {
     }
 
-    public void put(@NotNull Objective objective, @NotNull NumberRange<@NotNull Integer> value) {
+    public void put(@NotNull Objective objective, @NotNull NumberRange<Integer> value) {
         this.scores.put(objective, value);
     }
 

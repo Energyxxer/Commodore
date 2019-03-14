@@ -9,9 +9,9 @@ public class ExecuteConditionScoreMatch extends ExecuteCondition {
     @NotNull
     private final LocalScore target;
     @NotNull
-    private final NumberRange range;
+    private final NumberRange<Integer> range;
 
-    public ExecuteConditionScoreMatch(@NotNull ConditionType flowController, @NotNull LocalScore target, @NotNull NumberRange range) {
+    public ExecuteConditionScoreMatch(@NotNull ConditionType flowController, @NotNull LocalScore target, @NotNull NumberRange<Integer> range) {
         super(flowController);
         this.target = target;
         this.range = range;
@@ -46,7 +46,7 @@ public class ExecuteConditionScoreMatch extends ExecuteCondition {
     }
 
     @NotNull
-    public NumberRange getRange() {
+    public NumberRange<Integer> getRange() {
         return range;
     }
 }

@@ -78,10 +78,7 @@ import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.BossbarReference;
 import com.energyxxer.commodore.types.defaults.FunctionReference;
 import com.energyxxer.commodore.types.defaults.TeamReference;
-import com.energyxxer.commodore.util.Delta;
-import com.energyxxer.commodore.util.NumberRange;
-import com.energyxxer.commodore.util.Particle;
-import com.energyxxer.commodore.util.StatusEffect;
+import com.energyxxer.commodore.util.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -304,7 +301,7 @@ public class CommandTest {
             //otherFunction.append(new ScoreSet(new LocalScore(t, entity1), 4));
 
             ScoreArgument scoreArg = new ScoreArgument();
-            scoreArg.put(t, new NumberRange<>(1, 5));
+            scoreArg.put(t, new IntegerRange(1, 5));
             Entity entity2 = new Selector(ALL_PLAYERS, scoreArg);
 
             ExecuteCommand exec1 = new ExecuteCommand(new ParticleCommand(new Particle(module.minecraft.getTypeManager().particle.get("bubble")), new CoordinateSet(0,0,0, Coordinate.Type.RELATIVE), new Delta(0,0,0), 0, 100, true, entity1));

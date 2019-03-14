@@ -6,9 +6,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class YawArgument implements SelectorArgument {
     @NotNull
-    private final NumberRange<@NotNull Double> value;
+    private final NumberRange<Double> value;
 
-    public YawArgument(@NotNull NumberRange<@NotNull Double> value) {
+    public YawArgument(@NotNull NumberRange<Double> value) {
         this.value = value;
     }
 

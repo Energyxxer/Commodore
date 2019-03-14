@@ -30,14 +30,14 @@ import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.tags.ItemTag;
 import com.energyxxer.commodore.textcomponents.*;
 import com.energyxxer.commodore.textcomponents.events.InsertionEvent;
+import com.energyxxer.commodore.util.DoubleRange;
+import com.energyxxer.commodore.util.IntegerRange;
 import com.energyxxer.commodore.util.attributes.Attribute;
 
 import java.io.File;
 import java.io.IOException;
 
-import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.ALL_PLAYERS;
-import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.NEAREST_PLAYER;
-import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.SENDER;
+import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.*;
 
 public class V114Test {
     public static void main(String[] args) {
@@ -129,6 +129,15 @@ public class V114Test {
         root.add(new TagIntArray("CookTime", 1, 1, 1, 1));
         root.add(new TagIntArray("CookTimeTotal", 1, 1, 1, 1));
 
+        System.out.println(new IntegerRange(null, null));
+        System.out.println(new IntegerRange(0, 100));
+        System.out.println(new IntegerRange(null, 100));
+
+        System.out.println(new DoubleRange(null, null));
+        System.out.println(new DoubleRange(0.0, 100.0));
+        System.out.println(new DoubleRange(null, 100.0));
+
+        System.out.println(Double.NEGATIVE_INFINITY);
 
         ListTextComponent lt = new ListTextComponent();
         lt.append(new StringTextComponent("AAA", new TextStyle() {

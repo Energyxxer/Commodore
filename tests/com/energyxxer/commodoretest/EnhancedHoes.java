@@ -19,7 +19,8 @@ import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.types.Type;
-import com.energyxxer.commodore.util.NumberRange;
+import com.energyxxer.commodore.util.DoubleRange;
+import com.energyxxer.commodore.util.IntegerRange;
 
 import java.io.File;
 import java.io.IOException;
@@ -87,7 +88,7 @@ public class EnhancedHoes {
         tick.append(new FunctionComment("Prevent item frames from duplicating crops"));
         {
             Selector nearbyCrops = allCrops.clone();
-            nearbyCrops.addArguments(new DistanceArgument(new NumberRange<>(null, 1.0)));
+            nearbyCrops.addArguments(new DistanceArgument(new DoubleRange(null, 1.0)));
 
             ExecuteCommand exec = new ExecuteCommand(new TagCommand(TagCommand.Action.REMOVE, nearbyCrops, "crop"));
             exec.addModifier(new ExecuteAtEntity(new Selector(ALL_ENTITIES, new TypeArgument(minecraft.getTypeManager().entity.get("item_frame")))));
@@ -97,14 +98,14 @@ public class EnhancedHoes {
         tick.append(new FunctionComment("Prevent duplication of premature harvests"));
         {
             Selector nearbyCrops = allSelfCrops.clone();
-            nearbyCrops.addArguments(new DistanceArgument(new NumberRange<>(null, 1.0)));
+            nearbyCrops.addArguments(new DistanceArgument(new DoubleRange(null, 1.0)));
             ExecuteCommand exec = new ExecuteCommand(new ScoreAdd(new LocalScore(crowd, nearbyCrops), 1));
             exec.addModifier(new ExecuteAtEntity(allSelfCrops));
             tick.append(exec);
         }
         {
             ScoreArgument scores = new ScoreArgument();
-            scores.put(crowd, new NumberRange<>(1));
+            scores.put(crowd, new IntegerRange(1));
             Selector loneCrops = allSelfCrops.clone();
             loneCrops.addArguments(scores);
             tick.append(new DataMergeCommand(loneCrops, new TagCompound(new TagList("Tags"))));

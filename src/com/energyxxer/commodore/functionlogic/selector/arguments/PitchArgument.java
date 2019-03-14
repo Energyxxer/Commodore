@@ -6,9 +6,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class PitchArgument implements SelectorArgument {
     @NotNull
-    private final NumberRange<@NotNull Double> value;
+    private final NumberRange<Double> value;
 
-    public PitchArgument(@NotNull NumberRange<@NotNull Double> value) {
+    public PitchArgument(@NotNull NumberRange<Double> value) {
         this.value = value;
     }
 

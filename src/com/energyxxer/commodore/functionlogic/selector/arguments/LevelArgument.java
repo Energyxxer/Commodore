@@ -7,9 +7,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class LevelArgument implements SelectorArgument {
     @NotNull
-    private final NumberRange<@NotNull Integer> value;
+    private final NumberRange<Integer> value;
 
-    public LevelArgument(@NotNull NumberRange<@NotNull Integer> value) {
+    public LevelArgument(@NotNull NumberRange<Integer> value) {
         this.value = value;
 
         if(value.hasNegative()) {

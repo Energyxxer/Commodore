@@ -114,6 +114,26 @@ public final class CommandUtils {
 
         return df.format(num);
     }
+    /**
+     * Converts the given number into its plain string representation. This method differs from
+     * {@link Double#toString()} on two aspects:
+     *
+     * <ol>
+     *     <li>Whole numbers will be displayed without the decimal places.</li>
+     *     <li>Scientific notation will not be used for big nor small numbers.</li>
+     * </ol>
+     *
+     * @param num The number to turn into a plain number string.
+     *
+     * @return The number, as a plain number string.
+     * */
+    @NotNull
+    public static String numberToPlainString(Number num) {
+        DecimalFormat df = new DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
+        df.setMaximumFractionDigits(340);
+
+        return df.format(num);
+    }
 
     /**
      * Converts the given number into its plain string representation. This method differs from

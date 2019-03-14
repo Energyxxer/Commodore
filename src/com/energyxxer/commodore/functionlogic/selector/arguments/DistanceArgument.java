@@ -8,9 +8,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class DistanceArgument implements SelectorArgument {
     @NotNull
-    private final NumberRange<@NotNull Double> distance;
+    private final NumberRange<Double> distance;
 
-    public DistanceArgument(@NotNull NumberRange<@NotNull Double> distance) {
+    public DistanceArgument(@NotNull NumberRange<Double> distance) {
         this.distance = distance;
         if(distance.hasNegative()) {
             throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Distance cannot be negative", distance);
