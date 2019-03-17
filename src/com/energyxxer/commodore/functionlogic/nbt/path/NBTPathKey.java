@@ -1,22 +1,34 @@
 package com.energyxxer.commodore.functionlogic.nbt.path;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 public class NBTPathKey implements NBTPathNode {
     @NotNull
     private final String name;
+    @Nullable
+    private final TagCompound compoundMatch;
+
+    public static final Pattern NO_QUOTE_PATH_KEY_REGEX = Pattern.compile("[^\\s\\[\\].{}\"]+");
 
     public NBTPathKey(@NotNull String name) {
+        this(name, null);
+    }
+
+    public NBTPathKey(@NotNull String name, @Nullable TagCompound compoundMatch) {
         this.name = name;
+        this.compoundMatch = compoundMatch;
     }
 
     @NotNull
     @Override
     public String getPathString() {
-        return (name.matches("[a-zA-Z0-9_\\-+]+")) ? name : "\"" + CommandUtils.escape(name) + "\"";
+        return ((NO_QUOTE_PATH_KEY_REGEX.matcher(name).matches()) ? name : "\"" + CommandUtils.escape(name) + "\"") + (compoundMatch != null ? compoundMatch.toHeadlessString() : "");
     }
 
     @NotNull
