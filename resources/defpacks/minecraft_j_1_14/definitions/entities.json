@@ -572,7 +572,7 @@
     "hostile": false,
     "breedable": true
   },
-  "minecraft:villager_golem": {
+  "minecraft:iron_golem": {
     "spawnable": true,
     "targetable": true,
     "living": true,
