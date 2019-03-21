@@ -74,7 +74,7 @@
     "living": true,
     "hostile": false
   },
-  "minecraft:commandblock_minecart": {
+  "minecraft:command_block_minecart": {
     "spawnable": true,
     "targetable": true,
     "living": false,
@@ -166,19 +166,19 @@
     "living": true,
     "hostile": true
   },
-  "minecraft:evocation_fangs": {
+  "minecraft:evoker_fangs": {
     "spawnable": true,
     "targetable": true,
     "living": false,
     "hostile": false
   },
-  "minecraft:evocation_illager": {
+  "minecraft:evoker": {
     "spawnable": true,
     "targetable": true,
     "living": true,
     "hostile": true
   },
-  "minecraft:eye_of_ender_signal": {
+  "minecraft:eye_of_ender": {
     "spawnable": true,
     "targetable": true,
     "living": false,
@@ -198,7 +198,7 @@
     "hostile": false,
     "projectile": true
   },
-  "minecraft:fireworks_rocket": {
+  "minecraft:firework_rocket": {
     "spawnable": true,
     "targetable": true,
     "living": false,
@@ -545,7 +545,7 @@
     "living": true,
     "hostile": false
   },
-  "minecraft:vindication_illager": {
+  "minecraft:vindicator": {
     "spawnable": true,
     "targetable": true,
     "living": true,
