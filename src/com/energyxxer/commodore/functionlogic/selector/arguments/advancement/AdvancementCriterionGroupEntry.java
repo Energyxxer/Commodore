@@ -29,6 +29,12 @@ public class AdvancementCriterionGroupEntry implements AdvancementArgumentEntry 
 
     @NotNull
     @Override
+    public String getAdvancementName() {
+        return advancementName;
+    }
+
+    @NotNull
+    @Override
     public String getArgumentString() {
         StringBuilder sb = new StringBuilder(advancementName);
         sb.append('=');

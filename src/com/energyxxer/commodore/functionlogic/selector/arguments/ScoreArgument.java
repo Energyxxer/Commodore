@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class ScoreArgument implements SelectorArgument {
+public class ScoreArgument implements ComplexSelectorArgument {
     @NotNull
     private final HashMap<@NotNull Objective, @NotNull NumberRange<Integer>> scores = new HashMap<>();
 
@@ -65,5 +65,12 @@ public class ScoreArgument implements SelectorArgument {
     @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
+    }
+
+    @Override
+    public ComplexSelectorArgument merge(ComplexSelectorArgument overwriting) {
+        ScoreArgument newArg = this.clone();
+        newArg.scores.putAll(((ScoreArgument) overwriting).scores);
+        return newArg;
     }
 }

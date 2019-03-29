@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
-public class AdvancementArgument implements SelectorArgument {
+public class AdvancementArgument implements ComplexSelectorArgument {
 
     @NotNull
     private final List<@NotNull AdvancementArgumentEntry> entries = new ArrayList<>();
@@ -65,5 +65,12 @@ public class AdvancementArgument implements SelectorArgument {
     @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
+    }
+
+    @Override
+    public ComplexSelectorArgument merge(ComplexSelectorArgument overwriting) {
+        AdvancementArgument newArg = this.clone();
+        newArg.entries.addAll(((AdvancementArgument) overwriting).entries);
+        return newArg;
     }
 }

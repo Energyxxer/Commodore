@@ -15,6 +15,12 @@ public class AdvancementCompletionEntry implements AdvancementArgumentEntry {
 
     @NotNull
     @Override
+    public String getAdvancementName() {
+        return advancementName;
+    }
+
+    @NotNull
+    @Override
     public String getArgumentString() {
         return advancementName + "=" + value;
     }

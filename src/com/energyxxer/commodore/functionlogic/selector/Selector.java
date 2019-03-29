@@ -216,13 +216,59 @@ public class Selector implements Entity, Cloneable {
     }
 
     /**
-     * Adds the given argument to the selector.
+     * Adds the given argument to the selector, merging arguments when possible.
      *
      * @param argument The argument to add to this selector.
      * */
     public void addArgument(@NotNull SelectorArgument argument) {
         argument.assertCompatibleWith(this);
         this.args.add(argument);
+    }
+
+    /**
+     * Adds the given arguments to the selector, merging arguments when possible.
+     *
+     * @param arguments The arguments to add to this selector.
+     * */
+    public void addArgumentsMerging(@NotNull SelectorArgument... arguments) {
+        for(SelectorArgument argument : arguments) {
+            addArgumentMerging(argument);
+        }
+    }
+
+    /**
+     * Adds the given arguments to the selector, merging arguments when possible.
+     *
+     * @param arguments The arguments to add to this selector.
+     * */
+    public void addArgumentsMerging(@NotNull Collection<@NotNull SelectorArgument> arguments) {
+        for(SelectorArgument argument : arguments) {
+            addArgumentMerging(argument);
+        }
+    }
+
+    /**
+     * Adds the given argument to the selector, merging arguments when possible.
+     *
+     * @param argument The argument to add to this selector.
+     * */
+    public void addArgumentMerging(@NotNull SelectorArgument argument) {
+        Collection<SelectorArgument> oldArgs = this.getArgumentsByKey(argument.getKey());
+        if(!argument.isRepeatable()) {
+            this.removeArguments(argument.getClass());
+        }
+        argument.assertCompatibleWith(this);
+        if(argument instanceof ComplexSelectorArgument) {
+            boolean hadAny = false;
+            for(SelectorArgument original : oldArgs) {
+                this.args.remove(original);
+                this.args.add(((ComplexSelectorArgument) original).merge(((ComplexSelectorArgument) argument)));
+                hadAny = true;
+            }
+            if(!hadAny) this.args.add(argument);
+        } else {
+            this.args.add(argument);
+        }
     }
 
     /**

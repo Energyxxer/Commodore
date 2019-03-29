@@ -4,6 +4,9 @@ import org.jetbrains.annotations.NotNull;
 
 public interface AdvancementArgumentEntry extends Cloneable {
     @NotNull
+    String getAdvancementName();
+
+    @NotNull
     String getArgumentString();
 
     @NotNull
