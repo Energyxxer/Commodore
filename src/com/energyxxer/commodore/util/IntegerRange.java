@@ -24,6 +24,6 @@ public class IntegerRange extends NumberRange<Integer> {
 
     @Override
     protected String getSuperRangeString() {
-        return Integer.MIN_VALUE + "..";
+        return ".." + Integer.MAX_VALUE;
     }
 }
