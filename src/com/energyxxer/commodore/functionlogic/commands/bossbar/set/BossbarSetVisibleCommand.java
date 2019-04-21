@@ -15,6 +15,6 @@ public class BossbarSetVisibleCommand extends BossbarSetCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, getBase() + visible);
+        return new CommandResolution(execContext, getBase() + "visible " + visible);
     }
 }
