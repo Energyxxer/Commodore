@@ -5,12 +5,15 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import org.jetbrains.annotations.NotNull;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class DYArgument implements SelectorArgument {
 
     private final double value;
 
     public DYArgument(double value) {
         this.value = value;
+        assertFinite(value, "value");
     }
 
     @NotNull

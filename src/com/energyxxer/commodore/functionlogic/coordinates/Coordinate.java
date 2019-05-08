@@ -5,6 +5,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 /**
  * Describes a position in one of the world axis. May be one of three types, seen in {@link Type}.
  * */
@@ -107,6 +109,7 @@ public class Coordinate {
     public Coordinate(@NotNull Type type, double coord) {
         this.type = type;
         this.coord = coord;
+        assertFinite(coord, "magnitude");
     }
 
     /**

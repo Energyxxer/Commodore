@@ -8,6 +8,8 @@ import com.energyxxer.commodore.functionlogic.nbt.NumericNBTType;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import org.jetbrains.annotations.NotNull;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class ExecuteStoreBlock extends ExecuteStore {
     @NotNull
     private final CoordinateSet position;
@@ -35,6 +37,7 @@ public class ExecuteStoreBlock extends ExecuteStore {
         this.path = path;
         this.type = type;
         this.scale = scale;
+        assertFinite(scale, "scale");
     }
 
     @NotNull

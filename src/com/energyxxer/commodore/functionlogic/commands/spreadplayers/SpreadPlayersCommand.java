@@ -10,6 +10,8 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class SpreadPlayersCommand implements Command {
     @NotNull
     private final CoordinateSet center;
@@ -25,6 +27,9 @@ public class SpreadPlayersCommand implements Command {
         this.maxRange = maxRange;
         this.respectTeams = respectTeams;
         this.targets = targets;
+
+        assertFinite(spreadDistance, "spreadDistance");
+        assertFinite(maxRange, "maxRange");
 
         if(spreadDistance < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Spread distance must not be less than 0.0, found " + spreadDistance, spreadDistance, "SPREAD_DISTANCE");
         if(maxRange < spreadDistance+1) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Max range must not be less than " + (spreadDistance + 1) + " (spread distance + 1), found " + maxRange, maxRange, "MAX_RANGE");

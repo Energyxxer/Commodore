@@ -7,6 +7,8 @@ import com.energyxxer.commodore.functionlogic.nbt.NumericNBTType;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import org.jetbrains.annotations.NotNull;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class ExecuteStoreEntity extends ExecuteStore {
     @NotNull
     private final Entity entity;
@@ -35,6 +37,7 @@ public class ExecuteStoreEntity extends ExecuteStore {
         this.type = type;
         this.scale = scale;
         entity.assertSingle();
+        assertFinite(scale, "scale");
     }
 
     @NotNull

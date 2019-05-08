@@ -13,6 +13,8 @@ import com.energyxxer.commodore.util.Particle;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class ParticleCommand implements Command {
     @NotNull
     private final Particle particle;
@@ -55,6 +57,7 @@ public class ParticleCommand implements Command {
         this.position = (position != null && position.isSignificant()) ? position : null;
         this.delta = (delta != null && (delta.x != 0 || delta.y != 0 || delta.z != 0)) ? delta : null;
         this.speed = speed;
+        assertFinite(speed, "speed");
         if(speed < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Speed must not be less than 0.0, found " + speed, speed, "SPEED");
         this.count = count;
         if(count < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Count must not be less than 0.0, found " + count, count, "COUNT");

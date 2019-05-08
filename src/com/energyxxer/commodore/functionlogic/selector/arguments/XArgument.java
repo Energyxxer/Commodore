@@ -4,12 +4,15 @@ import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import org.jetbrains.annotations.NotNull;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class XArgument implements SelectorArgument {
 
     private final double value;
 
     public XArgument(double value) {
         this.value = value;
+        assertFinite(value, "value");
     }
 
     @NotNull

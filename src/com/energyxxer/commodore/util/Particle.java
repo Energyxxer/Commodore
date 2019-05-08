@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertParticle;
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
 
 public class Particle {
     @NotNull
@@ -38,6 +39,9 @@ public class Particle {
                     (argument instanceof Integer && expectedArgument.equals("int")) ||
                     (argument instanceof Double && expectedArgument.equals("double"))
             ) {
+                if (argument instanceof Double) {
+                    assertFinite((Double) argument, "particle argument");
+                }
                 this.arguments.add(argument);
             } else throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Particle '" + type + "' takes '" + expectedArgument + "' as argument " + (i+1) + "; instead, '" + argument + "' was passed", argument);
         }

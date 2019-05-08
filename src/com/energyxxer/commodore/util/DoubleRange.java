@@ -4,6 +4,8 @@ import com.energyxxer.commodore.CommandUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class DoubleRange extends NumberRange<Double> {
     public DoubleRange(@Nullable Double min) {
         this(min, min);
@@ -11,6 +13,8 @@ public class DoubleRange extends NumberRange<Double> {
 
     public DoubleRange(@Nullable Double min, @Nullable Double max) {
         super(Double.class, min, max);
+        if (min != null) assertFinite(min, "min");
+        if (max != null) assertFinite(max, "max");
     }
 
     @Override

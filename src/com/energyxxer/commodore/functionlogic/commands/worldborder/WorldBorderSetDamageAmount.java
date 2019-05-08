@@ -6,11 +6,16 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class WorldBorderSetDamageAmount extends WorldBorderCommand {
     private final double damagePerBlock;
 
     public WorldBorderSetDamageAmount(double damagePerBlock) {
         this.damagePerBlock = damagePerBlock;
+
+        assertFinite(damagePerBlock, "damagePerBlock");
+
         if(damagePerBlock < 0.0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Damage per block must not be less than 0.0, found " + damagePerBlock, damagePerBlock, "DAMAGE_PER_BLOCK");
     }
 

@@ -11,6 +11,8 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class PlaySoundCommand implements Command {
 
     public enum Source {
@@ -53,6 +55,9 @@ public class PlaySoundCommand implements Command {
         this.maxVolume = maxVolume;
         this.pitch = pitch;
         this.minVolume = minVolume;
+        assertFinite(maxVolume, "maxVolume");
+        assertFinite(pitch, "pitch");
+        assertFinite(minVolume, "minVolume");
 
         if(maxVolume < 0.0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Max volume must not be less than 0.0, found " + maxVolume, maxVolume, "MAX_VOLUME");
         if(pitch < 0.0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Max volume must not be less than 0.0, found " + pitch, pitch, "PITCH");

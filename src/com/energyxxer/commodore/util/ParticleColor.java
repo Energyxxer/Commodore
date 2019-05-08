@@ -5,6 +5,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class ParticleColor {
     private final double red;
     private final double green;
@@ -24,6 +26,10 @@ public class ParticleColor {
         this.red = red;
         this.green = green;
         this.blue = blue;
+
+        assertFinite(red, "red");
+        assertFinite(green, "green");
+        assertFinite(blue, "blue");
     }
 
     @Override

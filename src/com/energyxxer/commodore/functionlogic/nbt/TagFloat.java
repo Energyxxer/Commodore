@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class TagFloat extends NumericNBTTag<Float> {
     private float value;
 
@@ -18,6 +20,7 @@ public class TagFloat extends NumericNBTTag<Float> {
     public TagFloat(@NotNull String name, float value) {
         super(name);
         this.value = value;
+        assertFinite(value, "value");
     }
 
     @Override
@@ -38,6 +41,7 @@ public class TagFloat extends NumericNBTTag<Float> {
 
     @Override
     public @NotNull NumericNBTTag<Float> scale(double scale) {
+        assertFinite(scale, "scale");
         return new TagFloat((float) (value * scale));
     }
 
@@ -50,7 +54,7 @@ public class TagFloat extends NumericNBTTag<Float> {
     @NotNull
     @Override
     public String toHeadlessString() {
-        return String.valueOf(value) + NumericNBTType.FLOAT.getSuffix();
+        return value + NumericNBTType.FLOAT.getSuffix();
     }
 
     @NotNull

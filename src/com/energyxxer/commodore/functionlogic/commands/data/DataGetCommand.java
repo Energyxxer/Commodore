@@ -10,6 +10,8 @@ import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class DataGetCommand extends DataCommand {
 
     @Nullable
@@ -29,6 +31,7 @@ public class DataGetCommand extends DataCommand {
         entity.assertSingle();
         this.path = path;
         this.scale = scale;
+        assertFinite(scale, "scale");
     }
 
     public DataGetCommand(@NotNull CoordinateSet pos) {
@@ -43,6 +46,7 @@ public class DataGetCommand extends DataCommand {
         super(pos);
         this.path = path;
         this.scale = scale;
+        assertFinite(scale, "scale");
     }
 
     @Override @NotNull

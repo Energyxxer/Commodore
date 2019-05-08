@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class TagByte extends NumericNBTTag<Byte> {
     private byte value;
 
@@ -46,6 +48,7 @@ public class TagByte extends NumericNBTTag<Byte> {
 
     @Override
     public @NotNull NumericNBTTag<Byte> scale(double scale) {
+        assertFinite(scale, "scale");
         return new TagByte((byte) (value * scale));
     }
 
@@ -58,7 +61,7 @@ public class TagByte extends NumericNBTTag<Byte> {
     @NotNull
     @Override
     public String toHeadlessString() {
-        return String.valueOf(value) + NumericNBTType.BYTE.getSuffix();
+        return value + NumericNBTType.BYTE.getSuffix();
     }
 
     @NotNull

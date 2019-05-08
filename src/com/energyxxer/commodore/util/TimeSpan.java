@@ -4,6 +4,8 @@ import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.CommodoreException;
 import org.jetbrains.annotations.NotNull;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class TimeSpan {
     public enum Units {
         TICKS("t", 1), SECONDS("s", 20), DAYS("d", 24000);
@@ -30,6 +32,7 @@ public class TimeSpan {
         this.units = units;
 
         if(amount < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Time amount must be non-negative", amount);
+        assertFinite(amount, "amount");
     }
 
     public int getTicks() {

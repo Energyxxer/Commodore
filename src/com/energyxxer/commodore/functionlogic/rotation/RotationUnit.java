@@ -5,6 +5,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
+import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+
 public class RotationUnit {
 
     public enum Type {
@@ -27,6 +29,7 @@ public class RotationUnit {
     public RotationUnit(@NotNull Type type, double value) {
         this.type = type;
         this.value = value;
+        assertFinite(value, "magnitude");
     }
 
     public boolean isIdempotent() {
