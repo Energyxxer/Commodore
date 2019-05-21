@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.module;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.functions.FunctionManager;
 import com.energyxxer.commodore.loottables.LootTableManager;
 import com.energyxxer.commodore.tags.TagManager;
@@ -16,6 +17,8 @@ import org.jetbrains.annotations.NotNull;
  * @see TypeManager
  * */
 public class Namespace {
+    public static final String ALLOWED_NAMESPACE_REGEX = "[a-z0-9_\\.-]+";
+
     /**
      * The command module this namespace belongs to.
      * */
@@ -57,6 +60,10 @@ public class Namespace {
     public Namespace(@NotNull CommandModule owner, @NotNull String name) {
         this.owner = owner;
         this.name = name;
+
+        if (!name.matches(ALLOWED_NAMESPACE_REGEX)) {
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Illegal namespace name: " + name);
+        }
 
         this.functions = new FunctionManager(this);
         this.tags = new TagManager(this);
