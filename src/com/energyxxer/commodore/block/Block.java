@@ -4,6 +4,7 @@ import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
 import com.energyxxer.commodore.types.IllegalTypeException;
 import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.BlockType;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -168,5 +169,10 @@ public class Block {
     @Override
     public int hashCode() {
         return Objects.hash(type, state, nbt);
+    }
+
+    public void assertAvailable() {
+        if (nbt != null) VersionFeatureManager.assertEnabled("nbt.access");
+        if (state != null) VersionFeatureManager.assertEnabled("block.blockstates");
     }
 }

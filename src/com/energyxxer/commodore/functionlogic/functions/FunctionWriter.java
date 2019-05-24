@@ -26,4 +26,7 @@ public interface FunctionWriter {
      */
     default void onAppend(@NotNull FunctionSection section) {
     }
+
+    default void assertAvailable() {
+    }
 }

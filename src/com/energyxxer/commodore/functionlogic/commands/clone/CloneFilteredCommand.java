@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.commands.clone;
 
 import com.energyxxer.commodore.block.Block;
+import com.energyxxer.commodore.block.BlockFormatter;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import org.jetbrains.annotations.NotNull;
 
@@ -21,6 +22,11 @@ public class CloneFilteredCommand extends CloneCommand {
 
     @NotNull
     protected String getMaskExtra() {
-        return " filtered " + block;
+        return " filtered " + BlockFormatter.asMatch(block);
+    }
+
+    @Override
+    public void assertAvailable() {
+        block.assertAvailable();
     }
 }

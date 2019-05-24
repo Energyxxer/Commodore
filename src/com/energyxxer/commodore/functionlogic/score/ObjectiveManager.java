@@ -81,7 +81,9 @@ public class ObjectiveManager {
     }
 
     private void dumpObjectiveCreators(@NotNull FunctionSection function) {
-        objectives.values().forEach(o -> function.append(o.getObjectiveCreator()));
+        objectives.values().forEach(o -> {
+            function.append(o.getObjectiveCreator());
+        });
     }
 
     public void setCreationFunction(@Nullable FunctionSection creationFunction) {
@@ -97,6 +99,7 @@ public class ObjectiveManager {
     }
 
     public void compile() {
+        objectives.values().forEach(Objective::assertAvailable);
         if(creationFunction != null) {
             dumpObjectiveCreators(creationFunction);
         }

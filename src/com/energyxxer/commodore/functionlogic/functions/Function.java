@@ -7,6 +7,7 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.module.Exportable;
 import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -75,7 +76,7 @@ public class Function implements FunctionSection, Exportable {
 
     @NotNull
     public String getFullName() {
-        return namespace.toString() + ':' + path;
+        return namespace.toString() + VersionFeatureManager.getString("function.namespace_separator", ":") + path;
     }
 
     @NotNull
@@ -113,6 +114,7 @@ public class Function implements FunctionSection, Exportable {
             }
 
             for(FunctionWriter writer : content) {
+                writer.assertAvailable();
                 String content = writer.toFunctionContent(this);
                 sb.append(content);
                 sb.append('\n');

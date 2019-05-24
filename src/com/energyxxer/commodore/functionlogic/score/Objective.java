@@ -4,6 +4,7 @@ import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.scoreboard.ObjectivesAddCommand;
 import com.energyxxer.commodore.textcomponents.TextComponent;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -100,5 +101,11 @@ public class Objective {
     @Override
     public String toString() {
         return name + (!type.equals("dummy") ? " (" + type + ")" : "");
+    }
+
+    public void assertAvailable() {
+        if (!type.equals("dummy")) {
+            VersionFeatureManager.assertEnabled("scoreboard.criteria");
+        }
     }
 }

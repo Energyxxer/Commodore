@@ -42,6 +42,10 @@ public abstract class Type {
      * */
     protected final Namespace namespace;
     /**
+     * Whether this type uses its namespace when specified
+     * */
+    protected boolean usesNamespace = true;
+    /**
      * The name this type is referred to as.
      * */
     @NotNull
@@ -74,7 +78,7 @@ public abstract class Type {
      * not.
      * */
     public boolean useNamespace() {
-        return true;
+        return usesNamespace;
     }
 
     /**

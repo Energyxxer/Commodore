@@ -56,4 +56,26 @@ public class StandardDefinitionPacks {
      * */
     @NotNull
     public static final DefinitionPack MINECRAFT_JAVA_LATEST_SNAPSHOT = new DefinitionPack(CompoundInput.Static.chooseInputForClasspath("/defpacks/minecraft_j_1_14/", StandardDefinitionPacks.class));
+    /**
+     * Contains the definitions for all game data for the 1.11 version of Minecraft Bedrock Edition. Contains:
+     *
+     * <ol>
+     * <li>Blocks</li>
+     * <li>Fluids</li>
+     * <li>Items</li>
+     * <li>Entities</li>
+     * <li>Effects (including their numeric IDs and type)</li>
+     * <li>Particles (including their argument type)</li>
+     * <li>Gamemodes</li>
+     * <li>Biomes</li>
+     * <li>Dimensions</li>
+     * <li>Structures (used by the /locate command)</li>
+     * <li>Gamerules (including their expected value type)</li>
+     * <li>Slots (used by the /replaceitem command)</li>
+     * </ol>
+     * <p>
+     * This also includes all the tags in the vanilla data pack, for both blocks, fluids and items.
+     */
+    @NotNull
+    public static final DefinitionPack MINECRAFT_BEDROCK_LATEST_RELEASE = new DefinitionPack(CompoundInput.Static.chooseInputForClasspath("/defpacks/minecraft_b_1_11/", StandardDefinitionPacks.class));
 }

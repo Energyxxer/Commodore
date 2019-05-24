@@ -39,6 +39,8 @@ public class TypeDictionary {
     @NotNull
     private final TypeInstantiator<Type> instantiator;
 
+    public boolean usesNamespace = true;
+
     /**
      * Creates a type dictionary belonging to the given namespace and category, and which creates a type via the given
      * instantiator.
@@ -76,7 +78,8 @@ public class TypeDictionary {
         Type existing = types.get(name);
         if(existing != null) return existing;
 
-        Type newType = instantiator.create(name);
+        Type newType = instantiator.create(this.namespace, name);
+        newType.usesNamespace = this.usesNamespace;
         types.put(name, newType);
         return newType;
     }

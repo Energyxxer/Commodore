@@ -5,6 +5,7 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -78,4 +79,8 @@ public class AdvancementCommand implements Command {
                 "advancement " + action.toString().toLowerCase() + " " + player + " " + limit.toString().toLowerCase() + ((limit.takesAdvancement) ? " " + advancement : "") + ((limit.takesCriteria) ? criteriaStr.toString() : ""));
     }
 
+    @Override
+    public void assertAvailable() {
+        VersionFeatureManager.assertEnabled("advancements");
+    }
 }

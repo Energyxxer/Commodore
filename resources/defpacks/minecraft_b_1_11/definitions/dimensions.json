@@ -1,0 +1,11 @@
+{
+  "minecraft:overworld": {
+    "id": 0
+  },
+  "minecraft:the_nether": {
+    "id": -1
+  },
+  "minecraft:the_end": {
+    "id": 1
+  }
+}

@@ -20,11 +20,6 @@ public class GenericType extends Type {
     }
 
     @Override
-    public boolean useNamespace() {
-        return namespace != null;
-    }
-
-    @Override
     public boolean isStandalone() {
         return true;
     }

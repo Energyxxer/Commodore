@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.commands.setblock;
 
 import com.energyxxer.commodore.block.Block;
+import com.energyxxer.commodore.block.BlockFormatter;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
@@ -46,6 +47,11 @@ public class SetblockCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "setblock " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + block + (mode != OldBlockHandlingMode.DEFAULT ? " " + mode.toString().toLowerCase() : ""));
+        return new CommandResolution(execContext, "setblock " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + BlockFormatter.asSet(block) + (mode != OldBlockHandlingMode.DEFAULT ? " " + mode.toString().toLowerCase() : ""));
+    }
+
+    @Override
+    public void assertAvailable() {
+        block.assertAvailable();
     }
 }

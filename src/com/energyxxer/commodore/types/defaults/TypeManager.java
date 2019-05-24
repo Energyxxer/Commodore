@@ -116,20 +116,20 @@ public class TypeManager {
     public TypeManager(Namespace owner) {
         this.owner = owner;
 
-        put(this.block = new TypeDictionary(owner, BlockType.CATEGORY, (id) -> new BlockType(this.owner, id)));
-        put(this.fluid = new TypeDictionary(owner, FluidType.CATEGORY, (id) -> new FluidType(this.owner, id)));
-        put(this.item = new TypeDictionary(owner, ItemType.CATEGORY, (id) -> new ItemType(this.owner, id)));
-        put(this.effect = new TypeDictionary(owner, EffectType.CATEGORY, (id) -> new EffectType(this.owner, id)));
-        put(this.potion = new TypeDictionary(owner, PotionType.CATEGORY, (id) -> new PotionType(this.owner, id)));
-        put(this.entity = new TypeDictionary(owner, EntityType.CATEGORY, (id) -> new EntityType(this.owner, id)));
-        put(this.blockEntity = new TypeDictionary(owner, BlockEntityType.CATEGORY, (id) -> new BlockEntityType(this.owner, id)));
-        put(this.particle = new TypeDictionary(owner, ParticleType.CATEGORY, (id) -> new ParticleType(this.owner, id)));
-        put(this.enchantment = new TypeDictionary(owner, EnchantmentType.CATEGORY, (id) -> new EnchantmentType(this.owner, id)));
-        put(this.dimension = new TypeDictionary(owner, DimensionType.CATEGORY, (id) -> new DimensionType(this.owner, id)));
-        put(this.biome = new TypeDictionary(owner, BiomeType.CATEGORY, (id) -> new BiomeType(this.owner, id)));
-        put(this.motive = new TypeDictionary(owner, MotiveType.CATEGORY, (id) -> new MotiveType(this.owner, id)));
-        put(this.villagerType = new TypeDictionary(owner, VillagerType.CATEGORY, (id) -> new VillagerType(this.owner, id)));
-        put(this.villagerProfession = new TypeDictionary(owner, VillagerProfessionType.CATEGORY, (id) -> new VillagerProfessionType(this.owner, id)));
+        put(this.block = new TypeDictionary(owner, BlockType.CATEGORY, BlockType::new));
+        put(this.fluid = new TypeDictionary(owner, FluidType.CATEGORY, FluidType::new));
+        put(this.item = new TypeDictionary(owner, ItemType.CATEGORY, ItemType::new));
+        put(this.effect = new TypeDictionary(owner, EffectType.CATEGORY, EffectType::new));
+        put(this.potion = new TypeDictionary(owner, PotionType.CATEGORY, PotionType::new));
+        put(this.entity = new TypeDictionary(owner, EntityType.CATEGORY, EntityType::new));
+        put(this.blockEntity = new TypeDictionary(owner, BlockEntityType.CATEGORY, BlockEntityType::new));
+        put(this.particle = new TypeDictionary(owner, ParticleType.CATEGORY, ParticleType::new));
+        put(this.enchantment = new TypeDictionary(owner, EnchantmentType.CATEGORY, EnchantmentType::new));
+        put(this.dimension = new TypeDictionary(owner, DimensionType.CATEGORY, DimensionType::new));
+        put(this.biome = new TypeDictionary(owner, BiomeType.CATEGORY, BiomeType::new));
+        put(this.motive = new TypeDictionary(owner, MotiveType.CATEGORY, MotiveType::new));
+        put(this.villagerType = new TypeDictionary(owner, VillagerType.CATEGORY, VillagerType::new));
+        put(this.villagerProfession = new TypeDictionary(owner, VillagerProfessionType.CATEGORY, VillagerProfessionType::new));
 
         put(this.difficulty = new TypeDictionary(owner, "difficulty", DifficultyType::new));
         put(this.gamemode = new TypeDictionary(owner, "gamemode", GamemodeType::new));
@@ -180,8 +180,12 @@ public class TypeManager {
      * that will be returned. Otherwise, a new dictionary is created and returned.
      * */
     public TypeDictionary createDictionary(String category, boolean useNamespace) {
-        if(dictionaries.containsKey(category)) return dictionaries.get(category);
-        TypeDictionary newDict = new TypeDictionary(owner, category, (id) -> new GenericType(category, (useNamespace) ? this.owner : null, id));
+        if (dictionaries.containsKey(category)) {
+            TypeDictionary typeDict = dictionaries.get(category);
+            typeDict.usesNamespace = useNamespace;
+            return typeDict;
+        }
+        TypeDictionary newDict = new TypeDictionary(owner, category, (ns, id) -> new GenericType(category, ns, id));
         put(newDict);
         return newDict;
     }

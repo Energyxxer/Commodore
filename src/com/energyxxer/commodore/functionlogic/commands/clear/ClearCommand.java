@@ -5,6 +5,7 @@ import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.item.Item;
+import com.energyxxer.commodore.item.ItemFormatter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -38,8 +39,12 @@ public class ClearCommand implements Command {
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return player != null ?
-                new CommandResolution(execContext, "clear " + player + ((item != null) ? (" " + item + ((maxCount >= 0) ? " " + maxCount : "")) : "")) :
+                new CommandResolution(execContext, "clear " + player + ((item != null) ? " " + ItemFormatter.asMatch(item, maxCount >= 0 ? "" + maxCount : null) : "")) :
                 new CommandResolution(execContext, "clear");
     }
 
+    @Override
+    public void assertAvailable() {
+        if (item != null) item.assertAvailable();
+    }
 }

@@ -13,11 +13,7 @@ public class TeamReference extends Type {
             throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Team name must not be empty", name);
         if(!name.matches(CommandUtils.IDENTIFIER_ALLOWED))
             throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Team name '" + name + "' has illegal characters. Does not match regex: " + CommandUtils.IDENTIFIER_ALLOWED, name);
-    }
-
-    @Override
-    public boolean useNamespace() {
-        return false;
+        this.usesNamespace = false;
     }
 
     @Override

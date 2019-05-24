@@ -1,0 +1,126 @@
+{
+  "speed": {
+    "id": 1,
+    "type": "positive"
+  },
+  "slowness": {
+    "id": 2,
+    "type": "negative"
+  },
+  "haste": {
+    "id": 3,
+    "type": "positive"
+  },
+  "mining_fatigue": {
+    "id": 4,
+    "type": "negative"
+  },
+  "strength": {
+    "id": 5,
+    "type": "positive"
+  },
+  "instant_health": {
+    "id": 6,
+    "type": "instant"
+  },
+  "instant_damage": {
+    "id": 7,
+    "type": "instant"
+  },
+  "jump_boost": {
+    "id": 8,
+    "type": "positive"
+  },
+  "nausea": {
+    "id": 9,
+    "type": "negative"
+  },
+  "regeneration": {
+    "id": 10,
+    "type": "positive"
+  },
+  "resistance": {
+    "id": 11,
+    "type": "positive"
+  },
+  "fire_resistance": {
+    "id": 12,
+    "type": "positive"
+  },
+  "water_breathing": {
+    "id": 13,
+    "type": "positive"
+  },
+  "invisibility": {
+    "id": 14,
+    "type": "positive"
+  },
+  "blindness": {
+    "id": 15,
+    "type": "negative"
+  },
+  "night_vision": {
+    "id": 16,
+    "type": "positive"
+  },
+  "hunger": {
+    "id": 17,
+    "type": "negative"
+  },
+  "weakness": {
+    "id": 18,
+    "type": "negative"
+  },
+  "poison": {
+    "id": 19,
+    "type": "negative"
+  },
+  "wither": {
+    "id": 20,
+    "type": "negative"
+  },
+  "health_boost": {
+    "id": 21,
+    "type": "positive"
+  },
+  "absorption": {
+    "id": 22,
+    "type": "positive"
+  },
+  "saturation": {
+    "id": 23,
+    "type": "instant"
+  },
+  "glowing": {
+    "id": 24,
+    "type": "negative"
+  },
+  "levitation": {
+    "id": 25,
+    "type": "negative"
+  },
+  "luck": {
+    "id": 26,
+    "type": "positive"
+  },
+  "unluck": {
+    "id": 27,
+    "type": "negative"
+  },
+  "slow_falling": {
+    "id": 28,
+    "type": "positive"
+  },
+  "conduit_power": {
+    "id": 29,
+    "type": "positive"
+  },
+  "dolphins_grace": {
+    "id": 30,
+    "type": "positive"
+  },
+  "bad_omen": {
+    "id": 31,
+    "type": "negative"
+  }
+}

@@ -1,17 +1,13 @@
 package com.energyxxer.commodore.types.defaults;
 
+import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.Type;
 
 public class GameruleType extends Type {
     public static final String CATEGORY = "gamerule";
 
-    public GameruleType(String name) {
-        super(CATEGORY, null, name);
-    }
-
-    @Override
-    public boolean useNamespace() {
-        return false;
+    public GameruleType(Namespace namespace, String name) {
+        super(CATEGORY, namespace, name);
     }
 
     @Override

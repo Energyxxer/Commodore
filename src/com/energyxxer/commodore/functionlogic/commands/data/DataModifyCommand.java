@@ -6,6 +6,7 @@ import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
@@ -77,6 +78,12 @@ public class DataModifyCommand extends DataCommand {
         sb.append(source.resolve());
 
         return new CommandResolution(execContext, sb.toString());
+    }
+
+    @Override
+    public void assertAvailable() {
+        super.assertAvailable();
+        VersionFeatureManager.assertEnabled("command.data_modify");
     }
 
     public static class ModifyOperation {

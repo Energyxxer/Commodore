@@ -1,9 +1,12 @@
 package com.energyxxer.commodore.module;
 
+import com.energyxxer.commodore.Commodore;
 import com.energyxxer.commodore.defpacks.DefinitionPack;
 import com.energyxxer.commodore.defpacks.MalformedPackException;
 import com.energyxxer.commodore.functionlogic.score.ObjectiveManager;
 import com.energyxxer.commodore.module.options.ModuleOptionManager;
+import com.energyxxer.commodore.module.settings.ModuleSettings;
+import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,6 +43,12 @@ public class CommandModule {
      * */
     @NotNull
     protected final ModuleOptionManager optMgr;
+
+    /**
+     * This module's settings.
+     */
+    @NotNull
+    protected final ModuleSettings settings;
 
     /**
      * This module's objective manager.
@@ -105,6 +114,7 @@ public class CommandModule {
         this.minecraft = getNamespace("minecraft");
 
         optMgr = new ModuleOptionManager();
+        settings = new ModuleSettings(Commodore.DEFAULT_TARGET_VERSION);
     }
 
     /**
@@ -170,8 +180,33 @@ public class CommandModule {
      * @return The option manager for this module.
      * */
     @NotNull
+    @Deprecated
     public ModuleOptionManager getOptionManager() {
         return optMgr;
+    }
+
+    /**
+     * Retrieves this module's settings manager.
+     *
+     * @return the settings for this module.
+     */
+    @NotNull
+    public ModuleSettings getSettingsManager() {
+        return settings;
+    }
+
+    /**
+     * Enables this module's version settings to be enforced from the point this method is call until compilation.
+     * If enabled, any object instantiations or methods that may result in a version incompatibility error will throw
+     * an exception on the spot, rather than only showing them during compilation.
+     * <p>
+     * It is advised that you only enable this if you're having trouble tracking down the cause of a version error.
+     * <p>
+     * Multiple command modules in the same thread may not have instant assertions enabled at once.
+     */
+    @NotNull
+    public void enableInstantAssertions() {
+        ModuleSettingsManager.set(settings);
     }
 
     /**
@@ -182,10 +217,12 @@ public class CommandModule {
      * @throws IOException If an IO error occurs during the generation of the data pack.
      * */
     public void compile(@NotNull File file) throws IOException {
+        ModuleSettingsManager.set(settings);
         objMgr.compile();
         namespaces.values().forEach(Namespace::compile);
 
         new ModulePackGenerator(this, file).generate();
+        ModuleSettingsManager.clear();
     }
 
     /**

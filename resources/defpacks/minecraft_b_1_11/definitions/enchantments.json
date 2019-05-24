@@ -1,0 +1,121 @@
+{
+  "protection": {
+    "max_level": 4
+  },
+  "fire_protection": {
+    "max_level": 4
+  },
+  "feather_falling": {
+    "max_level": 4
+  },
+  "blast_protection": {
+    "max_level": 4
+  },
+  "projectile_protection": {
+    "max_level": 4
+  },
+  "respiration": {
+    "max_level": 3
+  },
+  "aqua_affinity": {
+    "max_level": 1
+  },
+  "thorns": {
+    "max_level": 3
+  },
+  "depth_strider": {
+    "max_level": 3
+  },
+  "frost_walker": {
+    "max_level": 2,
+    "treasure": true
+  },
+  "binding_curse": {
+    "max_level": 1,
+    "treasure": true,
+    "curse": true
+  },
+  "sharpness": {
+    "max_level": 5
+  },
+  "smite": {
+    "max_level": 5
+  },
+  "bane_of_arthropods": {
+    "max_level": 3
+  },
+  "knockback": {
+    "max_level": 2
+  },
+  "fire_aspect": {
+    "max_level": 2
+  },
+  "looting": {
+    "max_level": 3
+  },
+  "sweeping": {
+    "max_level": 3
+  },
+  "efficiency": {
+    "max_level": 5
+  },
+  "silk_touch": {
+    "max_level": 1
+  },
+  "unbreaking": {
+    "max_level": 3
+  },
+  "fortune": {
+    "max_level": 3
+  },
+  "power": {
+    "max_level": 5
+  },
+  "punch": {
+    "max_level": 2
+  },
+  "flame": {
+    "max_level": 1
+  },
+  "infinity": {
+    "max_level": 1
+  },
+  "luck_of_the_sea": {
+    "max_level": 3,
+    "treasure": true
+  },
+  "lure": {
+    "max_level": 3
+  },
+  "loyalty": {
+    "max_level": 3
+  },
+  "impaling": {
+    "max_level": 5
+  },
+  "riptide": {
+    "max_level": 3
+  },
+  "channeling": {
+    "max_level": 1,
+    "treasure": true
+  },
+  "mending": {
+    "max_level": 1,
+    "treasure": true
+  },
+  "vanishing_curse": {
+    "max_level": 1,
+    "treasure": true,
+    "curse": true
+  },
+  "multishot": {
+    "max_level": 1
+  },
+  "piercing": {
+    "max_level": 4
+  },
+  "quick_charge": {
+    "max_level": 3
+  }
+}

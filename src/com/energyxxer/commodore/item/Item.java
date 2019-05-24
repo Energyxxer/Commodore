@@ -3,6 +3,7 @@ package com.energyxxer.commodore.item;
 import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
 import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.ItemType;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -98,5 +99,9 @@ public class Item {
         StringBuilder sb = new StringBuilder(type.toString());
         if(nbt != null) sb.append(nbt.toHeadlessString());
         return sb.toString();
+    }
+
+    public void assertAvailable() {
+        if (nbt != null) VersionFeatureManager.assertEnabled("nbt.access");
     }
 }

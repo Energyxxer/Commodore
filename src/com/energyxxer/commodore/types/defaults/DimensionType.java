@@ -11,11 +11,6 @@ public class DimensionType extends Type {
     }
 
     @Override
-    public boolean useNamespace() {
-        return true;
-    }
-
-    @Override
     public boolean isStandalone() {
         return true;
     }

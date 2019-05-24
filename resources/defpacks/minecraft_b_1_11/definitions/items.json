@@ -1,0 +1,2618 @@
+{
+  "air": {
+    "protocol_id": 0
+  },
+  "stone": {
+    "protocol_id": 1
+  },
+  "granite": {
+    "protocol_id": 2
+  },
+  "polished_granite": {
+    "protocol_id": 3
+  },
+  "diorite": {
+    "protocol_id": 4
+  },
+  "polished_diorite": {
+    "protocol_id": 5
+  },
+  "andesite": {
+    "protocol_id": 6
+  },
+  "polished_andesite": {
+    "protocol_id": 7
+  },
+  "grass_block": {
+    "protocol_id": 8
+  },
+  "dirt": {
+    "protocol_id": 9
+  },
+  "coarse_dirt": {
+    "protocol_id": 10
+  },
+  "podzol": {
+    "protocol_id": 11
+  },
+  "cobblestone": {
+    "protocol_id": 12
+  },
+  "oak_planks": {
+    "protocol_id": 13
+  },
+  "spruce_planks": {
+    "protocol_id": 14
+  },
+  "birch_planks": {
+    "protocol_id": 15
+  },
+  "jungle_planks": {
+    "protocol_id": 16
+  },
+  "acacia_planks": {
+    "protocol_id": 17
+  },
+  "dark_oak_planks": {
+    "protocol_id": 18
+  },
+  "oak_sapling": {
+    "protocol_id": 19
+  },
+  "spruce_sapling": {
+    "protocol_id": 20
+  },
+  "birch_sapling": {
+    "protocol_id": 21
+  },
+  "jungle_sapling": {
+    "protocol_id": 22
+  },
+  "acacia_sapling": {
+    "protocol_id": 23
+  },
+  "dark_oak_sapling": {
+    "protocol_id": 24
+  },
+  "bedrock": {
+    "protocol_id": 25
+  },
+  "sand": {
+    "protocol_id": 26
+  },
+  "red_sand": {
+    "protocol_id": 27
+  },
+  "gravel": {
+    "protocol_id": 28
+  },
+  "gold_ore": {
+    "protocol_id": 29
+  },
+  "iron_ore": {
+    "protocol_id": 30
+  },
+  "coal_ore": {
+    "protocol_id": 31
+  },
+  "oak_log": {
+    "protocol_id": 32
+  },
+  "spruce_log": {
+    "protocol_id": 33
+  },
+  "birch_log": {
+    "protocol_id": 34
+  },
+  "jungle_log": {
+    "protocol_id": 35
+  },
+  "acacia_log": {
+    "protocol_id": 36
+  },
+  "dark_oak_log": {
+    "protocol_id": 37
+  },
+  "stripped_oak_log": {
+    "protocol_id": 38
+  },
+  "stripped_spruce_log": {
+    "protocol_id": 39
+  },
+  "stripped_birch_log": {
+    "protocol_id": 40
+  },
+  "stripped_jungle_log": {
+    "protocol_id": 41
+  },
+  "stripped_acacia_log": {
+    "protocol_id": 42
+  },
+  "stripped_dark_oak_log": {
+    "protocol_id": 43
+  },
+  "stripped_oak_wood": {
+    "protocol_id": 44
+  },
+  "stripped_spruce_wood": {
+    "protocol_id": 45
+  },
+  "stripped_birch_wood": {
+    "protocol_id": 46
+  },
+  "stripped_jungle_wood": {
+    "protocol_id": 47
+  },
+  "stripped_acacia_wood": {
+    "protocol_id": 48
+  },
+  "stripped_dark_oak_wood": {
+    "protocol_id": 49
+  },
+  "oak_wood": {
+    "protocol_id": 50
+  },
+  "spruce_wood": {
+    "protocol_id": 51
+  },
+  "birch_wood": {
+    "protocol_id": 52
+  },
+  "jungle_wood": {
+    "protocol_id": 53
+  },
+  "acacia_wood": {
+    "protocol_id": 54
+  },
+  "dark_oak_wood": {
+    "protocol_id": 55
+  },
+  "oak_leaves": {
+    "protocol_id": 56
+  },
+  "spruce_leaves": {
+    "protocol_id": 57
+  },
+  "birch_leaves": {
+    "protocol_id": 58
+  },
+  "jungle_leaves": {
+    "protocol_id": 59
+  },
+  "acacia_leaves": {
+    "protocol_id": 60
+  },
+  "dark_oak_leaves": {
+    "protocol_id": 61
+  },
+  "sponge": {
+    "protocol_id": 62
+  },
+  "wet_sponge": {
+    "protocol_id": 63
+  },
+  "glass": {
+    "protocol_id": 64
+  },
+  "lapis_ore": {
+    "protocol_id": 65
+  },
+  "lapis_block": {
+    "protocol_id": 66
+  },
+  "dispenser": {
+    "protocol_id": 67
+  },
+  "sandstone": {
+    "protocol_id": 68
+  },
+  "chiseled_sandstone": {
+    "protocol_id": 69
+  },
+  "cut_sandstone": {
+    "protocol_id": 70
+  },
+  "note_block": {
+    "protocol_id": 71
+  },
+  "powered_rail": {
+    "protocol_id": 72
+  },
+  "detector_rail": {
+    "protocol_id": 73
+  },
+  "sticky_piston": {
+    "protocol_id": 74
+  },
+  "cobweb": {
+    "protocol_id": 75
+  },
+  "grass": {
+    "protocol_id": 76
+  },
+  "fern": {
+    "protocol_id": 77
+  },
+  "dead_bush": {
+    "protocol_id": 78
+  },
+  "seagrass": {
+    "protocol_id": 79
+  },
+  "sea_pickle": {
+    "protocol_id": 80
+  },
+  "piston": {
+    "protocol_id": 81
+  },
+  "white_wool": {
+    "protocol_id": 82
+  },
+  "orange_wool": {
+    "protocol_id": 83
+  },
+  "magenta_wool": {
+    "protocol_id": 84
+  },
+  "light_blue_wool": {
+    "protocol_id": 85
+  },
+  "yellow_wool": {
+    "protocol_id": 86
+  },
+  "lime_wool": {
+    "protocol_id": 87
+  },
+  "pink_wool": {
+    "protocol_id": 88
+  },
+  "gray_wool": {
+    "protocol_id": 89
+  },
+  "light_gray_wool": {
+    "protocol_id": 90
+  },
+  "cyan_wool": {
+    "protocol_id": 91
+  },
+  "purple_wool": {
+    "protocol_id": 92
+  },
+  "blue_wool": {
+    "protocol_id": 93
+  },
+  "brown_wool": {
+    "protocol_id": 94
+  },
+  "green_wool": {
+    "protocol_id": 95
+  },
+  "red_wool": {
+    "protocol_id": 96
+  },
+  "black_wool": {
+    "protocol_id": 97
+  },
+  "dandelion": {
+    "protocol_id": 98
+  },
+  "poppy": {
+    "protocol_id": 99
+  },
+  "blue_orchid": {
+    "protocol_id": 100
+  },
+  "allium": {
+    "protocol_id": 101
+  },
+  "azure_bluet": {
+    "protocol_id": 102
+  },
+  "red_tulip": {
+    "protocol_id": 103
+  },
+  "orange_tulip": {
+    "protocol_id": 104
+  },
+  "white_tulip": {
+    "protocol_id": 105
+  },
+  "pink_tulip": {
+    "protocol_id": 106
+  },
+  "oxeye_daisy": {
+    "protocol_id": 107
+  },
+  "cornflower": {
+    "protocol_id": 108
+  },
+  "lily_of_the_valley": {
+    "protocol_id": 109
+  },
+  "wither_rose": {
+    "protocol_id": 110
+  },
+  "brown_mushroom": {
+    "protocol_id": 111
+  },
+  "red_mushroom": {
+    "protocol_id": 112
+  },
+  "gold_block": {
+    "protocol_id": 113
+  },
+  "iron_block": {
+    "protocol_id": 114
+  },
+  "oak_slab": {
+    "protocol_id": 115
+  },
+  "spruce_slab": {
+    "protocol_id": 116
+  },
+  "birch_slab": {
+    "protocol_id": 117
+  },
+  "jungle_slab": {
+    "protocol_id": 118
+  },
+  "acacia_slab": {
+    "protocol_id": 119
+  },
+  "dark_oak_slab": {
+    "protocol_id": 120
+  },
+  "stone_slab": {
+    "protocol_id": 121
+  },
+  "smooth_stone_slab": {
+    "protocol_id": 122
+  },
+  "sandstone_slab": {
+    "protocol_id": 123
+  },
+  "petrified_oak_slab": {
+    "protocol_id": 124
+  },
+  "cobblestone_slab": {
+    "protocol_id": 125
+  },
+  "brick_slab": {
+    "protocol_id": 126
+  },
+  "stone_brick_slab": {
+    "protocol_id": 127
+  },
+  "nether_brick_slab": {
+    "protocol_id": 128
+  },
+  "quartz_slab": {
+    "protocol_id": 129
+  },
+  "red_sandstone_slab": {
+    "protocol_id": 130
+  },
+  "purpur_slab": {
+    "protocol_id": 131
+  },
+  "prismarine_slab": {
+    "protocol_id": 132
+  },
+  "prismarine_brick_slab": {
+    "protocol_id": 133
+  },
+  "dark_prismarine_slab": {
+    "protocol_id": 134
+  },
+  "smooth_quartz": {
+    "protocol_id": 135
+  },
+  "smooth_red_sandstone": {
+    "protocol_id": 136
+  },
+  "smooth_sandstone": {
+    "protocol_id": 137
+  },
+  "smooth_stone": {
+    "protocol_id": 138
+  },
+  "bricks": {
+    "protocol_id": 139
+  },
+  "tnt": {
+    "protocol_id": 140
+  },
+  "bookshelf": {
+    "protocol_id": 141
+  },
+  "mossy_cobblestone": {
+    "protocol_id": 142
+  },
+  "obsidian": {
+    "protocol_id": 143
+  },
+  "torch": {
+    "protocol_id": 144
+  },
+  "end_rod": {
+    "protocol_id": 145
+  },
+  "chorus_plant": {
+    "protocol_id": 146
+  },
+  "chorus_flower": {
+    "protocol_id": 147
+  },
+  "purpur_block": {
+    "protocol_id": 148
+  },
+  "purpur_pillar": {
+    "protocol_id": 149
+  },
+  "purpur_stairs": {
+    "protocol_id": 150
+  },
+  "spawner": {
+    "protocol_id": 151
+  },
+  "oak_stairs": {
+    "protocol_id": 152
+  },
+  "chest": {
+    "protocol_id": 153
+  },
+  "diamond_ore": {
+    "protocol_id": 154
+  },
+  "diamond_block": {
+    "protocol_id": 155
+  },
+  "crafting_table": {
+    "protocol_id": 156
+  },
+  "farmland": {
+    "protocol_id": 157
+  },
+  "furnace": {
+    "protocol_id": 158
+  },
+  "ladder": {
+    "protocol_id": 159
+  },
+  "rail": {
+    "protocol_id": 160
+  },
+  "cobblestone_stairs": {
+    "protocol_id": 161
+  },
+  "lever": {
+    "protocol_id": 162
+  },
+  "stone_pressure_plate": {
+    "protocol_id": 163
+  },
+  "oak_pressure_plate": {
+    "protocol_id": 164
+  },
+  "spruce_pressure_plate": {
+    "protocol_id": 165
+  },
+  "birch_pressure_plate": {
+    "protocol_id": 166
+  },
+  "jungle_pressure_plate": {
+    "protocol_id": 167
+  },
+  "acacia_pressure_plate": {
+    "protocol_id": 168
+  },
+  "dark_oak_pressure_plate": {
+    "protocol_id": 169
+  },
+  "redstone_ore": {
+    "protocol_id": 170
+  },
+  "redstone_torch": {
+    "protocol_id": 171
+  },
+  "stone_button": {
+    "protocol_id": 172
+  },
+  "snow": {
+    "protocol_id": 173
+  },
+  "ice": {
+    "protocol_id": 174
+  },
+  "snow_block": {
+    "protocol_id": 175
+  },
+  "cactus": {
+    "protocol_id": 176
+  },
+  "clay": {
+    "protocol_id": 177
+  },
+  "jukebox": {
+    "protocol_id": 178
+  },
+  "oak_fence": {
+    "protocol_id": 179
+  },
+  "spruce_fence": {
+    "protocol_id": 180
+  },
+  "birch_fence": {
+    "protocol_id": 181
+  },
+  "jungle_fence": {
+    "protocol_id": 182
+  },
+  "acacia_fence": {
+    "protocol_id": 183
+  },
+  "dark_oak_fence": {
+    "protocol_id": 184
+  },
+  "pumpkin": {
+    "protocol_id": 185
+  },
+  "carved_pumpkin": {
+    "protocol_id": 186
+  },
+  "netherrack": {
+    "protocol_id": 187
+  },
+  "soul_sand": {
+    "protocol_id": 188
+  },
+  "glowstone": {
+    "protocol_id": 189
+  },
+  "jack_o_lantern": {
+    "protocol_id": 190
+  },
+  "oak_trapdoor": {
+    "protocol_id": 191
+  },
+  "spruce_trapdoor": {
+    "protocol_id": 192
+  },
+  "birch_trapdoor": {
+    "protocol_id": 193
+  },
+  "jungle_trapdoor": {
+    "protocol_id": 194
+  },
+  "acacia_trapdoor": {
+    "protocol_id": 195
+  },
+  "dark_oak_trapdoor": {
+    "protocol_id": 196
+  },
+  "infested_stone": {
+    "protocol_id": 197
+  },
+  "infested_cobblestone": {
+    "protocol_id": 198
+  },
+  "infested_stone_bricks": {
+    "protocol_id": 199
+  },
+  "infested_mossy_stone_bricks": {
+    "protocol_id": 200
+  },
+  "infested_cracked_stone_bricks": {
+    "protocol_id": 201
+  },
+  "infested_chiseled_stone_bricks": {
+    "protocol_id": 202
+  },
+  "stone_bricks": {
+    "protocol_id": 203
+  },
+  "mossy_stone_bricks": {
+    "protocol_id": 204
+  },
+  "cracked_stone_bricks": {
+    "protocol_id": 205
+  },
+  "chiseled_stone_bricks": {
+    "protocol_id": 206
+  },
+  "brown_mushroom_block": {
+    "protocol_id": 207
+  },
+  "red_mushroom_block": {
+    "protocol_id": 208
+  },
+  "mushroom_stem": {
+    "protocol_id": 209
+  },
+  "iron_bars": {
+    "protocol_id": 210
+  },
+  "glass_pane": {
+    "protocol_id": 211
+  },
+  "melon": {
+    "protocol_id": 212
+  },
+  "vine": {
+    "protocol_id": 213
+  },
+  "oak_fence_gate": {
+    "protocol_id": 214
+  },
+  "spruce_fence_gate": {
+    "protocol_id": 215
+  },
+  "birch_fence_gate": {
+    "protocol_id": 216
+  },
+  "jungle_fence_gate": {
+    "protocol_id": 217
+  },
+  "acacia_fence_gate": {
+    "protocol_id": 218
+  },
+  "dark_oak_fence_gate": {
+    "protocol_id": 219
+  },
+  "brick_stairs": {
+    "protocol_id": 220
+  },
+  "stone_brick_stairs": {
+    "protocol_id": 221
+  },
+  "mycelium": {
+    "protocol_id": 222
+  },
+  "lily_pad": {
+    "protocol_id": 223
+  },
+  "nether_bricks": {
+    "protocol_id": 224
+  },
+  "nether_brick_fence": {
+    "protocol_id": 225
+  },
+  "nether_brick_stairs": {
+    "protocol_id": 226
+  },
+  "enchanting_table": {
+    "protocol_id": 227
+  },
+  "end_portal_frame": {
+    "protocol_id": 228
+  },
+  "end_stone": {
+    "protocol_id": 229
+  },
+  "end_stone_bricks": {
+    "protocol_id": 230
+  },
+  "dragon_egg": {
+    "protocol_id": 231
+  },
+  "redstone_lamp": {
+    "protocol_id": 232
+  },
+  "sandstone_stairs": {
+    "protocol_id": 233
+  },
+  "emerald_ore": {
+    "protocol_id": 234
+  },
+  "ender_chest": {
+    "protocol_id": 235
+  },
+  "tripwire_hook": {
+    "protocol_id": 236
+  },
+  "emerald_block": {
+    "protocol_id": 237
+  },
+  "spruce_stairs": {
+    "protocol_id": 238
+  },
+  "birch_stairs": {
+    "protocol_id": 239
+  },
+  "jungle_stairs": {
+    "protocol_id": 240
+  },
+  "command_block": {
+    "protocol_id": 241
+  },
+  "beacon": {
+    "protocol_id": 242
+  },
+  "cobblestone_wall": {
+    "protocol_id": 243
+  },
+  "mossy_cobblestone_wall": {
+    "protocol_id": 244
+  },
+  "oak_button": {
+    "protocol_id": 245
+  },
+  "spruce_button": {
+    "protocol_id": 246
+  },
+  "birch_button": {
+    "protocol_id": 247
+  },
+  "jungle_button": {
+    "protocol_id": 248
+  },
+  "acacia_button": {
+    "protocol_id": 249
+  },
+  "dark_oak_button": {
+    "protocol_id": 250
+  },
+  "anvil": {
+    "protocol_id": 251
+  },
+  "chipped_anvil": {
+    "protocol_id": 252
+  },
+  "damaged_anvil": {
+    "protocol_id": 253
+  },
+  "trapped_chest": {
+    "protocol_id": 254
+  },
+  "light_weighted_pressure_plate": {
+    "protocol_id": 255
+  },
+  "heavy_weighted_pressure_plate": {
+    "protocol_id": 256
+  },
+  "daylight_detector": {
+    "protocol_id": 257
+  },
+  "redstone_block": {
+    "protocol_id": 258
+  },
+  "nether_quartz_ore": {
+    "protocol_id": 259
+  },
+  "hopper": {
+    "protocol_id": 260
+  },
+  "chiseled_quartz_block": {
+    "protocol_id": 261
+  },
+  "quartz_block": {
+    "protocol_id": 262
+  },
+  "quartz_pillar": {
+    "protocol_id": 263
+  },
+  "quartz_stairs": {
+    "protocol_id": 264
+  },
+  "activator_rail": {
+    "protocol_id": 265
+  },
+  "dropper": {
+    "protocol_id": 266
+  },
+  "white_terracotta": {
+    "protocol_id": 267
+  },
+  "orange_terracotta": {
+    "protocol_id": 268
+  },
+  "magenta_terracotta": {
+    "protocol_id": 269
+  },
+  "light_blue_terracotta": {
+    "protocol_id": 270
+  },
+  "yellow_terracotta": {
+    "protocol_id": 271
+  },
+  "lime_terracotta": {
+    "protocol_id": 272
+  },
+  "pink_terracotta": {
+    "protocol_id": 273
+  },
+  "gray_terracotta": {
+    "protocol_id": 274
+  },
+  "light_gray_terracotta": {
+    "protocol_id": 275
+  },
+  "cyan_terracotta": {
+    "protocol_id": 276
+  },
+  "purple_terracotta": {
+    "protocol_id": 277
+  },
+  "blue_terracotta": {
+    "protocol_id": 278
+  },
+  "brown_terracotta": {
+    "protocol_id": 279
+  },
+  "green_terracotta": {
+    "protocol_id": 280
+  },
+  "red_terracotta": {
+    "protocol_id": 281
+  },
+  "black_terracotta": {
+    "protocol_id": 282
+  },
+  "barrier": {
+    "protocol_id": 283
+  },
+  "iron_trapdoor": {
+    "protocol_id": 284
+  },
+  "hay_block": {
+    "protocol_id": 285
+  },
+  "white_carpet": {
+    "protocol_id": 286
+  },
+  "orange_carpet": {
+    "protocol_id": 287
+  },
+  "magenta_carpet": {
+    "protocol_id": 288
+  },
+  "light_blue_carpet": {
+    "protocol_id": 289
+  },
+  "yellow_carpet": {
+    "protocol_id": 290
+  },
+  "lime_carpet": {
+    "protocol_id": 291
+  },
+  "pink_carpet": {
+    "protocol_id": 292
+  },
+  "gray_carpet": {
+    "protocol_id": 293
+  },
+  "light_gray_carpet": {
+    "protocol_id": 294
+  },
+  "cyan_carpet": {
+    "protocol_id": 295
+  },
+  "purple_carpet": {
+    "protocol_id": 296
+  },
+  "blue_carpet": {
+    "protocol_id": 297
+  },
+  "brown_carpet": {
+    "protocol_id": 298
+  },
+  "green_carpet": {
+    "protocol_id": 299
+  },
+  "red_carpet": {
+    "protocol_id": 300
+  },
+  "black_carpet": {
+    "protocol_id": 301
+  },
+  "terracotta": {
+    "protocol_id": 302
+  },
+  "coal_block": {
+    "protocol_id": 303
+  },
+  "packed_ice": {
+    "protocol_id": 304
+  },
+  "acacia_stairs": {
+    "protocol_id": 305
+  },
+  "dark_oak_stairs": {
+    "protocol_id": 306
+  },
+  "slime_block": {
+    "protocol_id": 307
+  },
+  "grass_path": {
+    "protocol_id": 308
+  },
+  "sunflower": {
+    "protocol_id": 309
+  },
+  "lilac": {
+    "protocol_id": 310
+  },
+  "rose_bush": {
+    "protocol_id": 311
+  },
+  "peony": {
+    "protocol_id": 312
+  },
+  "tall_grass": {
+    "protocol_id": 313
+  },
+  "large_fern": {
+    "protocol_id": 314
+  },
+  "white_stained_glass": {
+    "protocol_id": 315
+  },
+  "orange_stained_glass": {
+    "protocol_id": 316
+  },
+  "magenta_stained_glass": {
+    "protocol_id": 317
+  },
+  "light_blue_stained_glass": {
+    "protocol_id": 318
+  },
+  "yellow_stained_glass": {
+    "protocol_id": 319
+  },
+  "lime_stained_glass": {
+    "protocol_id": 320
+  },
+  "pink_stained_glass": {
+    "protocol_id": 321
+  },
+  "gray_stained_glass": {
+    "protocol_id": 322
+  },
+  "light_gray_stained_glass": {
+    "protocol_id": 323
+  },
+  "cyan_stained_glass": {
+    "protocol_id": 324
+  },
+  "purple_stained_glass": {
+    "protocol_id": 325
+  },
+  "blue_stained_glass": {
+    "protocol_id": 326
+  },
+  "brown_stained_glass": {
+    "protocol_id": 327
+  },
+  "green_stained_glass": {
+    "protocol_id": 328
+  },
+  "red_stained_glass": {
+    "protocol_id": 329
+  },
+  "black_stained_glass": {
+    "protocol_id": 330
+  },
+  "white_stained_glass_pane": {
+    "protocol_id": 331
+  },
+  "orange_stained_glass_pane": {
+    "protocol_id": 332
+  },
+  "magenta_stained_glass_pane": {
+    "protocol_id": 333
+  },
+  "light_blue_stained_glass_pane": {
+    "protocol_id": 334
+  },
+  "yellow_stained_glass_pane": {
+    "protocol_id": 335
+  },
+  "lime_stained_glass_pane": {
+    "protocol_id": 336
+  },
+  "pink_stained_glass_pane": {
+    "protocol_id": 337
+  },
+  "gray_stained_glass_pane": {
+    "protocol_id": 338
+  },
+  "light_gray_stained_glass_pane": {
+    "protocol_id": 339
+  },
+  "cyan_stained_glass_pane": {
+    "protocol_id": 340
+  },
+  "purple_stained_glass_pane": {
+    "protocol_id": 341
+  },
+  "blue_stained_glass_pane": {
+    "protocol_id": 342
+  },
+  "brown_stained_glass_pane": {
+    "protocol_id": 343
+  },
+  "green_stained_glass_pane": {
+    "protocol_id": 344
+  },
+  "red_stained_glass_pane": {
+    "protocol_id": 345
+  },
+  "black_stained_glass_pane": {
+    "protocol_id": 346
+  },
+  "prismarine": {
+    "protocol_id": 347
+  },
+  "prismarine_bricks": {
+    "protocol_id": 348
+  },
+  "dark_prismarine": {
+    "protocol_id": 349
+  },
+  "prismarine_stairs": {
+    "protocol_id": 350
+  },
+  "prismarine_brick_stairs": {
+    "protocol_id": 351
+  },
+  "dark_prismarine_stairs": {
+    "protocol_id": 352
+  },
+  "sea_lantern": {
+    "protocol_id": 353
+  },
+  "red_sandstone": {
+    "protocol_id": 354
+  },
+  "chiseled_red_sandstone": {
+    "protocol_id": 355
+  },
+  "cut_red_sandstone": {
+    "protocol_id": 356
+  },
+  "red_sandstone_stairs": {
+    "protocol_id": 357
+  },
+  "repeating_command_block": {
+    "protocol_id": 358
+  },
+  "chain_command_block": {
+    "protocol_id": 359
+  },
+  "magma_block": {
+    "protocol_id": 360
+  },
+  "nether_wart_block": {
+    "protocol_id": 361
+  },
+  "red_nether_bricks": {
+    "protocol_id": 362
+  },
+  "bone_block": {
+    "protocol_id": 363
+  },
+  "structure_void": {
+    "protocol_id": 364
+  },
+  "observer": {
+    "protocol_id": 365
+  },
+  "shulker_box": {
+    "protocol_id": 366
+  },
+  "white_shulker_box": {
+    "protocol_id": 367
+  },
+  "orange_shulker_box": {
+    "protocol_id": 368
+  },
+  "magenta_shulker_box": {
+    "protocol_id": 369
+  },
+  "light_blue_shulker_box": {
+    "protocol_id": 370
+  },
+  "yellow_shulker_box": {
+    "protocol_id": 371
+  },
+  "lime_shulker_box": {
+    "protocol_id": 372
+  },
+  "pink_shulker_box": {
+    "protocol_id": 373
+  },
+  "gray_shulker_box": {
+    "protocol_id": 374
+  },
+  "light_gray_shulker_box": {
+    "protocol_id": 375
+  },
+  "cyan_shulker_box": {
+    "protocol_id": 376
+  },
+  "purple_shulker_box": {
+    "protocol_id": 377
+  },
+  "blue_shulker_box": {
+    "protocol_id": 378
+  },
+  "brown_shulker_box": {
+    "protocol_id": 379
+  },
+  "green_shulker_box": {
+    "protocol_id": 380
+  },
+  "red_shulker_box": {
+    "protocol_id": 381
+  },
+  "black_shulker_box": {
+    "protocol_id": 382
+  },
+  "white_glazed_terracotta": {
+    "protocol_id": 383
+  },
+  "orange_glazed_terracotta": {
+    "protocol_id": 384
+  },
+  "magenta_glazed_terracotta": {
+    "protocol_id": 385
+  },
+  "light_blue_glazed_terracotta": {
+    "protocol_id": 386
+  },
+  "yellow_glazed_terracotta": {
+    "protocol_id": 387
+  },
+  "lime_glazed_terracotta": {
+    "protocol_id": 388
+  },
+  "pink_glazed_terracotta": {
+    "protocol_id": 389
+  },
+  "gray_glazed_terracotta": {
+    "protocol_id": 390
+  },
+  "light_gray_glazed_terracotta": {
+    "protocol_id": 391
+  },
+  "cyan_glazed_terracotta": {
+    "protocol_id": 392
+  },
+  "purple_glazed_terracotta": {
+    "protocol_id": 393
+  },
+  "blue_glazed_terracotta": {
+    "protocol_id": 394
+  },
+  "brown_glazed_terracotta": {
+    "protocol_id": 395
+  },
+  "green_glazed_terracotta": {
+    "protocol_id": 396
+  },
+  "red_glazed_terracotta": {
+    "protocol_id": 397
+  },
+  "black_glazed_terracotta": {
+    "protocol_id": 398
+  },
+  "white_concrete": {
+    "protocol_id": 399
+  },
+  "orange_concrete": {
+    "protocol_id": 400
+  },
+  "magenta_concrete": {
+    "protocol_id": 401
+  },
+  "light_blue_concrete": {
+    "protocol_id": 402
+  },
+  "yellow_concrete": {
+    "protocol_id": 403
+  },
+  "lime_concrete": {
+    "protocol_id": 404
+  },
+  "pink_concrete": {
+    "protocol_id": 405
+  },
+  "gray_concrete": {
+    "protocol_id": 406
+  },
+  "light_gray_concrete": {
+    "protocol_id": 407
+  },
+  "cyan_concrete": {
+    "protocol_id": 408
+  },
+  "purple_concrete": {
+    "protocol_id": 409
+  },
+  "blue_concrete": {
+    "protocol_id": 410
+  },
+  "brown_concrete": {
+    "protocol_id": 411
+  },
+  "green_concrete": {
+    "protocol_id": 412
+  },
+  "red_concrete": {
+    "protocol_id": 413
+  },
+  "black_concrete": {
+    "protocol_id": 414
+  },
+  "white_concrete_powder": {
+    "protocol_id": 415
+  },
+  "orange_concrete_powder": {
+    "protocol_id": 416
+  },
+  "magenta_concrete_powder": {
+    "protocol_id": 417
+  },
+  "light_blue_concrete_powder": {
+    "protocol_id": 418
+  },
+  "yellow_concrete_powder": {
+    "protocol_id": 419
+  },
+  "lime_concrete_powder": {
+    "protocol_id": 420
+  },
+  "pink_concrete_powder": {
+    "protocol_id": 421
+  },
+  "gray_concrete_powder": {
+    "protocol_id": 422
+  },
+  "light_gray_concrete_powder": {
+    "protocol_id": 423
+  },
+  "cyan_concrete_powder": {
+    "protocol_id": 424
+  },
+  "purple_concrete_powder": {
+    "protocol_id": 425
+  },
+  "blue_concrete_powder": {
+    "protocol_id": 426
+  },
+  "brown_concrete_powder": {
+    "protocol_id": 427
+  },
+  "green_concrete_powder": {
+    "protocol_id": 428
+  },
+  "red_concrete_powder": {
+    "protocol_id": 429
+  },
+  "black_concrete_powder": {
+    "protocol_id": 430
+  },
+  "turtle_egg": {
+    "protocol_id": 431
+  },
+  "dead_tube_coral_block": {
+    "protocol_id": 432
+  },
+  "dead_brain_coral_block": {
+    "protocol_id": 433
+  },
+  "dead_bubble_coral_block": {
+    "protocol_id": 434
+  },
+  "dead_fire_coral_block": {
+    "protocol_id": 435
+  },
+  "dead_horn_coral_block": {
+    "protocol_id": 436
+  },
+  "tube_coral_block": {
+    "protocol_id": 437
+  },
+  "brain_coral_block": {
+    "protocol_id": 438
+  },
+  "bubble_coral_block": {
+    "protocol_id": 439
+  },
+  "fire_coral_block": {
+    "protocol_id": 440
+  },
+  "horn_coral_block": {
+    "protocol_id": 441
+  },
+  "tube_coral": {
+    "protocol_id": 442
+  },
+  "brain_coral": {
+    "protocol_id": 443
+  },
+  "bubble_coral": {
+    "protocol_id": 444
+  },
+  "fire_coral": {
+    "protocol_id": 445
+  },
+  "horn_coral": {
+    "protocol_id": 446
+  },
+  "dead_brain_coral": {
+    "protocol_id": 447
+  },
+  "dead_bubble_coral": {
+    "protocol_id": 448
+  },
+  "dead_fire_coral": {
+    "protocol_id": 449
+  },
+  "dead_horn_coral": {
+    "protocol_id": 450
+  },
+  "dead_tube_coral": {
+    "protocol_id": 451
+  },
+  "tube_coral_fan": {
+    "protocol_id": 452
+  },
+  "brain_coral_fan": {
+    "protocol_id": 453
+  },
+  "bubble_coral_fan": {
+    "protocol_id": 454
+  },
+  "fire_coral_fan": {
+    "protocol_id": 455
+  },
+  "horn_coral_fan": {
+    "protocol_id": 456
+  },
+  "dead_tube_coral_fan": {
+    "protocol_id": 457
+  },
+  "dead_brain_coral_fan": {
+    "protocol_id": 458
+  },
+  "dead_bubble_coral_fan": {
+    "protocol_id": 459
+  },
+  "dead_fire_coral_fan": {
+    "protocol_id": 460
+  },
+  "dead_horn_coral_fan": {
+    "protocol_id": 461
+  },
+  "blue_ice": {
+    "protocol_id": 462
+  },
+  "conduit": {
+    "protocol_id": 463
+  },
+  "polished_granite_stairs": {
+    "protocol_id": 464
+  },
+  "smooth_red_sandstone_stairs": {
+    "protocol_id": 465
+  },
+  "mossy_stone_brick_stairs": {
+    "protocol_id": 466
+  },
+  "polished_diorite_stairs": {
+    "protocol_id": 467
+  },
+  "mossy_cobblestone_stairs": {
+    "protocol_id": 468
+  },
+  "end_stone_brick_stairs": {
+    "protocol_id": 469
+  },
+  "stone_stairs": {
+    "protocol_id": 470
+  },
+  "smooth_sandstone_stairs": {
+    "protocol_id": 471
+  },
+  "smooth_quartz_stairs": {
+    "protocol_id": 472
+  },
+  "granite_stairs": {
+    "protocol_id": 473
+  },
+  "andesite_stairs": {
+    "protocol_id": 474
+  },
+  "red_nether_brick_stairs": {
+    "protocol_id": 475
+  },
+  "polished_andesite_stairs": {
+    "protocol_id": 476
+  },
+  "diorite_stairs": {
+    "protocol_id": 477
+  },
+  "polished_granite_slab": {
+    "protocol_id": 478
+  },
+  "smooth_red_sandstone_slab": {
+    "protocol_id": 479
+  },
+  "mossy_stone_brick_slab": {
+    "protocol_id": 480
+  },
+  "polished_diorite_slab": {
+    "protocol_id": 481
+  },
+  "mossy_cobblestone_slab": {
+    "protocol_id": 482
+  },
+  "end_stone_brick_slab": {
+    "protocol_id": 483
+  },
+  "smooth_sandstone_slab": {
+    "protocol_id": 484
+  },
+  "smooth_quartz_slab": {
+    "protocol_id": 485
+  },
+  "granite_slab": {
+    "protocol_id": 486
+  },
+  "andesite_slab": {
+    "protocol_id": 487
+  },
+  "red_nether_brick_slab": {
+    "protocol_id": 488
+  },
+  "polished_andesite_slab": {
+    "protocol_id": 489
+  },
+  "diorite_slab": {
+    "protocol_id": 490
+  },
+  "brick_wall": {
+    "protocol_id": 491
+  },
+  "prismarine_wall": {
+    "protocol_id": 492
+  },
+  "red_sandstone_wall": {
+    "protocol_id": 493
+  },
+  "mossy_stone_brick_wall": {
+    "protocol_id": 494
+  },
+  "granite_wall": {
+    "protocol_id": 495
+  },
+  "stone_brick_wall": {
+    "protocol_id": 496
+  },
+  "nether_brick_wall": {
+    "protocol_id": 497
+  },
+  "andesite_wall": {
+    "protocol_id": 498
+  },
+  "red_nether_brick_wall": {
+    "protocol_id": 499
+  },
+  "sandstone_wall": {
+    "protocol_id": 500
+  },
+  "end_stone_brick_wall": {
+    "protocol_id": 501
+  },
+  "diorite_wall": {
+    "protocol_id": 502
+  },
+  "scaffolding": {
+    "protocol_id": 503
+  },
+  "iron_door": {
+    "protocol_id": 504
+  },
+  "oak_door": {
+    "protocol_id": 505
+  },
+  "spruce_door": {
+    "protocol_id": 506
+  },
+  "birch_door": {
+    "protocol_id": 507
+  },
+  "jungle_door": {
+    "protocol_id": 508
+  },
+  "acacia_door": {
+    "protocol_id": 509
+  },
+  "dark_oak_door": {
+    "protocol_id": 510
+  },
+  "repeater": {
+    "protocol_id": 511
+  },
+  "comparator": {
+    "protocol_id": 512
+  },
+  "structure_block": {
+    "protocol_id": 513
+  },
+  "jigsaw": {
+    "protocol_id": 514
+  },
+  "composter": {
+    "protocol_id": 515
+  },
+  "turtle_helmet": {
+    "protocol_id": 516
+  },
+  "scute": {
+    "protocol_id": 517
+  },
+  "iron_shovel": {
+    "protocol_id": 518
+  },
+  "iron_pickaxe": {
+    "protocol_id": 519
+  },
+  "iron_axe": {
+    "protocol_id": 520
+  },
+  "flint_and_steel": {
+    "protocol_id": 521
+  },
+  "apple": {
+    "protocol_id": 522
+  },
+  "bow": {
+    "protocol_id": 523
+  },
+  "arrow": {
+    "protocol_id": 524
+  },
+  "coal": {
+    "protocol_id": 525
+  },
+  "charcoal": {
+    "protocol_id": 526
+  },
+  "diamond": {
+    "protocol_id": 527
+  },
+  "iron_ingot": {
+    "protocol_id": 528
+  },
+  "gold_ingot": {
+    "protocol_id": 529
+  },
+  "iron_sword": {
+    "protocol_id": 530
+  },
+  "wooden_sword": {
+    "protocol_id": 531
+  },
+  "wooden_shovel": {
+    "protocol_id": 532
+  },
+  "wooden_pickaxe": {
+    "protocol_id": 533
+  },
+  "wooden_axe": {
+    "protocol_id": 534
+  },
+  "stone_sword": {
+    "protocol_id": 535
+  },
+  "stone_shovel": {
+    "protocol_id": 536
+  },
+  "stone_pickaxe": {
+    "protocol_id": 537
+  },
+  "stone_axe": {
+    "protocol_id": 538
+  },
+  "diamond_sword": {
+    "protocol_id": 539
+  },
+  "diamond_shovel": {
+    "protocol_id": 540
+  },
+  "diamond_pickaxe": {
+    "protocol_id": 541
+  },
+  "diamond_axe": {
+    "protocol_id": 542
+  },
+  "stick": {
+    "protocol_id": 543
+  },
+  "bowl": {
+    "protocol_id": 544
+  },
+  "mushroom_stew": {
+    "protocol_id": 545
+  },
+  "golden_sword": {
+    "protocol_id": 546
+  },
+  "golden_shovel": {
+    "protocol_id": 547
+  },
+  "golden_pickaxe": {
+    "protocol_id": 548
+  },
+  "golden_axe": {
+    "protocol_id": 549
+  },
+  "string": {
+    "protocol_id": 550
+  },
+  "feather": {
+    "protocol_id": 551
+  },
+  "gunpowder": {
+    "protocol_id": 552
+  },
+  "wooden_hoe": {
+    "protocol_id": 553
+  },
+  "stone_hoe": {
+    "protocol_id": 554
+  },
+  "iron_hoe": {
+    "protocol_id": 555
+  },
+  "diamond_hoe": {
+    "protocol_id": 556
+  },
+  "golden_hoe": {
+    "protocol_id": 557
+  },
+  "wheat_seeds": {
+    "protocol_id": 558
+  },
+  "wheat": {
+    "protocol_id": 559
+  },
+  "bread": {
+    "protocol_id": 560
+  },
+  "leather_helmet": {
+    "protocol_id": 561
+  },
+  "leather_chestplate": {
+    "protocol_id": 562
+  },
+  "leather_leggings": {
+    "protocol_id": 563
+  },
+  "leather_boots": {
+    "protocol_id": 564
+  },
+  "chainmail_helmet": {
+    "protocol_id": 565
+  },
+  "chainmail_chestplate": {
+    "protocol_id": 566
+  },
+  "chainmail_leggings": {
+    "protocol_id": 567
+  },
+  "chainmail_boots": {
+    "protocol_id": 568
+  },
+  "iron_helmet": {
+    "protocol_id": 569
+  },
+  "iron_chestplate": {
+    "protocol_id": 570
+  },
+  "iron_leggings": {
+    "protocol_id": 571
+  },
+  "iron_boots": {
+    "protocol_id": 572
+  },
+  "diamond_helmet": {
+    "protocol_id": 573
+  },
+  "diamond_chestplate": {
+    "protocol_id": 574
+  },
+  "diamond_leggings": {
+    "protocol_id": 575
+  },
+  "diamond_boots": {
+    "protocol_id": 576
+  },
+  "golden_helmet": {
+    "protocol_id": 577
+  },
+  "golden_chestplate": {
+    "protocol_id": 578
+  },
+  "golden_leggings": {
+    "protocol_id": 579
+  },
+  "golden_boots": {
+    "protocol_id": 580
+  },
+  "flint": {
+    "protocol_id": 581
+  },
+  "porkchop": {
+    "protocol_id": 582
+  },
+  "cooked_porkchop": {
+    "protocol_id": 583
+  },
+  "painting": {
+    "protocol_id": 584
+  },
+  "golden_apple": {
+    "protocol_id": 585
+  },
+  "enchanted_golden_apple": {
+    "protocol_id": 586
+  },
+  "oak_sign": {
+    "protocol_id": 587
+  },
+  "spruce_sign": {
+    "protocol_id": 588
+  },
+  "birch_sign": {
+    "protocol_id": 589
+  },
+  "acacia_sign": {
+    "protocol_id": 590
+  },
+  "jungle_sign": {
+    "protocol_id": 591
+  },
+  "dark_oak_sign": {
+    "protocol_id": 592
+  },
+  "bucket": {
+    "protocol_id": 593
+  },
+  "water_bucket": {
+    "protocol_id": 594
+  },
+  "lava_bucket": {
+    "protocol_id": 595
+  },
+  "minecart": {
+    "protocol_id": 596
+  },
+  "saddle": {
+    "protocol_id": 597
+  },
+  "redstone": {
+    "protocol_id": 598
+  },
+  "snowball": {
+    "protocol_id": 599
+  },
+  "oak_boat": {
+    "protocol_id": 600
+  },
+  "leather": {
+    "protocol_id": 601
+  },
+  "milk_bucket": {
+    "protocol_id": 602
+  },
+  "pufferfish_bucket": {
+    "protocol_id": 603
+  },
+  "salmon_bucket": {
+    "protocol_id": 604
+  },
+  "cod_bucket": {
+    "protocol_id": 605
+  },
+  "tropical_fish_bucket": {
+    "protocol_id": 606
+  },
+  "brick": {
+    "protocol_id": 607
+  },
+  "clay_ball": {
+    "protocol_id": 608
+  },
+  "sugar_cane": {
+    "protocol_id": 609
+  },
+  "kelp": {
+    "protocol_id": 610
+  },
+  "dried_kelp_block": {
+    "protocol_id": 611
+  },
+  "bamboo": {
+    "protocol_id": 612
+  },
+  "paper": {
+    "protocol_id": 613
+  },
+  "book": {
+    "protocol_id": 614
+  },
+  "slime_ball": {
+    "protocol_id": 615
+  },
+  "chest_minecart": {
+    "protocol_id": 616
+  },
+  "furnace_minecart": {
+    "protocol_id": 617
+  },
+  "egg": {
+    "protocol_id": 618
+  },
+  "compass": {
+    "protocol_id": 619
+  },
+  "fishing_rod": {
+    "protocol_id": 620
+  },
+  "clock": {
+    "protocol_id": 621
+  },
+  "glowstone_dust": {
+    "protocol_id": 622
+  },
+  "cod": {
+    "protocol_id": 623
+  },
+  "salmon": {
+    "protocol_id": 624
+  },
+  "tropical_fish": {
+    "protocol_id": 625
+  },
+  "pufferfish": {
+    "protocol_id": 626
+  },
+  "cooked_cod": {
+    "protocol_id": 627
+  },
+  "cooked_salmon": {
+    "protocol_id": 628
+  },
+  "ink_sac": {
+    "protocol_id": 629
+  },
+  "red_dye": {
+    "protocol_id": 630
+  },
+  "green_dye": {
+    "protocol_id": 631
+  },
+  "cocoa_beans": {
+    "protocol_id": 632
+  },
+  "lapis_lazuli": {
+    "protocol_id": 633
+  },
+  "purple_dye": {
+    "protocol_id": 634
+  },
+  "cyan_dye": {
+    "protocol_id": 635
+  },
+  "light_gray_dye": {
+    "protocol_id": 636
+  },
+  "gray_dye": {
+    "protocol_id": 637
+  },
+  "pink_dye": {
+    "protocol_id": 638
+  },
+  "lime_dye": {
+    "protocol_id": 639
+  },
+  "yellow_dye": {
+    "protocol_id": 640
+  },
+  "light_blue_dye": {
+    "protocol_id": 641
+  },
+  "magenta_dye": {
+    "protocol_id": 642
+  },
+  "orange_dye": {
+    "protocol_id": 643
+  },
+  "bone_meal": {
+    "protocol_id": 644
+  },
+  "blue_dye": {
+    "protocol_id": 645
+  },
+  "brown_dye": {
+    "protocol_id": 646
+  },
+  "black_dye": {
+    "protocol_id": 647
+  },
+  "white_dye": {
+    "protocol_id": 648
+  },
+  "bone": {
+    "protocol_id": 649
+  },
+  "sugar": {
+    "protocol_id": 650
+  },
+  "cake": {
+    "protocol_id": 651
+  },
+  "white_bed": {
+    "protocol_id": 652
+  },
+  "orange_bed": {
+    "protocol_id": 653
+  },
+  "magenta_bed": {
+    "protocol_id": 654
+  },
+  "light_blue_bed": {
+    "protocol_id": 655
+  },
+  "yellow_bed": {
+    "protocol_id": 656
+  },
+  "lime_bed": {
+    "protocol_id": 657
+  },
+  "pink_bed": {
+    "protocol_id": 658
+  },
+  "gray_bed": {
+    "protocol_id": 659
+  },
+  "light_gray_bed": {
+    "protocol_id": 660
+  },
+  "cyan_bed": {
+    "protocol_id": 661
+  },
+  "purple_bed": {
+    "protocol_id": 662
+  },
+  "blue_bed": {
+    "protocol_id": 663
+  },
+  "brown_bed": {
+    "protocol_id": 664
+  },
+  "green_bed": {
+    "protocol_id": 665
+  },
+  "red_bed": {
+    "protocol_id": 666
+  },
+  "black_bed": {
+    "protocol_id": 667
+  },
+  "cookie": {
+    "protocol_id": 668
+  },
+  "filled_map": {
+    "protocol_id": 669
+  },
+  "shears": {
+    "protocol_id": 670
+  },
+  "melon_slice": {
+    "protocol_id": 671
+  },
+  "dried_kelp": {
+    "protocol_id": 672
+  },
+  "pumpkin_seeds": {
+    "protocol_id": 673
+  },
+  "melon_seeds": {
+    "protocol_id": 674
+  },
+  "beef": {
+    "protocol_id": 675
+  },
+  "cooked_beef": {
+    "protocol_id": 676
+  },
+  "chicken": {
+    "protocol_id": 677
+  },
+  "cooked_chicken": {
+    "protocol_id": 678
+  },
+  "rotten_flesh": {
+    "protocol_id": 679
+  },
+  "ender_pearl": {
+    "protocol_id": 680
+  },
+  "blaze_rod": {
+    "protocol_id": 681
+  },
+  "ghast_tear": {
+    "protocol_id": 682
+  },
+  "gold_nugget": {
+    "protocol_id": 683
+  },
+  "nether_wart": {
+    "protocol_id": 684
+  },
+  "potion": {
+    "protocol_id": 685
+  },
+  "glass_bottle": {
+    "protocol_id": 686
+  },
+  "spider_eye": {
+    "protocol_id": 687
+  },
+  "fermented_spider_eye": {
+    "protocol_id": 688
+  },
+  "blaze_powder": {
+    "protocol_id": 689
+  },
+  "magma_cream": {
+    "protocol_id": 690
+  },
+  "brewing_stand": {
+    "protocol_id": 691
+  },
+  "cauldron": {
+    "protocol_id": 692
+  },
+  "ender_eye": {
+    "protocol_id": 693
+  },
+  "glistering_melon_slice": {
+    "protocol_id": 694
+  },
+  "bat_spawn_egg": {
+    "protocol_id": 695
+  },
+  "blaze_spawn_egg": {
+    "protocol_id": 696
+  },
+  "cat_spawn_egg": {
+    "protocol_id": 697
+  },
+  "cave_spider_spawn_egg": {
+    "protocol_id": 698
+  },
+  "chicken_spawn_egg": {
+    "protocol_id": 699
+  },
+  "cod_spawn_egg": {
+    "protocol_id": 700
+  },
+  "cow_spawn_egg": {
+    "protocol_id": 701
+  },
+  "creeper_spawn_egg": {
+    "protocol_id": 702
+  },
+  "dolphin_spawn_egg": {
+    "protocol_id": 703
+  },
+  "donkey_spawn_egg": {
+    "protocol_id": 704
+  },
+  "drowned_spawn_egg": {
+    "protocol_id": 705
+  },
+  "elder_guardian_spawn_egg": {
+    "protocol_id": 706
+  },
+  "enderman_spawn_egg": {
+    "protocol_id": 707
+  },
+  "endermite_spawn_egg": {
+    "protocol_id": 708
+  },
+  "evoker_spawn_egg": {
+    "protocol_id": 709
+  },
+  "ghast_spawn_egg": {
+    "protocol_id": 710
+  },
+  "guardian_spawn_egg": {
+    "protocol_id": 711
+  },
+  "horse_spawn_egg": {
+    "protocol_id": 712
+  },
+  "husk_spawn_egg": {
+    "protocol_id": 713
+  },
+  "llama_spawn_egg": {
+    "protocol_id": 714
+  },
+  "magma_cube_spawn_egg": {
+    "protocol_id": 715
+  },
+  "mooshroom_spawn_egg": {
+    "protocol_id": 716
+  },
+  "mule_spawn_egg": {
+    "protocol_id": 717
+  },
+  "ocelot_spawn_egg": {
+    "protocol_id": 718
+  },
+  "panda_spawn_egg": {
+    "protocol_id": 719
+  },
+  "parrot_spawn_egg": {
+    "protocol_id": 720
+  },
+  "phantom_spawn_egg": {
+    "protocol_id": 721
+  },
+  "pig_spawn_egg": {
+    "protocol_id": 722
+  },
+  "pillager_spawn_egg": {
+    "protocol_id": 723
+  },
+  "polar_bear_spawn_egg": {
+    "protocol_id": 724
+  },
+  "pufferfish_spawn_egg": {
+    "protocol_id": 725
+  },
+  "rabbit_spawn_egg": {
+    "protocol_id": 726
+  },
+  "ravager_spawn_egg": {
+    "protocol_id": 727
+  },
+  "salmon_spawn_egg": {
+    "protocol_id": 728
+  },
+  "sheep_spawn_egg": {
+    "protocol_id": 729
+  },
+  "shulker_spawn_egg": {
+    "protocol_id": 730
+  },
+  "silverfish_spawn_egg": {
+    "protocol_id": 731
+  },
+  "skeleton_spawn_egg": {
+    "protocol_id": 732
+  },
+  "skeleton_horse_spawn_egg": {
+    "protocol_id": 733
+  },
+  "slime_spawn_egg": {
+    "protocol_id": 734
+  },
+  "spider_spawn_egg": {
+    "protocol_id": 735
+  },
+  "squid_spawn_egg": {
+    "protocol_id": 736
+  },
+  "stray_spawn_egg": {
+    "protocol_id": 737
+  },
+  "trader_llama_spawn_egg": {
+    "protocol_id": 738
+  },
+  "tropical_fish_spawn_egg": {
+    "protocol_id": 739
+  },
+  "turtle_spawn_egg": {
+    "protocol_id": 740
+  },
+  "vex_spawn_egg": {
+    "protocol_id": 741
+  },
+  "villager_spawn_egg": {
+    "protocol_id": 742
+  },
+  "vindicator_spawn_egg": {
+    "protocol_id": 743
+  },
+  "wandering_trader_spawn_egg": {
+    "protocol_id": 744
+  },
+  "witch_spawn_egg": {
+    "protocol_id": 745
+  },
+  "wither_skeleton_spawn_egg": {
+    "protocol_id": 746
+  },
+  "wolf_spawn_egg": {
+    "protocol_id": 747
+  },
+  "zombie_spawn_egg": {
+    "protocol_id": 748
+  },
+  "zombie_horse_spawn_egg": {
+    "protocol_id": 749
+  },
+  "zombie_pigman_spawn_egg": {
+    "protocol_id": 750
+  },
+  "zombie_villager_spawn_egg": {
+    "protocol_id": 751
+  },
+  "experience_bottle": {
+    "protocol_id": 752
+  },
+  "fire_charge": {
+    "protocol_id": 753
+  },
+  "writable_book": {
+    "protocol_id": 754
+  },
+  "written_book": {
+    "protocol_id": 755
+  },
+  "emerald": {
+    "protocol_id": 756
+  },
+  "item_frame": {
+    "protocol_id": 757
+  },
+  "flower_pot": {
+    "protocol_id": 758
+  },
+  "carrot": {
+    "protocol_id": 759
+  },
+  "potato": {
+    "protocol_id": 760
+  },
+  "baked_potato": {
+    "protocol_id": 761
+  },
+  "poisonous_potato": {
+    "protocol_id": 762
+  },
+  "map": {
+    "protocol_id": 763
+  },
+  "golden_carrot": {
+    "protocol_id": 764
+  },
+  "skeleton_skull": {
+    "protocol_id": 765
+  },
+  "wither_skeleton_skull": {
+    "protocol_id": 766
+  },
+  "player_head": {
+    "protocol_id": 767
+  },
+  "zombie_head": {
+    "protocol_id": 768
+  },
+  "creeper_head": {
+    "protocol_id": 769
+  },
+  "dragon_head": {
+    "protocol_id": 770
+  },
+  "carrot_on_a_stick": {
+    "protocol_id": 771
+  },
+  "nether_star": {
+    "protocol_id": 772
+  },
+  "pumpkin_pie": {
+    "protocol_id": 773
+  },
+  "firework_rocket": {
+    "protocol_id": 774
+  },
+  "firework_star": {
+    "protocol_id": 775
+  },
+  "enchanted_book": {
+    "protocol_id": 776
+  },
+  "nether_brick": {
+    "protocol_id": 777
+  },
+  "quartz": {
+    "protocol_id": 778
+  },
+  "tnt_minecart": {
+    "protocol_id": 779
+  },
+  "hopper_minecart": {
+    "protocol_id": 780
+  },
+  "prismarine_shard": {
+    "protocol_id": 781
+  },
+  "prismarine_crystals": {
+    "protocol_id": 782
+  },
+  "rabbit": {
+    "protocol_id": 783
+  },
+  "cooked_rabbit": {
+    "protocol_id": 784
+  },
+  "rabbit_stew": {
+    "protocol_id": 785
+  },
+  "rabbit_foot": {
+    "protocol_id": 786
+  },
+  "rabbit_hide": {
+    "protocol_id": 787
+  },
+  "armor_stand": {
+    "protocol_id": 788
+  },
+  "iron_horse_armor": {
+    "protocol_id": 789
+  },
+  "golden_horse_armor": {
+    "protocol_id": 790
+  },
+  "diamond_horse_armor": {
+    "protocol_id": 791
+  },
+  "lead": {
+    "protocol_id": 792
+  },
+  "name_tag": {
+    "protocol_id": 793
+  },
+  "command_block_minecart": {
+    "protocol_id": 794
+  },
+  "mutton": {
+    "protocol_id": 795
+  },
+  "cooked_mutton": {
+    "protocol_id": 796
+  },
+  "white_banner": {
+    "protocol_id": 797
+  },
+  "orange_banner": {
+    "protocol_id": 798
+  },
+  "magenta_banner": {
+    "protocol_id": 799
+  },
+  "light_blue_banner": {
+    "protocol_id": 800
+  },
+  "yellow_banner": {
+    "protocol_id": 801
+  },
+  "lime_banner": {
+    "protocol_id": 802
+  },
+  "pink_banner": {
+    "protocol_id": 803
+  },
+  "gray_banner": {
+    "protocol_id": 804
+  },
+  "light_gray_banner": {
+    "protocol_id": 805
+  },
+  "cyan_banner": {
+    "protocol_id": 806
+  },
+  "purple_banner": {
+    "protocol_id": 807
+  },
+  "blue_banner": {
+    "protocol_id": 808
+  },
+  "brown_banner": {
+    "protocol_id": 809
+  },
+  "green_banner": {
+    "protocol_id": 810
+  },
+  "red_banner": {
+    "protocol_id": 811
+  },
+  "black_banner": {
+    "protocol_id": 812
+  },
+  "end_crystal": {
+    "protocol_id": 813
+  },
+  "chorus_fruit": {
+    "protocol_id": 814
+  },
+  "popped_chorus_fruit": {
+    "protocol_id": 815
+  },
+  "beetroot": {
+    "protocol_id": 816
+  },
+  "beetroot_seeds": {
+    "protocol_id": 817
+  },
+  "beetroot_soup": {
+    "protocol_id": 818
+  },
+  "dragon_breath": {
+    "protocol_id": 819
+  },
+  "splash_potion": {
+    "protocol_id": 820
+  },
+  "spectral_arrow": {
+    "protocol_id": 821
+  },
+  "tipped_arrow": {
+    "protocol_id": 822
+  },
+  "lingering_potion": {
+    "protocol_id": 823
+  },
+  "shield": {
+    "protocol_id": 824
+  },
+  "elytra": {
+    "protocol_id": 825
+  },
+  "spruce_boat": {
+    "protocol_id": 826
+  },
+  "birch_boat": {
+    "protocol_id": 827
+  },
+  "jungle_boat": {
+    "protocol_id": 828
+  },
+  "acacia_boat": {
+    "protocol_id": 829
+  },
+  "dark_oak_boat": {
+    "protocol_id": 830
+  },
+  "totem_of_undying": {
+    "protocol_id": 831
+  },
+  "shulker_shell": {
+    "protocol_id": 832
+  },
+  "iron_nugget": {
+    "protocol_id": 833
+  },
+  "knowledge_book": {
+    "protocol_id": 834
+  },
+  "debug_stick": {
+    "protocol_id": 835
+  },
+  "music_disc_13": {
+    "protocol_id": 836
+  },
+  "music_disc_cat": {
+    "protocol_id": 837
+  },
+  "music_disc_blocks": {
+    "protocol_id": 838
+  },
+  "music_disc_chirp": {
+    "protocol_id": 839
+  },
+  "music_disc_far": {
+    "protocol_id": 840
+  },
+  "music_disc_mall": {
+    "protocol_id": 841
+  },
+  "music_disc_mellohi": {
+    "protocol_id": 842
+  },
+  "music_disc_stal": {
+    "protocol_id": 843
+  },
+  "music_disc_strad": {
+    "protocol_id": 844
+  },
+  "music_disc_ward": {
+    "protocol_id": 845
+  },
+  "music_disc_11": {
+    "protocol_id": 846
+  },
+  "music_disc_wait": {
+    "protocol_id": 847
+  },
+  "trident": {
+    "protocol_id": 848
+  },
+  "phantom_membrane": {
+    "protocol_id": 849
+  },
+  "nautilus_shell": {
+    "protocol_id": 850
+  },
+  "heart_of_the_sea": {
+    "protocol_id": 851
+  },
+  "crossbow": {
+    "protocol_id": 852
+  },
+  "suspicious_stew": {
+    "protocol_id": 853
+  },
+  "loom": {
+    "protocol_id": 854
+  },
+  "flower_banner_pattern": {
+    "protocol_id": 855
+  },
+  "creeper_banner_pattern": {
+    "protocol_id": 856
+  },
+  "skull_banner_pattern": {
+    "protocol_id": 857
+  },
+  "mojang_banner_pattern": {
+    "protocol_id": 858
+  },
+  "barrel": {
+    "protocol_id": 859
+  },
+  "smoker": {
+    "protocol_id": 860
+  },
+  "blast_furnace": {
+    "protocol_id": 861
+  },
+  "cartography_table": {
+    "protocol_id": 862
+  },
+  "fletching_table": {
+    "protocol_id": 863
+  },
+  "grindstone": {
+    "protocol_id": 864
+  },
+  "lectern": {
+    "protocol_id": 865
+  },
+  "smithing_table": {
+    "protocol_id": 866
+  },
+  "stonecutter": {
+    "protocol_id": 867
+  },
+  "bell": {
+    "protocol_id": 868
+  },
+  "lantern": {
+    "protocol_id": 869
+  },
+  "sweet_berries": {
+    "protocol_id": 870
+  },
+  "campfire": {
+    "protocol_id": 871
+  }
+}

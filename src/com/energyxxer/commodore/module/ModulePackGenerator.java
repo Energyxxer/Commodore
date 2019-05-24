@@ -79,7 +79,7 @@ public class ModulePackGenerator {
             ArrayList<Exportable> exportables = new ArrayList<>();
 
             for(Function func : namespace.getFunctionManager().getAll()) {
-                if(func.getEntryCount() == 0 && !module.optMgr.EXPORT_EMPTY_FUNCTIONS.getValue()) continue;
+                if (func.getEntryCount() == 0 && !module.settings.EXPORT_EMPTY_FUNCTIONS.getValue()) continue;
                 exportables.add(func);
             }
 

@@ -33,6 +33,7 @@ import com.energyxxer.commodore.textcomponents.events.InsertionEvent;
 import com.energyxxer.commodore.util.DoubleRange;
 import com.energyxxer.commodore.util.IntegerRange;
 import com.energyxxer.commodore.util.attributes.Attribute;
+import com.energyxxer.commodore.versioning.JavaEditionVersion;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,6 +43,9 @@ import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelec
 public class V114Test {
     public static void main(String[] args) {
         CommandModule module = new CommandModule("1.14 Test", "vp");
+        module.enableInstantAssertions();
+        module.getSettingsManager().setTargetVersion(new JavaEditionVersion(1, 14, 0));
+        //*/module.getSettingsManager().setTargetVersion(new BedrockEditionVersion(1, 11, 0));
 
         try {
             module.importDefinitions(StandardDefinitionPacks.MINECRAFT_JAVA_LATEST_SNAPSHOT);
@@ -49,6 +53,8 @@ public class V114Test {
         } catch(IOException x) {
             x.printStackTrace();
         }
+
+        //module.getObjectiveManager().create("air", "air");
 
         System.out.println(module.minecraft.tags.functionTags.getAll());
 
@@ -70,6 +76,8 @@ public class V114Test {
         function.append(new LootCommand(new LootReplaceBlock(new CoordinateSet(0, 64, 0), module.minecraft.types.slot.get("container.4")), new LootFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE))));
         function.append(new LootCommand(new LootInsertBlock(new CoordinateSet(0, 64, 0)), new LootFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new ToolOrHand(module.minecraft.types.item.get("bamboo")))));
 
+        //function.append(new SetblockCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new Block(module.minecraft.types.block.get("chest"), new TagCompound(new TagString("Lock", "bruh moment")))));
+
         TranslateTextComponent txt = new TranslateTextComponent("translation.example");
         txt.addEvent(new InsertionEvent("woo\"o"));
         txt.setStyle(new TextStyle(TextStyle.EMPTY_STYLE).setColor(TextColor.BLUE));
@@ -80,6 +88,8 @@ public class V114Test {
         txt.addWith(new StringTextComponent("this works now too", new TextStyle(TextStyle.EMPTY_STYLE).setColor(TextColor.BLUE)));
 
         function.append(new TellrawCommand(new Selector(ALL_PLAYERS), txt));
+
+        //function.append(new SetblockCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new DVBlock(module.minecraft.types.block.get("stone"), 1)));
 
         LootTable moaDrop = ns.lootTables.create("mobs/moa");
         Pool first = new Pool();
