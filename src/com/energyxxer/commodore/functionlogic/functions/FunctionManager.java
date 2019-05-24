@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class FunctionManager {
@@ -24,13 +25,13 @@ public class FunctionManager {
 
     @NotNull
     public Function get(@NotNull String name) {
-        Function existing = functions.get(name);
+        Function existing = functions.get(name.toLowerCase(Locale.ENGLISH));
 
         return (existing != null) ? existing : forceCreate(name);
     }
 
     public boolean contains(@NotNull String name) {
-        return functions.containsKey(name);
+        return functions.containsKey(name.toLowerCase(Locale.ENGLISH));
     }
 
     public Function create(@NotNull String name, boolean force) {
@@ -75,7 +76,7 @@ public class FunctionManager {
     @NotNull
     private Function forceCreate(@NotNull String name, @Nullable Entity sender) {
         Function newFunction = new Function(this, namespace, name, sender);
-        functions.put(name, newFunction);
+        functions.put(name.toLowerCase(Locale.ENGLISH), newFunction);
         return newFunction;
     }
 }

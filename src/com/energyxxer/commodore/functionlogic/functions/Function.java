@@ -13,6 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Locale;
 
 import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.SENDER;
 
@@ -44,6 +45,8 @@ public class Function implements FunctionSection, Exportable {
         this.parent = parent;
 
         this.namespace = namespace;
+
+        path = path.toLowerCase(Locale.ENGLISH);
         this.path = path;
 
         if (!path.matches(ALLOWED_PATH_REGEX)) {
