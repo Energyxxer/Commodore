@@ -14,6 +14,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -67,12 +69,6 @@ public class ModulePackGenerator {
 
         createPackMcmeta();
 
-        for(Exportable exportable : module.exportables) {
-            if(exportable.shouldExport()) {
-                createFile(exportable.getExportPath(), exportable.getContents());
-            }
-        }
-
         for(Namespace namespace : module.namespaces.values()) {
             String namespacePath = "data/" + namespace.name;
 
@@ -93,15 +89,25 @@ public class ModulePackGenerator {
 
             for(Exportable exportable : exportables) {
                 if(exportable.shouldExport()) {
-                    createFile(namespacePath + "/" + exportable.getExportPath(), exportable.getContents());
+                    queueFile(namespacePath + "/" + exportable.getExportPath(), exportable.getContents());
                 }
             }
+        }
+
+        for(Exportable exportable : module.exportables) {
+            if(exportable.shouldExport()) {
+                queueFile(exportable.getExportPath(), exportable.getContents());
+            }
+        }
+
+        for(Map.Entry<String, byte[]> entry : queuedFiles.entrySet()) {
+            createFile(entry.getKey(), entry.getValue());
         }
 
         if(zipStream != null) zipStream.close();
     }
 
-    private void createPackMcmeta() throws IOException {
+    private void createPackMcmeta() {
         JsonObject root = new JsonObject();
         JsonObject inner = new JsonObject();
         root.add("pack", inner);
@@ -109,7 +115,7 @@ public class ModulePackGenerator {
 
         inner.addProperty("description", module.description);
 
-        createFile("pack.mcmeta", gson.toJson(root).getBytes(Commodore.getDefaultEncoding()));
+        queueFile("pack.mcmeta", gson.toJson(root).getBytes(Commodore.getDefaultEncoding()));
     }
 
     private void createFile(@Nullable String path, @Nullable byte[] contents) throws IOException {
@@ -130,5 +136,12 @@ public class ModulePackGenerator {
                 writer.flush();
             }
         }
+    }
+
+    private HashMap<String, byte[]> queuedFiles = new HashMap<>();
+
+    private void queueFile(@Nullable String path, @Nullable byte[] contents) {
+        if(path == null || contents == null) return;
+        queuedFiles.put(path, contents);
     }
 }
