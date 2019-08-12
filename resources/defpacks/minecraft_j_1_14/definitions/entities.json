@@ -48,12 +48,6 @@
     "living": false,
     "hostile": false
   },
-  "minecraft:cave_spider": {
-    "spawnable": true,
-    "targetable": true,
-    "living": true,
-    "hostile": true
-  },
   "minecraft:cat": {
     "spawnable": true,
     "targetable": true,
@@ -62,12 +56,11 @@
     "tamable": true,
     "breedable": true
   },
-  "minecraft:chest_minecart": {
+  "minecraft:cave_spider": {
     "spawnable": true,
     "targetable": true,
-    "living": false,
-    "hostile": false,
-    "minecart": true
+    "living": true,
+    "hostile": true
   },
   "minecraft:chicken": {
     "spawnable": true,
@@ -75,6 +68,13 @@
     "living": true,
     "hostile": false,
     "breedable": true
+  },
+  "minecraft:chest_minecart": {
+    "spawnable": true,
+    "targetable": true,
+    "living": false,
+    "hostile": false,
+    "minecart": true
   },
   "minecraft:cod": {
     "spawnable": true,
@@ -211,6 +211,14 @@
     "targetable": true,
     "living": false,
     "hostile": false
+  },
+  "minecraft:fox": {
+    "spawnable": true,
+    "targetable": true,
+    "living": true,
+    "hostile": false,
+    "tamable": true,
+    "breedable": true
   },
   "minecraft:fishing_bobber": {
     "spawnable": false,
@@ -480,7 +488,7 @@
     "hostile": false,
     "projectile": true
   },
-  "minecraft:snowman": {
+  "minecraft:snow_golem": {
     "spawnable": true,
     "targetable": true,
     "living": true,

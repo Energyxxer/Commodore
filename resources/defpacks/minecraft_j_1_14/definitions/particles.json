@@ -74,6 +74,12 @@
   "minecraft:falling_dust": {
     "argument": "block"
   },
+  "minecraft:falling_lava": {
+    "argument": "none"
+  },
+  "minecraft:falling_water": {
+    "argument": "none"
+  },
   "minecraft:firework": {
     "argument": "none"
   },
@@ -108,6 +114,9 @@
     "argument": "none"
   },
   "minecraft:large_smoke": {
+    "argument": "none"
+  },
+  "minecraft:landing_lava": {
     "argument": "none"
   },
   "minecraft:lava": {

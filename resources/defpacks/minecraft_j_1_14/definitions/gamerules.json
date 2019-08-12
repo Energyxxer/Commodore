@@ -1,71 +1,98 @@
 {
   "announceAdvancements": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "commandBlockOutput": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "disableElytraMovementCheck": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": false
+  },
+  "disableRaids": {
+    "argument": "boolean",
+    "default": false
   },
   "doDaylightCycle": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "doEntityDrops": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "doFireTick": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "doLimitedCrafting": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": false
   },
   "doMobLoot": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "doMobSpawning": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "doTileDrops": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "doWeatherCycle": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "keepInventory": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": false
   },
   "logAdminCommands": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "maxCommandChainLength": {
-    "argument": "int"
+    "argument": "int",
+    "default": 65536
   },
   "maxEntityCramming": {
-    "argument": "int"
+    "argument": "int",
+    "default": 24
   },
   "mobGriefing": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "naturalRegeneration": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "randomTickSpeed": {
-    "argument": "int"
+    "argument": "int",
+    "default": 3
   },
   "reducedDebugInfo": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": false
   },
   "sendCommandFeedback": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "showDeathMessages": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   },
   "spawnRadius": {
-    "argument": "int"
+    "argument": "int",
+    "default": 10
   },
   "spectatorsGenerateChunks": {
-    "argument": "boolean"
+    "argument": "boolean",
+    "default": true
   }
 }

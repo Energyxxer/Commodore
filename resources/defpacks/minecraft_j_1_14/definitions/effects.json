@@ -122,5 +122,9 @@
   "minecraft:bad_omen": {
     "id": 31,
     "type": "negative"
+  },
+  "minecraft:hero_of_the_village": {
+    "id": 32,
+    "type": "positive"
   }
 }

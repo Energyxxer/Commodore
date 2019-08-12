@@ -454,7 +454,7 @@
     "hostile": false,
     "projectile": true
   },
-  "minecraft:snowman": {
+  "minecraft:snow_golem": {
     "spawnable": true,
     "targetable": true,
     "living": true,
