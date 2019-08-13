@@ -79,4 +79,15 @@ public class FunctionManager {
         functions.put(name.toLowerCase(Locale.ENGLISH), newFunction);
         return newFunction;
     }
+
+    /**
+     * Tells all the exportables currently in this function manager whether to export or not, by the given argument.
+     *
+     * @param shouldExport Whether all this function manager's exportables should export.
+     * */
+    public void propagateExport(boolean shouldExport) {
+        for(Function function : this.functions.values()) {
+            function.setExport(shouldExport);
+        }
+    }
 }

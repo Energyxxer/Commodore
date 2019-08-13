@@ -3,6 +3,7 @@ package com.energyxxer.commodore.module;
 import com.energyxxer.commodore.Commodore;
 import com.energyxxer.commodore.defpacks.DefinitionPack;
 import com.energyxxer.commodore.defpacks.MalformedPackException;
+import com.energyxxer.commodore.functionlogic.score.Objective;
 import com.energyxxer.commodore.functionlogic.score.ObjectiveManager;
 import com.energyxxer.commodore.module.options.ModuleOptionManager;
 import com.energyxxer.commodore.module.settings.ModuleSettings;
@@ -277,6 +278,10 @@ public class CommandModule {
         for(Map.Entry<String, Namespace> ns : other.namespaces.entrySet()) {
             this.namespaces.putIfAbsent(ns.getKey(), ns.getValue().clone(this));
         }
+        for(Objective obj : other.objMgr.getAll()) {
+            this.objMgr.create(obj.getName(), obj.getType(), obj.getDisplayName(), true);
+        }
+        this.resources.putAll(other.resources);
     }
 
     /**
@@ -313,6 +318,21 @@ public class CommandModule {
      * */
     public void putResource(@NotNull String key, Object value) {
         resources.put(key, value);
+    }
+
+    /**
+     * Tells all the exportables currently in this module whether to export or not, by the given argument.
+     *
+     * @param shouldExport Whether all this module's exportables should export.
+     * */
+    public void propagateExport(boolean shouldExport) {
+        for(Exportable exportable : exportables) {
+            exportable.setExport(shouldExport);
+        }
+
+        for(Namespace ns : namespaces.values()) {
+            ns.propagateExport(shouldExport);
+        }
     }
 
     /**

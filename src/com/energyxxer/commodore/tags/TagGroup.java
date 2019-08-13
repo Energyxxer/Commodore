@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.tags;
 
+import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.module.Namespace;
 import org.jetbrains.annotations.NotNull;
 
@@ -68,5 +69,16 @@ public class TagGroup<T extends Tag> {
     @Override
     public String toString() {
         return namespace + "#" + category + ": " + tags;
+    }
+
+    /**
+     * Tells all the exportables currently in this function manager whether to export or not, by the given argument.
+     *
+     * @param shouldExport Whether all this function manager's exportables should export.
+     * */
+    public void propagateExport(boolean shouldExport) {
+        for(T tag : this.tags) {
+            tag.setExport(shouldExport);
+        }
     }
 }

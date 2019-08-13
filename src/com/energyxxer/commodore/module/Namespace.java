@@ -159,4 +159,14 @@ public class Namespace {
     public String toString() {
         return name;
     }
+
+    /**
+     * Tells all the exportables currently in this namespace whether to export or not, by the given argument.
+     *
+     * @param shouldExport Whether all this namespace's exportables should export.
+     * */
+    public void propagateExport(boolean shouldExport) {
+        functions.propagateExport(shouldExport);
+        tags.propagateExport(shouldExport);
+    }
 }
