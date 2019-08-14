@@ -49,7 +49,6 @@ public class TagManager {
         return newGroup;
     }
 
-    @NotNull
     public TagGroup<? extends Tag> getGroup(@NotNull String category) {
         return groups.get(category);
     }
@@ -70,6 +69,10 @@ public class TagManager {
 
     public Collection<TagGroup<? extends Tag>> getGroups() {
         return groups.values();
+    }
+
+    public boolean groupExists(@NotNull String category) {
+        return groups.containsKey(category);
     }
 
     /**
