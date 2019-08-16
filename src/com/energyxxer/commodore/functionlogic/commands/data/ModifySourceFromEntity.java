@@ -18,6 +18,8 @@ public class ModifySourceFromEntity implements DataModifyCommand.ModifySource {
     public ModifySourceFromEntity(@NotNull Entity entity, @Nullable NBTPath sourcePath) {
         this.entity = entity;
         this.sourcePath = sourcePath;
+
+        entity.assertSingle();
     }
 
     @NotNull
