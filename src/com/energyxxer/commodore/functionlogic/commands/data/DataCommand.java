@@ -8,21 +8,23 @@ import org.jetbrains.annotations.NotNull;
 
 public abstract class DataCommand implements Command {
 
-    protected final Entity entity;
-    protected final CoordinateSet pos;
+    protected final DataHolder holder;
 
     public DataCommand(@NotNull Entity entity) {
-        this.pos = null;
-        this.entity = entity;
+        this(new DataHolderEntity(entity));
     }
 
     public DataCommand(@NotNull CoordinateSet pos) {
-        this.entity = null;
-        this.pos = pos;
+        this(new DataHolderBlock(pos));
+    }
+
+    public DataCommand(@NotNull DataHolder holder) {
+        this.holder = holder;
     }
 
     @Override
     public void assertAvailable() {
         VersionFeatureManager.assertEnabled("nbt.access");
+        holder.assertAvailable();
     }
 }

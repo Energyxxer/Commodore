@@ -14,6 +14,8 @@ public class ScoreSet implements Command {
     public ScoreSet(@NotNull LocalScore score, int value) {
         this.score = score;
         this.value = value;
+
+        score.assertNotNull();
     }
 
     @Override @NotNull

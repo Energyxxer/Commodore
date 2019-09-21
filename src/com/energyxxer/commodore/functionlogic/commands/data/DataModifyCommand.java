@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.functionlogic.commands.data;
 
-import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
@@ -41,49 +40,40 @@ public class DataModifyCommand extends DataCommand {
     private final ModifySource source;
 
     public DataModifyCommand(@NotNull Entity entity, @NotNull NBTPath targetPath, @NotNull ModifyOperation operation, @NotNull ModifySource source) {
-        super(entity);
-        this.targetPath = targetPath;
-        this.operation = operation;
-        this.source = source;
-
-        entity.assertSingle();
+        this(new DataHolderEntity(entity), targetPath, operation, source);
     }
 
     public DataModifyCommand(@NotNull CoordinateSet pos, @NotNull NBTPath targetPath, @NotNull ModifyOperation operation, @NotNull ModifySource source) {
-        super(pos);
+        this(new DataHolderBlock(pos), targetPath, operation, source);
+    }
+
+    public DataModifyCommand(@NotNull DataHolder holder, @NotNull NBTPath targetPath, @NotNull ModifyOperation operation, @NotNull ModifySource source) {
+        super(holder);
         this.targetPath = targetPath;
         this.operation = operation;
         this.source = source;
+
+        holder.assertSingle();
     }
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
 
-        StringBuilder sb = new StringBuilder("data modify ");
-
-        if(entity != null) {
-            sb.append("entity ").append(entity).append(" ");
-        } else {
-            sb.append("block ");
-            sb.append(pos.getAs(Coordinate.DisplayMode.BLOCK_POS));
-            sb.append(' ');
-        }
-
-        sb.append(targetPath);
-        sb.append(' ');
-
-        sb.append(operation.operation);
-        sb.append(' ');
-
-        sb.append(source.resolve());
-
-        return new CommandResolution(execContext, sb.toString());
+        String sb = "data modify " + holder.resolve() +
+                ' ' +
+                targetPath +
+                ' ' +
+                operation.operation +
+                ' ' +
+                source.resolve();
+        return new CommandResolution(execContext, sb);
     }
 
     @Override
     public void assertAvailable() {
-        super.assertAvailable();
         VersionFeatureManager.assertEnabled("command.data_modify");
+        super.assertAvailable();
+        source.assertAvailable();
     }
 
     public static class ModifyOperation {
@@ -98,5 +88,7 @@ public class DataModifyCommand extends DataCommand {
     public interface ModifySource {
         @NotNull
         String resolve();
+
+        void assertAvailable();
     }
 }

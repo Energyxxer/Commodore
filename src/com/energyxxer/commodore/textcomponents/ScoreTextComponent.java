@@ -15,6 +15,8 @@ public class ScoreTextComponent extends TextComponent {
     public ScoreTextComponent(@NotNull LocalScore score, TextStyle style) {
         this.score = score;
         this.setStyle(style);
+
+        score.assertNotNull();
     }
 
     @Override

@@ -1,0 +1,113 @@
+{
+  "announceAdvancements": {
+    "argument": "boolean",
+    "default": true
+  },
+  "commandBlockOutput": {
+    "argument": "boolean",
+    "default": true
+  },
+  "disableElytraMovementCheck": {
+    "argument": "boolean",
+    "default": false
+  },
+  "disableRaids": {
+    "argument": "boolean",
+    "default": false
+  },
+  "doDaylightCycle": {
+    "argument": "boolean",
+    "default": true
+  },
+  "doImmediateRespawn": {
+    "argument": "boolean"
+  },
+  "doInsomnia": {
+    "argument": "boolean"
+  },
+  "doEntityDrops": {
+    "argument": "boolean",
+    "default": true
+  },
+  "doFireTick": {
+    "argument": "boolean",
+    "default": true
+  },
+  "doLimitedCrafting": {
+    "argument": "boolean",
+    "default": false
+  },
+  "doMobLoot": {
+    "argument": "boolean",
+    "default": true
+  },
+  "doMobSpawning": {
+    "argument": "boolean",
+    "default": true
+  },
+  "doTileDrops": {
+    "argument": "boolean",
+    "default": true
+  },
+  "doWeatherCycle": {
+    "argument": "boolean",
+    "default": true
+  },
+  "drowningDamage": {
+    "argument": "boolean"
+  },
+  "fallDamage": {
+    "argument": "boolean"
+  },
+  "fireDamage": {
+    "argument": "boolean"
+  },
+  "keepInventory": {
+    "argument": "boolean",
+    "default": false
+  },
+  "logAdminCommands": {
+    "argument": "boolean",
+    "default": true
+  },
+  "maxCommandChainLength": {
+    "argument": "int",
+    "default": 65536
+  },
+  "maxEntityCramming": {
+    "argument": "int",
+    "default": 24
+  },
+  "mobGriefing": {
+    "argument": "boolean",
+    "default": true
+  },
+  "naturalRegeneration": {
+    "argument": "boolean",
+    "default": true
+  },
+  "randomTickSpeed": {
+    "argument": "int",
+    "default": 3
+  },
+  "reducedDebugInfo": {
+    "argument": "boolean",
+    "default": false
+  },
+  "sendCommandFeedback": {
+    "argument": "boolean",
+    "default": true
+  },
+  "showDeathMessages": {
+    "argument": "boolean",
+    "default": true
+  },
+  "spawnRadius": {
+    "argument": "int",
+    "default": 10
+  },
+  "spectatorsGenerateChunks": {
+    "argument": "boolean",
+    "default": true
+  }
+}

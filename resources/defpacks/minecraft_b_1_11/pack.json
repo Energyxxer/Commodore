@@ -84,6 +84,10 @@
     "slot": {
       "use_namespace": false,
       "import_from": "definitions/slots"
+    },
+    "score_display": {
+      "use_namespace": false,
+      "import_from": "definitions/score_displays"
     }
   }
 }

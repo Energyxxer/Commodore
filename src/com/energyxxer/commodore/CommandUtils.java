@@ -1,5 +1,6 @@
 package com.energyxxer.commodore;
 
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
@@ -91,7 +92,7 @@ public final class CommandUtils {
      * <code>false</code> if all characters are allowed in unquoted strings.
      * */
     public static boolean needsQuoting(@NotNull String str) {
-        return !str.matches(IDENTIFIER_ALLOWED);
+        return !str.matches(VersionFeatureManager.getString("identifiers.regex", CommandUtils.IDENTIFIER_ALLOWED));
     }
 
     /**

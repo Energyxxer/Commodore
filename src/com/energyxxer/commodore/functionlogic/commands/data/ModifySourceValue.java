@@ -16,4 +16,9 @@ public class ModifySourceValue implements DataModifyCommand.ModifySource {
     public String resolve() {
         return "value " + value.toHeadlessString();
     }
+
+    @Override
+    public void assertAvailable() {
+
+    }
 }

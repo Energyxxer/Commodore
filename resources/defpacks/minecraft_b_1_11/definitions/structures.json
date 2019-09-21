@@ -1,16 +1,14 @@
 {
-  "Buried_Treasure": {},
-  "Desert_Pyramid": {},
-  "EndCity": {},
-  "Fortress": {},
-  "Igloo": {},
-  "Jungle_Pyramid": {},
-  "Mansion": {},
-  "Mineshaft": {},
-  "Monument": {},
-  "Ocean_Ruin": {},
-  "Shipwreck": {},
-  "Stronghold": {},
-  "Swamp_Hut": {},
-  "Village": {}
+  "buriedtreasure": {},
+  "endcity": {},
+  "fortress": {},
+  "mansion": {},
+  "mineshaft": {},
+  "monument": {},
+  "pillageroutpost": {},
+  "ruins": {},
+  "shipwreck": {},
+  "stronghold": {},
+  "temple": {},
+  "village": {}
 }

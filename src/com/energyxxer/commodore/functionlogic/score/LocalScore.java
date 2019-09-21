@@ -1,14 +1,13 @@
 package com.energyxxer.commodore.functionlogic.score;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
 public class LocalScore {
-    @Nullable
     private final Objective objective;
-    @Nullable
     private final Entity holder;
 
     public LocalScore(@Nullable Entity holder, @Nullable Objective objective) {
@@ -21,12 +20,10 @@ public class LocalScore {
         this.holder = holder;
     }
 
-    @Nullable
     public Objective getObjective() {
         return objective;
     }
 
-    @Nullable
     public Entity getHolder() {
         return holder;
     }
@@ -51,5 +48,23 @@ public class LocalScore {
     @Override
     public int hashCode() {
         return Objects.hash(objective, holder);
+    }
+
+    public void assertNotNull() {
+        if(holder == null || objective == null) {
+            throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Unexpected wildcard in score", this);
+        }
+    }
+
+    public void assertHolderNotNull() {
+        if(holder == null) {
+            throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Unexpected wildcard holder", this);
+        }
+    }
+
+    public void assertObjectiveNotNull() {
+        if(objective == null) {
+            throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Unexpected wildcard objective", this);
+        }
     }
 }

@@ -26,8 +26,6 @@ public class TeamModifyCommand extends TeamCommand {
         private final Class valueClass;
         private final String valueVerb;
         private final boolean teamValueInverted;
-        private boolean nullable = false;
-        private String nullableValue = null;
 
         TeamModifyKey(String argumentKey, Class valueClass) {
             this(argumentKey, valueClass, null);
@@ -45,7 +43,7 @@ public class TeamModifyCommand extends TeamCommand {
         }
 
         public boolean isValidValue(Object o) {
-            return (o == null && this.nullable) || valueClass.isInstance(o);
+            return valueClass.isInstance(o);
         }
 
         public String getValueVerb() {
@@ -69,11 +67,6 @@ public class TeamModifyCommand extends TeamCommand {
                 if(value.argumentKey.equals(key)) return value;
             }
             return null;
-        }
-
-        static {
-            COLOR.nullable = true;
-            COLOR.nullableValue = "reset";
         }
     }
 
@@ -101,7 +94,7 @@ public class TeamModifyCommand extends TeamCommand {
     private final TeamReference reference;
     @NotNull
     private final TeamModifyKey key;
-    @Nullable
+    @NotNull
     private final Object value;
 
     public TeamModifyCommand(TeamReference reference, TeamModifyKey key, AppliesTo value) {
@@ -120,7 +113,7 @@ public class TeamModifyCommand extends TeamCommand {
         this(reference, key, (Object) value);
     }
 
-    private TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, @Nullable Object value) {
+    private TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, @NotNull Object value) {
         this.reference = reference;
         this.key = key;
         if (key.isValidValue(value)) {
@@ -140,8 +133,6 @@ public class TeamModifyCommand extends TeamCommand {
             return value.toString().toLowerCase();
         } else if(value instanceof TextComponent) {
             return value.toString();
-        } else if(value == null && key.nullable) {
-            return key.nullableValue;
         } else return null;
     }
 

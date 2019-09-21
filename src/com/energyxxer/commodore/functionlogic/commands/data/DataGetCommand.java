@@ -27,11 +27,7 @@ public class DataGetCommand extends DataCommand {
     }
 
     public DataGetCommand(@NotNull Entity entity, @Nullable NBTPath path, double scale) {
-        super(entity);
-        entity.assertSingle();
-        this.path = path;
-        this.scale = scale;
-        assertFinite(scale, "scale");
+        this(new DataHolderEntity(entity), path, scale);
     }
 
     public DataGetCommand(@NotNull CoordinateSet pos) {
@@ -43,16 +39,28 @@ public class DataGetCommand extends DataCommand {
     }
 
     public DataGetCommand(@NotNull CoordinateSet pos, @Nullable NBTPath path, double scale) {
-        super(pos);
+        this(new DataHolderBlock(pos), path, scale);
+    }
+
+    public DataGetCommand(@NotNull DataHolder holder) {
+        this(holder, null);
+    }
+
+    public DataGetCommand(@NotNull DataHolder holder, @Nullable NBTPath path) {
+        this(holder, path, 1);
+    }
+
+    public DataGetCommand(@NotNull DataHolder holder, @Nullable NBTPath path, double scale) {
+        super(holder);
         this.path = path;
         this.scale = scale;
+        holder.assertSingle();
         assertFinite(scale, "scale");
     }
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        if(entity != null) return new CommandResolution(execContext, "data get entity " + entity + ((path != null) ? (" " + path + (scale != 1 ? " " + CommandUtils.numberToPlainString(scale) : "")) : ""));
-        return new CommandResolution(execContext, "data get block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + ((path != null) ? (" " + path + (scale != 1 ? " " + CommandUtils.numberToPlainString(scale) : "")) : ""));
+        return new CommandResolution(execContext, "data get " + holder.resolve() + ((path != null) ? (" " + path + (scale != 1 ? " " + CommandUtils.numberToPlainString(scale) : "")) : ""));
     }
 
 }

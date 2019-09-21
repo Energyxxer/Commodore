@@ -5,10 +5,15 @@ import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class ForceLoadCommand implements Command {
+    @Override
+    public void assertAvailable() {
+        VersionFeatureManager.assertEnabled("command.forceload");
+    }
 }
 
 abstract class ForceLoadChangeCommand extends ForceLoadCommand {

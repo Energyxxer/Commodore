@@ -52,6 +52,15 @@ public class ScorePlayersOperation implements Command {
         this.target = target;
         this.operation = operation;
         this.source = source;
+
+        target.assertObjectiveNotNull();
+        source.assertObjectiveNotNull();
+
+        if(target.getHolder() == null) {
+            source.assertHolderNotNull();
+        } else if(source.getHolder() == null) {
+            target.assertHolderNotNull();
+        }
     }
 
     @Override @NotNull

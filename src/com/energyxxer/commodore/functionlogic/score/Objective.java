@@ -41,14 +41,17 @@ public class Objective {
     }
 
     Objective(@NotNull ObjectiveManager parent, @NotNull String name, @NotNull String type, @Nullable TextComponent displayName, boolean field) {
-        if(name.length() <= 0)
-            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name must not be empty", name);
-        if(name.length() > MAX_NAME_LENGTH)
-            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + name + "' exceeds the limit of " + MAX_NAME_LENGTH + " characters", name);
-        if(!name.matches(CommandUtils.IDENTIFIER_ALLOWED))
-            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + name + "' has illegal characters. Does not match regex: " + CommandUtils.IDENTIFIER_ALLOWED, name);
         this.parent = parent;
         this.name = name;
+        if(name.length() <= 0) {
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name must not be empty", name);
+        }
+        if(getName().length() > MAX_NAME_LENGTH) {
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + getName() + "' exceeds the limit of " + MAX_NAME_LENGTH + " characters", getName());
+        }
+        if(VersionFeatureManager.getBoolean("identifiers.accept_strings", false) && !getName().matches(VersionFeatureManager.getString("identifiers.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + getName() + "' has illegal characters. Does not match regex: " + VersionFeatureManager.getString("identifier_regex", CommandUtils.IDENTIFIER_ALLOWED), name);
+        }
         this.type = type;
         this.displayName = displayName;
         this.field = field;

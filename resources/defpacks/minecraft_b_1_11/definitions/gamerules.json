@@ -1,71 +1,77 @@
 {
-  "announceAdvancements": {
+  "commandblockoutput": {
     "argument": "boolean"
   },
-  "commandBlockOutput": {
+  "commandblocksenabled": {
     "argument": "boolean"
   },
-  "disableElytraMovementCheck": {
+  "dodaylightcycle": {
     "argument": "boolean"
   },
-  "doDaylightCycle": {
+  "doentitydrops": {
     "argument": "boolean"
   },
-  "doEntityDrops": {
+  "dofiretick": {
     "argument": "boolean"
   },
-  "doFireTick": {
+  "doimmediaterespawn": {
     "argument": "boolean"
   },
-  "doLimitedCrafting": {
+  "doinsomnia": {
     "argument": "boolean"
   },
-  "doMobLoot": {
+  "domobloot": {
     "argument": "boolean"
   },
-  "doMobSpawning": {
+  "domobspawning": {
     "argument": "boolean"
   },
-  "doTileDrops": {
+  "dotiledrops": {
     "argument": "boolean"
   },
-  "doWeatherCycle": {
+  "doweathercycle": {
     "argument": "boolean"
   },
-  "keepInventory": {
+  "drowningdamage": {
     "argument": "boolean"
   },
-  "logAdminCommands": {
+  "falldamage": {
     "argument": "boolean"
   },
-  "maxCommandChainLength": {
+  "firedamage": {
+    "argument": "boolean"
+  },
+  "functioncommandlimit": {
     "argument": "int"
   },
-  "maxEntityCramming": {
+  "keepinventory": {
+    "argument": "boolean"
+  },
+  "maxcommandchainlength": {
     "argument": "int"
   },
-  "mobGriefing": {
+  "mobgriefing": {
     "argument": "boolean"
   },
-  "naturalRegeneration": {
+  "naturalregeneration": {
     "argument": "boolean"
   },
-  "randomTickSpeed": {
+  "pvp": {
+    "argument": "boolean"
+  },
+  "randomtickspeed": {
     "argument": "int"
   },
-  "reducedDebugInfo": {
+  "sendcommandfeedback": {
     "argument": "boolean"
   },
-  "sendCommandFeedback": {
+  "showcoordinates": {
     "argument": "boolean"
   },
-  "showDeathMessages": {
+  "showdeathmessages": {
     "argument": "boolean"
   },
-  "spawnRadius": {
-    "argument": "int"
-  },
-  "spectatorsGenerateChunks": {
+  "tntexplodes": {
     "argument": "boolean"
   }
 }

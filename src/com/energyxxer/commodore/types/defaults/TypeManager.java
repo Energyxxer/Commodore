@@ -102,11 +102,14 @@ public class TypeManager {
      * A pre-defined type dictionary for all structure types.
      * */
     public final TypeDictionary structure;
-
     /**
      * A pre-defined type dictionary for all item slot types.
      * */
     public final TypeDictionary slot;
+    /**
+     * A pre-defined type dictionary for all score display types.
+     * */
+    public final TypeDictionary scoreDisplay;
 
     /**
      * Creates a type manager belonging to the given namespace, filled with the standard type dictionaries.
@@ -137,6 +140,7 @@ public class TypeManager {
         put(this.structure = new TypeDictionary(owner, "structure", StructureType::new));
 
         put(this.slot = new TypeDictionary(owner, "slot", ItemSlot::new));
+        put(this.scoreDisplay = new TypeDictionary(owner, "score_display", ScoreDisplayType::new));
     }
 
     /**

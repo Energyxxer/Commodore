@@ -8,6 +8,7 @@ import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
+import com.energyxxer.commodore.functionlogic.selector.Selector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,7 +24,7 @@ public class PlaySoundCommand implements Command {
     private final String sound;
     @NotNull
     private final Source source;
-    @NotNull
+    @Nullable
     private final Entity player;
     @Nullable
     private final CoordinateSet location;
@@ -31,23 +32,27 @@ public class PlaySoundCommand implements Command {
     private final float pitch;
     private final float minVolume;
 
-    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @NotNull Entity player) {
+    public PlaySoundCommand(@NotNull String sound, @NotNull Source source) {
+        this(sound, source, null, null);
+    }
+
+    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @Nullable Entity player) {
         this(sound, source, player, null);
     }
 
-    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @NotNull Entity player, @Nullable CoordinateSet location) {
+    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @Nullable Entity player, @Nullable CoordinateSet location) {
         this(sound, source, player, location, 1);
     }
 
-    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @NotNull Entity player, @Nullable CoordinateSet location, float maxVolume) {
+    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @Nullable Entity player, @Nullable CoordinateSet location, float maxVolume) {
         this(sound, source, player, location, maxVolume, 1);
     }
 
-    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @NotNull Entity player, @Nullable CoordinateSet location, float maxVolume, float pitch) {
+    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @Nullable Entity player, @Nullable CoordinateSet location, float maxVolume, float pitch) {
         this(sound, source, player, location, maxVolume, pitch, 0);
     }
 
-    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @NotNull Entity player, @Nullable CoordinateSet location, float maxVolume, float pitch, float minVolume) {
+    public PlaySoundCommand(@NotNull String sound, @NotNull Source source, @Nullable Entity player, @Nullable CoordinateSet location, float maxVolume, float pitch, float minVolume) {
         this.sound = sound;
         this.source = source;
         this.player = player;
@@ -65,7 +70,7 @@ public class PlaySoundCommand implements Command {
         if(minVolume < 0.0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Min volume must not be less than 0.0, found " + minVolume, minVolume, "MIN_VOLUME");
         if(minVolume > 1.0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Min volume must not be more than 1.0, found " + minVolume, minVolume, "MIN_VOLUME");
 
-        player.assertPlayer();
+        if(player != null) player.assertPlayer();
     }
 
     @Override @NotNull
@@ -73,7 +78,7 @@ public class PlaySoundCommand implements Command {
         return new CommandResolution(execContext, "playsound " +
                 sound + " " +
                 source.toString().toLowerCase() + " " +
-                player +
+                (player != null ? player : new Selector(Selector.BaseSelector.SENDER)) +
                 ((location != null || maxVolume != 1 || pitch != 1 || minVolume != 0) ?
                         " " + (location != null ? location : new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE)) +
                                 ((maxVolume != 1 || pitch != 1 || minVolume != 0) ?

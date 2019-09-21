@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.functionlogic.commands.data;
 
-import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
@@ -14,20 +13,22 @@ public class DataRemoveCommand extends DataCommand {
     private final NBTPath path;
 
     public DataRemoveCommand(@NotNull Entity entity, @NotNull NBTPath path) {
-        super(entity);
-        this.path = path;
-
-        entity.assertSingle();
+        this(new DataHolderEntity(entity), path);
     }
 
     public DataRemoveCommand(@NotNull CoordinateSet pos, @NotNull NBTPath path) {
-        super(pos);
+        this(new DataHolderBlock(pos), path);
+    }
+
+    public DataRemoveCommand(@NotNull DataHolder holder, @NotNull NBTPath path) {
+        super(holder);
         this.path = path;
+
+        holder.assertSingle();
     }
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        if(entity != null) return new CommandResolution(execContext, "data remove entity " + entity + " " + path);
-        return new CommandResolution(execContext, "data remove block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + path);
+        return new CommandResolution(execContext, "data remove " + holder.resolve() + " " + path);
     }
 }

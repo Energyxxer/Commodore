@@ -1,0 +1,11 @@
+{
+  "belowname": {
+    "has_order": false
+  },
+  "list": {
+    "has_order": true
+  },
+  "sidebar": {
+    "has_order": true
+  }
+}

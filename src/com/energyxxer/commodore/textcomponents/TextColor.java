@@ -16,7 +16,8 @@ public enum TextColor {
     RED('c'),
     LIGHT_PURPLE('d'),
     YELLOW('e'),
-    WHITE('f');
+    WHITE('f'),
+    RESET('r');
 
     private final char code;
 
