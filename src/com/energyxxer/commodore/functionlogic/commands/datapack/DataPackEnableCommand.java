@@ -28,6 +28,10 @@ public class DataPackEnableCommand extends DataPackCommand {
     @Nullable
     private final String secondPack;
 
+    public DataPackEnableCommand(@NotNull String pack) {
+        this(pack, Order.LAST);
+    }
+
     public DataPackEnableCommand(@NotNull String pack, @NotNull Order order) {
         this(pack, order, null);
     }
@@ -46,6 +50,6 @@ public class DataPackEnableCommand extends DataPackCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "datapack enable " + CommandUtils.quoteIfNecessary(pack) + " " + order.toString().toLowerCase(Locale.ENGLISH) + (order.takesSecondPack ? " " + CommandUtils.quoteIfNecessary(secondPack) : ""));
+        return new CommandResolution(execContext, "datapack enable " + CommandUtils.quoteIfNecessary(pack) + " " + (order != Order.LAST ? order.toString().toLowerCase(Locale.ENGLISH) : "") + (order.takesSecondPack ? " " + CommandUtils.quoteIfNecessary(secondPack) : ""));
     }
 }

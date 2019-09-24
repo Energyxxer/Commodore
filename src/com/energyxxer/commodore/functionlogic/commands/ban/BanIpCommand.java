@@ -30,7 +30,7 @@ public class BanIpCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "ban-ip " + ip + " " + reason);
+        return new CommandResolution(execContext, "ban-ip " + ip + (reason != null ? " " + reason : ""));
     }
 
     @Override

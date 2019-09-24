@@ -73,8 +73,8 @@ public class VersionFeatureManager {
 
         VersionFeatures j1_15f = j1_14f.duplicate();
         j1_15f.put("command.data.storage", true);
-        j1_14f.put("command.schedule_stop", true);
-        j1_14f.put("command.schedule_function_append", true);
+        j1_15f.put("command.schedule_clear", true);
+        j1_15f.put("command.schedule_function_append", true);
 
         featureMap.put(new JavaEditionVersion(1, 14, 0), j1_14f);
         featureMap.put(new JavaEditionVersion(1, 14, 1), j1_14f);

@@ -1,6 +1,7 @@
 package com.energyxxer.commodoretest;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.functionlogic.commands.ban.BanCommand;
 import com.energyxxer.commodore.functionlogic.commands.clear.ClearCommand;
 import com.energyxxer.commodore.functionlogic.commands.data.DataModifyCommand;
 import com.energyxxer.commodore.functionlogic.commands.data.ModifySourceFromEntity;
@@ -21,6 +22,7 @@ import com.energyxxer.commodore.functionlogic.nbt.path.*;
 import com.energyxxer.commodore.functionlogic.score.LocalScore;
 import com.energyxxer.commodore.functionlogic.score.PlayerName;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
+import com.energyxxer.commodore.functionlogic.selector.arguments.TypeArgument;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.loottables.LootEmptyEntry;
 import com.energyxxer.commodore.loottables.LootNestedEntry;
@@ -99,7 +101,9 @@ public class V114Test {
         txt.addWith(new StringTextComponent("this works now", new TextStyle(TextStyle.EMPTY_STYLE).setColor(TextColor.BLUE)));
         txt.addWith(new StringTextComponent("this works now too", new TextStyle(TextStyle.EMPTY_STYLE).setColor(TextColor.BLUE)));
 
-        function.append(new TellrawCommand(new Selector(ALL_PLAYERS), txt));
+        function.append(new TellrawCommand(new Selector(ALL_ENTITIES, new TypeArgument(module.minecraft.types.entity.get("player"))), txt));
+
+        //function.append(new BanCommand(new Selector(SENDER)));
 
         //function.append(new SetblockCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new DVBlock(module.minecraft.types.block.get("stone"), 1)));
 

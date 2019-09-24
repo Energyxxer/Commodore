@@ -87,7 +87,7 @@ public interface Entity extends Cloneable {
      * @throws CommodoreException If this entity doesn't represent only players.
      * */
     default void assertGameProfile() {
-        assertPlayer("GAME_PROFILE");
+        assertGameProfile("GAME_PROFILE");
     }
 
     /**

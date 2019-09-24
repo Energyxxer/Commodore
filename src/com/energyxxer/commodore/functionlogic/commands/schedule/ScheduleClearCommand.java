@@ -11,16 +11,16 @@ import org.jetbrains.annotations.NotNull;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertFunction;
 
-public class ScheduleStopCommand implements Command {
+public class ScheduleClearCommand implements Command {
 
     @NotNull
     private final Type function;
 
-    public ScheduleStopCommand(@NotNull Function function) {
+    public ScheduleClearCommand(@NotNull Function function) {
         this(new FunctionReference(function));
     }
 
-    public ScheduleStopCommand(@NotNull Type function) {
+    public ScheduleClearCommand(@NotNull Type function) {
         this.function = function;
 
         assertFunction(function);
@@ -28,12 +28,12 @@ public class ScheduleStopCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "schedule stop " + function);
+        return new CommandResolution(execContext, "schedule clear " + function);
     }
 
     @Override
     public void assertAvailable() {
         VersionFeatureManager.assertEnabled("command.schedule");
-        VersionFeatureManager.assertEnabled("command.schedule_stop");
+        VersionFeatureManager.assertEnabled("command.schedule_clear");
     }
 }

@@ -421,9 +421,9 @@ public class Selector implements Entity, Cloneable {
     public boolean isPlayer() {
         if(base.player.isEnforced()) return base.player.getValue();
         for(SelectorArgument type : getArgumentsByKey("type")) {
-            boolean argPlayer = ((TypeArgument) type).getType().getName().equals("minecraft:player");
-            if(!argPlayer || ((TypeArgument) type).isNegated()) {
-                return false;
+            boolean argPlayer = ((TypeArgument) type).getType().toString().equals("minecraft:player");
+            if(!((TypeArgument) type).isNegated()) {
+                return argPlayer;
             }
         }
 
