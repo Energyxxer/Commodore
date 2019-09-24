@@ -7,6 +7,8 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class CloneCommand implements Command {
 
     public enum SourceMode {
@@ -49,7 +51,7 @@ public class CloneCommand implements Command {
 
     @NotNull
     private String getSourceModeExtra() {
-        return (sourceMode != SourceMode.DEFAULT) ? " " + sourceMode.toString().toLowerCase() : "";
+        return (sourceMode != SourceMode.DEFAULT) ? " " + sourceMode.toString().toLowerCase(Locale.ENGLISH) : "";
     }
 
     @Override @NotNull

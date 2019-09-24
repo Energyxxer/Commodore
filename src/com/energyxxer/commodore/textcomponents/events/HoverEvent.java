@@ -5,6 +5,8 @@ import com.energyxxer.commodore.textcomponents.TextComponent;
 import com.energyxxer.commodore.textcomponents.TextEvent;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class HoverEvent extends TextEvent {
     public enum Action {
         SHOW_TEXT, SHOW_ADVANCEMENT, SHOW_ITEM, SHOW_ENTITY
@@ -27,7 +29,7 @@ public class HoverEvent extends TextEvent {
     @Override
     public String toString() {
         return "\"hoverEvent\":{\"action\":\"" +
-                action.toString().toLowerCase() +
+                action.toString().toLowerCase(Locale.ENGLISH) +
                 "\",\"value\":" +
                 (value instanceof TextComponent ? value.toString() : "\"" + CommandUtils.escape(value.toString()) + "\"") +
                 "}";

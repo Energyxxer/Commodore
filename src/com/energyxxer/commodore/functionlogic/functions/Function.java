@@ -123,6 +123,7 @@ public class Function implements FunctionSection, Exportable {
                 sb.append('\n');
             }
             resolvedContent = sb.toString();
+            contentResolved = true;
         }
         return resolvedContent;
     }

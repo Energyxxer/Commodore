@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.util;
 
 import java.io.File;
+import java.util.Locale;
 
 public class MinecraftUtils {
 
@@ -10,7 +11,7 @@ public class MinecraftUtils {
         String workingDirectory;
         // here, we assign the name of the OS, according to Java, to a
         // variable...
-        String OS = (System.getProperty("os.name")).toUpperCase();
+        String OS = (System.getProperty("os.name")).toUpperCase(Locale.ENGLISH);
         // to determine what the workingDirectory is.
         // if it is some version of Windows
         if (OS.contains("WIN")) {

@@ -19,7 +19,7 @@ public final class CommandUtils {
 
     /**
      * String describing all the characters allowed in a string without the need of quotation marks used
-     * in places such as nbt tag keys, entity tags, team names, etc.
+     * in places such as objective names, nbt tag keys, entity tags, team names, etc.
      * */
     public static final String IDENTIFIER_ALLOWED = "[A-Za-z0-9_.\\-+]*";
 
@@ -47,7 +47,7 @@ public final class CommandUtils {
         for(char c : str.toCharArray()) {
             if(((int) c) > 127) {
                 sb.append("\\u");
-                sb.append(padLeft(Integer.toString((int)c, 16).toUpperCase(), 4, '0'));
+                sb.append(padLeft(Integer.toString((int)c, 16).toUpperCase(Locale.ENGLISH), 4, '0'));
             } else if(ESCAPED.containsKey(c)) {
                 sb.append("\\");
                 sb.append(ESCAPED.get(c));
@@ -244,5 +244,9 @@ public final class CommandUtils {
      * CommandUtils should not be instantiated.
      * */
     private CommandUtils() {
+    }
+
+    public static String quote(String str) {
+        return "\"" + escape(str) + "\"";
     }
 }

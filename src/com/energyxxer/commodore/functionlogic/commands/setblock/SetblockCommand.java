@@ -10,6 +10,8 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
 
 public class SetblockCommand implements Command {
@@ -47,7 +49,7 @@ public class SetblockCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "setblock " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + BlockFormatter.asSet(block) + (mode != OldBlockHandlingMode.DEFAULT ? " " + mode.toString().toLowerCase() : ""));
+        return new CommandResolution(execContext, "setblock " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + BlockFormatter.asSet(block) + (mode != OldBlockHandlingMode.DEFAULT ? " " + mode.toString().toLowerCase(Locale.ENGLISH) : ""));
     }
 
     @Override

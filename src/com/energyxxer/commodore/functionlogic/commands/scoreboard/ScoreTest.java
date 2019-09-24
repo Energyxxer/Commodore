@@ -21,12 +21,12 @@ public class ScoreTest implements Command {
         this.min = min;
         this.max = max;
 
-        score.assertNotNull();
+        score.assertObjectiveNotNull();
     }
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "scoreboard players test " + score.getHolder() + " " + score.getObjective().getName() + " " + (min != null ? min : "*") + " " + (max != null ? max : "*"));
+        return new CommandResolution(execContext, "scoreboard players test " + score.holderToString() + " " + score.objectiveToString() + " " + (min != null ? min : "*") + " " + (max != null ? max : "*"));
     }
 
     @Override

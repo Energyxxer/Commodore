@@ -17,12 +17,14 @@ public class ExecuteConditionScoreMatch extends ExecuteCondition {
         this.range = range;
 
         if (target.getHolder() != null) target.getHolder().assertSingle("TARGET_ENTITY");
+
+        target.assertObjectiveNotNull();
     }
 
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + "score " + target.getHolder() + " " + target.getObjective().getName() + " matches " + range.toString());
+        return new SubCommandResult(execContext, this.getStarter() + "score " + target.holderToString() + " " + target.objectiveToString() + " matches " + range.toString());
     }
 
     @Override

@@ -6,6 +6,8 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class BossbarSetColorCommand extends BossbarSetCommand {
     private final @NotNull BossbarCommand.BossbarColor color;
 
@@ -16,6 +18,6 @@ public class BossbarSetColorCommand extends BossbarSetCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, getBase() + "color " + color.toString().toLowerCase());
+        return new CommandResolution(execContext, getBase() + "color " + color.toString().toLowerCase(Locale.ENGLISH));
     }
 }

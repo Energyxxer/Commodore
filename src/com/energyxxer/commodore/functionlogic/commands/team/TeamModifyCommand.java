@@ -9,6 +9,8 @@ import com.energyxxer.commodore.types.defaults.TeamReference;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Locale;
+
 public class TeamModifyCommand extends TeamCommand {
 
     public enum TeamModifyKey {
@@ -130,7 +132,7 @@ public class TeamModifyCommand extends TeamCommand {
         } else if(value instanceof Boolean) {
             return ((Boolean) value).toString();
         } else if(value instanceof TextColor) {
-            return value.toString().toLowerCase();
+            return value.toString().toLowerCase(Locale.ENGLISH);
         } else if(value instanceof TextComponent) {
             return value.toString();
         } else return null;

@@ -5,6 +5,7 @@ import com.energyxxer.commodore.module.Namespace;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class LootTableManager {
 
@@ -17,11 +18,11 @@ public class LootTableManager {
     }
 
     public LootTable get(String tableName) {
-        return lootTables.get(tableName.toLowerCase());
+        return lootTables.get(tableName.toLowerCase(Locale.ENGLISH));
     }
 
     public boolean contains(String tableName) {
-        return lootTables.containsKey(tableName.toLowerCase());
+        return lootTables.containsKey(tableName.toLowerCase(Locale.ENGLISH));
     }
 
     public LootTable create(String tableName) {
@@ -29,7 +30,7 @@ public class LootTableManager {
     }
 
     public LootTable create(String tableName, boolean force) {
-        tableName = tableName.toLowerCase();
+        tableName = tableName.toLowerCase(Locale.ENGLISH);
 
         if(force || !contains(tableName)) {
             LootTable table = new LootTable(this, tableName);

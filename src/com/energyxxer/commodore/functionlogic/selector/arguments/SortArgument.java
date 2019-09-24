@@ -6,6 +6,8 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class SortArgument implements SelectorArgument {
 
     /**
@@ -73,7 +75,7 @@ public class SortArgument implements SelectorArgument {
     @NotNull
     @Override
     public String getArgumentString() {
-        return "sort=" + mode.toString().toLowerCase();
+        return "sort=" + mode.toString().toLowerCase(Locale.ENGLISH);
     }
 
     @Override

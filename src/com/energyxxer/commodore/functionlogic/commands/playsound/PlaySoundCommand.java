@@ -12,6 +12,8 @@ import com.energyxxer.commodore.functionlogic.selector.Selector;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Locale;
+
 import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
 
 public class PlaySoundCommand implements Command {
@@ -77,7 +79,7 @@ public class PlaySoundCommand implements Command {
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "playsound " +
                 sound + " " +
-                source.toString().toLowerCase() + " " +
+                source.toString().toLowerCase(Locale.ENGLISH) + " " +
                 (player != null ? player : new Selector(Selector.BaseSelector.SENDER)) +
                 ((location != null || maxVolume != 1 || pitch != 1 || minVolume != 0) ?
                         " " + (location != null ? location : new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE)) +

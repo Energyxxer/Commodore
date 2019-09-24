@@ -6,6 +6,8 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class ExecuteConditionRegion extends ExecuteCondition {
 
     public enum AirPolicy {
@@ -38,7 +40,7 @@ public class ExecuteConditionRegion extends ExecuteCondition {
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + "blocks " + region0.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + region1.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + template.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + policy.toString().toLowerCase());
+        return new SubCommandResult(execContext, this.getStarter() + "blocks " + region0.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + region1.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + template.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + policy.toString().toLowerCase(Locale.ENGLISH));
     }
 
     @Override

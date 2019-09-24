@@ -4,6 +4,8 @@ import com.energyxxer.commodore.functionlogic.commands.execute.EntityAnchor;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class EntityFacing implements TeleportFacing {
     @NotNull
     private final Entity entity;
@@ -24,7 +26,7 @@ public class EntityFacing implements TeleportFacing {
     @NotNull
     @Override
     public String getRaw() {
-        return "facing entity " + entity + " " + anchor.toString().toLowerCase();
+        return "facing entity " + entity + " " + anchor.toString().toLowerCase(Locale.ENGLISH);
     }
 
 }

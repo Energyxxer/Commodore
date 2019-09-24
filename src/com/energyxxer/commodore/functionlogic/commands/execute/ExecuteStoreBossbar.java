@@ -4,6 +4,8 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 import static com.energyxxer.commodore.types.TypeAssert.assertBossbar;
 
 public class ExecuteStoreBossbar extends ExecuteStore {
@@ -31,7 +33,7 @@ public class ExecuteStoreBossbar extends ExecuteStore {
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + "bossbar " + bossbar + " " + variable.toString().toLowerCase());
+        return new SubCommandResult(execContext, this.getStarter() + "bossbar " + bossbar + " " + variable.toString().toLowerCase(Locale.ENGLISH));
     }
 
     @Override

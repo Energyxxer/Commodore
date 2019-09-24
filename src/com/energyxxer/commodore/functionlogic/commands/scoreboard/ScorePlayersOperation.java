@@ -65,7 +65,7 @@ public class ScorePlayersOperation implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "scoreboard players operation " + target.getHolder() + " " + target.getObjective().getName() + " " + operation.getShorthand() + " " + source.getHolder() + " " + source.getObjective().getName());
+        return new CommandResolution(execContext, "scoreboard players operation " + target.holderToString() + " " + target.objectiveToString() + " " + operation.getShorthand() + " " + source.holderToString() + " " + source.objectiveToString());
     }
 
 }

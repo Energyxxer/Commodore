@@ -6,6 +6,8 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class ExecuteFacingEntity implements ExecuteModifier {
     @NotNull
     private final Entity entity;
@@ -24,7 +26,7 @@ public class ExecuteFacingEntity implements ExecuteModifier {
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, "facing entity " + entity + " " + anchor.toString().toLowerCase());
+        return new SubCommandResult(execContext, "facing entity " + entity + " " + anchor.toString().toLowerCase(Locale.ENGLISH));
     }
 
     @Override

@@ -14,11 +14,13 @@ public class ScoreAdd implements Command {
     public ScoreAdd(@NotNull LocalScore score, int delta) {
         this.score = score;
         this.delta = delta;
+
+        score.assertObjectiveNotNull();
     }
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "scoreboard players " + ((delta >= 0) ? "add" : "remove") + " " + score.getHolder() + " " + score.getObjective().getName() + " " + Math.abs(delta));
+        return new CommandResolution(execContext, "scoreboard players " + ((delta >= 0) ? "add" : "remove") + " " + score.holderToString() + " " + score.objectiveToString() + " " + Math.abs(delta));
     }
 
 }

@@ -7,6 +7,7 @@ import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.Objective;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 
 public class TriggerEnable implements Command {
@@ -19,11 +20,16 @@ public class TriggerEnable implements Command {
         this.player = player;
         this.objective = objective;
 
-        if(!objective.getType().equals(TriggerCommand.TRIGGER_CRITERION)) throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, "Unable to use objective '" + objective.getName() + "' with trigger enable; Expected objective of type '" + TriggerCommand.TRIGGER_CRITERION + "', instead got '" + objective.getType() + "'", objective, "OBJECTIVE");
+        if(!objective.getType().equals(TriggerCommand.TRIGGER_CRITERION)) throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, "Unable to use objective '" + objective.toString() + "' with trigger enable; Expected objective of type '" + TriggerCommand.TRIGGER_CRITERION + "', instead got '" + objective.getType() + "'", objective, "OBJECTIVE");
     }
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "scoreboard players enable " + player + " " + objective.getName());
+        return new CommandResolution(execContext, "scoreboard players enable " + player + " " + objective.toString());
+    }
+
+    @Override
+    public void assertAvailable() {
+        VersionFeatureManager.assertEnabled("command.trigger");
     }
 }

@@ -6,6 +6,8 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class TagCommand implements Command {
     public enum Action {
         ADD, REMOVE
@@ -26,7 +28,7 @@ public class TagCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "tag " + entity + " " + action.toString().toLowerCase() + " " + tag);
+        return new CommandResolution(execContext, "tag " + entity + " " + action.toString().toLowerCase(Locale.ENGLISH) + " " + tag);
     }
 
 }

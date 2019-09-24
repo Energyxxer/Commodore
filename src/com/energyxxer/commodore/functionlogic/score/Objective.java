@@ -46,11 +46,11 @@ public class Objective {
         if(name.length() <= 0) {
             throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name must not be empty", name);
         }
-        if(getName().length() > MAX_NAME_LENGTH) {
-            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + getName() + "' exceeds the limit of " + MAX_NAME_LENGTH + " characters", getName());
+        if(getName().length() > VersionFeatureManager.getInt("objective.max_length", 16)) {
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + getName() + "' exceeds the limit of " + VersionFeatureManager.getInt("objective.max_length", 16) + " characters", getName());
         }
-        if(VersionFeatureManager.getBoolean("identifiers.accept_strings", false) && !getName().matches(VersionFeatureManager.getString("identifiers.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
-            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + getName() + "' has illegal characters. Does not match regex: " + VersionFeatureManager.getString("identifier_regex", CommandUtils.IDENTIFIER_ALLOWED), name);
+        if(!VersionFeatureManager.getBoolean("objectives.accept_strings", false) && !name.matches(VersionFeatureManager.getString("objectives.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + getName() + "' has illegal characters. Does not match regex: " + VersionFeatureManager.getString("objective.regex", CommandUtils.IDENTIFIER_ALLOWED), name);
         }
         this.type = type;
         this.displayName = displayName;
@@ -103,7 +103,11 @@ public class Objective {
 
     @Override
     public String toString() {
-        return name + (!type.equals("dummy") ? " (" + type + ")" : "");
+        if(!name.matches(VersionFeatureManager.getString("objectives.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
+            return CommandUtils.quote(name);
+        } else {
+            return name;
+        }
     }
 
     public void assertAvailable() {

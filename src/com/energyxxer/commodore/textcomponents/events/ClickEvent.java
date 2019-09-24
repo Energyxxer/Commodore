@@ -4,6 +4,8 @@ import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.textcomponents.TextEvent;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class ClickEvent extends TextEvent {
     public enum Action {
         OPEN_URL, OPEN_FILE, RUN_COMMAND, SUGGEST_COMMAND, CHANGE_PAGE
@@ -21,7 +23,7 @@ public class ClickEvent extends TextEvent {
     @Override
     public String toString() {
         return "\"clickEvent\":{\"action\":\"" +
-                action.toString().toLowerCase() +
+                action.toString().toLowerCase(Locale.ENGLISH) +
                 "\",\"value\":\"" +
                 CommandUtils.escape(value) +
                 "\"}";

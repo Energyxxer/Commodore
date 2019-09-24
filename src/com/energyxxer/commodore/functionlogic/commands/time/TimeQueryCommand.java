@@ -4,6 +4,8 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class TimeQueryCommand extends TimeCommand {
     public enum TimeCounter {
         DAY, DAYTIME, GAMETIME
@@ -18,7 +20,7 @@ public class TimeQueryCommand extends TimeCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "time query " + counter.toString().toLowerCase());
+        return new CommandResolution(execContext, "time query " + counter.toString().toLowerCase(Locale.ENGLISH));
     }
 
 }

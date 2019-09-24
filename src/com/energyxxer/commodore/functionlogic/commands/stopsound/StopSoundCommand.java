@@ -8,6 +8,8 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Locale;
+
 public class StopSoundCommand implements Command {
 
     @NotNull
@@ -42,9 +44,9 @@ public class StopSoundCommand implements Command {
         return new CommandResolution(execContext, "stopsound " + player +
                 (source != null ?
                         sound != null ?
-                                " " + source.toString().toLowerCase() + " " + sound
+                                " " + source.toString().toLowerCase(Locale.ENGLISH) + " " + sound
                                 :
-                                " " + source.toString().toLowerCase()
+                                " " + source.toString().toLowerCase(Locale.ENGLISH)
                         :
                         sound != null ?
                                 " * " + sound

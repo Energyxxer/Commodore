@@ -6,6 +6,8 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.util.TimeSpan;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class TimeSetCommand extends TimeCommand {
     public enum TimeOfDay {
         DAY(1000), MIDNIGHT(18000), NIGHT(13000), NOON(6000);
@@ -31,7 +33,7 @@ public class TimeSetCommand extends TimeCommand {
 
     @NotNull
     public TimeSetCommand(@NotNull TimeOfDay time) {
-        this.time = time.toString().toLowerCase();
+        this.time = time.toString().toLowerCase(Locale.ENGLISH);
     }
 
     @Override @NotNull

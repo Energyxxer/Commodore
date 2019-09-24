@@ -1,7 +1,9 @@
 package com.energyxxer.commodore.functionlogic.score;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
@@ -13,11 +15,15 @@ public class LocalScore {
     public LocalScore(@Nullable Entity holder, @Nullable Objective objective) {
         this.objective = objective;
         this.holder = holder;
+
+        if(holder != null) holder.assertScoreHolderFriendly();
     }
 
     public LocalScore(@Nullable Objective objective, @Nullable Entity holder) {
         this.objective = objective;
         this.holder = holder;
+
+        if(holder != null) holder.assertScoreHolderFriendly();
     }
 
     public Objective getObjective() {
@@ -26,6 +32,19 @@ public class LocalScore {
 
     public Entity getHolder() {
         return holder;
+    }
+
+    public String holderToString() {
+        return holder != null ? holder.scoreHolderToString() : "*";
+    }
+
+    public String objectiveToString() {
+        if(objective == null) return "*";
+        if(!objective.getName().matches(VersionFeatureManager.getString("objectives.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
+            return CommandUtils.quote(objective.getName());
+        } else {
+            return objective.getName();
+        }
     }
 
     @Override

@@ -6,6 +6,8 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class RecipeCommand implements Command {
     public enum Action {
         GIVE, TAKE
@@ -32,7 +34,7 @@ public class RecipeCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "recipe " + action.toString().toLowerCase() + " " + player + " " + recipeName);
+        return new CommandResolution(execContext, "recipe " + action.toString().toLowerCase(Locale.ENGLISH) + " " + player + " " + recipeName);
     }
 
 }

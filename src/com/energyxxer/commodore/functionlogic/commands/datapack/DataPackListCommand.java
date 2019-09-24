@@ -5,6 +5,8 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Locale;
+
 public class DataPackListCommand extends DataPackCommand {
     public enum Filter {
         AVAILABLE, ENABLED
@@ -23,7 +25,7 @@ public class DataPackListCommand extends DataPackCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "datapack list" + ((filter != null) ? " " + filter.toString().toLowerCase() : ""));
+        return new CommandResolution(execContext, "datapack list" + ((filter != null) ? " " + filter.toString().toLowerCase(Locale.ENGLISH) : ""));
     }
 
 }

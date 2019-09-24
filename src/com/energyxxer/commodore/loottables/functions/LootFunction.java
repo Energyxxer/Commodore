@@ -11,6 +11,7 @@ import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Locale;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertEnchantment;
 
@@ -164,16 +165,16 @@ public abstract class LootFunction {
                 attrObj.addProperty("name", attr.getName());
                 if(attr.getId() != null) attrObj.addProperty("id", attr.getId());
                 attrObj.add("amount", CommandUtils.constructRange(attr.getMinAmount(), attr.getMaxAmount()));
-                attrObj.addProperty("operation", attr.getOperation().toString().toLowerCase());
+                attrObj.addProperty("operation", attr.getOperation().toString().toLowerCase(Locale.ENGLISH));
                 Attribute.Slot[] slots = attr.getSlots();
                 if(slots.length > 0) {
                     if(slots.length == 1) {
-                        attrObj.addProperty("slot", slots[0].toString().toLowerCase());
+                        attrObj.addProperty("slot", slots[0].toString().toLowerCase(Locale.ENGLISH));
                     } else {
                         JsonArray slotList = new JsonArray();
                         attrObj.add("slot", slotList);
                         for(Attribute.Slot slot : slots) {
-                            slotList.add(slot.toString().toLowerCase());
+                            slotList.add(slot.toString().toLowerCase(Locale.ENGLISH));
                         }
                     }
                 }

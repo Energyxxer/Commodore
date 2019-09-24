@@ -11,6 +11,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Locale;
 
 public class AdvancementCommand implements Command {
 
@@ -76,7 +77,7 @@ public class AdvancementCommand implements Command {
             }
         }
         return new CommandResolution(execContext,
-                "advancement " + action.toString().toLowerCase() + " " + player + " " + limit.toString().toLowerCase() + ((limit.takesAdvancement) ? " " + advancement : "") + ((limit.takesCriteria) ? criteriaStr.toString() : ""));
+                "advancement " + action.toString().toLowerCase(Locale.ENGLISH) + " " + player + " " + limit.toString().toLowerCase(Locale.ENGLISH) + ((limit.takesAdvancement) ? " " + advancement : "") + ((limit.takesCriteria) ? criteriaStr.toString() : ""));
     }
 
     @Override

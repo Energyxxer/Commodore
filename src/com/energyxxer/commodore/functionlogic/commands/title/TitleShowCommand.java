@@ -6,6 +6,8 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.textcomponents.TextComponent;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class TitleShowCommand extends TitleCommand {
     public enum Display {
         TITLE, SUBTITLE, ACTIONBAR
@@ -25,7 +27,7 @@ public class TitleShowCommand extends TitleCommand {
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         String raw = message.toString();
-        return new CommandResolution(execContext, "title " + player + " " + display.toString().toLowerCase() + " " + raw);
+        return new CommandResolution(execContext, "title " + player + " " + display.toString().toLowerCase(Locale.ENGLISH) + " " + raw);
     }
 
 }

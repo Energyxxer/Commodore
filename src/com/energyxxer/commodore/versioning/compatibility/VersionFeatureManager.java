@@ -17,7 +17,19 @@ public class VersionFeatureManager {
 
     static {
         VersionFeatures j1_13f = new VersionFeatures();
+        j1_13f.put("objectives.max_length", 16);
+        j1_13f.put("identifiers.regex", "[A-Za-z0-9_.\\-+]*");
         j1_13f.put("identifiers.accept_strings", false);
+        j1_13f.put("objectives.regex", "[A-Za-z0-9_.\\-+]*");
+        j1_13f.put("objectives.accept_strings", false);
+        j1_13f.put("player_names.regex", "[A-Za-z0-9_.\\-+]*");
+        j1_13f.put("player_names.accept_strings", true);
+        j1_13f.put("score_holders.regex", "[^ @][^ ]*");
+        j1_13f.put("score_holders.accept_strings", false);
+        j1_13f.put("game_profiles.regex", "[^ @][^ ]*");
+        j1_13f.put("game_profiles.accept_strings", false);
+        j1_13f.put("ips.regex", "[A-Za-z0-9_.\\-+]*");
+        j1_13f.put("ips.accept_strings", false);
         j1_13f.put("function.namespace_separator", ":");
         j1_13f.put("data_packs", true);
         j1_13f.put("functions", true);
@@ -29,10 +41,15 @@ public class VersionFeatureManager {
         j1_13f.put("item.data_values", false);
         j1_13f.put("scoreboard.criteria", true);
         j1_13f.put("execute_modifiers", true);
+        j1_13f.put("command.schedule", true);
         j1_13f.put("command.data_modify", false);
         j1_13f.put("command.scoreboard_random", false);
         j1_13f.put("command.scoreboard_test", false);
+        j1_13f.put("command.scoreboard_get", true);
         j1_13f.put("command.scoreboard_display_sort", false);
+        j1_13f.put("command.trigger", true);
+        j1_13f.put("command.kick", false);
+        j1_13f.put("server_commands", false);
         j1_13f.put("command.forceload", false);
         j1_13f.put("command.tickingarea", false);
         j1_13f.put("command.effect.explicit", true);
@@ -45,11 +62,19 @@ public class VersionFeatureManager {
         featureMap.put(new JavaEditionVersion(1, 13, 2), j1_13f);
 
         VersionFeatures j1_14f = j1_13f.duplicate();
+        j1_14f.put("command.teammsg", true);
+        j1_14f.put("command.datapack", true);
+        j1_14f.put("command.reload", true);
+        j1_14f.put("command.debug", true);
         j1_14f.put("command.forceload", true);
+        j1_14f.put("command.kick", true);
+        j1_14f.put("server_commands", true);
         j1_14f.put("command.data_modify", true);
 
         VersionFeatures j1_15f = j1_14f.duplicate();
         j1_15f.put("command.data.storage", true);
+        j1_14f.put("command.schedule_stop", true);
+        j1_14f.put("command.schedule_function_append", true);
 
         featureMap.put(new JavaEditionVersion(1, 14, 0), j1_14f);
         featureMap.put(new JavaEditionVersion(1, 14, 1), j1_14f);
@@ -57,8 +82,15 @@ public class VersionFeatureManager {
         featureMap.put(new JavaEditionVersion(1, 15, 0), j1_15f);
 
         VersionFeatures b1_11f = new VersionFeatures();
-        b1_11f.put("identifiers.accept_strings", true);
+        b1_11f.put("objectives.max_length", 16);
         b1_11f.put("identifiers.regex", "[A-Za-z0-9()_§#\\-.]+");
+        b1_11f.put("identifiers.accept_strings", true);
+        b1_11f.put("objectives.regex", "[A-Za-z0-9()_§#\\-.]+");
+        b1_11f.put("objectives.accept_strings", true);
+        b1_11f.put("player_names.regex", "[A-Za-z0-9()_§#\\-.]+");
+        b1_11f.put("player_names.accept_strings", true);
+        b1_11f.put("score_holders.regex", "[A-Za-z0-9()_§#\\-.]+");
+        b1_11f.put("score_holders.accept_strings", true);
         b1_11f.put("function.namespace_separator", "/");
         b1_11f.put("data_packs", false);
         b1_11f.put("functions", true);
@@ -70,10 +102,14 @@ public class VersionFeatureManager {
         b1_11f.put("nbt.access", false);
         b1_11f.put("scoreboard.criteria", false);
         b1_11f.put("execute_modifiers", false);
+        j1_14f.put("command.teammsg", false);
         b1_11f.put("command.data_modify", false);
         b1_11f.put("command.scoreboard_random", true);
         b1_11f.put("command.scoreboard_test", true);
+        b1_11f.put("command.scoreboard_get", false);
         b1_11f.put("command.scoreboard_display_sort", true);
+        b1_11f.put("command.trigger", false);
+        b1_11f.put("command.kick", false);
         b1_11f.put("command.forceload", false);
         b1_11f.put("command.tickingarea", true);
         b1_11f.put("command.effect.explicit", false);

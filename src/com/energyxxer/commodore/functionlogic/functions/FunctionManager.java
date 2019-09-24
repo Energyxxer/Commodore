@@ -39,7 +39,7 @@ public class FunctionManager {
     }
 
     public Function create(@NotNull String name, boolean force, @Nullable Entity sender) {
-        name = name.toLowerCase();
+        name = name.toLowerCase(Locale.ENGLISH);
         if(!contains(name)) return forceCreate(name, sender);
         if(!force) {
             throw new CommodoreException(CommodoreException.Source.DUPLICATION_ERROR, "A function by the name '" + name + "' already exists", name);

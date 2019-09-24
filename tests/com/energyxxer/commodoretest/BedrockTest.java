@@ -2,8 +2,11 @@ package com.energyxxer.commodoretest;
 
 import com.energyxxer.commodore.functionlogic.commands.effect.EffectClearCommand;
 import com.energyxxer.commodore.functionlogic.commands.effect.EffectGiveCommand;
+import com.energyxxer.commodore.functionlogic.commands.scoreboard.ScoreSet;
 import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.functionlogic.functions.FunctionComment;
+import com.energyxxer.commodore.functionlogic.score.LocalScore;
+import com.energyxxer.commodore.functionlogic.score.PlayerName;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
@@ -42,6 +45,9 @@ public class BedrockTest {
         function.append(new EffectClearCommand(new Selector(ALL_PLAYERS)));
 
         function.append(new EffectGiveCommand(new Selector(ALL_PLAYERS), new StatusEffect(module.minecraft.types.effect.get("regeneration"))));
+
+
+        function.append(new ScoreSet(new LocalScore(new PlayerName("a b"), module.getObjectiveManager().get("c d")), 1));
 
         System.out.println(function.getResolvedContent());
 

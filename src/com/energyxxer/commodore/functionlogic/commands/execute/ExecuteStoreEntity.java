@@ -7,6 +7,8 @@ import com.energyxxer.commodore.functionlogic.nbt.NumericNBTType;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
 
 public class ExecuteStoreEntity extends ExecuteStore {
@@ -43,7 +45,7 @@ public class ExecuteStoreEntity extends ExecuteStore {
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + "entity " + entity + " " + path + " " + type.toString().toLowerCase() + " " + CommandUtils.numberToPlainString(scale));
+        return new SubCommandResult(execContext, this.getStarter() + "entity " + entity + " " + path + " " + type.toString().toLowerCase(Locale.ENGLISH) + " " + CommandUtils.numberToPlainString(scale));
     }
 
     @Override

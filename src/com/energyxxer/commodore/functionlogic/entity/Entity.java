@@ -62,6 +62,13 @@ public interface Entity extends Cloneable {
         assertPlayer("PLAYER");
     }
 
+    default void assertScoreHolderFriendly() {
+        assertScoreHolderFriendly("SCORE_HOLDER");
+    }
+
+    default void assertScoreHolderFriendly(String causeKey) {
+    }
+
     /**
      * Throws an exception if this entity may not represent entities of type <code>minecraft:player</code>.
      *
@@ -71,6 +78,27 @@ public interface Entity extends Cloneable {
      * */
     default void assertPlayer(String causeKey) {
         if(!isUnknownType() && !isPlayer()) throw new CommodoreException(CommodoreException.Source.ENTITY_ERROR, "Provided entity '" + this + "' includes non-player entities, expected only players", this, causeKey);
+    }
+
+    /**
+     * Throws an exception if this entity may not represent entities of type <code>minecraft:player</code>.
+     * The thrown exception's cause key will be <code>"PLAYER"</code>.
+     *
+     * @throws CommodoreException If this entity doesn't represent only players.
+     * */
+    default void assertGameProfile() {
+        assertPlayer("GAME_PROFILE");
+    }
+
+    /**
+     * Throws an exception if this entity may not represent entities of type <code>minecraft:player</code>.
+     *
+     * @param causeKey Key to attach to the CommodoreException thrown by this method.
+     *
+     * @throws CommodoreException If this entity doesn't represent only players.
+     * */
+    default void assertGameProfile(String causeKey) {
+        assertPlayer(causeKey);
     }
 
     /**
@@ -96,4 +124,14 @@ public interface Entity extends Cloneable {
 
     @NotNull
     String toString();
+
+    @NotNull
+    default String scoreHolderToString() {
+        return toString();
+    }
+
+    @NotNull
+    default String gameProfileToString() {
+        return toString();
+    }
 }

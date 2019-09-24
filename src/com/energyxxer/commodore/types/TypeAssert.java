@@ -3,6 +3,8 @@ package com.energyxxer.commodore.types;
 import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.types.defaults.*;
 
+import java.util.Locale;
+
 /**
  * Utility class whose purpose is to aid commands to validate types passed as parameters.<br>
  *
@@ -33,7 +35,7 @@ public class TypeAssert {
      * @throws IllegalTypeException If the given type is not standalone; that is, if it is a tag.
      * */
     public static void assertStandalone(Type type) {
-        if(!type.isStandalone()) throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, type.getCategory().toUpperCase().charAt(0) + type.getCategory().substring(1).toLowerCase() + " tags aren't allowed in this context", type);
+        if(!type.isStandalone()) throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, type.getCategory().toUpperCase(Locale.ENGLISH).charAt(0) + type.getCategory().substring(1).toLowerCase(Locale.ENGLISH) + " tags aren't allowed in this context", type);
     }
 
     /**

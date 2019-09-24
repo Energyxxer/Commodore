@@ -16,7 +16,7 @@ public class ScoreTextComponent extends TextComponent {
         this.score = score;
         this.setStyle(style);
 
-        score.assertNotNull();
+        score.assertObjectiveNotNull();
     }
 
     @Override
@@ -26,7 +26,7 @@ public class ScoreTextComponent extends TextComponent {
 
     @Override
     public String toString(TextStyle parentStyle) {
-        String escapedName = "\"" + CommandUtils.escape(score.getHolder().toString()) + "\"";
+        String escapedName = score.getHolder() == null ? "\"*\"" : "\"" + CommandUtils.escape(score.getHolder().toString()) + "\"";
         String escapedObjective = "\"" + CommandUtils.escape(score.getObjective().getName()) + "\"";
         String baseProperties = this.getBaseProperties(parentStyle);
         return "{\"score\":{\"name\":" +

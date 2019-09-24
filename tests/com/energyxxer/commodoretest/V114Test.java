@@ -5,7 +5,9 @@ import com.energyxxer.commodore.functionlogic.commands.clear.ClearCommand;
 import com.energyxxer.commodore.functionlogic.commands.data.DataModifyCommand;
 import com.energyxxer.commodore.functionlogic.commands.data.ModifySourceFromEntity;
 import com.energyxxer.commodore.functionlogic.commands.data.ModifySourceValue;
+import com.energyxxer.commodore.functionlogic.commands.kill.KillCommand;
 import com.energyxxer.commodore.functionlogic.commands.loot.*;
+import com.energyxxer.commodore.functionlogic.commands.scoreboard.ScoreSet;
 import com.energyxxer.commodore.functionlogic.commands.setblock.SetblockCommand;
 import com.energyxxer.commodore.functionlogic.commands.tellraw.TellrawCommand;
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
@@ -16,6 +18,8 @@ import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
 import com.energyxxer.commodore.functionlogic.nbt.TagInt;
 import com.energyxxer.commodore.functionlogic.nbt.TagIntArray;
 import com.energyxxer.commodore.functionlogic.nbt.path.*;
+import com.energyxxer.commodore.functionlogic.score.LocalScore;
+import com.energyxxer.commodore.functionlogic.score.PlayerName;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.loottables.LootEmptyEntry;
@@ -75,6 +79,14 @@ public class V114Test {
         function.append(new LootCommand(new LootReplaceEntity(function.getSender(), module.minecraft.types.slot.get("weapon.offhand")), new LootFromLoot("minecraft:entities/wither_skeleton")));
         function.append(new LootCommand(new LootReplaceBlock(new CoordinateSet(0, 64, 0), module.minecraft.types.slot.get("container.4")), new LootFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE))));
         function.append(new LootCommand(new LootInsertBlock(new CoordinateSet(0, 64, 0)), new LootFromMine(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new ToolOrHand(module.minecraft.types.item.get("bamboo")))));
+
+
+        function.append(new ScoreSet(new LocalScore(null, module.getObjectiveManager().create("obj")), 1));
+        function.append(new KillCommand(new PlayerName("a b")));
+        function.append(new KillCommand(new PlayerName("a=b")));
+        function.append(new ScoreSet(new LocalScore(new PlayerName("a=b"), module.getObjectiveManager().get("obj")), 1));
+        //function.append(new ScoreSet(new LocalScore(new PlayerName("a b"), module.getObjectiveManager().get("obj")), 1));
+
 
         //function.append(new SetblockCommand(new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE), new Block(module.minecraft.types.block.get("chest"), new TagCompound(new TagString("Lock", "bruh moment")))));
 

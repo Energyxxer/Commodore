@@ -9,6 +9,8 @@ import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class DataModifyCommand extends DataCommand {
 
     @NotNull
@@ -17,7 +19,7 @@ public class DataModifyCommand extends DataCommand {
 
     @NotNull
     @Contract("_, _ -> new")
-    public static ModifyOperation INSERT(@NotNull InsertOrder order, int index) { return new ModifyOperation("insert " + order.toString().toLowerCase() + " " + index); }
+    public static ModifyOperation INSERT(@NotNull InsertOrder order, int index) { return new ModifyOperation("insert " + order.toString().toLowerCase(Locale.ENGLISH) + " " + index); }
     @NotNull
     @Contract(" -> new")
     public static ModifyOperation MERGE() { return new ModifyOperation("merge"); }

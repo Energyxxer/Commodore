@@ -16,6 +16,6 @@ public class ObjectivesRemoveCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "scoreboard objectives remove " + objective.getName());
+        return new CommandResolution(execContext, "scoreboard objectives remove " + objective.toString());
     }
 }

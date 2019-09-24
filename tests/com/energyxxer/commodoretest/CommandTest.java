@@ -245,7 +245,7 @@ public class CommandTest {
         exec.addModifier(new ExecuteStoreScore(a));
         exec.addModifier(new ExecuteStoreEntity(singlePlayer, new NBTPath("Position",new NBTPath(1)), NumericNBTType.DOUBLE));
         exec.addModifier(new ExecuteStoreBlock(new CoordinateSet(0, 3, 0), new NBTPath("Position",new NBTPath(1)), NumericNBTType.DOUBLE));
-        exec.addModifier(new ExecuteConditionDataEntity(ExecuteCondition.ConditionType.IF, entity, new NBTPath("Silent")));
+        exec.addModifier(new ExecuteConditionDataEntity(ExecuteCondition.ConditionType.IF, entity.limitToOne(), new NBTPath("Silent")));
 
         function.append(exec);
 
@@ -379,6 +379,8 @@ public class CommandTest {
         scoreTest.append(new TeamModifyCommand(team, TeamModifyCommand.TeamModifyKey.COLLISION_RULE, TeamModifyCommand.AppliesTo.OTHER_TEAMS));
         scoreTest.append(new TeamModifyCommand(team, TeamModifyCommand.TeamModifyKey.DISPLAY_NAME, new StringTextComponent("Blue", new TextStyle(TextColor.RED, TextStyle.BOLD))));
 
+
+
         //scoreTest.setExport(false);
         //otherFunction.setExport(false);
 
@@ -390,8 +392,8 @@ public class CommandTest {
 
         System.out.println("module.minecraft.getTagManager().getBlockGroup() = " + module.minecraft.getTagManager().blockTags);
         System.out.println(module.minecraft.getTagManager().blockTags.get("coral_blocks").getValues());
-        System.out.println(((BlockTag) module.minecraft.getTagManager().blockTags.get("coral_blocks").getValues().toArray(new Type[0])[0]).getValues());
-        System.out.println(module.minecraft.getTagManager().blockTags.get("dead_coral_blocks").getValues());
+        //System.out.println(((BlockTag) module.minecraft.getTagManager().blockTags.get("coral_blocks").getValues().toArray(new Type[0])[0]).getValues());
+        //System.out.println(module.minecraft.getTagManager().blockTags.get("dead_coral_blocks").getValues());
 
         //System.out.println(function.getResolvedContent());
 

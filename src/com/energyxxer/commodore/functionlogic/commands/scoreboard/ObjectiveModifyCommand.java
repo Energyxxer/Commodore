@@ -91,6 +91,6 @@ public class ObjectiveModifyCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "scoreboard objectives modify " + objective.getName() + " " + key.getArgumentKey() + " " + getValueString());
+        return new CommandResolution(execContext, "scoreboard objectives modify " + objective.toString() + " " + key.getArgumentKey() + " " + getValueString());
     }
 }

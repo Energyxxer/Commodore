@@ -2,6 +2,8 @@ package com.energyxxer.commodore.functionlogic.commands.execute;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public abstract class ExecuteStore implements ExecuteModifier {
     public enum StoreValue {
         RESULT, SUCCESS;
@@ -20,7 +22,7 @@ public abstract class ExecuteStore implements ExecuteModifier {
     }
 
     protected String getStarter() {
-        return "store " + storeValue.toString().toLowerCase() + " ";
+        return "store " + storeValue.toString().toLowerCase(Locale.ENGLISH) + " ";
     }
 
     @NotNull

@@ -5,6 +5,8 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class ExperienceQueryCommand extends ExperienceCommand {
 
     @NotNull
@@ -17,7 +19,7 @@ public class ExperienceQueryCommand extends ExperienceCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "xp query " + player + " " + unit.toString().toLowerCase());
+        return new CommandResolution(execContext, "xp query " + player + " " + unit.toString().toLowerCase(Locale.ENGLISH));
     }
 
 }

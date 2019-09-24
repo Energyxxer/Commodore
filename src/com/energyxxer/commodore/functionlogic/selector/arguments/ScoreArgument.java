@@ -26,7 +26,7 @@ public class ScoreArgument implements ComplexSelectorArgument {
         while(it.hasNext()) {
             Map.Entry<Objective, NumberRange<Integer>> entry = it.next();
 
-            sb.append(entry.getKey().getName());
+            sb.append(entry.getKey().toString());
             sb.append('=');
             sb.append(entry.getValue());
             if(it.hasNext()) sb.append(',');

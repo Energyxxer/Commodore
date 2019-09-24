@@ -5,7 +5,10 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.Objective;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Locale;
 
 public class TriggerCommand implements Command {
 
@@ -41,6 +44,11 @@ public class TriggerCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "trigger " + objective.getName() + (action != Action.ADD || amount != 1 ? " " + action.toString().toLowerCase() + " " + amount : ""));
+        return new CommandResolution(execContext, "trigger " + objective.toString() + (action != Action.ADD || amount != 1 ? " " + action.toString().toLowerCase(Locale.ENGLISH) + " " + amount : ""));
+    }
+
+    @Override
+    public void assertAvailable() {
+        VersionFeatureManager.assertEnabled("command.trigger");
     }
 }

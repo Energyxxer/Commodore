@@ -4,6 +4,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Locale;
 
 public class TextStyle {
     @Nullable
@@ -90,7 +91,7 @@ public class TextStyle {
         ArrayList<String> properties = new ArrayList<>();
 
         if(color != null && (parentStyle == null || color != parentStyle.color)) {
-            properties.add("\"color\":\"" + color.name().toLowerCase() + "\"");
+            properties.add("\"color\":\"" + color.name().toLowerCase(Locale.ENGLISH) + "\"");
         }
         if((mask & BOLD) != 0) properties.add("\"bold\":" + String.valueOf(getBoolean(BOLD)));
         if((mask & ITALIC) != 0) properties.add("\"italic\":" + String.valueOf(getBoolean(ITALIC)));

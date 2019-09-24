@@ -2,6 +2,8 @@ package com.energyxxer.commodore.functionlogic.nbt;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public enum NumericNBTType {
     BYTE("b"), DOUBLE("d"), FLOAT("f"), INT(""), LONG("L"), SHORT("s");
 
@@ -17,7 +19,7 @@ public enum NumericNBTType {
 
     public static NumericNBTType getTypeForSuffix(@NotNull String suffix) {
         for(NumericNBTType type : values()) {
-            if(type.suffix.toLowerCase().equals(suffix.toLowerCase())) return type;
+            if(type.suffix.toLowerCase(Locale.ENGLISH).equals(suffix.toLowerCase(Locale.ENGLISH))) return type;
         }
         return null;
     }

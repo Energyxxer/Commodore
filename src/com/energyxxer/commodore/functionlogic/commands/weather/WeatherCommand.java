@@ -6,6 +6,8 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class WeatherCommand implements Command {
 
     public static final int DEFAULT_DURATION = 300; //5 minutes
@@ -31,6 +33,6 @@ public class WeatherCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "weather " + mode.toString().toLowerCase() + (duration != DEFAULT_DURATION ? " " + duration : ""));
+        return new CommandResolution(execContext, "weather " + mode.toString().toLowerCase(Locale.ENGLISH) + (duration != DEFAULT_DURATION ? " " + duration : ""));
     }
 }

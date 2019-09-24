@@ -7,5 +7,6 @@ public abstract class DataPackCommand implements Command {
     @Override
     public void assertAvailable() {
         VersionFeatureManager.assertEnabled("data_packs");
+        VersionFeatureManager.assertEnabled("command.datapack");
     }
 }

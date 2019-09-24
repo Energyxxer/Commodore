@@ -15,12 +15,14 @@ public class ExecuteStoreScore extends ExecuteStore {
     public ExecuteStoreScore(@NotNull StoreValue storeValue, @NotNull LocalScore score) {
         super(storeValue);
         this.score = score;
+
+        score.assertObjectiveNotNull();
     }
 
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + "score " + score.getHolder() + " " + score.getObjective().getName());
+        return new SubCommandResult(execContext, this.getStarter() + "score " + score.holderToString() + " " + score.objectiveToString());
     }
 
     @Override

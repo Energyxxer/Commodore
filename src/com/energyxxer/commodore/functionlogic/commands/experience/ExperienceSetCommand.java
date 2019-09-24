@@ -5,6 +5,8 @@ import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public class ExperienceSetCommand extends ExperienceCommand {
 
     private final int amount;
@@ -19,6 +21,6 @@ public class ExperienceSetCommand extends ExperienceCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "xp set " + player + " " + amount + " " + unit.toString().toLowerCase());
+        return new CommandResolution(execContext, "xp set " + player + " " + amount + " " + unit.toString().toLowerCase(Locale.ENGLISH));
     }
 }

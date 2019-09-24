@@ -21,12 +21,15 @@ public class ExecuteConditionScoreComparison extends ExecuteCondition {
 
         if (target.getHolder() != null) target.getHolder().assertSingle("TARGET_ENTITY");
         if (source.getHolder() != null) target.getHolder().assertSingle("SOURCE_ENTITY");
+
+        target.assertObjectiveNotNull();
+        source.assertObjectiveNotNull();
     }
 
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + "score " + target.getHolder() + " " + target.getObjective().getName() + " " + comparison.getSymbol() + " " + source.getHolder() + " " + source.getObjective().getName());
+        return new SubCommandResult(execContext, this.getStarter() + "score " + target.holderToString() + " " + target.objectiveToString() + " " + comparison.getSymbol() + " " + source.holderToString() + " " + source.objectiveToString());
     }
 
     @Override

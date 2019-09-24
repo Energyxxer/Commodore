@@ -9,11 +9,20 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.FunctionReference;
 import com.energyxxer.commodore.util.TimeSpan;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
+import com.sun.org.apache.regexp.internal.RE;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Locale;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertFunction;
 
 public class ScheduleCommand implements Command {
+
+    public enum ScheduleMode {
+        APPEND,
+        REPLACE
+    }
 
     @NotNull
     private final Type function;
@@ -21,13 +30,25 @@ public class ScheduleCommand implements Command {
     @NotNull
     private final TimeSpan delay;
 
+    @NotNull
+    private final ScheduleMode mode;
+
     public ScheduleCommand(@NotNull Function function, @NotNull TimeSpan delay) {
-        this(new FunctionReference(function), delay);
+        this(function, delay, ScheduleMode.REPLACE);
+    }
+
+    public ScheduleCommand(@NotNull Function function, @NotNull TimeSpan delay, @NotNull ScheduleMode mode) {
+        this(new FunctionReference(function), delay, mode);
     }
 
     public ScheduleCommand(@NotNull Type function, @NotNull TimeSpan delay) {
+        this(function, delay, ScheduleMode.REPLACE);
+    }
+
+    public ScheduleCommand(@NotNull Type function, @NotNull TimeSpan delay, @NotNull ScheduleMode mode) {
         this.function = function;
         this.delay = delay;
+        this.mode = mode;
 
         assertFunction(function);
 
@@ -36,11 +57,17 @@ public class ScheduleCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "schedule function " + function + " " + delay);
+        return new CommandResolution(execContext, "schedule function " + function + " " + delay + (mode == ScheduleMode.REPLACE ? "" : " " + mode.toString().toLowerCase(Locale.ENGLISH)));
     }
 
     @Override
     public void onAppend(FunctionSection section, ExecutionContext execContext) {
         Command.super.onAppend(section, execContext);
+    }
+
+    @Override
+    public void assertAvailable() {
+        VersionFeatureManager.assertEnabled("command.schedule");
+        if(mode != ScheduleMode.REPLACE) VersionFeatureManager.assertEnabled("command.schedule_function_append");
     }
 }

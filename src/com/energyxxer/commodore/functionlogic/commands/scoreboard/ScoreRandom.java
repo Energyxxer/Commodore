@@ -18,12 +18,12 @@ public class ScoreRandom implements Command {
         this.min = min;
         this.max = max;
 
-        score.assertNotNull();
+        score.assertObjectiveNotNull();
     }
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "scoreboard players random " + score.getHolder() + " " + score.getObjective().getName() + " " + min + " " + max);
+        return new CommandResolution(execContext, "scoreboard players random " + score.holderToString() + " " + score.objectiveToString() + " " + min + " " + max);
     }
 
     @Override

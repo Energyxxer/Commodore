@@ -15,12 +15,12 @@ public class ScoreSet implements Command {
         this.score = score;
         this.value = value;
 
-        score.assertNotNull();
+        score.assertObjectiveNotNull();
     }
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "scoreboard players set " + score.getHolder() + " " + score.getObjective().getName() + " " + value);
+        return new CommandResolution(execContext, "scoreboard players set " + score.holderToString() + " " + score.objectiveToString() + " " + value);
     }
 
 }

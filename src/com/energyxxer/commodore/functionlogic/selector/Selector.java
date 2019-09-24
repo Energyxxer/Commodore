@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.selector;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
@@ -427,6 +428,14 @@ public class Selector implements Entity, Cloneable {
         }
 
         return base.getPlayer().getValue();
+    }
+
+    @Override
+    public void assertGameProfile(String causeKey) {
+        assertPlayer(causeKey);
+        if(base == BaseSelector.SENDER && args.isEmpty()) {
+            throw new CommodoreException(CommodoreException.Source.ENTITY_ERROR, "Provided entity '" + this + "' is not a valid game profile (don't look at me, it's mojang's fault!)", this, causeKey);
+        }
     }
 
     public ExecutionVariableMap getUsedExecutionVariables() {

@@ -4,6 +4,8 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
+
 public abstract class ExecuteCondition implements ExecuteModifier {
     public enum ConditionType {
         IF, UNLESS
@@ -18,7 +20,7 @@ public abstract class ExecuteCondition implements ExecuteModifier {
 
     @NotNull
     protected String getStarter() {
-        return type.toString().toLowerCase() + " ";
+        return type.toString().toLowerCase(Locale.ENGLISH) + " ";
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public abstract class LootCondition {
@@ -138,12 +139,12 @@ public abstract class LootCondition {
         @Override
         public JsonObject construct() {
             JsonObject object = super.construct();
-            object.addProperty("entity", entity.toString().toLowerCase());
+            object.addProperty("entity", entity.toString().toLowerCase(Locale.ENGLISH));
             if(!properties.isEmpty()) {
                 JsonObject list = new JsonObject();
                 object.add("properties", list);
                 for(Map.Entry<Property, Boolean> pair : properties.entrySet()) {
-                    list.addProperty(pair.getKey().toString().toLowerCase(), pair.getValue());
+                    list.addProperty(pair.getKey().toString().toLowerCase(Locale.ENGLISH), pair.getValue());
                 }
             }
             return object;
@@ -189,7 +190,7 @@ public abstract class LootCondition {
         @Override
         public JsonObject construct() {
             JsonObject object = super.construct();
-            object.addProperty("entity", entity.toString().toLowerCase());
+            object.addProperty("entity", entity.toString().toLowerCase(Locale.ENGLISH));
             if(!scores.isEmpty()) {
                 JsonObject list = new JsonObject();
                 object.add("scores", list);
