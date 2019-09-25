@@ -26,4 +26,8 @@ public class ScoreList implements Command {
         return (entity != null) ? new CommandResolution(execContext, "scoreboard players list " + entity) : new CommandResolution(execContext, "scoreboard players list");
     }
 
+    @Override
+    public void assertAvailable() {
+        if(entity != null) entity.assertAvailable();
+    }
 }

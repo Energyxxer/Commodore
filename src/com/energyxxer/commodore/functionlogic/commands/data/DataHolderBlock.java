@@ -21,4 +21,8 @@ public class DataHolderBlock implements DataHolder {
 
     public void assertAvailable() {
     }
+
+    public CoordinateSet getPos() {
+        return pos;
+    }
 }

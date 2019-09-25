@@ -24,4 +24,8 @@ public class LootReplaceEntity implements LootCommand.LootDestination {
     public CommandDelegateResolution resolve() {
         return new CommandDelegateResolution("replace entity " + entity + " " + slot);
     }
+
+    public void assertAvailable() {
+        entity.assertAvailable();
+    }
 }

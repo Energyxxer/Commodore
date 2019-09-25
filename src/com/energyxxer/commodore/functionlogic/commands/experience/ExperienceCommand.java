@@ -18,4 +18,8 @@ public abstract class ExperienceCommand implements Command {
         player.assertPlayer();
     }
 
+    @Override
+    public void assertAvailable() {
+        player.assertAvailable();
+    }
 }

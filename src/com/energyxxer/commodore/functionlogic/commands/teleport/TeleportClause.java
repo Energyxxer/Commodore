@@ -5,4 +5,6 @@ import org.jetbrains.annotations.NotNull;
 public interface TeleportClause {
     @NotNull
     String getRaw();
+
+    default void assertAvailable() {}
 }

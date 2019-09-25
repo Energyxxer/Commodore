@@ -49,4 +49,11 @@ public class TeleportCommand implements Command {
 
         return new CommandResolution(execContext, str);
     }
+
+    @Override
+    public void assertAvailable() {
+        if(victim != null) victim.assertAvailable();
+        destination.assertAvailable();
+        if(facing != null) facing.assertAvailable();
+    }
 }

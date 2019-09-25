@@ -29,4 +29,8 @@ public class EntityFacing implements TeleportFacing {
         return "facing entity " + entity + " " + anchor.toString().toLowerCase(Locale.ENGLISH);
     }
 
+    @Override
+    public void assertAvailable() {
+        entity.assertAvailable();
+    }
 }

@@ -23,4 +23,8 @@ public class ScoreAdd implements Command {
         return new CommandResolution(execContext, "scoreboard players " + ((delta >= 0) ? "add" : "remove") + " " + score.holderToString() + " " + score.objectiveToString() + " " + Math.abs(delta));
     }
 
+    @Override
+    public void assertAvailable() {
+        score.assertAvailable();
+    }
 }

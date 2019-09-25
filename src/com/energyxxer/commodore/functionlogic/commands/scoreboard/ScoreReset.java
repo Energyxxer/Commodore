@@ -43,4 +43,8 @@ public class ScoreReset implements Command {
         return new CommandResolution(execContext, sb.toString());
     }
 
+    @Override
+    public void assertAvailable() {
+        score.assertAvailable();
+    }
 }

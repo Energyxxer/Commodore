@@ -23,4 +23,7 @@ public interface SelectorArgument extends Cloneable {
         if(!isRepeatable() && !selector.getArgumentsByKey(getKey()).isEmpty())
             throw new CommodoreException(CommodoreException.Source.SELECTOR_ERROR, "Only one '" + getKey() + "' argument is allowed per selector", selector);
     }
+
+    default void assertAvailable() {
+    }
 }

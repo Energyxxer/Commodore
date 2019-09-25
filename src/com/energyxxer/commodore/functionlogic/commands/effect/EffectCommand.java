@@ -12,4 +12,8 @@ public abstract class EffectCommand implements Command {
         this.entity = entity;
     }
 
+    @Override
+    public void assertAvailable() {
+        entity.assertAvailable();
+    }
 }

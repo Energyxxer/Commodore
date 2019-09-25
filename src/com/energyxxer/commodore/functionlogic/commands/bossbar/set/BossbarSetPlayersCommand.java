@@ -28,4 +28,10 @@ public class BossbarSetPlayersCommand extends BossbarSetCommand {
         return players != null ? new CommandResolution(execContext, getBase() + "players " + players)
                 : new CommandResolution(execContext, getBase() + "players");
     }
+
+    @Override
+    public void assertAvailable() {
+        super.assertAvailable();
+        if(players != null) players.assertAvailable();
+    }
 }

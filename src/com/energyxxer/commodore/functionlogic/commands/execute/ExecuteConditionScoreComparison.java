@@ -61,4 +61,10 @@ public class ExecuteConditionScoreComparison extends ExecuteCondition {
     public LocalScore getSource() {
         return source;
     }
+
+    @Override
+    public void assertAvailable() {
+        target.assertAvailable();
+        source.assertAvailable();
+    }
 }

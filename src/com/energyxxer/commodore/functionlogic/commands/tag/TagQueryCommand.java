@@ -20,4 +20,8 @@ public class TagQueryCommand implements Command {
         return new CommandResolution(execContext, "tag " + entity + " list");
     }
 
+    @Override
+    public void assertAvailable() {
+        entity.assertAvailable();
+    }
 }

@@ -23,4 +23,8 @@ public class ScoreSet implements Command {
         return new CommandResolution(execContext, "scoreboard players set " + score.holderToString() + " " + score.objectiveToString() + " " + value);
     }
 
+    @Override
+    public void assertAvailable() {
+        score.assertAvailable();
+    }
 }

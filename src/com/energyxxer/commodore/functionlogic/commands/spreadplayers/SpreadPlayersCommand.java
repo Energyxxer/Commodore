@@ -40,4 +40,8 @@ public class SpreadPlayersCommand implements Command {
         return new CommandResolution(execContext, "spreadplayers " + center.getXZAs(Coordinate.DisplayMode.ENTITY_POS) + " " + CommandUtils.numberToPlainString(spreadDistance) + " " + CommandUtils.numberToPlainString(maxRange) + " " + respectTeams + " " + targets);
     }
 
+    @Override
+    public void assertAvailable() {
+        targets.assertAvailable();
+    }
 }

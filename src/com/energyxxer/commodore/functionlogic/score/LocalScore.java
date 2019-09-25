@@ -86,4 +86,8 @@ public class LocalScore {
             throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Unexpected wildcard objective", this);
         }
     }
+
+    public void assertAvailable() {
+        if(holder != null) holder.assertAvailable();
+    }
 }

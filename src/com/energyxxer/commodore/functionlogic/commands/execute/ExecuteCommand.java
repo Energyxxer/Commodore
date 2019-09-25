@@ -48,4 +48,11 @@ public class ExecuteCommand implements Command {
         chainedCommand.onAppend(section, new ExecutionContext(execContext.getOriginalSender(), this.modifiers));
     }
 
+    @Override
+    public void assertAvailable() {
+        for(ExecuteModifier modifier : modifiers) {
+            modifier.assertAvailable();
+        }
+        chainedCommand.assertAvailable();
+    }
 }

@@ -26,4 +26,9 @@ public class TeamJoinCommand extends TeamCommand {
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         return (entity != null) ? new CommandResolution(execContext, "team join " + reference + " " + entity) : new CommandResolution(execContext, "team join " + reference);
     }
+
+    @Override
+    public void assertAvailable() {
+        if(entity != null) entity.assertAvailable();
+    }
 }

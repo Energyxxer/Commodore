@@ -37,4 +37,9 @@ public class EnchantCommand implements Command {
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "enchant " + entity + " " + enchantment + " " + level);
     }
+
+    @Override
+    public void assertAvailable() {
+        entity.assertAvailable();
+    }
 }

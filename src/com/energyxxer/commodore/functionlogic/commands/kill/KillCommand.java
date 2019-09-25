@@ -25,4 +25,8 @@ public class KillCommand implements Command {
         return entity != null ? new CommandResolution(execContext, "kill " + entity) : new CommandResolution(execContext, "kill");
     }
 
+    @Override
+    public void assertAvailable() {
+        if(entity != null) entity.assertAvailable();
+    }
 }

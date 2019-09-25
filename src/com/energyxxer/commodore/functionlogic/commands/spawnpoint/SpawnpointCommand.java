@@ -37,4 +37,8 @@ public class SpawnpointCommand implements Command {
                 new CommandResolution(execContext, "spawnpoint");
     }
 
+    @Override
+    public void assertAvailable() {
+        if(player != null) player.assertAvailable();
+    }
 }

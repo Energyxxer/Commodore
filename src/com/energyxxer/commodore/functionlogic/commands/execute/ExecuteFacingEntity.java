@@ -60,4 +60,9 @@ public class ExecuteFacingEntity implements ExecuteModifier {
     public EntityAnchor getAnchor() {
         return anchor;
     }
+
+    @Override
+    public void assertAvailable() {
+        entity.assertAvailable();
+    }
 }

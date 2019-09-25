@@ -37,4 +37,8 @@ public class RecipeCommand implements Command {
         return new CommandResolution(execContext, "recipe " + action.toString().toLowerCase(Locale.ENGLISH) + " " + player + " " + recipeName);
     }
 
+    @Override
+    public void assertAvailable() {
+        player.assertAvailable();
+    }
 }

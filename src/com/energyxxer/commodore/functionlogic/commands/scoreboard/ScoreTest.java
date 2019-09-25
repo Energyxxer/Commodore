@@ -32,5 +32,6 @@ public class ScoreTest implements Command {
     @Override
     public void assertAvailable() {
         VersionFeatureManager.assertEnabled("command.scoreboard_test");
+        score.assertAvailable();
     }
 }

@@ -46,4 +46,9 @@ public class ExecutePositionedAsEntity implements ExecuteModifier {
     public Entity getEntity() {
         return entity;
     }
+
+    @Override
+    public void assertAvailable() {
+        entity.assertAvailable();
+    }
 }

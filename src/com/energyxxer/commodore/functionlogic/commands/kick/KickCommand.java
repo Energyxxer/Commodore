@@ -33,5 +33,6 @@ public class KickCommand implements Command {
     @Override
     public void assertAvailable() {
         VersionFeatureManager.assertEnabled("command.kick");
+        player.assertAvailable();
     }
 }

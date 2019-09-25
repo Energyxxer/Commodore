@@ -17,4 +17,9 @@ public class LootFromKill implements LootCommand.LootSource {
     public CommandDelegateResolution resolve() {
         return new CommandDelegateResolution("kill " + entity);
     }
+
+    @Override
+    public void assertAvailable() {
+        entity.assertAvailable();
+    }
 }

@@ -31,5 +31,6 @@ public class TriggerEnable implements Command {
     @Override
     public void assertAvailable() {
         VersionFeatureManager.assertEnabled("command.trigger");
+        player.assertAvailable();
     }
 }

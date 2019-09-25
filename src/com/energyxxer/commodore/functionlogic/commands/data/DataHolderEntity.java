@@ -21,5 +21,10 @@ public class DataHolderEntity implements DataHolder {
     }
 
     public void assertAvailable() {
+        entity.assertAvailable();
+    }
+
+    public Entity getEntity() {
+        return entity;
     }
 }

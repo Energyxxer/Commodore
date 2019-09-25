@@ -29,5 +29,6 @@ public class ScoreRandom implements Command {
     @Override
     public void assertAvailable() {
         VersionFeatureManager.assertEnabled("command.scoreboard_random");
+        score.assertAvailable();
     }
 }

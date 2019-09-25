@@ -44,4 +44,9 @@ public class ExecuteStoreScore extends ExecuteStore {
     public LocalScore getScore() {
         return score;
     }
+
+    @Override
+    public void assertAvailable() {
+        score.assertAvailable();
+    }
 }

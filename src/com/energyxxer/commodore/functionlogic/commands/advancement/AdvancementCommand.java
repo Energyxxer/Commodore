@@ -83,5 +83,6 @@ public class AdvancementCommand implements Command {
     @Override
     public void assertAvailable() {
         VersionFeatureManager.assertEnabled("advancements");
+        player.assertAvailable();
     }
 }

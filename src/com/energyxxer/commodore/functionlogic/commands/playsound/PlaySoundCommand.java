@@ -95,4 +95,8 @@ public class PlaySoundCommand implements Command {
                         : ""));
     }
 
+    @Override
+    public void assertAvailable() {
+        if(player != null) player.assertAvailable();
+    }
 }

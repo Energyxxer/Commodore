@@ -461,6 +461,13 @@ public class Selector implements Entity, Cloneable {
     }
 
     @Override
+    public void assertAvailable() {
+        for(SelectorArgument arg : args) {
+            arg.assertAvailable();
+        }
+    }
+
+    @Override
     public Entity limitToOne() {
         Selector newSelector = this.clone();
         if(newSelector.getLimit() != 1) {

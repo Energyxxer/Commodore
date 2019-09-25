@@ -29,8 +29,8 @@ public interface Command extends FunctionWriter {
 
     @Override
     default void onAppend(@NotNull FunctionSection section) {
-        this.onAppend(section, section.getExecutionContext());
         assertAvailable();
+        this.onAppend(section, section.getExecutionContext());
     }
 
     /**

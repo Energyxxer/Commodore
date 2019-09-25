@@ -27,4 +27,7 @@ public interface ExecuteModifier {
     default ExecutionVariableMap getModifiedExecutionVariables() {
         return null;
     }
+
+    default void assertAvailable() {
+    }
 }

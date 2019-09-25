@@ -41,4 +41,8 @@ public class ReplaceItemEntityCommand extends ReplaceItemCommand {
         return new CommandResolution(execContext, "replaceitem entity " + entity + " " + slot + " " + item + (count != 1 ? " " + count : ""));
     }
 
+    @Override
+    public void assertAvailable() {
+        entity.assertAvailable();
+    }
 }

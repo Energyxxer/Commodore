@@ -18,4 +18,8 @@ public class EntityDestination implements TeleportDestination {
         return entity.toString();
     }
 
+    @Override
+    public void assertAvailable() {
+        entity.assertAvailable();
+    }
 }

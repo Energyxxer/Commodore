@@ -55,4 +55,8 @@ public class StopSoundCommand implements Command {
                 ));
     }
 
+    @Override
+    public void assertAvailable() {
+        player.assertAvailable();
+    }
 }

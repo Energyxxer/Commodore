@@ -68,4 +68,9 @@ public class ScorePlayersOperation implements Command {
         return new CommandResolution(execContext, "scoreboard players operation " + target.holderToString() + " " + target.objectiveToString() + " " + operation.getShorthand() + " " + source.holderToString() + " " + source.objectiveToString());
     }
 
+    @Override
+    public void assertAvailable() {
+        target.assertAvailable();
+        source.assertAvailable();
+    }
 }

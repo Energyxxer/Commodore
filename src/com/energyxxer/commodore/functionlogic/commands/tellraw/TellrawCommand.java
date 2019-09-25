@@ -26,4 +26,8 @@ public class TellrawCommand implements Command {
         return new CommandResolution(execContext, "tellraw " + player + " " + raw);
     }
 
+    @Override
+    public void assertAvailable() {
+        player.assertAvailable();
+    }
 }

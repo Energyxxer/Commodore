@@ -122,6 +122,9 @@ public interface Entity extends Cloneable {
         if(getLimit() != 1) throw new CommodoreException(CommodoreException.Source.ENTITY_ERROR, "Provided entity '" + this + "' includes multiple entities, expected at most one", this, causeKey);
     }
 
+    default void assertAvailable() {
+    }
+
     @NotNull
     String toString();
 

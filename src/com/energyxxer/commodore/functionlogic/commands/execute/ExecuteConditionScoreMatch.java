@@ -51,4 +51,9 @@ public class ExecuteConditionScoreMatch extends ExecuteCondition {
     public NumberRange<Integer> getRange() {
         return range;
     }
+
+    @Override
+    public void assertAvailable() {
+        target.assertAvailable();
+    }
 }

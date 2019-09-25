@@ -33,4 +33,8 @@ public class GamemodeCommand implements Command {
         return player != null ? new CommandResolution(execContext, "gamemode " + gamemode + " " + player) : new CommandResolution(execContext, "gamemode " + gamemode);
     }
 
+    @Override
+    public void assertAvailable() {
+        if (player != null) player.assertAvailable();
+    }
 }

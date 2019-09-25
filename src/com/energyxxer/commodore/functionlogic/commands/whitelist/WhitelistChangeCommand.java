@@ -21,4 +21,10 @@ public abstract class WhitelistChangeCommand extends WhitelistCommand {
     }
 
     protected abstract String getSubCommand();
+
+    @Override
+    public void assertAvailable() {
+        super.assertAvailable();
+        profile.assertAvailable();
+    }
 }

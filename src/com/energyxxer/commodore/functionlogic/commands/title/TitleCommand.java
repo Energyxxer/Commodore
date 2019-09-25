@@ -14,4 +14,8 @@ public abstract class TitleCommand implements Command {
         player.assertPlayer();
     }
 
+    @Override
+    public void assertAvailable() {
+        player.assertAvailable();
+    }
 }

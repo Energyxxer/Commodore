@@ -25,5 +25,6 @@ public class PardonCommand implements Command {
     @Override
     public void assertAvailable() {
         VersionFeatureManager.assertEnabled("server_commands");
+        profile.assertAvailable();
     }
 }

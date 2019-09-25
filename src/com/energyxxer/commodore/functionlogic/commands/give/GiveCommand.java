@@ -37,4 +37,8 @@ public class GiveCommand implements Command {
         return new CommandResolution(execContext, "give " + player + " " + item + (count != 1 ? " " + count : ""));
     }
 
+    @Override
+    public void assertAvailable() {
+        player.assertAvailable();
+    }
 }

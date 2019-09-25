@@ -100,4 +100,8 @@ public class ParticleCommand implements Command {
         return new CommandResolution(execContext, sb.toString().trim());
     }
 
+    @Override
+    public void assertAvailable() {
+        if(viewers != null) viewers.assertAvailable();
+    }
 }

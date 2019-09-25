@@ -1,7 +1,6 @@
 package com.energyxxer.commodoretest;
 
 import com.energyxxer.commodore.CommandUtils;
-import com.energyxxer.commodore.functionlogic.commands.ban.BanCommand;
 import com.energyxxer.commodore.functionlogic.commands.clear.ClearCommand;
 import com.energyxxer.commodore.functionlogic.commands.data.DataModifyCommand;
 import com.energyxxer.commodore.functionlogic.commands.data.ModifySourceFromEntity;
@@ -87,6 +86,7 @@ public class V114Test {
         function.append(new KillCommand(new PlayerName("a b")));
         function.append(new KillCommand(new PlayerName("a=b")));
         function.append(new ScoreSet(new LocalScore(new PlayerName("a=b"), module.getObjectiveManager().get("obj")), 1));
+        //function.append(new KillCommand(new Selector(ALL_ENTITIES, new PredicateArgument(new PredicateReference(module.getNamespace("iet"), "fire")))));
         //function.append(new ScoreSet(new LocalScore(new PlayerName("a b"), module.getObjectiveManager().get("obj")), 1));
 
 

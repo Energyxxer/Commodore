@@ -17,4 +17,9 @@ public class TeamLeaveCommand extends TeamCommand {
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "team leave " + entity);
     }
+
+    @Override
+    public void assertAvailable() {
+        entity.assertAvailable();
+    }
 }

@@ -31,4 +31,8 @@ public class TagCommand implements Command {
         return new CommandResolution(execContext, "tag " + entity + " " + action.toString().toLowerCase(Locale.ENGLISH) + " " + tag);
     }
 
+    @Override
+    public void assertAvailable() {
+        entity.assertAvailable();
+    }
 }

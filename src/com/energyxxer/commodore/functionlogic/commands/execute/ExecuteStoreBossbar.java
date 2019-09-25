@@ -2,6 +2,7 @@ package com.energyxxer.commodore.functionlogic.commands.execute;
 
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.types.Type;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
@@ -59,5 +60,10 @@ public class ExecuteStoreBossbar extends ExecuteStore {
     @NotNull
     public BossbarVariable getVariable() {
         return variable;
+    }
+
+    @Override
+    public void assertAvailable() {
+        VersionFeatureManager.assertEnabled("bossbars");
     }
 }

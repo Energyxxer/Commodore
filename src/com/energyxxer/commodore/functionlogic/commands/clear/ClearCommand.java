@@ -46,5 +46,6 @@ public class ClearCommand implements Command {
     @Override
     public void assertAvailable() {
         if (item != null) item.assertAvailable();
+        if (player != null) player.assertAvailable();
     }
 }

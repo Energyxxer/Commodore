@@ -19,4 +19,9 @@ public class LootGive implements LootCommand.LootDestination {
     public CommandDelegateResolution resolve() {
         return new CommandDelegateResolution("give " + players);
     }
+
+    @Override
+    public void assertAvailable() {
+        players.assertAvailable();
+    }
 }

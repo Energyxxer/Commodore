@@ -33,14 +33,24 @@ public class LootCommand implements Command {
         return new CommandResolution(execContext, sb.toString());
     }
 
+    @Override
+    public void assertAvailable() {
+        destination.assertAvailable();
+        source.assertAvailable();
+    }
+
     public interface LootDestination {
         @NotNull
         CommandDelegateResolution resolve();
+
+        default void assertAvailable() {}
     }
 
     public interface LootSource {
         @NotNull
         CommandDelegateResolution resolve();
+
+        default void assertAvailable() {}
     }
 
 }
