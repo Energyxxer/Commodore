@@ -27,6 +27,7 @@
     },
     "entity": {
       "use_namespace": true,
+      "tag_directory": "entity_types",
       "import_from": "definitions/entities"
     },
     "block_entity": {

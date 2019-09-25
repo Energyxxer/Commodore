@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.tags;
 
-import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.module.Namespace;
 import org.jetbrains.annotations.NotNull;
 
@@ -37,6 +36,20 @@ public class TagGroup<T extends Tag> {
         this.tags.add(tag);
 
         return tag;
+    }
+
+    /**
+     * Checks if a tag by the given name exists
+     *
+     * @param name The name to check if it exists.
+     *
+     * @return true if this group contains the given name, false otherwise
+     * */
+    public boolean exists(@NotNull String name) {
+        for(T value : tags) {
+            if(value.getName().equals(name)) return true;
+        }
+        return false;
     }
 
     public T get(@NotNull String name) {
