@@ -46,7 +46,7 @@ public class ExecuteStoreDataHolder extends ExecuteStore {
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + holder + " " + path + " " + type.toString().toLowerCase(Locale.ENGLISH) + " " + CommandUtils.numberToPlainString(scale));
+        return new SubCommandResult(execContext, this.getStarter() + holder.resolve() + " " + path + " " + type.toString().toLowerCase(Locale.ENGLISH) + " " + CommandUtils.numberToPlainString(scale));
     }
 
     @Override

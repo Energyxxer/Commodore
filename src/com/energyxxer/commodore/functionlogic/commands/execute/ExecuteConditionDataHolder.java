@@ -22,7 +22,7 @@ public class ExecuteConditionDataHolder extends ExecuteCondition {
 
     @Override
     public @NotNull SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + "data " + holder + " " + path);
+        return new SubCommandResult(execContext, this.getStarter() + "data " + holder.resolve() + " " + path);
     }
 
     @Override
