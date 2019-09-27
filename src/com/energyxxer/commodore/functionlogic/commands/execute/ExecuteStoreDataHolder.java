@@ -1,8 +1,8 @@
 package com.energyxxer.commodore.functionlogic.commands.execute;
 
 import com.energyxxer.commodore.CommandUtils;
-import com.energyxxer.commodore.functionlogic.commands.data.DataHolder;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
+import com.energyxxer.commodore.functionlogic.nbt.DataHolder;
 import com.energyxxer.commodore.functionlogic.nbt.NumericNBTType;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import org.jetbrains.annotations.NotNull;

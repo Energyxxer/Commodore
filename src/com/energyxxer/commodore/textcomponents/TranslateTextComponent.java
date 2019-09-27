@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.textcomponents;
 
 import com.energyxxer.commodore.CommandUtils;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -56,5 +57,11 @@ public class TranslateTextComponent extends TextComponent {
                 withText +
                 (baseProperties != null ? "," + baseProperties : "") +
                 '}';
+    }
+
+    @Override
+    public void assertAvailable() {
+        VersionFeatureManager.assertEnabled("textcomponent.translate");
+        super.assertAvailable();
     }
 }

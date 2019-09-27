@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.functionlogic.commands.execute;
 
-import com.energyxxer.commodore.functionlogic.commands.data.DataHolderEntity;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
+import com.energyxxer.commodore.functionlogic.nbt.DataHolderEntity;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import org.jetbrains.annotations.NotNull;
 

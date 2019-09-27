@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.data;
 
+import com.energyxxer.commodore.functionlogic.nbt.DataHolder;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

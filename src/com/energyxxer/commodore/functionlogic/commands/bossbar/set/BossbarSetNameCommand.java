@@ -22,4 +22,10 @@ public class BossbarSetNameCommand extends BossbarSetCommand {
         String displayName = name.toString();
         return new CommandResolution(execContext, base + displayName);
     }
+
+    @Override
+    public void assertAvailable() {
+        super.assertAvailable();
+        name.assertAvailable();
+    }
 }

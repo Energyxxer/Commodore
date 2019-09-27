@@ -54,6 +54,7 @@ public class Objective {
         }
         this.type = type;
         this.displayName = displayName;
+        if(displayName != null) displayName.assertAvailable();
         this.field = field;
     }
 

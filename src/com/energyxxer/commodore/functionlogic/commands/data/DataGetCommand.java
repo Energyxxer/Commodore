@@ -1,11 +1,13 @@
 package com.energyxxer.commodore.functionlogic.commands.data;
 
 import com.energyxxer.commodore.CommandUtils;
-import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
+import com.energyxxer.commodore.functionlogic.nbt.DataHolder;
+import com.energyxxer.commodore.functionlogic.nbt.DataHolderBlock;
+import com.energyxxer.commodore.functionlogic.nbt.DataHolderEntity;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

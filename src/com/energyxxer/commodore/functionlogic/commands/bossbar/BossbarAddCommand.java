@@ -38,4 +38,10 @@ public class BossbarAddCommand extends BossbarCommand {
 
         return new CommandResolution(execContext, base + "\"" + CommandUtils.escape(bossbar.toString()) + "\"");
     }
+
+    @Override
+    public void assertAvailable() {
+        super.assertAvailable();
+        if(name != null) name.assertAvailable();
+    }
 }

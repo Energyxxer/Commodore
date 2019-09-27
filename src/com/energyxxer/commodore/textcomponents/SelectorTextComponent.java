@@ -2,6 +2,7 @@ package com.energyxxer.commodore.textcomponents;
 
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -33,4 +34,10 @@ public class SelectorTextComponent extends TextComponent {
                         '}';
     }
 
+    @Override
+    public void assertAvailable() {
+        VersionFeatureManager.assertEnabled("textcomponent.selector");
+        super.assertAvailable();
+        entity.assertAvailable();
+    }
 }

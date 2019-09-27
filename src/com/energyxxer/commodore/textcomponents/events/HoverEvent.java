@@ -34,4 +34,9 @@ public class HoverEvent extends TextEvent {
                 (value instanceof TextComponent ? value.toString() : "\"" + CommandUtils.escape(value.toString()) + "\"") +
                 "}";
     }
+
+    @Override
+    public void assertAvailable() {
+        if(value instanceof TextComponent) ((TextComponent) value).assertAvailable();
+    }
 }

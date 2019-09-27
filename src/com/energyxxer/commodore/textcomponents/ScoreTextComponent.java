@@ -2,6 +2,7 @@ package com.energyxxer.commodore.textcomponents;
 
 import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.score.LocalScore;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 
 public class ScoreTextComponent extends TextComponent {
@@ -38,4 +39,10 @@ public class ScoreTextComponent extends TextComponent {
                 '}';
     }
 
+    @Override
+    public void assertAvailable() {
+        VersionFeatureManager.assertEnabled("textcomponent.score");
+        super.assertAvailable();
+        score.assertAvailable();
+    }
 }

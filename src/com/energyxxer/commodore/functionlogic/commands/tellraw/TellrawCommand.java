@@ -29,5 +29,6 @@ public class TellrawCommand implements Command {
     @Override
     public void assertAvailable() {
         player.assertAvailable();
+        message.assertAvailable();
     }
 }

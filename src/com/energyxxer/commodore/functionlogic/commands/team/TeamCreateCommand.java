@@ -19,7 +19,7 @@ public class TeamCreateCommand extends TeamCommand {
     }
 
     public TeamCreateCommand(@NotNull TeamReference reference, @Nullable String displayName) {
-        this(reference, new StringTextComponent(displayName));
+        this(reference, displayName != null ? new StringTextComponent(displayName) : null);
     }
 
     public TeamCreateCommand(@NotNull TeamReference reference, @Nullable TextComponent displayName) {
@@ -30,5 +30,10 @@ public class TeamCreateCommand extends TeamCommand {
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "team add " + reference + ((displayName != null) ? " " + displayName : ""));
+    }
+
+    @Override
+    public void assertAvailable() {
+        if(displayName != null) displayName.assertAvailable();
     }
 }

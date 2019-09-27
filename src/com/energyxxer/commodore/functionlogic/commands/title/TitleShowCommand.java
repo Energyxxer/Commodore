@@ -30,4 +30,8 @@ public class TitleShowCommand extends TitleCommand {
         return new CommandResolution(execContext, "title " + player + " " + display.toString().toLowerCase(Locale.ENGLISH) + " " + raw);
     }
 
+    @Override
+    public void assertAvailable() {
+        message.assertAvailable();
+    }
 }

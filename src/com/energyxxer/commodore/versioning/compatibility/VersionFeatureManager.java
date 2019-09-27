@@ -56,6 +56,13 @@ public class VersionFeatureManager {
         j1_13f.put("command.weather_query", false);
         j1_13f.put("add.entity", false);
         j1_13f.put("add.particle", false);
+        j1_13f.put("textcomponent.text", true);
+        j1_13f.put("textcomponent.styles", true);
+        j1_13f.put("textcomponent.translate", true);
+        j1_13f.put("textcomponent.keybind", true);
+        j1_13f.put("textcomponent.list", true);
+        j1_13f.put("textcomponent.selector", true);
+        j1_13f.put("textcomponent.score", true);
 
         featureMap.put(new JavaEditionVersion(1, 13, 0), j1_13f);
         featureMap.put(new JavaEditionVersion(1, 13, 1), j1_13f);
@@ -70,6 +77,7 @@ public class VersionFeatureManager {
         j1_14f.put("command.kick", true);
         j1_14f.put("server_commands", true);
         j1_14f.put("command.data_modify", true);
+        j1_14f.put("textcomponent.nbt", true);
 
         VersionFeatures j1_15f = j1_14f.duplicate();
         j1_15f.put("command.data.storage", true);
@@ -118,6 +126,8 @@ public class VersionFeatureManager {
         b1_11f.put("command.weather_query", true);
         b1_11f.put("add.entity", true);
         b1_11f.put("add.particle", true);
+        b1_11f.put("textcomponent.text", true);
+        b1_11f.put("textcomponent.translate", true);
 
         featureMap.put(new BedrockEditionVersion(1, 11, 0), b1_11f);
         featureMap.put(new BedrockEditionVersion(1, 11, 1), b1_11f);

@@ -4,6 +4,7 @@ import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import com.energyxxer.commodore.functionlogic.score.LocalScore;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -83,6 +84,15 @@ public abstract class TextComponent {
         }
         return sb.toString();
     }
+
+    public void assertAvailable() {
+        if(supportsProperties() && style != TextStyle.EMPTY_STYLE) {
+            VersionFeatureManager.assertEnabled("textcomponent.styles");
+        }
+        for(TextEvent event : events) {
+            event.assertAvailable();
+        }
+    };
 
     public abstract String toString(TextStyle parentStyle);
 

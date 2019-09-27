@@ -4,6 +4,9 @@ import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
+import com.energyxxer.commodore.functionlogic.nbt.DataHolder;
+import com.energyxxer.commodore.functionlogic.nbt.DataHolderBlock;
+import com.energyxxer.commodore.functionlogic.nbt.DataHolderEntity;
 import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
 import org.jetbrains.annotations.NotNull;
 

@@ -7,7 +7,6 @@ import com.energyxxer.commodore.textcomponents.TextColor;
 import com.energyxxer.commodore.textcomponents.TextComponent;
 import com.energyxxer.commodore.types.defaults.TeamReference;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.Locale;
 
@@ -136,6 +135,13 @@ public class TeamModifyCommand extends TeamCommand {
         } else if(value instanceof TextComponent) {
             return value.toString();
         } else return null;
+    }
+
+    @Override
+    public void assertAvailable() {
+        if(value instanceof TextComponent) {
+            ((TextComponent) value).assertAvailable();
+        }
     }
 
     @Override

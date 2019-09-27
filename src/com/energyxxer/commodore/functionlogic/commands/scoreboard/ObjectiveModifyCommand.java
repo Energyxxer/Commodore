@@ -93,4 +93,11 @@ public class ObjectiveModifyCommand implements Command {
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "scoreboard objectives modify " + objective.toString() + " " + key.getArgumentKey() + " " + getValueString());
     }
+
+    @Override
+    public void assertAvailable() {
+        if(value instanceof TextComponent) {
+            ((TextComponent) value).assertAvailable();
+        }
+    }
 }

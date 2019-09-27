@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.textcomponents;
 
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -49,5 +50,14 @@ public class ListTextComponent extends TextComponent {
         sb.append(']');
 
         return sb.toString();
+    }
+
+    @Override
+    public void assertAvailable() {
+        VersionFeatureManager.assertEnabled("textcomponent.list");
+        super.assertAvailable();
+        for(TextComponent tc : children) {
+            tc.assertAvailable();
+        }
     }
 }
