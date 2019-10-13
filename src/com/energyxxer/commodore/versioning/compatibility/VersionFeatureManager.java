@@ -83,8 +83,10 @@ public class VersionFeatureManager {
         j1_15f.put("command.data.storage", true);
         j1_15f.put("command.schedule_clear", true);
         j1_15f.put("command.schedule_function_append", true);
+        j1_15f.put("command.spectate", true);
         j1_15f.put("modifier.condition_predicate", true);
         j1_15f.put("selector.predicate", true);
+        j1_15f.put("click_event.copy_to_clipboard", true);
 
         featureMap.put(new JavaEditionVersion(1, 14, 0), j1_14f);
         featureMap.put(new JavaEditionVersion(1, 14, 1), j1_14f);

@@ -3,6 +3,7 @@ package com.energyxxer.commodore.functionlogic.commands.effect;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
+import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
@@ -14,12 +15,16 @@ public class EffectClearCommand extends EffectCommand {
     @Nullable
     private final Type type;
 
-    public EffectClearCommand(@NotNull Entity entity) {
+    public EffectClearCommand() {
+        this(null);
+    }
+
+    public EffectClearCommand(@Nullable Entity entity) {
         this(entity, null);
     }
 
-    public EffectClearCommand(@NotNull Entity entity, @Nullable Type type) {
-        super(entity);
+    public EffectClearCommand(@Nullable Entity entity, @Nullable Type type) {
+        super(entity != null ? entity : new Selector(Selector.BaseSelector.SENDER));
         this.type = type;
 
         if(type != null) assertEffect(type);
