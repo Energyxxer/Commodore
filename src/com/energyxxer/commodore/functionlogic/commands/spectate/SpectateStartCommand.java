@@ -20,10 +20,10 @@ public class SpectateStartCommand extends SpectateCommand {
         this.target = target;
         this.spectator = spectator;
 
-        target.assertSingle();
+        target.assertSingle("TARGET");
         if (spectator != null) {
-            spectator.assertSingle();
-            spectator.assertPlayer();
+            spectator.assertSingle("SPECTATOR");
+            spectator.assertPlayer("SPECTATOR");
         }
     }
 
