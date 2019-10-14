@@ -27,22 +27,29 @@ public class VersionFeatureManager {
     }
 
     static {
-        CompoundInput source = CompoundInput.Static.chooseInputForClasspath("/featuremaps/", VersionFeatureManager.class);
         try {
-            InputStream in = source.get("/");
-            if (in != null) {
-                BufferedReader br = new BufferedReader(new InputStreamReader(in));
-
-                String filename;
-                while ((filename = br.readLine()) != null) {
-                    loadFeatureMap(new InputStreamReader(source.get(filename)), true);
-                }
-
-                br.close();
-            }
-        } catch(IOException x) {
+            loadDefaultFeatureMaps();
+        } catch (IOException x) {
+            System.err.println("Commodore ERROR: While loading default feature maps:");
             x.printStackTrace();
         }
+    }
+
+    private static void loadDefaultFeatureMaps() throws IOException {
+        CompoundInput source = CompoundInput.Static.chooseInputForClasspath("/featuremaps/", VersionFeatureManager.class);
+        source.open();
+        InputStream in = source.get("");
+        if (in != null) {
+            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
+            String filename;
+            while ((filename = br.readLine()) != null) {
+                loadFeatureMap(new InputStreamReader(source.get(filename)), true);
+            }
+
+            br.close();
+        }
+        source.close();
     }
 
     //Load
