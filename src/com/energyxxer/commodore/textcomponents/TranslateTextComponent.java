@@ -63,5 +63,10 @@ public class TranslateTextComponent extends TextComponent {
     public void assertAvailable() {
         VersionFeatureManager.assertEnabled("textcomponent.translate");
         super.assertAvailable();
+        if(with != null) {
+            for(TextComponent tc : with) {
+                tc.assertAvailable();
+            }
+        }
     }
 }

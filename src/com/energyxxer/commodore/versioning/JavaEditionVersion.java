@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.versioning;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class JavaEditionVersion implements Version {
@@ -12,9 +14,21 @@ public class JavaEditionVersion implements Version {
         this.patch = patch;
     }
 
+    @NotNull
+    @Override
+    public String getEditionString() {
+        return "Java";
+    }
+
+    @NotNull
+    @Override
+    public String getVersionString() {
+        return major + "." + minor + "." + patch;
+    }
+
     @Override
     public String toString() {
-        return "Java Edition " + major + "." + minor + "." + patch;
+        return "Java Edition " + getVersionString();
     }
 
     @Override

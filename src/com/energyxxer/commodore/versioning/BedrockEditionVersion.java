@@ -1,5 +1,7 @@
 package com.energyxxer.commodore.versioning;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class BedrockEditionVersion implements Version {
@@ -12,9 +14,21 @@ public class BedrockEditionVersion implements Version {
         this.patch = patch;
     }
 
+    @NotNull
+    @Override
+    public String getEditionString() {
+        return "Bedrock";
+    }
+
+    @NotNull
+    @Override
+    public String getVersionString() {
+        return major + "." + minor + "." + patch;
+    }
+
     @Override
     public String toString() {
-        return "Bedrock Edition " + major + "." + minor + "." + patch;
+        return "Bedrock Edition " + getVersionString();
     }
 
     @Override

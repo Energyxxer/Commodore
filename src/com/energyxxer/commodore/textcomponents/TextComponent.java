@@ -89,10 +89,13 @@ public abstract class TextComponent {
         if(supportsProperties() && style != TextStyle.EMPTY_STYLE) {
             VersionFeatureManager.assertEnabled("textcomponent.styles");
         }
+        if(extra != null) {
+            extra.assertAvailable();
+        }
         for(TextEvent event : events) {
             event.assertAvailable();
         }
-    };
+    }
 
     public abstract String toString(TextStyle parentStyle);
 

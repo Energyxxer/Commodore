@@ -2,140 +2,96 @@ package com.energyxxer.commodore.versioning.compatibility;
 
 import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
-import com.energyxxer.commodore.versioning.BedrockEditionVersion;
-import com.energyxxer.commodore.versioning.JavaEditionVersion;
+import com.energyxxer.commodore.util.io.CompoundInput;
 import com.energyxxer.commodore.versioning.Version;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 
-import java.util.HashMap;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class VersionFeatureManager {
-    private static final HashMap<Version, VersionFeatures> featureMap = new HashMap<>();
+    private static final ArrayList<VersionFeatures> defaultFeatureMaps = new ArrayList<>();
+    private static final ArrayList<VersionFeatures> featureMaps = new ArrayList<>();
 
     public static VersionFeatures getFeaturesForVersion(Version version) {
-        return featureMap.get(version);
+        for(VersionFeatures feat : featureMaps) {
+            if (version.getEditionString().equalsIgnoreCase(feat.getEdition()) && version.getVersionString().matches(feat.getVersionRegex())) {
+                return feat;
+            }
+        }
+        return null;
     }
 
     static {
-        VersionFeatures j1_13f = new VersionFeatures();
-        j1_13f.put("objectives.max_length", 16);
-        j1_13f.put("identifiers.regex", "[A-Za-z0-9_.\\-+]*");
-        j1_13f.put("identifiers.accept_strings", false);
-        j1_13f.put("objectives.regex", "[A-Za-z0-9_.\\-+]*");
-        j1_13f.put("objectives.accept_strings", false);
-        j1_13f.put("player_names.regex", "[A-Za-z0-9_.\\-+]*");
-        j1_13f.put("player_names.accept_strings", true);
-        j1_13f.put("score_holders.regex", "[^ @][^ ]*");
-        j1_13f.put("score_holders.accept_strings", false);
-        j1_13f.put("game_profiles.regex", "[^ @][^ ]*");
-        j1_13f.put("game_profiles.accept_strings", false);
-        j1_13f.put("ips.regex", "[A-Za-z0-9_.\\-+]*");
-        j1_13f.put("ips.accept_strings", false);
-        j1_13f.put("function.namespace_separator", ":");
-        j1_13f.put("data_packs", true);
-        j1_13f.put("functions", true);
-        j1_13f.put("advancements", true);
-        j1_13f.put("bossbars", true);
-        j1_13f.put("nbt.access", true);
-        j1_13f.put("block.data_values", false);
-        j1_13f.put("block.blockstates", true);
-        j1_13f.put("item.data_values", false);
-        j1_13f.put("scoreboard.criteria", true);
-        j1_13f.put("execute_modifiers", true);
-        j1_13f.put("command.schedule", true);
-        j1_13f.put("command.data_modify", false);
-        j1_13f.put("command.scoreboard_random", false);
-        j1_13f.put("command.scoreboard_test", false);
-        j1_13f.put("command.scoreboard_get", true);
-        j1_13f.put("command.scoreboard_display_sort", false);
-        j1_13f.put("command.trigger", true);
-        j1_13f.put("command.kick", false);
-        j1_13f.put("server_commands", false);
-        j1_13f.put("command.forceload", false);
-        j1_13f.put("command.tickingarea", false);
-        j1_13f.put("command.effect.explicit", true);
-        j1_13f.put("command.weather_query", false);
-        j1_13f.put("add.entity", false);
-        j1_13f.put("add.particle", false);
-        j1_13f.put("textcomponent.text", true);
-        j1_13f.put("textcomponent.styles", true);
-        j1_13f.put("textcomponent.translate", true);
-        j1_13f.put("textcomponent.keybind", true);
-        j1_13f.put("textcomponent.list", true);
-        j1_13f.put("textcomponent.selector", true);
-        j1_13f.put("textcomponent.score", true);
+        CompoundInput source = CompoundInput.Static.chooseInputForClasspath("/featuremaps/", VersionFeatureManager.class);
+        try {
+            InputStream in = source.get("/");
+            if (in != null) {
+                BufferedReader br = new BufferedReader(new InputStreamReader(in));
 
-        featureMap.put(new JavaEditionVersion(1, 13, 0), j1_13f);
-        featureMap.put(new JavaEditionVersion(1, 13, 1), j1_13f);
-        featureMap.put(new JavaEditionVersion(1, 13, 2), j1_13f);
+                String filename;
+                while ((filename = br.readLine()) != null) {
+                    loadFeatureMap(new InputStreamReader(source.get(filename)), true);
+                }
 
-        VersionFeatures j1_14f = j1_13f.duplicate();
-        j1_14f.put("command.teammsg", true);
-        j1_14f.put("command.datapack", true);
-        j1_14f.put("command.reload", true);
-        j1_14f.put("command.debug", true);
-        j1_14f.put("command.forceload", true);
-        j1_14f.put("command.kick", true);
-        j1_14f.put("server_commands", true);
-        j1_14f.put("command.data_modify", true);
-        j1_14f.put("textcomponent.nbt", true);
-
-        VersionFeatures j1_15f = j1_14f.duplicate();
-        j1_15f.put("command.data.storage", true);
-        j1_15f.put("command.schedule_clear", true);
-        j1_15f.put("command.schedule_function_append", true);
-        j1_15f.put("command.spectate", true);
-        j1_15f.put("modifier.condition_predicate", true);
-        j1_15f.put("selector.predicate", true);
-        j1_15f.put("click_event.copy_to_clipboard", true);
-
-        featureMap.put(new JavaEditionVersion(1, 14, 0), j1_14f);
-        featureMap.put(new JavaEditionVersion(1, 14, 1), j1_14f);
-        featureMap.put(new JavaEditionVersion(1, 14, 2), j1_14f);
-        featureMap.put(new JavaEditionVersion(1, 15, 0), j1_15f);
-
-        VersionFeatures b1_11f = new VersionFeatures();
-        b1_11f.put("objectives.max_length", 16);
-        b1_11f.put("identifiers.regex", "[A-Za-z0-9()_§#\\-.]+");
-        b1_11f.put("identifiers.accept_strings", true);
-        b1_11f.put("objectives.regex", "[A-Za-z0-9()_§#\\-.]+");
-        b1_11f.put("objectives.accept_strings", true);
-        b1_11f.put("player_names.regex", "[A-Za-z0-9()_§#\\-.]+");
-        b1_11f.put("player_names.accept_strings", true);
-        b1_11f.put("score_holders.regex", "[A-Za-z0-9()_§#\\-.]+");
-        b1_11f.put("score_holders.accept_strings", true);
-        b1_11f.put("function.namespace_separator", "/");
-        b1_11f.put("data_packs", false);
-        b1_11f.put("functions", true);
-        b1_11f.put("advancements", false);
-        b1_11f.put("bossbars", false);
-        b1_11f.put("block.data_values", true);
-        b1_11f.put("block.blockstates", false);
-        b1_11f.put("item.data_values", true);
-        b1_11f.put("nbt.access", false);
-        b1_11f.put("scoreboard.criteria", false);
-        b1_11f.put("execute_modifiers", false);
-        j1_14f.put("command.teammsg", false);
-        b1_11f.put("command.data_modify", false);
-        b1_11f.put("command.scoreboard_random", true);
-        b1_11f.put("command.scoreboard_test", true);
-        b1_11f.put("command.scoreboard_get", false);
-        b1_11f.put("command.scoreboard_display_sort", true);
-        b1_11f.put("command.trigger", false);
-        b1_11f.put("command.kick", false);
-        b1_11f.put("command.forceload", false);
-        b1_11f.put("command.tickingarea", true);
-        b1_11f.put("command.effect.explicit", false);
-        b1_11f.put("command.weather_query", true);
-        b1_11f.put("add.entity", true);
-        b1_11f.put("add.particle", true);
-        b1_11f.put("textcomponent.text", true);
-        b1_11f.put("textcomponent.translate", true);
-
-        featureMap.put(new BedrockEditionVersion(1, 11, 0), b1_11f);
-        featureMap.put(new BedrockEditionVersion(1, 11, 1), b1_11f);
-        featureMap.put(new BedrockEditionVersion(1, 11, 2), b1_11f);
-
+                br.close();
+            }
+        } catch(IOException x) {
+            x.printStackTrace();
+        }
     }
+
+    //Load
+
+    public static void loadFeatureMap(Reader reader) {
+        loadFeatureMap(reader, false);
+    }
+
+    public static void clearLoadedFeatures() {
+        featureMaps.clear();
+        featureMaps.addAll(defaultFeatureMaps);
+    }
+
+    private static void loadFeatureMap(Reader reader, boolean isDefault) {
+        Gson gson = new Gson();
+        JsonObject root = gson.fromJson(reader, JsonObject.class);
+
+        String edition = root.get("edition").getAsString();
+        String applicableVersion = root.get("applicable_version").getAsString();
+
+        String versionRegex = applicableVersion.replace(".","\\.").replace("*","\\d+");
+
+        VersionFeatures feat = new VersionFeatures(edition, versionRegex);
+
+        JsonObject features = root.getAsJsonObject("features");
+        for(Map.Entry<String, JsonElement> entry : features.entrySet()) {
+            JsonPrimitive primitive = entry.getValue().getAsJsonPrimitive();
+            Object value = null;
+            if(primitive.isString()) value = primitive.getAsString();
+            if(primitive.isBoolean()) value = primitive.getAsBoolean();
+            if(primitive.isNumber()) {
+                if(primitive.getAsInt() != primitive.getAsDouble()) {
+                    value = primitive.getAsDouble();
+                } else {
+                    value = primitive.getAsInt();
+                }
+            }
+            if(value != null) {
+                feat.put(entry.getKey(), value);
+            }
+        }
+
+        if(isDefault) {
+            defaultFeatureMaps.add(0, feat);
+        }
+        featureMaps.add(0, feat);
+    }
+
+    //Query
 
     public static void assertEnabled(String key) {
         if (ModuleSettingsManager.getActive() == null) return;

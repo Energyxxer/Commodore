@@ -1,9 +1,21 @@
 package com.energyxxer.commodore.versioning.compatibility;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 
 public class VersionFeatures {
-    private HashMap<String, Object> map = new HashMap<>();
+    @NotNull
+    private final String edition;
+    @NotNull
+    private final String versionRegex;
+    @NotNull
+    private final HashMap<String, Object> map = new HashMap<>();
+
+    public VersionFeatures(@NotNull String edition, @NotNull String versionRegex) {
+        this.edition = edition;
+        this.versionRegex = versionRegex;
+    }
 
     public int getInt(String key) {
         return getInt(key, 0);
@@ -36,8 +48,18 @@ public class VersionFeatures {
         map.put(key, value);
     }
 
+    @NotNull
+    public String getEdition() {
+        return edition;
+    }
+
+    @NotNull
+    public String getVersionRegex() {
+        return versionRegex;
+    }
+
     public VersionFeatures duplicate() {
-        VersionFeatures copy = new VersionFeatures();
+        VersionFeatures copy = new VersionFeatures(edition, versionRegex);
         copy.map.putAll(this.map);
         return copy;
     }
