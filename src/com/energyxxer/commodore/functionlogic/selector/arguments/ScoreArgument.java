@@ -16,6 +16,7 @@ public class ScoreArgument implements ComplexSelectorArgument {
 
     public void put(@NotNull Objective objective, @NotNull NumberRange<Integer> value) {
         this.scores.put(objective, value);
+        value.assertOrdered();
     }
 
     @NotNull

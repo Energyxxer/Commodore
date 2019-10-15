@@ -11,6 +11,7 @@ public class LevelArgument implements SelectorArgument {
 
     public LevelArgument(@NotNull NumberRange<Integer> value) {
         this.value = value;
+        value.assertOrdered();
 
         if(value.hasNegative()) {
             throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Level shouldn't be negative", value);

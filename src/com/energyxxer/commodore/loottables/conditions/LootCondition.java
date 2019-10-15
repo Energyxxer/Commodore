@@ -219,6 +219,7 @@ public abstract class LootCondition {
         }
 
         public void setScore(String objective, NumberRange<Integer> range) {
+            range.assertOrdered();
             scores.put(objective, range);
         }
 

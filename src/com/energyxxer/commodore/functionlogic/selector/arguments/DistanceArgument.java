@@ -12,6 +12,7 @@ public class DistanceArgument implements SelectorArgument {
 
     public DistanceArgument(@NotNull NumberRange<Double> distance) {
         this.distance = distance;
+        distance.assertOrdered();
         if(distance.hasNegative()) {
             throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Distance cannot be negative", distance);
         }
