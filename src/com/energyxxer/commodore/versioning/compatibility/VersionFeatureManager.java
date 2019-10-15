@@ -16,6 +16,7 @@ import java.util.Map;
 public class VersionFeatureManager {
     private static final ArrayList<VersionFeatures> defaultFeatureMaps = new ArrayList<>();
     private static final ArrayList<VersionFeatures> featureMaps = new ArrayList<>();
+    private static final ThreadLocal<VersionFeatures> activeFeatureMap = new ThreadLocal<>();
 
     public static VersionFeatures getFeaturesForVersion(Version version) {
         for(VersionFeatures feat : featureMaps) {
@@ -44,7 +45,9 @@ public class VersionFeatureManager {
 
             String filename;
             while ((filename = br.readLine()) != null) {
-                loadFeatureMap(new InputStreamReader(source.get(filename)), true);
+                VersionFeatures feat = parseFeatureMap(new InputStreamReader(source.get(filename)));
+                featureMaps.add(0, feat);
+                defaultFeatureMaps.add(0, feat);
             }
 
             br.close();
@@ -55,7 +58,25 @@ public class VersionFeatureManager {
     //Load
 
     public static void loadFeatureMap(Reader reader) {
-        loadFeatureMap(reader, false);
+        VersionFeatures feat = parseFeatureMap(reader);
+        featureMaps.add(0, feat);
+    }
+
+    public static void setActiveFeatureMap(Reader reader) {
+        activeFeatureMap.set(parseFeatureMap(reader));
+    }
+
+    public static void setActiveFeatureMap(VersionFeatures features) {
+        activeFeatureMap.set(features);
+    }
+
+    public static void clearActiveFeatureMap() {
+        activeFeatureMap.set(null);
+    }
+
+    private static VersionFeatures getActiveFeatures() {
+        if(activeFeatureMap.get() != null) return activeFeatureMap.get();
+        return getFeaturesForVersion(ModuleSettingsManager.getActive().getTargetVersion());
     }
 
     public static void clearLoadedFeatures() {
@@ -63,7 +84,7 @@ public class VersionFeatureManager {
         featureMaps.addAll(defaultFeatureMaps);
     }
 
-    private static void loadFeatureMap(Reader reader, boolean isDefault) {
+    public static VersionFeatures parseFeatureMap(Reader reader) {
         Gson gson = new Gson();
         JsonObject root = gson.fromJson(reader, JsonObject.class);
 
@@ -92,10 +113,7 @@ public class VersionFeatureManager {
             }
         }
 
-        if(isDefault) {
-            defaultFeatureMaps.add(0, feat);
-        }
-        featureMaps.add(0, feat);
+        return feat;
     }
 
     //Query
@@ -116,7 +134,7 @@ public class VersionFeatureManager {
         if (ModuleSettingsManager.getActive() == null) {
             return defaultValue;
         }
-        VersionFeatures features = getFeaturesForVersion(ModuleSettingsManager.getActive().getTargetVersion());
+        VersionFeatures features = getActiveFeatures();
         if (features != null) {
             return features.getBoolean(key, defaultValue);
         } else return defaultValue;
@@ -130,7 +148,7 @@ public class VersionFeatureManager {
         if (ModuleSettingsManager.getActive() == null) {
             return defaultValue;
         }
-        VersionFeatures features = getFeaturesForVersion(ModuleSettingsManager.getActive().getTargetVersion());
+        VersionFeatures features = getActiveFeatures();
         if (features != null) {
             return features.getInt(key, defaultValue);
         } else return defaultValue;
@@ -144,7 +162,7 @@ public class VersionFeatureManager {
         if (ModuleSettingsManager.getActive() == null) {
             return defaultValue;
         }
-        VersionFeatures features = getFeaturesForVersion(ModuleSettingsManager.getActive().getTargetVersion());
+        VersionFeatures features = getActiveFeatures();
         if (features != null) {
             return features.getString(key, defaultValue);
         } else return defaultValue;

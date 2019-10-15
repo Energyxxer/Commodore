@@ -14,6 +14,18 @@ public class JavaEditionVersion implements Version {
         this.patch = patch;
     }
 
+    public int getMajor() {
+        return major;
+    }
+
+    public int getMinor() {
+        return minor;
+    }
+
+    public int getPatch() {
+        return patch;
+    }
+
     @NotNull
     @Override
     public String getEditionString() {
