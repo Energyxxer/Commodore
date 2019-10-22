@@ -35,7 +35,7 @@ public class ScoreReset implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        StringBuilder sb = new StringBuilder("scoreboard players reset " + score.holderToString() + " ");
+        StringBuilder sb = new StringBuilder("scoreboard players reset " + score.holderToString());
         if(score.getObjective() != null) {
             sb.append(' ');
             sb.append(score.objectiveToString());
