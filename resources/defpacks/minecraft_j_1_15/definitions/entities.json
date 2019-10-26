@@ -40,7 +40,8 @@
     "spawnable": true,
     "targetable": true,
     "living": true,
-    "hostile": false
+    "hostile": false,
+    "breedable": true
   },
   "minecraft:blaze": {
     "spawnable": true,

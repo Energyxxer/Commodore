@@ -19,6 +19,7 @@ public class VersionFeatureManager {
     private static final ThreadLocal<VersionFeatures> activeFeatureMap = new ThreadLocal<>();
 
     public static VersionFeatures getFeaturesForVersion(Version version) {
+        if(version == null) return null;
         for(VersionFeatures feat : featureMaps) {
             if (version.getEditionString().equalsIgnoreCase(feat.getEdition()) && version.getVersionString().matches(feat.getVersionRegex())) {
                 return feat;
@@ -41,16 +42,14 @@ public class VersionFeatureManager {
         source.open();
         InputStream in = source.get("");
         if (in != null) {
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
-
-            String filename;
-            while ((filename = br.readLine()) != null) {
-                VersionFeatures feat = parseFeatureMap(new InputStreamReader(source.get(filename)));
-                featureMaps.add(0, feat);
-                defaultFeatureMaps.add(0, feat);
+            try(BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
+                String filename;
+                while ((filename = br.readLine()) != null) {
+                    VersionFeatures feat = parseFeatureMap(new InputStreamReader(source.get(filename)));
+                    featureMaps.add(0, feat);
+                    defaultFeatureMaps.add(0, feat);
+                }
             }
-
-            br.close();
         }
         source.close();
     }

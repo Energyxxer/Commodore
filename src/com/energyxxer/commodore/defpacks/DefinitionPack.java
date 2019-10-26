@@ -281,14 +281,13 @@ public class DefinitionPack {
     private void importNamespaceData() throws IOException {
         InputStream in = source.get("data/");
         if(in != null) {
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+            try(BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
 
-            String namespace;
-            while((namespace = br.readLine()) != null) {
-                importTags(namespace);
+                String namespace;
+                while ((namespace = br.readLine()) != null) {
+                    importTags(namespace);
+                }
             }
-
-            br.close();
         }
     }
 
@@ -370,14 +369,13 @@ public class DefinitionPack {
     private void importResources() throws IOException {
         InputStream in = source.get("resources/");
         if (in != null) {
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+            try(BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
 
-            String resourceFile;
-            while ((resourceFile = br.readLine()) != null) {
-                readResource(resourceFile);
+                String resourceFile;
+                while ((resourceFile = br.readLine()) != null) {
+                    readResource(resourceFile);
+                }
             }
-
-            br.close();
         }
     }
 
@@ -390,13 +388,14 @@ public class DefinitionPack {
                     resources.put(fileName, obj);
                 }
             } else {
-                BufferedReader br = new BufferedReader(new InputStreamReader(in));
-                StringBuilder sb = new StringBuilder();
-                String line;
-                while ((line = br.readLine()) != null) {
-                    sb.append(line);
+                try(BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
+                    StringBuilder sb = new StringBuilder();
+                    String line;
+                    while ((line = br.readLine()) != null) {
+                        sb.append(line);
+                    }
+                    resources.put(fileName, sb.toString());
                 }
-                resources.put(fileName, sb.toString());
             }
         }
     }
