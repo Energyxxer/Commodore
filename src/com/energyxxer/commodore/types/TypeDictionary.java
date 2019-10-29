@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.types;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.defaults.TypeManager;
 import org.jetbrains.annotations.NotNull;
@@ -74,9 +75,29 @@ public class TypeDictionary {
      *
      * @return The newly-created or already-existing type by the given name
      * */
-    public Type create(@NotNull String name) {
+    @NotNull
+    public Type getOrCreate(@NotNull String name) {
         Type existing = types.get(name);
         if(existing != null) return existing;
+
+        Type newType = instantiator.create(this.namespace, name);
+        newType.usesNamespace = this.usesNamespace;
+        types.put(name, newType);
+        return newType;
+    }
+
+
+    /**
+     * Creates a type with the given name. If a type by that name already exists in this dictionary
+     * a duplication error will be thrown
+     *
+     * @param name The name the new type will be referred to as.
+     *
+     * @return The newly-created type by the given name
+     * */
+    public Type create(@NotNull String name) {
+        Type existing = types.get(name);
+        if(existing != null) throw new CommodoreException(CommodoreException.Source.DUPLICATION_ERROR, "'" + name + "' already exists as a '" + category + "' type in the '" + namespace + "' namespace");
 
         Type newType = instantiator.create(this.namespace, name);
         newType.usesNamespace = this.usesNamespace;

@@ -417,7 +417,7 @@ public class DefinitionPack {
             String category = defs.getKey();
             for(DefinitionBlueprint blueprint : defs.getValue()) {
                 Namespace ns = (blueprint.namespace != null) ? module.getNamespace(blueprint.namespace) : module.minecraft;
-                ns.getTypeManager().createDictionary(category, blueprint.namespace != null).create(blueprint.name).putProperties(blueprint.properties);
+                ns.getTypeManager().createDictionary(category, blueprint.namespace != null).getOrCreate(blueprint.name).putProperties(blueprint.properties);
             }
         }
         for(Map.Entry<String, ArrayList<TagBlueprint>> entry : tags.entrySet()) {
@@ -426,7 +426,7 @@ public class DefinitionPack {
                 Namespace ns = module.getNamespace(blueprint.namespace);
                 TagGroup<? extends Tag> group = ns.getTagManager().createGroup(category, getCategory(category).tagDirectory);
 
-                Tag tag = group.create(blueprint.name);
+                Tag tag = group.getOrCreate(blueprint.name);
                 tag.setOverridePolicy(blueprint.policy);
                 tag.setExport(blueprint.export);
 
@@ -440,10 +440,10 @@ public class DefinitionPack {
                     }
 
                     if(isTag) {
-                        Tag created = module.getNamespace(namespace).getTagManager().getGroup(category).create(value);
+                        Tag created = module.getNamespace(namespace).getTagManager().getGroup(category).getOrCreate(value);
                         tag.addValue(created, false);
                     } else {
-                        Type created = module.getNamespace(namespace).getTypeManager().createDictionary(category, true).create(value);
+                        Type created = module.getNamespace(namespace).getTypeManager().createDictionary(category, true).getOrCreate(value);
                         tag.addValue(created, false);
                     }
                 }

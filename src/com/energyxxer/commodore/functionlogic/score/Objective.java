@@ -19,28 +19,8 @@ public class Objective {
     private String type;
     @Nullable
     private TextComponent displayName;
-    /**
-     * Signifies whether the objective acts as a field, used to carry data from one tick or function to the next.
-     * If this is true, a SET access command not followed by a GET access command at the end
-     * of a function tree will not be removed.
-     */
-    private boolean field = false;
-
-    public static final int MAX_NAME_LENGTH = 16;
-
-    Objective(@NotNull ObjectiveManager parent, @NotNull String name, @NotNull String type) {
-        this(parent, name, type, null);
-    }
 
     Objective(@NotNull ObjectiveManager parent, @NotNull String name, @NotNull String type, @Nullable TextComponent displayName) {
-        this(parent, name, type, displayName, false);
-    }
-
-    Objective(@NotNull ObjectiveManager parent, @NotNull String name, @NotNull String type, boolean field) {
-        this(parent, name, type, null, field);
-    }
-
-    Objective(@NotNull ObjectiveManager parent, @NotNull String name, @NotNull String type, @Nullable TextComponent displayName, boolean field) {
         this.parent = parent;
         this.name = name;
         if(name.length() <= 0) {
@@ -55,7 +35,6 @@ public class Objective {
         this.type = type;
         this.displayName = displayName;
         if(displayName != null) displayName.assertAvailable();
-        this.field = field;
     }
 
     @NotNull
@@ -68,8 +47,9 @@ public class Objective {
         return type;
     }
 
+    @Deprecated
     public boolean isField() {
-        return field;
+        return true;
     }
 
     @Nullable

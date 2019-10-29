@@ -5,7 +5,6 @@ import com.energyxxer.commodore.defpacks.DefinitionPack;
 import com.energyxxer.commodore.defpacks.MalformedPackException;
 import com.energyxxer.commodore.functionlogic.score.Objective;
 import com.energyxxer.commodore.functionlogic.score.ObjectiveManager;
-import com.energyxxer.commodore.module.options.ModuleOptionManager;
 import com.energyxxer.commodore.module.settings.ModuleSettings;
 import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
 import org.jetbrains.annotations.NotNull;
@@ -38,12 +37,6 @@ public class CommandModule {
      * The prefix which should be used for special names in this module. Currently only used by objective names.
      * */
     protected final String prefix;
-
-    /**
-     * This module's option manager.
-     * */
-    @NotNull
-    protected final ModuleOptionManager optMgr;
 
     /**
      * This module's settings.
@@ -114,7 +107,6 @@ public class CommandModule {
 
         this.minecraft = getNamespace("minecraft");
 
-        optMgr = new ModuleOptionManager();
         settings = new ModuleSettings(Commodore.DEFAULT_TARGET_VERSION);
     }
 
@@ -173,17 +165,6 @@ public class CommandModule {
     @NotNull
     public ObjectiveManager getObjectiveManager() {
         return objMgr;
-    }
-
-    /**
-     * Retrieves this module's option manager.
-     *
-     * @return The option manager for this module.
-     * */
-    @NotNull
-    @Deprecated
-    public ModuleOptionManager getOptionManager() {
-        return optMgr;
     }
 
     /**
@@ -279,7 +260,7 @@ public class CommandModule {
             this.namespaces.putIfAbsent(ns.getKey(), ns.getValue().clone(this));
         }
         for(Objective obj : other.objMgr.getAll()) {
-            this.objMgr.create(obj.getName(), obj.getType(), obj.getDisplayName(), true);
+            this.objMgr.create(obj.getName(), obj.getType(), obj.getDisplayName());
         }
         this.resources.putAll(other.resources);
     }

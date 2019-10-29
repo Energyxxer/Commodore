@@ -26,14 +26,18 @@ public class ObjectiveManager {
         this.owner = owner;
     }
 
-    @NotNull
     public Objective get(@NotNull String name) {
+        return objectives.get(name);
+    }
+
+    @NotNull
+    public Objective getOrCreate(@NotNull String name) {
         Objective existing = objectives.get(name);
 
         return (existing != null) ? existing : forceCreate(name);
     }
 
-    public boolean contains(@NotNull String name) {
+    public boolean exists(@NotNull String name) {
         return objectives.containsKey(name);
     }
 
@@ -44,33 +48,37 @@ public class ObjectiveManager {
 
     @NotNull
     public Objective create(@NotNull String name, @NotNull String type) {
-        return create(name, type, false);
+        return create(name, type, null);
     }
 
-    @NotNull
+    @NotNull @Deprecated
     public Objective create(@NotNull String name, boolean field) {
-        return create(name, "dummy", field);
+        return create(name, "dummy");
     }
 
-    @NotNull
+    @NotNull @Deprecated
     public Objective create(@NotNull String name, @NotNull String type, boolean field) {
-        return create(name, type, null, field);
+        return create(name, type, null);
     }
 
-    @NotNull
+    @NotNull @Deprecated
     public Objective create(@NotNull String name, @NotNull String type, @Nullable TextComponent displayName, boolean field) {
-        if(!contains(name)) return forceCreate(name, type, displayName, field);
+        return create(name, type, displayName);
+    }
+
+    public Objective create(@NotNull String name, @NotNull String type, @Nullable TextComponent displayName) {
+        if(!exists(name)) return forceCreate(name, type, displayName);
         throw new CommodoreException(CommodoreException.Source.DUPLICATION_ERROR, "An objective by the name '" + name + "' already exists", name);
     }
 
     @NotNull
     private Objective forceCreate(@NotNull String name) {
-        return forceCreate(name, "dummy", null, false);
+        return forceCreate(name, "dummy", null);
     }
 
     @NotNull
-    private Objective forceCreate(@NotNull String name, @NotNull String type, @Nullable TextComponent displayName, boolean field) {
-        Objective newObjective = new Objective(this, name, type, displayName, field);
+    private Objective forceCreate(@NotNull String name, @NotNull String type, @Nullable TextComponent displayName) {
+        Objective newObjective = new Objective(this, name, type, displayName);
         objectives.put(name, newObjective);
         return newObjective;
     }

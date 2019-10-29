@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.tags;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.module.Namespace;
 import org.jetbrains.annotations.NotNull;
 
@@ -26,10 +27,29 @@ public class TagGroup<T extends Tag> {
         this.instantiator = instantiator;
     }
 
+    public T get(@NotNull String name) {
+        for(T value : tags) {
+            if(value.getName().equals(name)) return value;
+        }
+        return null;
+    }
+
+    @NotNull
+    public T getOrCreate(@NotNull String name) {
+        T existing = get(name);
+        if(existing != null) return existing;
+
+        T tag = instantiator.instantiate(this, this.namespace, name);
+
+        this.tags.add(tag);
+
+        return tag;
+    }
+
     @NotNull
     public T create(@NotNull String name) {
         T existing = get(name);
-        if(existing != null) return existing;
+        if(existing != null) throw new CommodoreException(CommodoreException.Source.DUPLICATION_ERROR, "'" + name + "' already exists as a '" + category + "' tag in the '" + namespace + "' namespace");
 
         T tag = instantiator.instantiate(this, this.namespace, name);
 
@@ -50,13 +70,6 @@ public class TagGroup<T extends Tag> {
             if(value.getName().equals(name)) return true;
         }
         return false;
-    }
-
-    public T get(@NotNull String name) {
-        for(T value : tags) {
-            if(value.getName().equals(name)) return value;
-        }
-        return null;
     }
 
     @NotNull

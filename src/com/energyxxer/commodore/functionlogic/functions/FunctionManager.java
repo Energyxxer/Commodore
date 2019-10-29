@@ -23,14 +23,18 @@ public class FunctionManager {
         this.namespace = namespace;
     }
 
-    @NotNull
     public Function get(@NotNull String name) {
+        return functions.get(name.toLowerCase(Locale.ENGLISH));
+    }
+
+    @NotNull
+    public Function getOrCreate(@NotNull String name) {
         Function existing = functions.get(name.toLowerCase(Locale.ENGLISH));
 
         return (existing != null) ? existing : forceCreate(name);
     }
 
-    public boolean contains(@NotNull String name) {
+    public boolean exists(@NotNull String name) {
         return functions.containsKey(name.toLowerCase(Locale.ENGLISH));
     }
 
@@ -40,14 +44,14 @@ public class FunctionManager {
 
     public Function create(@NotNull String name, boolean force, @Nullable Entity sender) {
         name = name.toLowerCase(Locale.ENGLISH);
-        if(!contains(name)) return forceCreate(name, sender);
+        if(!exists(name)) return forceCreate(name, sender);
         if(!force) {
             throw new CommodoreException(CommodoreException.Source.DUPLICATION_ERROR, "A function by the name '" + name + "' already exists", name);
         } else {
             int i = 1;
             while(true) {
                 String newName = name + "-" + i;
-                if(!contains(newName)) return forceCreate(newName, sender);
+                if(!exists(newName)) return forceCreate(newName, sender);
                 i++;
             }
         }
