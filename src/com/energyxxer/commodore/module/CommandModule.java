@@ -263,6 +263,7 @@ public class CommandModule {
             this.objMgr.create(obj.getName(), obj.getType(), obj.getDisplayName());
         }
         this.resources.putAll(other.resources);
+        this.exportables.addAll(other.exportables);
     }
 
     /**
