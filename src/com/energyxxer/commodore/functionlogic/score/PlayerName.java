@@ -28,7 +28,7 @@ public class PlayerName implements Entity {
     @Override
     public void assertEntityFriendly(String causeKey) {
         if(!VersionFeatureManager.getBoolean("player_names.accept_strings", false) && !name.matches(VersionFeatureManager.getString("player_names.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
-            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Player name '" + name + "' has illegal characters. Quoting is not supported in the target version and does not match regex: " + VersionFeatureManager.getString("player_names.regex", CommandUtils.IDENTIFIER_ALLOWED), name, "ENTITY");
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Player name '" + name + "' has illegal characters. Quoting is not supported in the target version and does not match regex: " + VersionFeatureManager.getString("player_names.regex", CommandUtils.IDENTIFIER_ALLOWED), name, causeKey);
         }
     }
 
@@ -41,7 +41,7 @@ public class PlayerName implements Entity {
 
     @Override
     public void assertGameProfile(String causeKey) {
-        if(!VersionFeatureManager.getBoolean("game_profiles.accept_strings", false) && !name.matches(VersionFeatureManager.getString("score_holders.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
+        if(!VersionFeatureManager.getBoolean("game_profiles.accept_strings", false) && !name.matches(VersionFeatureManager.getString("game_profiles.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
             throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Game profile '" + name + "' has illegal characters. Quoting is not supported in the target version and does not match regex: " + VersionFeatureManager.getString("game_profiles.regex", CommandUtils.IDENTIFIER_ALLOWED), name, causeKey);
         }
     }

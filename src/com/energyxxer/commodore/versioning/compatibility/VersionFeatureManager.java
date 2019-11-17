@@ -130,9 +130,6 @@ public class VersionFeatureManager {
     }
 
     public static boolean getBoolean(String key, boolean defaultValue) {
-        if (ModuleSettingsManager.getActive() == null) {
-            return defaultValue;
-        }
         VersionFeatures features = getActiveFeatures();
         if (features != null) {
             return features.getBoolean(key, defaultValue);
@@ -144,9 +141,6 @@ public class VersionFeatureManager {
     }
 
     public static int getInt(String key, int defaultValue) {
-        if (ModuleSettingsManager.getActive() == null) {
-            return defaultValue;
-        }
         VersionFeatures features = getActiveFeatures();
         if (features != null) {
             return features.getInt(key, defaultValue);
@@ -158,9 +152,6 @@ public class VersionFeatureManager {
     }
 
     public static String getString(String key, String defaultValue) {
-        if (ModuleSettingsManager.getActive() == null) {
-            return defaultValue;
-        }
         VersionFeatures features = getActiveFeatures();
         if (features != null) {
             return features.getString(key, defaultValue);
