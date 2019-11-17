@@ -24,6 +24,7 @@ public class SpectateStartCommand extends SpectateCommand {
         if (spectator != null) {
             spectator.assertSingle("SPECTATOR");
             spectator.assertPlayer("SPECTATOR");
+            spectator.assertEntityFriendly("SPECTATOR");
         }
     }
 

@@ -12,6 +12,7 @@ public abstract class TitleCommand implements Command {
         this.player = player;
 
         player.assertPlayer();
+        player.assertEntityFriendly();
     }
 
     @Override

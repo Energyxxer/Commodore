@@ -15,6 +15,7 @@ public abstract class ExperienceCommand implements Command {
 
     public ExperienceCommand(@NotNull Entity player) {
         this.player = player;
+        player.assertEntityFriendly();
         player.assertPlayer();
     }
 

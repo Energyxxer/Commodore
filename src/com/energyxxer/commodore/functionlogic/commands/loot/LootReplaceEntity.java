@@ -15,6 +15,7 @@ public class LootReplaceEntity implements LootCommand.LootDestination {
 
     public LootReplaceEntity(@NotNull Entity entity, @NotNull Type slot) {
         this.entity = entity;
+        entity.assertEntityFriendly();
         this.slot = slot;
         assertSlot(slot);
     }

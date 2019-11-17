@@ -59,6 +59,7 @@ public class AdvancementCommand implements Command {
         this.advancement = limit.takesAdvancement ? advancement : null;
         if(limit.takesCriteria && criteria != null) this.criteria.addAll(criteria);
 
+        player.assertEntityFriendly();
         player.assertPlayer();
 
         if(advancement != null && !limit.takesAdvancement)

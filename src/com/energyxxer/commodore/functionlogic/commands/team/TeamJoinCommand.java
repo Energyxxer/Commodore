@@ -20,6 +20,7 @@ public class TeamJoinCommand extends TeamCommand {
     public TeamJoinCommand(@NotNull TeamReference reference, @Nullable Entity entity) {
         this.reference = reference;
         this.entity = entity;
+        if(entity != null) entity.assertEntityFriendly();
     }
 
     @Override

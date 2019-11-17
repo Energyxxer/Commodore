@@ -12,6 +12,7 @@ public class ExecutePositionedAsEntity implements ExecuteModifier {
 
     public ExecutePositionedAsEntity(@NotNull Entity entity) {
         this.entity = entity;
+        entity.assertEntityFriendly();
     }
 
     @NotNull

@@ -23,6 +23,10 @@ public class PlayerName implements Entity {
      * */
     public PlayerName(@NotNull String name) {
         this.name = name;
+    }
+
+    @Override
+    public void assertEntityFriendly(String causeKey) {
         if(!VersionFeatureManager.getBoolean("player_names.accept_strings", false) && !name.matches(VersionFeatureManager.getString("player_names.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
             throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Player name '" + name + "' has illegal characters. Quoting is not supported in the target version and does not match regex: " + VersionFeatureManager.getString("player_names.regex", CommandUtils.IDENTIFIER_ALLOWED), name, "ENTITY");
         }

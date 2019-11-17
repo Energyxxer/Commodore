@@ -10,6 +10,7 @@ public class EntityDestination implements TeleportDestination {
     public EntityDestination(@NotNull Entity entity) {
         this.entity = entity;
         entity.assertSingle();
+        entity.assertEntityFriendly();
     }
 
     @NotNull

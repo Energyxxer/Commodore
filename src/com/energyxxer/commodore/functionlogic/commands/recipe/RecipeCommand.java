@@ -30,6 +30,7 @@ public class RecipeCommand implements Command {
         this.recipeName = recipeName;
 
         player.assertPlayer();
+        player.assertEntityFriendly();
     }
 
     @Override @NotNull

@@ -18,6 +18,7 @@ public class KillCommand implements Command {
 
     public KillCommand(@Nullable Entity entity) {
         this.entity = entity;
+        if(entity != null) entity.assertEntityFriendly();
     }
 
     @Override @NotNull

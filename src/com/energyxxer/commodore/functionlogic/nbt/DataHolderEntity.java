@@ -10,6 +10,7 @@ public class DataHolderEntity implements DataHolder {
 
     public DataHolderEntity(@NotNull Entity entity) {
         this.entity = entity;
+        entity.assertEntityFriendly();
     }
 
     @NotNull

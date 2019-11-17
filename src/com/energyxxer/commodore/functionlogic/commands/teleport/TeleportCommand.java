@@ -33,6 +33,8 @@ public class TeleportCommand implements Command {
         this.victim = victim;
         this.destination = destination;
         this.facing = facing;
+
+        if(victim != null) victim.assertEntityFriendly();
     }
 
     @Override

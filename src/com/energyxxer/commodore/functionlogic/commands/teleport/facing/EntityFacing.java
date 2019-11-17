@@ -21,6 +21,7 @@ public class EntityFacing implements TeleportFacing {
         this.anchor = anchor;
 
         entity.assertSingle();
+        entity.assertEntityFriendly();
     }
 
     @NotNull

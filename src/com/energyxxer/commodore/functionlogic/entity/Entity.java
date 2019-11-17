@@ -62,6 +62,14 @@ public interface Entity extends Cloneable {
         assertPlayer("PLAYER");
     }
 
+    default void assertEntityFriendly() {
+        assertEntityFriendly("ENTITY");
+    }
+
+    default void assertEntityFriendly(String causeKey) {
+
+    }
+
     default void assertScoreHolderFriendly() {
         assertScoreHolderFriendly("SCORE_HOLDER");
     }

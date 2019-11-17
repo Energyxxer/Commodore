@@ -13,10 +13,12 @@ public abstract class DataCommand implements Command {
 
     protected final DataHolder holder;
 
+    @Deprecated
     public DataCommand(@NotNull Entity entity) {
         this(new DataHolderEntity(entity));
     }
 
+    @Deprecated
     public DataCommand(@NotNull CoordinateSet pos) {
         this(new DataHolderBlock(pos));
     }

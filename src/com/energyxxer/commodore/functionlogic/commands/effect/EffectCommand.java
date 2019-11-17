@@ -10,6 +10,7 @@ public abstract class EffectCommand implements Command {
 
     public EffectCommand(@NotNull Entity entity) {
         this.entity = entity;
+        entity.assertEntityFriendly();
     }
 
     @Override

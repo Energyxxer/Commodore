@@ -17,6 +17,7 @@ public class TellCommand implements Command {
         this.message = message;
 
         player.assertPlayer();
+        player.assertEntityFriendly();
     }
 
     @Override @NotNull

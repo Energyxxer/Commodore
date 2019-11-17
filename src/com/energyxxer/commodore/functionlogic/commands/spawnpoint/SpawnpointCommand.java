@@ -28,7 +28,10 @@ public class SpawnpointCommand implements Command {
         this.player = player;
         this.pos = pos;
 
-        if(player != null) player.assertPlayer();
+        if(player != null) {
+            player.assertPlayer();
+            player.assertEntityFriendly();
+        }
     }
 
     @Override @NotNull

@@ -12,6 +12,7 @@ public class LootGive implements LootCommand.LootDestination {
         this.players = players;
 
         players.assertPlayer();
+        players.assertEntityFriendly();
     }
 
     @NotNull

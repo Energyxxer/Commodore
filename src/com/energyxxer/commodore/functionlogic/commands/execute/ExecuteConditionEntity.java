@@ -11,6 +11,7 @@ public class ExecuteConditionEntity extends ExecuteCondition {
     public ExecuteConditionEntity(@NotNull ConditionType flowController, @NotNull Entity entity) {
         super(flowController);
         this.entity = entity;
+        entity.assertEntityFriendly();
     }
 
     @NotNull

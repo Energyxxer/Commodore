@@ -17,6 +17,7 @@ public class SelectorTextComponent extends TextComponent {
     public SelectorTextComponent(@NotNull Entity entity, @Nullable TextStyle style) {
         this.entity = entity;
         this.setStyle(style);
+        entity.assertEntityFriendly();
     }
 
     @Override
@@ -26,7 +27,11 @@ public class SelectorTextComponent extends TextComponent {
 
     @Override
     public String toString(TextStyle parentStyle) {
-        String escapedText = "\"" + CommandUtils.escape(entity.toString()) + "\"";
+        String entityString = entity.toString();
+        if(!entityString.startsWith("\"")) {
+            entityString = CommandUtils.escape(entityString);
+        }
+        String escapedText = "\"" + entityString + "\"";
         String baseProperties = this.getBaseProperties(parentStyle);
         return "{\"selector\":" +
                         escapedText +

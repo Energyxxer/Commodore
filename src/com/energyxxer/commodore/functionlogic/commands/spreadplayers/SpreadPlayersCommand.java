@@ -27,6 +27,7 @@ public class SpreadPlayersCommand implements Command {
         this.maxRange = maxRange;
         this.respectTeams = respectTeams;
         this.targets = targets;
+        targets.assertEntityFriendly();
 
         assertFinite(spreadDistance, "spreadDistance");
         assertFinite(maxRange, "maxRange");

@@ -18,7 +18,10 @@ public class BossbarSetPlayersCommand extends BossbarSetCommand {
     public BossbarSetPlayersCommand(@NotNull Type bossbar, @Nullable Entity players) {
         super(bossbar);
 
-        if (players != null) players.assertPlayer();
+        if (players != null) {
+            players.assertEntityFriendly();
+            players.assertPlayer();
+        }
 
         this.players = players;
     }

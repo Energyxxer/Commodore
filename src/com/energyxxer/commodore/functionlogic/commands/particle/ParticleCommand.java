@@ -63,7 +63,10 @@ public class ParticleCommand implements Command {
         if(count < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Count must not be less than 0.0, found " + count, count, "COUNT");
         this.force = force;
         this.viewers = viewers;
-        if(viewers != null) viewers.assertPlayer();
+        if(viewers != null) {
+            viewers.assertPlayer();
+            viewers.assertEntityFriendly();
+        }
     }
 
     @Override @NotNull

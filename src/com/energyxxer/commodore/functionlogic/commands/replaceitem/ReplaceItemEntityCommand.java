@@ -30,6 +30,7 @@ public class ReplaceItemEntityCommand extends ReplaceItemCommand {
         this.item = item;
         this.count = count;
 
+        entity.assertEntityFriendly();
         assertSlot(slot);
         assertStandalone(item.getItemType());
         if(count < 1) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Count must not be less than 1, found " + count, count, "COUNT");

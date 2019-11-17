@@ -18,6 +18,7 @@ public class TellrawCommand implements Command {
         this.message = message;
 
         player.assertPlayer();
+        player.assertEntityFriendly();
     }
 
     @Override @NotNull

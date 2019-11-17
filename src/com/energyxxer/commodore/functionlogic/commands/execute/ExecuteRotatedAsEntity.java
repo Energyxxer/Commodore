@@ -12,6 +12,7 @@ public class ExecuteRotatedAsEntity implements ExecuteModifier {
 
     public ExecuteRotatedAsEntity(@NotNull Entity entity) {
         this.entity = entity;
+        entity.assertEntityFriendly();
     }
 
     @NotNull

@@ -19,6 +19,7 @@ public class TriggerEnable implements Command {
     public TriggerEnable(@NotNull Entity player, @NotNull Objective objective) {
         this.player = player;
         this.objective = objective;
+        player.assertEntityFriendly();
 
         if(!objective.getType().equals(TriggerCommand.TRIGGER_CRITERION)) throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, "Unable to use objective '" + objective.toString() + "' with trigger enable; Expected objective of type '" + TriggerCommand.TRIGGER_CRITERION + "', instead got '" + objective.getType() + "'", objective, "OBJECTIVE");
     }

@@ -33,7 +33,10 @@ public class ClearCommand implements Command {
         this.item = item;
         this.maxCount = maxCount;
 
-        if(player != null) player.assertPlayer();
+        if(player != null) {
+            player.assertEntityFriendly();
+            player.assertPlayer();
+        }
     }
 
     @Override @NotNull

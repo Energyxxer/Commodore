@@ -13,6 +13,7 @@ public class TagQueryCommand implements Command {
 
     public TagQueryCommand(@NotNull Entity entity) {
         this.entity = entity;
+        entity.assertEntityFriendly();
     }
 
     @Override

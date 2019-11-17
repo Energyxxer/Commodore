@@ -11,6 +11,7 @@ public class TeamLeaveCommand extends TeamCommand {
 
     public TeamLeaveCommand(@NotNull Entity entity) {
         this.entity = entity;
+        entity.assertEntityFriendly();
     }
 
     @Override

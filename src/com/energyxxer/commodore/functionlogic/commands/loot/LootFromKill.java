@@ -10,6 +10,7 @@ public class LootFromKill implements LootCommand.LootSource {
     public LootFromKill(Entity entity) {
         this.entity = entity;
         entity.assertSingle();
+        entity.assertEntityFriendly();
     }
 
     @NotNull

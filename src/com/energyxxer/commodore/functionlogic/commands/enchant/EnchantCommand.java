@@ -23,6 +23,7 @@ public class EnchantCommand implements Command {
 
     public EnchantCommand(@NotNull Entity entity, @NotNull Type enchantment, int level) {
         this.entity = entity;
+        entity.assertEntityFriendly();
         this.enchantment = enchantment;
         this.level = level;
 

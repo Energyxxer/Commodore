@@ -25,7 +25,10 @@ public class GamemodeCommand implements Command {
         this.player = player;
 
         assertGamemode(gamemode);
-        if(player != null) player.assertPlayer();
+        if(player != null) {
+            player.assertPlayer();
+            player.assertEntityFriendly();
+        }
     }
 
     @Override @NotNull

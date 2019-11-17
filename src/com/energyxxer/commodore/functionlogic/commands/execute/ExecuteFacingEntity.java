@@ -21,6 +21,7 @@ public class ExecuteFacingEntity implements ExecuteModifier {
     public ExecuteFacingEntity(@NotNull Entity entity, @NotNull EntityAnchor anchor) {
         this.entity = entity;
         this.anchor = anchor;
+        entity.assertEntityFriendly();
     }
 
     @NotNull

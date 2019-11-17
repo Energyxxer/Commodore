@@ -37,6 +37,7 @@ public class StopSoundCommand implements Command {
         this.sound = sound;
 
         player.assertPlayer();
+        player.assertEntityFriendly();
     }
 
     @Override @NotNull

@@ -23,6 +23,7 @@ public class KickCommand implements Command {
         this.player = player;
         this.reason = reason;
         player.assertPlayer();
+        player.assertEntityFriendly();
     }
 
     @Override @NotNull

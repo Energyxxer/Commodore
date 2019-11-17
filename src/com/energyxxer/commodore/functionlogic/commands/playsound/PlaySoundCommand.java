@@ -72,7 +72,10 @@ public class PlaySoundCommand implements Command {
         if(minVolume < 0.0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Min volume must not be less than 0.0, found " + minVolume, minVolume, "MIN_VOLUME");
         if(minVolume > 1.0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Min volume must not be more than 1.0, found " + minVolume, minVolume, "MIN_VOLUME");
 
-        if(player != null) player.assertPlayer();
+        if(player != null) {
+            player.assertPlayer();
+            player.assertEntityFriendly();
+        }
     }
 
     @Override @NotNull

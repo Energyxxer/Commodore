@@ -24,6 +24,7 @@ public class TagCommand implements Command {
         this.action = action;
         this.entity = entity;
         this.tag = tag;
+        entity.assertEntityFriendly();
     }
 
     @Override @NotNull
