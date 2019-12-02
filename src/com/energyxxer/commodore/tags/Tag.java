@@ -3,6 +3,7 @@ package com.energyxxer.commodore.tags;
 import com.energyxxer.commodore.Commodore;
 import com.energyxxer.commodore.module.Exportable;
 import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.module.Namespaced;
 import com.energyxxer.commodore.types.IllegalTypeException;
 import com.energyxxer.commodore.types.Type;
 import com.google.gson.Gson;
@@ -18,7 +19,7 @@ import java.util.Collection;
  * Defines a Minecraft tag that represents various elements of the same category, and can be used to check if an element
  * is one of various types at once.
  * */
-public abstract class Tag extends Type implements Exportable {
+public abstract class Tag extends Type implements Exportable, Namespaced {
 
     @NotNull
     protected final TagGroup group;
@@ -200,6 +201,6 @@ public abstract class Tag extends Type implements Exportable {
     @Override
     @NotNull
     public String getExportPath() {
-        return "tags/" + getGroup().getDirectoryName() + "/" + getName() + ".json";
+        return "data/$NAMESPACE$/tags/" + getGroup().getDirectoryName() + "/" + getName() + ".json";
     }
 }

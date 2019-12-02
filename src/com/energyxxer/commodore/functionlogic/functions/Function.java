@@ -7,6 +7,8 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.module.Exportable;
 import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.module.Namespaced;
+import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
 import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -17,7 +19,7 @@ import java.util.Locale;
 
 import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.SENDER;
 
-public class Function implements FunctionSection, Exportable {
+public class Function implements FunctionSection, Exportable, Namespaced {
     public static final String ALLOWED_PATH_REGEX = "[a-z0-9_/.-]+";
 
     @NotNull
@@ -95,7 +97,7 @@ public class Function implements FunctionSection, Exportable {
     @NotNull
     @Override
     public String getExportPath() {
-        return "functions/" + getPath() + ".mcfunction";
+        return VersionFeatureManager.getString("function.export_path") + getPath() + VersionFeatureManager.getString("function.extension");
     }
 
     @NotNull
@@ -149,7 +151,7 @@ public class Function implements FunctionSection, Exportable {
 
     @Override
     public boolean shouldExport() {
-        return export;
+        return export && (!content.isEmpty() || ModuleSettingsManager.getActive().EXPORT_EMPTY_FUNCTIONS.getValue());
     }
 
     @Override

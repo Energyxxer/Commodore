@@ -1,19 +1,13 @@
 package com.energyxxer.commodore.module;
 
-import com.energyxxer.commodore.Commodore;
-import com.energyxxer.commodore.functionlogic.functions.Function;
-import com.energyxxer.commodore.tags.TagGroup;
-import com.energyxxer.commodore.tags.TagManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.ZipEntry;
@@ -29,7 +23,7 @@ public class ModulePackGenerator {
     }
 
     @NotNull
-    private final CommandModule module;
+    private final ExportablePack module;
 
     @NotNull
     private final String rootPath;
@@ -43,11 +37,11 @@ public class ModulePackGenerator {
 
     private ZipOutputStream zipStream;
 
-    public ModulePackGenerator(@NotNull CommandModule module, @NotNull File outFile) {
+    public ModulePackGenerator(@NotNull ExportablePack module, @NotNull File outFile) {
         this(module, outFile, outFile.getName().endsWith(".zip") ? ZIP : FOLDER);
     }
 
-    public ModulePackGenerator(@NotNull CommandModule module, @NotNull File outFile, @NotNull OutputType outputType) {
+    public ModulePackGenerator(@NotNull ExportablePack module, @NotNull File outFile, @NotNull OutputType outputType) {
         this.module = module;
         this.outputType = outputType;
 
@@ -67,37 +61,12 @@ public class ModulePackGenerator {
             zipStream = new ZipOutputStream(new FileOutputStream(rootFile));
         }
 
-        createPackMcmeta();
-
-        for(Namespace namespace : module.namespaces.values()) {
-            String namespacePath = "data/" + namespace.name;
-
-            ArrayList<Exportable> exportables = new ArrayList<>();
-
-            for(Function func : namespace.getFunctionManager().getAll()) {
-                if (func.getEntryCount() == 0 && !module.settings.EXPORT_EMPTY_FUNCTIONS.getValue()) continue;
-                exportables.add(func);
+        for(Exportable exportable : module.getAllExportables()) {
+            String exportPath = exportable.getExportPath();
+            if(exportable instanceof Namespaced) {
+                exportPath = exportPath.replaceAll("\\$NAMESPACE\\$", ((Namespaced) exportable).getNamespace().getName());
             }
-
-            TagManager tagMgr = namespace.getTagManager();
-
-            for(TagGroup<?> group : tagMgr.getGroups()) {
-                exportables.addAll(group.getAll());
-            }
-
-            exportables.addAll(namespace.lootTables.getAll());
-
-            for(Exportable exportable : exportables) {
-                if(exportable.shouldExport()) {
-                    queueFile(namespacePath + "/" + exportable.getExportPath(), exportable.getContents());
-                }
-            }
-        }
-
-        for(Exportable exportable : module.exportables) {
-            if(exportable.shouldExport()) {
-                queueFile(exportable.getExportPath(), exportable.getContents());
-            }
+            queueFile(exportPath, exportable.getContents());
         }
 
         for(Map.Entry<String, byte[]> entry : queuedFiles.entrySet()) {
@@ -105,17 +74,6 @@ public class ModulePackGenerator {
         }
 
         if(zipStream != null) zipStream.close();
-    }
-
-    private void createPackMcmeta() {
-        JsonObject root = new JsonObject();
-        JsonObject inner = new JsonObject();
-        root.add("pack", inner);
-        inner.addProperty("pack_format", 1);
-
-        inner.addProperty("description", module.description);
-
-        queueFile("pack.mcmeta", gson.toJson(root).getBytes(Commodore.getDefaultEncoding()));
     }
 
     private void createFile(@Nullable String path, @Nullable byte[] contents) throws IOException {

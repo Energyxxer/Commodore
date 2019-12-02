@@ -26,7 +26,6 @@ public interface Exportable {
      *
      * @return The path to this object's export location.
      * */
-    @Nullable
     String getExportPath();
     /**
      * Retrieves the contents that should be written into the exported file.

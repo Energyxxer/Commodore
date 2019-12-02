@@ -7,6 +7,10 @@ import com.energyxxer.commodore.functionlogic.score.Objective;
 import com.energyxxer.commodore.functionlogic.score.ObjectiveManager;
 import com.energyxxer.commodore.module.settings.ModuleSettings;
 import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
+import com.energyxxer.commodore.tags.TagGroup;
+import com.energyxxer.commodore.tags.TagManager;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -22,7 +26,7 @@ import java.util.Map;
  * items, entities, functions, tags, etc. Command modules can be modified via other classes and compiled into data
  * packs, which can then be used in Minecraft.
  * */
-public class CommandModule {
+public class CommandModule implements ExportablePack {
     /**
      * The name of this command module, which is used as the directory or file name for the compiled pack.
      * */
@@ -203,6 +207,17 @@ public class CommandModule {
         objMgr.compile();
         namespaces.values().forEach(Namespace::compile);
 
+        if(exportables.stream().noneMatch(e -> "pack.mcmeta".equals(e.getExportPath()))) {
+            JsonObject root = new JsonObject();
+            JsonObject inner = new JsonObject();
+            root.add("pack", inner);
+            inner.addProperty("pack_format", 1);
+
+            inner.addProperty("description", this.description);
+
+            exportables.add(new RawExportable("pack.mcmeta", new GsonBuilder().setPrettyPrinting().create().toJson(root).getBytes(Commodore.getDefaultEncoding())));
+        }
+
         new ModulePackGenerator(this, file).generate();
         ModuleSettingsManager.clear();
     }
@@ -342,5 +357,23 @@ public class CommandModule {
     @Override
     public String toString() {
         return "Module [" + name + "]";
+    }
+
+    @Override
+    public Collection<Exportable> getAllExportables() {
+        ArrayList<Exportable> allExportables = new ArrayList<>();
+        for(Namespace namespace : namespaces.values()) {
+            allExportables.addAll(namespace.getFunctionManager().getAll());
+
+            TagManager tagMgr = namespace.getTagManager();
+            for(TagGroup<?> group : tagMgr.getGroups()) {
+                allExportables.addAll(group.getAll());
+            }
+
+            allExportables.addAll(namespace.lootTables.getAll());
+
+        }
+        allExportables.addAll(exportables);
+        return allExportables;
     }
 }

@@ -4,15 +4,17 @@ import com.energyxxer.commodore.Commodore;
 import com.energyxxer.commodore.loottables.functions.LootFunctions;
 import com.energyxxer.commodore.module.Exportable;
 import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.module.Namespaced;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class LootTable implements Exportable {
+public class LootTable implements Exportable, Namespaced {
     private final LootTableManager parent;
     private final Namespace namespace;
 
@@ -68,9 +70,10 @@ public class LootTable implements Exportable {
         this.export = export;
     }
 
+    @NotNull
     @Override
     public String getExportPath() {
-        return "loot_tables/" + getPath() + ".json";
+        return "data/$NAMESPACE$/loot_tables/" + getPath() + ".json";
     }
 
     @Override

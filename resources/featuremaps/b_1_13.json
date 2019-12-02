@@ -12,6 +12,8 @@
     "score_holders.regex": "[A-Za-z0-9()_§#\\-.]+",
     "score_holders.accept_strings": true,
     "function.namespace_separator": "/",
+    "function.export_path": "functions/$NAMESPACE$/",
+    "function.extension": ".mcfunction",
     "data_packs": false,
     "functions": true,
     "advancements": false,

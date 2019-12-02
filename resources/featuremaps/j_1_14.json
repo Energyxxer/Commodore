@@ -16,6 +16,8 @@
     "ips.regex": "[A-Za-z0-9_.\\-+]*",
     "ips.accept_strings": false,
     "function.namespace_separator": ":",
+    "function.export_path": "data/$NAMESPACE$/functions/",
+    "function.extension": ".mcfunction",
     "data_packs": true,
     "functions": true,
     "advancements": true,
