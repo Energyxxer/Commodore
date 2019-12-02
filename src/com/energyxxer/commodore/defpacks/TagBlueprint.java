@@ -2,7 +2,6 @@ package com.energyxxer.commodore.defpacks;
 
 import com.energyxxer.commodore.tags.Tag;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 
@@ -23,7 +22,6 @@ class TagBlueprint {
     /**
      * How this tag should behave when placed on top of another data pack with the same tag.
      * */
-    @Nullable
     Tag.OverridePolicy policy;
     /**
      * The raw contents of this tag, as retrieved from its .json file.

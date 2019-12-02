@@ -20,11 +20,6 @@ public class Namespace {
     public static final String ALLOWED_NAMESPACE_REGEX = "[a-z0-9_\\.-]+";
 
     /**
-     * The command module this namespace belongs to.
-     * */
-    @NotNull
-    private final CommandModule owner;
-    /**
      * The name of the namespace, which is used as a prefix to namespace-sensitive references such as blocks or
      * functions.
      * */
@@ -54,11 +49,9 @@ public class Namespace {
     /**
      * Creates a namespace object for the given module and with the given name.
      *
-     * @param owner The module this new namespace should belong to.
      * @param name The name of this namespace.
      * */
-    public Namespace(@NotNull CommandModule owner, @NotNull String name) {
-        this.owner = owner;
+    public Namespace(@NotNull String name) {
         this.name = name;
 
         if (!name.matches(ALLOWED_NAMESPACE_REGEX)) {
@@ -75,16 +68,6 @@ public class Namespace {
      * Runs the necessary procedures for compilation of the module this belongs to.
      * */
     void compile() {
-    }
-
-    /**
-     * Retrieves this namespace's owner module.
-     *
-     * @return The command module that owns this namespace.
-     * */
-    @NotNull
-    public CommandModule getOwner() {
-        return owner;
     }
 
     /**
@@ -140,13 +123,11 @@ public class Namespace {
      * Creates a new namespace with the given command module as its owner, which contains all the data from this
      * namespace.
      *
-     * @param newOwner The module that should own the cloned namespace.
-     *
      * @return The newly created namespace.
      * */
     @NotNull
-    public Namespace clone(@NotNull CommandModule newOwner) {
-        Namespace clone = new Namespace(newOwner, name);
+    public Namespace clone() {
+        Namespace clone = new Namespace(name);
 
         clone.functions.join(this.functions);
         clone.tags.join(this.tags);

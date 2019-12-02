@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.defpacks;
 
 import com.energyxxer.commodore.module.CommandModule;
-import com.energyxxer.commodore.module.Namespace;
+import com.energyxxer.commodore.module.DefinitionPopulatable;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.tags.Tag;
 import com.energyxxer.commodore.tags.TagGroup;
@@ -411,20 +411,18 @@ public class DefinitionPack {
      * @throws MalformedPackException If mandatory files or properties are not found in the source (and hasn't been
      *                                loaded before).
      * */
-    public void populate(@NotNull CommandModule module) throws IOException {
+    public void populate(@NotNull DefinitionPopulatable module) throws IOException {
         load();
         for(Map.Entry<String, ArrayList<DefinitionBlueprint>> defs : definitions.entrySet()) {
             String category = defs.getKey();
             for(DefinitionBlueprint blueprint : defs.getValue()) {
-                Namespace ns = (blueprint.namespace != null) ? module.getNamespace(blueprint.namespace) : module.minecraft;
-                ns.getTypeManager().createDictionary(category, blueprint.namespace != null).getOrCreate(blueprint.name).putProperties(blueprint.properties);
+                module.getTypeManager(blueprint.namespace).createDictionary(category, blueprint.namespace != null).getOrCreate(blueprint.name).putProperties(blueprint.properties);
             }
         }
         for(Map.Entry<String, ArrayList<TagBlueprint>> entry : tags.entrySet()) {
             String category = entry.getKey();
             for(TagBlueprint blueprint : entry.getValue()) {
-                Namespace ns = module.getNamespace(blueprint.namespace);
-                TagGroup<? extends Tag> group = ns.getTagManager().createGroup(category, getCategory(category).tagDirectory);
+                TagGroup<? extends Tag> group = module.getTagManager(blueprint.namespace).createGroup(category, getCategory(category).tagDirectory);
 
                 Tag tag = group.getOrCreate(blueprint.name);
                 tag.setOverridePolicy(blueprint.policy);
@@ -440,10 +438,10 @@ public class DefinitionPack {
                     }
 
                     if(isTag) {
-                        Tag created = module.getNamespace(namespace).getTagManager().getGroup(category).getOrCreate(value);
+                        Tag created = module.getTagManager(namespace).getGroup(category).getOrCreate(value);
                         tag.addValue(created, false);
                     } else {
-                        Type created = module.getNamespace(namespace).getTypeManager().createDictionary(category, true).getOrCreate(value);
+                        Type created = module.getTypeManager(namespace).createDictionary(category, true).getOrCreate(value);
                         tag.addValue(created, false);
                     }
                 }

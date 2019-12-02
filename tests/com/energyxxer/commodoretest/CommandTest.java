@@ -67,7 +67,6 @@ import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.Adv
 import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.AdvancementCriterionGroupEntry;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.module.CommandModule;
-import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.tags.BlockTag;
 import com.energyxxer.commodore.tags.FunctionTag;
@@ -160,13 +159,12 @@ public class CommandTest {
         //DefinitionPack aetherPack = new DefinitionPack("Aether II Test Definition Pack", "aether_temp");
 
 
-        CommandModule module = new CommandModule("Commodore Test", "A simple Commodore test project", "ct");
+        CommandModule module = new CommandModule("Commodore Test", "A simple Commodore test project");
         try {
             StandardDefinitionPacks.MINECRAFT_JAVA_LATEST_RELEASE.populate(module);
         } catch(IOException x) {
             x.printStackTrace();
         }
-        ModuleSettingsManager.set(module.getSettingsManager());
         ObjectiveManager objMgr = module.getObjectiveManager();
         objMgr.setCreationFunction(module.getNamespace("ct").getFunctionManager().create("init_objectives"));
         objMgr.create("return", true);

@@ -75,6 +75,7 @@ public class VersionFeatureManager {
 
     private static VersionFeatures getActiveFeatures() {
         if(activeFeatureMap.get() != null) return activeFeatureMap.get();
+        if(ModuleSettingsManager.getActive() == null) return null;
         return getFeaturesForVersion(ModuleSettingsManager.getActive().getTargetVersion());
     }
 

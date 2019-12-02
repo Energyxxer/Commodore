@@ -48,7 +48,7 @@ import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelec
 public class V114Test {
     public static void main(String[] args) {
         CommandModule module = new CommandModule("1.14 Test", "vp");
-        module.enableInstantAssertions();
+        module.setSettingsActive();
         module.getSettingsManager().setTargetVersion(new JavaEditionVersion(1, 14, 0));
         //*/module.getSettingsManager().setTargetVersion(new BedrockEditionVersion(1, 11, 0));
 

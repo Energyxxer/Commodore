@@ -9,10 +9,10 @@ import com.energyxxer.commodore.module.settings.ModuleSettings;
 import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
 import com.energyxxer.commodore.tags.TagGroup;
 import com.energyxxer.commodore.tags.TagManager;
+import com.energyxxer.commodore.types.defaults.TypeManager;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +26,7 @@ import java.util.Map;
  * items, entities, functions, tags, etc. Command modules can be modified via other classes and compiled into data
  * packs, which can then be used in Minecraft.
  * */
-public class CommandModule implements ExportablePack {
+public class CommandModule implements ExportablePack, DefinitionPopulatable {
     /**
      * The name of this command module, which is used as the directory or file name for the compiled pack.
      * */
@@ -99,17 +99,6 @@ public class CommandModule implements ExportablePack {
     }
 
     /**
-     * Creates a command module with the given name, description and prefix.
-     *
-     * @param name The name of the new module.
-     * @param description The description of the module, as to be displayed in the data pack's mcmeta file.
-     * @param prefix The prefix used optionally by elements of the module to avoid conflicts.
-     * */
-    public CommandModule(@NotNull String name, @NotNull String description, @Nullable String prefix) {
-        this(name, description);
-    }
-
-    /**
      * Retrieves this module's name.
      *
      * @return The name for this module.
@@ -168,16 +157,15 @@ public class CommandModule implements ExportablePack {
     }
 
     /**
-     * Enables this module's version settings to be enforced from the point this method is call until compilation.
+     * Enables this module's settings to be enforced from the point this method is call until compilation.
      * If enabled, any object instantiations or methods that may result in a version incompatibility error will throw
      * an exception on the spot, rather than only showing them during compilation.
      * <p>
-     * It is advised that you only enable this if you're having trouble tracking down the cause of a version error.
-     * <p>
-     * Multiple command modules in the same thread may not have instant assertions enabled at once.
+     * It is advised that you call this before doing anything with this module.
+     * </p>
+     * Multiple command modules in the same thread may not be active at at once.
      */
-    @NotNull
-    public void enableInstantAssertions() {
+    public void setSettingsActive() {
         ModuleSettingsManager.set(settings);
     }
 
@@ -236,7 +224,7 @@ public class CommandModule implements ExportablePack {
         Namespace alreadyExisting = namespaces.get(name);
         if(alreadyExisting != null) return alreadyExisting;
 
-        Namespace newNamespace = new Namespace(this, name);
+        Namespace newNamespace = new Namespace(name);
         namespaces.put(name, newNamespace);
         return newNamespace;
     }
@@ -258,7 +246,7 @@ public class CommandModule implements ExportablePack {
      * */
     public void join(@NotNull CommandModule other) {
         for(Map.Entry<String, Namespace> ns : other.namespaces.entrySet()) {
-            this.namespaces.putIfAbsent(ns.getKey(), ns.getValue().clone(this));
+            this.namespaces.putIfAbsent(ns.getKey(), ns.getValue().clone());
         }
         for(Objective obj : other.objMgr.getAll()) {
             this.objMgr.create(obj.getName(), obj.getType(), obj.getDisplayName());
@@ -299,6 +287,7 @@ public class CommandModule implements ExportablePack {
      * @param key The key to associate this resource with
      * @param value The resource value to associate with this key
      * */
+    @Override
     public void putResource(@NotNull String key, Object value) {
         resources.put(key, value);
     }
@@ -361,5 +350,17 @@ public class CommandModule implements ExportablePack {
         }
         allExportables.addAll(exportables);
         return allExportables;
+    }
+
+    @Override
+    public TypeManager getTypeManager(String namespace) {
+        Namespace ns = (namespace != null) ? getNamespace(namespace) : minecraft;
+        return ns.types;
+    }
+
+    @Override
+    public TagManager getTagManager(String namespace) {
+        Namespace ns = (namespace != null) ? getNamespace(namespace) : minecraft;
+        return ns.tags;
     }
 }
