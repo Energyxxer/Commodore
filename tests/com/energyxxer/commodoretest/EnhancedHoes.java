@@ -40,7 +40,7 @@ public class EnhancedHoes {
 
 
     public static void main(String[] args) {
-        CommandModule module = new CommandModule("Enhanced Hoes", "eh");
+        CommandModule module = new CommandModule("Enhanced Hoes");
         try {
             StandardDefinitionPacks.MINECRAFT_JAVA_LATEST_RELEASE.populate(module);
         } catch(IOException x) {
@@ -54,7 +54,7 @@ public class EnhancedHoes {
         Namespace minecraft = module.minecraft;
         Type itemEntityType = minecraft.getTypeManager().entity.get("item");
 
-        Namespace namespace = module.getNamespace(module.getPrefix());
+        Namespace namespace = module.getNamespace("eh");
 
         Function tick = namespace.getFunctionManager().create("tick");
 

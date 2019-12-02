@@ -2,7 +2,6 @@ package com.energyxxer.commodore.functionlogic.score;
 
 import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.functions.FunctionSection;
-import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.textcomponents.TextComponent;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -13,17 +12,11 @@ import java.util.HashMap;
 public class ObjectiveManager {
 
     @NotNull
-    private final CommandModule owner;
-
-    @NotNull
     private final HashMap<@NotNull String, @NotNull Objective> objectives = new HashMap<>();
     @Nullable
     private FunctionSection creationFunction;
 
-    private boolean usePrefix = false;
-
-    public ObjectiveManager(@NotNull CommandModule owner) {
-        this.owner = owner;
+    public ObjectiveManager() {
     }
 
     public Objective get(@NotNull String name) {
@@ -83,11 +76,6 @@ public class ObjectiveManager {
         return newObjective;
     }
 
-    @NotNull
-    public CommandModule getOwner() {
-        return owner;
-    }
-
     private void dumpObjectiveCreators(@NotNull FunctionSection function) {
         objectives.values().forEach(o -> {
             function.append(o.getObjectiveCreator());
@@ -96,14 +84,6 @@ public class ObjectiveManager {
 
     public void setCreationFunction(@Nullable FunctionSection creationFunction) {
         this.creationFunction = creationFunction;
-    }
-
-    public void setPrefixEnabled(boolean prefixEnabled) {
-        this.usePrefix = prefixEnabled;
-    }
-
-    public boolean isPrefixEnabled() {
-        return usePrefix;
     }
 
     public void compile() {
@@ -119,6 +99,6 @@ public class ObjectiveManager {
 
     @Override
     public String toString() {
-        return "Objective Manager for " + owner + " (" + objectives.size() + " objective" + (objectives.size() == 1 ? "" : "s") + ")";
+        return "Objective Manager (" + objectives.size() + " objective" + (objectives.size() == 1 ? "" : "s") + ")";
     }
 }

@@ -67,6 +67,7 @@ import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.Adv
 import com.energyxxer.commodore.functionlogic.selector.arguments.advancement.AdvancementCriterionGroupEntry;
 import com.energyxxer.commodore.item.Item;
 import com.energyxxer.commodore.module.CommandModule;
+import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
 import com.energyxxer.commodore.standard.StandardDefinitionPacks;
 import com.energyxxer.commodore.tags.BlockTag;
 import com.energyxxer.commodore.tags.FunctionTag;
@@ -78,7 +79,10 @@ import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.BossbarReference;
 import com.energyxxer.commodore.types.defaults.FunctionReference;
 import com.energyxxer.commodore.types.defaults.TeamReference;
-import com.energyxxer.commodore.util.*;
+import com.energyxxer.commodore.util.Delta;
+import com.energyxxer.commodore.util.IntegerRange;
+import com.energyxxer.commodore.util.Particle;
+import com.energyxxer.commodore.util.StatusEffect;
 
 import java.io.File;
 import java.io.IOException;
@@ -162,8 +166,8 @@ public class CommandTest {
         } catch(IOException x) {
             x.printStackTrace();
         }
+        ModuleSettingsManager.set(module.getSettingsManager());
         ObjectiveManager objMgr = module.getObjectiveManager();
-        objMgr.setPrefixEnabled(true);
         objMgr.setCreationFunction(module.getNamespace("ct").getFunctionManager().create("init_objectives"));
         objMgr.create("return", true);
 
@@ -230,8 +234,8 @@ public class CommandTest {
 
         function.append(new FunctionHeaderComment("SCOREBOARD ACCESS OPTIMIZATION"));
 
-        LocalScore a = new LocalScore(objMgr.get("A"), entity);
-        LocalScore b = new LocalScore(objMgr.get("B"), entity);
+        LocalScore a = new LocalScore(objMgr.getOrCreate("A"), entity);
+        LocalScore b = new LocalScore(objMgr.getOrCreate("B"), entity);
 
         function.append(new ScoreSet(a, 5));
         function.append(new ScorePlayersOperation(b, ScorePlayersOperation.Operation.ASSIGN, a));
@@ -251,7 +255,7 @@ public class CommandTest {
 
         function.append(new FunctionComment("CLONE COMMANDS"));
 
-        BlockTag buttons = module.minecraft.getTagManager().blockTags.create("buttons");
+        BlockTag buttons = module.minecraft.getTagManager().blockTags.getOrCreate("buttons");
         buttons.addValue(module.minecraft.getTypeManager().block.get("stone_button"));
         buttons.addValue(module.minecraft.getTypeManager().block.get("oak_button"));
         buttons.addValue(module.minecraft.getTypeManager().block.get("spruce_button"));
@@ -310,7 +314,8 @@ public class CommandTest {
             //otherFunction.append(exec1);
         }
 
-        FunctionTag tick = module.minecraft.getTagManager().functionTags.create("tick");
+        FunctionTag tick = module.minecraft.getTagManager().functionTags.getOrCreate("tick");
+        tick.setExport(true);
         tick.addValue(new FunctionReference(otherFunction));
 
         function.append(new FunctionHeaderComment(new String(buttons.getContents()).split("\n")));

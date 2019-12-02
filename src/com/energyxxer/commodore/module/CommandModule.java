@@ -37,10 +37,6 @@ public class CommandModule implements ExportablePack {
      * */
     @NotNull
     protected String description;
-    /**
-     * The prefix which should be used for special names in this module. Currently only used by objective names.
-     * */
-    protected final String prefix;
 
     /**
      * This module's settings.
@@ -77,22 +73,29 @@ public class CommandModule implements ExportablePack {
     protected final HashMap<@NotNull String, Object> resources = new HashMap<>();
 
     /**
-     * Creates a command module with the given name.
+     * Creates a command module with the given name and prefix.
      *
      * @param name The name of the new module.
      * */
     public CommandModule(@NotNull String name) {
-        this(name, null);
+        this(name, "Module Pack created programmatically with Commodore");
     }
 
     /**
-     * Creates a command module with the given name and prefix.
+     * Creates a command module with the given name, description and prefix.
      *
      * @param name The name of the new module.
-     * @param prefix The prefix used optionally by elements of the module to avoid conflicts.
+     * @param description The description of the module, as to be displayed in the data pack's mcmeta file.
      * */
-    public CommandModule(@NotNull String name, @Nullable String prefix) {
-        this(name, "Module Pack created programmatically with Commodore", prefix);
+    public CommandModule(@NotNull String name, @NotNull String description) {
+        this.name = name;
+        this.description = description;
+
+        this.objMgr = new ObjectiveManager();
+
+        this.minecraft = getNamespace("minecraft");
+
+        settings = new ModuleSettings(Commodore.DEFAULT_TARGET_VERSION);
     }
 
     /**
@@ -103,15 +106,7 @@ public class CommandModule implements ExportablePack {
      * @param prefix The prefix used optionally by elements of the module to avoid conflicts.
      * */
     public CommandModule(@NotNull String name, @NotNull String description, @Nullable String prefix) {
-        this.name = name;
-        this.description = description;
-        this.prefix = prefix;
-
-        this.objMgr = new ObjectiveManager(this);
-
-        this.minecraft = getNamespace("minecraft");
-
-        settings = new ModuleSettings(Commodore.DEFAULT_TARGET_VERSION);
+        this(name, description);
     }
 
     /**
@@ -132,15 +127,6 @@ public class CommandModule implements ExportablePack {
     @NotNull
     public String getDescription() {
         return description;
-    }
-
-    /**
-     * Retrieves this module's prefix.
-     *
-     * @return The prefix for this module.
-     * */
-    public String getPrefix() {
-        return prefix;
     }
 
     /**

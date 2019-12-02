@@ -39,7 +39,7 @@ public class Objective {
 
     @NotNull
     public String getName() {
-        return (parent.isPrefixEnabled() ? parent.getOwner().getPrefix() + "_" : "") + name;
+        return name;
     }
 
     @NotNull
