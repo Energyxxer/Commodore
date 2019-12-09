@@ -2,16 +2,10 @@ package com.energyxxer.commodore.versioning;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
-
-public class BedrockEditionVersion implements Version {
-
-    private final int major, minor, patch;
+public class BedrockEditionVersion extends ThreeNumberVersion {
 
     public BedrockEditionVersion(int major, int minor, int patch) {
-        this.major = major;
-        this.minor = minor;
-        this.patch = patch;
+        super(major, minor, patch);
     }
 
     public int getMajor() {
@@ -32,12 +26,6 @@ public class BedrockEditionVersion implements Version {
         return "Bedrock";
     }
 
-    @NotNull
-    @Override
-    public String getVersionString() {
-        return major + "." + minor + "." + patch;
-    }
-
     @Override
     public String toString() {
         return "Bedrock Edition " + getVersionString();
@@ -46,12 +34,7 @@ public class BedrockEditionVersion implements Version {
     @Override
     public int compare(Version rawOther) {
         if (rawOther instanceof BedrockEditionVersion) {
-            BedrockEditionVersion other = (BedrockEditionVersion) rawOther;
-
-            if (other.major != this.major) return this.major - other.major;
-            if (other.minor != this.minor) return this.minor - other.minor;
-            return this.patch - other.patch;
-
+            return super.compare(rawOther);
         } else throw new UnsupportedOperationException(this + " and " + rawOther + " are not comparable versions");
     }
 
@@ -63,10 +46,5 @@ public class BedrockEditionVersion implements Version {
         return major == that.major &&
                 minor == that.minor &&
                 patch == that.patch;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(major, minor, patch);
     }
 }
