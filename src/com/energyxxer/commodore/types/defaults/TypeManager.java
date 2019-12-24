@@ -162,7 +162,7 @@ public class TypeManager {
             boolean useNamespace = !fromThat.list().isEmpty() && fromThat.list().toArray(new Type[0])[0].useNamespace();
             TypeDictionary dict = createDictionary(fromThat.getCategory(), useNamespace);
             for(Type t : fromThat.list()) {
-                Type newType = dict.create(t.getName());
+                Type newType = dict.getOrCreate(t.getName());
                 newType.putProperties(t.getProperties());
             }
         }

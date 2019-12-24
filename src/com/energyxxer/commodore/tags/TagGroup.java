@@ -82,9 +82,13 @@ public class TagGroup<T extends Tag> {
         return category;
     }
 
-    @SuppressWarnings("unchecked")
     public void join(@NotNull TagGroup other) {
-        this.tags.addAll(other.tags);
+        for(Object otherTag : other.tags) {
+            T newTag = getOrCreate(((Tag) otherTag).getName());
+            newTag.addValues(((Tag) otherTag).getValues());
+            newTag.setOverridePolicy(((Tag) otherTag).getOverridePolicy());
+            newTag.setExport(((Tag) otherTag).shouldExport());
+        }
     }
 
     @NotNull

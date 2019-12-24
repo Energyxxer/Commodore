@@ -249,7 +249,9 @@ public class CommandModule implements ExportablePack, DefinitionPopulatable {
             this.namespaces.putIfAbsent(ns.getKey(), ns.getValue().clone());
         }
         for(Objective obj : other.objMgr.getAll()) {
-            this.objMgr.create(obj.getName(), obj.getType(), obj.getDisplayName());
+            if(!this.objMgr.exists(obj.getName())) {
+                this.objMgr.create(obj.getName(), obj.getType(), obj.getDisplayName());
+            }
         }
         this.resources.putAll(other.resources);
         this.exportables.addAll(other.exportables);

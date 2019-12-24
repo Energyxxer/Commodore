@@ -62,6 +62,7 @@ public class ModulePackGenerator {
         }
 
         for(Exportable exportable : module.getAllExportables()) {
+            if(!exportable.shouldExport()) continue;
             String exportPath = exportable.getExportPath();
             if(exportable instanceof Namespaced) {
                 exportPath = exportPath.replaceAll("\\$NAMESPACE\\$", ((Namespaced) exportable).getNamespace().getName());
