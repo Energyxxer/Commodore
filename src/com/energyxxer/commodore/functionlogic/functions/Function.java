@@ -110,14 +110,6 @@ public class Function implements FunctionSection, Exportable, Namespaced {
         if(!contentResolved) {
             StringBuilder sb = new StringBuilder();
 
-            {
-                sb.append("# ");
-                sb.append("-------- ");
-                sb.append(getHeader());
-                sb.append(" --------");
-                sb.append('\n');
-            }
-
             for(FunctionWriter writer : content) {
                 writer.assertAvailable();
                 String content = writer.toFunctionContent(this);
