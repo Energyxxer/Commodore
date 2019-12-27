@@ -55,7 +55,7 @@ public class NBTTextComponent extends TextComponent {
     public String toString(TextStyle parentStyle) {
         String baseProperties = this.getBaseProperties(parentStyle);
 
-        String extra = toPrint.getTextComponentKey() + ":\"" + CommandUtils.escape(toPrint.getTextComponentValue()) + "\"";
+        String extra = toPrint.getTextComponentKey() + ":" + CommandUtils.quote(toPrint.getTextComponentValue());
         if(interpret) extra += ",\"interpret\":true";
         return "{\"nbt\":\"" + CommandUtils.escape(path.toString()) + "\"," +
                 extra +

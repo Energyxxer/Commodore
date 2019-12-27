@@ -40,6 +40,6 @@ public class DataHolderEntity implements DataHolder {
 
     @Override
     public @NotNull String getTextComponentValue() {
-        return entity.toString();
+        return entity.selectorTextComponentToString();
     }
 }

@@ -145,4 +145,14 @@ public interface Entity extends Cloneable {
     default String gameProfileToString() {
         return toString();
     }
+
+    @NotNull
+    default String selectorTextComponentToString() {
+        return toString();
+    }
+
+    @NotNull
+    default String scoreTextComponentToString() {
+        return scoreHolderToString();
+    }
 }

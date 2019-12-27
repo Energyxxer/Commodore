@@ -77,6 +77,16 @@ public class PlayerName implements Entity {
     }
 
     @Override
+    public @NotNull String selectorTextComponentToString() {
+        return name;
+    }
+
+    @Override
+    public @NotNull String scoreTextComponentToString() {
+        return name;
+    }
+
+    @Override
     public int getLimit() {
         return 1;
     }

@@ -27,14 +27,10 @@ public class SelectorTextComponent extends TextComponent {
 
     @Override
     public String toString(TextStyle parentStyle) {
-        String entityString = entity.toString();
-        if(!entityString.startsWith("\"")) {
-            entityString = CommandUtils.escape(entityString);
-        }
-        String escapedText = "\"" + entityString + "\"";
+        String entityString = CommandUtils.quote(entity.selectorTextComponentToString());
         String baseProperties = this.getBaseProperties(parentStyle);
         return "{\"selector\":" +
-                        escapedText +
+                        entityString +
                         (baseProperties != null ? "," + baseProperties : "") +
                         '}';
     }
