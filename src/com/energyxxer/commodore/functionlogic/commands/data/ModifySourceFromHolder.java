@@ -25,4 +25,14 @@ public class ModifySourceFromHolder implements DataModifyCommand.ModifySource {
     public void assertAvailable() {
         holder.assertAvailable();
     }
+
+    @NotNull
+    public DataHolder getHolder() {
+        return holder;
+    }
+
+    @Nullable
+    public NBTPath getSourcePath() {
+        return sourcePath;
+    }
 }

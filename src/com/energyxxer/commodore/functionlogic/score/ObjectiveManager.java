@@ -76,7 +76,7 @@ public class ObjectiveManager {
         return newObjective;
     }
 
-    private void dumpObjectiveCreators(@NotNull FunctionSection function) {
+    public void dumpObjectiveCreators(@NotNull FunctionSection function) {
         objectives.values().forEach(o -> {
             function.append(o.getObjectiveCreator());
         });

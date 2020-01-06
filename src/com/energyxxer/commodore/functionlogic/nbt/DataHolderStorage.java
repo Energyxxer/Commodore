@@ -41,4 +41,9 @@ public class DataHolderStorage implements DataHolder {
     public @NotNull String getTextComponentValue() {
         return target.toString();
     }
+
+    @NotNull
+    public Type getTarget() {
+        return target;
+    }
 }

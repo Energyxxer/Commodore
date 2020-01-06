@@ -21,4 +21,9 @@ public class ModifySourceValue implements DataModifyCommand.ModifySource {
     public void assertAvailable() {
 
     }
+
+    @NotNull
+    public NBTTag getValue() {
+        return value;
+    }
 }
