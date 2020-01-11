@@ -14,7 +14,7 @@ public class TextStyle {
 
     public static final byte BOLD = 0b0000001;
     public static final byte ITALIC = 0b0000010;
-    public static final byte UNDERLINE = 0b0000100;
+    public static final byte UNDERLINED = 0b0000100;
     public static final byte STRIKETHROUGH = 0b0001000;
     public static final byte OBFUSCATED = 0b0010000;
 
@@ -93,12 +93,12 @@ public class TextStyle {
         if(color != null && (parentStyle == null || color != parentStyle.color)) {
             properties.add("\"color\":\"" + color.name().toLowerCase(Locale.ENGLISH) + "\"");
         }
-        if((mask & BOLD) != 0) properties.add("\"bold\":" + String.valueOf(getBoolean(BOLD)));
-        if((mask & ITALIC) != 0) properties.add("\"italic\":" + String.valueOf(getBoolean(ITALIC)));
-        if((mask & UNDERLINE) != 0) properties.add("\"underline\":" + String.valueOf(getBoolean(UNDERLINE)));
+        if((mask & BOLD) != 0) properties.add("\"bold\":" + getBoolean(BOLD));
+        if((mask & ITALIC) != 0) properties.add("\"italic\":" + getBoolean(ITALIC));
+        if((mask & UNDERLINED) != 0) properties.add("\"underlined\":" + getBoolean(UNDERLINED));
         if((mask & STRIKETHROUGH) != 0)
-            properties.add("\"strikethrough\":" + String.valueOf(getBoolean(STRIKETHROUGH)));
-        if((mask & OBFUSCATED) != 0) properties.add("\"obfuscated\":" + String.valueOf(getBoolean(OBFUSCATED)));
+            properties.add("\"strikethrough\":" + getBoolean(STRIKETHROUGH));
+        if((mask & OBFUSCATED) != 0) properties.add("\"obfuscated\":" + getBoolean(OBFUSCATED));
 
         StringBuilder sb = new StringBuilder();
         Iterator<String> it = properties.iterator();

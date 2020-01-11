@@ -121,7 +121,7 @@ public class CommandTest {
         //System.out.println();
 
         TextStyle style0 = new TextStyle(TextColor.BLUE, TextStyle.BOLD + TextStyle.STRIKETHROUGH + TextStyle.OBFUSCATED);
-        TextStyle style1 = new TextStyle(TextStyle.ITALIC + TextStyle.STRIKETHROUGH + TextStyle.UNDERLINE);
+        TextStyle style1 = new TextStyle(TextStyle.ITALIC + TextStyle.STRIKETHROUGH + TextStyle.UNDERLINED);
 
         //System.out.println("style0 = " + style0);
         //System.out.println("style1 = " + style1);
@@ -374,7 +374,7 @@ public class CommandTest {
         scoreTest.append(exec2);
 
         scoreTest.append(new ObjectiveModifyCommand(objMgr.get("A"), ObjectiveModifyCommand.ObjectiveModifyKey.RENDER_TYPE, ObjectiveModifyCommand.ObjectiveRenderType.HEARTS));
-        scoreTest.append(new ObjectiveModifyCommand(objMgr.get("A"), ObjectiveModifyCommand.ObjectiveModifyKey.DISPLAY_NAME, new StringTextComponent("hello", new TextStyle(TextColor.DARK_AQUA, TextStyle.BOLD + TextStyle.UNDERLINE))));
+        scoreTest.append(new ObjectiveModifyCommand(objMgr.get("A"), ObjectiveModifyCommand.ObjectiveModifyKey.DISPLAY_NAME, new StringTextComponent("hello", new TextStyle(TextColor.DARK_AQUA, TextStyle.BOLD + TextStyle.UNDERLINED))));
 
         TeamReference team = new TeamReference("blu");
 
