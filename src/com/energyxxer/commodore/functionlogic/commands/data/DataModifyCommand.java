@@ -12,8 +12,6 @@ import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Locale;
-
 public class DataModifyCommand extends DataCommand {
 
     @NotNull
@@ -21,8 +19,8 @@ public class DataModifyCommand extends DataCommand {
     public static ModifyOperation APPEND() { return new ModifyOperation("append"); }
 
     @NotNull
-    @Contract("_, _ -> new")
-    public static ModifyOperation INSERT(@NotNull InsertOrder order, int index) { return new ModifyOperation("insert " + order.toString().toLowerCase(Locale.ENGLISH) + " " + index); }
+    @Contract("_ -> new")
+    public static ModifyOperation INSERT(int index) { return new ModifyOperation("insert " + index); }
     @NotNull
     @Contract(" -> new")
     public static ModifyOperation MERGE() { return new ModifyOperation("merge"); }
@@ -32,10 +30,6 @@ public class DataModifyCommand extends DataCommand {
     @NotNull
     @Contract(" -> new")
     public static ModifyOperation SET() { return new ModifyOperation("set"); }
-
-    public enum InsertOrder {
-        BEFORE, AFTER
-    }
 
     @NotNull
     private final NBTPath targetPath;
