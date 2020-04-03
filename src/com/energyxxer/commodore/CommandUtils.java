@@ -42,10 +42,22 @@ public final class CommandUtils {
      * */
     @NotNull
     public static String escape(@NotNull String str) {
+        return escape(str, true);
+    }
+
+    /**
+     * Escapes the given string's quotes and backslashes.
+     *
+     * @param str The string to be escaped.
+     *
+     * @return The escaped string.
+     * */
+    @NotNull
+    public static String escape(@NotNull String str, boolean escapeUnicode) {
         str = str.replace("\\", "\\\\").replace("\"", "\\\"");
         StringBuilder sb = new StringBuilder();
         for(char c : str.toCharArray()) {
-            if(((int) c) > 127) {
+            if(((int) c) > 127 && escapeUnicode) {
                 sb.append("\\u");
                 sb.append(padLeft(Integer.toString((int)c, 16).toUpperCase(Locale.ENGLISH), 4, '0'));
             } else if(ESCAPED.containsKey(c)) {
@@ -247,6 +259,10 @@ public final class CommandUtils {
     }
 
     public static String quote(String str) {
-        return "\"" + escape(str) + "\"";
+        return quote(str, true);
+    }
+
+    public static String quote(String str, boolean escapeUnicode) {
+        return "\"" + escape(str, escapeUnicode) + "\"";
     }
 }

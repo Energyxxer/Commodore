@@ -50,7 +50,7 @@ public class PlayerName implements Entity {
     @Override
     public String toString() {
         if(!name.matches(VersionFeatureManager.getString("player_names.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
-            return CommandUtils.quote(name);
+            return CommandUtils.quote(name, false);
         } else {
             return name;
         }
@@ -60,7 +60,7 @@ public class PlayerName implements Entity {
     @Override
     public String scoreHolderToString() {
         if(!name.matches(VersionFeatureManager.getString("score_holders.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
-            return CommandUtils.quote(name);
+            return CommandUtils.quote(name, false);
         } else {
             return name;
         }
@@ -70,7 +70,7 @@ public class PlayerName implements Entity {
     @Override
     public String gameProfileToString() {
         if(!name.matches(VersionFeatureManager.getString("game_profiles.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
-            return CommandUtils.quote(name);
+            return CommandUtils.quote(name, false);
         } else {
             return name;
         }
