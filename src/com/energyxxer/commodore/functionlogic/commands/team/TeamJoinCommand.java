@@ -20,12 +20,12 @@ public class TeamJoinCommand extends TeamCommand {
     public TeamJoinCommand(@NotNull TeamReference reference, @Nullable Entity entity) {
         this.reference = reference;
         this.entity = entity;
-        if(entity != null) entity.assertEntityFriendly();
+        if(entity != null) entity.assertScoreHolderFriendly();
     }
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return (entity != null) ? new CommandResolution(execContext, "team join " + reference + " " + entity) : new CommandResolution(execContext, "team join " + reference);
+        return (entity != null) ? new CommandResolution(execContext, "team join " + reference + " " + entity.scoreHolderToString()) : new CommandResolution(execContext, "team join " + reference);
     }
 
     @Override

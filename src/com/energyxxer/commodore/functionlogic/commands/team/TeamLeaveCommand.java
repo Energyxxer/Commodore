@@ -11,12 +11,12 @@ public class TeamLeaveCommand extends TeamCommand {
 
     public TeamLeaveCommand(@NotNull Entity entity) {
         this.entity = entity;
-        entity.assertEntityFriendly();
+        entity.assertScoreHolderFriendly();
     }
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "team leave " + entity);
+        return new CommandResolution(execContext, "team leave " + entity.scoreHolderToString());
     }
 
     @Override
