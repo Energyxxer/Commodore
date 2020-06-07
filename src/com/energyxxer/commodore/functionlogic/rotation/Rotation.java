@@ -56,6 +56,16 @@ public class Rotation implements ExecuteModifier {
         return yaw.isAbsolute() && pitch.isAbsolute();
     }
 
+    @NotNull
+    public RotationUnit getYaw() {
+        return yaw;
+    }
+
+    @NotNull
+    public RotationUnit getPitch() {
+        return pitch;
+    }
+
     @Override
     public ExecutionVariableMap getModifiedExecutionVariables() {
         ExecutionVariableMap map = new ExecutionVariableMap();

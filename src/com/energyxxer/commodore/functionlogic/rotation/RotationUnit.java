@@ -49,6 +49,15 @@ public class RotationUnit {
         return type.prefix + ((value == 0 && type == Type.RELATIVE) ? "" : CommandUtils.numberToPlainString(value));
     }
 
+    @NotNull
+    public Type getType() {
+        return type;
+    }
+
+    public double getMagnitude() {
+        return value;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,7 +69,6 @@ public class RotationUnit {
 
     @Override
     public int hashCode() {
-
         return Objects.hash(type, value);
     }
 }
