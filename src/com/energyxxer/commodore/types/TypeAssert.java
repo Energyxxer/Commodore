@@ -83,6 +83,17 @@ public class TypeAssert {
     }
 
     /**
+     * Throws an exception if the given type is not of the category <i>attribute</i>.
+     *
+     * @param type The type whose category is to be tested.
+     *
+     * @throws IllegalTypeException If the given type is not of the <i>attribute</i> category.
+     * */
+    public static void assertAttribute(Type type) {
+        assertType(type, AttributeType.CATEGORY);
+    }
+
+    /**
      * Throws an exception if the given type is not of the category <i>difficulty</i>.
      *
      * @param type The type whose category is to be tested.

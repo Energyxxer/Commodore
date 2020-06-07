@@ -73,6 +73,10 @@ public class TypeManager {
      * */
     public final TypeDictionary biome;
     /**
+     * A pre-defined type dictionary for all attribute types.
+     * */
+    public final TypeDictionary attribute;
+    /**
      * A pre-defined type dictionary for all painting motive types.
      * */
     public final TypeDictionary motive;
@@ -130,6 +134,7 @@ public class TypeManager {
         put(this.enchantment = new TypeDictionary(owner, EnchantmentType.CATEGORY, EnchantmentType::new));
         put(this.dimension = new TypeDictionary(owner, DimensionType.CATEGORY, DimensionType::new));
         put(this.biome = new TypeDictionary(owner, BiomeType.CATEGORY, BiomeType::new));
+        put(this.attribute = new TypeDictionary(owner, AttributeType.CATEGORY, AttributeType::new));
         put(this.motive = new TypeDictionary(owner, MotiveType.CATEGORY, MotiveType::new));
         put(this.villagerType = new TypeDictionary(owner, VillagerType.CATEGORY, VillagerType::new));
         put(this.villagerProfession = new TypeDictionary(owner, VillagerProfessionType.CATEGORY, VillagerProfessionType::new));
