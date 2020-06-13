@@ -76,6 +76,14 @@ public class TextStyle {
         return this;
     }
 
+    public Type getFont() {
+        return font;
+    }
+
+    public void setFont(Type font) {
+        this.font = font;
+    }
+
     public byte getFlags() {
         return flags;
     }
