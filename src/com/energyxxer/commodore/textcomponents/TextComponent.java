@@ -88,6 +88,7 @@ public abstract class TextComponent {
     public void assertAvailable() {
         if(supportsProperties() && style != TextStyle.EMPTY_STYLE) {
             VersionFeatureManager.assertEnabled("textcomponent.styles");
+            style.assertAvailable();
         }
         if(extra != null) {
             extra.assertAvailable();

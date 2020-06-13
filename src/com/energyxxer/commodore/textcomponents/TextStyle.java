@@ -1,14 +1,19 @@
 package com.energyxxer.commodore.textcomponents;
 
+import com.energyxxer.commodore.types.Type;
+import com.energyxxer.commodore.types.TypeAssert;
+import com.energyxxer.commodore.types.defaults.FontReference;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.Locale;
 
 public class TextStyle {
     @Nullable
     private TextColor color;
+    @Nullable
+    private Type font;
     private byte flags = 0;
     private byte mask = 0b0011111;
 
@@ -29,6 +34,7 @@ public class TextStyle {
         this.color = other.color;
         this.mask = other.mask;
         this.flags = other.flags;
+        this.font = other.font;
     }
 
     public TextStyle() {
@@ -40,12 +46,24 @@ public class TextStyle {
     }
 
     public TextStyle(TextColor color) {
-        this(color, (byte) 0);
+        this(color, 0);
     }
 
     public TextStyle(@Nullable TextColor color, int flags) {
+        this(color, null, flags);
+    }
+
+    public TextStyle(@Nullable TextColor color, @Nullable Type font) {
+        this(color, font, 0);
+    }
+
+    public TextStyle(@Nullable TextColor color, @Nullable Type font, int flags) {
         this.color = color;
         this.flags = (byte) flags;
+        if(font != null) {
+            TypeAssert.assertType(font, FontReference.CATEGORY);
+        }
+        this.font = font;
     }
 
     @Nullable
@@ -90,8 +108,11 @@ public class TextStyle {
         int mask = getMaskForParent(parentStyle);
         ArrayList<String> properties = new ArrayList<>();
 
-        if(color != null && (parentStyle == null || color != parentStyle.color)) {
-            properties.add("\"color\":\"" + color.name().toLowerCase(Locale.ENGLISH) + "\"");
+        if(color != null && (parentStyle == null || !color.equals(parentStyle.color))) {
+            properties.add("\"color\":\"" + color.toString() + "\"");
+        }
+        if(font != null && (parentStyle == null || !font.equals(parentStyle.font))) {
+            properties.add("\"font\":\"" + font.toString() + "\"");
         }
         if((mask & BOLD) != 0) properties.add("\"bold\":" + getBoolean(BOLD));
         if((mask & ITALIC) != 0) properties.add("\"italic\":" + getBoolean(ITALIC));
@@ -141,5 +162,10 @@ public class TextStyle {
         newStyle.mask = (byte) newMask;
         newStyle.flags = (byte) newFlags;
         return newStyle;
+    }
+
+    public void assertAvailable() {
+        if(color != null) color.assertAvailable();
+        if(font != null) VersionFeatureManager.assertEnabled("textcomponent.font");
     }
 }

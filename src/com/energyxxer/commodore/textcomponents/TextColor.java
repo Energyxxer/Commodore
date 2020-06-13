@@ -1,31 +1,118 @@
 package com.energyxxer.commodore.textcomponents;
 
-public enum TextColor {
-    BLACK('0'),
-    DARK_BLUE('1'),
-    DARK_AQUA('2'),
-    DARK_GREEN('3'),
-    DARK_RED('4'),
-    DARK_PURPLE('5'),
-    GOLD('6'),
-    GRAY('7'),
-    DARK_GRAY('8'),
-    BLUE('9'),
-    GREEN('a'),
-    AQUA('b'),
-    RED('c'),
-    LIGHT_PURPLE('d'),
-    YELLOW('e'),
-    WHITE('f'),
-    RESET('r');
+import com.energyxxer.commodore.CommodoreException;
+import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
+import org.jetbrains.annotations.NotNull;
 
-    private final char code;
+import java.util.Objects;
 
-    TextColor(char code) {
+public class TextColor {
+    private static final TextColor[] defaultColors = new TextColor[17];
+    private static int defaultColorIndex = 0;
+
+    public static final TextColor BLACK = new TextColor(0, "black", "000000");
+    public static final TextColor DARK_BLUE = new TextColor(1, "dark_blue", "0000AA");
+    public static final TextColor DARK_AQUA = new TextColor(2, "dark_aqua", "00AA00");
+    public static final TextColor DARK_GREEN = new TextColor(3, "dark_green", "00AAAA");
+    public static final TextColor DARK_RED = new TextColor(4, "dark_red", "AA0000");
+    public static final TextColor DARK_PURPLE = new TextColor(5, "dark_purple", "AA00AA");
+    public static final TextColor GOLD = new TextColor(6, "gold", "FFAA00");
+    public static final TextColor GRAY = new TextColor(7, "gray", "AAAAAA");
+    public static final TextColor DARK_GRAY = new TextColor(8, "dark_gray", "555555");
+    public static final TextColor BLUE = new TextColor(9, "blue", "5555FF");
+    public static final TextColor GREEN = new TextColor(10, "green", "55FF55");
+    public static final TextColor AQUA = new TextColor(11, "aqua", "55FFFF");
+    public static final TextColor RED = new TextColor(12, "red", "FF5555");
+    public static final TextColor LIGHT_PURPLE = new TextColor(13, "light_purple", "FF55FF");
+    public static final TextColor YELLOW = new TextColor(14, "yellow", "FFFF55");
+    public static final TextColor WHITE = new TextColor(15, "white", "FFFFFF");
+    public static final TextColor RESET = new TextColor(-2, "reset");
+
+    private final int code;
+
+    private final String name;
+
+    private final byte red;
+    private final byte green;
+    private final byte blue;
+
+    private TextColor(int code, String name) {
         this.code = code;
+        this.name = name;
+
+        this.red = this.green = this.blue = 0;
+        defaultColors[defaultColorIndex] = this;
+        defaultColorIndex++;
     }
 
-    public char getCodeChar() {
-        return code;
+    private TextColor(int code, String name, String hexString) {
+        this.code = code;
+        this.name = name;
+
+        int parsed = Integer.parseInt(hexString, 16);
+        red = (byte)(parsed & 0xFF);
+        green = (byte)((parsed >> 8) & 0xFF);
+        blue = (byte)((parsed >> 16) & 0xFF);
+
+        defaultColors[defaultColorIndex] = this;
+        defaultColorIndex++;
+    }
+
+    public TextColor(int red, int green, int blue) {
+        this.code = -1;
+        this.name = null;
+        this.red = (byte) red;
+        this.green = (byte) green;
+        this.blue = (byte) blue;
+    }
+
+    public static TextColor valueOf(@NotNull String nm) {
+        if(nm.startsWith("#")) {
+            int parsed = Integer.parseInt(nm.substring(1), 16);
+            byte red = (byte)(parsed & 0xFF);
+            byte green = (byte)((parsed >> 8) & 0xFF);
+            byte blue = (byte)((parsed >> 16) & 0xFF);
+            return new TextColor(red, green, blue);
+        } else {
+            for(TextColor color : defaultColors) {
+                if(nm.equals(color.name)) return color;
+            }
+        }
+        return null;
+    }
+
+    public String name() {
+        return toString();
+    }
+
+    @Override
+    public String toString() {
+        return name != null ? name : "#" + Integer.toString(blue + (green << 8) + (red << 16), 16);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TextColor textColor = (TextColor) o;
+        return (Math.min(code, -1) == Math.min(textColor.code, -1)) &&
+                (red == textColor.red &&
+                green == textColor.green &&
+                blue == textColor.blue);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(Math.min(code, -1), red, green, blue);
+    }
+
+    public void assertAvailable() {
+        if(code == -1) {
+            VersionFeatureManager.assertEnabled("textcomponent.hex_color");
+        }
+        if(code == -2 && VersionFeatureManager.getBoolean("textcomponent.hex_color")) {
+            throw new CommodoreException(CommodoreException.Source.VERSION_ERROR, "The color code \"reset\" is not supported in " + ModuleSettingsManager.getActive().getTargetVersion());
+        }
     }
 }

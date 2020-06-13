@@ -53,6 +53,7 @@ public class SpreadPlayersCommand implements Command {
 
         if(spreadDistance < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Spread distance must not be less than 0.0, found " + spreadDistance, spreadDistance, "SPREAD_DISTANCE");
         if(maxRange < spreadDistance+1) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Max range must not be less than " + (spreadDistance + 1) + " (spread distance + 1), found " + maxRange, maxRange, "MAX_RANGE");
+        if(under < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Max height must not be less than 0, found " + under, under, "MAX_HEIGHT");
 
         this.under = under;
     }
