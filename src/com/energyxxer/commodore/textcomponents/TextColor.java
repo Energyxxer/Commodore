@@ -5,6 +5,7 @@ import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
 import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Locale;
 import java.util.Objects;
 
 public class TextColor {
@@ -33,9 +34,9 @@ public class TextColor {
 
     private final String name;
 
-    private final byte red;
-    private final byte green;
-    private final byte blue;
+    private final int red;
+    private final int green;
+    private final int blue;
 
     private TextColor(int code, String name) {
         this.code = code;
@@ -51,9 +52,9 @@ public class TextColor {
         this.name = name;
 
         int parsed = Integer.parseInt(hexString, 16);
-        red = (byte)(parsed & 0xFF);
-        green = (byte)((parsed >> 8) & 0xFF);
-        blue = (byte)((parsed >> 16) & 0xFF);
+        red = ((parsed >> 16) & 0xFF);
+        green = ((parsed >> 8) & 0xFF);
+        blue = ((parsed) & 0xFF);
 
         defaultColors[defaultColorIndex] = this;
         defaultColorIndex++;
@@ -62,19 +63,32 @@ public class TextColor {
     public TextColor(int red, int green, int blue) {
         this.code = -1;
         this.name = null;
-        this.red = (byte) red;
-        this.green = (byte) green;
-        this.blue = (byte) blue;
+        this.red = red;
+        this.green = green;
+        this.blue = blue;
+    }
+
+    public int getRed() {
+        return red;
+    }
+
+    public int getGreen() {
+        return green;
+    }
+
+    public int getBlue() {
+        return blue;
     }
 
     public static TextColor valueOf(@NotNull String nm) {
         if(nm.startsWith("#")) {
-            int parsed = Integer.parseInt(nm.substring(1), 16);
-            byte red = (byte)(parsed & 0xFF);
-            byte green = (byte)((parsed >> 8) & 0xFF);
-            byte blue = (byte)((parsed >> 16) & 0xFF);
+            int parsed = Integer.parseUnsignedInt(nm.substring(1), 16);
+            int red = ((parsed >> 16) & 0xFF);
+            int green = ((parsed >> 8) & 0xFF);
+            int blue = ((parsed) & 0xFF);
             return new TextColor(red, green, blue);
         } else {
+            nm = nm.toLowerCase(Locale.ENGLISH);
             for(TextColor color : defaultColors) {
                 if(nm.equals(color.name)) return color;
             }
@@ -88,7 +102,7 @@ public class TextColor {
 
     @Override
     public String toString() {
-        return name != null ? name : "#" + Integer.toString(blue + (green << 8) + (red << 16), 16);
+        return name != null ? name : "#" + Integer.toUnsignedString((red << 16) | (green << 8) | blue, 16);
     }
 
     @Override

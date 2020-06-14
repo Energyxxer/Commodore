@@ -18,6 +18,7 @@ public class ShowTextHoverEvent extends ContentHoverEvent {
 
     @Override
     public void assertAvailable() {
+        super.assertAvailable();
         text.assertAvailable();
     }
 }

@@ -39,6 +39,7 @@ public class ShowEntityHoverEvent extends ContentHoverEvent {
 
     @Override
     public void assertAvailable() {
+        super.assertAvailable();
         if(name != null) name.assertAvailable();
     }
 }

@@ -41,6 +41,7 @@ public class ShowItemHoverEvent extends ContentHoverEvent {
 
     @Override
     public void assertAvailable() {
+        super.assertAvailable();
         item.assertAvailable();
     }
 }
