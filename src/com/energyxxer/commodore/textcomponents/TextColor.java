@@ -1,7 +1,5 @@
 package com.energyxxer.commodore.textcomponents;
 
-import com.energyxxer.commodore.CommodoreException;
-import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
 import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 
@@ -125,8 +123,9 @@ public class TextColor {
         if(code == -1) {
             VersionFeatureManager.assertEnabled("textcomponent.hex_color");
         }
-        if(code == -2 && VersionFeatureManager.getBoolean("textcomponent.hex_color")) {
+        // Reset is still a "valid" color although it does nothing in text components. Does work in team names tho
+        /*if(code == -2 && VersionFeatureManager.getBoolean("textcomponent.hex_color")) {
             throw new CommodoreException(CommodoreException.Source.VERSION_ERROR, "The color code \"reset\" is not supported in " + ModuleSettingsManager.getActive().getTargetVersion());
-        }
+        }*/
     }
 }

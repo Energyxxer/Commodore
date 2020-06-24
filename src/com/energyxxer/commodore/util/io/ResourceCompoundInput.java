@@ -3,6 +3,7 @@ package com.energyxxer.commodore.util.io;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.File;
 import java.io.InputStream;
 
 public class ResourceCompoundInput implements CompoundInput {
@@ -28,5 +29,10 @@ public class ResourceCompoundInput implements CompoundInput {
 
     @Override
     public void close() {
+    }
+
+    @Override
+    public File getRootFile() {
+        return new File(".");
     }
 }

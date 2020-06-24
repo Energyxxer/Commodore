@@ -69,4 +69,9 @@ public class ZipCompoundInput implements CompoundInput {
         if (zf != null) zf.close();
         zf = null;
     }
+
+    @Override
+    public File getRootFile() {
+        return file;
+    }
 }

@@ -41,4 +41,9 @@ public class DirectoryCompoundInput implements CompoundInput {
     @Override
     public void close() {
     }
+
+    @Override
+    public File getRootFile() {
+        return directory;
+    }
 }

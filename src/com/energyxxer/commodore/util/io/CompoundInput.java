@@ -14,6 +14,7 @@ public interface CompoundInput {
     InputStream get(@NotNull String path) throws IOException;
     void open() throws IOException;
     void close() throws IOException;
+    File getRootFile();
 
     class Static {
         @NotNull

@@ -211,6 +211,20 @@ public class TypeManager {
     }
 
     /**
+     * Retrieves a dictionary for a specified category. If it doesn't exist, one will be created.
+     *
+     * @param category The category whose dictionary is to be returned.
+     * @param useNamespace Whether the new category should use a namespace, if it doesn't already exist.
+     *
+     * @return The type dictionary for the specified category
+     * */
+    public TypeDictionary getOrCreateDictionary(String category, boolean useNamespace) {
+        if(!dictionaries.containsKey(category)) {
+            return createDictionary(category, useNamespace);
+        } else return getDictionary(category);
+    }
+
+    /**
      * Retrieves a collection with all the dictionaries in this type manager.
      *
      * @return A collection with all the dictionaries in this type manager.
