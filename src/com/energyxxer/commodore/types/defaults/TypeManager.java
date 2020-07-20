@@ -165,7 +165,7 @@ public class TypeManager {
     public void join(TypeManager other) {
         for(TypeDictionary fromThat : other.dictionaries.values()) {
             boolean useNamespace = !fromThat.list().isEmpty() && fromThat.list().toArray(new Type[0])[0].useNamespace();
-            TypeDictionary dict = createDictionary(fromThat.getCategory(), useNamespace);
+            TypeDictionary dict = getOrCreateDictionary(fromThat.getCategory(), useNamespace);
             for(Type t : fromThat.list()) {
                 Type newType = dict.getOrCreate(t.getName());
                 newType.putProperties(t.getProperties());
@@ -188,7 +188,7 @@ public class TypeManager {
      * @return The dictionary for the specified category. If the category exists before the method call,
      * that will be returned. Otherwise, a new dictionary is created and returned.
      * */
-    public TypeDictionary createDictionary(String category, boolean useNamespace) {
+    public TypeDictionary getOrCreateDictionary(String category, boolean useNamespace) {
         if (dictionaries.containsKey(category)) {
             TypeDictionary typeDict = dictionaries.get(category);
             typeDict.usesNamespace = useNamespace;
@@ -208,20 +208,6 @@ public class TypeManager {
      * */
     public TypeDictionary getDictionary(String category) {
         return dictionaries.get(category);
-    }
-
-    /**
-     * Retrieves a dictionary for a specified category. If it doesn't exist, one will be created.
-     *
-     * @param category The category whose dictionary is to be returned.
-     * @param useNamespace Whether the new category should use a namespace, if it doesn't already exist.
-     *
-     * @return The type dictionary for the specified category
-     * */
-    public TypeDictionary getOrCreateDictionary(String category, boolean useNamespace) {
-        if(!dictionaries.containsKey(category)) {
-            return createDictionary(category, useNamespace);
-        } else return getDictionary(category);
     }
 
     /**

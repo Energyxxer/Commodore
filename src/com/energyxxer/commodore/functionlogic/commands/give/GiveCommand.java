@@ -30,7 +30,6 @@ public class GiveCommand implements Command {
         player.assertEntityFriendly();
         assertStandalone(item.getItemType());
         if(count < 1) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Count must not be less than 1, found " + count, count, "COUNT");
-        if(count > 64) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Count must not be more than 64, found " + count, count, "COUNT");
     }
 
     @Override @NotNull

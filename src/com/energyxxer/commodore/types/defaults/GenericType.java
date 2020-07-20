@@ -11,7 +11,7 @@ import com.energyxxer.commodore.types.TypeDictionary;
  * @see Type
  * @see TypeDictionary
  * @see TypeManager
- * @see TypeManager#createDictionary(String, boolean)
+ * @see TypeManager#getOrCreateDictionary(String, boolean)
  * @see TypeDictionary#create(String)
  * */
 public class GenericType extends Type {

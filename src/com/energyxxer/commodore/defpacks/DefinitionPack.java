@@ -416,7 +416,7 @@ public class DefinitionPack {
         for(Map.Entry<String, ArrayList<DefinitionBlueprint>> defs : definitions.entrySet()) {
             String category = defs.getKey();
             for(DefinitionBlueprint blueprint : defs.getValue()) {
-                module.getTypeManager(blueprint.namespace).createDictionary(category, blueprint.namespace != null).getOrCreate(blueprint.name).putProperties(blueprint.properties);
+                module.getTypeManager(blueprint.namespace).getOrCreateDictionary(category, blueprint.namespace != null).getOrCreate(blueprint.name).putProperties(blueprint.properties);
             }
         }
         for(Map.Entry<String, ArrayList<TagBlueprint>> entry : tags.entrySet()) {
@@ -441,7 +441,7 @@ public class DefinitionPack {
                         Tag created = module.getTagManager(namespace).getGroup(category).getOrCreate(value);
                         tag.addValue(created, false);
                     } else {
-                        Type created = module.getTypeManager(namespace).createDictionary(category, true).getOrCreate(value);
+                        Type created = module.getTypeManager(namespace).getOrCreateDictionary(category, true).getOrCreate(value);
                         tag.addValue(created, false);
                     }
                 }
