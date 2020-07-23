@@ -85,7 +85,7 @@ public class TagGroup<T extends Tag> {
     public void join(@NotNull TagGroup other) {
         for(Object otherTag : other.tags) {
             T newTag = getOrCreate(((Tag) otherTag).getName());
-            newTag.addValues(((Tag) otherTag).getValues());
+            newTag.join((Tag) otherTag);
             newTag.setOverridePolicy(((Tag) otherTag).getOverridePolicy());
             newTag.setExport(((Tag) otherTag).shouldExport());
         }

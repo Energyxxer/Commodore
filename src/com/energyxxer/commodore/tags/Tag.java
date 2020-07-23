@@ -6,6 +6,7 @@ import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.module.Namespaced;
 import com.energyxxer.commodore.types.IllegalTypeException;
 import com.energyxxer.commodore.types.Type;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -25,6 +26,12 @@ public abstract class Tag extends Type implements Exportable, Namespaced {
     protected final TagGroup group;
     private OverridePolicy policy = OverridePolicy.DEFAULT_POLICY;
     private boolean export = true;
+
+    public void join(Tag otherTag) {
+        values.addAll(otherTag.values);
+        valueModes.addAll(otherTag.valueModes);
+        shouldExportValues.addAll(otherTag.shouldExportValues);
+    }
 
     /**
      * Describes how a tag conflict between two data packs should be handled.
@@ -77,7 +84,14 @@ public abstract class Tag extends Type implements Exportable, Namespaced {
         }
     }
 
+    public enum TagValueMode {
+        REQUIRED, OPTIONAL;
+
+        public static final TagValueMode DEFAULT = REQUIRED;
+    }
+
     private final ArrayList<Type> values = new ArrayList<>();
+    private final ArrayList<TagValueMode> valueModes = new ArrayList<>();
     private final ArrayList<Boolean> shouldExportValues = new ArrayList<>();
 
     /**
@@ -147,21 +161,63 @@ public abstract class Tag extends Type implements Exportable, Namespaced {
      * @throws IllegalTypeException If the given value doesn't match this tag's category.
      * */
     public void addValue(@NotNull Type value, boolean shouldExport) {
+        addValue(value, TagValueMode.DEFAULT, shouldExport);
+    }
+
+    /**
+     * Adds a value to this tag's contents.
+     *
+     * @param value The value to add to this tag.
+     * @param valueMode The mode for this tag value (required/optional)
+     * @throws IllegalTypeException If the given value doesn't match this tag's category.
+     * */
+    public void addValue(@NotNull Type value, TagValueMode valueMode) {
+        addValue(value, valueMode, true);
+    }
+
+    /**
+     * Adds a value to this tag's contents.
+     *
+     * @param value The value to add to this tag.
+     * @param valueMode The mode for this tag value (required/optional)
+     * @param shouldExport Whether this value should be exported with the tag file. If not specified, defaults to
+     *                     <code>true</code>
+     *
+     * @throws IllegalTypeException If the given value doesn't match this tag's category.
+     * */
+    public void addValue(@NotNull Type value, TagValueMode valueMode, boolean shouldExport) {
+        if(valueMode != TagValueMode.DEFAULT) {
+            VersionFeatureManager.assertEnabled("type_tags.optional_values");
+        }
+
         values.add(value);
+        valueModes.add(valueMode);
         shouldExportValues.add(shouldExport);
     }
 
     /**
      * Removes a value from this tag's contents. Does nothing if the given value doesn't exist in this tag.
      *
-     * @param value The value to remove to this tag.
+     * @param value The value to remove from this tag.
      * */
     public void removeValue(@NotNull Type value) {
         int oldIndex;
         while((oldIndex = values.indexOf(value)) >= 0) {
             values.remove(oldIndex);
+            valueModes.remove(oldIndex);
             shouldExportValues.remove(oldIndex);
         }
+    }
+
+    /**
+     * Removes a value from this tag's contents, by the given index.
+     *
+     * @param index The index of the value to remove from this tag.
+     * */
+    public void removeValue(int index) {
+        values.remove(index);
+        valueModes.remove(index);
+        shouldExportValues.remove(index);
     }
 
     /**
@@ -186,7 +242,14 @@ public abstract class Tag extends Type implements Exportable, Namespaced {
 
         for(int i = 0; i < values.size(); i++) {
             if(shouldExportValues.get(i)) {
-                list.add(values.get(i).toString());
+                if(valueModes.get(i) == TagValueMode.DEFAULT) {
+                    list.add(values.get(i).toString());
+                } else {
+                    JsonObject entry = new JsonObject();
+                    entry.addProperty("id", values.get(i).toString());
+                    entry.addProperty("required", false);
+                    list.add(entry);
+                }
             }
         }
 
