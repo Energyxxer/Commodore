@@ -6,6 +6,8 @@ import org.jetbrains.annotations.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.security.CodeSource;
 
 public interface CompoundInput {
@@ -21,7 +23,12 @@ public interface CompoundInput {
         public static CompoundInput chooseInputForClasspath(@NotNull String rootPath, @NotNull Class cls) {
             CodeSource src = cls.getProtectionDomain().getCodeSource();
             if(src != null && src.getLocation().getFile().endsWith(".jar")) {
-                return new ZipCompoundInput(new File(src.getLocation().getFile()), rootPath);
+                try {
+                    return new ZipCompoundInput(new File(URLDecoder.decode(src.getLocation().getFile().replace("+","%2b"), "UTF-8")), rootPath);
+                } catch (UnsupportedEncodingException e) {
+                    //this is never gonna happen
+                    e.printStackTrace();
+                }
             }
             return new ResourceCompoundInput(rootPath, cls);
         }
