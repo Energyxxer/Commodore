@@ -10,6 +10,7 @@ import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
 import com.energyxxer.commodore.tags.TagGroup;
 import com.energyxxer.commodore.tags.TagManager;
 import com.energyxxer.commodore.types.defaults.TypeManager;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
@@ -185,7 +186,7 @@ public class CommandModule implements ExportablePack, DefinitionPopulatable {
             JsonObject root = new JsonObject();
             JsonObject inner = new JsonObject();
             root.add("pack", inner);
-            inner.addProperty("pack_format", 1);
+            inner.addProperty("pack_format", VersionFeatureManager.getInt("pack_format", 1));
 
             inner.addProperty("description", this.description);
 
