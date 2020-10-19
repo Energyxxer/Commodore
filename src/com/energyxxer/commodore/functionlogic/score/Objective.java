@@ -23,15 +23,7 @@ public class Objective {
     Objective(@NotNull ObjectiveManager parent, @NotNull String name, @NotNull String type, @Nullable TextComponent displayName) {
         this.parent = parent;
         this.name = name;
-        if(name.length() <= 0) {
-            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name must not be empty", name);
-        }
-        if(getName().length() > VersionFeatureManager.getInt("objective.max_length", 16)) {
-            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + getName() + "' exceeds the limit of " + VersionFeatureManager.getInt("objective.max_length", 16) + " characters", getName());
-        }
-        if(!VersionFeatureManager.getBoolean("objectives.accept_strings", false) && !name.matches(VersionFeatureManager.getString("objectives.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
-            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + getName() + "' has illegal characters. Does not match regex: " + VersionFeatureManager.getString("objective.regex", CommandUtils.IDENTIFIER_ALLOWED), name);
-        }
+        assertNameValid(name);
         this.type = type;
         this.displayName = displayName;
         if(displayName != null) displayName.assertAvailable();
@@ -94,6 +86,18 @@ public class Objective {
     public void assertAvailable() {
         if (!type.equals("dummy")) {
             VersionFeatureManager.assertEnabled("scoreboard.criteria");
+        }
+    }
+
+    public static void assertNameValid(String name) {
+        if(name.length() <= 0) {
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name must not be empty", name);
+        }
+        if(name.length() > VersionFeatureManager.getInt("objective.max_length", 16)) {
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + name + "' exceeds the limit of " + VersionFeatureManager.getInt("objective.max_length", 16) + " characters", name);
+        }
+        if(!VersionFeatureManager.getBoolean("objectives.accept_strings", false) && !name.matches(VersionFeatureManager.getString("objectives.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + name + "' has illegal characters. Does not match regex: " + VersionFeatureManager.getString("objective.regex", CommandUtils.IDENTIFIER_ALLOWED), name);
         }
     }
 }

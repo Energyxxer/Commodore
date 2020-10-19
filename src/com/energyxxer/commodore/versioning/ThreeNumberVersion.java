@@ -4,7 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-public abstract class ThreeNumberVersion implements Version {
+public class ThreeNumberVersion implements Version {
 
     protected final int major, minor, patch;
 
@@ -30,6 +30,11 @@ public abstract class ThreeNumberVersion implements Version {
     @Override
     public String getVersionString() {
         return major + "." + minor + "." + patch;
+    }
+
+    @Override
+    public @NotNull String getEditionString() {
+        return "";
     }
 
     @Override

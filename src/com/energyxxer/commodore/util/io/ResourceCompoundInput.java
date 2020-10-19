@@ -24,6 +24,16 @@ public class ResourceCompoundInput implements CompoundInput {
     }
 
     @Override
+    public boolean isDirectory(@NotNull String path) {
+        return false;
+    }
+
+    @Override
+    public Iterable<String> listSubEntries(@NotNull String path) {
+        return null;
+    }
+
+    @Override
     public void open() {
     }
 

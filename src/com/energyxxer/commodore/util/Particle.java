@@ -21,8 +21,9 @@ public class Particle {
     public Particle(@NotNull Type type, @NotNull Object... arguments) {
         this.type = type;
         assertParticle(type);
-        String[] expectedArguments = type.getProperty("argument").split("-");
-        if(expectedArguments.length == 1 && expectedArguments[0].equals("none")) {
+        String argumentProperty = type.getProperty("argument");
+        String[] expectedArguments = argumentProperty != null ? argumentProperty.split("-") : null;
+        if(expectedArguments == null || (expectedArguments.length == 1 && expectedArguments[0].equals("none"))) {
             if(arguments.length > 0) {
                 throw new CommodoreException(CommodoreException.Source.API_ARGUMENT_ERROR, "Particle '" + type + "' takes no arguments; got " + arguments.length + " instead", arguments);
             } else return;

@@ -21,7 +21,7 @@ public class CommandResolution {
         this.lines.addAll(lines);
     }
 
-    static String resolveModifiers(@NotNull ExecutionContext execContext, @NotNull ArrayList<@NotNull ExecuteModifier> modifiers) {
+    static String resolveModifiers(@NotNull ArrayList<@NotNull ExecuteModifier> modifiers) {
         ArrayList<ExecuteModifier> alreadyResolved = new ArrayList<>();
 
         HashMap<ExecuteModifier, String> resolved = new HashMap<>();
@@ -29,7 +29,7 @@ public class CommandResolution {
         for(int i = 0; i < modifiers.size(); i++) {
             ExecuteModifier modifier = modifiers.get(i);
             if(!alreadyResolved.contains(modifier)) {
-                ExecutionContext subExecContext = new ExecutionContext(execContext.getOriginalSender(), modifiers.subList(0, i));
+                ExecutionContext subExecContext = new ExecutionContext(modifiers.subList(0, i));
                 SubCommandResult result = modifier.getSubCommand(subExecContext);
                 String raw = result.getRaw();
                 alreadyResolved.add(modifier);

@@ -1,7 +1,6 @@
 package com.energyxxer.commodore.functionlogic.functions;
 
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.module.Namespace;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -49,14 +48,6 @@ public interface FunctionSection {
      * @param writers The writers to add to this function section.
      * */
     void prepend(@NotNull Collection<@NotNull FunctionWriter> writers);
-
-    /**
-     * Retrieves the namespace this function section belongs to.
-     *
-     * @return The namespace this function section belongs to.
-     * */
-    @NotNull
-    Namespace getNamespace();
 
     /**
      * Retrieves the execution context this function section runs on.

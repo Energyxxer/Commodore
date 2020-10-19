@@ -293,9 +293,9 @@ public class CommandTest {
 
         Function otherFunction = module.getNamespace("test").getFunctionManager().create("some_other_function");
         otherFunction.append(new PlaySoundCommand("minecraft:block.note.harp", MASTER, new Selector(ALL_PLAYERS), new CoordinateSet(0, 0, 0), 1, 1, 1));
-        otherFunction.append(new ScoreSet(new LocalScore(objMgr.get("return"), otherFunction.getSender()), 1));
+        otherFunction.append(new ScoreSet(new LocalScore(objMgr.get("return"), new Selector(SENDER)), 1));
         function.append(new FunctionCommand(otherFunction));
-        function.append(new ScoreGet(new LocalScore(objMgr.get("return"), function.getSender())));
+        function.append(new ScoreGet(new LocalScore(objMgr.get("return"), new Selector(SENDER))));
 
         {
             Entity entity1 = new Selector(ALL_PLAYERS);
@@ -363,7 +363,7 @@ public class CommandTest {
         scoreTest.append(new ScoreSet(new LocalScore(obj, entityA), 5));
         scoreTest.append(new ScoreSet(new LocalScore(obj, fakePlayer), 9));
 
-        CommandGroup cg = new CommandGroup(scoreTest);
+        CommandGroup cg = new CommandGroup();
         cg.append(new SayCommand("Hello"));
         cg.append(new FunctionComment("Comment"));
         cg.append(new SayCommand("World"));

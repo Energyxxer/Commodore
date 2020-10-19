@@ -57,12 +57,7 @@ public class Function implements FunctionSection, Exportable, Namespaced {
 
         Entity newSender = (sender != null) ? sender.clone() : new Selector(SENDER);
 
-        this.execContext = new ExecutionContext(newSender);
-    }
-
-    @NotNull
-    public Entity getSender() {
-        return execContext.getFinalSender();
+        this.execContext = new ExecutionContext();
     }
 
     @Override

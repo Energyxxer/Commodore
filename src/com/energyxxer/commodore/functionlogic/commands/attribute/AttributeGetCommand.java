@@ -21,6 +21,6 @@ public class AttributeGetCommand extends AttributeCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, getStart() + "get" + ((scale == 1) ? "" : CommandUtils.numberToPlainString(scale)));
+        return new CommandResolution(execContext, getStart() + "get" + ((scale == 1) ? "" : " " + CommandUtils.numberToPlainString(scale)));
     }
 }

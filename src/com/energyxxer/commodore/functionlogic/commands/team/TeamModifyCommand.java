@@ -114,7 +114,7 @@ public class TeamModifyCommand extends TeamCommand {
         this(reference, key, (Object) value);
     }
 
-    private TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, @NotNull Object value) {
+    public TeamModifyCommand(@NotNull TeamReference reference, @NotNull TeamModifyKey key, @NotNull Object value) {
         this.reference = reference;
         this.key = key;
         if (key.isValidValue(value)) {

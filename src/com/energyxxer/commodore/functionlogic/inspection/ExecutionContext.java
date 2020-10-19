@@ -1,7 +1,6 @@
 package com.energyxxer.commodore.functionlogic.inspection;
 
 import com.energyxxer.commodore.functionlogic.commands.execute.ExecuteModifier;
-import com.energyxxer.commodore.functionlogic.entity.Entity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -12,69 +11,25 @@ import java.util.Collection;
  * */
 public class ExecutionContext {
     /**
-     * The sender of the command/function, before the execute modifiers.
-     * */
-    @NotNull
-    private final Entity originalSender;
-    /**
      * The list of execute modifiers which modify the execution context; these are added in order into the execute
      * command.
      * */
     @NotNull
     private final ArrayList<@NotNull ExecuteModifier> modifiers = new ArrayList<>();
-    /**
-     * The sender of the chained command; that is, the entity that is executing the command after all the execute
-     * modifiers.
-     * */
-    @NotNull
-    private Entity finalSender;
 
     /**
      * Creates an execution context with no execute modifiers, executed by the given entity.
-     *
-     * @param sender The entity to run the command.
-     * */
-    public ExecutionContext(@NotNull Entity sender) {
-        this.originalSender = this.finalSender = sender;
+     *  */
+    public ExecutionContext() {
     }
 
     /**
      * Creates an execution context started by the given sender entity, and modified by the given execute modifiers.
-     *
-     * @param originalSender The sender entity before the execute modifiers are run.
-     * @param modifiers The list of execute modifiers which modify the execution context from the original sender's
+     *  @param modifiers The list of execute modifiers which modify the execution context from the original sender's
      *                  context.
      * */
-    public ExecutionContext(@NotNull Entity originalSender, @NotNull Collection<ExecuteModifier> modifiers) {
-        this.originalSender = originalSender;
+    public ExecutionContext(@NotNull Collection<ExecuteModifier> modifiers) {
         this.modifiers.addAll(modifiers);
-        this.finalSender = originalSender;
-        updateFinalSender();
-    }
-
-    /**
-     * Changes the final sender of this execution context to the that of the last execute modifier that
-     * changes the command sender. If no modifiers change the sender, it is set to the original sender.
-     * */
-    private void updateFinalSender() {
-        for(int i = modifiers.size() - 1; i >= 0; i--) {
-            ExecuteModifier modifier = modifiers.get(i);
-            if(modifier.getNewSender() != null) {
-                finalSender = modifier.getNewSender();
-                return;
-            }
-        }
-        finalSender = originalSender;
-    }
-
-    /**
-     * Retrieves the entity who starts the execute command.
-     *
-     * @return This context's original sender.
-     * */
-    @NotNull
-    public Entity getOriginalSender() {
-        return originalSender;
     }
 
     /**
@@ -86,13 +41,4 @@ public class ExecutionContext {
         return new ArrayList<>(modifiers);
     }
 
-    /**
-     * Retrieves entity who runs the command after all the executes have been evaluated.
-     *
-     * @return The final sender of the context.
-     * */
-    @NotNull
-    public Entity getFinalSender() {
-        return finalSender;
-    }
 }

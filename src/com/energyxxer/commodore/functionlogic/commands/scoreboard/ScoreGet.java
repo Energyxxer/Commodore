@@ -13,6 +13,7 @@ public class ScoreGet implements Command {
 
     public ScoreGet(@NotNull LocalScore score) {
         this.score = score;
+        score.getHolder().assertSingle();
     }
 
     @Override @NotNull

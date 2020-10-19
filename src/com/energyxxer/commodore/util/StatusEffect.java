@@ -149,13 +149,13 @@ public class StatusEffect {
     /**
      * Changes this status effect's duration.
      *
-     * @param duration The new duration for this status effect, in ticks.
+     * @param ticks The new duration for this status effect, in ticks.
      * */
-    public void setDuration(int duration) {
-        if(duration <= 0) {
-            throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Duration must not be less than 1, found " + duration, duration);
+    public void setDuration(int ticks) {
+        if(ticks <= 0) {
+            throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Duration must not be less than 1 tick, found " + (duration / 20) + " seconds (" + ticks + " ticks)", ticks);
         }
-        this.duration = duration;
+        this.duration = ticks;
     }
 
     /**

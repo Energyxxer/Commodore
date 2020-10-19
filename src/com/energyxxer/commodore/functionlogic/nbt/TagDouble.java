@@ -20,7 +20,6 @@ public class TagDouble extends NumericNBTTag<Double> {
     public TagDouble(@NotNull String name, double value) {
         super(name);
         this.value = value;
-        assertFinite(value, "value");
     }
 
     @Override

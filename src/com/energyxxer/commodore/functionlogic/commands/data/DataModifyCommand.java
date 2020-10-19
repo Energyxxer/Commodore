@@ -16,20 +16,20 @@ public class DataModifyCommand extends DataCommand {
 
     @NotNull
     @Contract(" -> new")
-    public static ModifyOperation APPEND() { return new ModifyOperation("append"); }
+    public static ModifyOperation APPEND() { return new ModifyOperation("append", true); }
 
     @NotNull
     @Contract("_ -> new")
-    public static ModifyOperation INSERT(int index) { return new ModifyOperation("insert " + index); }
+    public static ModifyOperation INSERT(int index) { return new ModifyOperation("insert " + index, true); }
     @NotNull
     @Contract(" -> new")
-    public static ModifyOperation MERGE() { return new ModifyOperation("merge"); }
+    public static ModifyOperation MERGE() { return new ModifyOperation("merge", false); }
     @NotNull
     @Contract(" -> new")
-    public static ModifyOperation PREPEND() { return new ModifyOperation("prepend"); }
+    public static ModifyOperation PREPEND() { return new ModifyOperation("prepend", true); }
     @NotNull
     @Contract(" -> new")
-    public static ModifyOperation SET() { return new ModifyOperation("set"); }
+    public static ModifyOperation SET() { return new ModifyOperation("set", false); }
 
     @NotNull
     private final NBTPath targetPath;
@@ -78,9 +78,15 @@ public class DataModifyCommand extends DataCommand {
     public static class ModifyOperation {
         @NotNull
         final String operation;
+        final boolean isListModification;
 
-        public ModifyOperation(@NotNull String operation) {
+        ModifyOperation(@NotNull String operation, boolean isListModification) {
             this.operation = operation;
+            this.isListModification = isListModification;
+        }
+
+        public boolean isListModification() {
+            return isListModification;
         }
     }
 

@@ -20,7 +20,6 @@ public class TagFloat extends NumericNBTTag<Float> {
     public TagFloat(@NotNull String name, float value) {
         super(name);
         this.value = value;
-        assertFinite(value, "value");
     }
 
     @Override

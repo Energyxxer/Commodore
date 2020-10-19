@@ -70,6 +70,9 @@ public class TypeArgument implements SelectorArgument {
 
     @Override
     public void assertCompatibleWith(@NotNull Selector selector) {
+        if(selector.getBase().getPlayer().getValue() && selector.getBase().getPlayer().isEnforced()) {
+            throw new CommodoreException(CommodoreException.Source.SELECTOR_ERROR, "Option 'type' isn't applicable for a player-only selector", selector);
+        }
         Collection<SelectorArgument> typeArgs = selector.getArgumentsByKey(getKey());
         for(SelectorArgument arg : typeArgs) {
             TypeArgument that = (TypeArgument) arg;

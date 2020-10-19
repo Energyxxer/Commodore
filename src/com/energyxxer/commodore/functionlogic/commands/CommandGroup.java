@@ -5,7 +5,6 @@ import com.energyxxer.commodore.functionlogic.functions.FunctionWriter;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolutionLine;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.module.Namespace;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -13,15 +12,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class CommandGroup implements Command, FunctionSection {
-    @NotNull
-    private final FunctionSection parent;
     @Nullable
     private ExecutionContext groupExecContext = null;
     @NotNull
     private final ArrayList<FunctionWriter> writers = new ArrayList<>();
 
-    public CommandGroup(@NotNull FunctionSection parent) {
-        this.parent = parent;
+    public CommandGroup() {
     }
 
     @Override
@@ -44,12 +40,6 @@ public class CommandGroup implements Command, FunctionSection {
     @Override
     public void prepend(@NotNull Collection<@NotNull FunctionWriter> writers) {
         this.writers.addAll(0, writers);
-    }
-
-    @NotNull
-    @Override
-    public Namespace getNamespace() {
-        return parent.getNamespace();
     }
 
     @Override

@@ -38,14 +38,14 @@ public class ExecuteCommand implements Command {
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         ArrayList<ExecuteModifier> joinedModifiers = execContext.getModifiers();
         joinedModifiers.addAll(modifiers);
-        ExecutionContext chainedContext = new ExecutionContext(execContext.getOriginalSender(), joinedModifiers);
+        ExecutionContext chainedContext = new ExecutionContext(joinedModifiers);
         return chainedCommand.resolveCommand(chainedContext);
     }
 
     @Override
     public void onAppend(@NotNull FunctionSection section, @NotNull ExecutionContext execContext) {
         Command.super.onAppend(section, execContext);
-        chainedCommand.onAppend(section, new ExecutionContext(execContext.getOriginalSender(), this.modifiers));
+        chainedCommand.onAppend(section, new ExecutionContext(this.modifiers));
     }
 
     @Override

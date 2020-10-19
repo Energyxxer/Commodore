@@ -14,6 +14,11 @@ public interface CompoundInput {
 
     @Nullable
     InputStream get(@NotNull String path) throws IOException;
+    default long getEntryLength(@NotNull String path) {
+        return 0L;
+    }
+    boolean isDirectory(@NotNull String path);
+    Iterable<String> listSubEntries(@NotNull String path);
     void open() throws IOException;
     void close() throws IOException;
     File getRootFile();

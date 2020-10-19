@@ -46,7 +46,7 @@ public class CommandGroupTest {
         Function function = cgt.getFunctionManager().create("func");
 
         ExecuteCommand exec = new ExecuteCommand(new SayCommand("hi"), new ExecuteInDimension(module.minecraft.getTypeManager().dimension.get("the_nether")));
-        CommandGroup cg = new CommandGroup(function);
+        CommandGroup cg = new CommandGroup();
         cg.append(exec);
         ExecuteCommand outerExec = new ExecuteCommand(cg, new ExecuteInDimension(module.minecraft.getTypeManager().dimension.get("the_end")));
 

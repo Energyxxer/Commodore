@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.datapack;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import org.jetbrains.annotations.NotNull;
@@ -14,6 +15,6 @@ public class DataPackDisableCommand extends DataPackCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "datapack disable " + pack);
+        return new CommandResolution(execContext, "datapack disable " + CommandUtils.quoteIfNecessary(pack));
     }
 }
