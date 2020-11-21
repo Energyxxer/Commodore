@@ -21,7 +21,7 @@ public class FunctionComment implements FunctionWriter {
 
         Iterator<String> it = lines.iterator();
         while(it.hasNext()) {
-            sb.append("# ");
+            sb.append("#");
             sb.append(it.next());
             if(it.hasNext()) sb.append('\n');
         }
