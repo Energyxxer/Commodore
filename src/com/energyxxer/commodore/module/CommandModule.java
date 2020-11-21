@@ -186,7 +186,7 @@ public class CommandModule implements ExportablePack, DefinitionPopulatable {
             JsonObject root = new JsonObject();
             JsonObject inner = new JsonObject();
             root.add("pack", inner);
-            inner.addProperty("pack_format", VersionFeatureManager.getInt("pack_format", 1));
+            inner.addProperty("pack_format", VersionFeatureManager.getInt("pack_format", VersionFeatureManager.getInt("data_pack_format", 1)));
 
             inner.addProperty("description", this.description);
 
