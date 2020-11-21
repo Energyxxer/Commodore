@@ -47,7 +47,7 @@ public class TagDouble extends NumericNBTTag<Double> {
     @NotNull
     @Override
     public String getType() {
-        return "TAG_DOUBLE";
+        return "TAG_Double";
     }
 
     @NotNull

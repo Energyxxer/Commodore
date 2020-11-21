@@ -10,7 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.security.CodeSource;
 
-public interface CompoundInput {
+public interface CompoundInput extends AutoCloseable {
 
     @Nullable
     InputStream get(@NotNull String path) throws IOException;
