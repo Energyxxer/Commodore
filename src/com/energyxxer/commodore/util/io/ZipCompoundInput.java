@@ -85,9 +85,15 @@ public class ZipCompoundInput implements CompoundInput {
 
                 Path subPath = Paths.get(sub.getName());
 
-                if((subPath == null && "".equals(rootPath + path)) || (subPath != null && subPath.startsWith(pathToStart) && !subPath.equals(pathToStart))) {
-                    String subEntry = pathToStart.relativize(subPath).getName(0).toString();
-                    consumer.accept(subEntry);
+                if("".equals(rootPath+path)) {
+                    if(subPath.getNameCount() == 1) {
+                        consumer.accept(sub.getName());
+                    }
+                } else {
+                    if(subPath.startsWith(pathToStart) && !subPath.equals(pathToStart)) {
+                        String subEntry = pathToStart.relativize(subPath).getName(0).toString();
+                        consumer.accept(subEntry);
+                    }
                 }
             }
         }
