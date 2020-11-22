@@ -5,6 +5,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
+import static com.energyxxer.commodore.util.MiscValidator.assertNumber;
 
 public class TagDouble extends NumericNBTTag<Double> {
     private double value;
@@ -20,6 +21,7 @@ public class TagDouble extends NumericNBTTag<Double> {
     public TagDouble(@NotNull String name, double value) {
         super(name);
         this.value = value;
+        assertNumber(value, "value");
     }
 
     @Override
@@ -53,6 +55,9 @@ public class TagDouble extends NumericNBTTag<Double> {
     @NotNull
     @Override
     public String toHeadlessString() {
+        if(Double.isInfinite(value)) {
+            return (value < 0 ? "-" : "") + "1.0E+10000" + NumericNBTType.DOUBLE.getSuffix();
+        }
         return value + NumericNBTType.DOUBLE.getSuffix();
     }
 
