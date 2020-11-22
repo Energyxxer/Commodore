@@ -12,7 +12,7 @@ public class MiscValidator {
     }
 
     public static void assertNumber(double value, String paramName) {
-        if (!Double.isNaN(value)) {
+        if (Double.isNaN(value)) {
             throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Expected non-NaN number for parameter '" + paramName + "', instead got " + value, value, paramName.toUpperCase(Locale.ENGLISH));
         }
     }
