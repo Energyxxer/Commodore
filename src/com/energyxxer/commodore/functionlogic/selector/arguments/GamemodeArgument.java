@@ -26,7 +26,7 @@ public class GamemodeArgument implements SelectorArgument {
     @NotNull
     @Override
     public String getArgumentString() {
-        return "gamemode=" + (negated ? "!" : "") + gamemode;
+        return "gamemode=" + (negated ? "!" : "") + gamemode.toSafeString();
     }
 
     @Override

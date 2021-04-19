@@ -34,7 +34,7 @@ public class ExecuteStoreBossbar extends ExecuteStore {
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + "bossbar " + bossbar + " " + variable.toString().toLowerCase(Locale.ENGLISH));
+        return new SubCommandResult(execContext, this.getStarter() + "bossbar " + bossbar.toSafeString() + " " + variable.toString().toLowerCase(Locale.ENGLISH));
     }
 
     @Override

@@ -36,7 +36,7 @@ public class EnchantCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "enchant " + entity + " " + enchantment + " " + level);
+        return new CommandResolution(execContext, "enchant " + entity + " " + enchantment.toSafeString() + " " + level);
     }
 
     @Override

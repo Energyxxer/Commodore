@@ -29,7 +29,7 @@ public class BossbarAddCommand extends BossbarCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        String base = "bossbar add " + bossbar + " ";
+        String base = "bossbar add " + bossbar.toSafeString() + " ";
 
         if(name != null) {
             String displayName = name.toString();

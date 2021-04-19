@@ -6,6 +6,7 @@ import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.item.Item;
+import com.energyxxer.commodore.item.ItemFormatter;
 import org.jetbrains.annotations.NotNull;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertStandalone;
@@ -34,7 +35,7 @@ public class GiveCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "give " + player + " " + item + (count != 1 ? " " + count : ""));
+        return new CommandResolution(execContext, "give " + player + " " + ItemFormatter.asSet(item, "" + count, count == 1));
     }
 
     @Override

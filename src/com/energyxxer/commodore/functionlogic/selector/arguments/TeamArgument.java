@@ -22,7 +22,7 @@ public class TeamArgument implements SelectorArgument {
     @NotNull
     @Override
     public String getArgumentString() {
-        return "team=" + (negated ? "!" : "") + (team != null ? team : "");
+        return "team=" + (negated ? "!" : "") + (team != null ? team.toSafeString() : "");
     }
 
     @Override

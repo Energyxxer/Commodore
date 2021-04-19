@@ -37,7 +37,8 @@ public class SummonCommand implements Command {
 
         assertEntity(type);
         assertStandalone(type);
-        if(!"true".equals(type.getProperty("spawnable"))) throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, "Entity '" + type + "' is not a valid spawnable entity", type);
+
+        if(!"true".equals(type.getProperty(type.getProperty("summonable") != null ? "summonable" : "spawnable"))) throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, "Entity '" + type + "' is not a valid summonable entity", type);
     }
 
     @Override @NotNull

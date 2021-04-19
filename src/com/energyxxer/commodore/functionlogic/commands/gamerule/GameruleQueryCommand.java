@@ -19,7 +19,7 @@ public class GameruleQueryCommand extends GameruleCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "gamerule " + gamerule);
+        return new CommandResolution(execContext, "gamerule " + gamerule.toSafeString());
     }
 
 }

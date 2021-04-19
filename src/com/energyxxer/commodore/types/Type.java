@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.types;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.defpacks.DefinitionPack;
 import com.energyxxer.commodore.module.CommandModule;
 import com.energyxxer.commodore.module.Namespace;
@@ -165,6 +166,18 @@ public abstract class Type {
     @Override
     public String toString() {
         return (isStandalone() ? "" : "#") + ((useNamespace()) ? (getNamespace().getName() + ":") : "") + getName();
+    }
+
+    public String toSafeString() {
+        return CommandUtils.quoteIfNecessary(toString(), "types." + category + ".regex", "types.regex", ".+");
+    }
+
+    public String toStringExcludeMinecraftNamespace() {
+        return (isStandalone() ? "" : "#") + ((useNamespace() && !getNamespace().getName().equals("minecraft")) ? (getNamespace().getName() + ":") : "") + getName();
+    }
+
+    public String toSafeStringExcludeMinecraftNamespace() {
+        return CommandUtils.quoteIfNecessary(toStringExcludeMinecraftNamespace(), "types." + category + ".regex", "types.regex", ".+");
     }
 
     @Override

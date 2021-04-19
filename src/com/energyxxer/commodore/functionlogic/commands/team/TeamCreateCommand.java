@@ -29,7 +29,7 @@ public class TeamCreateCommand extends TeamCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "team add " + reference + ((displayName != null) ? " " + displayName : ""));
+        return new CommandResolution(execContext, "team add " + reference.toSafeString() + ((displayName != null) ? " " + displayName : ""));
     }
 
     @Override

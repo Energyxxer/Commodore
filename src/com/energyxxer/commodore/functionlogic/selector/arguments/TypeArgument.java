@@ -38,7 +38,7 @@ public class TypeArgument implements SelectorArgument {
     @NotNull
     @Override
     public String getArgumentString() {
-        return "type=" + (negated ? "!" : "") + type;
+        return "type=" + (negated ? "!" : "") + type.toSafeString();
     }
 
     @Override

@@ -15,6 +15,6 @@ public class TeamEmptyCommand extends TeamCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "team empty " + reference);
+        return new CommandResolution(execContext, "team empty " + reference.toSafeString());
     }
 }

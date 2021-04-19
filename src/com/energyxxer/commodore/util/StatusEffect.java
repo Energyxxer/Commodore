@@ -2,6 +2,7 @@ package com.energyxxer.commodore.util;
 
 import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.types.Type;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
@@ -200,7 +201,8 @@ public class StatusEffect {
 
     @Override
     public String toString() {
-        return effect.toString() + " " + (duration / 20) + " " + amplifier + ((visibility == HIDDEN) ? " true" : "");
+        int divisor = VersionFeatureManager.getBoolean("command.effect.instant_ticks", false) && "instant".equals(effect.getProperty("type")) ? 1 : 20;
+        return effect.toSafeString() + " " + (duration / divisor) + " " + amplifier + ((visibility == HIDDEN) ? " true" : "");
     }
 
     @Override

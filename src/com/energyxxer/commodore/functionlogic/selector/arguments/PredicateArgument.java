@@ -28,7 +28,7 @@ public class PredicateArgument implements SelectorArgument {
 
     @Override
     public @NotNull String getArgumentString() {
-        return "predicate=" + (negated ? "!" : "") + (predicate != null ? predicate : "");
+        return "predicate=" + (negated ? "!" : "") + (predicate != null ? predicate.toSafeString() : "");
     }
 
     @Override

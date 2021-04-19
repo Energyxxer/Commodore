@@ -6,6 +6,7 @@ import com.energyxxer.commodore.functionlogic.commands.teleport.facing.TeleportF
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -16,23 +17,41 @@ public class TeleportCommand implements Command {
     private final TeleportDestination destination;
     @Nullable
     private final TeleportFacing facing;
+    private final boolean checkForBlocks;
 
     public TeleportCommand(@NotNull TeleportDestination destination) {
-        this(null, destination);
+        this(destination, null, false);
+    }
+
+    public TeleportCommand(@NotNull TeleportDestination destination, boolean checkForBlocks) {
+        this(null, destination, checkForBlocks);
     }
 
     public TeleportCommand(@Nullable Entity victim, @NotNull TeleportDestination destination) {
-        this(victim, destination, null);
+        this(victim, destination, null, false);
+    }
+
+    public TeleportCommand(@Nullable Entity victim, @NotNull TeleportDestination destination, boolean checkForBlocks) {
+        this(victim, destination, null, checkForBlocks);
     }
 
     public TeleportCommand(@NotNull TeleportDestination destination, @Nullable TeleportFacing facing) {
-        this(null, destination, facing);
+        this(destination, facing, false);
+    }
+
+    public TeleportCommand(@NotNull TeleportDestination destination, @Nullable TeleportFacing facing, boolean checkForBlocks) {
+        this(null, destination, facing, checkForBlocks);
     }
 
     public TeleportCommand(@Nullable Entity victim, @NotNull TeleportDestination destination, @Nullable TeleportFacing facing) {
+        this(victim, destination, facing, false);
+    }
+
+    public TeleportCommand(@Nullable Entity victim, @NotNull TeleportDestination destination, @Nullable TeleportFacing facing, boolean checkForBlocks) {
         this.victim = victim;
         this.destination = destination;
         this.facing = facing;
+        this.checkForBlocks = checkForBlocks;
 
         if(victim != null) victim.assertEntityFriendly();
     }
@@ -47,6 +66,8 @@ public class TeleportCommand implements Command {
             sb.append(facing.getRaw());
         }
 
+        if(checkForBlocks) sb.append(" true");
+
         String str = sb.toString();
 
         return new CommandResolution(execContext, str);
@@ -57,5 +78,6 @@ public class TeleportCommand implements Command {
         if(victim != null) victim.assertAvailable();
         destination.assertAvailable();
         if(facing != null) facing.assertAvailable();
+        if(checkForBlocks) VersionFeatureManager.assertEnabled("command.tp.check_for_blocks");
     }
 }

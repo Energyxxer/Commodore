@@ -30,7 +30,7 @@ public class FunctionCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "function " + function);
+        return new CommandResolution(execContext, "function " + function.toSafeString());
     }
 
     @Override

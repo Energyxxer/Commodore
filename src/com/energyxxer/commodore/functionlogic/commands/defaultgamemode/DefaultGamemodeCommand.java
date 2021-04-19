@@ -20,6 +20,6 @@ public class DefaultGamemodeCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "defaultgamemode " + gamemode);
+        return new CommandResolution(execContext, "defaultgamemode " + gamemode.toSafeString());
     }
 }

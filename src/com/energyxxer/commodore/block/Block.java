@@ -146,7 +146,7 @@ public class Block {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder(type.toString());
+        StringBuilder sb = new StringBuilder(type.toSafeString());
         if(state != null) {
             sb.append('[');
             sb.append(state);

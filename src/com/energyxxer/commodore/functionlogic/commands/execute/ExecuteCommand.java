@@ -4,6 +4,7 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.functions.FunctionSection;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -50,6 +51,7 @@ public class ExecuteCommand implements Command {
 
     @Override
     public void assertAvailable() {
+        VersionFeatureManager.assertEnabled("execute_modifiers");
         for(ExecuteModifier modifier : modifiers) {
             modifier.assertAvailable();
         }

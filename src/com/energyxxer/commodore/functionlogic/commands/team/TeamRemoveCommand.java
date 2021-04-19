@@ -15,6 +15,6 @@ public class TeamRemoveCommand extends TeamCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "team remove " + reference);
+        return new CommandResolution(execContext, "team remove " + reference.toSafeString());
     }
 }

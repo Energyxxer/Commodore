@@ -21,7 +21,7 @@ public abstract class BossbarGetCommand extends BossbarCommand {
     protected abstract @NotNull String getKeyword();
 
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "bossbar get " + bossbar + " " + getKeyword());
+        return new CommandResolution(execContext, "bossbar get " + bossbar.toSafeString() + " " + getKeyword());
     }
 
 }

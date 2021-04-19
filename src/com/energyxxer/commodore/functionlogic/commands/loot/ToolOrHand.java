@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.commands.loot;
 
 import com.energyxxer.commodore.item.Item;
+import com.energyxxer.commodore.item.ItemFormatter;
 import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
@@ -24,7 +25,7 @@ public class ToolOrHand {
     }
 
     public ToolOrHand(@NotNull Item item) {
-        this.name = item.toString();
+        this.name = ItemFormatter.asSet(item);
     }
 
     @Override

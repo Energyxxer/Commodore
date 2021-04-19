@@ -20,7 +20,7 @@ public class LocateCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "locate " + structure);
+        return new CommandResolution(execContext, "locate " + structure.toSafeString());
     }
 
 }

@@ -17,8 +17,8 @@ public class DVItem extends Item {
 
     public DVItem(@NotNull Type type, int dataValue) {
         super(type);
-        if (dataValue < -1 || dataValue > 15) {
-            throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "The given data value for this item is outside of the -1..15 range: " + dataValue);
+        if (dataValue < -1) {
+            throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "The given data value for this item is outside of the -1.. range: " + dataValue);
         }
         this.dataValue = dataValue;
     }
@@ -26,7 +26,7 @@ public class DVItem extends Item {
     /**
      * DVItem objects don't support NBT.
      *
-     * @throws UnsupportedOperationException
+     * @throws UnsupportedOperationException DVItem objects don't support NBT.
      */
     @Override
     @Deprecated
@@ -54,7 +54,7 @@ public class DVItem extends Item {
 
     @Override
     public String toString() {
-        return this.getItemType() + " " + dataValue;
+        return this.getItemType().toSafeStringExcludeMinecraftNamespace() + (dataValue < 0 ? "" : " " + dataValue);
     }
 
     @Override

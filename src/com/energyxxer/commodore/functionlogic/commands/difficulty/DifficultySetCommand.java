@@ -18,6 +18,6 @@ public class DifficultySetCommand extends DifficultyCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "difficulty " + difficulty);
+        return new CommandResolution(execContext, "difficulty " + difficulty.toSafeString());
     }
 }

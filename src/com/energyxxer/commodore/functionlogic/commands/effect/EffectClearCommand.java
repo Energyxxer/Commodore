@@ -34,8 +34,8 @@ public class EffectClearCommand extends EffectCommand {
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext,
                 VersionFeatureManager.getBoolean("command.effect.explicit") ?
-                        ("effect clear " + entity + ((type != null) ? " " + type : "")) :
-                        ("effect " + entity + " " + (type != null ? type + " 0" : "clear"))
+                        ("effect clear " + entity + ((type != null) ? " " + type.toSafeString() : "")) :
+                        ("effect " + entity + " " + (type != null ? type.toSafeString() + " 0" : "clear"))
         );
     }
 }

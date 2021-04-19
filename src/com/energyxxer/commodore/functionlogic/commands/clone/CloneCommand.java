@@ -18,15 +18,15 @@ public class CloneCommand implements Command {
     }
 
     @NotNull
-    private final CoordinateSet source1;
+    protected final CoordinateSet source1;
     @NotNull
-    private final CoordinateSet source2;
+    protected final CoordinateSet source2;
 
     @NotNull
     protected final CoordinateSet destination;
 
     @NotNull
-    private final SourceMode sourceMode;
+    protected final SourceMode sourceMode;
 
     public CloneCommand(CoordinateSet source1, CoordinateSet source2, CoordinateSet destination) {
         this(source1, source2, destination, SourceMode.DEFAULT);
@@ -50,7 +50,7 @@ public class CloneCommand implements Command {
     }
 
     @NotNull
-    private String getSourceModeExtra() {
+    protected String getSourceModeExtra() {
         return (sourceMode != SourceMode.DEFAULT) ? " " + sourceMode.toString().toLowerCase(Locale.ENGLISH) : "";
     }
 

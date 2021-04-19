@@ -33,7 +33,7 @@ public class GamemodeCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return player != null ? new CommandResolution(execContext, "gamemode " + gamemode + " " + player) : new CommandResolution(execContext, "gamemode " + gamemode);
+        return player != null ? new CommandResolution(execContext, "gamemode " + gamemode.toSafeString() + " " + player) : new CommandResolution(execContext, "gamemode " + gamemode.toSafeString());
     }
 
     @Override

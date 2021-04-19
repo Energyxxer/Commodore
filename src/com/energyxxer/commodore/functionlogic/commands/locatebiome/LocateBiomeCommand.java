@@ -26,6 +26,6 @@ public class LocateBiomeCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "locatebiome " + biome);
+        return new CommandResolution(execContext, "locatebiome " + biome.toSafeString());
     }
 }

@@ -146,6 +146,6 @@ public class TeamModifyCommand extends TeamCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "team modify " + reference + " " + key.getArgumentKey() + " " + getValueString());
+        return new CommandResolution(execContext, "team modify " + reference.toSafeString() + " " + key.getArgumentKey() + " " + getValueString());
     }
 }

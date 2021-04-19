@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.tag;
 
+import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
@@ -29,7 +30,7 @@ public class TagCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "tag " + entity + " " + action.toString().toLowerCase(Locale.ENGLISH) + " " + tag);
+        return new CommandResolution(execContext, "tag " + entity + " " + action.toString().toLowerCase(Locale.ENGLISH) + " " + CommandUtils.quoteIfNecessary(tag));
     }
 
     @Override

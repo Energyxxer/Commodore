@@ -20,7 +20,7 @@ public class DataHolderStorage implements DataHolder {
     @NotNull
     @Override
     public String resolve() {
-        return "storage " + target;
+        return "storage " + target.toSafeString();
     }
 
     @Override

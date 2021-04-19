@@ -18,6 +18,6 @@ public class BossbarRemoveCommand extends BossbarCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "bossbar remove " + bossbar);
+        return new CommandResolution(execContext, "bossbar remove " + bossbar.toSafeString());
     }
 }

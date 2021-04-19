@@ -21,7 +21,7 @@ public class ExecuteInDimension implements ExecuteModifier {
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, "in " + dimension);
+        return new SubCommandResult(execContext, "in " + dimension.toSafeString());
     }
 
     @Override

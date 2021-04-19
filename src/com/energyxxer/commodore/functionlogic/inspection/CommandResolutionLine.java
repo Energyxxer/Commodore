@@ -17,7 +17,7 @@ public class CommandResolutionLine {
     }
 
     @NotNull
-    String construct() {
+    public String construct() {
         ArrayList<ExecuteModifier> modifiers = execContext.getModifiers();
 
         StringBuilder sb = new StringBuilder();

@@ -42,7 +42,7 @@ public class ClearCommand implements Command {
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return player != null ?
-                new CommandResolution(execContext, "clear " + player + ((item != null) ? " " + ItemFormatter.asMatch(item, maxCount >= 0 ? "" + maxCount : null) : "")) :
+                new CommandResolution(execContext, "clear " + player + ((item != null) ? " " + ItemFormatter.asMatch(item) + (maxCount != -1 ? " " + maxCount : "") : "")) :
                 new CommandResolution(execContext, "clear");
     }
 

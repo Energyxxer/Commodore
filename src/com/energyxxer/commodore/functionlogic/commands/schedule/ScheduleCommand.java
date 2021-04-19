@@ -10,7 +10,6 @@ import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.types.defaults.FunctionReference;
 import com.energyxxer.commodore.util.TimeSpan;
 import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
-import com.sun.org.apache.regexp.internal.RE;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
@@ -57,7 +56,7 @@ public class ScheduleCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "schedule function " + function + " " + delay + (mode == ScheduleMode.REPLACE ? "" : " " + mode.toString().toLowerCase(Locale.ENGLISH)));
+        return new CommandResolution(execContext, "schedule function " + function.toSafeString() + " " + delay + (mode == ScheduleMode.REPLACE ? "" : " " + mode.toString().toLowerCase(Locale.ENGLISH)));
     }
 
     @Override

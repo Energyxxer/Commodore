@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.commands.fill;
 
 import com.energyxxer.commodore.block.Block;
+import com.energyxxer.commodore.block.BlockFormatter;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.coordinates.Coordinate;
 import com.energyxxer.commodore.functionlogic.coordinates.CoordinateSet;
@@ -42,6 +43,6 @@ public class FillCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "fill " + pos1.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + pos2.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + block + mode.getMaskExtra());
+        return new CommandResolution(execContext, "fill " + pos1.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + pos2.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + BlockFormatter.asSet(block) + mode.getMaskExtra());
     }
 }

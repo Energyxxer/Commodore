@@ -40,7 +40,7 @@ public class TagArgument implements SelectorArgument {
     @NotNull
     @Override
     public String getArgumentString() {
-        return "tag=" + (negated ? "!" : "") + tag;
+        return "tag=" + (negated ? "!" : "") + (tag != null ? CommandUtils.quoteIfNecessary(tag) : "");
     }
 
     @Override

@@ -32,7 +32,7 @@ public abstract class AttributeCommand implements Command {
     }
 
     protected String getStart() {
-        return "attribute " + target + " " + type + " ";
+        return "attribute " + target + " " + type.toSafeString() + " ";
     }
 
     @Override

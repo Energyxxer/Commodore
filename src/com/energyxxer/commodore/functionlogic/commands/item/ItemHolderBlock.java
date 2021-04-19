@@ -15,12 +15,11 @@ public class ItemHolderBlock extends ItemHolder {
 
     @Override
     public @NotNull String resolve() {
-        return "block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + this.slot;
+        return "block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + this.slot.toSafeString();
     }
 
     @Override
     public void assertAvailable() {
-        pos.assertAvailable();
     }
 
     @Override

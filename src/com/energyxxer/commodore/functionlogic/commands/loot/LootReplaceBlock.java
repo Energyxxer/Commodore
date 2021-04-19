@@ -49,6 +49,6 @@ public class LootReplaceBlock implements LootCommand.LootDestination {
     @NotNull
     @Override
     public CommandDelegateResolution resolve() {
-        return new CommandDelegateResolution("replace block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + slot + (count != -1 ? " " + count : ""));
+        return new CommandDelegateResolution("replace block " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + " " + slot.toSafeString() + (count != -1 ? " " + count : ""));
     }
 }

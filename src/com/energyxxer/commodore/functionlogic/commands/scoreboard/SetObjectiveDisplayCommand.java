@@ -112,7 +112,7 @@ public class SetObjectiveDisplayCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "scoreboard objectives setdisplay " + slot + (objective != null ? (" " + objective.toString() + (sort != null ? " " + sort.toString().toLowerCase(Locale.ENGLISH) : "")) : ""));
+        return new CommandResolution(execContext, "scoreboard objectives setdisplay " + slot.toSafeString() + (objective != null ? (" " + objective.toString() + (sort != null ? " " + sort.toString().toLowerCase(Locale.ENGLISH) : "")) : ""));
     }
 
     @Override

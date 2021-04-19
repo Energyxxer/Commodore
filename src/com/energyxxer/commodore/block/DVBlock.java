@@ -26,7 +26,7 @@ public class DVBlock extends Block {
     /**
      * DVBlock objects don't support blockstates.
      *
-     * @throws UnsupportedOperationException
+     * @throws UnsupportedOperationException DVBlock objects don't support blockstates.
      */
     @Override
     @Deprecated
@@ -37,7 +37,7 @@ public class DVBlock extends Block {
     /**
      * DVBlock objects don't support NBT.
      *
-     * @throws UnsupportedOperationException
+     * @throws UnsupportedOperationException DVBlock objects don't support NBT.
      */
     @Override
     @Deprecated
@@ -65,7 +65,7 @@ public class DVBlock extends Block {
 
     @Override
     public String toString() {
-        return this.getBlockType() + " " + dataValue;
+        return this.getBlockType().toSafeStringExcludeMinecraftNamespace() + (dataValue < 0 ? "" : " " + dataValue);
     }
 
     @Override

@@ -28,7 +28,7 @@ public class ScheduleClearCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "schedule clear " + function);
+        return new CommandResolution(execContext, "schedule clear " + function.toSafeString());
     }
 
     @Override

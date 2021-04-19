@@ -9,6 +9,7 @@ import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -82,7 +83,7 @@ public class PlaySoundCommand implements Command {
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "playsound " +
                 sound + " " +
-                source.toString().toLowerCase(Locale.ENGLISH) + " " +
+                (VersionFeatureManager.getBoolean("command.playsound.channel", true) ? (source.toString().toLowerCase(Locale.ENGLISH) + " ") : "") +
                 (player != null ? player : new Selector(Selector.BaseSelector.SENDER)) +
                 ((location != null || maxVolume != 1 || pitch != 1 || minVolume != 0) ?
                         " " + (location != null ? location : new CoordinateSet(0, 0, 0, Coordinate.Type.RELATIVE)) +

@@ -22,7 +22,7 @@ public class ExecuteConditionPredicate extends ExecuteCondition {
 
     @Override
     public @NotNull SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, this.getStarter() + "predicate " + predicate);
+        return new SubCommandResult(execContext, this.getStarter() + "predicate " + predicate.toSafeString());
     }
 
     @Override

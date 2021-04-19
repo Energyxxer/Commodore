@@ -16,7 +16,7 @@ public class ItemHolderEntity extends ItemHolder {
 
     @Override
     public @NotNull String resolve() {
-        return "entity " + entity.toString() + " " + this.slot;
+        return "entity " + entity.toString() + " " + this.slot.toSafeString();
     }
 
     @Override

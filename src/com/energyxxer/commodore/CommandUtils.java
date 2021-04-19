@@ -96,6 +96,39 @@ public final class CommandUtils {
     }
 
     /**
+     * Escapes and wraps the given string in quotes if not all its characters are allowed by commands in an
+     * unquoted string. If all characters are allowed, nothing is changed.
+     *
+     * @param str The string to check and, if needed, quote.
+     * @param featureKey The feature key from which to retrieve the regex.
+     * @param defaultRegex The default regex to use, in case the featureKey is not found in the active feature map.
+     *
+     * @return The given string, quoted, only if it contains a character not allowed in an unquoted string. Otherwise,
+     * the returned string is the same as the original.
+     * */
+    @NotNull
+    public static String quoteIfNecessary(@NotNull String str, @NotNull String featureKey, String defaultRegex) {
+        return (needsQuoting(str, featureKey, defaultRegex)) ? "\"" + escape(str) + "\"" : str;
+    }
+
+    /**
+     * Escapes and wraps the given string in quotes if not all its characters are allowed by commands in an
+     * unquoted string. If all characters are allowed, nothing is changed.
+     *
+     * @param str The string to check and, if needed, quote.
+     * @param featureKey0 The feature key from which to retrieve the regex.
+     * @param featureKey1 The backup feature key from which to retrieve the regex, if featureKey1 was not found.
+     * @param defaultRegex The default regex to use, in case neither featureKey0 nor featureKey1 is not found in the active feature map.
+     *
+     * @return The given string, quoted, only if it contains a character not allowed in an unquoted string. Otherwise,
+     * the returned string is the same as the original.
+     * */
+    @NotNull
+    public static String quoteIfNecessary(@NotNull String str, @NotNull String featureKey0, @NotNull String featureKey1, String defaultRegex) {
+        return (needsQuoting(str, featureKey0, featureKey1, defaultRegex)) ? "\"" + escape(str) + "\"" : str;
+    }
+
+    /**
      * Returns whether this character contains any characters disallowed in unquoted strings.
      *
      * @param str The string whose need for quotation is to be tested.
@@ -104,7 +137,36 @@ public final class CommandUtils {
      * <code>false</code> if all characters are allowed in unquoted strings.
      * */
     public static boolean needsQuoting(@NotNull String str) {
-        return !str.matches(VersionFeatureManager.getString("identifiers.regex", CommandUtils.IDENTIFIER_ALLOWED));
+        return needsQuoting(str, "identifiers.regex", CommandUtils.IDENTIFIER_ALLOWED);
+    }
+
+    /**
+     * Returns whether this character contains any characters disallowed in unquoted strings.
+     *
+     * @param str The string whose need for quotation is to be tested.
+     * @param featureKey The feature key from which to retrieve the regex.
+     * @param defaultRegex The default regex to use, in case the featureKey is not found in the active feature map.
+     *
+     * @return <code>true</code> if this character contains any characters, disallowed in unquoted strings,
+     * <code>false</code> if all characters are allowed in unquoted strings.
+     * */
+    public static boolean needsQuoting(@NotNull String str, @NotNull String featureKey, String defaultRegex) {
+        return !str.matches(VersionFeatureManager.getString(featureKey, defaultRegex));
+    }
+
+    /**
+     * Returns whether this character contains any characters disallowed in unquoted strings.
+     *
+     * @param str The string whose need for quotation is to be tested.
+     * @param featureKey0 The feature key from which to retrieve the regex.
+     * @param featureKey1 The backup feature key from which to retrieve the regex, if featureKey1 was not found.
+     * @param defaultRegex The default regex to use, in case neither featureKey0 nor featureKey1 is not found in the active feature map.
+     *
+     * @return <code>true</code> if this character contains any characters, disallowed in unquoted strings,
+     * <code>false</code> if all characters are allowed in unquoted strings.
+     * */
+    public static boolean needsQuoting(@NotNull String str, @NotNull String featureKey0, @NotNull String featureKey1, String defaultRegex) {
+        return !str.matches(VersionFeatureManager.getString(featureKey0, VersionFeatureManager.getString(featureKey1, defaultRegex)));
     }
 
     /**

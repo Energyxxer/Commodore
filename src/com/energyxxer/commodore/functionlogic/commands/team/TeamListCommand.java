@@ -20,7 +20,7 @@ public class TeamListCommand extends TeamCommand {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "team list" + (reference !=  null ? " " + reference : ""));
+        return new CommandResolution(execContext, "team list" + (reference !=  null ? " " + reference.toSafeString() : ""));
     }
 
 }

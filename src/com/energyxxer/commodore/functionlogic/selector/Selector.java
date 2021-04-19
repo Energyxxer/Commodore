@@ -320,8 +320,8 @@ public class Selector implements Entity, Cloneable {
      * @return The explicit limit for this selector. If the limit argument doesn't exist, -1 is returned.
      * */
     private int getLimitArgument() {
-        for(SelectorArgument arg : getArgumentsByKey("limit")) {
-            return ((LimitArgument) arg).getLimit();
+        for(SelectorArgument arg : args) {
+            if(arg instanceof LimitArgument) return ((LimitArgument) arg).getLimit();
         }
         return -1;
     }

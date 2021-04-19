@@ -51,7 +51,7 @@ public class Particle {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(type.toString());
+        sb.append(type.toSafeString());
         for(Object arg : arguments) {
             sb.append(' ');
             sb.append(arg);

@@ -5,6 +5,7 @@ import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.item.Item;
+import com.energyxxer.commodore.item.ItemFormatter;
 import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,9 +39,9 @@ public class ItemReplaceCommand implements Command {
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         if(VersionFeatureManager.getBoolean("command.item", false)) {
-            return new CommandResolution(execContext, "item " + target.resolve() + " replace " + item + (count != 1 ? " " + count : ""));
+            return new CommandResolution(execContext, "item " + target.resolve() + " replace " + ItemFormatter.asSet(item, "" + count, count == 1));
         } else {
-            return new CommandResolution(execContext, "replaceitem " + target.resolve() + " " + item + (count != 1 ? " " + count : ""));
+            return new CommandResolution(execContext, "replaceitem " + target.resolve() + " " + ItemFormatter.asSet(item, "" + count, count == 1));
         }
     }
 }

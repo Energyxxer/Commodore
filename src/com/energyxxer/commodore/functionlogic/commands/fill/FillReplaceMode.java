@@ -1,6 +1,7 @@
 package com.energyxxer.commodore.functionlogic.commands.fill;
 
 import com.energyxxer.commodore.block.Block;
+import com.energyxxer.commodore.block.BlockFormatter;
 import org.jetbrains.annotations.NotNull;
 
 public class FillReplaceMode implements FillCommand.FillMode {
@@ -18,6 +19,6 @@ public class FillReplaceMode implements FillCommand.FillMode {
     @NotNull
     @Override
     public String getMaskExtra() {
-        return replace != null ? " replace " + replace : "";
+        return replace != null ? " replace " + BlockFormatter.asMatch(replace) : "";
     }
 }
