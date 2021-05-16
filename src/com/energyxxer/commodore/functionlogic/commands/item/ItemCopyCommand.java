@@ -18,7 +18,7 @@ public class ItemCopyCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "item " + to.resolve() + " copy " + from.resolve());
+        return new CommandResolution(execContext, "item replace " + to.resolve() + " from " + from.resolve());
     }
 
     @Override

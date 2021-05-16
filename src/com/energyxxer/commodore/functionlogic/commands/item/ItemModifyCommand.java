@@ -30,6 +30,6 @@ public class ItemModifyCommand implements Command {
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "item " + target.resolve() + " modify " + modifier.toSafeString());
+        return new CommandResolution(execContext, "item modify " + target.resolve() + " " + modifier.toSafeString());
     }
 }
