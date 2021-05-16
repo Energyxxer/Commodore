@@ -9,6 +9,7 @@ import com.energyxxer.commodore.functionlogic.nbt.DataHolderEntity;
 import com.energyxxer.commodore.functionlogic.nbt.path.NBTPath;
 import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class NBTTextComponent extends TextComponent {
     @NotNull
@@ -16,6 +17,8 @@ public class NBTTextComponent extends TextComponent {
     @NotNull
     private final DataHolder toPrint;
     private final boolean interpret;
+    @Nullable
+    private final TextComponent separator;
 
     public NBTTextComponent(NBTPath path, CoordinateSet block) {
         this(path, block, false);
@@ -38,12 +41,18 @@ public class NBTTextComponent extends TextComponent {
         this.path = path;
         this.toPrint = toPrint instanceof Entity ? new DataHolderEntity(((Entity) toPrint)) : new DataHolderBlock(((CoordinateSet) toPrint));
         this.interpret = interpret;
+        this.separator = null;
     }
 
     private NBTTextComponent(@NotNull NBTPath path, @NotNull DataHolder toPrint, boolean interpret) {
+        this(path, toPrint, interpret, null);
+    }
+
+    private NBTTextComponent(@NotNull NBTPath path, @NotNull DataHolder toPrint, boolean interpret, @Nullable TextComponent separator) {
         this.path = path;
         this.toPrint = toPrint;
         this.interpret = interpret;
+        this.separator = separator;
     }
 
     @Override
@@ -59,6 +68,7 @@ public class NBTTextComponent extends TextComponent {
         if(interpret) extra += ",\"interpret\":true";
         return "{\"nbt\":\"" + CommandUtils.escape(path.toString()) + "\"," +
                 extra +
+                (separator != null ? ",\"separator\":" + separator.toString(style) : "") +
                 (baseProperties != null ? "," + baseProperties : "") +
                 '}';
     }
@@ -69,5 +79,6 @@ public class NBTTextComponent extends TextComponent {
         super.assertAvailable();
         VersionFeatureManager.assertEnabled("nbt.access");
         toPrint.assertAvailable();
+        if(separator != null) VersionFeatureManager.assertEnabled("textcomponent.separators");
     }
 }

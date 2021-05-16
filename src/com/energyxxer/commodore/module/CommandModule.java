@@ -182,7 +182,7 @@ public class CommandModule implements ExportablePack, DefinitionPopulatable {
         objMgr.compile();
         namespaces.values().forEach(Namespace::compile);
 
-        if(exportables.stream().noneMatch(e -> "pack.mcmeta".equals(e.getExportPath()))) {
+        if(settings.EXPORT_PACK_MCMETA.getValue() && exportables.stream().noneMatch(e -> "pack.mcmeta".equals(e.getExportPath()))) {
             JsonObject root = new JsonObject();
             JsonObject inner = new JsonObject();
             root.add("pack", inner);

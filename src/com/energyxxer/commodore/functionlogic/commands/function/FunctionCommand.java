@@ -2,7 +2,6 @@ package com.energyxxer.commodore.functionlogic.commands.function;
 
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.functions.Function;
-import com.energyxxer.commodore.functionlogic.functions.FunctionSection;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.types.Type;
@@ -31,10 +30,5 @@ public class FunctionCommand implements Command {
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
         return new CommandResolution(execContext, "function " + function.toSafeString());
-    }
-
-    @Override
-    public void onAppend(FunctionSection section, ExecutionContext execContext) {
-        Command.super.onAppend(section, execContext);
     }
 }

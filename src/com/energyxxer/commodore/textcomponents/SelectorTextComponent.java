@@ -9,15 +9,22 @@ import org.jetbrains.annotations.Nullable;
 public class SelectorTextComponent extends TextComponent {
     @NotNull
     private final Entity entity;
+    @Nullable
+    private final TextComponent separator;
 
     public SelectorTextComponent(@NotNull Entity entity) {
         this(entity, null);
     }
 
     public SelectorTextComponent(@NotNull Entity entity, @Nullable TextStyle style) {
+        this(entity, style, null);
+    }
+
+    public SelectorTextComponent(@NotNull Entity entity, @Nullable TextStyle style, @Nullable TextComponent separator) {
         this.entity = entity;
         this.setStyle(style);
         entity.assertEntityFriendly();
+        this.separator = separator;
     }
 
     @Override
@@ -31,6 +38,7 @@ public class SelectorTextComponent extends TextComponent {
         String baseProperties = this.getBaseProperties(parentStyle);
         return "{\"selector\":" +
                         entityString +
+                        (separator != null ? ",\"separator\":" + separator.toString(style) : "") +
                         (baseProperties != null ? "," + baseProperties : "") +
                         '}';
     }
@@ -40,5 +48,6 @@ public class SelectorTextComponent extends TextComponent {
         VersionFeatureManager.assertEnabled("textcomponent.selector");
         super.assertAvailable();
         entity.assertAvailable();
+        if(separator != null) VersionFeatureManager.assertEnabled("textcomponent.separators");
     }
 }

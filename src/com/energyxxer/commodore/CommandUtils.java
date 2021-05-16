@@ -100,6 +100,20 @@ public final class CommandUtils {
      * unquoted string. If all characters are allowed, nothing is changed.
      *
      * @param str The string to check and, if needed, quote.
+     *
+     * @return The given string, quoted, only if it contains a character not allowed in an unquoted string. Otherwise,
+     * the returned string is the same as the original.
+     * */
+    @NotNull
+    public static String quoteIfNecessary(@NotNull String str, boolean escapeUnicode) {
+        return (needsQuoting(str)) ? "\"" + escape(str, escapeUnicode) + "\"" : str;
+    }
+
+    /**
+     * Escapes and wraps the given string in quotes if not all its characters are allowed by commands in an
+     * unquoted string. If all characters are allowed, nothing is changed.
+     *
+     * @param str The string to check and, if needed, quote.
      * @param featureKey The feature key from which to retrieve the regex.
      * @param defaultRegex The default regex to use, in case the featureKey is not found in the active feature map.
      *
