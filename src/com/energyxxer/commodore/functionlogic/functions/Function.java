@@ -4,7 +4,6 @@ import com.energyxxer.commodore.Commodore;
 import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.entity.Entity;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
-import com.energyxxer.commodore.functionlogic.selector.Selector;
 import com.energyxxer.commodore.module.Exportable;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.module.Namespaced;
@@ -16,8 +15,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Locale;
-
-import static com.energyxxer.commodore.functionlogic.selector.Selector.BaseSelector.SENDER;
 
 public class Function implements FunctionSection, Exportable, Namespaced {
     public static final String ALLOWED_PATH_REGEX = "[a-z0-9_/.-]+";
@@ -54,8 +51,6 @@ public class Function implements FunctionSection, Exportable, Namespaced {
         if (!path.matches(ALLOWED_PATH_REGEX)) {
             throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Illegal function path: " + path);
         }
-
-        Entity newSender = (sender != null) ? sender.clone() : new Selector(SENDER);
 
         this.execContext = new ExecutionContext();
     }
