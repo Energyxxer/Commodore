@@ -51,7 +51,7 @@ public class ItemReplaceCommand implements Command {
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
         if(VersionFeatureManager.getBoolean("command.item", false)) {
-            return new CommandResolution(execContext, "item replace " + target.resolve() + " with" + ItemFormatter.asSet(item, "" + count, count == 1));
+            return new CommandResolution(execContext, "item replace " + target.resolve() + " with " + ItemFormatter.asSet(item, "" + count, count == 1));
         } else {
             return new CommandResolution(execContext, "replaceitem " + target.resolve() + (keep ? " keep" : "") + " " + ItemFormatter.asSet(item, "" + count, count == 1));
         }
