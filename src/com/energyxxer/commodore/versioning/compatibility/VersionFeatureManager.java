@@ -119,8 +119,7 @@ public class VersionFeatureManager {
     //Query
 
     public static void assertEnabled(String key) {
-        if (ModuleSettingsManager.getActive() == null) return;
-        VersionFeatures features = getFeaturesForVersion(ModuleSettingsManager.getActive().getTargetVersion());
+        VersionFeatures features = getActiveFeatures();
         if (features == null || !features.getBoolean(key)) {
             throw new CommodoreException(CommodoreException.Source.VERSION_ERROR, "The feature for the key '" + key + "' is not compatible with " + ModuleSettingsManager.getActive().getTargetVersion());
         }
