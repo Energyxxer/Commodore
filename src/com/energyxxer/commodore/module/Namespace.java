@@ -136,6 +136,12 @@ public class Namespace {
         return clone;
     }
 
+    public void join(Namespace other) {
+        this.functions.join(other.functions);
+        this.tags.join(other.tags);
+        this.types.join(other.types);
+    }
+
     @Override
     public String toString() {
         return name;

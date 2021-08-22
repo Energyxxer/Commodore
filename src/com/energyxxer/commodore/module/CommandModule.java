@@ -247,7 +247,11 @@ public class CommandModule implements ExportablePack, DefinitionPopulatable {
      * */
     public void join(@NotNull CommandModule other) {
         for(Map.Entry<String, Namespace> ns : other.namespaces.entrySet()) {
-            this.namespaces.putIfAbsent(ns.getKey(), ns.getValue().clone());
+            if(this.namespaces.containsKey(ns.getKey())) {
+                this.namespaces.get(ns.getKey()).join(ns.getValue());
+            } else {
+                this.namespaces.put(ns.getKey(), ns.getValue().clone());
+            }
         }
         for(Objective obj : other.objMgr.getAll()) {
             if(!this.objMgr.exists(obj.getName())) {
