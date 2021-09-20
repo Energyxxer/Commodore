@@ -72,4 +72,9 @@ public class DVBlock extends Block {
     public void assertAvailable() {
         VersionFeatureManager.assertEnabled("block.data_values");
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return super.equals(o) && dataValue == ((DVBlock)o).dataValue;
+    }
 }
