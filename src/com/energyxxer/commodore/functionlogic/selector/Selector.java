@@ -10,6 +10,7 @@ import com.energyxxer.commodore.functionlogic.selector.arguments.SortArgument.So
 import com.energyxxer.commodore.util.BaseSelectorProperty;
 import com.energyxxer.commodore.util.BaseSelectorProperty.EnforcementType;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -221,7 +222,8 @@ public class Selector implements Entity, Cloneable {
      *
      * @param argument The argument to add to this selector.
      * */
-    public void addArgument(@NotNull SelectorArgument argument) {
+    public void addArgument(@Nullable SelectorArgument argument) {
+        if(argument == null) return;
         argument.assertCompatibleWith(this);
         this.args.add(argument);
     }
@@ -253,7 +255,8 @@ public class Selector implements Entity, Cloneable {
      *
      * @param argument The argument to add to this selector.
      * */
-    public void addArgumentMerging(@NotNull SelectorArgument argument) {
+    public void addArgumentMerging(@Nullable SelectorArgument argument) {
+        if(argument == null) return;
         Collection<SelectorArgument> oldArgs = this.getArgumentsByKey(argument.getKey());
         if(!argument.isRepeatable()) {
             this.removeArguments(argument.getClass());
