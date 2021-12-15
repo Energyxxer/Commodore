@@ -104,4 +104,24 @@ public class Item {
     public void assertAvailable() {
         if (nbt != null) VersionFeatureManager.assertEnabled("nbt.access");
     }
+
+    public String asSet() {
+        return toString();
+    }
+
+    public String asSet(String embedded, boolean doNotEmbedIfLast) {
+        if(embedded == null) return asSet();
+        if(doNotEmbedIfLast) return toString();
+        else return toString() + " " + embedded;
+    }
+
+    public String asMatch() {
+        return toString();
+    }
+
+    public String asMatch(String embedded, boolean doNotEmbedIfLast) {
+        if(embedded == null) return asSet();
+        if(doNotEmbedIfLast) return toString();
+        else return toString() + " " + embedded;
+    }
 }
