@@ -56,9 +56,10 @@ public class VersionFeatureManager {
 
     //Load
 
-    public static void loadFeatureMap(Reader reader) {
+    public static VersionFeatures loadFeatureMap(Reader reader) {
         VersionFeatures feat = parseFeatureMap(reader);
         featureMaps.add(0, feat);
+        return feat;
     }
 
     public static void setActiveFeatureMap(Reader reader) {
