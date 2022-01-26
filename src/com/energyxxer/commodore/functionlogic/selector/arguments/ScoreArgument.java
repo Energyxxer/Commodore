@@ -10,7 +10,7 @@ import java.util.*;
 
 public class ScoreArgument implements ComplexSelectorArgument {
     @NotNull
-    private final HashMap<@NotNull Objective, @NotNull Entry> scores = new HashMap<>();
+    private final HashMap<@NotNull Objective, @NotNull Entry> scores = new LinkedHashMap<>();
 
     public ScoreArgument() {
     }
