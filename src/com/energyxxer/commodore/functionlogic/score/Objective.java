@@ -93,8 +93,8 @@ public class Objective {
         if(name.length() <= 0) {
             throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name must not be empty", name);
         }
-        if(name.length() > VersionFeatureManager.getInt("objective.max_length", 16)) {
-            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + name + "' exceeds the limit of " + VersionFeatureManager.getInt("objective.max_length", 16) + " characters", name);
+        if(name.length() > VersionFeatureManager.getInt("objectives.max_length", 16)) {
+            throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + name + "' exceeds the limit of " + VersionFeatureManager.getInt("objectives.max_length", 16) + " characters", name);
         }
         if(!VersionFeatureManager.getBoolean("objectives.accept_strings", false) && !name.matches(VersionFeatureManager.getString("objectives.regex", CommandUtils.IDENTIFIER_ALLOWED))) {
             throw new CommodoreException(CommodoreException.Source.FORMAT_ERROR, "Objective name '" + name + "' has illegal characters. Does not match regex: " + VersionFeatureManager.getString("objective.regex", CommandUtils.IDENTIFIER_ALLOWED), name);
