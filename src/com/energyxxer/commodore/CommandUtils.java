@@ -42,7 +42,7 @@ public final class CommandUtils {
      * */
     @NotNull
     public static String escape(@NotNull String str) {
-        return escape(str, true);
+        return escape(str, VersionFeatureManager.getBoolean("identifiers.escape_unicode", true));
     }
 
     /**
