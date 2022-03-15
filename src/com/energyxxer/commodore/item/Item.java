@@ -7,6 +7,8 @@ import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 import static com.energyxxer.commodore.types.TypeAssert.assertItem;
 
 /**
@@ -123,5 +125,19 @@ public class Item {
         if(embedded == null) return asSet();
         if(doNotEmbedIfLast) return toString();
         else return toString() + " " + embedded;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return type.equals(item.type) &&
+                Objects.equals(nbt, item.nbt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, nbt);
     }
 }

@@ -8,6 +8,8 @@ import com.google.gson.JsonObject;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 public class DVItem extends Item {
 
     private int dataValue;
@@ -93,5 +95,20 @@ public class DVItem extends Item {
     public String asMatch(String embedded, boolean doNotEmbedIfLast) {
         if(embedded == null) return asSet();
         return getItemType().toSafeStringExcludeMinecraftNamespace() + " " + embedded + " " + dataValue;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        DVItem dvItem = (DVItem) o;
+        return dataValue == dvItem.dataValue &&
+                Objects.equals(components, dvItem.components);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), dataValue, components);
     }
 }

@@ -5,6 +5,7 @@ import com.energyxxer.commodore.CommodoreException;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
 import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -110,6 +111,20 @@ public abstract class NumberRange<T extends Number> implements Cloneable {
     }
 
     protected abstract String getSuperRangeString();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NumberRange<?> that = (NumberRange<?>) o;
+        return Objects.equals(min, that.min) &&
+                Objects.equals(max, that.max);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(min, max);
+    }
 }
 
 class RangeParseResult<T extends Number> {
