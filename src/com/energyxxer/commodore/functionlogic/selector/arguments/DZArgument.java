@@ -43,4 +43,9 @@ public class DZArgument implements SelectorArgument {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return new ExecutionVariableMap(ExecutionVariable.Z, ExecutionVariable.DIMENSION);
     }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
+    }
 }

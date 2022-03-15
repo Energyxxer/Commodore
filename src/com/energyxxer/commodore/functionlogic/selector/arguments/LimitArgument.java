@@ -50,4 +50,9 @@ public class LimitArgument implements SelectorArgument {
         if(selector.getBase().getLimit().isEnforced()) throw new CommodoreException(CommodoreException.Source.SELECTOR_ERROR, "Limit is not applicable for the " + selector.getBase() + " selector type", selector);
         SelectorArgument.super.assertCompatibleWith(selector);
     }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
+    }
 }

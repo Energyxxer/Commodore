@@ -73,4 +73,9 @@ public class AdvancementArgument implements ComplexSelectorArgument {
         newArg.entries.addAll(((AdvancementArgument) overwriting).entries);
         return newArg;
     }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
+    }
 }

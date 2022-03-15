@@ -92,6 +92,11 @@ public class ScoreArgument implements ComplexSelectorArgument {
         return newArg;
     }
 
+    @Override
+    public String toString() {
+        return getArgumentString();
+    }
+
     public static class Entry {
         public NumberRange<Integer> range;
         public boolean negated = false;

@@ -45,4 +45,9 @@ public class DistanceArgument implements SelectorArgument {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.Y, ExecutionVariable.Z, ExecutionVariable.DIMENSION);
     }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
+    }
 }

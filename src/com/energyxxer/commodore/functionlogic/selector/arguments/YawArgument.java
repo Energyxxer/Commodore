@@ -41,4 +41,9 @@ public class YawArgument implements SelectorArgument {
         //it only matters what the selected entities' facing is.
         return null;
     }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
+    }
 }

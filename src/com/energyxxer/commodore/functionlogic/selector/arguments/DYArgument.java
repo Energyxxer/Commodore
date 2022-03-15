@@ -43,4 +43,9 @@ public class DYArgument implements SelectorArgument {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return new ExecutionVariableMap(ExecutionVariable.Y, ExecutionVariable.DIMENSION);
     }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
+    }
 }

@@ -46,11 +46,6 @@ public class TypeArgument implements SelectorArgument {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return getArgumentString();
-    }
-
     @NotNull
     @Override
     public TypeArgument clone() {
@@ -90,5 +85,10 @@ public class TypeArgument implements SelectorArgument {
             //equal in value, opposite in polarity //impossible
         }
         SelectorArgument.super.assertCompatibleWith(selector);
+    }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
     }
 }

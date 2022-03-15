@@ -48,11 +48,6 @@ public class TagArgument implements SelectorArgument {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return getArgumentString();
-    }
-
     @NotNull
     @Override
     public TagArgument clone() {
@@ -68,5 +63,10 @@ public class TagArgument implements SelectorArgument {
     @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
     }
 }

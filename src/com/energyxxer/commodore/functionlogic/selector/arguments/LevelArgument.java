@@ -45,4 +45,9 @@ public class LevelArgument implements SelectorArgument {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
+    }
 }

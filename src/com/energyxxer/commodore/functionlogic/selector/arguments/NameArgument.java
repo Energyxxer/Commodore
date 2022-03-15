@@ -44,11 +44,6 @@ public class NameArgument implements SelectorArgument {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return getArgumentString();
-    }
-
     @NotNull
     @Override
     public NameArgument clone() {
@@ -64,5 +59,10 @@ public class NameArgument implements SelectorArgument {
     @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
+    }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
     }
 }

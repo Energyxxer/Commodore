@@ -46,4 +46,9 @@ public class TeamArgument implements SelectorArgument {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
+    }
 }

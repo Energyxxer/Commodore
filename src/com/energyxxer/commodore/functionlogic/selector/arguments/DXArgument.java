@@ -43,4 +43,9 @@ public class DXArgument implements SelectorArgument {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return new ExecutionVariableMap(ExecutionVariable.X, ExecutionVariable.DIMENSION);
     }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
+    }
 }

@@ -55,4 +55,9 @@ public class PredicateArgument implements SelectorArgument {
     public void assertAvailable() {
         VersionFeatureManager.assertEnabled("selector.predicate");
     }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
+    }
 }

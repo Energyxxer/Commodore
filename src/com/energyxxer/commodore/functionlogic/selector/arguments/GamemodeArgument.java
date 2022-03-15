@@ -50,4 +50,9 @@ public class GamemodeArgument implements SelectorArgument {
     public ExecutionVariableMap getUsedExecutionVariables() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return getArgumentString();
+    }
 }
