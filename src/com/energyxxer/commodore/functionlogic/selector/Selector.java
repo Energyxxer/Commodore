@@ -9,6 +9,7 @@ import com.energyxxer.commodore.functionlogic.selector.arguments.*;
 import com.energyxxer.commodore.functionlogic.selector.arguments.SortArgument.SortMode;
 import com.energyxxer.commodore.util.BaseSelectorProperty;
 import com.energyxxer.commodore.util.BaseSelectorProperty.EnforcementType;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -72,7 +73,17 @@ public class Selector implements Entity, Cloneable {
         SENDER("s",
                 new BaseSelectorProperty<>(SortMode.ARBITRARY, EnforcementType.ENFORCED),
                 new BaseSelectorProperty<>(1, EnforcementType.ENFORCED),
-                new BaseSelectorProperty<>(false, EnforcementType.DEFAULT));
+                new BaseSelectorProperty<>(false, EnforcementType.DEFAULT)),
+        /**
+         * Command equivalent: @initiator<br>
+         * Targets the player with the current NPC dialog open, if it exists.<br>
+         * Default sorting is arbitrary, and locked to target only one entity.
+         * */
+        INITIATOR("initiator",
+                       new BaseSelectorProperty<>(SortMode.ARBITRARY, EnforcementType.ENFORCED),
+                new BaseSelectorProperty<>(1, EnforcementType.ENFORCED),
+                new BaseSelectorProperty<>(false, EnforcementType.DEFAULT),
+                () -> VersionFeatureManager.assertEnabled("selector.initiator"));
 
         /**
          * The sequence of characters following the at (@) symbol that begins a selector of this type.
@@ -93,6 +104,26 @@ public class Selector implements Entity, Cloneable {
          * Whether this selector only targets players by default, and whether that is enforced.
          * */
         private final BaseSelectorProperty<Boolean> player;
+        /**
+         * Function to run when assertAvailable is called.
+         * */
+        private final Runnable availability;
+
+        /**
+         * Creates a base selector with the given header, sorting operation, limit and player flag.
+         *  @param header The sequence of characters following the at (@) symbol that begins the selector.
+         * @param sorting The sorting operation for this selector type, and whether it is enforced.
+         * @param limit The limit of entities this selector can target, and whether it is enforced.
+                 *              -1 means there isn't a limit to the number of entities targeted.
+         * @param player Whether this selector by default only targets player entities, and whether it is enforced.
+         * */
+        BaseSelector(
+                String header,
+                BaseSelectorProperty<SortMode> sorting,
+                BaseSelectorProperty<Integer> limit,
+                BaseSelectorProperty<Boolean> player) {
+            this(header, sorting, limit, player, null);
+        }
 
         /**
          * Creates a base selector with the given header, sorting operation, limit and player flag.
@@ -107,11 +138,13 @@ public class Selector implements Entity, Cloneable {
                 String header,
                 BaseSelectorProperty<SortMode> sorting,
                 BaseSelectorProperty<Integer> limit,
-                BaseSelectorProperty<Boolean> player) {
+                BaseSelectorProperty<Boolean> player,
+                Runnable availability) {
             this.header = header;
             this.sorting = sorting;
             this.limit = limit;
             this.player = player;
+            this.availability = availability;
         }
 
         /**
@@ -162,6 +195,12 @@ public class Selector implements Entity, Cloneable {
                 if(base.header.equals(header)) return base;
             }
             return null;
+        }
+
+        public void assertAvailable() {
+            if(availability != null) {
+                availability.run();
+            }
         }
     }
     /**
@@ -259,7 +298,7 @@ public class Selector implements Entity, Cloneable {
         if(argument == null) return;
         Collection<SelectorArgument> oldArgs = this.getArgumentsByKey(argument.getKey());
         if(!argument.isRepeatable()) {
-            this.removeArguments(argument.getClass());
+            this.removeArguments(argument.getKey());
         }
         argument.assertCompatibleWith(this);
         if(argument instanceof ComplexSelectorArgument) {
@@ -282,6 +321,15 @@ public class Selector implements Entity, Cloneable {
      * */
     public void removeArguments(Class<? extends SelectorArgument> argumentType) {
         this.args.removeIf(argumentType::isInstance);
+    }
+
+    /**
+     * Removes all arguments of the provided class from the selector.
+     *
+     * @param key The key of the arguments to remove from this selector.
+     * */
+    public void removeArguments(String key) {
+        this.args.removeIf(a -> a.getKey().equals(key));
     }
 
     /**
@@ -465,6 +513,7 @@ public class Selector implements Entity, Cloneable {
 
     @Override
     public void assertAvailable() {
+        base.assertAvailable();
         for(SelectorArgument arg : args) {
             arg.assertAvailable();
         }
