@@ -4,9 +4,11 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.util.NumberRange;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class PitchArgument implements SelectorArgument {
     @NotNull
-    private final NumberRange<Double> value;
+    public final NumberRange<Double> value;
 
     public PitchArgument(@NotNull NumberRange<Double> value) {
         this.value = value;
@@ -15,7 +17,7 @@ public class PitchArgument implements SelectorArgument {
     @NotNull
     @Override
     public String getArgumentString() {
-        return "y_rotation=" + value;
+        return "x_rotation=" + value;
     }
 
     @Override
@@ -32,7 +34,7 @@ public class PitchArgument implements SelectorArgument {
     @NotNull
     @Override
     public String getKey() {
-        return "y_rotation";
+        return "x_rotation";
     }
 
     @Override
@@ -45,5 +47,18 @@ public class PitchArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PitchArgument that = (PitchArgument) o;
+        return value.equals(that.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

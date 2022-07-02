@@ -5,8 +5,8 @@ import org.jetbrains.annotations.NotNull;
 public class AdvancementCriterionEntry {
 
     @NotNull
-    private final String criterionName;
-    private final boolean value;
+    public final String criterionName;
+    public final boolean value;
 
     public AdvancementCriterionEntry(@NotNull String criterionName, boolean value) {
         this.criterionName = criterionName;

@@ -5,9 +5,11 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.util.NumberRange;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class LevelArgument implements SelectorArgument {
     @NotNull
-    private final NumberRange<Integer> value;
+    public final NumberRange<Integer> value;
 
     public LevelArgument(@NotNull NumberRange<Integer> value) {
         this.value = value;
@@ -49,5 +51,18 @@ public class LevelArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LevelArgument that = (LevelArgument) o;
+        return value.equals(that.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

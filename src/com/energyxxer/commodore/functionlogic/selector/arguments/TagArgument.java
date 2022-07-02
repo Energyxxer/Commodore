@@ -6,10 +6,12 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 public class TagArgument implements SelectorArgument {
     @Nullable
-    private final String tag;
-    private final boolean negated;
+    public final String tag;
+    public final boolean negated;
 
     public TagArgument(@Nullable String tag) {
         if(tag != null && tag.startsWith("!")) {
@@ -68,5 +70,19 @@ public class TagArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TagArgument that = (TagArgument) o;
+        return negated == that.negated &&
+                Objects.equals(tag, that.tag);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(tag, negated);
     }
 }

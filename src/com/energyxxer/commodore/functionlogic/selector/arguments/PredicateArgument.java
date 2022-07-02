@@ -7,13 +7,15 @@ import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 import static com.energyxxer.commodore.types.TypeAssert.assertType;
 
 public class PredicateArgument implements SelectorArgument {
 
     @Nullable
-    private final Type predicate;
-    private final boolean negated;
+    public final Type predicate;
+    public final boolean negated;
 
     public PredicateArgument(@Nullable Type predicate) {
         this(predicate, false);
@@ -59,5 +61,19 @@ public class PredicateArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        PredicateArgument that = (PredicateArgument) o;
+        return negated == that.negated &&
+                Objects.equals(predicate, that.predicate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(predicate, negated);
     }
 }

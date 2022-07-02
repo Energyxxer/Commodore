@@ -5,10 +5,12 @@ import com.energyxxer.commodore.types.defaults.TeamReference;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+
 public class TeamArgument implements SelectorArgument {
     @Nullable
-    private final TeamReference team;
-    private final boolean negated;
+    public final TeamReference team;
+    public final boolean negated;
 
     public TeamArgument(@Nullable TeamReference team) {
         this(team, false);
@@ -50,5 +52,19 @@ public class TeamArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TeamArgument that = (TeamArgument) o;
+        return negated == that.negated &&
+                Objects.equals(team, that.team);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(team, negated);
     }
 }

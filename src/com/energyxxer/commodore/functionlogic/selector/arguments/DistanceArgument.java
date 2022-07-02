@@ -6,9 +6,11 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.util.NumberRange;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class DistanceArgument implements SelectorArgument {
     @NotNull
-    private final NumberRange<Double> distance;
+    public final NumberRange<Double> distance;
 
     public DistanceArgument(@NotNull NumberRange<Double> distance) {
         this.distance = distance;
@@ -49,5 +51,18 @@ public class DistanceArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DistanceArgument that = (DistanceArgument) o;
+        return distance.equals(that.distance);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(distance);
     }
 }

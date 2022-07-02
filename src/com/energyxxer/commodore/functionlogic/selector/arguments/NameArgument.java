@@ -4,10 +4,12 @@ import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class NameArgument implements SelectorArgument {
     @NotNull
-    private final String name;
-    private final boolean negated;
+    public final String name;
+    public final boolean negated;
 
     public NameArgument(@NotNull String name) {
         if(name.startsWith("!")) {
@@ -64,5 +66,19 @@ public class NameArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NameArgument that = (NameArgument) o;
+        return negated == that.negated &&
+                name.equals(that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, negated);
     }
 }

@@ -5,11 +5,13 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
 
 public class DZArgument implements SelectorArgument {
 
-    private final double value;
+    public final double value;
 
     public DZArgument(double value) {
         this.value = value;
@@ -47,5 +49,18 @@ public class DZArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DZArgument that = (DZArgument) o;
+        return Double.compare(that.value, value) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

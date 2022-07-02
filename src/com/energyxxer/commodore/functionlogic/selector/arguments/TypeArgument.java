@@ -7,13 +7,14 @@ import com.energyxxer.commodore.types.Type;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
+import java.util.Objects;
 
 import static com.energyxxer.commodore.types.TypeAssert.assertEntity;
 
 public class TypeArgument implements SelectorArgument {
     @NotNull
-    private final Type type;
-    private final boolean negated;
+    public final Type type;
+    public final boolean negated;
 
     public TypeArgument(@NotNull Type type) {
         this(type, false);
@@ -90,5 +91,19 @@ public class TypeArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TypeArgument that = (TypeArgument) o;
+        return negated == that.negated &&
+                type.equals(that.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, negated);
     }
 }

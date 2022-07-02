@@ -6,7 +6,7 @@ public class AdvancementCompletionEntry implements AdvancementArgumentEntry {
 
     @NotNull
     private final String advancementName;
-    private final boolean value;
+    public final boolean value;
 
     public AdvancementCompletionEntry(@NotNull String advancementName, boolean value) {
         this.advancementName = advancementName;

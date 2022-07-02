@@ -7,6 +7,7 @@ import com.energyxxer.commodore.functionlogic.selector.Selector;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
+import java.util.Objects;
 
 public class SortArgument implements SelectorArgument {
 
@@ -61,7 +62,7 @@ public class SortArgument implements SelectorArgument {
     }
 
     @NotNull
-    private final SortMode mode;
+    public final SortMode mode;
 
     public SortArgument(@NotNull SortMode mode) {
         this.mode = mode;
@@ -109,5 +110,18 @@ public class SortArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SortArgument that = (SortArgument) o;
+        return mode == that.mode;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(mode);
     }
 }

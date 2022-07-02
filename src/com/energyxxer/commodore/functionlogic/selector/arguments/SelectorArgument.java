@@ -26,4 +26,8 @@ public interface SelectorArgument extends Cloneable {
 
     default void assertAvailable() {
     }
+
+    default Integer getLimit() {
+        return null;
+    }
 }

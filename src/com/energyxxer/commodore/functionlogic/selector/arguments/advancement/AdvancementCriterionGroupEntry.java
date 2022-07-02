@@ -9,7 +9,7 @@ public class AdvancementCriterionGroupEntry implements AdvancementArgumentEntry 
     @NotNull
     private final String advancementName;
     @NotNull
-    private final List<@NotNull AdvancementCriterionEntry> criteria = new ArrayList<>();
+    public final List<@NotNull AdvancementCriterionEntry> criteria = new ArrayList<>();
 
     public AdvancementCriterionGroupEntry(@NotNull String advancementName) {
         this.advancementName = advancementName;

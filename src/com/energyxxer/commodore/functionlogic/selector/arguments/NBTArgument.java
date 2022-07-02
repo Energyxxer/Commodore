@@ -4,10 +4,12 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.functionlogic.nbt.TagCompound;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class NBTArgument implements SelectorArgument {
     @NotNull
-    private final TagCompound nbt;
-    private boolean negated = false;
+    public final TagCompound nbt;
+    public boolean negated = false;
 
     public NBTArgument(@NotNull TagCompound nbt) {
         this(nbt, false);
@@ -49,5 +51,19 @@ public class NBTArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        NBTArgument that = (NBTArgument) o;
+        return negated == that.negated &&
+                nbt.equals(that.nbt);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nbt, negated);
     }
 }

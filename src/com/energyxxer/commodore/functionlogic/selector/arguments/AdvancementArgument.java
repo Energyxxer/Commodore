@@ -9,7 +9,7 @@ import java.util.*;
 public class AdvancementArgument implements ComplexSelectorArgument {
 
     @NotNull
-    private final List<@NotNull AdvancementArgumentEntry> entries = new ArrayList<>();
+    public final List<@NotNull AdvancementArgumentEntry> entries = new ArrayList<>();
 
     public AdvancementArgument() {
     }
@@ -77,5 +77,18 @@ public class AdvancementArgument implements ComplexSelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AdvancementArgument that = (AdvancementArgument) o;
+        return entries.equals(that.entries);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(entries);
     }
 }

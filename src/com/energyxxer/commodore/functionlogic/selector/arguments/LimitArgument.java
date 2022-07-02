@@ -5,8 +5,10 @@ import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import com.energyxxer.commodore.functionlogic.selector.Selector;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class LimitArgument implements SelectorArgument {
-    private int limit;
+    public final int limit;
 
     public LimitArgument(int limit) {
         if(limit <= 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Limit must be at least 1: " + limit, limit);
@@ -30,7 +32,8 @@ public class LimitArgument implements SelectorArgument {
         return new LimitArgument(limit);
     }
 
-    public int getLimit() {
+    @Override
+    public Integer getLimit() {
         return limit;
     }
 
@@ -54,5 +57,18 @@ public class LimitArgument implements SelectorArgument {
     @Override
     public String toString() {
         return getArgumentString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LimitArgument that = (LimitArgument) o;
+        return limit == that.limit;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(limit);
     }
 }

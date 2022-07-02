@@ -372,7 +372,8 @@ public class Selector implements Entity, Cloneable {
      * */
     private int getLimitArgument() {
         for(SelectorArgument arg : args) {
-            if(arg instanceof LimitArgument) return ((LimitArgument) arg).getLimit();
+            Integer limit = arg.getLimit();
+            if(limit != null) return limit;
         }
         return -1;
     }

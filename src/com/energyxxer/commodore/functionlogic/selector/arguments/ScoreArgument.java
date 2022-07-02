@@ -10,7 +10,7 @@ import java.util.*;
 
 public class ScoreArgument implements ComplexSelectorArgument {
     @NotNull
-    private final HashMap<@NotNull Objective, @NotNull Entry> scores = new LinkedHashMap<>();
+    public final HashMap<@NotNull Objective, @NotNull Entry> scores = new LinkedHashMap<>();
 
     public ScoreArgument() {
     }
@@ -125,5 +125,32 @@ public class ScoreArgument implements ComplexSelectorArgument {
                 VersionFeatureManager.assertEnabled("selector.score.negated");
             }
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Entry entry = (Entry) o;
+            return negated == entry.negated &&
+                    Objects.equals(range, entry.range);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(range, negated);
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ScoreArgument that = (ScoreArgument) o;
+        return scores.equals(that.scores);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(scores);
     }
 }
