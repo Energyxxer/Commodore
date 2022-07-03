@@ -7,4 +7,5 @@ public interface DefinitionPopulatable {
     TypeManager getTypeManager(String namespace);
     TagManager getTagManager(String namespace);
     void putResource(String key, Object value);
+    void createCategoryAlias(String from, String to);
 }

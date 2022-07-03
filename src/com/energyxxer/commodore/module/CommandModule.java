@@ -370,4 +370,9 @@ public class CommandModule implements ExportablePack, DefinitionPopulatable {
         Namespace ns = (namespace != null) ? getNamespace(namespace) : minecraft;
         return ns.tags;
     }
+
+    @Override
+    public void createCategoryAlias(String from, String to) {
+        minecraft.createCategoryAlias(from, to);
+    }
 }

@@ -23,7 +23,7 @@ public class TypeAssert {
      * @throws IllegalTypeException If the given type is not of the given category.
      * */
     public static void assertType(Type type, String category) {
-        if(!category.equals(type.category)) throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, "Expected type of category '" + category + "', instead got '" + type.category + "'", type);
+        if(!type.namespace.resolveAlias(category).equals(type.category)) throw new CommodoreException(CommodoreException.Source.TYPE_ERROR, "Expected type of category '" + category + "', instead got '" + type.category + "'", type);
     }
 
     /**

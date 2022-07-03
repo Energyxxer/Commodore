@@ -81,4 +81,8 @@ public class DefinitionBlueprint {
                 ", properties=" + properties +
                 '}';
     }
+
+    public void join(DefinitionBlueprint other) {
+        properties.putAll(other.properties);
+    }
 }

@@ -7,6 +7,10 @@ import com.energyxxer.commodore.tags.TagManager;
 import com.energyxxer.commodore.types.defaults.TypeManager;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+
 /**
  * Represents a namespace inside a command module, containing all the elements that belong to it, including, but not
  * limited to, types, tags and functions.
@@ -45,6 +49,11 @@ public class Namespace {
      * The loot table manager for this namespace.
      * */
     public final LootTableManager lootTables;
+
+    /**
+     * A map of all the category aliases, where the key is the alias, and the value is the category it resolves to.
+     * */
+    private final HashMap<String, String> categoryAliases = new HashMap<>();
 
     /**
      * Creates a namespace object for the given module and with the given name.
@@ -140,6 +149,7 @@ public class Namespace {
         this.functions.join(other.functions);
         this.tags.join(other.tags);
         this.types.join(other.types);
+        this.categoryAliases.putAll(other.categoryAliases);
     }
 
     @Override
@@ -155,5 +165,30 @@ public class Namespace {
     public void propagateExport(boolean shouldExport) {
         functions.propagateExport(shouldExport);
         tags.propagateExport(shouldExport);
+    }
+
+    /**
+     * Resolves a category name to its true name. If name is not an alias, it is returned unchanged.
+     */
+    public String resolveAlias(String name) {
+        if(categoryAliases.containsKey(name)) return categoryAliases.get(name);
+        return name;
+    }
+
+    /**
+     * Create an alias from one category name to another.
+     */
+    public void createCategoryAlias(String from, String to) {
+        categoryAliases.put(from, to);
+    }
+
+    /**
+     * Returns a new list of all valid category names in this type manager.
+     * */
+    public Collection<String> getAllValidCategoriesAndAliases() {
+        HashSet<String> categories = new HashSet<>();
+        categories.addAll(types.getAllValidCategoriesAndAliases());
+        categories.addAll(categoryAliases.keySet());
+        return categories;
     }
 }

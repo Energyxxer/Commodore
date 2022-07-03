@@ -207,7 +207,7 @@ public class TypeManager {
      * @return The type dictionary for the specified category, if it exists. <code>null</code> if it doesn't exist.
      * */
     public TypeDictionary getDictionary(String category) {
-        return dictionaries.get(category);
+        return dictionaries.get(owner.resolveAlias(category));
     }
 
     /**
@@ -217,5 +217,12 @@ public class TypeManager {
      * */
     public Collection<TypeDictionary> getAllDictionaries() {
         return dictionaries.values();
+    }
+
+    /**
+     * Returns a new list of all valid category names in this type manager.
+     * */
+    public Collection<String> getAllValidCategoriesAndAliases() {
+        return dictionaries.keySet();
     }
 }

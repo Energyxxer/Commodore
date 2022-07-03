@@ -19,10 +19,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Serves as a medium to incorporate game data from a pack, containing things from type definitions and tag definitions
@@ -124,7 +121,7 @@ public class DefinitionPack {
     /**
      * Describes the most recent definition pack version this class can parse.
      * */
-    private final static int CURRENT_PACK_VERSION = 1;
+    private final static int CURRENT_PACK_VERSION = 2;
 
     /**
      * The Gson object used to parse the pack's JSON.
@@ -139,13 +136,6 @@ public class DefinitionPack {
     private final CompoundInput source;
 
     /**
-     * Stores each of the definitions for each category. The key is the category to which the definitions belong, and
-     * the value is the list of definitions for that specific category.
-     * Populated once pack is loaded.
-     * */
-    @NotNull
-    private final HashMap<String, ArrayList<DefinitionBlueprint>> definitions = new HashMap<>();
-    /**
      * Stores each of the tags for each category. The key is the category to which the tags belong, and the value is
      * the list of tags for that specific category.
      * Populated once pack is loaded.
@@ -153,10 +143,11 @@ public class DefinitionPack {
     @NotNull
     private final HashMap<String, ArrayList<TagBlueprint>> tags = new HashMap<>();
     /**
-     * Stores a list of all the defined categories and their flags.
+     * Stores a list of all the defined categories, their flags, and the list of definitions for that specific category.
+     * Populated once pack is loaded.
      * */
     @NotNull
-    private final ArrayList<CategoryDeclaration> definedCategories = new ArrayList<>();
+    private final HashMap<String, CategoryDeclaration> definedCategories = new HashMap<>();
     /**
      * Stores a map of all the extra resources for this definition pack.
      * */
@@ -202,42 +193,11 @@ public class DefinitionPack {
         try {
             source.open();
 
-            InputStream packIs = source.get("pack.json");
-            if(packIs == null) throw new MalformedPackException("pack.json file not found");
+            JsonObject config = loadPackJson(source.get("pack.json"));
 
-            JsonObject config = gson.fromJson(new InputStreamReader(packIs), JsonObject.class);
-            JsonObjectWrapper configWrapper = new JsonObjectWrapper(config);
-
-            this.packName = configWrapper.getAsString("name",null);
-            if(this.packName == null || this.packName.length() == 0)
-                throw new MalformedPackException("\"name\" property of definition pack not found in the root object of pack.json");
-
-            this.version = configWrapper.getAsInt("version", CURRENT_PACK_VERSION);
-            if(this.version > CURRENT_PACK_VERSION) {
-                System.err.println("[WARNING] Definition pack '" + packName + "' is pack version " + this.version + " but " + getClass().getName() + " only supports up to version " + CURRENT_PACK_VERSION);
-                System.err.println("\tWill attempt to parse pack as version " + CURRENT_PACK_VERSION);
-            }
-
-            JsonObject categories = config.getAsJsonObject("categories");
-
-            if(categories != null) for(Map.Entry<String, JsonElement> categoryDef : categories.entrySet()) {
-                String category = categoryDef.getKey();
-
-                CategoryDeclaration definition = new CategoryDeclaration(category);
-
-                this.definedCategories.add(definition);
-                this.definitions.put(category, new ArrayList<>());
-
-                JsonObjectWrapper defObj = new JsonObjectWrapper(categoryDef.getValue().getAsJsonObject());
-
-                definition.useNamespace = defObj.getAsBoolean("use_namespace", true);
-                definition.importFrom = defObj.getAsString("import_from");
-                definition.tagDirectory = defObj.getAsString("tag_directory");
-
-                if(definition.importFrom != null) {
-                    importTypes(definition);
-                }
-            }
+            loadRegistries(source.get("reports/registries.json"));
+            loadRegistryDirectories("reports/minecraft");
+            loadCategoriesFromPackJson(config);
 
             importNamespaceData();
 
@@ -251,16 +211,122 @@ public class DefinitionPack {
         }
     }
 
+    private JsonObject loadPackJson(InputStream packIs) throws IOException {
+        if(packIs == null) throw new MalformedPackException("pack.json file not found");
+
+        JsonObject config = gson.fromJson(new InputStreamReader(packIs), JsonObject.class);
+        JsonObjectWrapper configWrapper = new JsonObjectWrapper(config);
+
+        this.packName = configWrapper.getAsString("name",null);
+        if(this.packName == null || this.packName.length() == 0)
+            throw new MalformedPackException("\"name\" property of definition pack not found in the root object of pack.json");
+
+        this.version = configWrapper.getAsInt("version", CURRENT_PACK_VERSION);
+        if(this.version > CURRENT_PACK_VERSION) {
+            System.err.println("[WARNING] Definition pack '" + packName + "' is pack version " + this.version + " but " + getClass().getName() + " only supports up to version " + CURRENT_PACK_VERSION);
+            System.err.println("\tWill attempt to parse pack as version " + CURRENT_PACK_VERSION);
+        }
+
+        return config;
+    }
+
+    private void loadCategoriesFromPackJson(JsonObject config) throws IOException {
+        JsonObject categories = config.getAsJsonObject("categories");
+
+        if(categories != null) for(Map.Entry<String, JsonElement> categoryDef : categories.entrySet()) {
+            String category = categoryDef.getKey();
+
+            JsonObjectWrapper defObj = new JsonObjectWrapper(categoryDef.getValue().getAsJsonObject());
+
+            CategoryDeclaration definition = this.definedCategories.get(category);
+            if(definition == null) {
+                definition = new CategoryDeclaration(category);
+                this.definedCategories.put(category, definition);
+            }
+
+            definition.aliasFor = defObj.getAsString("alias_for", null);
+            if(definition.aliasFor == null) {
+                definition.useNamespace = defObj.getAsBoolean("use_namespace", definition.useNamespace);
+                definition.tagDirectory = defObj.getAsString("tag_directory", definition.tagDirectory);
+
+                String importFrom = defObj.getAsString("import_from");
+
+                if(importFrom != null) {
+                    importTypes(definition, importFrom);
+                }
+            }
+        }
+    }
+
+    private void loadRegistries(InputStream packIs) throws IOException {
+        if(packIs == null) return;
+
+        JsonObject root = gson.fromJson(new InputStreamReader(packIs), JsonObject.class);
+
+        for(Map.Entry<String, JsonElement> registry : root.entrySet()) {
+            String category = registry.getKey();
+            if(category.startsWith("minecraft:")) {
+                category = category.substring("minecraft:".length());
+            }
+            CategoryDeclaration definition = new CategoryDeclaration(category);
+            definition.useNamespace = true;
+            definition.tagDirectory = category;
+
+            this.definedCategories.put(category, definition);
+
+            JsonObject registryObj = registry.getValue().getAsJsonObject();
+            if(registryObj.has("entries")) {
+                importTypes(definition, registryObj.get("entries").getAsJsonObject());
+            }
+        }
+    }
+
+    private void loadRegistryDirectories(String path) {
+        loadRegistryDirectories(path, path);
+    }
+
+    private void loadRegistryDirectories(String path, String root) {
+        if(!source.isDirectory(path)) return;
+        CategoryDeclaration definition = null;
+        for(String subEntry : source.listSubEntries(path)) {
+            if(source.isDirectory(path + '/' + subEntry)) {
+                loadRegistryDirectories(path + '/' + subEntry, root);
+            } else if(subEntry.endsWith(".json")) {
+                //Create category
+                if(definition == null) {
+                    String category = path.substring(root.length());
+                    if(category.startsWith("/")) category = category.substring(1);
+                    definition = definedCategories.get(category);
+                    if(definition == null) {
+                        definition = new CategoryDeclaration(category);
+                        definition.useNamespace = true;
+                        definition.tagDirectory = category;
+                        definedCategories.put(category, definition);
+                    }
+                }
+
+                String name = subEntry.substring(0, subEntry.length()-".json".length());
+
+                definition.putDefinition(new DefinitionBlueprint(name, new HashMap<>(), definition.useNamespace));
+            }
+        }
+    }
+
     /**
      * Imports the type definitions for the specified category using that category's flags.
      *
      * @param declaration The category declaration object whose type definitions should be read.
      * */
-    private void importTypes(@NotNull CategoryDeclaration declaration) throws IOException {
-        InputStream fileIn = source.get(declaration.importFrom + ".json");
-        if(fileIn == null) throw new MalformedPackException("Couldn't import type definitions for category '" + declaration.category + "': " + declaration.importFrom + ".json wasn't found");
+    private void importTypes(@NotNull CategoryDeclaration declaration, String importFrom) throws IOException {
+        InputStream fileIn = source.get(importFrom + ".json");
+        if(fileIn == null) throw new MalformedPackException("Couldn't import type definitions for category '" + declaration.category + "': " + importFrom + ".json wasn't found");
         InputStreamReader isr = new InputStreamReader(fileIn);
         JsonObject entryFileObj = gson.fromJson(isr, JsonObject.class);
+        importTypes(declaration, entryFileObj);
+        isr.close();
+    }
+
+    private void importTypes(@NotNull CategoryDeclaration declaration, JsonObject entryFileObj) {
         for(Map.Entry<String, JsonElement> typeDef : entryFileObj.entrySet()) {
             String name = typeDef.getKey();
             HashMap<String, String> properties = new HashMap<>();
@@ -268,11 +334,8 @@ public class DefinitionPack {
                 String stringified = (member.getValue().isJsonPrimitive()) ? member.getValue().getAsString() : member.getValue().toString();
                 properties.put(member.getKey(), stringified);
             }
-
-            this.definitions.get(declaration.category).add(new DefinitionBlueprint(name, properties, declaration.useNamespace));
+            declaration.putDefinition(new DefinitionBlueprint(name, properties, declaration.useNamespace));
         }
-
-        isr.close();
     }
 
     /**
@@ -299,16 +362,9 @@ public class DefinitionPack {
     private void importTags(@NotNull String namespace) throws IOException {
         InputStream in = source.get("data/" + namespace + "/tags/");
         if(in != null) {
-            try(BufferedReader br = new BufferedReader(new InputStreamReader(in))) {
-                String inCategory;
-                while((inCategory = br.readLine()) != null) {
-                    for(CategoryDeclaration definition : definedCategories) {
-                        if(inCategory.equals(definition.tagDirectory)) {
-                            importTagGroup("data/" + namespace + "/tags/" + definition.tagDirectory, namespace, "", definition);
-                        }
-                    }
-
-                }
+            for(CategoryDeclaration definition : definedCategories.values()) {
+                if(definition.aliasFor != null) continue;
+                importTagGroup("data/" + namespace + "/tags/" + definition.tagDirectory, namespace, "", definition);
             }
         }
     }
@@ -331,7 +387,7 @@ public class DefinitionPack {
                     if (tag.endsWith(".json")) {
                         importTag(path + "/" + tag, namespace, prevPath + tag.substring(0, tag.length() - 5), declaration);
                     } else if (!tag.contains(".")) {
-                        importTagGroup(path + "/" + tag, namespace, path + "/" + prevPath + tag + "/", declaration);
+                        importTagGroup(path + "/" + tag, namespace, prevPath + tag + "/", declaration);
                     }
                 }
             }
@@ -349,6 +405,7 @@ public class DefinitionPack {
      * @param declaration The category declaration for the category this tag group belongs to.
      * */
     private void importTag(@NotNull String path, @NotNull String namespace, @NotNull String name, @NotNull CategoryDeclaration declaration) throws IOException {
+        if(declaration.aliasFor != null) throw new IllegalArgumentException("Cannot import tags for category '" + declaration.aliasFor + "': this is an alias category!");
         try(InputStreamReader is = new InputStreamReader(source.get(path))) {
             JsonObjectWrapper obj = new JsonObjectWrapper(gson.fromJson(is, JsonObject.class));
 
@@ -413,9 +470,13 @@ public class DefinitionPack {
      * */
     public void populate(@NotNull DefinitionPopulatable module) throws IOException {
         load();
-        for(Map.Entry<String, ArrayList<DefinitionBlueprint>> defs : definitions.entrySet()) {
-            String category = defs.getKey();
-            for(DefinitionBlueprint blueprint : defs.getValue()) {
+        for(CategoryDeclaration catDeclaration : definedCategories.values()) {
+            if(catDeclaration.aliasFor != null) {
+                module.createCategoryAlias(catDeclaration.category, catDeclaration.aliasFor);
+                continue;
+            }
+            String category = catDeclaration.category;
+            for(DefinitionBlueprint blueprint : catDeclaration.getBlueprints()) {
                 module.getTypeManager(blueprint.namespace).getOrCreateDictionary(category, blueprint.namespace != null).getOrCreate(blueprint.name).putProperties(blueprint.properties);
             }
         }
@@ -462,9 +523,7 @@ public class DefinitionPack {
      * @throws MalformedPackException If the declaration for such category doesn't exist (shouldn't happen in practice).
      * */
     private @NotNull CategoryDeclaration getCategory(@NotNull String category) {
-        for(CategoryDeclaration def : definedCategories) {
-            if(def.category.equals(category)) return def;
-        }
+        if(definedCategories.containsKey(category)) return definedCategories.get(category);
         throw new MalformedPackException("Unable to find definition of category '" + category + "'");
     }
 
@@ -479,20 +538,7 @@ public class DefinitionPack {
      * */
     public @NotNull Collection<DefinitionBlueprint> getBlueprints(@NotNull String category) {
         if(!loaded) throw new IllegalStateException("Definition pack hasn't been loaded yet");
-        return new ArrayList<>(definitions.get(category));
-    }
-
-    /**
-     * Retrieves the map of each type blueprint, where the key is the category and the value is the list of its type
-     * blueprints.
-     *
-     * @return The map of each type blueprint.
-     *
-     * @throws IllegalStateException If the definition pack hasn't been loaded yet.
-     * */
-    public HashMap<String, ArrayList<DefinitionBlueprint>> getDefinitions() {
-        if(!loaded) throw new IllegalStateException("Definition pack hasn't been loaded yet");
-        return definitions;
+        return definedCategories.get(category).getBlueprints();
     }
 
     /**
@@ -504,7 +550,7 @@ public class DefinitionPack {
      * */
     public @NotNull Collection<CategoryDeclaration> getDefinedCategories() {
         if(!loaded) throw new IllegalStateException("Definition pack hasn't been loaded yet");
-        return new ArrayList<>(definedCategories);
+        return definedCategories.values();
     }
 
     @Override

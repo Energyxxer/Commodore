@@ -1,6 +1,5 @@
 package com.energyxxer.commodore.tags;
 
-import com.energyxxer.commodore.functionlogic.functions.Function;
 import com.energyxxer.commodore.module.Namespace;
 import com.energyxxer.commodore.types.defaults.*;
 import org.jetbrains.annotations.NotNull;
@@ -43,6 +42,7 @@ public class TagManager {
 
     @NotNull
     public TagGroup<? extends Tag> createGroup(@NotNull String category, @NotNull String tagDirectory) {
+        category = namespace.resolveAlias(category);
         if(groups.containsKey(category)) return groups.get(category);
         TagGroup<? extends Tag> newGroup = new TagGroup<>(namespace, category, tagDirectory, GenericTag.INSTANTIATOR);
         put(newGroup);
@@ -50,6 +50,7 @@ public class TagManager {
     }
 
     public TagGroup<? extends Tag> getGroup(@NotNull String category) {
+        category = namespace.resolveAlias(category);
         return groups.get(category);
     }
 
@@ -72,6 +73,7 @@ public class TagManager {
     }
 
     public boolean groupExists(@NotNull String category) {
+        category = namespace.resolveAlias(category);
         return groups.containsKey(category);
     }
 
