@@ -7,21 +7,27 @@ import com.energyxxer.commodore.types.Type;
 import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 
-import static com.energyxxer.commodore.types.TypeAssert.assertStructure;
+import static com.energyxxer.commodore.types.TypeAssert.assertType;
 
-public class LocateCommand implements Command {
+public class LocatePOICommand implements Command {
     @NotNull
-    private final Type structure;
+    private final Type poi;
 
-    public LocateCommand(@NotNull Type structure) {
-        this.structure = structure;
+    public LocatePOICommand(@NotNull Type poi) {
+        this.poi = poi;
 
-        assertStructure(structure);
+        assertType(poi, "point_of_interest_type");
+    }
+
+    @Override
+    public void assertAvailable() {
+        VersionFeatureManager.assertEnabled("command.locate.merge");
+        VersionFeatureManager.assertEnabled("command.locate.poi");
     }
 
     @Override
     public @NotNull CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, (VersionFeatureManager.getBoolean("command.locate.merge", false) ? "locate structure " : "locate ") + structure.toSafeString());
+        return new CommandResolution(execContext, "locate poi " + poi.toSafeString());
     }
 
 }
