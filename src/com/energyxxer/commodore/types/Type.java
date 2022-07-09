@@ -122,6 +122,15 @@ public abstract class Type {
     }
 
     /**
+     * Checks whether this type is of the given category name,
+     * respecting the category aliases of this type's namespace.
+     */
+    public boolean isCategory(String category) {
+        if(this.category.equals(category)) return true;
+        return namespace.resolveAlias(this.category).equals(namespace.resolveAlias(category));
+    }
+
+    /**
      * Adds a property to this type.
      *
      * @param key The key with which the specified property is to be associated.

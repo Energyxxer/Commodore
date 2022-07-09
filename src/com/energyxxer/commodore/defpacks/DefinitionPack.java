@@ -19,7 +19,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Serves as a medium to incorporate game data from a pack, containing things from type definitions and tag definitions
@@ -196,7 +199,6 @@ public class DefinitionPack {
             JsonObject config = loadPackJson(source.get("pack.json"));
 
             loadRegistries(source.get("reports/registries.json"));
-            loadRegistryDirectories("reports/minecraft");
             loadCategoriesFromPackJson(config);
 
             importNamespaceData();
@@ -231,6 +233,13 @@ public class DefinitionPack {
     }
 
     private void loadCategoriesFromPackJson(JsonObject config) throws IOException {
+        JsonArray categoriesInDirectoriesRaw = config.getAsJsonArray("categories_in_directories");
+
+        if(categoriesInDirectoriesRaw != null) for(JsonElement rawEntry : categoriesInDirectoriesRaw) {
+            loadRegistryDirectories(rawEntry.getAsString());
+        }
+
+
         JsonObject categories = config.getAsJsonObject("categories");
 
         if(categories != null) for(Map.Entry<String, JsonElement> categoryDef : categories.entrySet()) {
@@ -281,21 +290,23 @@ public class DefinitionPack {
         }
     }
 
-    private void loadRegistryDirectories(String path) {
-        loadRegistryDirectories(path, path);
+    private void loadRegistryDirectories(String category) {
+        loadRegistryDirectories(category, "reports/minecraft/" + category);
     }
 
-    private void loadRegistryDirectories(String path, String root) {
+    private void loadRegistryDirectories(String category, String categoryRoot) {
+        loadRegistryDirectories(category, categoryRoot, categoryRoot);
+    }
+
+    private void loadRegistryDirectories(String category, String categoryRoot, String path) {
         if(!source.isDirectory(path)) return;
         CategoryDeclaration definition = null;
         for(String subEntry : source.listSubEntries(path)) {
             if(source.isDirectory(path + '/' + subEntry)) {
-                loadRegistryDirectories(path + '/' + subEntry, root);
+                loadRegistryDirectories(category, categoryRoot, path + '/' + subEntry);
             } else if(subEntry.endsWith(".json")) {
                 //Create category
                 if(definition == null) {
-                    String category = path.substring(root.length());
-                    if(category.startsWith("/")) category = category.substring(1);
                     definition = definedCategories.get(category);
                     if(definition == null) {
                         definition = new CategoryDeclaration(category);
@@ -305,7 +316,9 @@ public class DefinitionPack {
                     }
                 }
 
-                String name = subEntry.substring(0, subEntry.length()-".json".length());
+                String name = path + "/" + subEntry.substring(0, subEntry.length()-".json".length());
+                name = name.substring(categoryRoot.length());
+                if(name.startsWith("/")) name = name.substring(1);
 
                 definition.putDefinition(new DefinitionBlueprint(name, new HashMap<>(), definition.useNamespace));
             }
@@ -476,8 +489,9 @@ public class DefinitionPack {
                 continue;
             }
             String category = catDeclaration.category;
+            module.getTypeManager("minecraft").getOrCreateDictionary(category, catDeclaration.useNamespace);
             for(DefinitionBlueprint blueprint : catDeclaration.getBlueprints()) {
-                module.getTypeManager(blueprint.namespace).getOrCreateDictionary(category, blueprint.namespace != null).getOrCreate(blueprint.name).putProperties(blueprint.properties);
+                module.getTypeManager(blueprint.namespace).getOrCreateDictionary(category, catDeclaration.useNamespace).getOrCreate(blueprint.name).putProperties(blueprint.properties);
             }
         }
         for(Map.Entry<String, ArrayList<TagBlueprint>> entry : tags.entrySet()) {
