@@ -46,7 +46,7 @@ public class SpawnpointCommand implements Command {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "spawnpoint" + (player != null ? " " + player : "") + (pos != null && (pos.isSignificant() || angle != null) ? " " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + (angle != null ? " " + angle.toString() : "") : ""));
+        return new CommandResolution(execContext, "spawnpoint" + (player != null ? " " + player : "") + (pos != null ? " " + pos.getAs(Coordinate.DisplayMode.BLOCK_POS) + (angle != null ? " " + angle.toString() : "") : ""));
     }
 
     @Override
