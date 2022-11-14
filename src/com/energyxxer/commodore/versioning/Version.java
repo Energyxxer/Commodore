@@ -8,6 +8,7 @@ public interface Version {
     }
 
     int compare(Version other);
+    int compareIgnoreEdition(Version version);
 
     @NotNull
     String getEditionString();

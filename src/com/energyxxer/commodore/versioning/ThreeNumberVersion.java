@@ -45,13 +45,16 @@ public class ThreeNumberVersion implements Version {
     @Override
     public int compare(Version rawOther) {
         if (rawOther instanceof ThreeNumberVersion) {
-            ThreeNumberVersion other = (ThreeNumberVersion) rawOther;
-
-            if (other.major != this.major) return this.major - other.major;
-            if (other.minor != this.minor) return this.minor - other.minor;
-            return this.patch - other.patch;
-
+            return compareIgnoreEdition((ThreeNumberVersion) rawOther);
         } else throw new UnsupportedOperationException(this + " and " + rawOther + " are not comparable versions");
+    }
+
+    @Override
+    public int compareIgnoreEdition(Version rawOther) {
+        ThreeNumberVersion other = (ThreeNumberVersion) rawOther;
+        if (other.major != this.major) return this.major - other.major;
+        if (other.minor != this.minor) return this.minor - other.minor;
+        return this.patch - other.patch;
     }
 
     @Override

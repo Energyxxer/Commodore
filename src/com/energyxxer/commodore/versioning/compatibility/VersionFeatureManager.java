@@ -3,11 +3,9 @@ package com.energyxxer.commodore.versioning.compatibility;
 import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
 import com.energyxxer.commodore.util.io.CompoundInput;
+import com.energyxxer.commodore.versioning.ThreeNumberVersion;
 import com.energyxxer.commodore.versioning.Version;
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
+import com.google.gson.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -20,12 +18,13 @@ public class VersionFeatureManager {
 
     public static VersionFeatures getFeaturesForVersion(Version version) {
         if(version == null) return null;
+        VersionFeatures matching = null;
         for(VersionFeatures feat : featureMaps) {
-            if (version.getEditionString().equalsIgnoreCase(feat.getEdition()) && version.getVersionString().matches(feat.getVersionRegex())) {
-                return feat;
+            if (feat.matches(version) && (matching == null || feat.getVersion().compareIgnoreEdition(matching.getVersion()) >= 0)) {
+                matching = feat;
             }
         }
-        return null;
+        return matching;
     }
 
     static {
@@ -90,11 +89,35 @@ public class VersionFeatureManager {
         JsonObject root = gson.fromJson(reader, JsonObject.class);
 
         String edition = root.get("edition").getAsString();
-        String applicableVersion = root.get("applicable_version").getAsString();
+        VersionFeatures feat;
+        if(root.get("applicable_version").isJsonArray()) {
+            //version
+            JsonArray versionArr = root.getAsJsonArray("applicable_version");
+            ThreeNumberVersion version = new ThreeNumberVersion(
+                    versionArr.get(0).getAsInt(),
+                    versionArr.get(1).getAsInt(),
+                    versionArr.get(2).getAsInt()
+            );
+            feat = new VersionFeatures(edition, version);
+        } else {
+            //string
+            String rawVersion = root.get("applicable_version").getAsString();
+            String[] parts = rawVersion.split("\\.",3);
+            int major = 1;
+            int minor = 13;
+            int patch = 0;
+            try {
+                major = Integer.parseInt(parts[0]);
+            } catch(NumberFormatException | IndexOutOfBoundsException ignore) {};
+            try {
+                minor = Integer.parseInt(parts[1]);
+            } catch(NumberFormatException | IndexOutOfBoundsException ignore) {};
+            try {
+                patch = Integer.parseInt(parts[2]);
+            } catch(NumberFormatException | IndexOutOfBoundsException ignore) {};
 
-        String versionRegex = applicableVersion.replace(".","\\.").replace("*","\\d+");
-
-        VersionFeatures feat = new VersionFeatures(edition, versionRegex);
+            feat = new VersionFeatures(edition, new ThreeNumberVersion(major, minor, patch));
+        }
 
         JsonObject features = root.getAsJsonObject("features");
         for(Map.Entry<String, JsonElement> entry : features.entrySet()) {
