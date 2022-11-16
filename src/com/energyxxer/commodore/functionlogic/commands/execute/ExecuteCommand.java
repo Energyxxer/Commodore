@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ExecuteCommand implements Command {
     @NotNull
@@ -56,5 +58,24 @@ public class ExecuteCommand implements Command {
             modifier.assertAvailable();
         }
         chainedCommand.assertAvailable();
+    }
+
+    private static final Pattern OLD_EXECUTE_PATTERN = Pattern.compile("execute (@(?:[pears]|initiator)(?:\\[.*?\\])?) ?((?:(?:[~^](?:[-+]?\\d*(?:\\.\\d+)?)|(?:[-+]?(?:\\d*\\.)?\\d+?))\\s?){3})\\s(?:detect ((?:(?:[~^](?:[-+]?\\d*(?:\\.\\d+)?)|(?:[-+]?(?:\\d*\\.)?\\d+?))\\s?){3})\\s([a-zA-Z0-9_:]+|\".+\")\\s?(-?\\d+|\\[.+?\\]))?\\s?((?!detect).+)");
+
+    public static String convert(String oldExecute) {
+        Matcher matcher = OLD_EXECUTE_PATTERN.matcher(oldExecute);
+        if(matcher.matches()) {
+            String base = "execute as " + matcher.group(1) + " at @s positioned " + matcher.group(2);
+            if(matcher.group(3) != null) {
+                //detect
+                base += " if block " + matcher.group(3) + " " + matcher.group(4) + " " + matcher.group(5);
+            }
+            String followUpCommand = matcher.group(6);
+            if(followUpCommand.startsWith("execute @")) {
+                followUpCommand = convert(followUpCommand);
+            }
+            return base + " run " + followUpCommand;
+        }
+        throw new IllegalArgumentException();
     }
 }

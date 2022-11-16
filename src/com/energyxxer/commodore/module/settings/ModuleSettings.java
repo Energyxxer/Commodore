@@ -17,6 +17,12 @@ public class ModuleSettings {
      * Default value is <code>true</code>
      */
     public final ModuleOption<Boolean> EXPORT_PACK_MCMETA = new ModuleOption<>("EXPORT_PACK_MCMETA", true);
+    /**
+     * Describes whether pack.mcmeta should be exported.
+     * <p>
+     * Default value is <code>true</code>
+     */
+    public final ModuleOption<Boolean> CONVERT_RAW_OLD_EXECUTES = new ModuleOption<>("CONVERT_RAW_OLD_EXECUTES", false);
 
     public ModuleSettings(Version targetVersion) {
         this.targetVersion = targetVersion;
