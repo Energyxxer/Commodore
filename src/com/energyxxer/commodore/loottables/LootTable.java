@@ -92,4 +92,8 @@ public class LootTable implements Exportable, Namespaced {
 
         return gson.toJson(root).getBytes(Commodore.getDefaultEncoding());
     }
+
+    @Override
+    public void dispose() {
+    }
 }

@@ -34,4 +34,6 @@ public interface Exportable {
      * */
     @Nullable
     byte[] getContents();
+
+    void dispose();
 }

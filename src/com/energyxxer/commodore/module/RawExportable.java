@@ -9,8 +9,7 @@ public class RawExportable implements Exportable {
     private boolean export = true;
     @NotNull
     private final String exportPath;
-    @NotNull
-    private final byte[] data;
+    private byte[] data;
 
     public RawExportable(@NotNull String exportPath) {
         this(exportPath, "");
@@ -47,5 +46,10 @@ public class RawExportable implements Exportable {
     @NotNull
     public byte[] getContents() {
         return data;
+    }
+
+    @Override
+    public void dispose() {
+        data = null;
     }
 }

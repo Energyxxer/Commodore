@@ -257,6 +257,10 @@ public abstract class Tag extends Type implements Exportable, Namespaced {
     }
 
     @Override
+    public void dispose() {
+    }
+
+    @Override
     public boolean isStandalone() {
         return false;
     }

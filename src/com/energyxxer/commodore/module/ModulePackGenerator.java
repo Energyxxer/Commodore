@@ -68,6 +68,7 @@ public class ModulePackGenerator {
                 exportPath = exportPath.replaceAll("\\$NAMESPACE\\$", ((Namespaced) exportable).getNamespace().getName());
             }
             queueFile(exportPath, exportable.getContents());
+            exportable.dispose();
         }
 
         for(Map.Entry<String, byte[]> entry : queuedFiles.entrySet()) {

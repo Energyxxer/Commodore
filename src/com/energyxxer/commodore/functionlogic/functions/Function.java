@@ -148,6 +148,12 @@ public class Function implements FunctionSection, Exportable, Namespaced {
     }
 
     @Override
+    public void dispose() {
+        resolvedContent = null;
+        contentResolved = false;
+    }
+
+    @Override
     public String toString() {
         return getHeader();
     }
