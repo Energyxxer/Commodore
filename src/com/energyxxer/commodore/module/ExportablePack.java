@@ -1,7 +1,7 @@
 package com.energyxxer.commodore.module;
 
-import java.util.Collection;
+import java.util.List;
 
 public interface ExportablePack {
-    Collection<Exportable> getAllExportables();
+    List<Exportable> getAllExportables();
 }

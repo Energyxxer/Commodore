@@ -20,9 +20,15 @@ public class ModuleSettings {
     /**
      * Describes whether pack.mcmeta should be exported.
      * <p>
-     * Default value is <code>true</code>
+     * Default value is <code>false</code>
      */
     public final ModuleOption<Boolean> CONVERT_RAW_OLD_EXECUTES = new ModuleOption<>("CONVERT_RAW_OLD_EXECUTES", false);
+    /**
+     * Describes whether if score @s ... matches modifiers should be converted to if entity @s[scores={...}].
+     * <p>
+     * Default value is <code>false</code>
+     */
+    public final ModuleOption<Boolean> CONVERT_IF_SCORE_SENDER_MATCHES_TO_IF_ENTITY = new ModuleOption<>("CONVERT_IF_SCORE_SENDER_MATCHES_TO_IF_ENTITY", false);
 
     public ModuleSettings(Version targetVersion) {
         this.targetVersion = targetVersion;

@@ -56,6 +56,14 @@ public class TagList extends ComplexNBTTag {
         }
     }
 
+    public void ensureCapacity(int minCapacity) {
+        content.ensureCapacity(minCapacity);
+    }
+
+    public NBTTag get(int index) {
+        return content.get(index);
+    }
+
     @Override
     public List<@NotNull NBTTag> getAllTags() {
         return new ArrayList<>(content);
@@ -117,5 +125,10 @@ public class TagList extends ComplexNBTTag {
     @Override
     public int hashCode() {
         return Objects.hash(content);
+    }
+
+    @Override
+    public Iterator<? extends NBTTag> iterator() {
+        return content.iterator();
     }
 }

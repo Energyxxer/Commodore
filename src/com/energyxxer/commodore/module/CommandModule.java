@@ -17,10 +17,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * The main agent of Commodore, storing data which is used by and for data packs, including, but not limited to, blocks,
@@ -174,10 +171,21 @@ public class CommandModule implements ExportablePack, DefinitionPopulatable {
      * Generates a data pack with the module's current content.
      *
      * @param file The file inside which the data pack will be generated.
-     *
+     * @return
      * @throws IOException If an IO error occurs during the generation of the data pack.
-     * */
-    public void compile(@NotNull File file) throws IOException {
+     */
+    public ArrayList<IOException> compile(@NotNull File file) {
+        return compile(file, 0);
+    }
+
+    /**
+     * Generates a data pack with the module's current content.
+     *
+     * @param file The file inside which the data pack will be generated.
+     * @return
+     * @throws IOException If an IO error occurs during the generation of the data pack.
+     */
+    public ArrayList<IOException> compile(@NotNull File file, int numThreads) {
         ModuleSettingsManager.set(settings);
         objMgr.compile();
         namespaces.values().forEach(Namespace::compile);
@@ -193,8 +201,9 @@ public class CommandModule implements ExportablePack, DefinitionPopulatable {
             exportables.add(new RawExportable("pack.mcmeta", new GsonBuilder().setPrettyPrinting().create().toJson(root).getBytes(Commodore.getDefaultEncoding())));
         }
 
-        new ModulePackGenerator(this, file).generate();
+        ArrayList<IOException> exceptions = new ModulePackGenerator(this, file).generate(numThreads);
         ModuleSettingsManager.clear();
+        return exceptions;
     }
 
     /**
@@ -342,7 +351,7 @@ public class CommandModule implements ExportablePack, DefinitionPopulatable {
     }
 
     @Override
-    public Collection<Exportable> getAllExportables() {
+    public List<Exportable> getAllExportables() {
         ArrayList<Exportable> allExportables = new ArrayList<>();
         for(Namespace namespace : namespaces.values()) {
             allExportables.addAll(namespace.getFunctionManager().getAll());

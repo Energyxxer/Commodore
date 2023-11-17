@@ -79,6 +79,10 @@ public class TagCompound extends ComplexNBTTag {
         content.add(tag);
     }
 
+    public void ensureCapacity(int minCapacity) {
+        content.ensureCapacity(minCapacity);
+    }
+
     @Override
     public int size() {
         return content.size();
@@ -145,5 +149,10 @@ public class TagCompound extends ComplexNBTTag {
     @Override
     public int hashCode() {
         return Objects.hash(content);
+    }
+
+    @Override
+    public Iterator<? extends NBTTag> iterator() {
+        return content.iterator();
     }
 }

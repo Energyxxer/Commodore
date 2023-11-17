@@ -2,8 +2,6 @@ package com.energyxxer.commodore.functionlogic.coordinates;
 
 import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.execute.ExecuteModifier;
-import com.energyxxer.commodore.functionlogic.commands.execute.SubCommandResult;
-import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import org.jetbrains.annotations.NotNull;
@@ -19,7 +17,7 @@ import java.util.Objects;
  * @see Coordinate
  * @see ExecuteModifier
  * */
-public class CoordinateSet implements ExecuteModifier {
+public class CoordinateSet {
 
     /**
      * The coordinate for this set's x axis.
@@ -149,30 +147,20 @@ public class CoordinateSet implements ExecuteModifier {
         return getAs(Coordinate.DisplayMode.ENTITY_POS);
     }
 
-    @NotNull
-    @Override
-    public SubCommandResult getSubCommand(ExecutionContext execContext) {
-        return new SubCommandResult(execContext, "positioned " + this.getAs(Coordinate.DisplayMode.ENTITY_POS));
-    }
-
-    @Override
     public boolean isIdempotent() {
         return x.isIdempotent() && y.isIdempotent() && z.isIdempotent();
     }
 
-    @Override
     public boolean isSignificant() {
         return x.isSignificant() || y.isSignificant() || z.isSignificant();
     }
 
-    @Override
     public boolean isAbsolute() {
         return x.getType() == Coordinate.Type.ABSOLUTE &&
                 y.getType() == Coordinate.Type.ABSOLUTE &&
                 z.getType() == Coordinate.Type.ABSOLUTE;
     }
 
-    @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
         ExecutionVariableMap map = new ExecutionVariableMap(ExecutionVariable.DIMENSION);
         if(x.getType() != Coordinate.Type.ABSOLUTE) map.setUsed(ExecutionVariable.X);
@@ -181,14 +169,6 @@ public class CoordinateSet implements ExecuteModifier {
         return map;
     }
 
-    @Override
-    public ExecutionVariableMap getModifiedExecutionVariables() {
-        ExecutionVariableMap map = new ExecutionVariableMap();
-        if(x.isSignificant()) map.setUsed(ExecutionVariable.X);
-        if(y.isSignificant()) map.setUsed(ExecutionVariable.Y);
-        if(z.isSignificant()) map.setUsed(ExecutionVariable.Z);
-        return map;
-    }
 
     @Override
     public boolean equals(Object o) {

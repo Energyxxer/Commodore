@@ -38,7 +38,8 @@ public class OldExecuteCommand extends ExecuteCommand {
         ArrayList<ExecuteModifier> modifiers = new ArrayList<>();
         modifiers.add(new ExecuteAsEntity(as));
         modifiers.add(new ExecuteAtEntity(new Selector(Selector.BaseSelector.SENDER)));
-        modifiers.add(positioned);
+        if(positioned.isSignificant())
+            modifiers.add(new ExecutePositioned(positioned));
         if(detect != null) modifiers.add(detect);
         return modifiers;
     }

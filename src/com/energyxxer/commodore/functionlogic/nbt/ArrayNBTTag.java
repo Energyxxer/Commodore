@@ -37,6 +37,10 @@ public abstract class ArrayNBTTag<T extends NBTTag> extends ComplexNBTTag {
         return content.size();
     }
 
+    public void ensureCapacity(int minCapacity) {
+        content.ensureCapacity(minCapacity);
+    }
+
     @Override
     public boolean isEmpty() {
         return content.isEmpty();
@@ -70,5 +74,10 @@ public abstract class ArrayNBTTag<T extends NBTTag> extends ComplexNBTTag {
         sb.append(']');
 
         return sb.toString();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return content.iterator();
     }
 }

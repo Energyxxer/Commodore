@@ -80,9 +80,9 @@ public class Selector implements Entity, Cloneable {
          * Default sorting is arbitrary, and locked to target only one entity.
          * */
         INITIATOR("initiator",
-                       new BaseSelectorProperty<>(SortMode.ARBITRARY, EnforcementType.ENFORCED),
+                new BaseSelectorProperty<>(SortMode.ARBITRARY, EnforcementType.ENFORCED),
                 new BaseSelectorProperty<>(1, EnforcementType.ENFORCED),
-                new BaseSelectorProperty<>(false, EnforcementType.DEFAULT),
+                new BaseSelectorProperty<>(true, EnforcementType.DEFAULT),
                 () -> VersionFeatureManager.assertEnabled("selector.initiator"));
 
         /**

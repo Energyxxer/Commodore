@@ -65,7 +65,10 @@ public class ExecuteCommand implements Command {
     public static String convert(String oldExecute) {
         Matcher matcher = OLD_EXECUTE_PATTERN.matcher(oldExecute);
         if(matcher.matches()) {
-            String base = "execute as " + matcher.group(1) + " at @s positioned " + matcher.group(2);
+            String base = "execute as " + matcher.group(1) + " at @s";
+            if(!"~~~".equals(matcher.group(2).replace(" ",""))) {
+                base += " positioned " + matcher.group(2);
+            }
             if(matcher.group(3) != null) {
                 //detect
                 base += " if block " + matcher.group(3) + " " + matcher.group(4) + " " + matcher.group(5);

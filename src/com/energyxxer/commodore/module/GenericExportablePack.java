@@ -7,37 +7,38 @@ import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GenericExportablePack implements ExportablePack {
     @NotNull
     protected final ModuleSettings settings;
 
-    protected HashMap<String, Exportable> exportables = new HashMap<>();
+    protected List<Exportable> exportables = new ArrayList<>();
 
     public GenericExportablePack() {
         settings = new ModuleSettings(Commodore.DEFAULT_TARGET_VERSION);
     }
 
     public void put(Exportable exportable) {
-        exportables.put(exportable.getExportPath(), exportable);
-    }
-
-    public Exportable get(String path) {
-        return exportables.get(path);
+        exportables.add(exportable);
     }
 
     @Override
-    public Collection<Exportable> getAllExportables() {
-        return exportables.values();
+    public List<Exportable> getAllExportables() {
+        return exportables;
     }
 
-    public void compile(@NotNull File file) throws IOException {
+    public ArrayList<IOException> compile(@NotNull File file) {
+        return compile(file, 0);
+    }
+
+    public ArrayList<IOException> compile(@NotNull File file, int numThreads) {
         ModuleSettingsManager.set(settings);
 
-        new ModulePackGenerator(this, file).generate();
+        ArrayList<IOException> exceptions = new ModulePackGenerator(this, file).generate(numThreads);
         ModuleSettingsManager.clear();
+        return exceptions;
     }
 
     /**
@@ -57,7 +58,7 @@ public class GenericExportablePack implements ExportablePack {
      * <p>
      * It is advised that you call this before doing anything with this module.
      * </p>
-     * Multiple command modules in the same thread may not be active at at once.
+     * Multiple command modules in the same thread may not be active at once.
      */
     public void setSettingsActive() {
         ModuleSettingsManager.set(settings);
@@ -69,6 +70,6 @@ public class GenericExportablePack implements ExportablePack {
      * @param other The module whose data is to be copied over to this module.
      * */
     public void join(@NotNull GenericExportablePack other) {
-        this.exportables.putAll(other.exportables);
+        this.exportables.addAll(other.exportables);
     }
 }

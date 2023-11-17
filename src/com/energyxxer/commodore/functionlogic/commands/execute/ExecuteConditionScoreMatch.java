@@ -2,6 +2,9 @@ package com.energyxxer.commodore.functionlogic.commands.execute;
 
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.functionlogic.score.LocalScore;
+import com.energyxxer.commodore.functionlogic.selector.Selector;
+import com.energyxxer.commodore.functionlogic.selector.arguments.ScoreArgument;
+import com.energyxxer.commodore.module.settings.ModuleSettingsManager;
 import com.energyxxer.commodore.util.NumberRange;
 import org.jetbrains.annotations.NotNull;
 
@@ -25,6 +28,19 @@ public class ExecuteConditionScoreMatch extends ExecuteCondition {
     @NotNull
     @Override
     public SubCommandResult getSubCommand(ExecutionContext execContext) {
+        if(this.type == ConditionType.IF && ModuleSettingsManager.getActive().CONVERT_IF_SCORE_SENDER_MATCHES_TO_IF_ENTITY.getValue()) {
+            if(target.getHolder() instanceof Selector) {
+                Selector selector = (Selector) target.getHolder();
+                if(selector.getBase() == Selector.BaseSelector.SENDER && selector.getAllArguments().size() == 0) {
+                    ScoreArgument scoreArg = new ScoreArgument();
+                    scoreArg.put(target.getObjective(), range);
+                    Selector newSelector = new Selector(selector.getBase());
+                    newSelector.addArgument(scoreArg);
+
+                    return new SubCommandResult(execContext, this.getStarter() + "entity " + newSelector);
+                }
+            }
+        }
         return new SubCommandResult(execContext, this.getStarter() + "score " + target.holderToString() + " " + target.objectiveToString() + " matches " + range.toString());
     }
 
