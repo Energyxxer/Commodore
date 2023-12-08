@@ -4,6 +4,7 @@ import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionContext;
 import com.energyxxer.commodore.util.TimeSpan;
+import com.energyxxer.commodore.versioning.compatibility.VersionFeatureManager;
 import org.jetbrains.annotations.NotNull;
 
 public class TimeAddCommand extends TimeCommand {
@@ -21,6 +22,10 @@ public class TimeAddCommand extends TimeCommand {
 
     @Override @NotNull
     public CommandResolution resolveCommand(ExecutionContext execContext) {
-        return new CommandResolution(execContext, "time add " + time);
+        if(VersionFeatureManager.getBoolean("command.time.units")) {
+            return new CommandResolution(execContext, "time add " + time);
+        } else {
+            return new CommandResolution(execContext, "time add " + ((int)time.amount * time.units.ticksInUnit));
+        }
     }
 }

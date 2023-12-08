@@ -51,7 +51,7 @@ public class ScheduleCommand implements Command {
 
         assertFunction(function);
 
-        if(delay.getTicks() == 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Cannot schedule for the same tick", delay);
+        if(delay.getTicks() <= 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Cannot schedule for the same tick", delay);
     }
 
     @Override @NotNull

@@ -35,12 +35,21 @@ public class TimeSpan {
         assertFinite(amount, "amount");
     }
 
-    public int getTicks() {
-        return (int) Math.round(amount * units.ticksInUnit);
+    public double getTicks() {
+        return amount * units.ticksInUnit;
+    }
+
+    public double getSeconds() {
+        return amount * units.ticksInUnit / Units.SECONDS.ticksInUnit;
+    }
+
+    public double getDays() {
+        return amount * units.ticksInUnit / Units.DAYS.ticksInUnit;
     }
 
     @Override
     public String toString() {
         return CommandUtils.numberToPlainString(amount) + units.suffix;
     }
+
 }
