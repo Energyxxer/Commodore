@@ -4,6 +4,8 @@ import com.energyxxer.commodore.CommandUtils;
 import com.energyxxer.commodore.CommodoreException;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 import static com.energyxxer.commodore.util.MiscValidator.assertFinite;
 
 public class TimeSpan {
@@ -31,8 +33,11 @@ public class TimeSpan {
         this.amount = amount;
         this.units = units;
 
-        if(amount < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Time amount must be non-negative", amount);
         assertFinite(amount, "amount");
+    }
+
+    public void assertNonNegative() {
+        if(amount < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Time amount must be non-negative", amount);
     }
 
     public double getTicks() {
@@ -40,11 +45,16 @@ public class TimeSpan {
     }
 
     public double getSeconds() {
-        return amount * units.ticksInUnit / Units.SECONDS.ticksInUnit;
+        return amount / Units.SECONDS.ticksInUnit * units.ticksInUnit;
     }
 
     public double getDays() {
-        return amount * units.ticksInUnit / Units.DAYS.ticksInUnit;
+        return amount / Units.DAYS.ticksInUnit * units.ticksInUnit;
+    }
+
+    public TimeSpan deriveUnit(Units unit) {
+        double convertedAmount = this.amount / unit.ticksInUnit * this.units.ticksInUnit;
+        return new TimeSpan(convertedAmount, unit);
     }
 
     @Override
@@ -52,4 +62,12 @@ public class TimeSpan {
         return CommandUtils.numberToPlainString(amount) + units.suffix;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof TimeSpan && ((TimeSpan) obj).getTicks() == this.getTicks();
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(this.getTicks());
+    }
 }

@@ -14,6 +14,7 @@ public class TimeAddCommand extends TimeCommand {
     public TimeAddCommand(@NotNull TimeSpan time) {
         this.time = time;
 
+        time.assertNonNegative();
         if(time.amount < 0) throw new CommodoreException(CommodoreException.Source.NUMBER_LIMIT_ERROR, "Time must be non-negative, found " + time, time, "TIME");
     }
     public TimeAddCommand(int time) {
