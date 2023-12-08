@@ -1,49 +1,37 @@
 package com.energyxxer.commodore.functionlogic.selector.arguments;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
-import com.energyxxer.commodore.types.Type;
-import com.energyxxer.commodore.util.IntegerRange;
-import com.energyxxer.commodore.util.Negatable;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class HasItemArgument implements SelectorArgument {
 
-    public Type item;
-    public int data = -1;
-    public Type location;
-    public Negatable<IntegerRange> slot;
-    public Negatable<IntegerRange> quantity;
+    @NotNull
+    public ArrayList<HasItemArgumentEntry> entries = new ArrayList<>();
+
+    public void assertNotEmpty() {
+        if(entries.isEmpty())
+            throw new CommodoreException(CommodoreException.Source.SELECTOR_ERROR, "hasitem argument cannot be empty!");
+    }
 
     @Override
     public @NotNull String getArgumentString() {
-        StringBuilder sb = new StringBuilder("hasitem={");
-        boolean any = false;
-        if(item != null) {
-            sb.append("item=").append(item.toSafeString()).append(",");
-            any = true;
+        StringBuilder sb = new StringBuilder("hasitem=");
+        if (entries.size() == 1) {
+            // no list
+            sb.append(entries.get(0).toString());
+        } else {
+            sb.append("[");
+            for (int i = 0; i < entries.size(); i++) {
+                sb.append(entries.get(i).toString());
+                if (i < entries.size() - 1) sb.append(',');
+            }
+            sb.append("]");
         }
-        if(data != -1) {
-            sb.append("data=").append(data).append(",");
-            any = true;
-        }
-        if(location != null) {
-            sb.append("location=").append(location.toSafeString()).append(",");
-            any = true;
-        }
-        if(slot != null) {
-            sb.append("slot=").append(slot.toString()).append(",");
-            any = true;
-        }
-        if(quantity != null) {
-            sb.append("quantity=").append(quantity.toString()).append(",");
-            any = true;
-        }
-
-        if(any) sb.setLength(sb.length()-1);
-        sb.append("}");
         return sb.toString();
     }
 
@@ -55,11 +43,10 @@ public class HasItemArgument implements SelectorArgument {
     @Override
     public @NotNull SelectorArgument clone() {
         HasItemArgument copy = new HasItemArgument();
-        copy.item = item;
-        copy.data = data;
-        copy.location = location;
-        copy.slot = slot;
-        copy.quantity = quantity;
+        copy.entries = new ArrayList<>(entries.size());
+        for (HasItemArgumentEntry entry : entries) {
+            copy.entries.add(entry.clone());
+        }
         return copy;
     }
 
@@ -83,15 +70,11 @@ public class HasItemArgument implements SelectorArgument {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HasItemArgument that = (HasItemArgument) o;
-        return data == that.data &&
-                Objects.equals(item, that.item) &&
-                Objects.equals(location, that.location) &&
-                Objects.equals(slot, that.slot) &&
-                Objects.equals(quantity, that.quantity);
+        return Objects.equals(entries, that.entries);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(item, data, location, slot, quantity);
+        return Objects.hash(entries);
     }
 }

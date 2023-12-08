@@ -138,11 +138,7 @@ public class V114Test {
         ItemTag all = module.minecraft.tags.itemTags.create("all");
         module.minecraft.types.item.list().forEach(all::addValue);
 
-        try {
-            module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output" + File.separator + module.getName() + File.separator));
-        } catch(IOException x) {
-            x.printStackTrace();
-        }
+        module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output" + File.separator + module.getName() + File.separator));
 
         System.out.println(function.getResolvedContent());
 

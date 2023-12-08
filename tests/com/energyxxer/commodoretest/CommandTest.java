@@ -387,11 +387,7 @@ public class CommandTest {
         //scoreTest.setExport(false);
         //otherFunction.setExport(false);
 
-        try {
-            module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output" + File.separator + module.getName() + File.separator));
-        } catch(IOException x) {
-            x.printStackTrace();
-        }
+        module.compile(new File(System.getProperty("user.home") + File.separator + "Commodore Output" + File.separator + module.getName() + File.separator));
 
         System.out.println("module.minecraft.getTagManager().getBlockGroup() = " + module.minecraft.getTagManager().blockTags);
         System.out.println(module.minecraft.getTagManager().blockTags.get("coral_blocks").getValues());
