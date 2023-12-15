@@ -6,9 +6,15 @@ import org.jetbrains.annotations.NotNull;
 
 public class LootFromKill implements LootCommand.LootSource {
     private final Entity entity;
+    private final ToolOrHand tool;
 
     public LootFromKill(Entity entity) {
+        this(entity, null);
+    }
+
+    public LootFromKill(Entity entity, ToolOrHand tool) {
         this.entity = entity;
+        this.tool = tool;
         entity.assertSingle();
         entity.assertEntityFriendly();
     }
@@ -16,7 +22,7 @@ public class LootFromKill implements LootCommand.LootSource {
     @NotNull
     @Override
     public CommandDelegateResolution resolve() {
-        return new CommandDelegateResolution("kill " + entity);
+        return new CommandDelegateResolution("kill " + entity + (tool != null ? " " + tool : ""));
     }
 
     @Override

@@ -1,14 +1,13 @@
 package com.energyxxer.commodore.functionlogic.selector.arguments;
 
 import com.energyxxer.commodore.CommodoreException;
-import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariable;
 import com.energyxxer.commodore.functionlogic.inspection.ExecutionVariableMap;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class HasItemArgument implements SelectorArgument {
+public class HasItemArgument implements ComplexSelectorArgument {
 
     @NotNull
     public ArrayList<HasItemArgumentEntry> entries = new ArrayList<>();
@@ -41,7 +40,7 @@ public class HasItemArgument implements SelectorArgument {
     }
 
     @Override
-    public @NotNull SelectorArgument clone() {
+    public @NotNull HasItemArgument clone() {
         HasItemArgument copy = new HasItemArgument();
         copy.entries = new ArrayList<>(entries.size());
         for (HasItemArgumentEntry entry : entries) {
@@ -57,7 +56,7 @@ public class HasItemArgument implements SelectorArgument {
 
     @Override
     public ExecutionVariableMap getUsedExecutionVariables() {
-        return new ExecutionVariableMap(ExecutionVariable.SENDER);
+        return null;
     }
 
     @Override
@@ -76,5 +75,12 @@ public class HasItemArgument implements SelectorArgument {
     @Override
     public int hashCode() {
         return Objects.hash(entries);
+    }
+
+    @Override
+    public ComplexSelectorArgument merge(ComplexSelectorArgument overwriting) {
+        HasItemArgument newArg = this.clone();
+        newArg.entries.addAll(((HasItemArgument) overwriting).entries);
+        return newArg;
     }
 }
