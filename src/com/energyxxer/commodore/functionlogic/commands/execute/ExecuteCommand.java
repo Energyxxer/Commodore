@@ -1,5 +1,6 @@
 package com.energyxxer.commodore.functionlogic.commands.execute;
 
+import com.energyxxer.commodore.CommodoreException;
 import com.energyxxer.commodore.functionlogic.commands.Command;
 import com.energyxxer.commodore.functionlogic.functions.FunctionSection;
 import com.energyxxer.commodore.functionlogic.inspection.CommandResolution;
@@ -60,18 +61,29 @@ public class ExecuteCommand implements Command {
         chainedCommand.assertAvailable();
     }
 
-    private static final Pattern OLD_EXECUTE_PATTERN = Pattern.compile("execute (@(?:[pears]|initiator)(?:\\[.*?\\])?) ?((?:(?:[~^](?:[-+]?\\d*(?:\\.\\d+)?)|(?:[-+]?(?:\\d*\\.)?\\d+?))\\s?){3})\\s(?:detect ((?:(?:[~^](?:[-+]?\\d*(?:\\.\\d+)?)|(?:[-+]?(?:\\d*\\.)?\\d+?))\\s?){3})\\s([a-zA-Z0-9_:]+|\".+\")\\s?(-?\\d+|\\[.+?\\]))?\\s?((?!detect).+)");
+    private static final Pattern OLD_EXECUTE_PATTERN = Pattern.compile("execute (@(?:[pears]|initiator)(?:\\[.*?\\])?) ?((?:(?:[~^](?:[-+]?\\d*(?:\\.\\d+)?)|(?:[-+]?(?:\\d*\\.)?\\d+?))\\s+){3})\\s*(?:detect ((?:(?:[~^](?:[-+]?\\d*(?:\\.\\d+)?)|(?:[-+]?(?:\\d*\\.)?\\d+?))\\s+){3})\\s*([a-zA-Z0-9_:]+|\".+\")\\s?(-?\\d+|\\[.+?\\]))?\\s?((?!detect).+)");
 
     public static String convert(String oldExecute) {
         Matcher matcher = OLD_EXECUTE_PATTERN.matcher(oldExecute);
         if(matcher.matches()) {
             String base = "execute as " + matcher.group(1) + " at @s";
             if(!"~~~".equals(matcher.group(2).replace(" ",""))) {
-                base += " positioned " + matcher.group(2);
+                base += " positioned " + matcher.group(2).trim();
             }
             if(matcher.group(3) != null) {
                 //detect
-                base += " if block " + matcher.group(3) + " " + matcher.group(4) + " " + matcher.group(5);
+                base += " if block " + matcher.group(3).trim() + " " + matcher.group(4);
+                String rawBlockData = matcher.group(5);
+                if(!VersionFeatureManager.getBoolean("block.data_values", false) && !rawBlockData.startsWith("[")) {
+                    int dv = Integer.parseInt(rawBlockData);
+                    if(dv == -1) {
+                        rawBlockData = null;
+                    } else {
+                        throw new CommodoreException(CommodoreException.Source.VERSION_ERROR, "Unable to convert numeric block data value in old execute command:\n" + matcher.group(0));
+                    }
+                }
+                if(rawBlockData != null)
+                    base += " " + rawBlockData;
             }
             String followUpCommand = matcher.group(6);
             if(followUpCommand.startsWith("execute @")) {
