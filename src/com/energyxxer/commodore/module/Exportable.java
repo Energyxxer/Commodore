@@ -1,5 +1,8 @@
 package com.energyxxer.commodore.module;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -9,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -131,5 +135,31 @@ public interface Exportable {
                 writer.flush();
             }
         }
+    }
+
+    public static void createContentsJson(ArrayList<Exportable> exportables) {
+        String contentListPath = "contents.json";
+        HashSet<String> allPaths = new HashSet<>();
+
+        for(Exportable exportable : exportables) {
+            String path = exportable.getExportPath();
+            allPaths.add(path);
+        }
+        allPaths.add("contents.json");
+
+        JsonArray contentList = new JsonArray();
+        Iterator<String> it = allPaths.stream().sorted().iterator();
+        while(it.hasNext()) {
+            String path = it.next();
+
+            JsonObject entryObj = new JsonObject();
+            entryObj.addProperty("path", path);
+            contentList.add(entryObj);
+        }
+
+        JsonObject contentsRoot = new JsonObject();
+        contentsRoot.add("content", contentList);
+        contentsRoot.addProperty("version", 1);
+        exportables.add(new RawExportable("contents.json", new Gson().toJson(contentsRoot)));
     }
 }

@@ -200,6 +200,9 @@ public class CommandModule implements ExportablePack, DefinitionPopulatable {
 
             exportables.add(new RawExportable("pack.mcmeta", new GsonBuilder().setPrettyPrinting().create().toJson(root).getBytes(Commodore.getDefaultEncoding())));
         }
+        if(settings.EXPORT_CONTENTS_JSON.getValue()) {
+            Exportable.createContentsJson(exportables);
+        }
 
         ArrayList<IOException> exceptions = new ModulePackGenerator(this, file).generate(numThreads);
         ModuleSettingsManager.clear();

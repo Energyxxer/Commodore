@@ -18,6 +18,12 @@ public class ModuleSettings {
      */
     public final ModuleOption<Boolean> EXPORT_PACK_MCMETA = new ModuleOption<>("EXPORT_PACK_MCMETA", true);
     /**
+     * Describes whether contents.json should be exported.
+     * <p>
+     * Default value is <code>false</code>
+     */
+    public final ModuleOption<Boolean> EXPORT_CONTENTS_JSON = new ModuleOption<>("EXPORT_CONTENTS_JSON", true);
+    /**
      * Describes whether pack.mcmeta should be exported.
      * <p>
      * Default value is <code>false</code>
